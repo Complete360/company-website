@@ -1,1 +1,1602 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Google Business Profile Management
+     c360-gbp-management-v1.0.html
+     GHL: Paste into Custom Code block on /gbp-management page.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+/* ══════════════════════════════════════════════════════
+   Complete360 GBP Management  |  Prefix: c360-gbp-
+   ══════════════════════════════════════════════════════ */
+
+:root {
+  --gbp-navy:        #122078;
+  --gbp-navy-dark:   #0d1654;
+  --gbp-navy-deeper: #0a1040;
+  --gbp-green:       #127825;
+  --gbp-green-hover: #0e5e1d;
+  --gbp-green-light: #EAF3DE;
+  --gbp-blue-light:  #E6F1FB;
+  --gbp-grey:        #888780;
+  --gbp-light-grey:  #F1EFE8;
+  --gbp-text:        #0F1F5E;
+  --gbp-text-muted:  #5F5E5A;
+  --gbp-radius:      12px;
+  --gbp-radius-lg:   20px;
+  --gbp-shadow:      0 8px 32px rgba(18,32,120,0.13);
+  --gbp-shadow-lg:   0 16px 56px rgba(18,32,120,0.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.c360-gbp-section   { width: 100%; position: relative; }
+.c360-gbp-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ── BUTTONS ── */
+.c360-gbp-btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gbp-green); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 700;
+  padding: 15px 28px; border-radius: 8px;
+  text-decoration: none; border: none; cursor: pointer;
+  white-space: nowrap; line-height: 1;
+  box-shadow: 0 4px 20px rgba(18,120,37,0.35);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.c360-gbp-btn-primary:hover {
+  background: var(--gbp-green-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(18,120,37,0.45); color: #fff; text-decoration: none;
+}
+.c360-gbp-btn-navy {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gbp-navy); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 700;
+  padding: 15px 28px; border-radius: 8px;
+  text-decoration: none; border: none; cursor: pointer;
+  white-space: nowrap; line-height: 1;
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-gbp-btn-navy:hover {
+  background: var(--gbp-navy-dark); transform: translateY(-2px);
+  color: #fff; text-decoration: none;
+}
+.c360-gbp-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: rgba(255,255,255,0.85);
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 600;
+  padding: 14px 24px; border-radius: 8px;
+  text-decoration: none; line-height: 1;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.c360-gbp-btn-outline:hover {
+  border-color: rgba(255,255,255,0.7); color: #fff;
+  background: rgba(255,255,255,0.08); text-decoration: none;
+}
+
+/* ── SECTION HEADER ── */
+.c360-gbp-section-header { text-align: center; margin-bottom: 56px; }
+.c360-gbp-overline {
+  display: inline-block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gbp-green); margin-bottom: 12px;
+}
+.c360-gbp-section-header h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(26px,3.8vw,42px); font-weight: 800;
+  color: var(--gbp-text); margin: 0 0 16px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-gbp-section-header p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; color: var(--gbp-text-muted);
+  max-width: 600px; margin: 0 auto; line-height: 1.65;
+}
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════ */
+.c360-gbp-hero {
+  background: linear-gradient(135deg, #09103c 0%, #122078 55%, #0c1960 100%);
+  position: relative; overflow: hidden; padding: 92px 0 80px;
+}
+.c360-gbp-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 15% 60%, rgba(18,120,37,0.16) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-gbp-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.c360-gbp-hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px; align-items: center;
+}
+
+/* Hero left */
+.c360-gbp-hero-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(18,120,37,0.18); border: 1px solid rgba(18,120,37,0.36);
+  color: #7ddc80;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 6px 14px;
+  border-radius: 100px; margin-bottom: 22px;
+}
+.c360-gbp-hero h1 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(34px,4.8vw,58px); font-weight: 800;
+  line-height: 1.07; color: #fff; margin: 0 0 20px;
+  letter-spacing: -0.025em;
+}
+.c360-gbp-hero h1 span { color: #2ecc52; }
+.c360-gbp-hero-sub {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.72);
+  line-height: 1.65; margin: 0 0 32px; max-width: 520px;
+}
+.c360-gbp-hero-actions {
+  display: flex; align-items: center; gap: 14px;
+  flex-wrap: wrap; margin-bottom: 36px;
+}
+.c360-gbp-hero-micro {
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.c360-gbp-micro-item {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500;
+}
+.c360-gbp-micro-item i { color: #2ecc52; }
+
+/* Hero right — visual panel */
+.c360-gbp-hero-visual {
+  background: rgba(255,255,255,0.055);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--gbp-radius-lg); padding: 30px;
+  backdrop-filter: blur(10px);
+}
+.c360-gbp-hero-visual-title {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.38);
+  margin-bottom: 18px;
+}
+/* GBP listing mockup */
+.c360-gbp-listing-card {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35); margin-bottom: 16px;
+}
+.c360-gbp-listing-map {
+  height: 90px;
+  background: linear-gradient(135deg, #1a3d1e 0%, #1e6128 60%, #16882e 100%);
+  position: relative; display: flex; align-items: center; justify-content: center;
+}
+.c360-gbp-listing-map::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 40% 60%, rgba(255,255,255,0.07) 0%, transparent 40%);
+}
+/* Map grid lines */
+.c360-gbp-listing-map::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+.c360-gbp-map-pin {
+  width: 28px; height: 28px; background: #ea4335;
+  border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+  position: relative; z-index: 2; box-shadow: 0 3px 10px rgba(0,0,0,0.35);
+}
+.c360-gbp-map-pin::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  width: 11px; height: 11px; background: #fff;
+  border-radius: 50%; transform: translate(-50%,-50%);
+}
+.c360-gbp-listing-body { padding: 14px 16px; }
+.c360-gbp-listing-name {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; font-weight: 700; color: #1a1a2e; margin-bottom: 5px;
+}
+.c360-gbp-listing-stars {
+  display: flex; align-items: center; gap: 5px; margin-bottom: 8px;
+}
+.c360-gbp-listing-stars i { color: #f59e0b; font-size: 11px; }
+.c360-gbp-listing-stars span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: var(--gbp-text-muted); font-weight: 500;
+}
+.c360-gbp-listing-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.c360-gbp-listing-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--gbp-green-light); border-radius: 100px;
+  padding: 3px 10px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; color: var(--gbp-green); font-weight: 600;
+}
+.c360-gbp-listing-tag.blue {
+  background: var(--gbp-blue-light); color: var(--gbp-navy);
+}
+/* Stat pills */
+.c360-gbp-stat-row {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+}
+.c360-gbp-stat-pill {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 10px; padding: 12px 10px; text-align: center;
+}
+.c360-gbp-stat-val {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 20px; font-weight: 800; color: #2ecc52; line-height: 1;
+  margin-bottom: 3px;
+}
+.c360-gbp-stat-lbl {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; color: rgba(255,255,255,0.45); font-weight: 500;
+}
+
+/* ══════════════════════════════════════════════════════
+   TRUST BAR
+   ══════════════════════════════════════════════════════ */
+.c360-gbp-trust-bar { background: #fff; border-bottom: 1px solid #e5e3dc; }
+.c360-gbp-trust-bar-inner {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.c360-gbp-trust-pill {
+  display: flex; align-items: center; gap: 12px;
+  padding: 18px 24px; border-right: 1px solid #e5e3dc; transition: background 0.18s;
+}
+.c360-gbp-trust-pill:last-child { border-right: none; }
+.c360-gbp-trust-pill:hover { background: var(--gbp-blue-light); }
+.c360-gbp-trust-ico {
+  width: 38px; height: 38px; background: var(--gbp-blue-light);
+  border-radius: 9px; display: flex; align-items: center;
+  justify-content: center; color: var(--gbp-navy); font-size: 16px; flex-shrink: 0;
+}
+.c360-gbp-trust-ico.green { background: var(--gbp-green-light); color: var(--gbp-green); }
+.c360-gbp-trust-ico.gold  { background: #FFF8E7; color: #f59e0b; }
+.c360-gbp-trust-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; color: var(--gbp-text); line-height: 1.2;
+}
+.c360-gbp-trust-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: var(--gbp-text-muted);
+}
+
+/* ══════════════════════════════════════════════════════
+   INTRO / WHAT WE DO
+   ══════════════════════════════════════════════════════ */
+.c360-gbp-intro { padding: 88px 0; background: #fff; }
+.c360-gbp-intro-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start;
+}
+.c360-gbp-intro-copy h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(24px,3.4vw,38px); font-weight: 800;
+  color: var(--gbp-text); margin: 0 0 18px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-gbp-intro-copy h2 span { color: var(--gbp-green); }
+.c360-gbp-intro-copy p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; color: var(--gbp-text-muted);
+  line-height: 1.72; margin-bottom: 20px;
+}
+.c360-gbp-intro-copy p:last-of-type { margin-bottom: 28px; }
+.c360-gbp-alert-box {
+  background: var(--gbp-green-light);
+  border: 1px solid rgba(18,120,37,0.25);
+  border-left: 4px solid var(--gbp-green);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 18px; margin-bottom: 28px;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.c360-gbp-alert-box i { color: var(--gbp-green); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+.c360-gbp-alert-box p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: var(--gbp-text); font-weight: 500;
+  line-height: 1.55; margin: 0;
+}
+/* What's included grid */
+.c360-gbp-included-grid {
+  display: flex; flex-direction: column; gap: 0;
+  background: var(--gbp-light-grey);
+  border: 1.5px solid #dddbd4; border-radius: var(--gbp-radius);
+  overflow: hidden;
+}
+.c360-gbp-included-header {
+  background: var(--gbp-navy); padding: 14px 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.c360-gbp-included-header span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+}
+.c360-gbp-included-header i { color: #2ecc52; }
+.c360-gbp-included-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 13px 20px; border-bottom: 1px solid #dddbd4;
+}
+.c360-gbp-included-item:last-child { border-bottom: none; }
+.c360-gbp-included-item i {
+  color: var(--gbp-green); font-size: 12px; margin-top: 3px; flex-shrink: 0;
+}
+.c360-gbp-included-item span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: var(--gbp-text); font-weight: 500; line-height: 1.5;
+}
+.c360-gbp-included-item span em {
+  display: block; font-style: normal;
+  font-size: 12px; color: var(--gbp-text-muted); font-weight: 400; margin-top: 1px;
+}
+
+/* ══════════════════════════════════════════════════════
+   AI SEARCH — LOCAL SEO BOOSTER / YEXT
+   ══════════════════════════════════════════════════════ */
+.c360-gbp-ai-search {
+  padding: 88px 0;
+  background: linear-gradient(135deg, #06092a 0%, #0d1654 55%, #0a1a40 100%);
+  position: relative; overflow: hidden;
+}
+.c360-gbp-ai-search::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(18,120,37,0.14) 0%, transparent 48%),
+    radial-gradient(circle at 10% 80%, rgba(255,255,255,0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-gbp-ai-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center; position: relative; z-index: 2;
+}
+.c360-gbp-ai-copy .c360-gbp-overline { color: #2ecc52; }
+.c360-gbp-ai-h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(24px,3.4vw,38px); font-weight: 800;
+  color: #fff; margin: 0 0 18px; line-height: 1.12; letter-spacing: -0.02em;
+}
+.c360-gbp-ai-h2 span { color: #2ecc52; }
+.c360-gbp-ai-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; color: rgba(255,255,255,0.65);
+  line-height: 1.7; margin-bottom: 30px;
+}
+/* Platform pills */
+.c360-gbp-platform-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 32px;
+}
+.c360-gbp-platform-pill {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.065);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 12px 14px;
+  transition: background 0.18s, border-color 0.18s;
+}
+.c360-gbp-platform-pill:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(46,204,82,0.3);
+}
+.c360-gbp-platform-ico {
+  width: 32px; height: 32px; border-radius: 7px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: #fff;
+}
+.c360-gbp-platform-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.9); line-height: 1.2;
+}
+.c360-gbp-platform-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10.5px; color: rgba(255,255,255,0.4);
+}
+.c360-gbp-yext-badge {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: rgba(18,120,37,0.12); border: 1px solid rgba(18,120,37,0.3);
+  border-radius: var(--gbp-radius); padding: 18px 20px; margin-bottom: 28px;
+}
+.c360-gbp-yext-icon {
+  width: 42px; height: 42px; flex-shrink: 0;
+  background: rgba(18,120,37,0.25); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #2ecc52; font-size: 18px;
+}
+.c360-gbp-yext-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; font-weight: 700; color: #2ecc52; margin-bottom: 6px;
+}
+.c360-gbp-yext-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6;
+}
+/* AI search visual — chat UI mockup */
+.c360-gbp-ai-visual {
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative; z-index: 2;
+}
+.c360-gbp-ai-chat-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.c360-gbp-chat-header {
+  background: rgba(255,255,255,0.08);
+  padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.09);
+  display: flex; align-items: center; gap: 10px;
+}
+.c360-gbp-chat-icon {
+  width: 28px; height: 28px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: #fff;
+}
+.c360-gbp-chat-platform-name {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.85);
+}
+.c360-gbp-chat-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.c360-gbp-chat-query {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 10px 14px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: rgba(255,255,255,0.7);
+  font-style: italic;
+}
+.c360-gbp-chat-query::before {
+  content: 'User: ';
+  font-weight: 700; color: rgba(255,255,255,0.4); font-style: normal;
+}
+.c360-gbp-chat-answer {
+  border-left: 3px solid #2ecc52;
+  background: rgba(18,120,37,0.1);
+  border-radius: 0 8px 8px 0; padding: 10px 14px;
+}
+.c360-gbp-chat-answer-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; font-weight: 700; color: #2ecc52;
+  letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 5px;
+}
+.c360-gbp-chat-answer-text {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: rgba(255,255,255,0.75); line-height: 1.55;
+}
+.c360-gbp-chat-answer-biz {
+  display: flex; align-items: center; gap: 6px; margin-top: 8px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 6px; padding: 6px 10px;
+}
+.c360-gbp-chat-answer-biz i { color: #f59e0b; font-size: 10px; }
+.c360-gbp-chat-answer-biz span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; color: rgba(255,255,255,0.75); font-weight: 600;
+}
+/* Directory count badge */
+.c360-gbp-dir-count {
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 14px 18px;
+}
+.c360-gbp-dir-count-num {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 28px; font-weight: 800; color: #2ecc52; line-height: 1;
+}
+.c360-gbp-dir-count-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.55);
+  margin-top: 2px; line-height: 1.4;
+}
+.c360-gbp-dir-icons { display: flex; gap: 6px; }
+.c360-gbp-dir-dot {
+  width: 28px; height: 28px; border-radius: 7px;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: rgba(255,255,255,0.5);
+}
+
+/* ══════════════════════════════════════════════════════
+   HOW IT WORKS
+   ══════════════════════════════════════════════════════ */
+.c360-gbp-process { padding: 88px 0; background: var(--gbp-light-grey); }
+.c360-gbp-process-steps {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 0; position: relative;
+  margin-top: 16px;
+}
+.c360-gbp-process-steps::before {
+  content: ''; position: absolute;
+  top: 44px; left: 10%; right: 10%; height: 2px;
+  background: linear-gradient(90deg, var(--gbp-navy) 0%, var(--gbp-green) 100%);
+  z-index: 0;
+}
+.c360-gbp-step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 12px; position: relative; z-index: 1;
+}
+.c360-gbp-step-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--gbp-navy);
+  border: 3px solid var(--gbp-green-light);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px; margin-bottom: 18px; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(18,32,120,0.2);
+}
+.c360-gbp-step:last-child .c360-gbp-step-num { background: var(--gbp-green); }
+.c360-gbp-step-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; font-weight: 700; color: var(--gbp-text);
+  margin-bottom: 8px; line-height: 1.3;
+}
+.c360-gbp-step-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: var(--gbp-text-muted); line-height: 1.55;
+}
+
+/* ══════════════════════════════════════════════════════
+   SERVICES DETAIL CARDS
+   ══════════════════════════════════════════════════════ */
+.c360-gbp-services { padding: 88px 0; background: #fff; }
+.c360-gbp-services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.c360-gbp-service-card {
+  background: var(--gbp-light-grey);
+  border: 1.5px solid #e5e3dc; border-radius: var(--gbp-radius-lg);
+  padding: 28px 24px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.c360-gbp-service-card:hover {
+  border-color: rgba(18,120,37,0.3);
+  box-shadow: var(--gbp-shadow); transform: translateY(-3px);
+}
+.c360-gbp-svc-ico {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--gbp-navy); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; margin-bottom: 16px; flex-shrink: 0;
+  transition: background 0.2s;
+}
+.c360-gbp-service-card:hover .c360-gbp-svc-ico { background: var(--gbp-green); }
+.c360-gbp-svc-title {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 16px; font-weight: 700; color: var(--gbp-text); margin-bottom: 10px;
+}
+.c360-gbp-svc-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; color: var(--gbp-text-muted); line-height: 1.65;
+}
+
+/* ══════════════════════════════════════════════════════
+   PRICING
+   ══════════════════════════════════════════════════════ */
+.c360-gbp-pricing {
+  padding: 88px 0;
+  background: linear-gradient(135deg, #09103c 0%, #122078 58%, #0c1960 100%);
+  position: relative; overflow: hidden;
+}
+.c360-gbp-pricing::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(18,120,37,0.2) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-gbp-pricing .c360-gbp-section-header h2 { color: #fff; }
+.c360-gbp-pricing .c360-gbp-section-header p  { color: rgba(255,255,255,0.6); }
+.c360-gbp-pricing .c360-gbp-overline           { color: #2ecc52; }
+.c360-gbp-price-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px; position: relative; z-index: 2;
+}
+.c360-gbp-price-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--gbp-radius-lg); padding: 34px 28px;
+  position: relative; transition: background 0.22s, border-color 0.22s;
+  display: flex; flex-direction: column;
+}
+.c360-gbp-price-card:hover {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.22);
+}
+.c360-gbp-price-card--popular {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(46,204,82,0.55);
+  box-shadow: 0 0 0 4px rgba(46,204,82,0.08);
+}
+.c360-gbp-popular-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--gbp-green); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 5px 16px; border-radius: 100px;
+  white-space: nowrap;
+}
+.c360-gbp-plan-name {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;
+}
+.c360-gbp-plan-tagline {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 20px;
+  line-height: 1.4;
+}
+.c360-gbp-price-row {
+  display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px;
+}
+.c360-gbp-price-dollar {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 20px; font-weight: 700; color: rgba(255,255,255,0.6);
+  padding-bottom: 10px;
+}
+.c360-gbp-price-num {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 52px; font-weight: 800; color: #fff; line-height: 1;
+  letter-spacing: -0.03em;
+}
+.c360-gbp-price-period {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: rgba(255,255,255,0.4); padding-bottom: 10px;
+}
+.c360-gbp-price-save {
+  display: inline-block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; color: #2ecc52; font-weight: 700;
+  background: rgba(46,204,82,0.12); border: 1px solid rgba(46,204,82,0.25);
+  border-radius: 100px; padding: 3px 10px; margin-bottom: 22px;
+}
+.c360-gbp-price-save.invisible { visibility: hidden; }
+.c360-gbp-price-divider {
+  height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 22px;
+}
+.c360-gbp-price-features {
+  list-style: none; margin: 0 0 28px; padding: 0;
+  display: flex; flex-direction: column; gap: 10px; flex: 1;
+}
+.c360-gbp-price-features li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.72);
+  line-height: 1.45; font-weight: 500;
+}
+.c360-gbp-price-features li i { color: #2ecc52; margin-top: 2px; flex-shrink: 0; font-size: 11px; }
+.c360-gbp-price-note {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; color: rgba(255,255,255,0.35);
+  margin-bottom: 20px; padding-top: 4px;
+  display: flex; align-items: center; gap: 5px;
+}
+.c360-gbp-price-note i { font-size: 11px; }
+.c360-gbp-price-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 20px; border-radius: 8px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; font-weight: 700; text-decoration: none;
+  border: none; cursor: pointer; white-space: nowrap; line-height: 1;
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-gbp-price-btn--outline {
+  background: transparent; color: rgba(255,255,255,0.8);
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.c360-gbp-price-btn--outline:hover {
+  border-color: rgba(255,255,255,0.6); color: #fff;
+  background: rgba(255,255,255,0.07); text-decoration: none;
+  transform: translateY(-2px);
+}
+.c360-gbp-price-btn--green {
+  background: var(--gbp-green); color: #fff;
+  box-shadow: 0 4px 18px rgba(18,120,37,0.4);
+}
+.c360-gbp-price-btn--green:hover {
+  background: var(--gbp-green-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(18,120,37,0.5); color: #fff; text-decoration: none;
+}
+.c360-gbp-pricing-foot {
+  text-align: center; margin-top: 42px; position: relative; z-index: 2;
+}
+.c360-gbp-pricing-foot p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.38); margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   REVIEWS
+   ══════════════════════════════════════════════════════ */
+.c360-gbp-reviews { padding: 88px 0; background: var(--gbp-light-grey); }
+
+/* ══════════════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════════════ */
+.c360-gbp-faq { padding: 88px 0; background: #fff; border-top: 1px solid #e5e3dc; }
+.c360-gbp-faq-list {
+  max-width: 800px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 0;
+}
+.c360-gbp-faq-toggle { display: none; }
+.c360-gbp-faq-item { border-bottom: 1px solid #e5e3dc; }
+.c360-gbp-faq-item:first-child { border-top: 1px solid #e5e3dc; }
+.c360-gbp-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 6px; cursor: pointer; gap: 16px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; font-weight: 600; color: var(--gbp-text);
+  line-height: 1.4; transition: color 0.18s; user-select: none; list-style: none;
+}
+.c360-gbp-faq-q:hover { color: var(--gbp-navy); }
+.c360-gbp-faq-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: var(--gbp-blue-light); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gbp-navy); font-size: 11px;
+  transition: transform 0.3s ease, background 0.2s;
+}
+.c360-gbp-faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 6px;
+}
+.c360-gbp-faq-a p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; color: var(--gbp-text-muted); line-height: 1.7;
+  margin: 0 0 22px; padding-top: 4px;
+}
+.c360-gbp-faq-toggle:checked ~ .c360-gbp-faq-q .c360-gbp-faq-icon {
+  transform: rotate(180deg); background: var(--gbp-navy); color: #fff;
+}
+.c360-gbp-faq-toggle:checked ~ .c360-gbp-faq-a { max-height: 500px; }
+
+/* ══════════════════════════════════════════════════════
+   FINAL CTA
+   ══════════════════════════════════════════════════════ */
+.c360-gbp-cta {
+  padding: 96px 0;
+  background: linear-gradient(135deg, #09103c 0%, #122078 58%, #0c1960 100%);
+  position: relative; overflow: hidden; text-align: center;
+}
+.c360-gbp-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(18,120,37,0.22) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-gbp-cta-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+.c360-gbp-cta h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(28px,4vw,48px); font-weight: 800;
+  color: #fff; margin: 16px 0 18px; line-height: 1.09; letter-spacing: -0.025em;
+}
+.c360-gbp-cta h2 span { color: #2ecc52; }
+.c360-gbp-cta-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 16px; color: rgba(255,255,255,0.65); margin: 0 0 38px; line-height: 1.65;
+}
+.c360-gbp-cta-actions {
+  display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+}
+.c360-gbp-cta-trust {
+  display: flex; align-items: center; justify-content: center;
+  gap: 28px; margin-top: 36px; flex-wrap: wrap;
+}
+.c360-gbp-cta-trust span {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: rgba(255,255,255,0.42); font-weight: 500;
+}
+.c360-gbp-cta-trust span i { color: #2ecc52; font-size: 12px; }
+
+/* ══════════════════════════════════════════════════════
+   INSTANT AUDIT / PROSPECTING WIDGET
+   ══════════════════════════════════════════════════════ */
+.c360-gbp-audit {
+  padding: 80px 0;
+  background: var(--gbp-blue-light);
+  border-bottom: 1px solid #d0e6f7;
+}
+.c360-gbp-audit-inner {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: 64px; align-items: center;
+}
+.c360-gbp-audit-copy h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(22px,3.2vw,36px); font-weight: 800;
+  color: var(--gbp-text); margin: 0 0 16px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-gbp-audit-copy p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; color: var(--gbp-text-muted);
+  line-height: 1.7; margin-bottom: 24px;
+}
+.c360-gbp-audit-bullets {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.c360-gbp-audit-bullet {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; font-weight: 500; color: var(--gbp-text);
+}
+.c360-gbp-audit-bullet i { color: var(--gbp-green); font-size: 13px; flex-shrink: 0; }
+.c360-gbp-audit-widget {
+  background: #fff;
+  border-radius: var(--gbp-radius-lg);
+  box-shadow: var(--gbp-shadow-lg);
+  overflow: hidden;
+  min-height: 200px;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 980px) {
+  .c360-gbp-hero-inner,
+  .c360-gbp-intro-inner,
+  .c360-gbp-ai-inner,
+  .c360-gbp-audit-inner  { grid-template-columns: 1fr; gap: 40px; }
+  .c360-gbp-hero-visual { display: none; }
+  .c360-gbp-price-cards { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .c360-gbp-services-grid { grid-template-columns: repeat(2, 1fr); }
+  .c360-gbp-process-steps { grid-template-columns: repeat(3, 1fr); }
+  .c360-gbp-process-steps::before { display: none; }
+}
+@media (max-width: 768px) {
+  .c360-gbp-hero, .c360-gbp-cta    { padding: 68px 0 56px; }
+  .c360-gbp-intro, .c360-gbp-ai-search, .c360-gbp-process,
+  .c360-gbp-services, .c360-gbp-pricing, .c360-gbp-reviews,
+  .c360-gbp-faq { padding: 64px 0; }
+  .c360-gbp-services-grid { grid-template-columns: 1fr; }
+  .c360-gbp-platform-grid { grid-template-columns: 1fr; }
+  .c360-gbp-process-steps { grid-template-columns: 1fr 1fr; }
+  .c360-gbp-trust-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .c360-gbp-trust-pill { border-right: none; border-bottom: 1px solid #e5e3dc; }
+  .c360-gbp-trust-pill:nth-child(odd) { border-right: 1px solid #e5e3dc; }
+  .c360-gbp-trust-pill:last-child { border-bottom: none; }
+  .c360-gbp-trust-pill:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .c360-gbp-section-header { margin-bottom: 40px; }
+}
+@media (max-width: 540px) {
+  .c360-gbp-hero h1      { font-size: 32px; }
+  .c360-gbp-hero-actions { flex-direction: column; align-items: flex-start; }
+  .c360-gbp-btn-primary, .c360-gbp-btn-outline { width: 100%; justify-content: center; }
+  .c360-gbp-cta-actions  { flex-direction: column; }
+  .c360-gbp-process-steps { grid-template-columns: 1fr; }
+  .c360-gbp-process-steps::before { display: none; }
+  .c360-gbp-trust-pill { border-right: none; }
+}
+</style>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 1 — HERO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gbp-section c360-gbp-hero">
+  <div class="c360-gbp-container">
+    <div class="c360-gbp-hero-inner">
+
+      <!-- LEFT COPY -->
+      <div>
+        <div class="c360-gbp-hero-badge">
+          <i class="fa-brands fa-google"></i>
+          Google Business Profile Management
+        </div>
+        <h1>
+          Own Your Spot<br>
+          on <span>Google Search</span><br>
+          &amp; Maps.
+        </h1>
+        <p class="c360-gbp-hero-sub">
+          When a customer in your area searches for what you do, your Google Business Profile is the first thing they see. We manage, optimize, and grow it every month — so you show up first, get called more, and earn more five-star reviews.
+        </p>
+        <div class="c360-gbp-hero-actions">
+          <a href="tel:+18665276205" class="c360-gbp-btn-primary">
+            <i class="fa-solid fa-phone"></i> Call (866) 527-6205
+          </a>
+          <a href="#c360-gbp-pricing" class="c360-gbp-btn-outline">
+            View Plans <i class="fa-solid fa-arrow-down"></i>
+          </a>
+        </div>
+        <div class="c360-gbp-hero-micro">
+          <div class="c360-gbp-micro-item">
+            <i class="fa-brands fa-google"></i> Google Partner
+          </div>
+          <div class="c360-gbp-micro-item">
+            <i class="fa-solid fa-star"></i> 144+ Five-Star Reviews
+          </div>
+          <div class="c360-gbp-micro-item">
+            <i class="fa-solid fa-robot"></i> AI Search Visibility Included
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — GBP listing visual -->
+      <div>
+        <div class="c360-gbp-hero-visual">
+          <div class="c360-gbp-hero-visual-title">Your Profile — Optimized &amp; Managed</div>
+          <div class="c360-gbp-listing-card">
+            <div class="c360-gbp-listing-map">
+              <div class="c360-gbp-map-pin"></div>
+            </div>
+            <div class="c360-gbp-listing-body">
+              <div class="c360-gbp-listing-name">Your Business Name</div>
+              <div class="c360-gbp-listing-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <span>5.0 · 144 reviews</span>
+              </div>
+              <div class="c360-gbp-listing-tags">
+                <span class="c360-gbp-listing-tag">
+                  <i class="fa-solid fa-shield-halved" style="font-size:10px;"></i> Google Verified
+                </span>
+                <span class="c360-gbp-listing-tag blue">
+                  <i class="fa-solid fa-medal" style="font-size:10px;"></i> Top Local Business
+                </span>
+              </div>
+            </div>
+          </div>
+          <div class="c360-gbp-stat-row">
+            <div class="c360-gbp-stat-pill">
+              <span class="c360-gbp-stat-val">+340%</span>
+              <span class="c360-gbp-stat-lbl">Map Views</span>
+            </div>
+            <div class="c360-gbp-stat-pill">
+              <span class="c360-gbp-stat-val">#1</span>
+              <span class="c360-gbp-stat-lbl">Local Pack</span>
+            </div>
+            <div class="c360-gbp-stat-pill">
+              <span class="c360-gbp-stat-val">+92%</span>
+              <span class="c360-gbp-stat-lbl">More Calls</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 2 — TRUST BAR
+     ══════════════════════════════════════════════════════ -->
+<div class="c360-gbp-trust-bar">
+  <div class="c360-gbp-container">
+    <div class="c360-gbp-trust-bar-inner">
+      <div class="c360-gbp-trust-pill">
+        <div class="c360-gbp-trust-ico"><i class="fa-brands fa-google"></i></div>
+        <div class="c360-gbp-trust-text">
+          <strong>Google Partner Agency</strong>
+          <span>Certified &amp; trained by Google</span>
+        </div>
+      </div>
+      <div class="c360-gbp-trust-pill">
+        <div class="c360-gbp-trust-ico gold"><i class="fa-solid fa-medal"></i></div>
+        <div class="c360-gbp-trust-text">
+          <strong>Google Product Expert</strong>
+          <span>On our team — not an outside vendor</span>
+        </div>
+      </div>
+      <div class="c360-gbp-trust-pill">
+        <div class="c360-gbp-trust-ico green"><i class="fa-solid fa-star"></i></div>
+        <div class="c360-gbp-trust-text">
+          <strong>144+ Five-Star Reviews</strong>
+          <span>Real results from real businesses</span>
+        </div>
+      </div>
+      <div class="c360-gbp-trust-pill">
+        <div class="c360-gbp-trust-ico green"><i class="fa-solid fa-robot"></i></div>
+        <div class="c360-gbp-trust-text">
+          <strong>AI Search Ready</strong>
+          <span>Listed on 70+ directories &amp; AI platforms</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 3 — FREE INSTANT AUDIT (Prospecting Widget)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gbp-section c360-gbp-audit">
+  <div class="c360-gbp-container">
+    <div class="c360-gbp-audit-inner">
+      <div class="c360-gbp-audit-copy">
+        <span class="c360-gbp-overline">Free Instant Report</span>
+        <h2>See how your business<br>appears online — <span style="color:var(--gbp-green);">right now.</span></h2>
+        <p>Enter your business name below and get an instant snapshot of your Google visibility, missing directory listings, and where you're losing customers to competitors. No cost, no commitment — just real data about where you stand today.</p>
+        <div class="c360-gbp-audit-bullets">
+          <div class="c360-gbp-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Google Business Profile health check</span>
+          </div>
+          <div class="c360-gbp-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Missing directory &amp; AI platform listings</span>
+          </div>
+          <div class="c360-gbp-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Review score &amp; reputation overview</span>
+          </div>
+          <div class="c360-gbp-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Instant — results in under 60 seconds</span>
+          </div>
+        </div>
+      </div>
+      <div class="c360-gbp-audit-widget">
+        <script src="https://services.leadconnectorhq.com/prospecting/client/widget-embed.js" data-widget-id="699344169ea04eda0c083b63"></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 4 — INTRO / WHAT WE DO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gbp-section c360-gbp-intro">
+  <div class="c360-gbp-container">
+    <div class="c360-gbp-intro-inner">
+
+      <div class="c360-gbp-intro-copy">
+        <span class="c360-gbp-overline">What We Do</span>
+        <h2>Your Google profile,<br>fully <span>managed for you.</span></h2>
+        <p>
+          Most business owners set up their Google Business Profile once and forget it. That's exactly why your competitors are outranking you. Google rewards businesses that stay active — with fresh posts, new photos, up-to-date information, and a steady stream of recent reviews.
+        </p>
+        <p>
+          We take that off your plate entirely. Every month, our team handles everything it takes to keep your profile optimized, visible, and converting searchers into paying customers — including responding to reviews, updating services, and publishing posts that signal to Google you're the real deal.
+        </p>
+        <div class="c360-gbp-alert-box">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <p>Google now factors your Business Profile activity directly into local ranking. An inactive or incomplete profile costs you calls every single day — even if your website is great.</p>
+        </div>
+        <a href="tel:+18665276205" class="c360-gbp-btn-primary">
+          <i class="fa-solid fa-phone"></i> Talk to Our Team
+        </a>
+      </div>
+
+      <!-- What's included checklist -->
+      <div>
+        <div class="c360-gbp-included-grid">
+          <div class="c360-gbp-included-header">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Everything Included Each Month</span>
+          </div>
+          <div class="c360-gbp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Automated &amp; manual review requests<em>Keep your star rating climbing consistently</em></span>
+          </div>
+          <div class="c360-gbp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>AI-assisted review responses<em>Every review answered — fast and professionally</em></span>
+          </div>
+          <div class="c360-gbp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Weekly Google Posts &amp; promotional updates<em>Keep your profile fresh and active</em></span>
+          </div>
+          <div class="c360-gbp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>GBP Rank &amp; Local Recon Report<em>Monthly visibility tracking with real data</em></span>
+          </div>
+          <div class="c360-gbp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Updates, additions &amp; profile modifications<em>Hours, services, photos — always accurate</em></span>
+          </div>
+          <div class="c360-gbp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Video &amp; image uploads<em>Visual content that drives engagement</em></span>
+          </div>
+          <div class="c360-gbp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>New products or service additions<em>Showcase what you offer where buyers look first</em></span>
+          </div>
+          <div class="c360-gbp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Dedicated account manager<em>A real person who knows your business</em></span>
+          </div>
+          <div class="c360-gbp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>AI voice search optimization<em>Formatted for ChatGPT, Perplexity, Siri &amp; more</em></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 4 — AI SEARCH / LOCAL SEO BOOSTER
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gbp-section c360-gbp-ai-search">
+  <div class="c360-gbp-container">
+    <div class="c360-gbp-ai-inner">
+
+      <!-- LEFT COPY -->
+      <div class="c360-gbp-ai-copy">
+        <span class="c360-gbp-overline">Local SEO Booster — Powered by Yext</span>
+        <h2 class="c360-gbp-ai-h2">Show up on Google — <span>and everywhere customers are searching.</span></h2>
+        <p class="c360-gbp-ai-desc">
+          Google is just the beginning. Today's customers find local businesses through AI assistants like ChatGPT, Perplexity, Apple Maps, Alexa, Bing, and dozens of other platforms. If your business information isn't accurate and consistent across all of them, you're invisible everywhere except Google — and you might be losing there too.
+        </p>
+
+        <div class="c360-gbp-yext-badge">
+          <div class="c360-gbp-yext-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <div class="c360-gbp-yext-text">
+            <strong>Local SEO Booster — Powered by Yext</strong>
+            <span>We push your business data to 70+ high-authority directories and AI search platforms simultaneously — ensuring your name, address, phone, hours, and services are accurate everywhere, all the time. One update on our end syncs everywhere instantly.</span>
+          </div>
+        </div>
+
+        <div class="c360-gbp-platform-grid">
+          <div class="c360-gbp-platform-pill">
+            <div class="c360-gbp-platform-ico" style="background:#10a37f;"><i class="fa-solid fa-robot"></i></div>
+            <div class="c360-gbp-platform-text">
+              <strong>ChatGPT &amp; AI Search</strong>
+              <span>Cited in AI-generated answers</span>
+            </div>
+          </div>
+          <div class="c360-gbp-platform-pill">
+            <div class="c360-gbp-platform-ico" style="background:#ea4335;"><i class="fa-brands fa-google"></i></div>
+            <div class="c360-gbp-platform-text">
+              <strong>Google &amp; Google Maps</strong>
+              <span>Local Pack &amp; map rankings</span>
+            </div>
+          </div>
+          <div class="c360-gbp-platform-pill">
+            <div class="c360-gbp-platform-ico" style="background:#0078d4;"><i class="fa-brands fa-microsoft"></i></div>
+            <div class="c360-gbp-platform-text">
+              <strong>Bing &amp; Cortana</strong>
+              <span>Microsoft search ecosystem</span>
+            </div>
+          </div>
+          <div class="c360-gbp-platform-pill">
+            <div class="c360-gbp-platform-ico" style="background:#555;"><i class="fa-brands fa-apple"></i></div>
+            <div class="c360-gbp-platform-text">
+              <strong>Apple Maps &amp; Siri</strong>
+              <span>iPhone local searches</span>
+            </div>
+          </div>
+          <div class="c360-gbp-platform-pill">
+            <div class="c360-gbp-platform-ico" style="background:#ff6900;"><i class="fa-solid fa-bolt"></i></div>
+            <div class="c360-gbp-platform-text">
+              <strong>Perplexity AI</strong>
+              <span>Next-gen AI discovery</span>
+            </div>
+          </div>
+          <div class="c360-gbp-platform-pill">
+            <div class="c360-gbp-platform-ico" style="background:#00b2ff;"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="c360-gbp-platform-text">
+              <strong>Yelp, Facebook &amp; 65+ More</strong>
+              <span>Entire directory ecosystem</span>
+            </div>
+          </div>
+        </div>
+
+        <a href="/local-seo-booster" class="c360-gbp-btn-primary">
+          Learn About Local SEO Booster <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- RIGHT — AI chat visual -->
+      <div class="c360-gbp-ai-visual">
+
+        <!-- ChatGPT card -->
+        <div class="c360-gbp-ai-chat-card">
+          <div class="c360-gbp-chat-header">
+            <div class="c360-gbp-chat-icon" style="background:#10a37f;"><i class="fa-solid fa-robot"></i></div>
+            <span class="c360-gbp-chat-platform-name">ChatGPT — AI Local Search</span>
+          </div>
+          <div class="c360-gbp-chat-body">
+            <div class="c360-gbp-chat-query">Who is the best HVAC company near me in Tucson, AZ?</div>
+            <div class="c360-gbp-chat-answer">
+              <div class="c360-gbp-chat-answer-label"><i class="fa-solid fa-circle-check"></i> AI Response</div>
+              <div class="c360-gbp-chat-answer-text">Based on Google reviews and verified business listings, a top-rated option in Tucson is:</div>
+              <div class="c360-gbp-chat-answer-biz">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <span>Your Business Name — 5.0 · 144 Reviews · Tucson, AZ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perplexity card -->
+        <div class="c360-gbp-ai-chat-card">
+          <div class="c360-gbp-chat-header">
+            <div class="c360-gbp-chat-icon" style="background:#ff6900;"><i class="fa-solid fa-bolt"></i></div>
+            <span class="c360-gbp-chat-platform-name">Perplexity AI</span>
+          </div>
+          <div class="c360-gbp-chat-body">
+            <div class="c360-gbp-chat-query">Highly rated local plumber Tucson with reviews?</div>
+            <div class="c360-gbp-chat-answer">
+              <div class="c360-gbp-chat-answer-label"><i class="fa-solid fa-circle-check"></i> AI Response</div>
+              <div class="c360-gbp-chat-answer-text">Sourced from multiple directories &amp; review platforms:</div>
+              <div class="c360-gbp-chat-answer-biz">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <span>Your Business Name — Verified · Top-Rated in Tucson</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Directory count -->
+        <div class="c360-gbp-dir-count">
+          <div>
+            <div class="c360-gbp-dir-count-num">70+</div>
+            <div class="c360-gbp-dir-count-label">Directories &amp; AI<br>platforms covered</div>
+          </div>
+          <div class="c360-gbp-dir-icons">
+            <div class="c360-gbp-dir-dot"><i class="fa-brands fa-google"></i></div>
+            <div class="c360-gbp-dir-dot"><i class="fa-brands fa-apple"></i></div>
+            <div class="c360-gbp-dir-dot"><i class="fa-brands fa-microsoft"></i></div>
+            <div class="c360-gbp-dir-dot"><i class="fa-brands fa-yelp"></i></div>
+            <div class="c360-gbp-dir-dot"><i class="fa-brands fa-facebook"></i></div>
+            <div class="c360-gbp-dir-dot" style="font-size:9px;font-family:'Poppins',sans-serif;font-weight:700;color:rgba(255,255,255,0.5);">+65</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 5 — HOW IT WORKS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gbp-section c360-gbp-process">
+  <div class="c360-gbp-container">
+    <div class="c360-gbp-section-header">
+      <span class="c360-gbp-overline">How It Works</span>
+      <h2>Simple to start. Powerful once running.</h2>
+      <p>You handle running your business. We handle everything it takes to keep your Google presence working for you.</p>
+    </div>
+    <div class="c360-gbp-process-steps">
+      <div class="c360-gbp-step">
+        <div class="c360-gbp-step-num"><i class="fa-solid fa-clipboard-list"></i></div>
+        <div class="c360-gbp-step-label">Share Your Details</div>
+        <div class="c360-gbp-step-desc">Fill out a quick onboarding form with your business info. Takes under 15 minutes.</div>
+      </div>
+      <div class="c360-gbp-step">
+        <div class="c360-gbp-step-num"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <div class="c360-gbp-step-label">Full Profile Audit</div>
+        <div class="c360-gbp-step-desc">We run a Local Recon Report to find ranking gaps and verify or set up your GBP.</div>
+      </div>
+      <div class="c360-gbp-step">
+        <div class="c360-gbp-step-num"><i class="fa-solid fa-map"></i></div>
+        <div class="c360-gbp-step-label">Custom Strategy</div>
+        <div class="c360-gbp-step-desc">We build a targeted optimization plan for your category, market, and competition.</div>
+      </div>
+      <div class="c360-gbp-step">
+        <div class="c360-gbp-step-num"><i class="fa-solid fa-gears"></i></div>
+        <div class="c360-gbp-step-label">Ongoing Management</div>
+        <div class="c360-gbp-step-desc">Posts, photos, updates, reviews, and AI platform sync — handled every month.</div>
+      </div>
+      <div class="c360-gbp-step">
+        <div class="c360-gbp-step-num"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="c360-gbp-step-label">Monthly Reporting</div>
+        <div class="c360-gbp-step-desc">See exactly how your profile is performing with a real report, every month.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 6 — SERVICE DETAIL CARDS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gbp-section c360-gbp-services">
+  <div class="c360-gbp-container">
+    <div class="c360-gbp-section-header">
+      <span class="c360-gbp-overline">What Sets Us Apart</span>
+      <h2>Not just maintenance — active growth.</h2>
+      <p>There's a big difference between having a GBP and having a GBP that generates calls. Here's what makes our management program different.</p>
+    </div>
+    <div class="c360-gbp-services-grid">
+
+      <div class="c360-gbp-service-card">
+        <div class="c360-gbp-svc-ico"><i class="fa-solid fa-star"></i></div>
+        <div class="c360-gbp-svc-title">Review Generation &amp; Response</div>
+        <div class="c360-gbp-svc-desc">We run automated and manual review request campaigns to keep your star rating climbing. Every review — positive or critical — gets a professional, on-brand response that shows prospects you care.</div>
+      </div>
+
+      <div class="c360-gbp-service-card">
+        <div class="c360-gbp-svc-ico"><i class="fa-solid fa-bullhorn"></i></div>
+        <div class="c360-gbp-svc-title">Weekly Google Posts &amp; Content</div>
+        <div class="c360-gbp-svc-desc">Google rewards active profiles. We publish weekly posts — promotions, service updates, and seasonal content — that signal to Google your business is engaged and relevant, improving your ranking week over week.</div>
+      </div>
+
+      <div class="c360-gbp-service-card">
+        <div class="c360-gbp-svc-ico"><i class="fa-solid fa-chart-bar"></i></div>
+        <div class="c360-gbp-svc-title">Local Recon &amp; Rank Reporting</div>
+        <div class="c360-gbp-svc-desc">Each month you receive a full GBP Rank Report that shows exactly where you stand in local search, what's improving, and what we're working on next. No guesswork, just clear data.</div>
+      </div>
+
+      <div class="c360-gbp-service-card">
+        <div class="c360-gbp-svc-ico"><i class="fa-solid fa-camera"></i></div>
+        <div class="c360-gbp-svc-title">Photos, Videos &amp; Visual Content</div>
+        <div class="c360-gbp-svc-desc">Profiles with frequent photo updates get significantly more clicks and direction requests. We handle uploading, labeling, and optimizing visual content that makes your profile stand out from bare-bones competitors.</div>
+      </div>
+
+      <div class="c360-gbp-service-card">
+        <div class="c360-gbp-svc-ico"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="c360-gbp-svc-title">Directory &amp; AI Platform Sync</div>
+        <div class="c360-gbp-svc-desc">Powered by our Local SEO Booster (Yext), we keep your business data accurate and consistent across 70+ platforms — including ChatGPT, Perplexity, Apple Maps, Bing, and Alexa — so AI search sends customers your way.</div>
+      </div>
+
+      <div class="c360-gbp-service-card">
+        <div class="c360-gbp-svc-ico"><i class="fa-solid fa-user-tie"></i></div>
+        <div class="c360-gbp-svc-title">Dedicated Account Manager</div>
+        <div class="c360-gbp-svc-desc">You get a real person, not a ticket queue. Your account manager knows your business, responds fast, and makes adjustments when your hours, services, or promotions change — without you having to chase anyone.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 7 — PRICING
+     ══════════════════════════════════════════════════════ -->
+<section id="c360-gbp-pricing" class="c360-gbp-section c360-gbp-pricing">
+  <div class="c360-gbp-container">
+    <div class="c360-gbp-section-header">
+      <span class="c360-gbp-overline">Pricing &amp; Plans</span>
+      <h2>Simple, transparent pricing.<br>No surprises.</h2>
+      <p>Choose the plan that fits your growth stage. Every plan includes full monthly management — upgrade or cancel anytime.</p>
+    </div>
+    <div class="c360-gbp-price-cards">
+
+      <!-- Monthly -->
+      <div class="c360-gbp-price-card">
+        <div class="c360-gbp-plan-name">Monthly</div>
+        <div class="c360-gbp-plan-tagline">Hassle-free, month-to-month flexibility</div>
+        <div class="c360-gbp-price-row">
+          <span class="c360-gbp-price-dollar">$</span>
+          <span class="c360-gbp-price-num">349</span>
+          <span class="c360-gbp-price-period">/mo</span>
+        </div>
+        <span class="c360-gbp-price-save invisible">—</span>
+        <div class="c360-gbp-price-divider"></div>
+        <ul class="c360-gbp-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Full GBP monthly management</li>
+          <li><i class="fa-solid fa-circle-check"></i> Review requests &amp; AI responses</li>
+          <li><i class="fa-solid fa-circle-check"></i> Weekly Google Posts</li>
+          <li><i class="fa-solid fa-circle-check"></i> Photo &amp; video uploads</li>
+          <li><i class="fa-solid fa-circle-check"></i> Chat &amp; email support</li>
+          <li><i class="fa-solid fa-circle-check"></i> Citation management</li>
+          <li><i class="fa-solid fa-circle-check"></i> Monthly rank report</li>
+        </ul>
+        <div class="c360-gbp-price-note">
+          <i class="fa-solid fa-circle-info"></i> GBP Setup not included
+        </div>
+        <a href="https://complete360.org/gbp-management-checkout" class="c360-gbp-price-btn c360-gbp-price-btn--outline c360-gbp-modal-trigger">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Quarterly — POPULAR -->
+      <div class="c360-gbp-price-card c360-gbp-price-card--popular">
+        <div class="c360-gbp-popular-badge"><i class="fa-solid fa-bolt"></i> Most Popular</div>
+        <div class="c360-gbp-plan-name">Quarterly</div>
+        <div class="c360-gbp-plan-tagline">3 months of service, best value per month</div>
+        <div class="c360-gbp-price-row">
+          <span class="c360-gbp-price-dollar">$</span>
+          <span class="c360-gbp-price-num">949</span>
+          <span class="c360-gbp-price-period">/qtr</span>
+        </div>
+        <span class="c360-gbp-price-save">Save $98 Annually</span>
+        <div class="c360-gbp-price-divider"></div>
+        <ul class="c360-gbp-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Everything in Monthly</li>
+          <li><i class="fa-solid fa-circle-check"></i> Priority account access</li>
+          <li><i class="fa-solid fa-circle-check"></i> Dedicated account manager</li>
+          <li><i class="fa-solid fa-circle-check"></i> In-depth quarterly review strategy</li>
+          <li><i class="fa-solid fa-circle-check"></i> Performance benchmark tracking</li>
+          <li><i class="fa-solid fa-circle-check"></i> Competitor visibility report</li>
+        </ul>
+        <div class="c360-gbp-price-note">
+          <i class="fa-solid fa-circle-info"></i> GBP Setup not included
+        </div>
+        <a href="https://complete360.org/gbp-management-checkout" class="c360-gbp-price-btn c360-gbp-price-btn--green c360-gbp-modal-trigger">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Annual -->
+      <div class="c360-gbp-price-card">
+        <div class="c360-gbp-plan-name">Annual</div>
+        <div class="c360-gbp-plan-tagline">Best long-term ROI — 2+ months free</div>
+        <div class="c360-gbp-price-row">
+          <span class="c360-gbp-price-dollar">$</span>
+          <span class="c360-gbp-price-num">3,350</span>
+          <span class="c360-gbp-price-period">/yr</span>
+        </div>
+        <span class="c360-gbp-price-save">Save $538 · 2+ Months FREE</span>
+        <div class="c360-gbp-price-divider"></div>
+        <ul class="c360-gbp-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Everything in Quarterly</li>
+          <li><i class="fa-solid fa-circle-check"></i> Phone, chat &amp; email support</li>
+          <li><i class="fa-solid fa-circle-check"></i> Dedicated account manager</li>
+          <li><i class="fa-solid fa-circle-check"></i> <strong style="color:#2ecc52;">GBP Setup included FREE</strong></li>
+          <li><i class="fa-solid fa-circle-check"></i> Annual growth strategy session</li>
+          <li><i class="fa-solid fa-circle-check"></i> Priority response SLA</li>
+        </ul>
+        <div class="c360-gbp-price-note" style="visibility:hidden;">—</div>
+        <a href="https://complete360.org/gbp-management-checkout" class="c360-gbp-price-btn c360-gbp-price-btn--outline c360-gbp-modal-trigger">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+    <div class="c360-gbp-pricing-foot">
+      <p>Need a GBP setup first? One-time GBP Setup is $399 when purchased separately. Included free with Annual plan. &nbsp;|&nbsp; Questions? Call us Mon–Fri 9am–5pm MST.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 8 — REVIEWS WIDGET
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gbp-section c360-gbp-reviews">
+  <div class="c360-gbp-container">
+    <div class="c360-gbp-section-header">
+      <span class="c360-gbp-overline">What Our Clients Say</span>
+      <h2>Real results from real Arizona businesses</h2>
+      <p>144+ Google reviews from local business owners just like you.</p>
+    </div>
+    <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
+    <iframe
+      class='lc_reviews_widget'
+      src='https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u'
+      frameborder='0' scrolling='no'
+      style='min-width:100%;width:100%;display:block;'>
+    </iframe>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 9 — FINAL CTA
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gbp-section c360-gbp-cta">
+  <div class="c360-gbp-container">
+    <div class="c360-gbp-cta-inner">
+      <span class="c360-gbp-overline" style="color:#2ecc52;">Ready to Rank?</span>
+      <h2>Let's put your business at the <span>top of Google.</span></h2>
+      <p class="c360-gbp-cta-desc">
+        Call us for a free audit and strategy conversation — no pressure, no contracts required to chat.<br>
+        <span style="font-size:14px;opacity:0.75;">Mon–Fri 9am–5pm MST &nbsp;·&nbsp; (866) 527-6205</span>
+      </p>
+      <div class="c360-gbp-cta-actions">
+        <a href="tel:+18665276205" class="c360-gbp-btn-primary" style="font-size:16px;padding:17px 32px;">
+          <i class="fa-solid fa-phone"></i> Call (866) 527-6205
+        </a>
+        <a href="https://complete360.org/gbp-management-checkout" class="c360-gbp-btn-outline c360-gbp-modal-trigger">
+          Get Started Online <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="c360-gbp-cta-trust">
+        <span><i class="fa-brands fa-google"></i> Google Partner</span>
+        <span><i class="fa-solid fa-star"></i> 144+ Five-Star Reviews</span>
+        <span><i class="fa-solid fa-robot"></i> AI Search Visibility</span>
+        <span><i class="fa-solid fa-map-pin"></i> Tucson-Based &amp; Nationwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 10 — FAQ
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gbp-section c360-gbp-faq">
+  <div class="c360-gbp-container">
+    <div class="c360-gbp-section-header">
+      <span class="c360-gbp-overline">Frequently Asked</span>
+      <h2>Questions about GBP Management</h2>
+      <p>Get clear answers before you get started.</p>
+    </div>
+    <div class="c360-gbp-faq-list">
+
+      <div class="c360-gbp-faq-item">
+        <input type="checkbox" id="c360GbpFaq1" class="c360-gbp-faq-toggle">
+        <label for="c360GbpFaq1" class="c360-gbp-faq-q">
+          Do I need a Google Business Profile to get started?
+          <span class="c360-gbp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gbp-faq-a">
+          <p>Yes, but if you don't have one yet — that's fine. Our Quarterly and Monthly plans don't include the initial profile creation, but we offer a one-time GBP Setup for $399. The Annual plan includes GBP Setup at no additional cost. Either way, we'll make sure your profile is verified, complete, and ready before management begins.</p>
+        </div>
+      </div>
+
+      <div class="c360-gbp-faq-item">
+        <input type="checkbox" id="c360GbpFaq2" class="c360-gbp-faq-toggle">
+        <label for="c360GbpFaq2" class="c360-gbp-faq-q">
+          How long before I see results in my Google ranking?
+          <span class="c360-gbp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gbp-faq-a">
+          <p>Most clients begin seeing measurable increases in profile views and direction requests within 30–60 days. Ranking improvements in competitive local markets typically show significant movement in 60–90 days. We track everything and send you a report every month so you can see exactly what's happening. GBP management compounds over time — the longer you're active, the stronger your ranking gets.</p>
+        </div>
+      </div>
+
+      <div class="c360-gbp-faq-item">
+        <input type="checkbox" id="c360GbpFaq3" class="c360-gbp-faq-toggle">
+        <label for="c360GbpFaq3" class="c360-gbp-faq-q">
+          What is the Local SEO Booster and do I need it?
+          <span class="c360-gbp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gbp-faq-a">
+          <p>The Local SEO Booster is a separate service powered by Yext that syncs your business information across 70+ online directories, maps, and AI search platforms — including ChatGPT, Perplexity, Apple Maps, Bing, Yelp, Facebook, and Alexa. If your business data is inconsistent or missing on any of these platforms, it hurts your Google ranking and keeps you invisible to AI-driven searches. We recommend it alongside GBP Management for maximum local visibility.</p>
+        </div>
+      </div>
+
+      <div class="c360-gbp-faq-item">
+        <input type="checkbox" id="c360GbpFaq4" class="c360-gbp-faq-toggle">
+        <label for="c360GbpFaq4" class="c360-gbp-faq-q">
+          Will you actually respond to my Google reviews?
+          <span class="c360-gbp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gbp-faq-a">
+          <p>Yes — every review gets a response. We use AI-assisted review responses that are reviewed for accuracy and tone before being posted. For negative or sensitive reviews, we flag those for your awareness and handle them carefully to protect your reputation. Responding to reviews is one of the highest-impact signals Google uses to evaluate your business — and most of your competitors aren't doing it consistently.</p>
+        </div>
+      </div>
+
+      <div class="c360-gbp-faq-item">
+        <input type="checkbox" id="c360GbpFaq5" class="c360-gbp-faq-toggle">
+        <label for="c360GbpFaq5" class="c360-gbp-faq-q">
+          Can I cancel at any time?
+          <span class="c360-gbp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gbp-faq-a">
+          <p>Monthly plans can be cancelled with 30 days notice — no long-term commitments. Quarterly and Annual plans are prepaid and non-refundable after work begins, but they offer significant savings for businesses committed to consistent growth. We'll be upfront about everything on our strategy call before you decide.</p>
+        </div>
+      </div>
+
+      <div class="c360-gbp-faq-item">
+        <input type="checkbox" id="c360GbpFaq6" class="c360-gbp-faq-toggle">
+        <label for="c360GbpFaq6" class="c360-gbp-faq-q">
+          How is this different from just logging in and managing my own profile?
+          <span class="c360-gbp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gbp-faq-a">
+          <p>You can absolutely manage your own GBP — but most business owners don't have the time to post weekly, respond to every review within 24 hours, upload optimized photos, monitor for spam or incorrect edits, and track ranking data every month. Google's algorithm rewards consistency over time. Our team treats your profile like a full-time marketing channel, because for local businesses, it is. We also have a Google Product Expert on our team — that level of platform knowledge is hard to replicate on your own.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SCRIPT — Modal trigger
+     ══════════════════════════════════════════════════════ -->
 
