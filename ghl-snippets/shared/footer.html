@@ -1,0 +1,546 @@
+<!-- ============================================================
+     COMPLETE360 FOOTER — v1.2
+     Paste in GHL global FOOTER code field (not header).
+     All styles prefixed with c360f- to avoid collisions.
+
+     Changes from v1.1:
+     - Marketing Services column: Meta Social Posting added (below Google Social Posting)
+     ============================================================ -->
+
+     <style>
+        /* ---------- Footer brand tokens ---------- */
+        .c360f-footer {
+          --c360f-blue: #122078;
+          --c360f-blue-mid: #1a2e99;
+          --c360f-blue-light: #1e3ab8;
+          --c360f-green: #127825;
+          --c360f-green-light: #1a9e32;
+          --c360f-green-faint: rgba(18, 120, 37, 0.15);
+          --c360f-white: #ffffff;
+          --c360f-white-70: rgba(255,255,255,0.7);
+          --c360f-white-40: rgba(255,255,255,0.4);
+          --c360f-white-10: rgba(255,255,255,0.08);
+          --c360f-border: rgba(255,255,255,0.1);
+          font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+        }
+        
+        /* ---------- Outer wrapper ---------- */
+        .c360f-footer {
+          background: var(--c360f-blue);
+          color: var(--c360f-white-70);
+          width: 100%;
+        }
+        
+        /* ---------- Main columns area ---------- */
+        .c360f-main {
+          max-width: 1320px;
+          margin: 0 auto;
+          padding: 64px 32px 48px;
+          display: grid;
+          grid-template-columns: 280px 1fr 1fr 1fr 220px;
+          gap: 48px;
+        }
+        
+        /* ---------- Column 1 — Brand ---------- */
+        .c360f-brand {}
+        
+        .c360f-logo {
+          font-size: 24px;
+          font-weight: 700;
+          text-decoration: none;
+          letter-spacing: -0.3px;
+          display: inline-block;
+          margin-bottom: 14px;
+        }
+        .c360f-logo-complete { color: var(--c360f-white); }
+        .c360f-logo-360 { color: var(--c360f-green-light); }
+        
+        .c360f-tagline {
+          font-size: 13px;
+          line-height: 1.6;
+          color: var(--c360f-white-70);
+          margin: 0 0 20px;
+          max-width: 220px;
+        }
+        
+        /* Google reviews trust badge */
+        .c360f-reviews {
+          display: inline-flex;
+          align-items: center;
+          gap: 10px;
+          background: var(--c360f-white-10);
+          border: 1px solid var(--c360f-border);
+          border-radius: 8px;
+          padding: 10px 14px;
+          text-decoration: none;
+          margin-bottom: 20px;
+          transition: background 0.2s ease;
+        }
+        .c360f-reviews:hover { background: rgba(255,255,255,0.12); }
+        
+        .c360f-reviews-stars {
+          color: #FBBC04;
+          font-size: 13px;
+          letter-spacing: 1px;
+        }
+        .c360f-reviews-text {
+          font-size: 11px;
+          color: var(--c360f-white-70);
+          line-height: 1.3;
+        }
+        .c360f-reviews-text strong {
+          display: block;
+          color: var(--c360f-white);
+          font-size: 12px;
+          font-weight: 600;
+        }
+        
+        /* Google Partner badge */
+        .c360f-partner-badge {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          background: var(--c360f-white-10);
+          border: 1px solid var(--c360f-border);
+          border-radius: 8px;
+          padding: 8px 14px;
+          margin-bottom: 24px;
+          width: fit-content;
+        }
+        .c360f-partner-icon {
+          width: 20px;
+          height: 20px;
+          flex-shrink: 0;
+        }
+        .c360f-partner-text {
+          font-size: 11px;
+          color: var(--c360f-white-70);
+          line-height: 1.3;
+        }
+        .c360f-partner-text strong {
+          display: block;
+          color: var(--c360f-white);
+          font-size: 12px;
+          font-weight: 600;
+        }
+        
+        /* Social icons */
+        .c360f-socials {
+          display: flex;
+          gap: 10px;
+        }
+        .c360f-social {
+          width: 36px;
+          height: 36px;
+          border-radius: 8px;
+          background: var(--c360f-white-10);
+          border: 1px solid var(--c360f-border);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          color: var(--c360f-white-70);
+          text-decoration: none;
+          font-size: 14px;
+          transition: background 0.15s ease, color 0.15s ease;
+        }
+        .c360f-social:hover {
+          background: var(--c360f-green-faint);
+          border-color: var(--c360f-green);
+          color: var(--c360f-white);
+        }
+        
+        /* ---------- Link columns (2-4) ---------- */
+        .c360f-col-title {
+          font-size: 12px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.8px;
+          color: var(--c360f-white);
+          margin: 0 0 18px;
+        }
+        
+        .c360f-links {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+        
+        .c360f-links a {
+          font-size: 13px;
+          color: var(--c360f-white-70);
+          text-decoration: none;
+          padding: 5px 0;
+          display: flex;
+          align-items: center;
+          gap: 8px;
+          transition: color 0.15s ease;
+        }
+        .c360f-links a:hover { color: var(--c360f-white); }
+        .c360f-links a i {
+          font-size: 11px;
+          color: var(--c360f-white-40);
+          width: 14px;
+          text-align: center;
+          transition: color 0.15s ease;
+        }
+        .c360f-links a:hover i { color: var(--c360f-green-light); }
+        
+        .c360f-soon-pill {
+          font-size: 9px;
+          padding: 1px 6px;
+          border-radius: 6px;
+          background: rgba(136, 135, 128, 0.3);
+          color: rgba(255,255,255,0.5);
+          font-weight: 500;
+          text-transform: uppercase;
+          letter-spacing: 0.2px;
+        }
+        
+        /* ---------- Column 5 — Contact & Apps ---------- */
+        .c360f-contact {}
+        
+        .c360f-phone {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          color: var(--c360f-white);
+          font-size: 16px;
+          font-weight: 600;
+          text-decoration: none;
+          margin-bottom: 6px;
+          transition: color 0.15s ease;
+        }
+        .c360f-phone:hover { color: var(--c360f-green-light); }
+        .c360f-phone i { color: var(--c360f-green-light); font-size: 14px; }
+        
+        .c360f-phone-label {
+          font-size: 11px;
+          color: var(--c360f-white-40);
+          margin: 0 0 20px;
+        }
+        
+        .c360f-address {
+          font-size: 12px;
+          color: var(--c360f-white-70);
+          line-height: 1.6;
+          margin: 0 0 22px;
+        }
+        .c360f-address i {
+          color: var(--c360f-green-light);
+          font-size: 11px;
+          margin-right: 6px;
+        }
+        
+        .c360f-app-label {
+          font-size: 11px;
+          font-weight: 600;
+          text-transform: uppercase;
+          letter-spacing: 0.6px;
+          color: var(--c360f-white-40);
+          margin: 0 0 10px;
+        }
+        
+        .c360f-app-buttons {
+          display: flex;
+          flex-direction: column;
+          gap: 8px;
+        }
+        
+        .c360f-app-btn {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          background: var(--c360f-white-10);
+          border: 1px solid var(--c360f-border);
+          border-radius: 8px;
+          padding: 9px 14px;
+          text-decoration: none;
+          transition: background 0.15s ease, border-color 0.15s ease;
+        }
+        .c360f-app-btn:hover {
+          background: rgba(255,255,255,0.12);
+          border-color: rgba(255,255,255,0.2);
+        }
+        .c360f-app-btn i {
+          font-size: 18px;
+          color: var(--c360f-white);
+          flex-shrink: 0;
+        }
+        .c360f-app-btn-text {
+          display: flex;
+          flex-direction: column;
+        }
+        .c360f-app-btn-small {
+          font-size: 9px;
+          color: var(--c360f-white-40);
+          text-transform: uppercase;
+          letter-spacing: 0.4px;
+          font-weight: 500;
+        }
+        .c360f-app-btn-name {
+          font-size: 13px;
+          color: var(--c360f-white);
+          font-weight: 600;
+          line-height: 1.2;
+        }
+        
+        /* ---------- Divider ---------- */
+        .c360f-divider {
+          max-width: 1320px;
+          margin: 0 auto;
+          padding: 0 32px;
+          border: none;
+          border-top: 1px solid var(--c360f-border);
+        }
+        
+        /* ---------- Bottom bar ---------- */
+        .c360f-bottom {
+          max-width: 1320px;
+          margin: 0 auto;
+          padding: 22px 32px;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+          flex-wrap: wrap;
+        }
+        
+        .c360f-copyright {
+          font-size: 12px;
+          color: var(--c360f-white-40);
+        }
+        .c360f-copyright a {
+          color: var(--c360f-white-40);
+          text-decoration: none;
+        }
+        .c360f-copyright a:hover { color: var(--c360f-white-70); }
+        
+        .c360f-legal {
+          display: flex;
+          gap: 24px;
+          list-style: none;
+          margin: 0;
+          padding: 0;
+        }
+        .c360f-legal a {
+          font-size: 12px;
+          color: var(--c360f-white-40);
+          text-decoration: none;
+          transition: color 0.15s ease;
+        }
+        .c360f-legal a:hover { color: var(--c360f-white-70); }
+        
+        /* ---------- Responsive ---------- */
+        @media (max-width: 1100px) {
+          .c360f-main {
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 40px;
+          }
+          .c360f-contact { grid-column: span 3; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+          .c360f-app-label, .c360f-app-buttons { grid-column: span 1; }
+        }
+        
+        @media (max-width: 768px) {
+          .c360f-main {
+            grid-template-columns: 1fr 1fr;
+            padding: 48px 20px 36px;
+            gap: 32px;
+          }
+          .c360f-brand { grid-column: span 2; }
+          .c360f-contact { grid-column: span 2; display: block; }
+          .c360f-app-buttons { flex-direction: row; }
+          .c360f-divider { padding: 0 20px; }
+          .c360f-bottom {
+            padding: 18px 20px;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+          }
+          .c360f-legal { flex-wrap: wrap; gap: 16px; }
+        }
+        
+        @media (max-width: 480px) {
+          .c360f-main { grid-template-columns: 1fr; }
+          .c360f-brand { grid-column: span 1; }
+          .c360f-contact { grid-column: span 1; }
+          .c360f-app-buttons { flex-direction: column; }
+        }
+        
+        /* Force FA icons in footer */
+        .c360f-footer i.fa-solid,
+        .c360f-footer i.fa-brands {
+          font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+          font-weight: 900 !important;
+        }
+        .c360f-footer i.fa-brands {
+          font-family: "Font Awesome 6 Brands" !important;
+          font-weight: 400 !important;
+        }
+        </style>
+        
+        <footer class="c360f-footer">
+          <div class="c360f-main">
+        
+            <!-- ===== COLUMN 1 — Brand ===== -->
+            <div class="c360f-brand">
+              <a href="/" class="c360f-logo">
+                <span class="c360f-logo-complete">Complete</span><span class="c360f-logo-360">360</span>
+              </a>
+              <p class="c360f-tagline">Tucson-based digital marketing agency helping local businesses grow with Google, paid ads, websites, and an all-in-one CRM.</p>
+        
+              <a href="https://maps.app.goo.gl/3zNANtaqrr1FJC1z6" target="_blank" rel="noopener" class="c360f-reviews">
+                <div>
+                  <div class="c360f-reviews-stars">★★★★★</div>
+                  <div style="font-size:10px; color:rgba(255,255,255,0.5); margin-top:1px;">Google Reviews</div>
+                </div>
+                <div class="c360f-reviews-text">
+                  <strong>147 Reviews</strong>
+                  5.0 rating on Google
+                </div>
+              </a>
+        
+              <div class="c360f-partner-badge">
+                <svg class="c360f-partner-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                  <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                  <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/>
+                  <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                </svg>
+                <div class="c360f-partner-text">
+                  <strong>Google Partner</strong>
+                  Google Product Expert on team
+                </div>
+              </div>
+        
+              <div class="c360f-socials">
+                <a href="https://www.facebook.com/complete360marketing" target="_blank" rel="noopener" class="c360f-social" aria-label="Facebook">
+                  <i class="fa-brands fa-facebook-f"></i>
+                </a>
+                <a href="https://www.instagram.com/Complete360marketing/" target="_blank" rel="noopener" class="c360f-social" aria-label="Instagram">
+                  <i class="fa-brands fa-instagram"></i>
+                </a>
+                <a href="https://twitter.com/Complete360mktg" target="_blank" rel="noopener" class="c360f-social" aria-label="X (Twitter)">
+                  <i class="fa-brands fa-x-twitter"></i>
+                </a>
+                <a href="https://maps.app.goo.gl/3zNANtaqrr1FJC1z6" target="_blank" rel="noopener" class="c360f-social" aria-label="Google Business">
+                  <i class="fa-brands fa-google"></i>
+                </a>
+              </div>
+            </div>
+        
+            <!-- ===== COLUMN 2 — Marketing Services ===== -->
+            <!-- v1.2: Meta Social Posting added after Google Social Posting -->
+            <div>
+              <h4 class="c360f-col-title">Marketing Services</h4>
+              <ul class="c360f-links">
+                <li><a href="/gbp-management"><i class="fa-solid fa-location-dot"></i>GBP Management</a></li>
+                <li><a href="https://complete360.org/google-business-profile" target="_blank" rel="noopener"><i class="fa-solid fa-rocket"></i>GBP Setup</a></li>
+                <li><a href="/local-seo-booster"><i class="fa-solid fa-chart-line"></i>Local SEO Booster</a></li>
+              <li><a href="/google-social-posting"><i class="fa-solid fa-pen-nib"></i>Google Social Posting</a></li>
+                <li><a href="/meta-social-posting"><i class="fa-solid fa-share-nodes"></i>Meta Social Posting</a></li>
+                <li><a href="/local-service-ads"><i class="fa-solid fa-shield-halved"></i>Local Service Ads</a></li>
+                <li><a href="/geo-fencing"><i class="fa-solid fa-location-crosshairs"></i>Geo-Fencing Ads</a></li>
+                <li><a href="/google-ppc"><i class="fa-solid fa-bullseye"></i>Google PPC <span class="c360f-soon-pill">Soon</span></a></li>
+                <li><a href="/meta-ads"><i class="fa-solid fa-bullhorn"></i>Meta Ads <span class="c360f-soon-pill">Soon</span></a></li>
+                <li><a href="/websites-home"><i class="fa-solid fa-desktop"></i>Website Design</a></li>
+                <li><a href="/website-pricing"><i class="fa-solid fa-tag"></i>Website Pricing</a></li>
+                <li><a href="/procard"><i class="fa-solid fa-address-card"></i>ProCard</a></li>
+              </ul>
+            </div>
+        
+            <!-- ===== COLUMN 3 — CRM Platform ===== -->
+            <!-- v1.1: CRM Home link added at top -->
+            <div>
+              <h4 class="c360f-col-title">CRM Platform</h4>
+              <ul class="c360f-links">
+                <li><a href="/crm-home"><i class="fa-solid fa-grid-2"></i>Platform Overview</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/capture"><i class="fa-solid fa-filter"></i>Capture</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/capture#section--jUucpMd-O"><i class="fa-solid fa-hashtag"></i>Social Media Management</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/chat-widget-feature-page"><i class="fa-solid fa-comments"></i>Website Chat Widget</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/calendar-feature"><i class="fa-solid fa-calendar-check"></i>Online Booking</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/nurture"><i class="fa-solid fa-seedling"></i>Nurture</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/all-in-one-inbox-feature-page"><i class="fa-solid fa-inbox"></i>All In One Inbox</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/close"><i class="fa-solid fa-handshake"></i>Close</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/review-reputation-management-features-page"><i class="fa-solid fa-star"></i>Review & Reputation</a></li>
+                <li><a href="/pricing"><i class="fa-solid fa-layer-group"></i>CRM Pricing</a></li>
+              </ul>
+            </div>
+        
+            <!-- ===== COLUMN 4 — Company ===== -->
+            <div>
+              <h4 class="c360f-col-title">Company</h4>
+              <ul class="c360f-links">
+                <li><a href="/contact-us"><i class="fa-solid fa-envelope"></i>Contact Us</a></li>
+                <li><a href="/schedule-demo"><i class="fa-solid fa-calendar"></i>Schedule a Demo</a></li>
+                <li><a href="/faq"><i class="fa-solid fa-circle-question"></i>FAQ</a></li>
+                <li><a href="/farmers-insurance"><i class="fa-solid fa-shield"></i>Farmers Insurance Partners</a></li>
+                <li><a href="https://app.complete360.org" target="_blank" rel="noopener"><i class="fa-solid fa-right-to-bracket"></i>CRM Login</a></li>
+                <li><a href="https://portal.cmpusa.org/" target="_blank" rel="noopener"><i class="fa-solid fa-satellite-dish"></i>Geo Portal Login</a></li>
+                <li><a href="https://complete360.org/payments" target="_blank" rel="noopener"><i class="fa-solid fa-credit-card"></i>Payments</a></li>
+                <li><a href="/blog"><i class="fa-solid fa-newspaper"></i>Blog <span class="c360f-soon-pill">Soon</span></a></li>
+                <li><a href="/about"><i class="fa-solid fa-building"></i>About Us <span class="c360f-soon-pill">Soon</span></a></li>
+              </ul>
+            </div>
+        
+            <!-- ===== COLUMN 5 — Contact & Apps ===== -->
+            <div class="c360f-contact">
+              <a href="tel:+18665276205" class="c360f-phone">
+                <i class="fa-solid fa-phone"></i>
+                (866) 527-6205
+              </a>
+              <p class="c360f-phone-label">Mon–Thu 7am–4pm · Fri 7am–1pm MST</p>
+        
+              <address class="c360f-address" style="font-style:normal;">
+                <i class="fa-solid fa-location-dot"></i>
+                3444 N Country Club Rd. Ste 105<br>
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tucson, AZ 85716
+              </address>
+        
+              <p class="c360f-app-label">Manage on the go</p>
+              <div class="c360f-app-buttons">
+                <a href="https://apps.apple.com/us/app/lead-connector/id1564302502" target="_blank" rel="noopener" class="c360f-app-btn">
+                  <i class="fa-brands fa-apple"></i>
+                  <div class="c360f-app-btn-text">
+                    <span class="c360f-app-btn-small">Download on the</span>
+                    <span class="c360f-app-btn-name">App Store</span>
+                  </div>
+                </a>
+                <a href="https://play.google.com/store/apps/details?id=com.LeadConnector&hl=en_US&gl=US" target="_blank" rel="noopener" class="c360f-app-btn">
+                  <i class="fa-brands fa-google-play"></i>
+                  <div class="c360f-app-btn-text">
+                    <span class="c360f-app-btn-small">Get it on</span>
+                    <span class="c360f-app-btn-name">Google Play</span>
+                  </div>
+                </a>
+              </div>
+            </div>
+        
+          </div>
+        
+          <hr class="c360f-divider">
+        
+          <div class="c360f-bottom">
+            <p class="c360f-copyright">
+              &copy; <span id="c360f-year"></span> Complete360. All rights reserved.
+              Tucson, Arizona.
+            </p>
+            <ul class="c360f-legal">
+              <li><a href="https://complete360.org/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+              <li><a href="https://complete360.org/tos" target="_blank" rel="noopener">Terms of Service</a></li>
+              <li><a href="https://complete360.org/return-policy">Return Policy</a></li>
+            </ul>
+          </div>
+        </footer>
+        
+        <script>
+          (function() {
+            var el = document.getElementById('c360f-year');
+            if (el) el.textContent = new Date().getFullYear();
+          })();
+        </script>
+        <!-- ============================================================
+             END COMPLETE360 FOOTER v1.2
+             ============================================================ -->
