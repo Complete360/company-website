@@ -1,1 +1,863 @@
+<style>
+  :root {
+    --navy:#122078;--navy-dark:#0d1654;--navy-mid:#1a2e8a;
+    --green:#127825;--green-dark:#0e5e1d;--green-glow:rgba(18,120,37,0.15);
+    --green-light:#EAF3DE;--blue-light:#E6F1FB;--white:#FFFFFF;
+    --off-white:#F1EFE8;--gray-light:#E2E8F4;--gray-text:#6B7A9D;
+    --body-text:#0F1F5E;
+    --font-head:var(--headlinefont,'Poppins'),sans-serif;
+    --font-body:var(--contentfont,'Poppins'),sans-serif;
+    --radius:14px;--radius-lg:22px;
+    --shadow:0 8px 32px rgba(18,32,120,0.10);
+    --shadow-lg:0 20px 60px rgba(18,32,120,0.16);
+    --transition:all 0.3s cubic-bezier(0.4,0,0.2,1);
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html,body{margin:0!important;padding:0!important;width:100%;}
+  html{scroll-behavior:smooth;}
+  body{font-family:var(--font-body);color:var(--body-text);background:var(--white);line-height:1.65;overflow-x:hidden;}
+  #hero{margin-top:0!important;}
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  h1,h2,h3,h4{font-family:var(--font-head);line-height:1.2;color:var(--navy);}
+  h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:800;}
+  h2{font-size:clamp(1.8rem,3.5vw,2.5rem);font-weight:700;}
+  h3{font-size:clamp(1.1rem,2vw,1.4rem);font-weight:700;}
+  h4{font-size:1.05rem;font-weight:600;}
+  p{font-size:1rem;font-weight:400;color:var(--gray-text);}
+  .label{font-size:0.72rem;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--green);}
+  .container{max-width:1160px;margin:0 auto;padding:0 24px;}
+  section{padding:88px 0;}
+  .section-header{text-align:center;max-width:680px;margin:0 auto 56px;}
+  .section-header .label{margin-bottom:12px;}
+  .section-header h2{margin-bottom:16px;}
+  .section-header p{font-size:1.05rem;}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 32px;border-radius:50px;font-family:var(--font-body);font-size:0.95rem;font-weight:600;cursor:pointer;border:2px solid transparent;transition:var(--transition);text-decoration:none;}
+  .btn-primary{background:var(--green);color:var(--white);}
+  .btn-primary:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,120,37,0.35);}
+  .btn-outline{background:transparent;border-color:rgba(18,32,120,0.35);color:var(--navy);}
+  .btn-outline:hover{background:var(--navy);color:var(--white);border-color:var(--navy);transform:translateY(-2px);}
+  .btn-navy{background:var(--navy);color:var(--white);}
+  .btn-navy:hover{background:var(--navy-dark);transform:translateY(-2px);box-shadow:var(--shadow);}
+  #hero{background:#fff;padding:100px 0 90px;overflow:hidden;position:relative;border-bottom:1px solid #e8e4dc;}
+  #hero::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(18,32,120,0.035) 1px,transparent 1px),linear-gradient(90deg,rgba(18,32,120,0.035) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+  #hero::after{content:'';position:absolute;top:-120px;right:-120px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(18,32,120,0.06) 0%,transparent 65%);pointer-events:none;}
+  .hero-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:72px;position:relative;z-index:1;}
+  .hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(18,32,120,0.06);border:1px solid rgba(18,32,120,0.18);padding:6px 16px;border-radius:50px;margin-bottom:22px;}
+  .hero-pill .dot{width:7px;height:7px;background:var(--green);border-radius:50%;animation:blink 2s infinite;}
+  @keyframes blink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.4;transform:scale(1.4);}}
+  .hero-pill span{font-size:0.76rem;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:var(--navy);}
+  #hero h1{color:var(--navy);margin-bottom:18px;}
+  #hero h1 em{color:var(--green);font-style:normal;}
+  .hero-sub{color:var(--gray-text);font-size:1.08rem;margin-bottom:36px;max-width:490px;}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:48px;}
+  .hero-stats{display:flex;gap:28px;padding-top:32px;border-top:1px solid rgba(18,32,120,0.1);}
+  .stat-num{font-family:var(--font-head);font-size:1.9rem;font-weight:800;color:var(--navy);line-height:1;}
+  .stat-lbl{font-size:0.78rem;color:var(--gray-text);margin-top:4px;}
+  .carousel-wrap{position:relative;z-index:1;display:grid;grid-template-rows:auto auto auto auto;grid-template-areas:"label""scene""arrows""dots";justify-items:center;row-gap:0;}
+  .carousel-label{grid-area:label;}
+  .carousel-scene{grid-area:scene;}
+  .carousel-arrows{grid-area:arrows;}
+  .carousel-dots{grid-area:dots;}
+  .carousel-label{position:relative;z-index:20;text-align:center;margin-bottom:14px;pointer-events:none;}
+  .carousel-label .badge{display:inline-flex;align-items:center;gap:6px;background:rgba(18,32,120,0.07);border:1px solid rgba(18,32,120,0.18);padding:6px 16px;border-radius:50px;font-size:0.76rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--navy);transition:all 0.35s;}
+  .carousel-scene{width:100%;height:540px;perspective:1100px;position:relative;isolation:isolate;}
+  .c-card{position:absolute;left:50%;top:50%;border-radius:18px;overflow:hidden;cursor:pointer;transition:all 0.6s cubic-bezier(0.4,0,0.2,1);user-select:none;will-change:transform,opacity;}
+  .c-card.pos-center{transform:translate(-50%,-50%) translateX(0) rotateY(0deg) scale(1);z-index:10;opacity:1;box-shadow:0 24px 64px rgba(0,0,0,.5),0 0 0 2px rgba(18,120,37,.5),0 0 40px rgba(18,120,37,.2);}
+  .c-card.pos-left{transform:translate(-50%,-50%) translateX(-200px) rotateY(30deg) scale(0.82);z-index:5;opacity:0.6;box-shadow:0 12px 32px rgba(0,0,0,.4);}
+  .c-card.pos-right{transform:translate(-50%,-50%) translateX(200px) rotateY(-30deg) scale(0.82);z-index:5;opacity:0.6;box-shadow:0 12px 32px rgba(0,0,0,.4);}
+  .c-card.pos-hidden-left{transform:translate(-50%,-50%) translateX(-340px) rotateY(45deg) scale(0.6);z-index:1;opacity:0;pointer-events:none;}
+  .c-card.pos-hidden-right{transform:translate(-50%,-50%) translateX(340px) rotateY(-45deg) scale(0.6);z-index:1;opacity:0;pointer-events:none;}
+  .c-card--mobile{width:270px;}
+  .c-card--ctv{width:380px;}
 
+  .c-card-img-wrap{width:100%;overflow:hidden;display:flex;align-items:center;justify-content:center;}
+  .c-card--mobile .c-card-img-wrap{height:400px;background:var(--navy);}
+  .c-card--ctv .c-card-img-wrap{height:240px;background:#0a0a0a;}
+  .c-card-img-wrap img{width:100%;height:100%;object-fit:cover;display:block;}
+  .c-card-cap{background:rgba(18,32,120,0.93);backdrop-filter:blur(8px);padding:12px 16px;display:flex;align-items:center;gap:10px;}
+  .c-card-cap .cap-icon{font-size:1.2rem;flex-shrink:0;}
+  .c-card-cap .cap-text{font-family:var(--font-head);font-size:0.82rem;font-weight:700;color:var(--white);line-height:1.3;}
+  .c-card-cap .cap-text span{display:block;font-size:0.7rem;font-weight:500;color:rgba(255,255,255,0.52);margin-top:2px;}
+  .carousel-arrows{display:flex!important;flex-direction:row!important;gap:14px;justify-content:center;align-items:center;margin:0!important;padding-top:40px;position:relative!important;top:auto!important;left:auto!important;right:auto!important;bottom:auto!important;transform:none!important;z-index:20;width:100%;}
+  .c-arrow{width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,0.92);border:1px solid rgba(18,32,120,0.15);color:var(--navy);font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--transition);box-shadow:0 2px 12px rgba(0,0,0,0.18);flex-shrink:0;}
+  .c-arrow:hover{background:var(--green);border-color:var(--green);color:#fff;transform:scale(1.08);}
+  .carousel-dots{display:flex;gap:8px;margin:0;padding-top:18px;padding-bottom:10px;position:relative;z-index:20;}
+  .c-dot{width:8px;height:8px;border-radius:50%;background:rgba(18,32,120,0.2);cursor:pointer;transition:all 0.3s;border:none;padding:0;}
+  .c-dot.active{background:var(--navy);width:26px;border-radius:4px;}
+  .geo-trust-bar{background:#fff;border-bottom:1px solid #e5e3dc;}
+  .geo-trust-bar-inner{display:flex;align-items:stretch;justify-content:center;flex-wrap:wrap;}
+  .geo-trust-pill{display:flex;align-items:center;gap:12px;padding:18px 28px;border-right:1px solid #e5e3dc;flex:1;min-width:180px;transition:background 0.18s;}
+  .geo-trust-pill:last-child{border-right:none;}
+  .geo-trust-pill:hover{background:var(--blue-light);}
+  .geo-trust-pill-icon{width:38px;height:38px;background:var(--blue-light);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+  .geo-trust-pill-text strong{display:block;font-family:var(--font-head);font-size:13px;font-weight:700;color:var(--body-text);line-height:1.2;}
+  .geo-trust-pill-text span{font-family:var(--font-body);font-size:11.5px;color:var(--gray-text);}
+  #how-it-works{background:var(--off-white);}
+  .steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;}
+  .steps-grid::before{content:'';position:absolute;top:50px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:2px;background:linear-gradient(90deg,var(--green),var(--navy-mid));z-index:0;}
+  .step-card{background:var(--white);border-radius:var(--radius-lg);padding:32px 22px;text-align:center;box-shadow:var(--shadow);position:relative;z-index:1;transition:var(--transition);border:1px solid var(--gray-light);}
+  .step-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg);border-color:var(--green);}
+  .step-num{width:52px;height:52px;background:linear-gradient(135deg,var(--green),var(--green-dark));color:var(--white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:1.3rem;font-weight:800;margin:0 auto 20px;box-shadow:0 4px 16px rgba(18,120,37,0.35);}
+  .step-card h3{font-size:1.05rem;margin-bottom:10px;}
+  .step-card p{font-size:0.9rem;}
+  #ad-formats{background:var(--white);}
+  .formats-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .format-card{border:2px solid var(--gray-light);border-radius:var(--radius-lg);padding:36px 28px;transition:var(--transition);position:relative;overflow:hidden;}
+  .format-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--green),var(--navy));transform:scaleX(0);transform-origin:left;transition:transform 0.4s ease;}
+  .format-card:hover{border-color:var(--green);box-shadow:var(--shadow-lg);transform:translateY(-4px);}
+  .format-card:hover::before{transform:scaleX(1);}
+  .format-icon{width:56px;height:56px;background:var(--green-glow);border-radius:14px;display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-size:1.6rem;}
+  .format-card h3{margin-bottom:10px;font-size:1.15rem;}
+  .format-card p{font-size:0.9rem;margin-bottom:16px;}
+  .format-tag{display:inline-block;background:var(--off-white);border:1px solid var(--gray-light);border-radius:50px;padding:3px 12px;font-size:0.75rem;font-weight:600;color:var(--navy);margin:3px 2px;}
+  .flagship-badge{position:absolute;top:18px;right:18px;background:var(--green);color:var(--white);font-size:0.68rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;border-radius:50px;}
+  #creative-process{background:var(--off-white);padding:88px 0;}
+  .cp-track{position:relative;max-width:800px;margin:0 auto;padding-left:56px;}
+  .cp-track::before{content:'';position:absolute;left:20px;top:8px;bottom:8px;width:3px;background:linear-gradient(180deg,var(--green) 0%,var(--navy) 100%);border-radius:3px;opacity:0.18;}
+  .cp-step{position:relative;padding:0 0 52px 32px;opacity:0;transform:translateY(36px);transition:opacity 0.55s ease,transform 0.55s ease;}
+  .cp-step:last-child{padding-bottom:0;}
+  .cp-step.revealed{opacity:1;transform:translateY(0);}
+  .cp-step:nth-child(2).revealed{transition-delay:0.08s;}
+  .cp-step:nth-child(3).revealed{transition-delay:0.16s;}
+  .cp-step:nth-child(4).revealed{transition-delay:0.24s;}
+  .cp-dot{position:absolute;left:-44px;top:4px;width:42px;height:42px;border-radius:50%;background:var(--white);border:3px solid var(--gray-light);display:flex;align-items:center;justify-content:center;font-size:1.3rem;box-shadow:var(--shadow);transition:border-color 0.4s,background 0.4s,box-shadow 0.4s;z-index:1;}
+  .cp-step.revealed .cp-dot{border-color:var(--green);background:var(--green-light);box-shadow:0 4px 16px rgba(18,120,37,0.2);}
+  .cp-step-num{position:absolute;top:-6px;right:-6px;width:18px;height:18px;border-radius:50%;background:var(--green);color:var(--white);font-family:var(--font-head);font-size:0.6rem;font-weight:800;display:flex;align-items:center;justify-content:center;}
+  .cp-card{background:var(--white);border:2px solid var(--gray-light);border-radius:var(--radius-lg);padding:28px 32px;box-shadow:var(--shadow);transition:border-color 0.4s,box-shadow 0.4s;}
+  .cp-step.revealed .cp-card{border-color:rgba(18,120,37,0.25);box-shadow:0 8px 32px rgba(18,120,37,0.09);}
+  .cp-card h3{font-size:1.15rem;margin-bottom:8px;}
+  .cp-card p{font-size:0.92rem;line-height:1.72;}
+  #industries{background:var(--white);}
+  .industries-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .industry-card{background:var(--white);border-radius:var(--radius);padding:24px 20px;text-align:center;box-shadow:0 4px 16px rgba(18,32,120,.06);transition:var(--transition);border:1px solid transparent;}
+  .industry-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--green);}
+  .industry-icon{font-size:2rem;margin-bottom:10px;}
+  .industry-card h4{font-size:0.92rem;color:var(--navy);}
+  #platform{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);position:relative;overflow:hidden;}
+  #platform::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+  #platform::after{content:'';position:absolute;top:-200px;right:-200px;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(18,120,37,.14) 0%,transparent 65%);pointer-events:none;}
+  #platform .section-header h2{color:var(--white);}
+  #platform .section-header p{color:rgba(255,255,255,.65);}
+  #platform .label{color:#3dd870;}
+  .plat-features-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px;}
+  .plat-cta-center{display:flex;flex-direction:column;align-items:center;gap:16px;text-align:center;margin-top:32px;}
+  .plat-cta-center .plat-cta-trusts{justify-content:center;}
+  .plat-dashboard{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.12);border-radius:20px;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.4);}
+  .plat-dash-topbar{background:rgba(255,255,255,0.08);padding:12px 18px;display:flex;align-items:center;gap:10px;border-bottom:1px solid rgba(255,255,255,0.08);}
+  .plat-dash-dots{display:flex;gap:6px;}
+  .plat-dash-dot{width:10px;height:10px;border-radius:50%;}
+  .plat-dash-dot-r{background:#ff5f57;}
+  .plat-dash-dot-y{background:#febc2e;}
+  .plat-dash-dot-g{background:#28c840;}
+  .plat-dash-title{font-family:var(--font-head);font-size:11px;font-weight:600;color:rgba(255,255,255,0.5);letter-spacing:0.06em;margin-left:4px;}
+  .plat-dash-live{margin-left:auto;display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:#3dd870;letter-spacing:0.06em;}
+  .plat-dash-live::before{content:'';width:6px;height:6px;border-radius:50%;background:#3dd870;animation:blink 1.6s ease-in-out infinite;}
+  .plat-feature-item{display:flex;align-items:flex-start;gap:16px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.09);border-radius:var(--radius);padding:20px;transition:var(--transition);}
+  .plat-feature-item:hover{background:rgba(18,120,37,0.1);border-color:rgba(61,216,112,0.25);transform:translateX(4px);}
+  .plat-feat-ico{width:44px;height:44px;min-width:44px;background:rgba(18,120,37,0.2);border:1px solid rgba(61,216,112,0.25);border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;}
+  .plat-feature-item h4{color:var(--white);font-size:0.98rem;margin-bottom:4px;}
+  .plat-feature-item p{color:rgba(255,255,255,0.55);font-size:0.86rem;line-height:1.55;}
+  .plat-cta-trusts{display:flex;align-items:center;gap:20px;flex-wrap:wrap;}
+  .plat-cta-trust{display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:rgba(255,255,255,0.45);}
+  .plat-cta-trust::before{content:'✓';color:#3dd870;}
+  #pricing{background:var(--white);}
+  .pricing-toggle{display:flex;align-items:center;justify-content:center;margin-bottom:52px;}
+  .pricing-toggle-pill{display:inline-flex;align-items:center;background:#f0ede6;border-radius:100px;padding:5px;gap:4px;border:1px solid #e2ddd4;}
+  .toggle-seg{display:inline-flex;align-items:center;gap:8px;padding:10px 24px;border-radius:100px;font-family:var(--font-head);font-size:14px;font-weight:600;cursor:pointer;border:none;background:transparent;color:var(--gray-text);transition:all 0.25s cubic-bezier(0.4,0,0.2,1);white-space:nowrap;line-height:1;}
+  .toggle-seg .seg-icon{font-size:16px;}
+  .toggle-seg .seg-badge{font-size:9px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;padding:2px 8px;border-radius:100px;background:var(--green-glow);border:1px solid rgba(18,120,37,0.2);color:var(--green);line-height:1.4;}
+  .toggle-seg.seg-active{background:var(--navy);color:#fff;box-shadow:0 4px 14px rgba(18,32,120,0.28);}
+  .toggle-seg.seg-active .seg-badge{background:rgba(61,216,112,0.18);border-color:rgba(61,216,112,0.35);color:#3dd870;}
+  .toggle-seg:hover:not(.seg-active){background:rgba(18,32,120,0.07);color:var(--navy);}
+  .pricing-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;align-items:start;}
+  .flip-card-wrap{perspective:1200px;}
+  .flip-card-inner{position:relative;width:100%;transform-style:preserve-3d;transition:transform .65s cubic-bezier(.4,0,.2,1);}
+  .flip-card-inner.flipped{transform:rotateY(180deg);}
+  .flip-front{backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius-lg);width:100%;}
+  .flip-back{position:absolute;top:0;left:0;right:0;bottom:0;transform:rotateY(180deg);backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:var(--radius-lg);}
+  .flip-front .price-card,.flip-back .price-card{width:100%;border-radius:var(--radius-lg);display:flex;flex-direction:column;}
+  .flip-back .price-card{height:100%;}
+  .flip-front .price-features,.flip-back .price-features{flex:1;}
+  .price-card{border:2px solid var(--gray-light);border-radius:var(--radius-lg);padding:36px 26px;text-align:center;transition:var(--transition);position:relative;display:flex;flex-direction:column;background:var(--white);}
+  .price-card.featured{background:var(--navy);border-color:var(--green);transform:scale(1.04);box-shadow:var(--shadow-lg);}
+  .price-card.featured h3{color:var(--white);}
+  .price-card.featured .price-amount{color:var(--white);}
+  .price-card.featured>p{color:rgba(255,255,255,.65);}
+  .price-card.featured .price-features li{color:rgba(255,255,255,.9);}
+  .flip-back .price-card.featured{border-color:var(--green);}
+  .price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--green);color:var(--white);font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;border-radius:50px;white-space:nowrap;}
+  .card-format-pill{display:inline-flex;align-items:center;gap:6px;background:var(--green-glow);border:1px solid rgba(18,120,37,.22);color:var(--green);font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:50px;margin-bottom:14px;}
+  .price-card.featured .card-format-pill{color:#3dd870;background:rgba(18,120,37,.22);border-color:rgba(18,120,37,.4);}
+  .price-card h3{margin-bottom:8px;}
+  .price-card>p{font-size:.88rem;margin-bottom:16px;}
+  .price-main-row{display:flex;align-items:flex-end;gap:2px;justify-content:center;margin-bottom:4px;}
+  .price-currency{font-family:var(--font-head);font-size:1.2rem;font-weight:700;color:var(--navy);padding-bottom:8px;}
+  .price-card.featured .price-currency{color:rgba(255,255,255,0.7);}
+  .price-amount{font-family:var(--font-head);font-size:2.7rem;font-weight:800;color:var(--navy);line-height:1;transition:opacity 0.2s;}
+  .price-amount-period{font-family:var(--font-head);font-size:1rem;font-weight:400;color:var(--gray-text);padding-bottom:6px;}
+  .price-card.featured .price-amount-period{color:rgba(255,255,255,0.5);}
+  .price-original{font-size:.8rem;color:var(--gray-text);text-decoration:line-through;min-height:18px;margin-bottom:2px;}
+  .price-card.featured .price-original{color:rgba(255,255,255,0.35);}
+  .price-effective{font-size:.78rem;color:var(--green);font-weight:600;min-height:18px;margin-bottom:2px;}
+  .price-card.featured .price-effective{color:#3dd870;}
+  .price-period{font-size:.8rem;color:var(--gray-text);margin-bottom:20px;}
+  .price-card.featured .price-period{color:rgba(255,255,255,0.5);}
+  .price-divider{height:1px;background:var(--gray-light);margin-bottom:22px;}
+  .price-card.featured .price-divider{background:rgba(255,255,255,.15);}
+  .price-features{list-style:none;text-align:left;margin-bottom:28px;display:flex;flex-direction:column;gap:11px;flex:1;}
+  .price-features li{display:flex;align-items:center;gap:10px;font-size:.88rem;color:var(--body-text);}
+  .price-features li::before{content:'✓';width:20px;height:20px;min-width:20px;background:var(--green-glow);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800;color:var(--green);}
+  .price-card.featured .price-features li::before{background:rgba(18,120,37,.25);color:#3dd870;}
+  .price-note{text-align:center;margin-top:36px;font-size:.88rem;color:var(--gray-text);}
+  #testimonials{background:var(--off-white);}
+  .reviews-wrapper{width:100%;}
+  #contact{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);padding:80px 0;position:relative;overflow:hidden;text-align:center;}
+  #contact::before{content:'';position:absolute;bottom:-150px;left:-150px;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle,rgba(18,120,37,.14) 0%,transparent 65%);}
+  #contact .section-header{position:relative;z-index:1;}
+  #contact .section-header h2{color:var(--white);}
+  #contact .section-header p{color:rgba(255,255,255,.65);}
+  #faq{background:var(--white);}
+  .faq-grid{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
+  .faq-item{border:1px solid var(--gray-light);border-radius:var(--radius);overflow:hidden;transition:var(--transition);}
+  .faq-item.open{border-color:var(--green);box-shadow:0 4px 20px rgba(18,120,37,.1);}
+  .faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;font-family:var(--font-head);font-size:.98rem;font-weight:600;color:var(--navy);user-select:none;transition:var(--transition);}
+  .faq-q:hover{background:var(--off-white);}
+  .faq-item.open .faq-q{background:var(--green-light);}
+  .faq-icon{width:28px;height:28px;min-width:28px;background:var(--off-white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--green);transition:transform .3s;line-height:1;}
+  .faq-item.open .faq-icon{transform:rotate(45deg);background:var(--green);color:var(--white);}
+  .faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 24px;}
+  .faq-item.open .faq-a{max-height:300px;padding:0 24px 20px;}
+  .faq-a p{font-size:.93rem;line-height:1.7;}
+  .fade-up{opacity:0;transform:translateY(28px);transition:opacity .6s ease,transform .6s ease;}
+  .fade-up.visible{opacity:1;transform:translateY(0);}
+  .geo-network-bar{background:#0d0d1a;padding:28px 0 24px;border-top:1px solid rgba(255,255,255,0.06);}
+  .geo-network-inner{max-width:1160px;margin:0 auto;padding:0 24px;display:flex;flex-direction:column;align-items:center;gap:18px;}
+  .geo-network-label{font-family:var(--font-head);font-size:10px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:rgba(255,255,255,0.35);}
+  .geo-network-logos{display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;}
+  .geo-net-badge{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 14px;border-radius:8px;font-family:var(--font-head);font-size:12px;font-weight:800;letter-spacing:-0.2px;white-space:nowrap;line-height:1;border:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.05);color:#fff;transition:all 0.2s ease;cursor:default;}
+  .geo-net-badge:hover{background:rgba(255,255,255,0.1);transform:translateY(-1px);}
+  .geo-net-cnn{border-color:rgba(204,0,0,0.5);color:#cc0000;background:rgba(204,0,0,0.08);font-size:14px;}
+  .geo-net-espn{border-color:rgba(204,0,0,0.4);color:#fff;background:rgba(0,0,0,0.4);font-size:13px;font-style:italic;}
+  .geo-net-x{color:#fff;}
+  .geo-net-weather{color:#4db6e8;border-color:rgba(77,182,232,0.35);background:rgba(0,48,135,0.3);font-size:9px;min-width:72px;text-align:center;}
+  .geo-net-fox{color:#fff;background:rgba(0,50,120,0.4);border-color:rgba(0,80,200,0.4);font-size:11px;}
+  .geo-net-abc{color:#fff;background:rgba(0,0,0,0.5);}
+  .geo-net-spotify{color:#1DB954;border-color:rgba(29,185,84,0.35);background:rgba(25,20,20,0.6);font-size:11px;}
+  .geo-net-google{color:#fff;font-size:11px;}
+  .geo-net-more{color:rgba(255,255,255,0.65);font-size:10px;text-align:center;line-height:1.3;border-style:dashed;border-color:rgba(255,255,255,0.2);}
+  .geo-network-sub{font-family:var(--font-body);font-size:13px;color:rgba(255,255,255,0.4);text-align:center;max-width:700px;line-height:1.6;}
+  .geo-network-sub strong{color:rgba(255,255,255,0.75);font-weight:700;}
+
+  /* ============================================================
+     GEO INDUSTRY TEMPLATE LIGHTBOX (geolb-)  — added v2
+     ============================================================ */
+  /* Prominent "click me" treatment for the industry cards */
+  .industry-card{cursor:pointer;position:relative;padding-bottom:48px;}
+  .industry-card::after{content:'';position:absolute;inset:0;border-radius:var(--radius);box-shadow:inset 0 0 0 2px transparent;transition:box-shadow .3s;pointer-events:none;}
+  .industry-card:hover::after{box-shadow:inset 0 0 0 2px var(--green);}
+  /* Always-visible magnifier badge, top-right corner */
+  .industry-card .geolb-corner{
+    position:absolute;top:12px;right:12px;width:26px;height:26px;border-radius:50%;
+    background:var(--green-glow);border:1px solid rgba(18,120,37,.25);color:var(--green);
+    display:flex;align-items:center;justify-content:center;font-size:.78rem;
+    transition:var(--transition);
+  }
+  .industry-card:hover .geolb-corner{background:var(--green);color:#fff;border-color:var(--green);transform:scale(1.1);}
+  /* Always-visible "view templates" pill at the bottom of every card */
+  .industry-card .geolb-hint{
+    position:absolute;left:50%;bottom:16px;transform:translateX(-50%);
+    display:inline-flex;align-items:center;gap:5px;white-space:nowrap;
+    font-size:0.68rem;font-weight:700;letter-spacing:0.03em;
+    color:var(--green);background:var(--green-light);
+    border:1px solid rgba(18,120,37,.2);border-radius:50px;padding:4px 12px;
+    transition:var(--transition);
+  }
+  .industry-card:hover .geolb-hint{background:var(--green);color:#fff;border-color:var(--green);}
+  /* Animated nudge cue under the section heading */
+  .geolb-tap-cue{
+    display:inline-flex;align-items:center;gap:9px;margin-top:18px;
+    background:var(--green-light);border:1px solid rgba(18,120,37,.22);
+    color:var(--green-dark);font-family:var(--font-head);font-size:.86rem;font-weight:700;
+    padding:9px 20px;border-radius:50px;
+  }
+  .geolb-tap-cue .cue-ico{font-size:1rem;animation:geolbNudge 1.8s ease-in-out infinite;}
+  @keyframes geolbNudge{0%,100%{transform:translateY(0);}50%{transform:translateY(-4px);}}
+
+  .geolb-overlay{position:fixed;inset:0;z-index:9990;display:none;align-items:center;justify-content:center;padding:20px;}
+  .geolb-overlay.geolb-open{display:flex;}
+  .geolb-backdrop{position:absolute;inset:0;background:rgba(13,22,84,0.6);backdrop-filter:blur(4px);animation:geolbFade .2s ease;}
+  .geolb-modal{position:relative;background:#fff;border-radius:22px;max-width:920px;width:100%;max-height:90vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.35);animation:geolbUp .28s ease;}
+  .geolb-head{display:flex;align-items:center;gap:14px;padding:22px 26px;border-bottom:1px solid var(--gray-light);flex-shrink:0;}
+  .geolb-head-icon{font-size:1.8rem;line-height:1;}
+  .geolb-head-text{flex:1;min-width:0;}
+  .geolb-head-text .label{margin-bottom:2px;}
+  .geolb-head-text h3{font-size:1.3rem;color:var(--navy);}
+  .geolb-close{width:38px;height:38px;border-radius:50%;border:1px solid var(--gray-light);background:var(--off-white);color:var(--navy);font-size:1.3rem;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:var(--transition);}
+  .geolb-close:hover{background:var(--green);color:#fff;border-color:var(--green);}
+  .geolb-body{padding:26px;overflow-y:auto;}
+  .geolb-grid{display:grid;grid-template-columns:repeat(auto-fill,300px);gap:18px;justify-content:center;}
+  .geolb-tile{border:1px solid var(--gray-light);border-radius:14px;overflow:hidden;background:var(--off-white);transition:var(--transition);}
+  .geolb-tile:hover{border-color:var(--green);box-shadow:var(--shadow);transform:translateY(-3px);}
+  .geolb-media{width:100%;background:var(--navy);overflow:hidden;}
+  .geolb-media img,.geolb-media video{width:100%;height:auto;display:block;}
+  .geolb-media--banner{aspect-ratio:300/250;}
+  .geolb-ph{width:100%;min-height:250px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:repeating-linear-gradient(45deg,rgba(18,32,120,0.05),rgba(18,32,120,0.05) 12px,rgba(18,32,120,0.09) 12px,rgba(18,32,120,0.09) 24px);color:var(--gray-text);}
+  .geolb-ph .ph-ico{font-size:1.6rem;opacity:.6;}
+  .geolb-ph .ph-txt{font-size:.72rem;font-weight:600;letter-spacing:.04em;}
+  .geolb-cap{padding:12px 14px;font-family:var(--font-head);font-size:.82rem;font-weight:600;color:var(--navy);}
+  .geolb-foot{border-top:1px solid var(--gray-light);padding:20px 26px;flex-shrink:0;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;background:var(--off-white);}
+  .geolb-foot p{font-size:.9rem;color:var(--body-text);font-weight:600;margin:0;}
+  @keyframes geolbFade{from{opacity:0;}to{opacity:1;}}
+  @keyframes geolbUp{from{opacity:0;transform:translateY(18px);}to{opacity:1;transform:translateY(0);}}
+
+  @media(max-width:1024px){.steps-grid{grid-template-columns:repeat(2,1fr);}.steps-grid::before{display:none;}.industries-grid{grid-template-columns:repeat(3,1fr);}.pricing-grid{gap:16px;}.price-card.featured{transform:none;}.plat-features-grid{grid-template-columns:1fr;}}
+  @media(max-width:768px){#hero{padding:40px 0px 0px 0px;}.carousel-wrap{row-gap:24px;}section{padding:60px 0;}.hero-inner{grid-template-columns:1fr;gap:40px;}.carousel-scene{height:460px;}.c-card--mobile{width:240px;}.c-card--ctv{width:310px;}.c-card--mobile .c-card-img-wrap{height:340px;}.c-card--ctv .c-card-img-wrap{height:220px;}.c-card.pos-left{transform:translate(-50%,-50%) translateX(-150px) rotateY(28deg) scale(0.8);}.c-card.pos-right{transform:translate(-50%,-50%) translateX(150px) rotateY(-28deg) scale(0.8);}.formats-grid{grid-template-columns:1fr;}.pricing-grid{grid-template-columns:1fr;}.industries-grid{grid-template-columns:repeat(2,1fr);}.steps-grid{grid-template-columns:1fr;}.price-card.featured{transform:none;}.hero-stats{gap:16px;flex-wrap:wrap;}.hero-btns{flex-direction:column;}.btn{justify-content:center;}.geo-trust-pill{border-right:none;border-bottom:1px solid #e5e3dc;min-width:50%;}.geo-trust-pill:nth-child(odd){border-right:1px solid #e5e3dc;}.geo-trust-pill:last-child{border-bottom:none;}.cp-track{padding-left:44px;}.cp-step{padding-left:24px;}.cp-dot{left:-38px;width:36px;height:36px;font-size:1.1rem;}.cp-card{padding:20px;}.geolb-grid{grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;}.geolb-head,.geolb-body,.geolb-foot{padding-left:20px;padding-right:20px;}.geolb-foot{flex-direction:column;align-items:stretch;text-align:center;}.geolb-foot .btn{width:100%;justify-content:center;}}
+  @media(max-width:480px){.industries-grid{grid-template-columns:repeat(2,1fr);}.c-card--mobile{width:220px;}.c-card--ctv{width:270px;}.c-card--mobile .c-card-img-wrap{height:310px;}.c-card--ctv .c-card-img-wrap{height:200px;}.c-card.pos-left{transform:translate(-50%,-50%) translateX(-120px) rotateY(25deg) scale(0.75);}.c-card.pos-right{transform:translate(-50%,-50%) translateX(120px) rotateY(-25deg) scale(0.75);}.carousel-scene{height:420px;}.geo-trust-pill{min-width:100%;border-right:none;}.geo-trust-pill:nth-child(odd){border-right:none;}.geolb-grid{grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;}}
+  @media(max-width:600px){.geo-net-badge{padding:6px 10px;font-size:10px;}}
+</style>
+
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="hero-pill"><span class="dot"></span><span>Hyperlocal Digital Advertising</span></div>
+        <h1>Reach the <em>Right People</em><br/>at the Right Place,<br/>Right Now.</h1>
+        <p class="hero-sub">Complete360 geo-fencing puts your brand directly in front of your ideal customers — based on where they live, work, shop, and spend time — using mobile banner and CTV video ads powered by enterprise-grade location intelligence.</p>
+        <div class="hero-btns">
+          <a href="https://complete360.org/schedule-demo" target="_blank" class="btn btn-primary">Get My Free Strategy Call</a>
+          <a class="btn btn-outline" href="#how-it-works">See How It Works</a>
+        </div>
+        <div class="hero-stats">
+          <div><div class="stat-num">98%</div><div class="stat-lbl">US Adults Reached Monthly</div></div>
+          <div><div class="stat-num">3.2×</div><div class="stat-lbl">Avg. Foot Traffic Lift</div></div>
+          <div><div class="stat-num">10M+</div><div class="stat-lbl">Locations Blueprinted</div></div>
+        </div>
+      </div>
+      <div class="carousel-wrap">
+        <div class="carousel-label"><span class="badge" id="carouselBadge">📱 Mobile Banner Ad</span></div>
+        <div class="carousel-scene" id="carouselScene">
+          <div class="c-card c-card--mobile pos-center" data-index="0" onclick="carouselClick(0)">
+            <div class="c-card-img-wrap" style="position:relative;background:#1a1a2e;flex-direction:column;align-items:stretch;justify-content:flex-start;height:400px;">
+              <div style="background:#0a0a18;padding:5px 12px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;"><span style="font-size:9px;color:rgba(255,255,255,0.7);font-family:sans-serif;font-weight:600;">9:41</span></div>
+              <div style="background:#003087;padding:7px 12px;display:flex;align-items:center;flex-shrink:0;"><div style="font-size:10px;font-weight:800;color:#fff;font-family:sans-serif;">THE WEATHER CHANNEL</div><div style="margin-left:auto;font-size:8px;background:rgba(255,255,255,0.15);color:#fff;padding:2px 6px;border-radius:3px;">Tucson, AZ</div></div>
+              <div style="flex:1;background:linear-gradient(180deg,#003087 0%,#0a1a6b 45%,#0f0f2e 100%);padding:8px 12px;display:flex;flex-direction:column;gap:4px;min-height:0;">
+                <div style="font-size:8px;color:rgba(255,255,255,0.45);font-family:sans-serif;text-transform:uppercase;letter-spacing:0.06em;">Current Conditions · Tucson</div>
+                <div style="display:flex;align-items:center;gap:8px;"><div style="font-size:36px;line-height:1;">&#9728;&#65039;</div><div><div style="font-size:32px;font-weight:800;color:#fff;font-family:sans-serif;line-height:1;">94°</div><div style="font-size:8px;color:rgba(255,255,255,0.5);font-family:sans-serif;margin-top:2px;">Feels like 101° · Clear skies</div></div></div>
+              </div>
+              <div style="flex-shrink:0;position:relative;border-top:1px solid rgba(255,255,255,0.08);"><div style="position:absolute;top:-9px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,0.75);color:rgba(255,255,255,0.7);font-size:6px;font-family:sans-serif;padding:2px 7px;border-radius:2px;white-space:nowrap;z-index:2;letter-spacing:0.06em;">ADVERTISEMENT</div><img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f16cac590487fe5797eddd.png" style="width:100%;display:block;" alt="Plumbing ad" /></div>
+            </div>
+            <div class="c-card-cap"><span class="cap-icon">&#128241;</span><div class="cap-text">Mobile Banner Ad<span>Weather Channel app placement</span></div></div>
+          </div>
+          <div class="c-card c-card--ctv pos-right" data-index="1" onclick="carouselClick(1)">
+            <div class="c-card-img-wrap" style="position:relative;background:#0a0a0a;flex-direction:column;align-items:stretch;justify-content:flex-start;">
+              <div style="background:#000;padding:7px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;"><div style="display:flex;align-items:center;gap:6px;"><div style="font-size:13px;font-weight:900;color:#1ce783;font-family:sans-serif;letter-spacing:-0.5px;">hulu</div></div></div>
+              <div style="flex:1;position:relative;background:#000;display:flex;align-items:center;justify-content:center;min-height:155px;"><video id="ctvVideo" src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69efc876717d5dd4e17ff945.mp4" autoplay muted loop playsinline preload="auto" style="width:100%;height:100%;object-fit:cover;display:block;"></video><div style="position:absolute;bottom:7px;right:7px;background:rgba(0,0,0,0.8);color:#fff;font-size:7px;font-family:sans-serif;padding:3px 8px;border-radius:3px;font-weight:700;">NON-SKIPPABLE</div></div>
+              <div style="background:#111;padding:6px 14px 5px;flex-shrink:0;"><div style="height:2px;background:rgba(255,255,255,0.12);border-radius:1px;position:relative;"><div style="position:absolute;left:0;top:0;height:100%;width:38%;background:#1ce783;border-radius:1px;"></div></div></div>
+            </div>
+            <div class="c-card-cap"><span class="cap-icon">&#128250;</span><div class="cap-text">CTV / Streaming Ad<span>Hulu, Roku &amp; streaming apps</span></div></div>
+          </div>
+        </div>
+        <div class="carousel-arrows">
+          <button class="c-arrow" onclick="carouselPrev()">&#8592;</button>
+          <button class="c-arrow" onclick="carouselNext()">&#8594;</button>
+        </div>
+        <div class="carousel-dots">
+          <button class="c-dot active" onclick="carouselGo(0)"></button>
+          <button class="c-dot" onclick="carouselGo(1)"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="geo-trust-bar">
+  <div class="container">
+    <div class="geo-trust-bar-inner">
+      <div class="geo-trust-pill"><div class="geo-trust-pill-icon">🗺️</div><div class="geo-trust-pill-text"><strong>10M+ Locations Blueprinted</strong><span>Exact-parcel targeting, not radius guesses</span></div></div>
+      <div class="geo-trust-pill"><div class="geo-trust-pill-icon">📱</div><div class="geo-trust-pill-text"><strong>Mobile + Connected TV</strong><span>Phone screens &amp; living room streaming</span></div></div>
+      <div class="geo-trust-pill"><div class="geo-trust-pill-icon">🚀</div><div class="geo-trust-pill-text"><strong>Live in 5–7 Business Days</strong><span>We handle setup, creative &amp; launch</span></div></div>
+      <div class="geo-trust-pill"><div class="geo-trust-pill-icon">⭐</div><div class="geo-trust-pill-text"><strong>144+ Five-Star Reviews</strong><span>Google Partner · Tucson-based team</span></div></div>
+    </div>
+  </div>
+</div>
+
+<div class="geo-network-bar">
+  <div class="geo-network-inner">
+    <div class="geo-network-label">Your ads appear on these networks &amp; thousands more</div>
+    <div class="geo-network-logos">
+      <div class="geo-net-badge geo-net-cnn"><span>CNN</span></div>
+      <div class="geo-net-badge geo-net-espn"><span>ESPN</span></div>
+      <div class="geo-net-badge geo-net-x"><svg viewBox="0 0 24 24" fill="currentColor" style="width:16px;height:16px;"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.74l7.73-8.835L1.254 2.25H8.08l4.259 5.63 5.905-5.63zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></div>
+      <div class="geo-net-badge geo-net-weather"><span style="font-size:9px;line-height:1.1;text-align:center;">The Weather<br>Channel</span></div>
+      <div class="geo-net-badge geo-net-fox"><span>FOX <span style="color:#ffd700;">NEWS</span></span></div>
+      <div class="geo-net-badge geo-net-abc"><span style="font-family:serif;font-style:italic;font-size:15px;">abc</span></div>
+      <div class="geo-net-badge geo-net-spotify"><svg viewBox="0 0 24 24" fill="#1DB954" style="width:12px;height:12px;flex-shrink:0;"><circle cx="12" cy="12" r="12" fill="#191414"/><path d="M17.9 10.9C14.7 9 9.35 8.8 6.3 9.75c-.5.15-1-.15-1.15-.6-.15-.5.15-1 .6-1.15 3.55-1.05 9.4-.85 13.1 1.35.45.25.6.85.35 1.3-.25.35-.85.5-1.3.25zm-.1 2.8c-.25.35-.7.5-1.05.25-2.7-1.65-6.8-2.15-9.95-1.15-.4.1-.85-.1-.95-.5-.1-.4.1-.85.5-.95 3.65-1.1 8.15-.55 11.25 1.35.3.15.45.65.2 1zm-1.2 2.75c-.2.3-.55.4-.85.2-2.35-1.45-5.3-1.75-8.8-.95-.35.1-.65-.15-.75-.45-.1-.35.15-.65.45-.75 3.8-.85 7.1-.5 9.7 1.1.35.15.4.55.25.85z" fill="#1DB954"/></svg><span>Spotify</span></div>
+      <div class="geo-net-badge geo-net-google"><svg viewBox="0 0 24 24" style="width:12px;height:12px;flex-shrink:0;"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l3.66-2.84z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg><span>Google Display</span></div>
+      <div class="geo-net-badge geo-net-more"><span>+5,000<br>More Networks</span></div>
+    </div>
+    <div class="geo-network-sub">We will deliver approximately <strong>8,000 views of your ad every month</strong> across these &amp; other popular apps — reaching your geo-fenced local audience wherever they go online.</div>
+  </div>
+</div>
+
+<section id="how-it-works">
+  <div class="container">
+    <div class="section-header fade-up"><p class="label">The Process</p><h2>How Geo-Fencing Advertising Works</h2><p>We use real-world location behavior data to build hyper-accurate audience segments — then deliver your ads to the right screens at exactly the right moment.</p></div>
+    <div class="steps-grid">
+      <div class="step-card fade-up"><div class="step-num">1</div><h3>Define Your Fence</h3><p>We draw a virtual boundary around locations your target audience visits — competitor stores, events, neighborhoods, or any real-world area.</p></div>
+      <div class="step-card fade-up"><div class="step-num">2</div><h3>Build Your Audience</h3><p>Using our Blueprint technology, we match real mobile device IDs to those locations — building a precise, verified audience segment.</p></div>
+      <div class="step-card fade-up"><div class="step-num">3</div><h3>Deliver Your Ads</h3><p>Your banner and video ads are served across thousands of premium apps, websites, and connected TV screens — wherever your audience goes next.</p></div>
+      <div class="step-card fade-up"><div class="step-num">4</div><h3>Measure Real Results</h3><p>Track impressions, clicks, video completion, and foot traffic attribution through real-time dashboards — so you always know what your spend is doing.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="ad-formats">
+  <div class="container">
+    <div class="section-header fade-up"><p class="label">Ad Formats</p><h2>Powerful Ad Formats That Convert</h2><p>We specialize in two powerful formats — mobile banner ads that reach your audience on any app, and CTV video that puts your brand on the biggest screen in the home.</p></div>
+    <div class="formats-grid">
+      <div class="format-card fade-up"><span class="flagship-badge">⭐ Flagship</span><div class="format-icon">📱</div><h3>Mobile Banner Ads</h3><p>Reach your audience on the device they use most — inside thousands of top apps and mobile websites, precisely when they're near your target location.</p><div><span class="format-tag">300×250 Banner</span><span class="format-tag">320×50 Leaderboard</span><span class="format-tag">Rich Media</span><span class="format-tag">Interstitial</span></div></div>
+      <div class="format-card fade-up"><span class="flagship-badge">⭐ Flagship</span><div class="format-icon">📺</div><h3>CTV / OTT Video Ads</h3><p>Put your brand on the biggest screen in the house. Non-skippable ads on streaming platforms — premium, full-screen, and impossible to ignore.</p><div><span class="format-tag">15s Non-Skippable</span><span class="format-tag">30s Pre-Roll</span><span class="format-tag">Hulu / Roku</span><span class="format-tag">Streaming Apps</span></div></div>
+
+    </div>
+    <div style="text-align:center;margin-top:48px;"><a href="#pricing" class="btn btn-primary">See Packages &amp; Pricing ↓</a></div>
+  </div>
+</section>
+
+<section id="creative-process">
+  <div class="container">
+    <div class="section-header fade-up"><p class="label">How We Build Your Ads</p><h2>From Brief to Live — We Handle Everything</h2><p>Once you're onboarded, our team takes care of the full creative process. No design background needed on your end.</p></div>
+    <div class="cp-track">
+      <div class="cp-step"><div class="cp-dot">📋<div class="cp-step-num">1</div></div><div class="cp-card"><h3>We Gather Your Assets</h3><p>We collect your logo, brand colors, photos, and campaign goals through a quick onboarding form. You share the materials — we take it from there.</p></div></div>
+      <div class="cp-step"><div class="cp-dot">🎨<div class="cp-step-num">2</div></div><div class="cp-card"><h3>Our Art Team Gets to Work</h3><p>Our in-house designers build your mobile banners and CTV video creatives to exact ad spec — formatted, sized, and optimized for every placement type.</p></div></div>
+      <div class="cp-step"><div class="cp-dot">✅<div class="cp-step-num">3</div></div><div class="cp-card"><h3>You Review &amp; Approve</h3><p>We share your creatives for review. You provide feedback, we handle any revisions — and nothing goes live until you give the green light.</p></div></div>
+      <div class="cp-step"><div class="cp-dot">🚀<div class="cp-step-num">4</div></div><div class="cp-card"><h3>Live in 5–7 Business Days</h3><p>Your campaign launches across our platform. You get a real-time dashboard link and your first report within the first week.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="industries">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="label">Who We Serve</p>
+      <h2>Built for Local &amp; Service-Based Businesses</h2>
+      <p>Geo-fencing works best for businesses with a defined local market. If you serve customers in a specific area, we can reach them — before your competitors do.</p>
+      <span class="geolb-tap-cue"><span class="cue-ico">👆</span> Tap any industry below to see real ad examples</span>
+    </div>
+    <div class="industries-grid">
+      <div class="industry-card fade-up" data-geo="contractors"><span class="geolb-corner">🔍</span><div class="industry-icon">🏠</div><h4>Contractors &amp; Home Services</h4><span class="geolb-hint">View ad templates</span></div>
+      <div class="industry-card fade-up" data-geo="health"><span class="geolb-corner">🔍</span><div class="industry-icon">🏥</div><h4>Health &amp; Wellness</h4><span class="geolb-hint">View ad templates</span></div>
+      <div class="industry-card fade-up" data-geo="insurance"><span class="geolb-corner">🔍</span><div class="industry-icon">🛡️</div><h4>Insurance Agencies</h4><span class="geolb-hint">View ad templates</span></div>
+      <div class="industry-card fade-up" data-geo="financial"><span class="geolb-corner">🔍</span><div class="industry-icon">💰</div><h4>Financial Services</h4><span class="geolb-hint">View ad templates</span></div>
+      <div class="industry-card fade-up" data-geo="tax"><span class="geolb-corner">🔍</span><div class="industry-icon">📋</div><h4>Tax &amp; Accounting</h4><span class="geolb-hint">View ad templates</span></div>
+      <div class="industry-card fade-up" data-geo="realestate"><span class="geolb-corner">🔍</span><div class="industry-icon">🏡</div><h4>Real Estate</h4><span class="geolb-hint">View ad templates</span></div>
+      <div class="industry-card fade-up" data-geo="funeral"><span class="geolb-corner">🔍</span><div class="industry-icon">⚱️</div><h4>Funeral Homes</h4><span class="geolb-hint">View ad templates</span></div>
+      <div class="industry-card fade-up" data-geo="cleaning"><span class="geolb-corner">🔍</span><div class="industry-icon">🧹</div><h4>Cleaning Services</h4><span class="geolb-hint">View ad templates</span></div>
+      <div class="industry-card fade-up" data-geo="senior"><span class="geolb-corner">🔍</span><div class="industry-icon">👴</div><h4>Senior Care</h4><span class="geolb-hint">View ad templates</span></div>
+      <div class="industry-card fade-up" data-geo="pet"><span class="geolb-corner">🔍</span><div class="industry-icon">🐾</div><h4>Pet Services</h4><span class="geolb-hint">View ad templates</span></div>
+      <div class="industry-card fade-up" data-geo="hvac"><span class="geolb-corner">🔍</span><div class="industry-icon">🔧</div><h4>HVAC &amp; Plumbing</h4><span class="geolb-hint">View ad templates</span></div>
+      <div class="industry-card fade-up" data-geo="electrical"><span class="geolb-corner">🔍</span><div class="industry-icon">⚡</div><h4>Electrical &amp; Roofing</h4><span class="geolb-hint">View ad templates</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="platform">
+  <div class="container">
+    <div class="section-header fade-up"><p class="label">Our Technology Platform</p><h2>The #1 Location Intelligence Platform in the US</h2><p>We run campaigns on the most accurate real-world audience targeting platform available — delivering unmatched precision for local businesses.</p></div>
+    <div class="plat-dashboard fade-up" style="position:relative;z-index:1;">
+      <div class="plat-dash-topbar">
+        <div class="plat-dash-dots"><div class="plat-dash-dot plat-dash-dot-r"></div><div class="plat-dash-dot plat-dash-dot-y"></div><div class="plat-dash-dot plat-dash-dot-g"></div></div>
+        <div class="plat-dash-title">Complete360 · Campaign Dashboard</div>
+        <div class="plat-dash-live">LIVE</div>
+      </div>
+      <div style="display:flex;gap:0;border-bottom:1px solid rgba(255,255,255,0.1);background:rgba(255,255,255,0.04);">
+        <button onclick="showDashTab(0)" id="dashTab0" style="flex:1;padding:12px 0;background:rgba(255,255,255,0.08);border:none;border-bottom:2px solid #3dd870;color:#fff;font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;">📊 Clicks Analytics</button>
+        <button onclick="showDashTab(1)" id="dashTab1" style="flex:1;padding:12px 0;background:transparent;border:none;border-bottom:2px solid transparent;color:rgba(255,255,255,0.45);font-family:inherit;font-size:12px;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;cursor:pointer;transition:all 0.2s;">🗺️ Distribution Heatmap</button>
+      </div>
+      <div id="dashPanel0" style="overflow:hidden;border-radius:0 0 18px 18px;"><img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f246c5fc17decc45f53e65.png" alt="Campaign clicks analytics" style="width:100%;display:block;" /></div>
+      <div id="dashPanel1" style="display:none;overflow:hidden;border-radius:0 0 18px 18px;"><img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f246c56630fc6c0b568711.png" alt="Campaign distribution heatmap" style="width:100%;display:block;" /></div>
+    </div>
+    <script>
+    function showDashTab(idx){document.getElementById("dashPanel0").style.display=idx===0?"block":"none";document.getElementById("dashPanel1").style.display=idx===1?"block":"none";document.getElementById("dashTab0").style.background=idx===0?"rgba(255,255,255,0.08)":"transparent";document.getElementById("dashTab0").style.borderBottom=idx===0?"2px solid #3dd870":"2px solid transparent";document.getElementById("dashTab0").style.color=idx===0?"#fff":"rgba(255,255,255,0.45)";document.getElementById("dashTab1").style.background=idx===1?"rgba(255,255,255,0.08)":"transparent";document.getElementById("dashTab1").style.borderBottom=idx===1?"2px solid #3dd870":"2px solid transparent";document.getElementById("dashTab1").style.color=idx===1?"#fff":"rgba(255,255,255,0.45)";}
+    </script>
+    <div class="plat-features-grid fade-up">
+      <div class="plat-feature-item"><div class="plat-feat-ico">🗺️</div><div><h4>Blueprint Technology</h4><p>Patented mapping down to the exact parking lot, storefront, or building — not a radius guess. 10M+ locations precisely blueprinted in the US.</p></div></div>
+      <div class="plat-feature-item"><div class="plat-feat-ico">📍</div><div><h4>On-Premise Targeting</h4><p>Detect when someone is physically inside a competitor's location, your service area, or any event — and serve ads in real time.</p></div></div>
+      <div class="plat-feature-item"><div class="plat-feat-ico">📊</div><div><h4>Foot Traffic Attribution</h4><p>See exactly how many people who were served your ad actually visited your location. Close the loop between ad spend and physical visits.</p></div></div>
+      <div class="plat-feature-item"><div class="plat-feat-ico">🌦️</div><div><h4>Weather &amp; Contextual Targeting</h4><p>Trigger ads automatically based on real-time weather conditions — perfect for HVAC, roofing, cleaning services, and other weather-sensitive businesses.</p></div></div>
+    </div>
+    <div class="plat-cta-center fade-up">
+      <a href="https://complete360.org/schedule-demo" target="_blank" class="btn btn-primary">Start a Campaign</a>
+      <div class="plat-cta-trusts"><span class="plat-cta-trust">30B+ signals processed daily</span><span class="plat-cta-trust">5,000+ publisher partners</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="pricing">
+  <div class="container">
+    <div class="section-header fade-up"><p class="label">Packages</p><h2>Simple, Transparent Pricing</h2><p>Every package includes the same full-service campaign — setup, creative, geo-fence zones, reporting, and 8,000 impressions per month. Commit longer and pay in full to save more.</p></div>
+    <div class="pricing-toggle fade-up">
+      <div class="pricing-toggle-pill">
+        <button class="toggle-seg seg-active" id="seg-mobile" onclick="flipPricing(false)"><span class="seg-icon">📱</span> Mobile Ads</button>
+        <button class="toggle-seg" id="seg-ctv" onclick="flipPricing(true)"><span class="seg-icon">📺</span> CTV Video <span class="seg-badge">TV Ads</span></button>
+      </div>
+    </div>
+    <div class="pricing-grid">
+
+      <!-- CARD 1 -->
+      <div class="flip-card-wrap fade-up"><div class="flip-card-inner" id="flip-0">
+        <div class="flip-front"><div class="price-card">
+          <span class="card-format-pill">📱 Mobile Banner</span>
+          <h3>Month-to-Month</h3>
+          <p>Full campaign flexibility. Cancel anytime with 30 days' notice.</p>
+          <div class="price-original">&nbsp;</div>
+          <div class="price-main-row"><span class="price-currency">$</span><span class="price-amount">299</span><span class="price-amount-period">/mo</span></div>
+          <div class="price-effective">&nbsp;</div>
+          <div class="price-period">Billed monthly · No upfront commitment</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>Mobile Banner Ads (all sizes)</li><li>8,000 impressions/mo</li>
+            <li>Geo-fence zone setup &amp; management</li><li>In-house creative production</li>
+            <li>Competitor targeting available</li><li>Foot traffic attribution</li>
+            <li>Real-time campaign dashboard</li><li>Monthly performance report</li>
+          </ul>
+          <a class="btn btn-navy" href="https://complete360.org/geo-mobile-checkout" style="width:100%;justify-content:center;">Get Started</a>
+        </div></div>
+        <div class="flip-back"><div class="price-card">
+          <span class="card-format-pill">📺 CTV Video</span>
+          <h3>10k Impressions</h3>
+          <p>A strong entry point for CTV. Deliver on your schedule — all impressions are yours to use.</p>
+          <div class="price-original">&nbsp;</div>
+          <div class="price-main-row"><span class="price-currency">$</span><span class="price-amount">1,399</span></div>
+          <div class="price-effective" style="color:var(--green);">$139.90 per 1,000 impressions</div>
+          <div class="price-period">One-time impression package · Flexible delivery</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>CTV / OTT Non-Skippable Video</li><li>10,000 total impressions</li>
+            <li>Geo-fence zone setup &amp; management</li><li>15s or 30s video creative production</li>
+            <li>Competitor targeting available</li><li>Video completion rate tracking</li>
+            <li>Real-time campaign dashboard</li><li>Performance report at completion</li>
+          </ul>
+          <a class="btn btn-navy" href="https://complete360.org/geo-ctv-checkout" style="width:100%;justify-content:center;">Get Started</a>
+        </div></div>
+      </div></div>
+
+      <!-- CARD 2 — FEATURED -->
+      <div class="flip-card-wrap fade-up"><div class="flip-card-inner" id="flip-1">
+        <div class="flip-front"><div class="price-card featured">
+          <span class="price-badge">Most Popular</span>
+          <span class="card-format-pill">📱 Mobile Banner</span>
+          <h3>6-Month Package</h3>
+          <p>Paid in full upfront. Ideal for businesses ready to commit to consistent local presence.</p>
+          <div class="price-original" style="color:rgba(255,255,255,0.35);">$299/mo · $1,794 total</div>
+          <div class="price-main-row"><span class="price-currency">$</span><span class="price-amount">1,435.20</span></div>
+          <div class="price-effective"><span style="background:rgba(61,216,112,0.2);border-radius:100px;padding:2px 10px;">$239.20/mo effective · Save $358.80</span></div>
+          <div class="price-period">One-time upfront payment · 20% off monthly rate</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>Mobile Banner Ads (all sizes)</li><li>8,000 impressions/mo · 48,000 total</li>
+            <li>Geo-fence zone setup &amp; management</li><li>In-house creative production</li>
+            <li>Competitor targeting available</li><li>Foot traffic attribution</li>
+            <li>Real-time campaign dashboard</li><li>Monthly performance report</li>
+          </ul>
+          <a class="btn btn-primary" href="https://complete360.org/geo-mobile-checkout" style="width:100%;justify-content:center;">Get Started</a>
+        </div></div>
+        <div class="flip-back"><div class="price-card featured">
+          <span class="price-badge">Most Popular</span>
+          <span class="card-format-pill">📺 CTV Video</span>
+          <h3>18k Impressions</h3>
+          <p>Our most popular CTV package. Maximum exposure across streaming platforms at a lower CPM.</p>
+          <div class="price-original" style="color:rgba(255,255,255,0.35);">$1,399 for 10k · $139.90 CPM</div>
+          <div class="price-main-row"><span class="price-currency">$</span><span class="price-amount">1,799</span></div>
+          <div class="price-effective"><span style="background:rgba(61,216,112,0.2);border-radius:100px;padding:2px 10px;">$99.94 per 1,000 · Save $719.20 vs. 10k rate</span></div>
+          <div class="price-period">One-time impression package · Flexible delivery</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>CTV / OTT Non-Skippable Video</li><li>18,000 total impressions</li>
+            <li>Geo-fence zone setup &amp; management</li><li>15s or 30s video creative production</li>
+            <li>Competitor targeting available</li><li>Video completion rate tracking</li>
+            <li>Real-time campaign dashboard</li><li>Performance report at completion</li>
+          </ul>
+          <a class="btn btn-primary" href="https://complete360.org/geo-ctv-checkout" style="width:100%;justify-content:center;">Get Started</a>
+        </div></div>
+      </div></div>
+
+      <!-- CARD 3 -->
+      <div class="flip-card-wrap fade-up"><div class="flip-card-inner" id="flip-2">
+        <div class="flip-front"><div class="price-card">
+          <span class="price-badge" style="background:var(--navy);">Best Value</span>
+          <span class="card-format-pill">📱 Mobile Banner</span>
+          <h3>12-Month Package</h3>
+          <p>Maximum savings for businesses committed to long-term local market dominance.</p>
+          <div class="price-original">$299/mo · $3,588 total</div>
+          <div class="price-main-row"><span class="price-currency">$</span><span class="price-amount">2,511.60</span></div>
+          <div class="price-effective" style="color:var(--green);font-weight:700;">$209.30/mo effective · Save $1,076.40</div>
+          <div class="price-period">One-time upfront payment · 30% off monthly rate</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>Mobile Banner Ads (all sizes)</li><li>8,000 impressions/mo · 96,000 total</li>
+            <li>Geo-fence zone setup &amp; management</li><li>In-house creative production</li>
+            <li>Competitor targeting available</li><li>Foot traffic attribution</li>
+            <li>Real-time campaign dashboard</li><li>Monthly performance report</li>
+          </ul>
+          <a class="btn btn-navy" href="https://complete360.org/geo-mobile-checkout" style="width:100%;justify-content:center;">Get Started</a>
+        </div></div>
+        <div class="flip-back"><div class="price-card">
+          <span class="price-badge" style="background:var(--navy);">Best Value</span>
+          <span class="card-format-pill">📺 CTV Video</span>
+          <h3>24k Impressions</h3>
+          <p>Maximum reach at the lowest CPM. Best for businesses running a sustained CTV presence.</p>
+          <div class="price-original">$1,399 for 10k · $139.90 CPM</div>
+          <div class="price-main-row"><span class="price-currency">$</span><span class="price-amount">2,199</span></div>
+          <div class="price-effective" style="color:var(--green);font-weight:700;">$91.63 per 1,000 · Save $1,158.60 vs. 10k rate</div>
+          <div class="price-period">One-time impression package · Flexible delivery</div>
+          <div class="price-divider"></div>
+          <ul class="price-features">
+            <li>CTV / OTT Non-Skippable Video</li><li>24,000 total impressions</li>
+            <li>Geo-fence zone setup &amp; management</li><li>15s or 30s video creative production</li>
+            <li>Competitor targeting available</li><li>Video completion rate tracking</li>
+            <li>Real-time campaign dashboard</li><li>Performance report at completion</li>
+          </ul>
+          <a class="btn btn-navy" href="https://complete360.org/geo-ctv-checkout" style="width:100%;justify-content:center;">Get Started</a>
+        </div></div>
+      </div></div>
+
+    </div>
+    <p class="price-note">Mobile packages are commitment-based (monthly, 6-month, or 12-month). CTV packages are impression-based — buy the impressions you need and deliver them on your schedule. <a href="https://complete360.org/schedule-demo" target="_blank" style="color:var(--green);font-weight:600;">Schedule a free strategy call</a> if you'd like a custom recommendation.</p>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <div class="section-header fade-up"><p class="label">Client Reviews</p><h2>What Our Clients Are Saying</h2><p>Don't take our word for it. See what local business owners are experiencing with Complete360's geo-fencing campaigns.</p></div>
+    <div class="reviews-wrapper fade-up">
+      <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
+      <iframe class='lc_reviews_widget' src='https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u' frameborder='0' scrolling='no' style='min-width:100%;width:100%;'></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="section-header fade-up"><p class="label">Get Started</p><h2>Ready to Put Your Business<br/>in Front of More Local Customers?</h2><p>Speak directly with one of our geo-fencing specialists. We'll learn about your business, target area, and build a custom campaign recommendation — no obligation, no pressure.</p></div>
+    <div style="text-align:center;position:relative;z-index:1;" class="fade-up">
+      <a href="https://complete360.org/schedule-demo" target="_blank" class="btn btn-primary" style="font-size:1rem;padding:16px 40px;">Schedule a Free Strategy Call →</a>
+      <div style="margin-top:28px;display:flex;align-items:center;justify-content:center;gap:32px;flex-wrap:wrap;">
+        <span style="display:flex;align-items:center;gap:6px;font-size:0.82rem;color:rgba(255,255,255,0.5);font-weight:500;"><span style="color:#3dd870;">✓</span> Google Partner Agency</span>
+        <span style="display:flex;align-items:center;gap:6px;font-size:0.82rem;color:rgba(255,255,255,0.5);font-weight:500;"><span style="color:#3dd870;">✓</span> 144+ Five-Star Reviews</span>
+        <span style="display:flex;align-items:center;gap:6px;font-size:0.82rem;color:rgba(255,255,255,0.5);font-weight:500;"><span style="color:#3dd870;">✓</span> Mon–Thu 7am–4pm · Fri 7am–1pm MST</span>
+        <span style="display:flex;align-items:center;gap:6px;font-size:0.82rem;color:rgba(255,255,255,0.5);font-weight:500;"><span style="color:#3dd870;">✓</span> No Long-Term Contracts</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-header fade-up"><p class="label">FAQ</p><h2>Frequently Asked Questions</h2><p>Everything you need to know about geo-fencing advertising with Complete360.</p></div>
+    <div class="faq-grid">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What exactly is geo-fencing advertising?<span class="faq-icon">+</span></div><div class="faq-a"><p>Geo-fencing lets you draw a virtual boundary around a real-world location. When someone enters that boundary with their mobile device, their device ID is captured and they start receiving your ads across mobile apps, websites, and connected TV screens.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How is geo-fencing different from regular digital ads?<span class="faq-icon">+</span></div><div class="faq-a"><p>Traditional ads target demographics, interests, or browsing behavior. Geo-fencing targets based on physical real-world location — you're reaching people who have actually been to specific places. Far more accurate for local businesses where geography matters.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How long does it take to launch a campaign?<span class="faq-icon">+</span></div><div class="faq-a"><p>Most campaigns go live within 5–7 business days of onboarding. This includes defining your geo-fences, building your audience, getting ad creatives approved, and activating the campaign. We handle the entire setup process for you.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Do I need to provide my own ad creatives?<span class="faq-icon">+</span></div><div class="faq-a"><p>Not necessarily. We work with your existing brand assets and provide creative guidance. Full creative development is included in our Pro package. All creatives go through a quality review before launch — nothing goes live without your approval.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I target my competitors' customers?<span class="faq-icon">+</span></div><div class="faq-a"><p>Yes — this is one of the most powerful applications. We can draw a fence around a competitor's location and serve your ads to people who have recently visited there. Highly effective for contractors, insurance agents, real estate professionals, and more.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">How do the commitment pricing tiers work?<span class="faq-icon">+</span></div><div class="faq-a"><p>There are three options — all include the exact same campaign and 8,000 impressions per month. Month-to-month is $299/mo billed monthly. The 6-month package is $1,435.20 paid in full (20% off, $239.20/mo effective). The 12-month package is $2,511.60 paid in full (30% off, $209.30/mo effective). Unused months are non-refundable on upfront packages.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">What is the minimum campaign budget?<span class="faq-icon">+</span></div><div class="faq-a"><p>For mobile geo-fencing, the entry point is $299/mo with 8,000 impressions per month. For CTV, impression packages start at $1,399 for 10,000 impressions — delivered at whatever pace works for your campaign.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GEO AD TEMPLATE LIGHTBOX ===== -->
+<div class="geolb-overlay" id="geoLightbox" aria-hidden="true">
+  <div class="geolb-backdrop" data-geolb-close></div>
+  <div class="geolb-modal" role="dialog" aria-modal="true" aria-labelledby="geoLbTitle">
+    <div class="geolb-head">
+      <span class="geolb-head-icon" id="geoLbIcon">🏠</span>
+      <div class="geolb-head-text"><p class="label">Geo Ad Templates</p><h3 id="geoLbTitle">Industry</h3></div>
+      <button type="button" class="geolb-close" data-geolb-close aria-label="Close">&times;</button>
+    </div>
+    <div class="geolb-body"><div class="geolb-grid" id="geoLbGrid"></div></div>
+    <div class="geolb-foot">
+      <p>Want ads like these running for your business?</p>
+      <button type="button" class="btn btn-primary c360-popup-trigger">Get Started →</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* ============ HERO CAROUSEL ============ */
+  const CARD_DATA=[{label:"📱 Mobile Banner Ad"},{label:"📺 CTV Streaming Ad"}];
+  const TOTAL=CARD_DATA.length;let active=0,autoTimer=null;
+  function posClass(c,a){const d=(c-a+TOTAL)%TOTAL;if(d===0)return"pos-center";if(d===1)return"pos-right";if(d===TOTAL-1)return"pos-left";return d<TOTAL/2?"pos-hidden-right":"pos-hidden-left";}
+  function updateCarousel(){document.querySelectorAll(".c-card").forEach((c,i)=>{c.className=c.className.replace(/pos-\S+/g,"").trim();c.classList.add(posClass(i,active));});document.querySelectorAll(".c-dot").forEach((d,i)=>d.classList.toggle("active",i===active));document.getElementById("carouselBadge").textContent=CARD_DATA[active].label;}
+  function carouselGo(i){active=i;updateCarousel();resetAuto();}
+  function carouselNext(){active=(active+1)%TOTAL;updateCarousel();resetAuto();}
+  function carouselPrev(){active=(active-1+TOTAL)%TOTAL;updateCarousel();resetAuto();}
+  function carouselClick(i){if(i!==active)carouselGo(i);}
+  function resetAuto(){clearInterval(autoTimer);autoTimer=setInterval(carouselNext,4500);}
+  updateCarousel();autoTimer=setInterval(carouselNext,4500);
+  (function(){function s(){var v=document.getElementById("ctvVideo");if(v){v.playbackRate=1.75;v.addEventListener("ratechange",function(){if(v.playbackRate!==2.5)v.playbackRate=1.75;});}}document.readyState==="loading"?document.addEventListener("DOMContentLoaded",s):s();})();
+  (function(){const el=document.getElementById("carouselScene");let sx=0;el.addEventListener("touchstart",e=>{sx=e.touches[0].clientX;},{passive:true});el.addEventListener("touchend",e=>{const dx=e.changedTouches[0].clientX-sx;if(Math.abs(dx)>40)dx<0?carouselNext():carouselPrev();});})();
+
+  /* ============ PRICING FLIP ============ */
+  let isCTV=false;
+  function setFlipHeights(){["flip-front","flip-back"].forEach(cls=>{const cards=document.querySelectorAll("."+cls+" .price-card");let max=0;cards.forEach(el=>{el.style.minHeight="";max=Math.max(max,el.offsetHeight);});cards.forEach(el=>el.style.minHeight=max+"px");});}
+  function flipPricing(ctv){isCTV=ctv;document.getElementById("seg-mobile").classList.toggle("seg-active",!isCTV);document.getElementById("seg-ctv").classList.toggle("seg-active",isCTV);document.querySelectorAll(".flip-card-inner").forEach(c=>c.classList.toggle("flipped",isCTV));}
+  window.addEventListener("load",setFlipHeights);window.addEventListener("resize",setFlipHeights);
+
+  /* ============ FAQ ============ */
+  function toggleFaq(el){const item=el.parentElement;const was=item.classList.contains("open");document.querySelectorAll(".faq-item").forEach(i=>i.classList.remove("open"));if(!was)item.classList.add("open");}
+
+  /* ============ FADE-UP / REVEAL ============ */
+  const io=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(!entry.isIntersecting)return;const el=entry.target;const siblings=Array.from(el.parentElement.children);setTimeout(()=>el.classList.add("visible"),80*siblings.indexOf(el));io.unobserve(el);});},{threshold:0.12});
+  document.querySelectorAll(".fade-up").forEach(el=>io.observe(el));
+  (function(){const steps=document.querySelectorAll(".cp-step");if(!steps.length)return;const revealIO=new IntersectionObserver((entries)=>{entries.forEach(entry=>{entry.target.classList.toggle("revealed",entry.isIntersecting);});},{threshold:0.35});steps.forEach(step=>revealIO.observe(step));})();
+
+  /* ============ GEO AD TEMPLATE LIGHTBOX ============ */
+  (function(){
+    const GEO_META = {
+      contractors:{icon:"🏠",title:"Contractors & Home Services"},
+      health:{icon:"🏥",title:"Health & Wellness"},
+      insurance:{icon:"🛡️",title:"Insurance Agencies"},
+      financial:{icon:"💰",title:"Financial Services"},
+      tax:{icon:"📋",title:"Tax & Accounting"},
+      realestate:{icon:"🏡",title:"Real Estate"},
+      funeral:{icon:"⚱️",title:"Funeral Homes"},
+      cleaning:{icon:"🧹",title:"Cleaning Services"},
+      senior:{icon:"👴",title:"Senior Care"},
+      pet:{icon:"🐾",title:"Pet Services"},
+      hvac:{icon:"🔧",title:"HVAC & Plumbing"},
+      electrical:{icon:"⚡",title:"Electrical & Roofing"}
+    };
+
+    /* ============================================================
+       ADD YOUR REAL 300×250 TEMPLATES HERE.
+       Each industry holds a list of 300×250 banner image URLs.
+       - One image:   contractors: ["https://.../banner.png"]
+       - Multiple:    hvac: ["https://.../a.png", "https://.../b.png"]
+       - Empty []:    shows a "coming soon" placeholder
+       (Only 300×250 banners for now — other formats can be added later.)
+       ============================================================ */
+    /* ============================================================
+       300x250 ad templates per industry (hosted on filesafe CDN).
+       Trailing comment on each line = the banner's label.
+       Add/remove URLs here to change what shows in each lightbox.
+       ============================================================ */
+    const GEO_AD_TEMPLATES = {
+      // Contractors & Home Services
+      contractors: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61f485665936b2bed66.png",  // home services 1
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61f02b1d2b3d0810d75.png",  // handyman
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61edca942f7b3da71d9.png",  // flooring services 1
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f62202b1d2b3d0810dce.png"  // roofing & handyman
+      ],
+      // Health & Wellness
+      health: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61edca942f7b3da71e5.png",  // health & wellness 1
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61fdca942f7b3da71f1.png",  // health & wellness 2
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61f35c34c72c1d77c4e.png"  // health & wellness 3
+      ],
+      // Insurance Agencies
+      insurance: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f620dca942f7b3da7214.png",  // insurance
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61f485665936b2bed50.png",  // health insurance
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61f02b1d2b3d0810d6f.png",  // health insurance 2
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61f2c82431d9ec64345.png",  // health insurance 3
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f6202c82431d9ec64385.png"  // life insurance & health
+      ],
+      // Financial Services
+      financial: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f620dca942f7b3da7223.png"  // mortgage
+      ],
+      // Tax & Accounting
+      tax: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f6232c82431d9ec64404.png",  // Taxes
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f623485665936b2bee0c.png",  // taxes 2
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61c02b1d2b3d0810d36.png"  // bookkeeping
+      ],
+      // Real Estate
+      realestate: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f62135c34c72c1d77cab.png",  // real estate 1
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f621485665936b2bedbe.png",  // real estate 2
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f62235c34c72c1d77cb6.png"  // real estate 3
+      ],
+      // Funeral Homes
+      funeral: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61e485665936b2bed22.png",  // funeral home 1
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61edca942f7b3da71de.png",  // funeral home 2
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61e35c34c72c1d77c1e.png"  // funeral home 3
+      ],
+      // Cleaning Services
+      cleaning: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61cdca942f7b3da71a1.png",  // cleaning 1
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61c02b1d2b3d0810d3a.png",  // cleaning 2
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61c2c82431d9ec642cd.png"  // cleaning 3
+      ],
+      // Senior Care
+      senior: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f622dca942f7b3da724d.png",  // senior care 1
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f622485665936b2bedee.png",  // senior care 2
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f622485665936b2beddc.png"  // senior care 3
+      ],
+      // Pet Services
+      pet: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f6212c82431d9ec6439f.png",  // pet services 1
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f621485665936b2bedb0.png",  // pet services 2
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f6212c82431d9ec643ad.png"  // pet services 3
+      ],
+      // HVAC & Plumbing
+      hvac: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f62002b1d2b3d0810d8b.png",  // hvac 1
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f620dca942f7b3da720f.png",  // hvac 2
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f62002b1d2b3d0810d95.png",  // HVAC 3
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f62102b1d2b3d0810da7.png"  // plumbing & electric
+      ],
+      // Electrical & Roofing
+      electrical: [
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61c2c82431d9ec642d2.png",  // electric 1
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61e02b1d2b3d0810d51.png",  // electric 2
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f61cdca942f7b3da71a6.png",  // electric & solar
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f62202b1d2b3d0810dc9.png",  // roofing
+        "https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a28f62235c34c72c1d77cd2.png"  // roofing 2
+      ],
+    };
+
+    const overlay = document.getElementById("geoLightbox");
+    const grid    = document.getElementById("geoLbGrid");
+    const titleEl = document.getElementById("geoLbTitle");
+    const iconEl  = document.getElementById("geoLbIcon");
+
+    function tileHTML(src){
+      const media = src
+        ? '<img src="'+src+'" alt="300x250 ad banner" onerror="this.parentNode.innerHTML=\'<div class=&quot;geolb-ph&quot;><span class=&quot;ph-ico&quot;>&#9888;&#65039;</span><span class=&quot;ph-txt&quot;>Image failed to load</span></div>\'">'
+        : '<div class="geolb-ph"><span class="ph-ico">🖼️</span><span class="ph-txt">Template coming soon</span></div>';
+      return '<div class="geolb-tile"><div class="geolb-media geolb-media--banner">'+media+'</div><div class="geolb-cap">Mobile Banner · 300×250</div></div>';
+    }
+
+    function openLightbox(key){
+      const meta = GEO_META[key]; if(!meta) return;
+      const imgs = (GEO_AD_TEMPLATES[key] && GEO_AD_TEMPLATES[key].length) ? GEO_AD_TEMPLATES[key] : [""];
+      iconEl.textContent  = meta.icon;
+      titleEl.textContent = meta.title;
+      grid.innerHTML = imgs.map(tileHTML).join("");
+      overlay.classList.add("geolb-open");
+      overlay.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeLightbox(){
+      overlay.classList.remove("geolb-open");
+      overlay.setAttribute("aria-hidden","true");
+      grid.querySelectorAll("video").forEach(v=>v.pause());
+      var gm = document.getElementById("c360Modal");
+      if(!(gm && gm.classList.contains("c360-modal-open"))) document.body.style.overflow = "";
+    }
+
+    document.querySelectorAll(".industry-card[data-geo]").forEach(function(card){
+      card.addEventListener("click", function(){ openLightbox(card.getAttribute("data-geo")); });
+    });
+    overlay.querySelectorAll("[data-geolb-close]").forEach(function(el){ el.addEventListener("click", closeLightbox); });
+    document.addEventListener("keydown", function(e){ if(e.key==="Escape") closeLightbox(); });
+    // Closing the lightbox when "Get Started" is tapped lets the global header modal sit clean on top
+    overlay.querySelectorAll(".c360-popup-trigger").forEach(function(btn){ btn.addEventListener("click", closeLightbox); });
+  })();
+</script>
