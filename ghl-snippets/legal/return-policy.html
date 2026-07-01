@@ -1,0 +1,780 @@
+<!-- ============================================================
+     COMPLETE360 — RETURN & REFUND POLICY  v2.0
+     Paste into GHL Custom Code block on /return-policy page.
+     Prefix: c360-rp-  |  Header/footer loaded globally.
+     Font Awesome & Poppins loaded via global header.
+     Last Updated: May 14, 2026
+     ============================================================ -->
+
+<style>
+/* ══════════════════════════════════════════════════════
+   Return & Refund Policy  |  Prefix: c360-rp-
+   ══════════════════════════════════════════════════════ */
+:root {
+  --rp-navy:        #122078;
+  --rp-navy-dark:   #0d1654;
+  --rp-navy-deeper: #09103c;
+  --rp-green:       #127825;
+  --rp-green-light: #EAF3DE;
+  --rp-green-glow:  #2ecc52;
+  --rp-blue-light:  #E6F1FB;
+  --rp-grey:        #888780;
+  --rp-light-grey:  #F1EFE8;
+  --rp-border:      #e5e3dc;
+  --rp-text:        #0F1F5E;
+  --rp-text-muted:  #5F5E5A;
+  --rp-radius:      10px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+
+.c360-rp-wrap {
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  width: 100%;
+}
+.c360-rp-wrap i.fa-solid,
+.c360-rp-wrap i.fa-brands {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+}
+.c360-rp-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════ */
+.c360-rp-hero {
+  background: linear-gradient(135deg, var(--rp-navy-deeper) 0%, var(--rp-navy) 60%, #0c1960 100%);
+  padding: 64px 0 56px;
+  position: relative; overflow: hidden;
+}
+.c360-rp-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 10% 70%, rgba(18,120,37,0.16) 0%, transparent 50%),
+    radial-gradient(circle at 88% 15%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-rp-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.c360-rp-hero-inner {
+  position: relative; z-index: 2; text-align: center;
+}
+.c360-rp-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(18,120,37,0.2);
+  border: 1px solid rgba(18,120,37,0.38);
+  color: #7ddc80;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 6px 16px;
+  border-radius: 100px; margin-bottom: 18px;
+}
+.c360-rp-hero h1 {
+  font-size: clamp(30px, 4.5vw, 46px); font-weight: 800;
+  color: #fff; margin: 0 0 14px; line-height: 1.1; letter-spacing: -0.025em;
+}
+.c360-rp-hero-meta {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; flex-wrap: wrap;
+}
+.c360-rp-updated {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 500;
+}
+.c360-rp-updated i { color: var(--rp-green-glow); font-size: 11px; }
+.c360-rp-hero-meta span {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 500;
+}
+.c360-rp-hero-meta span i { color: var(--rp-green-glow); font-size: 11px; }
+
+/* ══════════════════════════════════════════════════════
+   BODY LAYOUT
+   ══════════════════════════════════════════════════════ */
+.c360-rp-body {
+  background: var(--rp-light-grey);
+  padding: 56px 0 80px;
+}
+.c360-rp-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── STICKY TOC ── */
+.c360-rp-toc {
+  position: sticky; top: 88px;
+  background: #fff;
+  border: 1px solid var(--rp-border);
+  border-radius: var(--rp-radius);
+  overflow: hidden;
+}
+.c360-rp-toc-header {
+  background: var(--rp-navy); padding: 14px 18px;
+}
+.c360-rp-toc-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.6);
+}
+.c360-rp-toc-list {
+  list-style: none; margin: 0; padding: 10px 0;
+}
+.c360-rp-toc-list li a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 18px;
+  font-size: 12.5px; font-weight: 500; color: var(--rp-text-muted);
+  text-decoration: none; line-height: 1.3;
+  border-left: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.c360-rp-toc-list li a:hover {
+  color: var(--rp-navy); background: var(--rp-blue-light);
+  border-left-color: var(--rp-navy);
+}
+.c360-rp-toc-num {
+  font-size: 10px; font-weight: 700; color: var(--rp-grey);
+  min-width: 16px; flex-shrink: 0;
+}
+.c360-rp-toc-footer {
+  border-top: 1px solid var(--rp-border); padding: 12px 18px;
+}
+.c360-rp-toc-contact {
+  font-size: 11.5px; color: var(--rp-text-muted); line-height: 1.5;
+}
+.c360-rp-toc-contact a {
+  color: var(--rp-green); font-weight: 600; text-decoration: none;
+}
+.c360-rp-toc-contact a:hover { text-decoration: underline; }
+
+/* ── CONTENT ── */
+.c360-rp-content { display: flex; flex-direction: column; gap: 20px; }
+
+.c360-rp-section {
+  background: #fff;
+  border: 1px solid var(--rp-border);
+  border-radius: var(--rp-radius);
+  overflow: hidden;
+}
+.c360-rp-section-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 26px;
+  border-bottom: 1px solid var(--rp-border);
+  background: var(--rp-light-grey);
+}
+.c360-rp-section-num {
+  width: 30px; height: 30px; flex-shrink: 0;
+  background: var(--rp-navy); border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800; color: #fff; line-height: 1;
+}
+.c360-rp-section-title {
+  font-size: 15px; font-weight: 700; color: var(--rp-text); line-height: 1.2;
+}
+.c360-rp-section-body {
+  padding: 24px 26px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.c360-rp-section-body p {
+  font-size: 14px; color: var(--rp-text-muted);
+  line-height: 1.75; margin: 0;
+}
+.c360-rp-section-body ul {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.c360-rp-section-body ul li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: 14px; color: var(--rp-text-muted); line-height: 1.65;
+}
+.c360-rp-section-body ul li i {
+  color: var(--rp-green); font-size: 10px; margin-top: 5px; flex-shrink: 0;
+}
+.c360-rp-section-body ul li strong { color: var(--rp-text); font-weight: 600; }
+
+/* Sub-section */
+.c360-rp-sub {
+  border: 1px solid var(--rp-border);
+  border-radius: 8px; overflow: hidden;
+}
+.c360-rp-sub-head {
+  background: var(--rp-blue-light); padding: 10px 16px;
+  font-size: 12px; font-weight: 700; color: var(--rp-navy);
+  letter-spacing: 0.04em;
+}
+.c360-rp-sub-body {
+  padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.c360-rp-sub-body p {
+  font-size: 13.5px; color: var(--rp-text-muted); line-height: 1.7; margin: 0;
+}
+.c360-rp-sub-body ul {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.c360-rp-sub-body ul li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: 13.5px; color: var(--rp-text-muted); line-height: 1.6;
+}
+.c360-rp-sub-body ul li i {
+  color: var(--rp-green); font-size: 10px; margin-top: 4px; flex-shrink: 0;
+}
+.c360-rp-sub-body ul li strong { color: var(--rp-text); font-weight: 600; }
+
+/* Callout boxes */
+.c360-rp-callout {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--rp-green-light);
+  border: 1px solid rgba(18,120,37,0.2);
+  border-left: 3px solid var(--rp-green);
+  border-radius: 8px; padding: 14px 16px;
+}
+.c360-rp-callout i { color: var(--rp-green); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.c360-rp-callout p { font-size: 13.5px; color: #2a5018; line-height: 1.65; margin: 0; }
+
+.c360-rp-warning {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: #fff8e7;
+  border: 1px solid rgba(234,179,8,0.3);
+  border-left: 3px solid #d97706;
+  border-radius: 8px; padding: 14px 16px;
+}
+.c360-rp-warning i { color: #d97706; font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.c360-rp-warning p { font-size: 13.5px; color: #78350f; line-height: 1.65; margin: 0; }
+
+/* Refund table */
+.c360-rp-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.c360-rp-table thead tr { background: var(--rp-navy); }
+.c360-rp-table thead th {
+  padding: 10px 14px; text-align: left;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.8);
+}
+.c360-rp-table tbody tr { border-bottom: 1px solid var(--rp-border); }
+.c360-rp-table tbody tr:last-child { border-bottom: none; }
+.c360-rp-table tbody tr:nth-child(even) { background: var(--rp-light-grey); }
+.c360-rp-table td {
+  padding: 11px 14px; color: var(--rp-text-muted);
+  line-height: 1.45; vertical-align: top;
+}
+.c360-rp-table td:first-child { font-weight: 600; color: var(--rp-text); }
+.c360-rp-badge-nr {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #fee2e2; color: #b91c1c;
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+  text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap;
+}
+.c360-rp-badge-case {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #fef3c7; color: #b45309;
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+  text-transform: uppercase; letter-spacing: 0.06em; white-space: nowrap;
+}
+
+/* Guarantee seal */
+.c360-rp-guarantee-strip {
+  background: var(--rp-navy);
+  border-radius: var(--rp-radius);
+  padding: 28px 26px;
+  display: flex; align-items: center; gap: 28px;
+  position: relative; overflow: hidden;
+}
+.c360-rp-guarantee-strip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 90% 20%, rgba(18,120,37,0.25) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-rp-seal {
+  flex-shrink: 0; width: 88px; height: 88px;
+  position: relative; display: flex; align-items: center; justify-content: center;
+}
+.c360-rp-seal-ring {
+  position: absolute; inset: 0; border-radius: 50%;
+  background: conic-gradient(var(--rp-navy) 0deg, #1a2e99 90deg, var(--rp-navy) 180deg, #0d1654 270deg, var(--rp-navy) 360deg);
+  box-shadow: 0 0 0 2.5px var(--rp-green), 0 4px 18px rgba(18,32,120,0.3);
+}
+.c360-rp-seal-ring::before {
+  content: '';
+  position: absolute; inset: 5px; border-radius: 50%;
+  border: 1.5px dashed rgba(255,255,255,0.2);
+}
+.c360-rp-seal-inner {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+}
+.c360-rp-seal-top {
+  font-size: 6px; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--rp-green-glow); margin-bottom: 1px;
+}
+.c360-rp-seal-pct {
+  font-size: 22px; font-weight: 900; color: #fff; line-height: 1; letter-spacing: -0.03em;
+}
+.c360-rp-seal-mid {
+  font-size: 6px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(255,255,255,0.65); line-height: 1.3;
+}
+.c360-rp-seal-bottom {
+  font-size: 6px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--rp-green-glow); margin-top: 2px;
+}
+.c360-rp-guarantee-text { position: relative; z-index: 1; }
+.c360-rp-guarantee-text strong {
+  display: block; font-size: 15px; font-weight: 800;
+  color: #fff; margin-bottom: 6px; line-height: 1.3;
+}
+.c360-rp-guarantee-text p {
+  font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.65; margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   CTA STRIP (white)
+   ══════════════════════════════════════════════════════ */
+.c360-rp-cta {
+  background: #fff;
+  border-top: 1px solid var(--rp-border);
+  padding: 64px 0; text-align: center;
+}
+.c360-rp-cta-inner { max-width: 600px; margin: 0 auto; }
+.c360-rp-cta-overline {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--rp-green);
+  display: inline-block; margin-bottom: 10px;
+}
+.c360-rp-cta h2 {
+  font-size: clamp(22px, 3.5vw, 34px); font-weight: 800;
+  color: var(--rp-text); margin: 0 0 12px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-rp-cta h2 span { color: var(--rp-green); }
+.c360-rp-cta p {
+  font-size: 15px; color: var(--rp-text-muted); margin: 0 0 28px; line-height: 1.65;
+}
+.c360-rp-cta-actions {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-wrap: wrap;
+}
+.c360-rp-btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--rp-green); color: #fff;
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 14px; font-weight: 700;
+  padding: 13px 24px; border-radius: 8px; text-decoration: none;
+  box-shadow: 0 4px 18px rgba(18,120,37,0.4);
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-rp-btn-primary:hover {
+  background: #0e5e1d; transform: translateY(-1px);
+  color: #fff; text-decoration: none;
+}
+.c360-rp-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--rp-navy);
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 14px; font-weight: 600;
+  padding: 12px 22px; border-radius: 8px; text-decoration: none;
+  border: 1.5px solid var(--rp-border);
+  transition: border-color 0.2s, background 0.2s;
+}
+.c360-rp-btn-outline:hover {
+  border-color: var(--rp-navy); background: var(--rp-blue-light);
+  color: var(--rp-navy); text-decoration: none;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .c360-rp-layout { grid-template-columns: 1fr; }
+  .c360-rp-toc { position: static; }
+}
+@media (max-width: 640px) {
+  .c360-rp-hero { padding: 50px 0 44px; }
+  .c360-rp-body { padding: 40px 0 60px; }
+  .c360-rp-section-head { padding: 14px 18px; }
+  .c360-rp-section-body { padding: 18px; }
+  .c360-rp-guarantee-strip { flex-direction: column; gap: 20px; text-align: center; }
+  .c360-rp-cta { padding: 52px 0; }
+  .c360-rp-cta-actions { flex-direction: column; align-items: stretch; max-width: 280px; margin: 0 auto; }
+  .c360-rp-btn-primary, .c360-rp-btn-outline { justify-content: center; }
+  .c360-rp-table { font-size: 12px; }
+  .c360-rp-table td, .c360-rp-table th { padding: 8px 10px; }
+}
+</style>
+
+
+<div class="c360-rp-wrap">
+
+  <!-- ══════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-rp-hero">
+    <div class="c360-rp-container">
+      <div class="c360-rp-hero-inner">
+        <div class="c360-rp-hero-eyebrow">
+          <i class="fa-solid fa-rotate-left"></i>
+          Refunds &amp; Returns
+        </div>
+        <h1>Return &amp; Refund Policy</h1>
+        <div class="c360-rp-hero-meta">
+          <div class="c360-rp-updated">
+            <i class="fa-solid fa-calendar-check"></i>
+            Last Updated: May 14, 2026
+          </div>
+          <span><i class="fa-solid fa-building"></i> Complete360 — Home Town Hero Partners LLC</span>
+          <span><i class="fa-solid fa-map-pin"></i> Tucson, Arizona</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       BODY
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-rp-body">
+    <div class="c360-rp-container">
+      <div class="c360-rp-layout">
+
+        <!-- TOC -->
+        <aside class="c360-rp-toc">
+          <div class="c360-rp-toc-header">
+            <div class="c360-rp-toc-title">Table of Contents</div>
+          </div>
+          <ul class="c360-rp-toc-list">
+            <li><a href="#rp-1"><span class="c360-rp-toc-num">1</span>Our Commitment</a></li>
+            <li><a href="#rp-2"><span class="c360-rp-toc-num">2</span>About Our Services</a></li>
+            <li><a href="#rp-3"><span class="c360-rp-toc-num">3</span>Refund Policy by Service</a></li>
+            <li><a href="#rp-4"><span class="c360-rp-toc-num">4</span>Satisfaction Guarantee</a></li>
+            <li><a href="#rp-5"><span class="c360-rp-toc-num">5</span>How to Request a Refund</a></li>
+            <li><a href="#rp-6"><span class="c360-rp-toc-num">6</span>Refund Processing Timeline</a></li>
+            <li><a href="#rp-7"><span class="c360-rp-toc-num">7</span>Late or Missing Refunds</a></li>
+            <li><a href="#rp-8"><span class="c360-rp-toc-num">8</span>Billing Disputes</a></li>
+            <li><a href="#rp-9"><span class="c360-rp-toc-num">9</span>Contact Us</a></li>
+          </ul>
+          <div class="c360-rp-toc-footer">
+            <div class="c360-rp-toc-contact">
+              Refund questions?<br>
+              <a href="tel:+18665276205">(866) 527-6205</a> or
+              <a href="/contact-us">contact us</a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- CONTENT -->
+        <div class="c360-rp-content">
+
+          <div class="c360-rp-callout">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>Complete360 is a digital marketing agency and software platform provider. We do not sell physical products. This policy governs refunds for digital marketing services, CRM platform subscriptions, website design projects, and all other services offered by Complete360, a trade name of <strong>Home Town Hero Partners LLC</strong>.</p>
+          </div>
+
+
+          <!-- 1. OUR COMMITMENT -->
+          <div class="c360-rp-section" id="rp-1">
+            <div class="c360-rp-section-head">
+              <div class="c360-rp-section-num">1</div>
+              <div class="c360-rp-section-title">Our Commitment</div>
+            </div>
+            <div class="c360-rp-section-body">
+              <p>The reputation and continued success of Complete360 is built on client results and honest relationships. We are committed to delivering real value for every dollar you invest with us, and we stand behind our work.</p>
+              <p>Our refund policy is designed to be fair and transparent — reflecting the nature of each service, the point at which work has been performed on your behalf, and any costs we have incurred. We ask that you read this policy carefully before purchasing, and contact us with any questions before you pay.</p>
+              <div class="c360-rp-callout">
+                <i class="fa-solid fa-phone"></i>
+                <p>If you're unsure about any service or have concerns before purchasing, please call us first at <a href="tel:+18665276205" style="color:#2a5018;font-weight:700;">(866) 527-6205</a>. We'd rather answer your questions upfront than deal with a refund request later.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 2. ABOUT OUR SERVICES -->
+          <div class="c360-rp-section" id="rp-2">
+            <div class="c360-rp-section-head">
+              <div class="c360-rp-section-num">2</div>
+              <div class="c360-rp-section-title">About Our Services</div>
+            </div>
+            <div class="c360-rp-section-body">
+              <p>Complete360 provides exclusively digital services. There are no physical products to ship or return. Our services include:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Google Marketing:</strong> Google Business Profile setup, management, and Local SEO Booster.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Paid Advertising:</strong> Local Service Ads (LSA), Geo-Fencing Ads, Google PPC, and Meta Ads.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Website Design:</strong> Custom website design and development on the Complete360 platform.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>CRM Platform:</strong> Monthly access to our all-in-one CRM including lead capture, email/SMS automation, pipeline management, invoicing, and reputation management.</span></li>
+              </ul>
+              <p>Because our services involve the immediate deployment of time, labor, third-party costs, and platform resources upon purchase, most services are non-refundable once work has begun. Specifics are outlined in Section 3 below.</p>
+            </div>
+          </div>
+
+
+          <!-- 3. REFUND POLICY BY SERVICE -->
+          <div class="c360-rp-section" id="rp-3">
+            <div class="c360-rp-section-head">
+              <div class="c360-rp-section-num">3</div>
+              <div class="c360-rp-section-title">Refund Policy by Service</div>
+            </div>
+            <div class="c360-rp-section-body">
+              <p>The following table outlines the refund eligibility for each of our services. Please review it carefully before purchasing.</p>
+
+              <div style="overflow-x:auto;">
+                <table class="c360-rp-table">
+                  <thead>
+                    <tr>
+                      <th>Service</th>
+                      <th>Refund Status</th>
+                      <th>Reason</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>GBP Setup &amp; Optimization</td>
+                      <td><span class="c360-rp-badge-nr">Non-Refundable</span></td>
+                      <td>One-time service. Work begins immediately upon purchase — labor and platform costs are incurred at the time of the engagement.</td>
+                    </tr>
+                    <tr>
+                      <td>GBP Management (Monthly)</td>
+                      <td><span class="c360-rp-badge-nr">Non-Refundable</span></td>
+                      <td>Monthly billing period is non-refundable. Cancel before your next renewal to stop future charges.</td>
+                    </tr>
+                    <tr>
+                      <td>Local SEO Booster (Annual)</td>
+                      <td><span class="c360-rp-badge-nr">Non-Refundable</span></td>
+                      <td>Once directory listings have been submitted and activated, the annual network subscription fee cannot be reversed or refunded.</td>
+                    </tr>
+                    <tr>
+                      <td>Local Service Ads — Setup</td>
+                      <td><span class="c360-rp-badge-nr">Non-Refundable</span></td>
+                      <td>Setup fees cover onboarding, account verification, and campaign build work that begins immediately upon purchase.</td>
+                    </tr>
+                    <tr>
+                      <td>Local Service Ads — Management</td>
+                      <td><span class="c360-rp-badge-nr">Non-Refundable</span></td>
+                      <td>Current billing period is non-refundable. Cancel before your next renewal date.</td>
+                    </tr>
+                    <tr>
+                      <td>Geo-Fencing Ads</td>
+                      <td><span class="c360-rp-badge-nr">Non-Refundable</span></td>
+                      <td>Non-refundable once campaign creative has been produced or the campaign has launched. Unused future budget may be credited at our discretion.</td>
+                    </tr>
+                    <tr>
+                      <td>Website Design — Deposit</td>
+                      <td><span class="c360-rp-badge-nr">Non-Refundable</span></td>
+                      <td>Deposits cover discovery, design planning, and initial build work performed before the final balance is due. All deposits are non-refundable.</td>
+                    </tr>
+                    <tr>
+                      <td>Website Design — Final Payment</td>
+                      <td><span class="c360-rp-badge-nr">Non-Refundable</span></td>
+                      <td>Final payment is non-refundable once the completed website has been delivered and approved for launch by the client.</td>
+                    </tr>
+                    <tr>
+                      <td>Website Hosting (Monthly)</td>
+                      <td><span class="c360-rp-badge-nr">Non-Refundable</span></td>
+                      <td>Current month is non-refundable. Cancel before your next billing date to stop future charges.</td>
+                    </tr>
+                    <tr>
+                      <td>CRM Platform (Monthly)</td>
+                      <td><span class="c360-rp-badge-nr">Non-Refundable</span></td>
+                      <td>Current billing period is non-refundable. You may cancel at any time to prevent future billing.</td>
+                    </tr>
+                    <tr>
+                      <td>Duplicate or Erroneous Charges</td>
+                      <td><span class="c360-rp-badge-case">Case by Case</span></td>
+                      <td>If you were charged more than once for the same service or charged for a service you did not purchase, contact us within 7 days and we will correct it promptly.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="c360-rp-warning">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p>If you believe you have been charged in error, contact us within <strong>7 calendar days</strong> of the charge at <a href="tel:+18665276205" style="color:#b45309;font-weight:600;">(866) 527-6205</a>. We review all billing concerns in good faith and will work quickly to resolve any mistakes on our end.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 4. SATISFACTION GUARANTEE -->
+          <div class="c360-rp-section" id="rp-4">
+            <div class="c360-rp-section-head">
+              <div class="c360-rp-section-num">4</div>
+              <div class="c360-rp-section-title">Satisfaction Guarantee</div>
+            </div>
+            <div class="c360-rp-section-body">
+
+              <div class="c360-rp-guarantee-strip">
+                <div class="c360-rp-seal">
+                  <div class="c360-rp-seal-ring"></div>
+                  <div class="c360-rp-seal-inner">
+                    <div class="c360-rp-seal-top">Satisfaction</div>
+                    <div class="c360-rp-seal-pct">100%</div>
+                    <div class="c360-rp-seal-mid">Guaranteed</div>
+                    <div class="c360-rp-seal-bottom">Complete360</div>
+                  </div>
+                </div>
+                <div class="c360-rp-guarantee-text">
+                  <strong>We stand behind our work — 100%.</strong>
+                  <p>If you are not satisfied with the results of your Complete360 marketing campaign at the end of your service period, we will extend your campaign at no additional charge. We're invested in your success, not just your payment.</p>
+                </div>
+              </div>
+
+              <div class="c360-rp-sub">
+                <div class="c360-rp-sub-head">Guarantee Eligibility</div>
+                <div class="c360-rp-sub-body">
+                  <p>To be eligible for a campaign extension under our satisfaction guarantee, the following conditions must be met:</p>
+                  <ul>
+                    <li><i class="fa-solid fa-circle-check"></i><span>The service must be an eligible ongoing marketing service (GBP Management, LSA, or Geo-Fencing).</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span>The client must have completed full onboarding and provided all requested information and approvals in a timely manner.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span>The concern must be raised at the end of the initial service period — not mid-campaign.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span>The client must have maintained an active account in good standing (no late payments or policy violations).</span></li>
+                  </ul>
+                  <p>Contact us at <a href="tel:+18665276205" style="color:var(--rp-green);font-weight:600;">(866) 527-6205</a> to discuss guarantee eligibility. Extension terms will be agreed upon in writing.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- 5. HOW TO REQUEST -->
+          <div class="c360-rp-section" id="rp-5">
+            <div class="c360-rp-section-head">
+              <div class="c360-rp-section-num">5</div>
+              <div class="c360-rp-section-title">How to Request a Refund</div>
+            </div>
+            <div class="c360-rp-section-body">
+              <p>If you believe your situation qualifies for a refund under this policy, please contact us using one of the methods below. We ask that all refund requests be submitted in writing so we can track and respond to them properly.</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Phone:</strong> Call <a href="tel:+18665276205" style="color:var(--rp-green);">(866) 527-6205</a> during business hours (Mon–Thu 7am–4pm, Fri 7am–1pm MST) to discuss your situation. We will follow up with written confirmation.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Contact Form:</strong> Submit a written request via <a href="/contact-us" style="color:var(--rp-green);">complete360.org/contact-us</a> with your name, account information, the service in question, the charge date, and a brief description of your concern.</span></li>
+              </ul>
+              <p>We aim to acknowledge all refund requests within <strong>1 business day</strong> and to provide a final determination within <strong>5 business days</strong>.</p>
+              <div class="c360-rp-warning">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p>Verbal refund requests are not accepted. All requests must be confirmed in writing. Initiating a chargeback with your bank before contacting us directly may result in the suspension of your account. We strongly encourage you to reach out to us first — we are committed to resolving disputes fairly and quickly.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 6. PROCESSING TIMELINE -->
+          <div class="c360-rp-section" id="rp-6">
+            <div class="c360-rp-section-head">
+              <div class="c360-rp-section-num">6</div>
+              <div class="c360-rp-section-title">Refund Processing Timeline</div>
+            </div>
+            <div class="c360-rp-section-body">
+              <p>If a refund is approved, it will be processed back to the original payment method used at the time of purchase. Please allow the following timeframes:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Credit &amp; debit cards:</strong> Approved refunds are typically processed within <strong>5–10 business days</strong> from the date of approval. Depending on your bank, it may take up to 2 billing cycles for the credit to appear on your statement.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>PayPal, Venmo, Klarna, Amazon Pay:</strong> Refunds to digital wallets are typically processed within <strong>3–5 business days</strong> and appear in your account balance.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>ACH / bank transfer:</strong> If applicable, allow <strong>5–7 business days</strong> for processing.</span></li>
+              </ul>
+              <div class="c360-rp-callout">
+                <i class="fa-solid fa-circle-check"></i>
+                <p>Once a refund has been issued on our end, we will send you a confirmation email with the transaction details. If you do not receive this confirmation within 2 business days of approval, please contact us.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 7. LATE OR MISSING REFUNDS -->
+          <div class="c360-rp-section" id="rp-7">
+            <div class="c360-rp-section-head">
+              <div class="c360-rp-section-num">7</div>
+              <div class="c360-rp-section-title">Late or Missing Refunds</div>
+            </div>
+            <div class="c360-rp-section-body">
+              <p>If you have been approved for a refund but have not received it within the expected timeframe, please take the following steps before contacting us:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span>Check your bank account or card statement again — refunds sometimes appear as a pending credit before posting fully.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>Contact your credit card company — it may take several business days before a refund is officially posted to your account.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>Contact your bank directly — there is often a standard processing window between when a refund is issued and when it appears.</span></li>
+              </ul>
+              <p>If you have done all of the above and still have not received your refund after <strong>10 business days</strong> from the approval date, please contact us at <a href="tel:+18665276205" style="color:var(--rp-green);font-weight:600;">(866) 527-6205</a> or via our <a href="/contact-us" style="color:var(--rp-green);font-weight:600;">contact page</a> and we will investigate immediately.</p>
+            </div>
+          </div>
+
+
+          <!-- 8. BILLING DISPUTES -->
+          <div class="c360-rp-section" id="rp-8">
+            <div class="c360-rp-section-head">
+              <div class="c360-rp-section-num">8</div>
+              <div class="c360-rp-section-title">Billing Disputes</div>
+            </div>
+            <div class="c360-rp-section-body">
+              <p>We take all billing disputes seriously and resolve the vast majority with a simple phone call. If you notice an unexpected charge on your statement, please contact us within <strong>7 calendar days</strong> before initiating a dispute with your bank or payment provider.</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span>All billing disputes are reviewed in good faith by a member of our team.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>We will provide full documentation of any charge upon request, including the service date, scope, and authorization record.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>Chargebacks initiated without first contacting Complete360 may result in the suspension of your account and services pending resolution.</span></li>
+              </ul>
+              <p>For billing disputes, please reference your invoice number and the charge date when contacting us. Our team is available Mon–Thu 7am–4pm and Fri 7am–1pm MST.</p>
+            </div>
+          </div>
+
+
+          <!-- 9. CONTACT -->
+          <div class="c360-rp-section" id="rp-9">
+            <div class="c360-rp-section-head">
+              <div class="c360-rp-section-num">9</div>
+              <div class="c360-rp-section-title">Contact Us</div>
+            </div>
+            <div class="c360-rp-section-body">
+              <p>For any questions about this Return &amp; Refund Policy, to submit a refund request, or to discuss a billing concern, please reach out using any of the methods below:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Phone:</strong> <a href="tel:+18665276205" style="color:var(--rp-green);">(866) 527-6205</a> — Mon–Thu 7am–4pm · Fri 7am–1pm MST</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Contact Form:</strong> <a href="/contact-us" style="color:var(--rp-green);">complete360.org/contact-us</a></span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Mail:</strong> Home Town Hero Partners LLC dba Complete360, 3444 N Country Club Rd, Ste 105, Tucson, AZ 85716</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="c360-rp-callout">
+            <i class="fa-solid fa-scale-balanced"></i>
+            <p>This Return &amp; Refund Policy was last updated on <strong>May 14, 2026</strong> and supersedes all prior versions. This policy should be read alongside our <a href="/tos" style="color:#2a5018;font-weight:600;">Terms of Service</a> and <a href="https://complete360.app/privacy-policy" target="_blank" rel="noopener" style="color:#2a5018;font-weight:600;">Privacy Policy</a>.</p>
+          </div>
+
+        </div><!-- /content -->
+      </div><!-- /layout -->
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       CTA STRIP (white)
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-rp-cta">
+    <div class="c360-rp-container">
+      <div class="c360-rp-cta-inner">
+        <div class="c360-rp-cta-overline">Have a Billing Question?</div>
+        <h2>We'll sort it out <span>together.</span></h2>
+        <p>Most refund and billing questions are resolved in a single phone call. Reach out to our team and we'll take care of it.</p>
+        <div class="c360-rp-cta-actions">
+          <a href="tel:+18665276205" class="c360-rp-btn-primary">
+            <i class="fa-solid fa-phone"></i>
+            (866) 527-6205
+          </a>
+          <a href="/contact-us" class="c360-rp-btn-outline">
+            <i class="fa-solid fa-envelope"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.c360-rp-wrap -->
+
+<!-- ============================================================
+     END COMPLETE360 RETURN & REFUND POLICY v2.0
+     ============================================================ -->
