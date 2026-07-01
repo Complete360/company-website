@@ -1,1 +1,810 @@
+<!-- ============================================================
+     COMPLETE360 — PRIVACY POLICY  v2.0
+     Paste into GHL Custom Code block on /privacy-policy page.
+     Prefix: c360-pp-  |  Header/footer loaded globally.
+     Font Awesome & Poppins loaded via global header.
+     Last Updated: May 14, 2026
+     ============================================================ -->
 
+<style>
+/* ══════════════════════════════════════════════════════
+   Privacy Policy  |  Prefix: c360-pp-
+   ══════════════════════════════════════════════════════ */
+:root {
+  --pp-navy:        #122078;
+  --pp-navy-dark:   #0d1654;
+  --pp-navy-deeper: #09103c;
+  --pp-green:       #127825;
+  --pp-green-light: #EAF3DE;
+  --pp-green-glow:  #2ecc52;
+  --pp-blue-light:  #E6F1FB;
+  --pp-grey:        #888780;
+  --pp-light-grey:  #F1EFE8;
+  --pp-border:      #e5e3dc;
+  --pp-text:        #0F1F5E;
+  --pp-text-muted:  #5F5E5A;
+  --pp-radius:      10px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+
+.c360-pp-wrap {
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  width: 100%;
+}
+.c360-pp-wrap i.fa-solid,
+.c360-pp-wrap i.fa-brands {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+}
+.c360-pp-wrap i.fa-brands {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+}
+.c360-pp-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════ */
+.c360-pp-hero {
+  background: linear-gradient(135deg, var(--pp-navy-deeper) 0%, var(--pp-navy) 60%, #0c1960 100%);
+  padding: 64px 0 56px;
+  position: relative; overflow: hidden;
+}
+.c360-pp-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 10% 70%, rgba(18,120,37,0.16) 0%, transparent 50%),
+    radial-gradient(circle at 88% 15%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-pp-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.c360-pp-hero-inner {
+  position: relative; z-index: 2; text-align: center;
+}
+.c360-pp-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(18,120,37,0.2);
+  border: 1px solid rgba(18,120,37,0.38);
+  color: #7ddc80;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 6px 16px;
+  border-radius: 100px; margin-bottom: 18px;
+}
+.c360-pp-hero h1 {
+  font-size: clamp(30px, 4.5vw, 46px); font-weight: 800;
+  color: #fff; margin: 0 0 14px; line-height: 1.1; letter-spacing: -0.025em;
+}
+.c360-pp-hero-meta {
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px; flex-wrap: wrap;
+}
+.c360-pp-updated {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 500;
+}
+.c360-pp-updated i { color: var(--pp-green-glow); font-size: 11px; }
+.c360-pp-hero-meta span {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 500;
+}
+.c360-pp-hero-meta span i { color: var(--pp-green-glow); font-size: 11px; }
+
+/* ══════════════════════════════════════════════════════
+   BODY LAYOUT
+   ══════════════════════════════════════════════════════ */
+.c360-pp-body {
+  background: var(--pp-light-grey);
+  padding: 56px 0 80px;
+}
+.c360-pp-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── STICKY TOC ── */
+.c360-pp-toc {
+  position: sticky; top: 88px;
+  background: #fff;
+  border: 1px solid var(--pp-border);
+  border-radius: var(--pp-radius);
+  overflow: hidden;
+}
+.c360-pp-toc-header {
+  background: var(--pp-navy); padding: 14px 18px;
+}
+.c360-pp-toc-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.6);
+}
+.c360-pp-toc-list {
+  list-style: none; margin: 0; padding: 10px 0;
+}
+.c360-pp-toc-list li a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 18px;
+  font-size: 12.5px; font-weight: 500; color: var(--pp-text-muted);
+  text-decoration: none; line-height: 1.3;
+  border-left: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.c360-pp-toc-list li a:hover {
+  color: var(--pp-navy); background: var(--pp-blue-light);
+  border-left-color: var(--pp-navy);
+}
+.c360-pp-toc-num {
+  font-size: 10px; font-weight: 700; color: var(--pp-grey);
+  min-width: 16px; flex-shrink: 0;
+}
+.c360-pp-toc-footer {
+  border-top: 1px solid var(--pp-border); padding: 12px 18px;
+}
+.c360-pp-toc-contact {
+  font-size: 11.5px; color: var(--pp-text-muted); line-height: 1.5;
+}
+.c360-pp-toc-contact a {
+  color: var(--pp-green); font-weight: 600; text-decoration: none;
+}
+.c360-pp-toc-contact a:hover { text-decoration: underline; }
+
+/* ── CONTENT ── */
+.c360-pp-content { display: flex; flex-direction: column; gap: 20px; }
+
+.c360-pp-section {
+  background: #fff;
+  border: 1px solid var(--pp-border);
+  border-radius: var(--pp-radius);
+  overflow: hidden;
+}
+.c360-pp-section-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 26px;
+  border-bottom: 1px solid var(--pp-border);
+  background: var(--pp-light-grey);
+}
+.c360-pp-section-num {
+  width: 30px; height: 30px; flex-shrink: 0;
+  background: var(--pp-navy); border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800; color: #fff; line-height: 1;
+}
+.c360-pp-section-title {
+  font-size: 15px; font-weight: 700; color: var(--pp-text); line-height: 1.2;
+}
+.c360-pp-section-body {
+  padding: 24px 26px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+.c360-pp-section-body p {
+  font-size: 14px; color: var(--pp-text-muted);
+  line-height: 1.75; margin: 0;
+}
+.c360-pp-section-body h4 {
+  font-size: 13.5px; font-weight: 700; color: var(--pp-text);
+  margin: 4px 0 0;
+}
+.c360-pp-section-body ul {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.c360-pp-section-body ul li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: 14px; color: var(--pp-text-muted); line-height: 1.65;
+}
+.c360-pp-section-body ul li i {
+  color: var(--pp-green); font-size: 10px; margin-top: 5px; flex-shrink: 0;
+}
+.c360-pp-section-body ul li strong { color: var(--pp-text); font-weight: 600; }
+
+/* Sub-section */
+.c360-pp-sub {
+  border: 1px solid var(--pp-border);
+  border-radius: 8px; overflow: hidden;
+}
+.c360-pp-sub-head {
+  background: var(--pp-blue-light); padding: 10px 16px;
+  font-size: 12px; font-weight: 700; color: var(--pp-navy);
+  letter-spacing: 0.04em;
+}
+.c360-pp-sub-body {
+  padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.c360-pp-sub-body p {
+  font-size: 13.5px; color: var(--pp-text-muted); line-height: 1.7; margin: 0;
+}
+.c360-pp-sub-body ul {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 7px;
+}
+.c360-pp-sub-body ul li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: 13.5px; color: var(--pp-text-muted); line-height: 1.6;
+}
+.c360-pp-sub-body ul li i {
+  color: var(--pp-green); font-size: 10px; margin-top: 4px; flex-shrink: 0;
+}
+.c360-pp-sub-body ul li strong { color: var(--pp-text); font-weight: 600; }
+
+/* Callout boxes */
+.c360-pp-callout {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--pp-green-light);
+  border: 1px solid rgba(18,120,37,0.2);
+  border-left: 3px solid var(--pp-green);
+  border-radius: 8px; padding: 14px 16px;
+}
+.c360-pp-callout i { color: var(--pp-green); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.c360-pp-callout p { font-size: 13.5px; color: #2a5018; line-height: 1.65; margin: 0; }
+
+.c360-pp-warning {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: #fff8e7;
+  border: 1px solid rgba(234,179,8,0.3);
+  border-left: 3px solid #d97706;
+  border-radius: 8px; padding: 14px 16px;
+}
+.c360-pp-warning i { color: #d97706; font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.c360-pp-warning p { font-size: 13.5px; color: #78350f; line-height: 1.65; margin: 0; }
+
+/* Tracker pills */
+.c360-pp-tracker-row {
+  display: flex; align-items: stretch; gap: 12px; flex-wrap: wrap;
+}
+.c360-pp-tracker-pill {
+  flex: 1; min-width: 160px;
+  background: var(--pp-light-grey);
+  border: 1px solid var(--pp-border);
+  border-radius: 10px; padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.c360-pp-tracker-pill-icon {
+  width: 32px; height: 32px;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; margin-bottom: 2px;
+}
+.c360-pp-tracker-pill-name {
+  font-size: 13px; font-weight: 700; color: var(--pp-text); line-height: 1.2;
+}
+.c360-pp-tracker-pill-desc {
+  font-size: 11.5px; color: var(--pp-text-muted); line-height: 1.45;
+}
+
+/* ══════════════════════════════════════════════════════
+   CTA STRIP (white — no collision with footer)
+   ══════════════════════════════════════════════════════ */
+.c360-pp-cta {
+  background: #fff;
+  border-top: 1px solid var(--pp-border);
+  padding: 64px 0; text-align: center;
+}
+.c360-pp-cta-inner { max-width: 600px; margin: 0 auto; }
+.c360-pp-cta-overline {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--pp-green);
+  display: inline-block; margin-bottom: 10px;
+}
+.c360-pp-cta h2 {
+  font-size: clamp(22px, 3.5vw, 34px); font-weight: 800;
+  color: var(--pp-text); margin: 0 0 12px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-pp-cta h2 span { color: var(--pp-green); }
+.c360-pp-cta p {
+  font-size: 15px; color: var(--pp-text-muted); margin: 0 0 28px; line-height: 1.65;
+}
+.c360-pp-cta-actions {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-wrap: wrap;
+}
+.c360-pp-btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--pp-green); color: #fff;
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 14px; font-weight: 700;
+  padding: 13px 24px; border-radius: 8px; text-decoration: none;
+  box-shadow: 0 4px 18px rgba(18,120,37,0.4);
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-pp-btn-primary:hover {
+  background: #0e5e1d; transform: translateY(-1px);
+  color: #fff; text-decoration: none;
+}
+.c360-pp-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--pp-navy);
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 14px; font-weight: 600;
+  padding: 12px 22px; border-radius: 8px; text-decoration: none;
+  border: 1.5px solid var(--pp-border);
+  transition: border-color 0.2s, background 0.2s;
+}
+.c360-pp-btn-outline:hover {
+  border-color: var(--pp-navy); background: var(--pp-blue-light);
+  color: var(--pp-navy); text-decoration: none;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .c360-pp-layout { grid-template-columns: 1fr; }
+  .c360-pp-toc { position: static; }
+}
+@media (max-width: 640px) {
+  .c360-pp-hero { padding: 50px 0 44px; }
+  .c360-pp-body { padding: 40px 0 60px; }
+  .c360-pp-section-head { padding: 14px 18px; }
+  .c360-pp-section-body { padding: 18px; }
+  .c360-pp-cta { padding: 52px 0; }
+  .c360-pp-cta-actions { flex-direction: column; align-items: stretch; max-width: 280px; margin: 0 auto; }
+  .c360-pp-btn-primary, .c360-pp-btn-outline { justify-content: center; }
+  .c360-pp-tracker-pill { min-width: 100%; }
+}
+</style>
+
+
+<div class="c360-pp-wrap">
+
+  <!-- ══════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-pp-hero">
+    <div class="c360-pp-container">
+      <div class="c360-pp-hero-inner">
+        <div class="c360-pp-hero-eyebrow">
+          <i class="fa-solid fa-shield-halved"></i>
+          Your Privacy Matters
+        </div>
+        <h1>Privacy Policy</h1>
+        <div class="c360-pp-hero-meta">
+          <div class="c360-pp-updated">
+            <i class="fa-solid fa-calendar-check"></i>
+            Last Updated: May 14, 2026
+          </div>
+          <span><i class="fa-solid fa-building"></i> Complete360 — Home Town Hero Partners LLC</span>
+          <span><i class="fa-solid fa-map-pin"></i> Tucson, Arizona</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       BODY
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-pp-body">
+    <div class="c360-pp-container">
+      <div class="c360-pp-layout">
+
+        <!-- TOC -->
+        <aside class="c360-pp-toc">
+          <div class="c360-pp-toc-header">
+            <div class="c360-pp-toc-title">Table of Contents</div>
+          </div>
+          <ul class="c360-pp-toc-list">
+            <li><a href="#pp-1"><span class="c360-pp-toc-num">1</span>Introduction</a></li>
+            <li><a href="#pp-2"><span class="c360-pp-toc-num">2</span>Who We Are</a></li>
+            <li><a href="#pp-3"><span class="c360-pp-toc-num">3</span>Information We Collect</a></li>
+            <li><a href="#pp-4"><span class="c360-pp-toc-num">4</span>How We Use Your Information</a></li>
+            <li><a href="#pp-5"><span class="c360-pp-toc-num">5</span>Cookies &amp; Tracking</a></li>
+            <li><a href="#pp-6"><span class="c360-pp-toc-num">6</span>SMS &amp; Email Communications</a></li>
+            <li><a href="#pp-7"><span class="c360-pp-toc-num">7</span>How We Share Your Information</a></li>
+            <li><a href="#pp-8"><span class="c360-pp-toc-num">8</span>Data Retention</a></li>
+            <li><a href="#pp-9"><span class="c360-pp-toc-num">9</span>Your Rights &amp; Choices</a></li>
+            <li><a href="#pp-10"><span class="c360-pp-toc-num">10</span>Children's Privacy</a></li>
+            <li><a href="#pp-11"><span class="c360-pp-toc-num">11</span>Security</a></li>
+            <li><a href="#pp-12"><span class="c360-pp-toc-num">12</span>Third-Party Links</a></li>
+            <li><a href="#pp-13"><span class="c360-pp-toc-num">13</span>Changes to This Policy</a></li>
+            <li><a href="#pp-14"><span class="c360-pp-toc-num">14</span>Contact Us</a></li>
+          </ul>
+          <div class="c360-pp-toc-footer">
+            <div class="c360-pp-toc-contact">
+              Privacy questions?<br>
+              <a href="tel:+18665276205">(866) 527-6205</a> or
+              <a href="/contact-us">contact us</a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- CONTENT -->
+        <div class="c360-pp-content">
+
+          <div class="c360-pp-callout">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>This Privacy Policy explains how Complete360 (a trade name of Home Town Hero Partners LLC) collects, uses, and protects your personal information when you visit our website, use our platform, or engage our services. By using our site or services, you agree to the practices described in this policy.</p>
+          </div>
+
+
+          <!-- 1. INTRODUCTION -->
+          <div class="c360-pp-section" id="pp-1">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">1</div>
+              <div class="c360-pp-section-title">Introduction</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>At Complete360, we take your privacy seriously. This policy describes what personal information we collect, why we collect it, how we use and protect it, and what choices you have regarding your information. It applies to all visitors to our website (complete360.org), users of our CRM platform, and clients who have engaged any of our services.</p>
+              <p>This policy is incorporated by reference into our <a href="/tos" style="color:var(--pp-green);font-weight:600;">Terms of Service</a>. If you do not agree with the practices described here, please discontinue use of our website and services.</p>
+            </div>
+          </div>
+
+
+          <!-- 2. WHO WE ARE -->
+          <div class="c360-pp-section" id="pp-2">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">2</div>
+              <div class="c360-pp-section-title">Who We Are</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>Complete360 is a trade name (DBA) of <strong>Home Town Hero Partners LLC</strong>, a limited liability company registered in the State of Arizona. We operate as a full-service digital marketing agency and CRM platform provider serving local service businesses across the United States.</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Legal Entity:</strong> Home Town Hero Partners LLC</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Operating Name:</strong> Complete360</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Address:</strong> 3444 N Country Club Rd, Ste 105, Tucson, AZ 85716</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Phone:</strong> (866) 527-6205</span></li>
+              </ul>
+              <p>For the purposes of this Privacy Policy, "we," "us," and "our" refer to Complete360 / Home Town Hero Partners LLC. "You" refers to any visitor, user, or client interacting with our website, platform, or services.</p>
+            </div>
+          </div>
+
+
+          <!-- 3. INFORMATION WE COLLECT -->
+          <div class="c360-pp-section" id="pp-3">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">3</div>
+              <div class="c360-pp-section-title">Information We Collect</div>
+            </div>
+            <div class="c360-pp-section-body">
+
+              <div class="c360-pp-sub">
+                <div class="c360-pp-sub-head">3.1 — Information You Provide Directly</div>
+                <div class="c360-pp-sub-body">
+                  <p>We collect personal information you voluntarily submit when you interact with our website or services, including:</p>
+                  <ul>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Contact forms:</strong> Name, phone number, email address, and message content.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Scheduling:</strong> Name, contact details, and appointment preferences when you book a strategy call or demo.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Payments:</strong> Billing name, address, and payment method details when you make a purchase. Full card numbers are never stored on our servers — they are handled by our PCI-compliant payment processor.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Account registration:</strong> Name, email, phone, and business information when you create a CRM platform account.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Communications:</strong> Content of emails, messages, or calls you direct to us.</span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="c360-pp-sub">
+                <div class="c360-pp-sub-head">3.2 — Information Collected Automatically</div>
+                <div class="c360-pp-sub-body">
+                  <p>When you visit our website, certain information is collected automatically through cookies and similar technologies:</p>
+                  <ul>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Device &amp; browser data:</strong> IP address, browser type and version, operating system, and device identifiers.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Usage data:</strong> Pages visited, time spent on pages, links clicked, referral URLs, and navigation paths.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Location data:</strong> General geographic location inferred from your IP address (city/region level — not precise GPS location).</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Cookie data:</strong> Preferences and session data stored via cookies. See Section 5 for full details.</span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="c360-pp-sub">
+                <div class="c360-pp-sub-head">3.3 — Information from Third Parties</div>
+                <div class="c360-pp-sub-body">
+                  <p>We may receive information about you from third-party sources, including:</p>
+                  <ul>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Google:</strong> Advertising interaction data, search behavior signals, and conversion data through Google Ads and Google Analytics.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Meta (Facebook/Instagram):</strong> Ad interaction and conversion data through Meta Pixel tracking on our website.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Referral partners:</strong> Contact or lead information passed to us by referring partners or co-op advertising programs.</span></li>
+                  </ul>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- 4. HOW WE USE -->
+          <div class="c360-pp-section" id="pp-4">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">4</div>
+              <div class="c360-pp-section-title">How We Use Your Information</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>We use the information we collect for the following purposes:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Service delivery:</strong> To set up, manage, and deliver the marketing services, website projects, and CRM platform access you have purchased.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Communication:</strong> To respond to inquiries, send service-related notifications, schedule calls, and provide support.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Billing &amp; payments:</strong> To process payments, issue receipts, and manage your account billing.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Marketing communications:</strong> To send you relevant offers, updates, or service information. You may opt out at any time (see Section 9).</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Website improvement:</strong> To analyze how visitors use our site, identify issues, and improve the user experience.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Advertising:</strong> To serve you relevant ads on Google and Meta platforms based on your interactions with our website, and to measure the effectiveness of our ad campaigns.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Legal compliance:</strong> To fulfill our legal obligations, resolve disputes, and enforce our agreements.</span></li>
+              </ul>
+              <div class="c360-pp-callout">
+                <i class="fa-solid fa-shield-halved"></i>
+                <p>We do not sell your personal information to third parties, and we do not use your data for any purpose beyond what is described in this policy without your prior consent.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 5. COOKIES & TRACKING -->
+          <div class="c360-pp-section" id="pp-5">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">5</div>
+              <div class="c360-pp-section-title">Cookies &amp; Tracking Technologies</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>We use cookies, pixel tags, and similar tracking technologies to improve your experience on our website, understand how visitors interact with our content, and measure the performance of our advertising campaigns.</p>
+
+              <div class="c360-pp-sub">
+                <div class="c360-pp-sub-head">5.1 — Types of Cookies We Use</div>
+                <div class="c360-pp-sub-body">
+                  <ul>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Essential cookies:</strong> Required for the website to function properly (e.g., session management, form security). These cannot be disabled.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Analytics cookies:</strong> Help us understand how visitors use our site — which pages are most visited, how long people stay, and where they came from.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Advertising cookies:</strong> Used to track conversions from our Google and Meta ad campaigns and to serve you relevant ads after visiting our site.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Functional cookies:</strong> Remember your preferences and settings to improve your experience on return visits.</span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <p>We use the following third-party tracking tools on our website:</p>
+              <div class="c360-pp-tracker-row">
+                <div class="c360-pp-tracker-pill">
+                  <div class="c360-pp-tracker-pill-icon" style="background:#e8f0fe;color:#4285F4;">
+                    <i class="fa-brands fa-google"></i>
+                  </div>
+                  <div class="c360-pp-tracker-pill-name">Google Analytics</div>
+                  <div class="c360-pp-tracker-pill-desc">Tracks website traffic, user behavior, and session data to help us improve site performance.</div>
+                </div>
+                <div class="c360-pp-tracker-pill">
+                  <div class="c360-pp-tracker-pill-icon" style="background:#e8f0fe;color:#4285F4;">
+                    <i class="fa-brands fa-google"></i>
+                  </div>
+                  <div class="c360-pp-tracker-pill-name">Google Ads (Tag)</div>
+                  <div class="c360-pp-tracker-pill-desc">Measures ad conversions and enables remarketing to prior visitors through Google's ad network.</div>
+                </div>
+                <div class="c360-pp-tracker-pill">
+                  <div class="c360-pp-tracker-pill-icon" style="background:#e7f0ff;color:#1877F2;">
+                    <i class="fa-brands fa-meta"></i>
+                  </div>
+                  <div class="c360-pp-tracker-pill-name">Meta Pixel</div>
+                  <div class="c360-pp-tracker-pill-desc">Tracks visitor actions and ad conversions on Facebook and Instagram. Enables custom audience targeting.</div>
+                </div>
+              </div>
+
+              <div class="c360-pp-sub">
+                <div class="c360-pp-sub-head">5.2 — Managing Cookies</div>
+                <div class="c360-pp-sub-body">
+                  <p>You can control cookies through your browser settings. Most browsers allow you to block or delete cookies. Note that disabling certain cookies may affect the functionality of our website. You can also opt out of Google's advertising tracking at <a href="https://adssettings.google.com" target="_blank" rel="noopener" style="color:var(--pp-green);font-weight:600;">adssettings.google.com</a> and Meta's tracking via your <a href="https://www.facebook.com/privacy/explanation" target="_blank" rel="noopener" style="color:var(--pp-green);font-weight:600;">Facebook Privacy Settings</a>.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- 6. SMS & EMAIL -->
+          <div class="c360-pp-section" id="pp-6">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">6</div>
+              <div class="c360-pp-section-title">SMS &amp; Email Communications</div>
+            </div>
+            <div class="c360-pp-section-body">
+
+              <div class="c360-pp-sub">
+                <div class="c360-pp-sub-head">6.1 — Complete360's Own Communications</div>
+                <div class="c360-pp-sub-body">
+                  <p>By submitting your contact information through our website or forms, you may receive communications from us including service updates, promotional offers, appointment reminders, and follow-up messages via email, SMS, or phone.</p>
+                  <ul>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Email:</strong> We comply with the CAN-SPAM Act. Every marketing email includes an unsubscribe link. Transactional emails (receipts, service confirmations) may still be sent after unsubscribing from marketing.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>SMS/Text:</strong> We comply with the Telephone Consumer Protection Act (TCPA). By providing your phone number and agreeing to receive texts, you consent to receive automated text messages from us. Message and data rates may apply. Reply STOP at any time to opt out.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Opt-out:</strong> You may opt out of all marketing communications at any time by replying STOP to any text, clicking unsubscribe in any email, or calling us at (866) 527-6205.</span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="c360-pp-sub">
+                <div class="c360-pp-sub-head">6.2 — Client Use of the CRM Platform</div>
+                <div class="c360-pp-sub-body">
+                  <p>Complete360 provides a CRM platform that enables our clients to send their own email and SMS marketing communications to their customers. When clients use our platform for this purpose:</p>
+                  <ul>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Client responsibility:</strong> Our clients are solely responsible for obtaining proper consent from their own contacts before sending marketing messages, in accordance with TCPA, CAN-SPAM, and any other applicable laws.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Data processing:</strong> We process contact data on behalf of our clients as a service provider. We do not use client contact lists for our own marketing purposes.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Compliance tools:</strong> Our platform includes built-in unsubscribe and opt-out management tools. Clients are required to use these features appropriately.</span></li>
+                    <li><i class="fa-solid fa-circle-check"></i><span><strong>Abuse policy:</strong> We reserve the right to suspend platform access for any client found to be using our system to send unsolicited, deceptive, or illegal communications.</span></li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="c360-pp-warning">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p>If you are a recipient of a message sent by a Complete360 client through our platform and wish to opt out, please use the unsubscribe link included in any email or reply STOP to any text. If you need further assistance, contact us at <a href="tel:+18665276205" style="color:#b45309;font-weight:600;">(866) 527-6205</a>.</p>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- 7. HOW WE SHARE -->
+          <div class="c360-pp-section" id="pp-7">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">7</div>
+              <div class="c360-pp-section-title">How We Share Your Information</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>We do not sell your personal information. We only share your information in the following limited circumstances:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Service providers:</strong> We share data with trusted third-party vendors who assist in delivering our services — including payment processors, platform infrastructure providers, email delivery services, and analytics providers. These partners are contractually obligated to protect your data and may only use it to perform services on our behalf.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Advertising platforms:</strong> We share limited data (such as conversion events) with Google and Meta to measure campaign performance and serve relevant ads. This is governed by their respective privacy policies.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Legal requirements:</strong> We may disclose information if required by law, subpoena, court order, or other governmental request, or if we believe disclosure is necessary to protect our rights or the safety of others.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Business transfers:</strong> In the event of a merger, acquisition, or sale of assets, your information may be transferred as part of that transaction. We will notify you via email or prominent notice on our website if such a transfer occurs.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>With your consent:</strong> We may share your information for any other purpose with your explicit prior consent.</span></li>
+              </ul>
+            </div>
+          </div>
+
+
+          <!-- 8. DATA RETENTION -->
+          <div class="c360-pp-section" id="pp-8">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">8</div>
+              <div class="c360-pp-section-title">Data Retention</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>We retain your personal information for as long as necessary to fulfill the purposes described in this policy, unless a longer retention period is required by law.</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Active clients:</strong> Account and service data is retained for the duration of your engagement with us and for a reasonable period afterward for accounting and legal purposes.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>CRM platform data:</strong> Upon cancellation of your CRM subscription, your data remains accessible for 30 days to allow for export. After 30 days, data may be permanently deleted.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Website visitors:</strong> Analytics and cookie data is retained per the data retention settings of the applicable platform (typically 14–26 months for Google Analytics).</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Payment records:</strong> Transaction records are retained for a minimum of 7 years in accordance with standard accounting and tax requirements.</span></li>
+              </ul>
+            </div>
+          </div>
+
+
+          <!-- 9. YOUR RIGHTS -->
+          <div class="c360-pp-section" id="pp-9">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">9</div>
+              <div class="c360-pp-section-title">Your Rights &amp; Choices</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>Depending on your location, you may have certain rights regarding your personal information. We honor the following regardless of where you are located:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Access:</strong> You may request a copy of the personal information we hold about you.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Correction:</strong> You may request that we correct inaccurate or incomplete information.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Deletion:</strong> You may request that we delete your personal information, subject to any legal retention obligations.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Opt-out of marketing:</strong> You may opt out of marketing emails and SMS at any time by using the unsubscribe/STOP mechanisms or by contacting us directly.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Do Not Track:</strong> Our website does not currently respond to browser-level Do Not Track signals. You may use the opt-out tools described in Section 5 to limit tracking.</span></li>
+              </ul>
+              <p>To exercise any of these rights, contact us at <strong>(866) 527-6205</strong> or via our <a href="/contact-us" style="color:var(--pp-green);font-weight:600;">contact page</a>. We will respond to all requests within 30 days.</p>
+            </div>
+          </div>
+
+
+          <!-- 10. CHILDREN'S PRIVACY -->
+          <div class="c360-pp-section" id="pp-10">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">10</div>
+              <div class="c360-pp-section-title">Children's Privacy</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>Our website and services are intended for adults and business owners. We do not knowingly collect personal information from children under the age of 13. If we become aware that we have inadvertently collected personal information from a child under 13, we will take steps to delete that information promptly. If you believe a child has provided us with personal information, please contact us at <strong>(866) 527-6205</strong>.</p>
+            </div>
+          </div>
+
+
+          <!-- 11. SECURITY -->
+          <div class="c360-pp-section" id="pp-11">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">11</div>
+              <div class="c360-pp-section-title">Security</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>We take the security of your personal information seriously and implement commercially reasonable technical and organizational measures to protect it from unauthorized access, disclosure, alteration, or destruction. These include:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span>SSL/TLS encryption on all data transmitted between your browser and our website.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>PCI-compliant payment processing — we never store full card numbers on our servers.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>Access controls limiting who within our organization can view sensitive client data.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>Regular monitoring of our platform infrastructure for vulnerabilities.</span></li>
+              </ul>
+              <div class="c360-pp-warning">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p>No method of transmission over the internet or electronic storage is 100% secure. While we strive to use commercially acceptable means to protect your information, we cannot guarantee absolute security. If you suspect unauthorized access to your account, contact us immediately at <a href="tel:+18665276205" style="color:#b45309;font-weight:600;">(866) 527-6205</a>.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 12. THIRD-PARTY LINKS -->
+          <div class="c360-pp-section" id="pp-12">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">12</div>
+              <div class="c360-pp-section-title">Third-Party Links</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>Our website may contain links to third-party websites, including Google, Meta, and other platforms we reference. These sites have their own privacy policies, and we are not responsible for their content or practices. We encourage you to review the privacy policy of any third-party site you visit through a link on our website.</p>
+            </div>
+          </div>
+
+
+          <!-- 13. CHANGES -->
+          <div class="c360-pp-section" id="pp-13">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">13</div>
+              <div class="c360-pp-section-title">Changes to This Policy</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>We may update this Privacy Policy from time to time to reflect changes in our practices, services, or legal requirements. When we make material changes, we will update the "Last Updated" date at the top of this page. We encourage you to review this policy periodically.</p>
+              <p>Your continued use of our website or services after any changes constitutes your acceptance of the updated policy. If you do not agree with the changes, please discontinue use of our services and contact us to discuss your options.</p>
+            </div>
+          </div>
+
+
+          <!-- 14. CONTACT -->
+          <div class="c360-pp-section" id="pp-14">
+            <div class="c360-pp-section-head">
+              <div class="c360-pp-section-num">14</div>
+              <div class="c360-pp-section-title">Contact Us</div>
+            </div>
+            <div class="c360-pp-section-body">
+              <p>If you have any questions, concerns, or requests regarding this Privacy Policy or the personal information we hold about you, please reach out using any of the methods below:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Phone:</strong> <a href="tel:+18665276205" style="color:var(--pp-green);">(866) 527-6205</a> — Mon–Thu 7am–4pm · Fri 7am–1pm MST</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Contact Form:</strong> <a href="/contact-us" style="color:var(--pp-green);">complete360.org/contact-us</a></span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Mail:</strong> Home Town Hero Partners LLC dba Complete360, 3444 N Country Club Rd, Ste 105, Tucson, AZ 85716</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="c360-pp-callout">
+            <i class="fa-solid fa-scale-balanced"></i>
+            <p>This Privacy Policy was last updated on <strong>May 14, 2026</strong> and supersedes all prior versions. Continued use of Complete360 services after this date constitutes acceptance of this policy.</p>
+          </div>
+
+        </div><!-- /content -->
+      </div><!-- /layout -->
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       CTA STRIP (white — no collision with navy footer)
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-pp-cta">
+    <div class="c360-pp-container">
+      <div class="c360-pp-cta-inner">
+        <div class="c360-pp-cta-overline">Privacy Questions?</div>
+        <h2>We're happy to <span>walk you through it.</span></h2>
+        <p>If anything in this policy is unclear or you'd like to know exactly what data we hold about you, just give us a call or send us a message.</p>
+        <div class="c360-pp-cta-actions">
+          <a href="tel:+18665276205" class="c360-pp-btn-primary">
+            <i class="fa-solid fa-phone"></i>
+            (866) 527-6205
+          </a>
+          <a href="/contact-us" class="c360-pp-btn-outline">
+            <i class="fa-solid fa-envelope"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.c360-pp-wrap -->
+
+<!-- ============================================================
+     END COMPLETE360 PRIVACY POLICY v2.0
+     ============================================================ -->
