@@ -8,6 +8,12 @@
      - All gallery rules apply ONLY inside .c360-gallery
      - Zero bare .c360-* selectors → zero collision risk with
        the global header (c360-*) or footer (c360f-*)
+
+     PERF UPDATE:
+     - Template gallery now renders 6 cards at a time with a
+       "Show More" button. Only ~6 screenshots load up front
+       (per filter combo) instead of all ~60. Filter changes
+       reset back to 6. Change PAGE_SIZE to adjust batch size.
      ========================================================= -->
 
      <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -528,6 +534,18 @@
        .c360-gallery .c360-empty.is-visible { display: block; }
        .c360-gallery .c360-empty h3 { color: var(--c360g-navy); font-size: 18px; margin: 0 0 6px; }
      
+       /* ── SHOW MORE ─────────────────────────────────────────── */
+       .c360-gallery .c360-load-more-wrap { display: none; justify-content: center; margin-top: 36px; }
+       .c360-gallery .c360-load-more {
+         font-family: inherit; font-size: 14px; font-weight: 700;
+         color: var(--c360g-navy); background: #fff; border: 1.5px solid var(--c360g-border);
+         border-radius: 999px; padding: 13px 30px; cursor: pointer; transition: all .18s ease;
+         display: inline-flex; align-items: center; gap: 8px; min-height: 48px;
+       }
+       .c360-gallery .c360-load-more:hover { border-color: var(--c360g-navy); background: var(--c360g-bg); transform: translateY(-1px); }
+       .c360-gallery .c360-load-more__count { color: var(--c360g-muted); font-weight: 500; }
+       .c360-gallery .c360-load-more__icon { color: var(--c360g-green); font-size: 12px; }
+     
        @media (max-width: 900px) {
          .c360-gallery { padding: 64px 20px 72px; }
          .c360-gallery .c360-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
@@ -558,6 +576,7 @@
          .c360-gallery .c360-card__body { padding: 16px 16px 18px; }
          .c360-gallery .c360-card__name { font-size: 16px; }
          .c360-gallery .c360-btn { min-height: 46px; font-size: 14px; }
+         .c360-gallery .c360-load-more { width: 100%; justify-content: center; }
        }
        @media (max-width: 380px) {
          .c360-gallery .c360-card__actions { flex-direction: column; }
@@ -821,6 +840,13 @@
            <h3>No templates match those filters</h3>
            <p>Try a different tier or industry combination, or reset the filters to see everything.</p>
          </div>
+         <div class="c360-load-more-wrap" id="c360-load-more-wrap">
+           <button class="c360-load-more" id="c360-load-more" type="button">
+             Show More Templates
+             <span class="c360-load-more__count" id="c360-load-more-count"></span>
+             <i class="fa-solid fa-chevron-down c360-load-more__icon"></i>
+           </button>
+         </div>
        </section>
      
        <!-- SOCIAL PROOF -->
@@ -951,6 +977,7 @@
      <script>
      (function(){
        var PRICING_URL = "https://complete360.org/website-pricing";
+       var PAGE_SIZE = 6; // templates shown per batch — change to 3 for a smaller first load
      
        var INDUSTRIES = [
         { key: "all",                  label: "All Industries" },
@@ -1055,7 +1082,7 @@
    { id:"fin-1003",    name:"Financial Services 1003",  tier:"premium",    industry:"financial-services", pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69fe00696982746982fdd6db.png", preview:"https://app.complete360.org/v2/preview/5ab0bv4oT0Hbpaa2NFCQ?notrack=true" },
    ];
      
-       var state = { tier: "all", industry: "all" };
+       var state = { tier: "all", industry: "all", visible: PAGE_SIZE };
        var isTouch = window.matchMedia
          ? window.matchMedia("(hover: none), (pointer: coarse)").matches
          : ("ontouchstart" in window);
@@ -1101,6 +1128,9 @@
        var industryGroupEl=document.getElementById("c360-industry-group");
        var industryToggleEl=document.getElementById("c360-industries-toggle");
        var industryLabelEl=document.getElementById("c360-industries-toggle-label");
+       var loadMoreWrap=document.getElementById("c360-load-more-wrap");
+       var loadMoreBtn=document.getElementById("c360-load-more");
+       var loadMoreCountEl=document.getElementById("c360-load-more-count");
      
        function tierLabel(t){ return {essentials:"Essentials",pro:"Pro",premium:"Premium"}[t]||""; }
        function industryLabel(key){ for(var i=0;i<INDUSTRIES.length;i++) if(INDUSTRIES[i].key===key) return INDUSTRIES[i].label; return key; }
@@ -1121,14 +1151,18 @@
          var filtered=TEMPLATES.filter(function(t){
            return (state.tier==="all"||t.tier===state.tier)&&(state.industry==="all"||t.industry===state.industry);
          });
+         var visibleList=filtered.slice(0, state.visible);
+     
          countEl.textContent=filtered.length;
          var parts=[];
          if(state.tier!=="all") parts.push(tierLabel(state.tier));
          if(state.industry!=="all") parts.push(industryLabel(state.industry));
          activeEl.textContent=parts.length?"Filtered by: "+parts.join(" · "):"";
-         if(filtered.length===0){ gridEl.innerHTML=""; emptyEl.classList.add("is-visible"); return; }
+     
+         if(filtered.length===0){ gridEl.innerHTML=""; emptyEl.classList.add("is-visible"); loadMoreWrap.style.display="none"; return; }
          emptyEl.classList.remove("is-visible");
-         gridEl.innerHTML=filtered.map(function(t){
+     
+         gridEl.innerHTML=visibleList.map(function(t){
            var pl=previewFor(t), sc=screenshotFor(t);
            return '<article class="c360-card" data-tier="'+t.tier+'" data-industry="'+t.industry+'" data-preview="'+pl+'">'
              +'<div class="c360-card__preview">'
@@ -1148,6 +1182,15 @@
          }).join("");
          // SCOPED: only touch cards inside the gallery, never in the header
          if(isTouch && galleryEl) galleryEl.querySelectorAll(".c360-card").forEach(function(c){ c.classList.add("is-touch"); });
+     
+         // Show-more button state
+         var remaining=filtered.length-visibleList.length;
+         if(remaining>0){
+           loadMoreWrap.style.display="flex";
+           loadMoreCountEl.textContent="("+remaining+" more)";
+         } else {
+           loadMoreWrap.style.display="none";
+         }
        }
      
        function updateTierPills(){
@@ -1161,12 +1204,23 @@
      
        if(galleryEl){
          galleryEl.querySelectorAll(".c360-tier-pill").forEach(function(btn){
-           btn.addEventListener("click",function(){ state.tier=btn.getAttribute("data-tier"); updateTierPills(); renderCards(); });
+           btn.addEventListener("click",function(){
+             state.tier=btn.getAttribute("data-tier");
+             state.visible=PAGE_SIZE; // reset batch on filter change
+             updateTierPills(); renderCards();
+           });
          });
        }
        industriesEl.addEventListener("click",function(e){
          var btn=e.target.closest(".c360-chip"); if(!btn) return;
-         state.industry=btn.getAttribute("data-industry"); updateIndustryChips(); renderCards(); updateAccordionLabel(); closeAccordion();
+         state.industry=btn.getAttribute("data-industry");
+         state.visible=PAGE_SIZE; // reset batch on filter change
+         updateIndustryChips(); renderCards(); updateAccordionLabel(); closeAccordion();
+       });
+     
+       loadMoreBtn.addEventListener("click",function(){
+         state.visible+=PAGE_SIZE;
+         renderCards();
        });
      
        function updateAccordionLabel(){ industryLabelEl.textContent=industryLabel(state.industry); }
