@@ -1,1 +1,1754 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Local SEO Booster
+     c360-local-seo-booster-v1.0.html
+     GHL: Paste into Custom Code block on /local-seo-booster page.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+/* ══════════════════════════════════════════════════════
+   Complete360 Local SEO Booster  |  Prefix: c360-lsb-
+   ══════════════════════════════════════════════════════ */
+
+:root {
+  --lsb-navy:        #122078;
+  --lsb-navy-dark:   #0d1654;
+  --lsb-navy-deeper: #0a1040;
+  --lsb-green:       #127825;
+  --lsb-green-hover: #0e5e1d;
+  --lsb-green-light: #EAF3DE;
+  --lsb-blue-light:  #E6F1FB;
+  --lsb-grey:        #888780;
+  --lsb-light-grey:  #F1EFE8;
+  --lsb-text:        #0F1F5E;
+  --lsb-text-muted:  #5F5E5A;
+  --lsb-radius:      12px;
+  --lsb-radius-lg:   20px;
+  --lsb-shadow:      0 8px 32px rgba(18,32,120,0.13);
+  --lsb-shadow-lg:   0 16px 56px rgba(18,32,120,0.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.c360-lsb-section   { width: 100%; position: relative; }
+.c360-lsb-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ── BUTTONS ── */
+.c360-lsb-btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--lsb-green); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 700;
+  padding: 15px 28px; border-radius: 8px;
+  text-decoration: none; border: none; cursor: pointer;
+  white-space: nowrap; line-height: 1;
+  box-shadow: 0 4px 20px rgba(18,120,37,0.35);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.c360-lsb-btn-primary:hover {
+  background: var(--lsb-green-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(18,120,37,0.45); color: #fff; text-decoration: none;
+}
+.c360-lsb-btn-navy {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--lsb-navy); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 700;
+  padding: 15px 28px; border-radius: 8px;
+  text-decoration: none; border: none; cursor: pointer;
+  white-space: nowrap; line-height: 1;
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-lsb-btn-navy:hover {
+  background: var(--lsb-navy-dark); transform: translateY(-2px);
+  color: #fff; text-decoration: none;
+}
+.c360-lsb-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: rgba(255,255,255,0.85);
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 600;
+  padding: 14px 24px; border-radius: 8px;
+  text-decoration: none; line-height: 1;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.c360-lsb-btn-outline:hover {
+  border-color: rgba(255,255,255,0.7); color: #fff;
+  background: rgba(255,255,255,0.08); text-decoration: none;
+}
+
+/* ── SECTION HEADER ── */
+.c360-lsb-section-header { text-align: center; margin-bottom: 56px; }
+.c360-lsb-overline {
+  display: inline-block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--lsb-green); margin-bottom: 12px;
+}
+.c360-lsb-section-header h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(26px,3.8vw,42px); font-weight: 800;
+  color: var(--lsb-text); margin: 0 0 16px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-lsb-section-header p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; color: var(--lsb-text-muted);
+  max-width: 620px; margin: 0 auto; line-height: 1.65;
+}
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-hero {
+  background: linear-gradient(135deg, #09103c 0%, #122078 55%, #0c1960 100%);
+  position: relative; overflow: hidden; padding: 92px 0 80px;
+}
+.c360-lsb-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 15% 60%, rgba(18,120,37,0.16) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-lsb-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.c360-lsb-hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px; align-items: center;
+}
+.c360-lsb-hero-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(18,120,37,0.18); border: 1px solid rgba(18,120,37,0.36);
+  color: #7ddc80;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 6px 14px;
+  border-radius: 100px; margin-bottom: 22px;
+}
+.c360-lsb-hero h1 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(34px,4.8vw,58px); font-weight: 800;
+  line-height: 1.07; color: #fff; margin: 0 0 20px;
+  letter-spacing: -0.025em;
+}
+.c360-lsb-hero h1 span { color: #2ecc52; }
+.c360-lsb-hero-sub {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.72);
+  line-height: 1.65; margin: 0 0 32px; max-width: 520px;
+}
+.c360-lsb-hero-actions {
+  display: flex; align-items: center; gap: 14px;
+  flex-wrap: wrap; margin-bottom: 36px;
+}
+.c360-lsb-hero-micro {
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+}
+.c360-lsb-micro-item {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500;
+}
+.c360-lsb-micro-item i { color: #2ecc52; }
+/* Hero image panel */
+.c360-lsb-hero-img-wrap {
+  position: relative;
+}
+.c360-lsb-hero-img-wrap img {
+  width: 100%; border-radius: var(--lsb-radius-lg);
+  box-shadow: 0 24px 80px rgba(0,0,0,0.45);
+  display: block;
+}
+.c360-lsb-hero-img-badge {
+  position: absolute; bottom: -16px; left: 50%; transform: translateX(-50%);
+  display: flex; align-items: center; gap: 20px;
+  background: rgba(14,20,70,0.92);
+  border: 1px solid rgba(46,204,82,0.3);
+  border-radius: 100px; padding: 10px 22px;
+  backdrop-filter: blur(8px);
+  white-space: nowrap;
+}
+.c360-lsb-hero-img-badge-item {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.85);
+}
+.c360-lsb-hero-img-badge-item i { color: #2ecc52; font-size: 11px; }
+.c360-lsb-hero-img-badge-sep {
+  width: 1px; height: 16px;
+  background: rgba(255,255,255,0.15);
+}
+
+/* ══════════════════════════════════════════════════════
+   TRUST BAR
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-trust-bar { background: #fff; border-bottom: 1px solid #e5e3dc; }
+.c360-lsb-trust-bar-inner {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+}
+.c360-lsb-trust-pill {
+  display: flex; align-items: center; gap: 12px;
+  padding: 18px 24px; border-right: 1px solid #e5e3dc; transition: background 0.18s;
+}
+.c360-lsb-trust-pill:last-child { border-right: none; }
+.c360-lsb-trust-pill:hover { background: var(--lsb-blue-light); }
+.c360-lsb-trust-ico {
+  width: 38px; height: 38px; background: var(--lsb-blue-light);
+  border-radius: 9px; display: flex; align-items: center;
+  justify-content: center; color: var(--lsb-navy); font-size: 16px; flex-shrink: 0;
+}
+.c360-lsb-trust-ico.green { background: var(--lsb-green-light); color: var(--lsb-green); }
+.c360-lsb-trust-ico.gold  { background: #FFF8E7; color: #f59e0b; }
+.c360-lsb-trust-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; color: var(--lsb-text); line-height: 1.2;
+}
+.c360-lsb-trust-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: var(--lsb-text-muted);
+}
+
+/* ══════════════════════════════════════════════════════
+   INSTANT AUDIT / PROSPECTING WIDGET
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-audit {
+  padding: 80px 0;
+  background: var(--lsb-blue-light);
+  border-bottom: 1px solid #d0e6f7;
+}
+.c360-lsb-audit-inner {
+  display: grid; grid-template-columns: 1fr 1.15fr;
+  gap: 64px; align-items: center;
+}
+.c360-lsb-audit-copy h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(22px,3.2vw,36px); font-weight: 800;
+  color: var(--lsb-text); margin: 0 0 16px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-lsb-audit-copy p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; color: var(--lsb-text-muted);
+  line-height: 1.7; margin-bottom: 24px;
+}
+.c360-lsb-audit-bullets {
+  display: flex; flex-direction: column; gap: 10px;
+}
+.c360-lsb-audit-bullet {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; font-weight: 500; color: var(--lsb-text);
+}
+.c360-lsb-audit-bullet i { color: var(--lsb-green); font-size: 13px; flex-shrink: 0; }
+.c360-lsb-audit-widget {
+  background: #fff;
+  border-radius: var(--lsb-radius-lg);
+  box-shadow: var(--lsb-shadow-lg);
+  overflow: hidden;
+  min-height: 200px;
+}
+
+/* ══════════════════════════════════════════════════════
+   INTRO / WHAT WE DO
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-intro { padding: 88px 0; background: #fff; }
+.c360-lsb-intro-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start;
+}
+.c360-lsb-intro-copy h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(24px,3.4vw,38px); font-weight: 800;
+  color: var(--lsb-text); margin: 0 0 18px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-lsb-intro-copy h2 span { color: var(--lsb-green); }
+.c360-lsb-intro-copy p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; color: var(--lsb-text-muted);
+  line-height: 1.72; margin-bottom: 20px;
+}
+.c360-lsb-intro-copy p:last-of-type { margin-bottom: 28px; }
+.c360-lsb-alert-box {
+  background: var(--lsb-green-light);
+  border: 1px solid rgba(18,120,37,0.25);
+  border-left: 4px solid var(--lsb-green);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 18px; margin-bottom: 28px;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.c360-lsb-alert-box i { color: var(--lsb-green); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+.c360-lsb-alert-box p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: var(--lsb-text); font-weight: 500;
+  line-height: 1.55; margin: 0;
+}
+.c360-lsb-included-grid {
+  display: flex; flex-direction: column; gap: 0;
+  background: var(--lsb-light-grey);
+  border: 1.5px solid #dddbd4; border-radius: var(--lsb-radius);
+  overflow: hidden;
+}
+.c360-lsb-included-header {
+  background: var(--lsb-navy); padding: 14px 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.c360-lsb-included-header span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+}
+.c360-lsb-included-header i { color: #2ecc52; }
+.c360-lsb-included-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 13px 20px; border-bottom: 1px solid #dddbd4;
+}
+.c360-lsb-included-item:last-child { border-bottom: none; }
+.c360-lsb-included-item i {
+  color: var(--lsb-green); font-size: 12px; margin-top: 3px; flex-shrink: 0;
+}
+.c360-lsb-included-item span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: var(--lsb-text); font-weight: 500; line-height: 1.5;
+}
+.c360-lsb-included-item span em {
+  display: block; font-style: normal;
+  font-size: 12px; color: var(--lsb-text-muted); font-weight: 400; margin-top: 1px;
+}
+
+/* ══════════════════════════════════════════════════════
+   AI SEARCH VISIBILITY — HERO SECTION
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-ai {
+  padding: 88px 0;
+  background: linear-gradient(135deg, #06092a 0%, #0d1654 55%, #0a1a40 100%);
+  position: relative; overflow: hidden;
+}
+.c360-lsb-ai::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(18,120,37,0.14) 0%, transparent 48%),
+    radial-gradient(circle at 10% 80%, rgba(255,255,255,0.03) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-lsb-ai::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.c360-lsb-ai-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: center; position: relative; z-index: 2;
+}
+.c360-lsb-ai-copy .c360-lsb-overline { color: #2ecc52; }
+.c360-lsb-ai-h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(24px,3.4vw,38px); font-weight: 800;
+  color: #fff; margin: 0 0 18px; line-height: 1.12; letter-spacing: -0.02em;
+}
+.c360-lsb-ai-h2 span { color: #2ecc52; }
+.c360-lsb-ai-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; color: rgba(255,255,255,0.65);
+  line-height: 1.7; margin-bottom: 28px;
+}
+/* AI stat callout */
+.c360-lsb-ai-stat {
+  display: flex; align-items: flex-start; gap: 16px;
+  background: rgba(18,120,37,0.12); border: 1px solid rgba(18,120,37,0.3);
+  border-radius: var(--lsb-radius); padding: 18px 20px; margin-bottom: 28px;
+}
+.c360-lsb-ai-stat-num {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 40px; font-weight: 800; color: #2ecc52; line-height: 1; flex-shrink: 0;
+}
+.c360-lsb-ai-stat-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; font-weight: 700; color: #fff; margin-bottom: 4px;
+}
+.c360-lsb-ai-stat-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.55;
+}
+/* Platform grid */
+.c360-lsb-platform-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 10px; margin-bottom: 32px;
+}
+.c360-lsb-platform-pill {
+  display: flex; align-items: center; gap: 10px;
+  background: rgba(255,255,255,0.065);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 12px 14px;
+  transition: background 0.18s, border-color 0.18s;
+}
+.c360-lsb-platform-pill:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: rgba(46,204,82,0.3);
+}
+.c360-lsb-platform-ico {
+  width: 32px; height: 32px; border-radius: 7px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; color: #fff;
+}
+.c360-lsb-platform-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.9); line-height: 1.2;
+}
+.c360-lsb-platform-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10.5px; color: rgba(255,255,255,0.4);
+}
+/* AI visual — chat mockup cards */
+.c360-lsb-ai-visual {
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative; z-index: 2;
+}
+.c360-lsb-ai-chat-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 14px; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.3);
+}
+.c360-lsb-chat-header {
+  background: rgba(255,255,255,0.08);
+  padding: 12px 16px; border-bottom: 1px solid rgba(255,255,255,0.09);
+  display: flex; align-items: center; gap: 10px;
+}
+.c360-lsb-chat-icon {
+  width: 28px; height: 28px; border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; color: #fff;
+}
+.c360-lsb-chat-platform-name {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; color: rgba(255,255,255,0.85);
+}
+.c360-lsb-chat-body { padding: 14px 16px; display: flex; flex-direction: column; gap: 10px; }
+.c360-lsb-chat-query {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px; padding: 10px 14px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: rgba(255,255,255,0.7);
+  font-style: italic;
+}
+.c360-lsb-chat-query::before {
+  content: 'User: ';
+  font-weight: 700; color: rgba(255,255,255,0.4); font-style: normal;
+}
+.c360-lsb-chat-answer {
+  border-left: 3px solid #2ecc52;
+  background: rgba(18,120,37,0.1);
+  border-radius: 0 8px 8px 0; padding: 10px 14px;
+}
+.c360-lsb-chat-answer-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; font-weight: 700; color: #2ecc52;
+  letter-spacing: 0.07em; text-transform: uppercase; margin-bottom: 5px;
+}
+.c360-lsb-chat-answer-text {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: rgba(255,255,255,0.75); line-height: 1.55;
+}
+.c360-lsb-chat-answer-biz {
+  display: flex; align-items: center; gap: 6px; margin-top: 8px;
+  background: rgba(255,255,255,0.07);
+  border-radius: 6px; padding: 6px 10px;
+}
+.c360-lsb-chat-answer-biz i { color: #f59e0b; font-size: 10px; }
+.c360-lsb-chat-answer-biz span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; color: rgba(255,255,255,0.75); font-weight: 600;
+}
+/* NAP data card */
+.c360-lsb-nap-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 12px; padding: 16px 18px;
+}
+.c360-lsb-nap-card-title {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; font-weight: 700; color: #2ecc52;
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px;
+}
+.c360-lsb-nap-rows { display: flex; flex-direction: column; gap: 8px; }
+.c360-lsb-nap-row {
+  display: flex; align-items: center; gap: 10px;
+}
+.c360-lsb-nap-row-label {
+  width: 24px; height: 24px; border-radius: 6px;
+  background: rgba(255,255,255,0.08);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 10px; color: rgba(255,255,255,0.5); flex-shrink: 0;
+}
+.c360-lsb-nap-row-val {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: rgba(255,255,255,0.75); font-weight: 500; flex: 1;
+}
+.c360-lsb-nap-synced {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; font-weight: 700; color: #2ecc52;
+  background: rgba(46,204,82,0.12); border-radius: 100px; padding: 2px 8px;
+}
+/* Dir count badge */
+.c360-lsb-dir-count {
+  display: flex; align-items: center; justify-content: space-between;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 10px; padding: 14px 18px;
+}
+.c360-lsb-dir-count-num {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 28px; font-weight: 800; color: #2ecc52; line-height: 1;
+}
+.c360-lsb-dir-count-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.55); margin-top: 2px; line-height: 1.4;
+}
+.c360-lsb-dir-icons { display: flex; gap: 6px; }
+.c360-lsb-dir-dot {
+  width: 28px; height: 28px; border-radius: 7px;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; color: rgba(255,255,255,0.5);
+}
+
+/* ══════════════════════════════════════════════════════
+   NETWORK — 70+ LISTINGS IMAGE SECTION
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-network { padding: 88px 0; background: var(--lsb-light-grey); }
+.c360-lsb-network-inner {
+  display: grid; grid-template-columns: 0.95fr 1.05fr;
+  gap: 72px; align-items: center;
+}
+.c360-lsb-network-copy h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(24px,3.4vw,38px); font-weight: 800;
+  color: var(--lsb-text); margin: 0 0 18px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-lsb-network-copy h2 span { color: var(--lsb-green); }
+.c360-lsb-network-copy p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; color: var(--lsb-text-muted);
+  line-height: 1.72; margin-bottom: 28px;
+}
+.c360-lsb-network-stats {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 12px; margin-bottom: 32px;
+}
+.c360-lsb-network-stat {
+  background: #fff; border: 1.5px solid #e5e3dc;
+  border-radius: var(--lsb-radius); padding: 16px 12px; text-align: center;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.c360-lsb-network-stat:hover {
+  border-color: rgba(18,120,37,0.25); box-shadow: var(--lsb-shadow);
+}
+.c360-lsb-network-stat-val {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 26px; font-weight: 800; color: var(--lsb-navy); display: block;
+  line-height: 1; margin-bottom: 4px;
+}
+.c360-lsb-network-stat-lbl {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; color: var(--lsb-text-muted); font-weight: 500;
+}
+.c360-lsb-network-img {
+  border-radius: var(--lsb-radius-lg);
+  box-shadow: var(--lsb-shadow-lg);
+  overflow: hidden;
+}
+.c360-lsb-network-img img {
+  width: 100%; display: block;
+}
+
+/* ══════════════════════════════════════════════════════
+   WHY NAP CONSISTENCY MATTERS
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-nap { padding: 88px 0; background: #fff; }
+.c360-lsb-nap-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; margin-top: 0;
+}
+.c360-lsb-nap-card-item {
+  background: var(--lsb-light-grey);
+  border: 1.5px solid #e5e3dc; border-radius: var(--lsb-radius-lg);
+  padding: 28px 24px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.c360-lsb-nap-card-item:hover {
+  border-color: rgba(18,120,37,0.3);
+  box-shadow: var(--lsb-shadow); transform: translateY(-3px);
+}
+.c360-lsb-nap-ico {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--lsb-navy); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; margin-bottom: 16px; flex-shrink: 0;
+  transition: background 0.2s;
+}
+.c360-lsb-nap-card-item:hover .c360-lsb-nap-ico { background: var(--lsb-green); }
+.c360-lsb-nap-card-title {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 16px; font-weight: 700; color: var(--lsb-text); margin-bottom: 10px;
+}
+.c360-lsb-nap-card-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; color: var(--lsb-text-muted); line-height: 1.65;
+}
+
+/* ══════════════════════════════════════════════════════
+   HOW IT WORKS
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-process { padding: 88px 0; background: var(--lsb-light-grey); }
+.c360-lsb-process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; position: relative; margin-top: 16px;
+}
+.c360-lsb-process-steps::before {
+  content: ''; position: absolute;
+  top: 44px; left: 12.5%; right: 12.5%; height: 2px;
+  background: linear-gradient(90deg, var(--lsb-navy) 0%, var(--lsb-green) 100%);
+  z-index: 0;
+}
+.c360-lsb-step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 12px; position: relative; z-index: 1;
+}
+.c360-lsb-step-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--lsb-navy);
+  border: 3px solid var(--lsb-green-light);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px; margin-bottom: 18px; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(18,32,120,0.2);
+}
+.c360-lsb-step:last-child .c360-lsb-step-num { background: var(--lsb-green); }
+.c360-lsb-step-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; font-weight: 700; color: var(--lsb-text);
+  margin-bottom: 8px; line-height: 1.3;
+}
+.c360-lsb-step-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: var(--lsb-text-muted); line-height: 1.55;
+}
+
+/* ══════════════════════════════════════════════════════
+   ANALYTICS / CONTENT RICH LISTINGS
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-analytics { padding: 88px 0; background: #fff; }
+.c360-lsb-analytics-inner {
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  gap: 72px; align-items: center;
+}
+.c360-lsb-analytics-img {
+  border-radius: var(--lsb-radius-lg);
+  box-shadow: var(--lsb-shadow-lg);
+  overflow: hidden; order: -1;
+}
+.c360-lsb-analytics-img img {
+  width: 100%; display: block;
+}
+.c360-lsb-analytics-copy h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(24px,3.4vw,38px); font-weight: 800;
+  color: var(--lsb-text); margin: 0 0 18px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-lsb-analytics-copy h2 span { color: var(--lsb-green); }
+.c360-lsb-analytics-copy p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; color: var(--lsb-text-muted);
+  line-height: 1.72; margin-bottom: 24px;
+}
+.c360-lsb-analytics-list {
+  display: flex; flex-direction: column; gap: 14px; margin-bottom: 32px;
+}
+.c360-lsb-analytics-item {
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.c360-lsb-analytics-ico {
+  width: 36px; height: 36px; border-radius: 9px; flex-shrink: 0;
+  background: var(--lsb-green-light);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--lsb-green); font-size: 14px;
+}
+.c360-lsb-analytics-item-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; font-weight: 700; color: var(--lsb-text); margin-bottom: 2px;
+}
+.c360-lsb-analytics-item-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: var(--lsb-text-muted); line-height: 1.55;
+}
+
+/* ══════════════════════════════════════════════════════
+   PRICING
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-pricing {
+  padding: 88px 0;
+  background: linear-gradient(135deg, #09103c 0%, #122078 58%, #0c1960 100%);
+  position: relative; overflow: hidden;
+}
+.c360-lsb-pricing::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(18,120,37,0.2) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-lsb-pricing .c360-lsb-section-header h2 { color: #fff; }
+.c360-lsb-pricing .c360-lsb-section-header p  { color: rgba(255,255,255,0.6); }
+.c360-lsb-pricing .c360-lsb-overline           { color: #2ecc52; }
+.c360-lsb-price-cards {
+  display: grid; grid-template-columns: repeat(2, 1fr);
+  gap: 28px; position: relative; z-index: 2;
+  max-width: 860px; margin: 0 auto;
+}
+.c360-lsb-price-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--lsb-radius-lg); padding: 40px 36px;
+  position: relative; transition: background 0.22s, border-color 0.22s;
+  display: flex; flex-direction: column;
+}
+.c360-lsb-price-card:hover {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.22);
+}
+.c360-lsb-price-card--popular {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(46,204,82,0.55);
+  box-shadow: 0 0 0 4px rgba(46,204,82,0.08);
+}
+.c360-lsb-popular-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--lsb-green); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 5px 16px; border-radius: 100px;
+  white-space: nowrap;
+}
+.c360-lsb-plan-name {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;
+}
+.c360-lsb-plan-tagline {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 20px; line-height: 1.4;
+}
+.c360-lsb-price-row {
+  display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px;
+}
+.c360-lsb-price-dollar {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 20px; font-weight: 700; color: rgba(255,255,255,0.6); padding-bottom: 10px;
+}
+.c360-lsb-price-num {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 60px; font-weight: 800; color: #fff; line-height: 1;
+  letter-spacing: -0.03em;
+}
+.c360-lsb-price-period {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: rgba(255,255,255,0.4); padding-bottom: 10px;
+}
+.c360-lsb-price-save {
+  display: inline-block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; color: #2ecc52; font-weight: 700;
+  background: rgba(46,204,82,0.12); border: 1px solid rgba(46,204,82,0.25);
+  border-radius: 100px; padding: 3px 10px; margin-bottom: 22px;
+}
+.c360-lsb-price-save.invisible { visibility: hidden; }
+.c360-lsb-price-divider {
+  height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 22px;
+}
+.c360-lsb-price-features {
+  list-style: none; margin: 0 0 28px; padding: 0;
+  display: flex; flex-direction: column; gap: 10px; flex: 1;
+}
+.c360-lsb-price-features li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; color: rgba(255,255,255,0.72);
+  line-height: 1.45; font-weight: 500;
+}
+.c360-lsb-price-features li i { color: #2ecc52; margin-top: 2px; flex-shrink: 0; font-size: 11px; }
+.c360-lsb-price-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 16px 20px; border-radius: 8px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 700; text-decoration: none;
+  border: none; cursor: pointer; white-space: nowrap; line-height: 1;
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-lsb-price-btn--outline {
+  background: transparent; color: rgba(255,255,255,0.8);
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.c360-lsb-price-btn--outline:hover {
+  border-color: rgba(255,255,255,0.6); color: #fff;
+  background: rgba(255,255,255,0.07); text-decoration: none;
+  transform: translateY(-2px);
+}
+.c360-lsb-price-btn--green {
+  background: var(--lsb-green); color: #fff;
+  box-shadow: 0 4px 18px rgba(18,120,37,0.4);
+}
+.c360-lsb-price-btn--green:hover {
+  background: var(--lsb-green-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(18,120,37,0.5); color: #fff; text-decoration: none;
+}
+.c360-lsb-pricing-foot {
+  text-align: center; margin-top: 42px; position: relative; z-index: 2;
+}
+.c360-lsb-pricing-foot p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.38); margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   REVIEWS
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-reviews { padding: 88px 0; background: var(--lsb-light-grey); }
+
+/* ══════════════════════════════════════════════════════
+   FINAL CTA
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-cta {
+  padding: 96px 0;
+  background: linear-gradient(135deg, #09103c 0%, #122078 58%, #0c1960 100%);
+  position: relative; overflow: hidden; text-align: center;
+}
+.c360-lsb-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(18,120,37,0.22) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-lsb-cta-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+.c360-lsb-cta h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(28px,4vw,48px); font-weight: 800;
+  color: #fff; margin: 16px 0 18px; line-height: 1.09; letter-spacing: -0.025em;
+}
+.c360-lsb-cta h2 span { color: #2ecc52; }
+.c360-lsb-cta-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 16px; color: rgba(255,255,255,0.65); margin: 0 0 38px; line-height: 1.65;
+}
+.c360-lsb-cta-actions {
+  display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+}
+.c360-lsb-cta-trust {
+  display: flex; align-items: center; justify-content: center;
+  gap: 28px; margin-top: 36px; flex-wrap: wrap;
+}
+.c360-lsb-cta-trust span {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: rgba(255,255,255,0.42); font-weight: 500;
+}
+.c360-lsb-cta-trust span i { color: #2ecc52; font-size: 12px; }
+
+/* ══════════════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════════════ */
+.c360-lsb-faq { padding: 88px 0; background: #fff; border-top: 1px solid #e5e3dc; }
+.c360-lsb-faq-list {
+  max-width: 800px; margin: 0 auto;
+  display: flex; flex-direction: column; gap: 0;
+}
+.c360-lsb-faq-toggle { display: none; }
+.c360-lsb-faq-item { border-bottom: 1px solid #e5e3dc; }
+.c360-lsb-faq-item:first-child { border-top: 1px solid #e5e3dc; }
+.c360-lsb-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 6px; cursor: pointer; gap: 16px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; font-weight: 600; color: var(--lsb-text);
+  line-height: 1.4; transition: color 0.18s; user-select: none; list-style: none;
+}
+.c360-lsb-faq-q:hover { color: var(--lsb-navy); }
+.c360-lsb-faq-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: var(--lsb-blue-light); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--lsb-navy); font-size: 11px;
+  transition: transform 0.3s ease, background 0.2s;
+}
+.c360-lsb-faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease;
+  padding: 0 6px;
+}
+.c360-lsb-faq-a p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; color: var(--lsb-text-muted); line-height: 1.7;
+  margin: 0 0 22px; padding-top: 4px;
+}
+.c360-lsb-faq-toggle:checked ~ .c360-lsb-faq-q .c360-lsb-faq-icon {
+  transform: rotate(180deg); background: var(--lsb-navy); color: #fff;
+}
+.c360-lsb-faq-toggle:checked ~ .c360-lsb-faq-a { max-height: 500px; }
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 980px) {
+  .c360-lsb-hero-inner,
+  .c360-lsb-intro-inner,
+  .c360-lsb-ai-inner,
+  .c360-lsb-network-inner,
+  .c360-lsb-analytics-inner,
+  .c360-lsb-audit-inner { grid-template-columns: 1fr; gap: 40px; }
+  .c360-lsb-hero-img-wrap { display: none; }
+  .c360-lsb-analytics-img { order: 0; }
+  .c360-lsb-nap-grid { grid-template-columns: repeat(2, 1fr); }
+  .c360-lsb-price-cards { grid-template-columns: 1fr; max-width: 440px; }
+  .c360-lsb-process-steps { grid-template-columns: repeat(2, 1fr); }
+  .c360-lsb-process-steps::before { display: none; }
+}
+@media (max-width: 768px) {
+  .c360-lsb-hero, .c360-lsb-cta { padding: 68px 0 56px; }
+  .c360-lsb-intro, .c360-lsb-ai, .c360-lsb-process,
+  .c360-lsb-nap, .c360-lsb-analytics, .c360-lsb-pricing,
+  .c360-lsb-reviews, .c360-lsb-faq, .c360-lsb-network { padding: 64px 0; }
+  .c360-lsb-nap-grid { grid-template-columns: 1fr; }
+  .c360-lsb-platform-grid { grid-template-columns: 1fr; }
+  .c360-lsb-trust-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .c360-lsb-trust-pill { border-right: none; border-bottom: 1px solid #e5e3dc; }
+  .c360-lsb-trust-pill:nth-child(odd) { border-right: 1px solid #e5e3dc; }
+  .c360-lsb-trust-pill:last-child { border-bottom: none; }
+  .c360-lsb-trust-pill:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .c360-lsb-section-header { margin-bottom: 40px; }
+  .c360-lsb-network-stats { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 540px) {
+  .c360-lsb-hero h1 { font-size: 32px; }
+  .c360-lsb-hero-actions { flex-direction: column; align-items: flex-start; }
+  .c360-lsb-btn-primary, .c360-lsb-btn-outline { width: 100%; justify-content: center; }
+  .c360-lsb-cta-actions { flex-direction: column; }
+  .c360-lsb-process-steps { grid-template-columns: 1fr; }
+  .c360-lsb-process-steps::before { display: none; }
+  .c360-lsb-trust-pill { border-right: none; }
+  .c360-lsb-network-stats { grid-template-columns: 1fr; }
+}
+</style>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 1 — HERO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsb-section c360-lsb-hero">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-hero-inner">
+
+      <!-- LEFT COPY -->
+      <div>
+        <div class="c360-lsb-hero-badge">
+          <i class="fa-solid fa-layer-group"></i>
+          Local SEO Booster — Powered by Yext
+        </div>
+        <h1>
+          Get Found<br>
+          on <span>Google, AI Search,</span><br>
+          &amp; 70+ More.
+        </h1>
+        <p class="c360-lsb-hero-sub">
+          ChatGPT, Perplexity, Siri, and Bing are all recommending local businesses right now. If your listing data isn't accurate and consistent everywhere, you're invisible — even to customers actively searching for what you do.
+        </p>
+        <div class="c360-lsb-hero-actions">
+          <a href="tel:+18665276205" class="c360-lsb-btn-primary">
+            <i class="fa-solid fa-phone"></i> Call (866) 527-6205
+          </a>
+          <a href="#c360-lsb-pricing" class="c360-lsb-btn-outline">
+            View Plans &amp; Pricing <i class="fa-solid fa-arrow-down"></i>
+          </a>
+        </div>
+        <div class="c360-lsb-hero-micro">
+          <div class="c360-lsb-micro-item">
+            <i class="fa-solid fa-layer-group"></i> Powered by Yext
+          </div>
+          <div class="c360-lsb-micro-item">
+            <i class="fa-solid fa-robot"></i> AI Search Ready
+          </div>
+          <div class="c360-lsb-micro-item">
+            <i class="fa-solid fa-arrows-rotate"></i> Sync Once, Update Everywhere
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — Hero image -->
+      <div class="c360-lsb-hero-img-wrap">
+        <img
+          src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/662ef1cf8f22b94e5a389fc8.png"
+          alt="Local SEO Booster — 70+ directory and AI platform listings"
+          loading="eager"
+        >
+        <div class="c360-lsb-hero-img-badge">
+          <div class="c360-lsb-hero-img-badge-item">
+            <i class="fa-solid fa-circle-check"></i> 70+ Directories
+          </div>
+          <div class="c360-lsb-hero-img-badge-sep"></div>
+          <div class="c360-lsb-hero-img-badge-item">
+            <i class="fa-solid fa-robot"></i> AI Platforms
+          </div>
+          <div class="c360-lsb-hero-img-badge-sep"></div>
+          <div class="c360-lsb-hero-img-badge-item">
+            <i class="fa-solid fa-arrows-rotate"></i> Real-Time Sync
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 2 — TRUST BAR
+     ══════════════════════════════════════════════════════ -->
+<div class="c360-lsb-trust-bar">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-trust-bar-inner">
+      <div class="c360-lsb-trust-pill">
+        <div class="c360-lsb-trust-ico green"><i class="fa-solid fa-layer-group"></i></div>
+        <div class="c360-lsb-trust-text">
+          <strong>Powered by Yext</strong>
+          <span>Enterprise-grade listing management</span>
+        </div>
+      </div>
+      <div class="c360-lsb-trust-pill">
+        <div class="c360-lsb-trust-ico"><i class="fa-solid fa-robot"></i></div>
+        <div class="c360-lsb-trust-text">
+          <strong>AI Search Visibility</strong>
+          <span>ChatGPT, Perplexity, Siri &amp; more</span>
+        </div>
+      </div>
+      <div class="c360-lsb-trust-pill">
+        <div class="c360-lsb-trust-ico green"><i class="fa-solid fa-location-dot"></i></div>
+        <div class="c360-lsb-trust-text">
+          <strong>70+ Platforms Covered</strong>
+          <span>Every major map &amp; directory synced</span>
+        </div>
+      </div>
+      <div class="c360-lsb-trust-pill">
+        <div class="c360-lsb-trust-ico gold"><i class="fa-solid fa-star"></i></div>
+        <div class="c360-lsb-trust-text">
+          <strong>144+ Five-Star Reviews</strong>
+          <span>Real results from real businesses</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 3 — FREE INSTANT AUDIT (Prospecting Widget)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsb-section c360-lsb-audit">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-audit-inner">
+      <div class="c360-lsb-audit-copy">
+        <span class="c360-lsb-overline">Free Instant Scan</span>
+        <h2>See where your business<br>is — and isn't — <span style="color:var(--lsb-green);">showing up.</span></h2>
+        <p>Enter your business name and get an instant report showing every directory and platform where your listing is missing, incomplete, or has incorrect information. No cost, no commitment — just real data in under 60 seconds.</p>
+        <div class="c360-lsb-audit-bullets">
+          <div class="c360-lsb-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Google Business Profile health check</span>
+          </div>
+          <div class="c360-lsb-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Missing &amp; inconsistent directory listings</span>
+          </div>
+          <div class="c360-lsb-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>AI platform visibility gaps (ChatGPT, Siri &amp; more)</span>
+          </div>
+          <div class="c360-lsb-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Duplicate listing detection</span>
+          </div>
+          <div class="c360-lsb-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Review score &amp; reputation snapshot</span>
+          </div>
+        </div>
+      </div>
+      <div class="c360-lsb-audit-widget">
+        <script src="https://services.leadconnectorhq.com/prospecting/client/widget-embed.js" data-widget-id="699344169ea04eda0c083b63"></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 4 — INTRO / WHAT WE DO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsb-section c360-lsb-intro">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-intro-inner">
+
+      <div class="c360-lsb-intro-copy">
+        <span class="c360-lsb-overline">What It Does</span>
+        <h2>One update.<br><span>Everywhere you need to be.</span></h2>
+        <p>
+          When someone searches for a service near them — whether it's on Google, Apple Maps, Yelp, or asking ChatGPT for a recommendation — search engines pull your business data from dozens of directory sources. If that data is wrong, outdated, or missing, you don't show up. Or worse, customers find the wrong address or phone number.
+        </p>
+        <p>
+          The Local SEO Booster, powered by Yext, puts your business information on 70+ high-authority platforms simultaneously. One update from us syncs instantly everywhere — so your name, address, phone number, hours, photos, and services are always correct, no matter where customers find you.
+        </p>
+        <div class="c360-lsb-alert-box">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <p>Businesses with consistent NAP data across directories rank significantly higher in Google's Local Pack. Inconsistent listings cost you calls and customers — every single day.</p>
+        </div>
+        <a href="tel:+18665276205" class="c360-lsb-btn-primary">
+          <i class="fa-solid fa-phone"></i> Talk to Our Team
+        </a>
+      </div>
+
+      <!-- What's included checklist -->
+      <div>
+        <div class="c360-lsb-included-grid">
+          <div class="c360-lsb-included-header">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Everything Included</span>
+          </div>
+          <div class="c360-lsb-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>70+ directory &amp; AI platform listings<em>Google, Apple, Bing, Yelp, ChatGPT, Perplexity &amp; more</em></span>
+          </div>
+          <div class="c360-lsb-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Real-time NAP sync<em>Name, address, phone — always accurate, everywhere</em></span>
+          </div>
+          <div class="c360-lsb-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Duplicate listing suppression<em>Eliminate conflicting entries that hurt your ranking</em></span>
+          </div>
+          <div class="c360-lsb-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Rich listing content — photos, hours, services<em>Go beyond just name &amp; address</em></span>
+          </div>
+          <div class="c360-lsb-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>AI search optimization<em>Structured data that AI assistants can cite and recommend</em></span>
+          </div>
+          <div class="c360-lsb-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Scheduled update management<em>Holiday hours, promotions, and service changes pushed everywhere at once</em></span>
+          </div>
+          <div class="c360-lsb-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Google Q&amp;A management<em>Monitor and respond to Google questions on your profile</em></span>
+          </div>
+          <div class="c360-lsb-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Performance analytics dashboard<em>Track impressions, clicks, and search visibility over time</em></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 5 — AI SEARCH VISIBILITY
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsb-section c360-lsb-ai">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-ai-inner">
+
+      <!-- LEFT COPY -->
+      <div class="c360-lsb-ai-copy">
+        <span class="c360-lsb-overline">The AI Search Revolution</span>
+        <h2 class="c360-lsb-ai-h2">AI is the new search bar. <span>Is your business in the answer?</span></h2>
+        <p class="c360-lsb-ai-desc">
+          Millions of people now ask ChatGPT, Perplexity, Siri, and Alexa to find local businesses instead of typing into Google. These AI systems pull from verified directory data to formulate their recommendations. If your listing data is missing or inconsistent, AI simply won't cite your business — no matter how good your reviews are.
+        </p>
+
+        <div class="c360-lsb-ai-stat">
+          <div class="c360-lsb-ai-stat-num">51%</div>
+          <div class="c360-lsb-ai-stat-text">
+            <strong>More customer engagement</strong>
+            <span>Businesses with optimized, consistent location listings across platforms see 51% more customer engagement compared to incomplete or inconsistent listings.</span>
+          </div>
+        </div>
+
+        <div class="c360-lsb-platform-grid">
+          <div class="c360-lsb-platform-pill">
+            <div class="c360-lsb-platform-ico" style="background:#10a37f;"><i class="fa-solid fa-robot"></i></div>
+            <div class="c360-lsb-platform-text">
+              <strong>ChatGPT &amp; AI Search</strong>
+              <span>Cited in AI-generated answers</span>
+            </div>
+          </div>
+          <div class="c360-lsb-platform-pill">
+            <div class="c360-lsb-platform-ico" style="background:#ea4335;"><i class="fa-brands fa-google"></i></div>
+            <div class="c360-lsb-platform-text">
+              <strong>Google &amp; Google Maps</strong>
+              <span>Local Pack &amp; map rankings</span>
+            </div>
+          </div>
+          <div class="c360-lsb-platform-pill">
+            <div class="c360-lsb-platform-ico" style="background:#555;"><i class="fa-brands fa-apple"></i></div>
+            <div class="c360-lsb-platform-text">
+              <strong>Apple Maps &amp; Siri</strong>
+              <span>Every iPhone local search</span>
+            </div>
+          </div>
+          <div class="c360-lsb-platform-pill">
+            <div class="c360-lsb-platform-ico" style="background:#0078d4;"><i class="fa-brands fa-microsoft"></i></div>
+            <div class="c360-lsb-platform-text">
+              <strong>Bing &amp; Copilot</strong>
+              <span>Microsoft search ecosystem</span>
+            </div>
+          </div>
+          <div class="c360-lsb-platform-pill">
+            <div class="c360-lsb-platform-ico" style="background:#ff6900;"><i class="fa-solid fa-bolt"></i></div>
+            <div class="c360-lsb-platform-text">
+              <strong>Perplexity AI</strong>
+              <span>Next-gen AI discovery</span>
+            </div>
+          </div>
+          <div class="c360-lsb-platform-pill">
+            <div class="c360-lsb-platform-ico" style="background:#00b2ff;"><i class="fa-solid fa-location-dot"></i></div>
+            <div class="c360-lsb-platform-text">
+              <strong>Yelp, Facebook + 60 More</strong>
+              <span>Full directory ecosystem</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT — AI visual mockup -->
+      <div class="c360-lsb-ai-visual">
+
+        <!-- ChatGPT recommendation -->
+        <div class="c360-lsb-ai-chat-card">
+          <div class="c360-lsb-chat-header">
+            <div class="c360-lsb-chat-icon" style="background:#10a37f;"><i class="fa-solid fa-robot"></i></div>
+            <span class="c360-lsb-chat-platform-name">ChatGPT — Local Business Search</span>
+          </div>
+          <div class="c360-lsb-chat-body">
+            <div class="c360-lsb-chat-query">Best plumber near me in Tucson with good reviews?</div>
+            <div class="c360-lsb-chat-answer">
+              <div class="c360-lsb-chat-answer-label"><i class="fa-solid fa-circle-check"></i> AI Response</div>
+              <div class="c360-lsb-chat-answer-text">Based on verified directory data and Google reviews, here's a highly rated option:</div>
+              <div class="c360-lsb-chat-answer-biz">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <span>Your Business · 5.0 · 144 Reviews · Verified Listing</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Perplexity -->
+        <div class="c360-lsb-ai-chat-card">
+          <div class="c360-lsb-chat-header">
+            <div class="c360-lsb-chat-icon" style="background:#ff6900;"><i class="fa-solid fa-bolt"></i></div>
+            <span class="c360-lsb-chat-platform-name">Perplexity AI</span>
+          </div>
+          <div class="c360-lsb-chat-body">
+            <div class="c360-lsb-chat-query">Top-rated HVAC company Tucson — open now?</div>
+            <div class="c360-lsb-chat-answer">
+              <div class="c360-lsb-chat-answer-label"><i class="fa-solid fa-circle-check"></i> AI Response</div>
+              <div class="c360-lsb-chat-answer-text">Sourced from Apple Maps, Yelp &amp; verified directory listings:</div>
+              <div class="c360-lsb-chat-answer-biz">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                <i class="fa-solid fa-star"></i>
+                <span>Your Business · Open Now · Top-Rated · Tucson, AZ</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NAP data sync card -->
+        <div class="c360-lsb-nap-card">
+          <div class="c360-lsb-nap-card-title"><i class="fa-solid fa-arrows-rotate"></i> &nbsp;NAP Sync — Real-Time</div>
+          <div class="c360-lsb-nap-rows">
+            <div class="c360-lsb-nap-row">
+              <div class="c360-lsb-nap-row-label"><i class="fa-solid fa-building"></i></div>
+              <div class="c360-lsb-nap-row-val">Your Business Name</div>
+              <span class="c360-lsb-nap-synced">✓ Synced</span>
+            </div>
+            <div class="c360-lsb-nap-row">
+              <div class="c360-lsb-nap-row-label"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="c360-lsb-nap-row-val">123 Main St, Tucson AZ 85704</div>
+              <span class="c360-lsb-nap-synced">✓ Synced</span>
+            </div>
+            <div class="c360-lsb-nap-row">
+              <div class="c360-lsb-nap-row-label"><i class="fa-solid fa-phone"></i></div>
+              <div class="c360-lsb-nap-row-val">(520) 555-0100</div>
+              <span class="c360-lsb-nap-synced">✓ Synced</span>
+            </div>
+            <div class="c360-lsb-nap-row">
+              <div class="c360-lsb-nap-row-label"><i class="fa-solid fa-clock"></i></div>
+              <div class="c360-lsb-nap-row-val">Mon–Fri 8am–6pm</div>
+              <span class="c360-lsb-nap-synced">✓ Synced</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Directory count -->
+        <div class="c360-lsb-dir-count">
+          <div>
+            <div class="c360-lsb-dir-count-num">70+</div>
+            <div class="c360-lsb-dir-count-label">Directories &amp; AI<br>platforms covered</div>
+          </div>
+          <div class="c360-lsb-dir-icons">
+            <div class="c360-lsb-dir-dot"><i class="fa-brands fa-google"></i></div>
+            <div class="c360-lsb-dir-dot"><i class="fa-brands fa-apple"></i></div>
+            <div class="c360-lsb-dir-dot"><i class="fa-brands fa-microsoft"></i></div>
+            <div class="c360-lsb-dir-dot"><i class="fa-brands fa-yelp"></i></div>
+            <div class="c360-lsb-dir-dot"><i class="fa-brands fa-facebook"></i></div>
+            <div class="c360-lsb-dir-dot" style="font-size:9px;font-family:'Poppins',sans-serif;font-weight:700;color:rgba(255,255,255,0.5);">+65</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 6 — NETWORK / 70+ LISTINGS IMAGE
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsb-section c360-lsb-network">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-network-inner">
+
+      <div class="c360-lsb-network-copy">
+        <span class="c360-lsb-overline">Extensive &amp; Varied Network</span>
+        <h2>Everywhere your<br>customers are<br><span>searching.</span></h2>
+        <p>
+          From Google and Apple Maps to niche directories like HomeAdvisor, Angi, and industry-specific platforms — your listing is live, verified, and optimized across the entire ecosystem. When someone searches from their phone, their car, their smart speaker, or their AI assistant, you show up with accurate, consistent information.
+        </p>
+        <div class="c360-lsb-network-stats">
+          <div class="c360-lsb-network-stat">
+            <span class="c360-lsb-network-stat-val">70+</span>
+            <span class="c360-lsb-network-stat-lbl">Platforms</span>
+          </div>
+          <div class="c360-lsb-network-stat">
+            <span class="c360-lsb-network-stat-val">1</span>
+            <span class="c360-lsb-network-stat-lbl">Update Syncs All</span>
+          </div>
+          <div class="c360-lsb-network-stat">
+            <span class="c360-lsb-network-stat-val">24/7</span>
+            <span class="c360-lsb-network-stat-lbl">Always Accurate</span>
+          </div>
+        </div>
+        <a href="https://complete360.org/local-seo-checkout" class="c360-lsb-btn-primary c360-popup-trigger">
+          Get Started — From $119/mo <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <div class="c360-lsb-network-img">
+        <img
+          src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/662d5d5e277a38c2c37db96a.png"
+          alt="70+ directory and AI platform listings network"
+          loading="lazy"
+        >
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 7 — WHY NAP CONSISTENCY MATTERS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsb-section c360-lsb-nap">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-section-header">
+      <span class="c360-lsb-overline">Why NAP Consistency Matters</span>
+      <h2>The silent ranking factor<br>most businesses ignore.</h2>
+      <p>NAP stands for Name, Address, and Phone number. Google and every major AI search engine use this data to verify and rank local businesses. Inconsistencies across the web silently destroy your ranking — even if your Google profile looks perfect.</p>
+    </div>
+    <div class="c360-lsb-nap-grid">
+
+      <div class="c360-lsb-nap-card-item">
+        <div class="c360-lsb-nap-ico"><i class="fa-solid fa-ranking-star"></i></div>
+        <div class="c360-lsb-nap-card-title">Local Pack Rankings</div>
+        <div class="c360-lsb-nap-card-desc">Google's algorithm cross-references your business data across hundreds of sources. Consistent NAP signals authority and accuracy — driving your business higher in the Local Pack where buyers click first.</div>
+      </div>
+
+      <div class="c360-lsb-nap-card-item">
+        <div class="c360-lsb-nap-ico"><i class="fa-solid fa-robot"></i></div>
+        <div class="c360-lsb-nap-card-title">AI Citation Eligibility</div>
+        <div class="c360-lsb-nap-card-desc">AI search engines like ChatGPT and Perplexity rely on verified, consistent directory data to recommend businesses. Without accurate listings across the web, AI won't recommend you — regardless of your reviews.</div>
+      </div>
+
+      <div class="c360-lsb-nap-card-item">
+        <div class="c360-lsb-nap-ico"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="c360-lsb-nap-card-title">Duplicate Suppression</div>
+        <div class="c360-lsb-nap-card-desc">Old addresses, name variations, and auto-generated duplicates from years past can actively suppress your real listing. We identify and eliminate these conflicting entries so only your correct, verified data wins.</div>
+      </div>
+
+      <div class="c360-lsb-nap-card-item">
+        <div class="c360-lsb-nap-ico"><i class="fa-solid fa-mobile-screen"></i></div>
+        <div class="c360-lsb-nap-card-title">Voice &amp; Mobile Search</div>
+        <div class="c360-lsb-nap-card-desc">When someone asks Siri, Alexa, or Google Assistant to call a local business, voice results pull from verified listing data. If your phone number is wrong on even one directory, that call goes to a competitor.</div>
+      </div>
+
+      <div class="c360-lsb-nap-card-item">
+        <div class="c360-lsb-nap-ico"><i class="fa-solid fa-clock"></i></div>
+        <div class="c360-lsb-nap-card-title">Instant Holiday &amp; Hour Updates</div>
+        <div class="c360-lsb-nap-card-desc">Change your hours for a holiday or seasonal shift and it propagates to every platform automatically. No more customers showing up when you're closed because one directory hadn't been updated in three years.</div>
+      </div>
+
+      <div class="c360-lsb-nap-card-item">
+        <div class="c360-lsb-nap-ico"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="c360-lsb-nap-card-title">Visibility Analytics</div>
+        <div class="c360-lsb-nap-card-desc">Track impressions, clicks, calls, and direction requests across your entire listing network in one dashboard. See exactly how your local search presence is growing — with real data, every month.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 8 — HOW IT WORKS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsb-section c360-lsb-process">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-section-header">
+      <span class="c360-lsb-overline">How It Works</span>
+      <h2>Up and running in days,<br>not weeks.</h2>
+      <p>Getting listed on 70+ platforms used to mean weeks of manual submissions and follow-up. We handle everything in days — you just provide your business info once.</p>
+    </div>
+    <div class="c360-lsb-process-steps">
+      <div class="c360-lsb-step">
+        <div class="c360-lsb-step-num"><i class="fa-solid fa-clipboard-list"></i></div>
+        <div class="c360-lsb-step-label">Share Your Business Info</div>
+        <div class="c360-lsb-step-desc">Fill out a quick onboarding form with your business details. Name, address, phone, hours, categories, and photos — once.</div>
+      </div>
+      <div class="c360-lsb-step">
+        <div class="c360-lsb-step-num"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <div class="c360-lsb-step-label">Audit &amp; Clean</div>
+        <div class="c360-lsb-step-desc">We run a full listing scan, suppress duplicates, and correct any existing inaccuracies before pushing your verified data live.</div>
+      </div>
+      <div class="c360-lsb-step">
+        <div class="c360-lsb-step-num"><i class="fa-solid fa-arrows-rotate"></i></div>
+        <div class="c360-lsb-step-label">Sync to 70+ Platforms</div>
+        <div class="c360-lsb-step-desc">Your accurate data is pushed simultaneously to every major directory, map, and AI search platform — active within days.</div>
+      </div>
+      <div class="c360-lsb-step">
+        <div class="c360-lsb-step-num"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="c360-lsb-step-label">Monitor &amp; Report</div>
+        <div class="c360-lsb-step-desc">Ongoing monitoring keeps your data accurate as platforms update. Monthly analytics show your growing local visibility.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 9 — ANALYTICS DASHBOARD / CONTENT RICH LISTINGS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsb-section c360-lsb-analytics">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-analytics-inner">
+
+      <div class="c360-lsb-analytics-img">
+        <img
+          src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/662ef8002d01fa808ead6701.png"
+          alt="Local SEO Booster analytics and performance dashboard"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="c360-lsb-analytics-copy">
+        <span class="c360-lsb-overline">See Your Growth</span>
+        <h2>Real data on your<br>local search <span>performance.</span></h2>
+        <p>
+          We don't just set your listings and disappear. Every month, you can see exactly how your local search presence is growing across the platforms that matter — impressions, clicks, calls, and direction requests, all in one place.
+        </p>
+        <div class="c360-lsb-analytics-list">
+          <div class="c360-lsb-analytics-item">
+            <div class="c360-lsb-analytics-ico"><i class="fa-solid fa-eye"></i></div>
+            <div class="c360-lsb-analytics-item-text">
+              <strong>Impression &amp; View Tracking</strong>
+              <span>See how many people are finding your business across all 70+ platforms</span>
+            </div>
+          </div>
+          <div class="c360-lsb-analytics-item">
+            <div class="c360-lsb-analytics-ico"><i class="fa-solid fa-phone"></i></div>
+            <div class="c360-lsb-analytics-item-text">
+              <strong>Calls &amp; Direction Requests</strong>
+              <span>Track how many customers are taking action directly from your listings</span>
+            </div>
+          </div>
+          <div class="c360-lsb-analytics-item">
+            <div class="c360-lsb-analytics-ico"><i class="fa-solid fa-shield-halved"></i></div>
+            <div class="c360-lsb-analytics-item-text">
+              <strong>Listing Health Score</strong>
+              <span>Continuous monitoring alerts you to any changes, duplicates, or inaccuracies</span>
+            </div>
+          </div>
+          <div class="c360-lsb-analytics-item">
+            <div class="c360-lsb-analytics-ico"><i class="fa-solid fa-chart-bar"></i></div>
+            <div class="c360-lsb-analytics-item-text">
+              <strong>Search Keyword Insights</strong>
+              <span>Discover what search terms people use to find your business and service category</span>
+            </div>
+          </div>
+        </div>
+        <a href="https://complete360.org/local-seo-checkout" class="c360-lsb-btn-primary c360-popup-trigger">
+          Get Started Today <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 10 — PRICING
+     ══════════════════════════════════════════════════════ -->
+<section id="c360-lsb-pricing" class="c360-lsb-section c360-lsb-pricing">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-section-header">
+      <span class="c360-lsb-overline">Pricing &amp; Plans</span>
+      <h2>Simple pricing.<br>No surprises.</h2>
+      <p>Both plans include full access to all 70+ platforms, real-time sync, AI search optimization, and analytics. Pay monthly for flexibility or save with annual billing.</p>
+    </div>
+    <div class="c360-lsb-price-cards">
+
+      <!-- Monthly -->
+      <div class="c360-lsb-price-card">
+        <div class="c360-lsb-plan-name">Monthly</div>
+        <div class="c360-lsb-plan-tagline">Flexible, month-to-month — cancel anytime</div>
+        <div class="c360-lsb-price-row">
+          <span class="c360-lsb-price-dollar">$</span>
+          <span class="c360-lsb-price-num">119</span>
+          <span class="c360-lsb-price-period">/mo</span>
+        </div>
+        <span class="c360-lsb-price-save invisible">—</span>
+        <div class="c360-lsb-price-divider"></div>
+        <ul class="c360-lsb-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> 70+ directory &amp; AI platform listings</li>
+          <li><i class="fa-solid fa-circle-check"></i> Real-time NAP sync across all platforms</li>
+          <li><i class="fa-solid fa-circle-check"></i> Duplicate listing suppression</li>
+          <li><i class="fa-solid fa-circle-check"></i> Rich listing content — photos, hours, services</li>
+          <li><i class="fa-solid fa-circle-check"></i> AI search optimization (ChatGPT, Perplexity &amp; more)</li>
+          <li><i class="fa-solid fa-circle-check"></i> Google Q&amp;A management</li>
+          <li><i class="fa-solid fa-circle-check"></i> Performance analytics dashboard</li>
+          <li><i class="fa-solid fa-circle-check"></i> Chat &amp; email support</li>
+        </ul>
+        <a href="https://complete360.org/local-seo-checkout" class="c360-lsb-price-btn c360-lsb-price-btn--outline c360-lsb-modal-trigger">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Annual — POPULAR -->
+      <div class="c360-lsb-price-card c360-lsb-price-card--popular">
+        <div class="c360-lsb-popular-badge"><i class="fa-solid fa-bolt"></i> Best Value</div>
+        <div class="c360-lsb-plan-name">Annual</div>
+        <div class="c360-lsb-plan-tagline">2+ months free — best ROI for serious growth</div>
+        <div class="c360-lsb-price-row">
+          <span class="c360-lsb-price-dollar">$</span>
+          <span class="c360-lsb-price-num">1,198</span>
+          <span class="c360-lsb-price-period">/yr</span>
+        </div>
+        <span class="c360-lsb-price-save">Save $230 · 2+ Months FREE</span>
+        <div class="c360-lsb-price-divider"></div>
+        <ul class="c360-lsb-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Everything in Monthly</li>
+          <li><i class="fa-solid fa-circle-check"></i> Priority onboarding &amp; setup</li>
+          <li><i class="fa-solid fa-circle-check"></i> Dedicated account manager</li>
+          <li><i class="fa-solid fa-circle-check"></i> Competitor visibility reporting</li>
+          <li><i class="fa-solid fa-circle-check"></i> Annual local SEO strategy session</li>
+          <li><i class="fa-solid fa-circle-check"></i> Priority support SLA</li>
+          <li><i class="fa-solid fa-circle-check"></i> <strong style="color:#2ecc52;">Pairs free with GBP Management</strong></li>
+          <li><i class="fa-solid fa-circle-check"></i> Phone, chat &amp; email support</li>
+        </ul>
+        <a href="https://complete360.org/local-seo-checkout" class="c360-lsb-price-btn c360-lsb-price-btn--green c360-lsb-modal-trigger">
+          Get Started — Best Value <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+    <div class="c360-lsb-pricing-foot">
+      <p>Already have GBP Management? Bundle Local SEO Booster with GBP Management for the strongest local presence possible. &nbsp;|&nbsp; Questions? Call us Mon–Thu 7am–4pm · Fri 7am–1pm MST · (866) 527-6205</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 11 — REVIEWS WIDGET
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsb-section c360-lsb-reviews">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-section-header">
+      <span class="c360-lsb-overline">What Our Clients Say</span>
+      <h2>Real results from real businesses</h2>
+      <p>144+ Google reviews from local business owners across the country.</p>
+    </div>
+    <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
+    <iframe
+      class='lc_reviews_widget'
+      src='https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u'
+      frameborder='0' scrolling='no'
+      style='min-width:100%;width:100%;display:block;'>
+    </iframe>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 12 — FINAL CTA
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsb-section c360-lsb-cta">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-cta-inner">
+      <span class="c360-lsb-overline" style="color:#2ecc52;">Ready to Get Found Everywhere?</span>
+      <h2>Show up on Google, AI Search,<br>and <span>70+ platforms today.</span></h2>
+      <p class="c360-lsb-cta-desc">
+        Call us for a free listing audit — we'll show you exactly where your business is missing and what it's costing you.<br>
+        <span style="font-size:14px;opacity:0.75;">Mon–Thu 7am–4pm · Fri 7am–1pm MST &nbsp;·&nbsp; (866) 527-6205</span>
+      </p>
+      <div class="c360-lsb-cta-actions">
+        <a href="tel:+18665276205" class="c360-lsb-btn-primary" style="font-size:16px;padding:17px 32px;">
+          <i class="fa-solid fa-phone"></i> Call (866) 527-6205
+        </a>
+        <a href="https://complete360.org/local-seo-checkout" class="c360-lsb-btn-outline c360-lsb-modal-trigger">
+          Get Started Online <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="c360-lsb-cta-trust">
+        <span><i class="fa-solid fa-layer-group"></i> Powered by Yext</span>
+        <span><i class="fa-solid fa-robot"></i> AI Search Ready</span>
+        <span><i class="fa-solid fa-location-dot"></i> 70+ Platforms</span>
+        <span><i class="fa-solid fa-map-pin"></i> Tucson-Based &amp; Nationwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 13 — FAQ
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsb-section c360-lsb-faq">
+  <div class="c360-lsb-container">
+    <div class="c360-lsb-section-header">
+      <span class="c360-lsb-overline">Frequently Asked</span>
+      <h2>Questions about Local SEO Booster</h2>
+      <p>Get clear answers before you get started.</p>
+    </div>
+    <div class="c360-lsb-faq-list">
+
+      <div class="c360-lsb-faq-item">
+        <input type="checkbox" id="c360LsbFaq1" class="c360-lsb-faq-toggle">
+        <label for="c360LsbFaq1" class="c360-lsb-faq-q">
+          What exactly is the Local SEO Booster?
+          <span class="c360-lsb-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-lsb-faq-a">
+          <p>The Local SEO Booster is a managed service powered by Yext that pushes your business information — name, address, phone, hours, photos, categories, and services — to 70+ high-authority directories, maps, and AI search platforms simultaneously. Instead of manually submitting to each platform (and keeping them updated forever), we handle it all automatically from one system. One change on our end syncs everywhere instantly.</p>
+        </div>
+      </div>
+
+      <div class="c360-lsb-faq-item">
+        <input type="checkbox" id="c360LsbFaq2" class="c360-lsb-faq-toggle">
+        <label for="c360LsbFaq2" class="c360-lsb-faq-q">
+          Why does NAP consistency matter for my ranking?
+          <span class="c360-lsb-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-lsb-faq-a">
+          <p>NAP stands for Name, Address, and Phone number. Google's algorithm cross-references your business data across hundreds of websites to verify your business is legitimate and to determine how authoritative your local presence is. When your data is inconsistent — old addresses, different phone numbers, name variations — Google treats it as conflicting signals and ranks you lower. Consistent, accurate data across all platforms is one of the strongest local ranking factors available to any business.</p>
+        </div>
+      </div>
+
+      <div class="c360-lsb-faq-item">
+        <input type="checkbox" id="c360LsbFaq3" class="c360-lsb-faq-toggle">
+        <label for="c360LsbFaq3" class="c360-lsb-faq-q">
+          Does this help with AI searches like ChatGPT and Perplexity?
+          <span class="c360-lsb-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-lsb-faq-a">
+          <p>Yes — this is increasingly one of the most important benefits. AI search assistants like ChatGPT, Perplexity, Siri, and Alexa pull business recommendations from verified directory data. If your business isn't listed correctly (or at all) on the key platforms these AI systems reference, you simply won't be recommended — regardless of how many reviews you have on Google. Our Local SEO Booster ensures your data is present and structured correctly for AI citation.</p>
+        </div>
+      </div>
+
+      <div class="c360-lsb-faq-item">
+        <input type="checkbox" id="c360LsbFaq4" class="c360-lsb-faq-toggle">
+        <label for="c360LsbFaq4" class="c360-lsb-faq-q">
+          Is this different from just claiming my listings manually?
+          <span class="c360-lsb-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-lsb-faq-a">
+          <p>Significantly different. Manually claiming listings means logging into 70+ individual platforms, submitting your data, waiting for verification, and then monitoring each one for changes or duplicates forever. Platforms update their data from other sources constantly — meaning even claimed listings can drift back to incorrect information over time. Our system maintains a live, authoritative data feed that continuously pushes your correct information to every platform, overriding incorrect data automatically.</p>
+        </div>
+      </div>
+
+      <div class="c360-lsb-faq-item">
+        <input type="checkbox" id="c360LsbFaq5" class="c360-lsb-faq-toggle">
+        <label for="c360LsbFaq5" class="c360-lsb-faq-q">
+          Should I get this alongside GBP Management?
+          <span class="c360-lsb-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-lsb-faq-a">
+          <p>Yes — they complement each other extremely well. GBP Management focuses on actively optimizing your Google Business Profile (posts, reviews, photos, ranking strategy). The Local SEO Booster ensures that your business data is accurate and present across the entire web, which directly strengthens your Google ranking as a byproduct. Together, they cover every dimension of local search visibility: the active optimization of your Google profile and the passive infrastructure of consistent data everywhere else.</p>
+        </div>
+      </div>
+
+      <div class="c360-lsb-faq-item">
+        <input type="checkbox" id="c360LsbFaq6" class="c360-lsb-faq-toggle">
+        <label for="c360LsbFaq6" class="c360-lsb-faq-q">
+          How long does it take to go live on all platforms?
+          <span class="c360-lsb-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-lsb-faq-a">
+          <p>Most listings go live within 3–7 business days. Some platforms (like Apple Maps and select directories) can take up to 2–4 weeks for full verification — but the majority of major platforms including Google, Yelp, Facebook, and Bing are typically live within the first week. You'll see your analytics dashboard begin populating with impression data shortly after your listings go active.</p>
+        </div>
+      </div>
+
+      <div class="c360-lsb-faq-item">
+        <input type="checkbox" id="c360LsbFaq7" class="c360-lsb-faq-toggle">
+        <label for="c360LsbFaq7" class="c360-lsb-faq-q">
+          What happens if I cancel the service?
+          <span class="c360-lsb-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-lsb-faq-a">
+          <p>Monthly plans can be cancelled with 30 days notice. Upon cancellation, the active data feed that keeps your listings synced is removed, and individual platforms will begin managing your data on their own timelines — which often means listings gradually drift back to outdated or inconsistent information. Annual plans are prepaid and non-refundable once work has begun, but the savings they offer make them the best choice for businesses committed to maintaining consistent local visibility long-term.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SCRIPT — Modal trigger
+     ══════════════════════════════════════════════════════ -->
 
