@@ -1,0 +1,835 @@
+<!-- ============================================================
+     COMPLETE360 — TERMS OF SERVICE  v2.0
+     Paste into GHL Custom Code block on /tos page.
+     Prefix: c360-tos-  |  Header/footer loaded globally.
+     Font Awesome & Poppins loaded via global header.
+     Last Updated: May 14, 2026
+     ============================================================ -->
+
+<style>
+/* ══════════════════════════════════════════════════════
+   Terms of Service  |  Prefix: c360-tos-
+   ══════════════════════════════════════════════════════ */
+:root {
+  --tos-navy:        #122078;
+  --tos-navy-dark:   #0d1654;
+  --tos-navy-deeper: #09103c;
+  --tos-green:       #127825;
+  --tos-green-light: #EAF3DE;
+  --tos-green-glow:  #2ecc52;
+  --tos-blue-light:  #E6F1FB;
+  --tos-grey:        #888780;
+  --tos-light-grey:  #F1EFE8;
+  --tos-border:      #e5e3dc;
+  --tos-text:        #0F1F5E;
+  --tos-text-muted:  #5F5E5A;
+  --tos-radius:      10px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+
+.c360-tos-wrap {
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  width: 100%;
+}
+.c360-tos-wrap i.fa-solid,
+.c360-tos-wrap i.fa-brands {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+}
+.c360-tos-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════ */
+.c360-tos-hero {
+  background: linear-gradient(135deg, var(--tos-navy-deeper) 0%, var(--tos-navy) 60%, #0c1960 100%);
+  padding: 64px 0 56px;
+  position: relative; overflow: hidden;
+}
+.c360-tos-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 10% 70%, rgba(18,120,37,0.16) 0%, transparent 50%),
+    radial-gradient(circle at 88% 15%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-tos-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.c360-tos-hero-inner {
+  position: relative; z-index: 2; text-align: center;
+}
+.c360-tos-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(18,120,37,0.2);
+  border: 1px solid rgba(18,120,37,0.38);
+  color: #7ddc80;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 6px 16px;
+  border-radius: 100px; margin-bottom: 18px;
+}
+.c360-tos-hero h1 {
+  font-size: clamp(30px, 4.5vw, 46px); font-weight: 800;
+  color: #fff; margin: 0 0 14px; line-height: 1.1; letter-spacing: -0.025em;
+}
+.c360-tos-hero-meta {
+  display: flex; align-items: center; justify-content: center;
+  gap: 24px; flex-wrap: wrap;
+}
+.c360-tos-hero-meta span {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500;
+}
+.c360-tos-hero-meta span i { color: var(--tos-green-glow); font-size: 11px; }
+.c360-tos-updated {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 100px; padding: 6px 16px;
+  font-size: 12px; color: rgba(255,255,255,0.65); font-weight: 500;
+}
+.c360-tos-updated i { color: var(--tos-green-glow); font-size: 11px; }
+
+/* ══════════════════════════════════════════════════════
+   MAIN LAYOUT — SIDEBAR + CONTENT
+   ══════════════════════════════════════════════════════ */
+.c360-tos-body {
+  background: var(--tos-light-grey);
+  padding: 56px 0 80px;
+}
+.c360-tos-layout {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── STICKY TOC SIDEBAR ── */
+.c360-tos-toc {
+  position: sticky; top: 88px;
+  background: #fff;
+  border: 1px solid var(--tos-border);
+  border-radius: var(--tos-radius);
+  overflow: hidden;
+}
+.c360-tos-toc-header {
+  background: var(--tos-navy);
+  padding: 14px 18px;
+}
+.c360-tos-toc-title {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.6);
+}
+.c360-tos-toc-list {
+  list-style: none; margin: 0; padding: 10px 0;
+}
+.c360-tos-toc-list li a {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 18px;
+  font-size: 12.5px; font-weight: 500; color: var(--tos-text-muted);
+  text-decoration: none; line-height: 1.3;
+  border-left: 2px solid transparent;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.c360-tos-toc-list li a:hover {
+  color: var(--tos-navy); background: var(--tos-blue-light);
+  border-left-color: var(--tos-navy);
+}
+.c360-tos-toc-list li a .c360-tos-toc-num {
+  font-size: 10px; font-weight: 700; color: var(--tos-grey);
+  min-width: 16px; flex-shrink: 0;
+}
+.c360-tos-toc-footer {
+  border-top: 1px solid var(--tos-border);
+  padding: 12px 18px;
+}
+.c360-tos-toc-contact {
+  font-size: 11.5px; color: var(--tos-text-muted); line-height: 1.5;
+}
+.c360-tos-toc-contact a {
+  color: var(--tos-green); font-weight: 600; text-decoration: none;
+}
+.c360-tos-toc-contact a:hover { text-decoration: underline; }
+
+/* ── CONTENT AREA ── */
+.c360-tos-content { display: flex; flex-direction: column; gap: 20px; }
+
+/* Section card */
+.c360-tos-section {
+  background: #fff;
+  border: 1px solid var(--tos-border);
+  border-radius: var(--tos-radius);
+  overflow: hidden;
+}
+.c360-tos-section-head {
+  display: flex; align-items: center; gap: 14px;
+  padding: 18px 26px;
+  border-bottom: 1px solid var(--tos-border);
+  background: var(--tos-light-grey);
+}
+.c360-tos-section-num {
+  width: 30px; height: 30px; flex-shrink: 0;
+  background: var(--tos-navy); border-radius: 7px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 800; color: #fff; line-height: 1;
+}
+.c360-tos-section-title {
+  font-size: 15px; font-weight: 700; color: var(--tos-text); line-height: 1.2;
+}
+.c360-tos-section-body {
+  padding: 24px 26px;
+  display: flex; flex-direction: column; gap: 16px;
+}
+
+/* Typography inside sections */
+.c360-tos-section-body p {
+  font-size: 14px; color: var(--tos-text-muted);
+  line-height: 1.75; margin: 0;
+}
+.c360-tos-section-body h4 {
+  font-size: 13.5px; font-weight: 700; color: var(--tos-text);
+  margin: 4px 0 0; letter-spacing: -0.01em;
+}
+.c360-tos-section-body ul {
+  margin: 0; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.c360-tos-section-body ul li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: 14px; color: var(--tos-text-muted); line-height: 1.6;
+}
+.c360-tos-section-body ul li i {
+  color: var(--tos-green); font-size: 10px; margin-top: 5px; flex-shrink: 0;
+}
+.c360-tos-section-body ul li strong { color: var(--tos-text); font-weight: 600; }
+
+/* Sub-section inside a card */
+.c360-tos-sub {
+  border: 1px solid var(--tos-border);
+  border-radius: 8px; overflow: hidden;
+}
+.c360-tos-sub-head {
+  background: var(--tos-blue-light);
+  padding: 10px 16px;
+  font-size: 12px; font-weight: 700; color: var(--tos-navy);
+  letter-spacing: 0.04em;
+}
+.c360-tos-sub-body {
+  padding: 14px 16px;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.c360-tos-sub-body p {
+  font-size: 13.5px; color: var(--tos-text-muted); line-height: 1.7; margin: 0;
+}
+
+/* Callout / highlight box */
+.c360-tos-callout {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: var(--tos-green-light);
+  border: 1px solid rgba(18,120,37,0.2);
+  border-left: 3px solid var(--tos-green);
+  border-radius: 8px; padding: 14px 16px;
+}
+.c360-tos-callout i { color: var(--tos-green); font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.c360-tos-callout p { font-size: 13.5px; color: #2a5018; line-height: 1.65; margin: 0; }
+
+.c360-tos-warning {
+  display: flex; align-items: flex-start; gap: 12px;
+  background: #fff8e7;
+  border: 1px solid rgba(234,179,8,0.3);
+  border-left: 3px solid #d97706;
+  border-radius: 8px; padding: 14px 16px;
+}
+.c360-tos-warning i { color: #d97706; font-size: 14px; margin-top: 2px; flex-shrink: 0; }
+.c360-tos-warning p { font-size: 13.5px; color: #78350f; line-height: 1.65; margin: 0; }
+
+/* Refund table */
+.c360-tos-refund-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.c360-tos-refund-table thead tr { background: var(--tos-navy); }
+.c360-tos-refund-table thead th {
+  padding: 10px 14px; text-align: left;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.8);
+}
+.c360-tos-refund-table tbody tr { border-bottom: 1px solid var(--tos-border); }
+.c360-tos-refund-table tbody tr:last-child { border-bottom: none; }
+.c360-tos-refund-table tbody tr:nth-child(even) { background: var(--tos-light-grey); }
+.c360-tos-refund-table td { padding: 11px 14px; color: var(--tos-text-muted); line-height: 1.45; vertical-align: top; }
+.c360-tos-refund-table td:first-child { font-weight: 600; color: var(--tos-text); white-space: nowrap; }
+.c360-tos-badge-nr {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #fee2e2; color: #b91c1c;
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.c360-tos-badge-pr {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: #fef3c7; color: #b45309;
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+.c360-tos-badge-ok {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: var(--tos-green-light); color: var(--tos-green);
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+  text-transform: uppercase; letter-spacing: 0.06em;
+}
+
+/* ══════════════════════════════════════════════════════
+   BOTTOM CTA STRIP
+   ══════════════════════════════════════════════════════ */
+.c360-tos-cta {
+  background: #fff;
+  border-top: 1px solid var(--tos-border);
+  padding: 64px 0; text-align: center; position: relative; overflow: hidden;
+}
+.c360-tos-cta-inner { position: relative; z-index: 2; max-width: 600px; margin: 0 auto; }
+.c360-tos-cta-overline {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--tos-green);
+  display: inline-block; margin-bottom: 10px;
+}
+.c360-tos-cta h2 {
+  font-size: clamp(22px, 3.5vw, 34px); font-weight: 800;
+  color: var(--tos-text); margin: 0 0 12px; line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-tos-cta h2 span { color: var(--tos-green); }
+.c360-tos-cta p {
+  font-size: 15px; color: var(--tos-text-muted); margin: 0 0 28px; line-height: 1.65;
+}
+.c360-tos-cta-actions {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-wrap: wrap;
+}
+.c360-tos-btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--tos-green); color: #fff;
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 14px; font-weight: 700;
+  padding: 13px 24px; border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(18,120,37,0.4);
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-tos-btn-primary:hover {
+  background: #0e5e1d; transform: translateY(-1px);
+  color: #fff; text-decoration: none;
+}
+.c360-tos-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--tos-navy);
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 14px; font-weight: 600;
+  padding: 12px 22px; border-radius: 8px;
+  text-decoration: none; border: 1.5px solid var(--tos-border);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.c360-tos-btn-outline:hover {
+  border-color: var(--tos-navy); background: var(--tos-blue-light);
+  color: var(--tos-navy); text-decoration: none;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 900px) {
+  .c360-tos-layout { grid-template-columns: 1fr; }
+  .c360-tos-toc { position: static; }
+}
+@media (max-width: 640px) {
+  .c360-tos-hero { padding: 50px 0 44px; }
+  .c360-tos-body { padding: 40px 0 60px; }
+  .c360-tos-section-head { padding: 14px 18px; }
+  .c360-tos-section-body { padding: 18px 18px; }
+  .c360-tos-cta { padding: 52px 0; }
+  .c360-tos-cta-actions { flex-direction: column; align-items: stretch; max-width: 280px; margin: 0 auto; }
+  .c360-tos-btn-primary, .c360-tos-btn-outline { justify-content: center; }
+  .c360-tos-refund-table { font-size: 12px; }
+  .c360-tos-refund-table td, .c360-tos-refund-table th { padding: 8px 10px; }
+  .c360-tos-refund-table td:first-child { white-space: normal; }
+}
+</style>
+
+
+<div class="c360-tos-wrap">
+
+  <!-- ══════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-tos-hero">
+    <div class="c360-tos-container">
+      <div class="c360-tos-hero-inner">
+        <div class="c360-tos-hero-eyebrow">
+          <i class="fa-solid fa-file-contract"></i>
+          Legal Agreement
+        </div>
+        <h1>Terms of Service</h1>
+        <div class="c360-tos-hero-meta">
+          <div class="c360-tos-updated">
+            <i class="fa-solid fa-calendar-check"></i>
+            Last Updated: May 14, 2026
+          </div>
+          <span><i class="fa-solid fa-building"></i> Complete360 — a DBA of Home Town Hero LLC</span>
+          <span><i class="fa-solid fa-map-pin"></i> Tucson, Arizona</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       BODY — SIDEBAR + CONTENT
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-tos-body">
+    <div class="c360-tos-container">
+      <div class="c360-tos-layout">
+
+        <!-- TABLE OF CONTENTS -->
+        <aside class="c360-tos-toc">
+          <div class="c360-tos-toc-header">
+            <div class="c360-tos-toc-title">Table of Contents</div>
+          </div>
+          <ul class="c360-tos-toc-list">
+            <li><a href="#tos-1"><span class="c360-tos-toc-num">1</span>Acceptance of Terms</a></li>
+            <li><a href="#tos-2"><span class="c360-tos-toc-num">2</span>About Complete360</a></li>
+            <li><a href="#tos-3"><span class="c360-tos-toc-num">3</span>Services</a></li>
+            <li><a href="#tos-4"><span class="c360-tos-toc-num">4</span>Payment &amp; Billing</a></li>
+            <li><a href="#tos-5"><span class="c360-tos-toc-num">5</span>Refund Policy</a></li>
+            <li><a href="#tos-6"><span class="c360-tos-toc-num">6</span>Cancellation Policy</a></li>
+            <li><a href="#tos-7"><span class="c360-tos-toc-num">7</span>Client Responsibilities</a></li>
+            <li><a href="#tos-8"><span class="c360-tos-toc-num">8</span>Intellectual Property</a></li>
+            <li><a href="#tos-9"><span class="c360-tos-toc-num">9</span>Privacy</a></li>
+            <li><a href="#tos-10"><span class="c360-tos-toc-num">10</span>Disclaimers</a></li>
+            <li><a href="#tos-11"><span class="c360-tos-toc-num">11</span>Limitation of Liability</a></li>
+            <li><a href="#tos-12"><span class="c360-tos-toc-num">12</span>Governing Law</a></li>
+            <li><a href="#tos-13"><span class="c360-tos-toc-num">13</span>Dispute Resolution</a></li>
+            <li><a href="#tos-14"><span class="c360-tos-toc-num">14</span>Modifications</a></li>
+            <li><a href="#tos-15"><span class="c360-tos-toc-num">15</span>Contact Us</a></li>
+          </ul>
+          <div class="c360-tos-toc-footer">
+            <div class="c360-tos-toc-contact">
+              Questions about these terms?<br>
+              <a href="tel:+18665276205">(866) 527-6205</a> or
+              <a href="/contact-us">contact us</a>
+            </div>
+          </div>
+        </aside>
+
+        <!-- CONTENT -->
+        <div class="c360-tos-content">
+
+          <!-- INTRO CALLOUT -->
+          <div class="c360-tos-callout">
+            <i class="fa-solid fa-circle-info"></i>
+            <p>Please read these Terms of Service carefully before using any Complete360 product, service, or website. By engaging our services or accessing our platform, you agree to be bound by these terms. If you do not agree, please do not use our services.</p>
+          </div>
+
+
+          <!-- 1. ACCEPTANCE -->
+          <div class="c360-tos-section" id="tos-1">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">1</div>
+              <div class="c360-tos-section-title">Acceptance of Terms</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>By accessing our website, signing up for any service, or making a payment, you confirm that you have read, understood, and agree to these Terms of Service in full. These terms constitute a legally binding agreement between you ("Client") and Complete360, a registered trade name (DBA) of <strong>Home Town Hero LLC</strong>.</p>
+              <p>If you are entering into this agreement on behalf of a business or organization, you represent that you have the authority to bind that entity to these terms.</p>
+            </div>
+          </div>
+
+
+          <!-- 2. ABOUT -->
+          <div class="c360-tos-section" id="tos-2">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">2</div>
+              <div class="c360-tos-section-title">About Complete360</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>Complete360 is a trade name (DBA) of <strong>Home Town Hero LLC</strong>, a limited liability company registered in the State of Arizona. We operate as a full-service digital marketing agency providing Google marketing, paid advertising, website design, and an all-in-one CRM platform to local service businesses.</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Legal Entity:</strong> Home Town Hero LLC</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Operating Name:</strong> Complete360</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Address:</strong> 3444 N Country Club Rd, Ste 105, Tucson, AZ 85716</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Phone:</strong> (866) 527-6205</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>State of Formation:</strong> Arizona</span></li>
+              </ul>
+            </div>
+          </div>
+
+
+          <!-- 3. SERVICES -->
+          <div class="c360-tos-section" id="tos-3">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">3</div>
+              <div class="c360-tos-section-title">Services</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>Complete360 offers the following categories of services. The specific scope, deliverables, and pricing for each engagement are outlined in your service agreement, order form, or proposal.</p>
+
+              <div class="c360-tos-sub">
+                <div class="c360-tos-sub-head">3.1 — Google Marketing Services</div>
+                <div class="c360-tos-sub-body">
+                  <p>Includes Google Business Profile (GBP) Management, one-time GBP Setup &amp; Optimization, Local SEO Booster (directory listings), and Local Service Ads (LSA) management. These services are designed to improve your visibility in Google Search and Maps results.</p>
+                </div>
+              </div>
+
+              <div class="c360-tos-sub">
+                <div class="c360-tos-sub-head">3.2 — Paid Advertising</div>
+                <div class="c360-tos-sub-body">
+                  <p>Includes Geo-Fencing Ads (mobile and connected TV targeting), Google PPC campaign management, and Meta (Facebook &amp; Instagram) advertising. Ad spend budgets are separate from management fees and are billed directly through the applicable ad platform unless otherwise agreed in writing.</p>
+                </div>
+              </div>
+
+              <div class="c360-tos-sub">
+                <div class="c360-tos-sub-head">3.3 — Website Design</div>
+                <div class="c360-tos-sub-body">
+                  <p>Custom website design and development built on the Complete360 platform. Projects begin upon receipt of a signed agreement and deposit. Websites are hosted and maintained on the Complete360 platform for the duration of your hosting subscription.</p>
+                </div>
+              </div>
+
+              <div class="c360-tos-sub">
+                <div class="c360-tos-sub-head">3.4 — CRM Platform</div>
+                <div class="c360-tos-sub-body">
+                  <p>Access to the Complete360 all-in-one CRM platform, including features for lead capture, automated follow-up, email and SMS marketing, online booking, invoicing, reputation management, and reporting. Platform access is provided on a month-to-month subscription basis unless otherwise agreed.</p>
+                </div>
+              </div>
+
+              <p>We reserve the right to modify, suspend, or discontinue any service with reasonable notice. We will not be liable for any modification, suspension, or discontinuation of services outside of our control (e.g., changes to Google's policies or third-party platform outages).</p>
+            </div>
+          </div>
+
+
+          <!-- 4. PAYMENT -->
+          <div class="c360-tos-section" id="tos-4">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">4</div>
+              <div class="c360-tos-section-title">Payment &amp; Billing</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Setup fees</strong> are due prior to the commencement of any work. Your service will not begin until payment is received and confirmed.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Monthly services</strong> are billed in advance on a recurring basis. Your billing cycle begins on the date your service is activated.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Annual services</strong> (such as Local SEO Booster) are billed annually and are due in full at the start of each service year.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Website deposits</strong> are required before design work begins and are applied toward the total project cost.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Late payments</strong> may result in a temporary suspension of services. We reserve the right to charge a late fee of up to 1.5% per month on balances 15 or more days past due.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Failed payments</strong> will be retried automatically. If a payment fails after two attempts, services may be paused until the balance is resolved.</span></li>
+              </ul>
+              <div class="c360-tos-callout">
+                <i class="fa-solid fa-shield-halved"></i>
+                <p>All payments are processed through our secure, PCI-compliant payment gateway. We accept all major credit and debit cards, PayPal, Venmo, Klarna, and Amazon Pay. We never store your full card number on our servers.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 5. REFUND POLICY -->
+          <div class="c360-tos-section" id="tos-5">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">5</div>
+              <div class="c360-tos-section-title">Refund Policy</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>Our refund policy is applied on a service-by-service basis, reflecting the nature of each service and the point at which work has been performed or costs incurred on your behalf. Please review the table below carefully before purchasing.</p>
+
+              <div style="overflow-x:auto;">
+                <table class="c360-tos-refund-table">
+                  <thead>
+                    <tr>
+                      <th>Service</th>
+                      <th>Refund Eligibility</th>
+                      <th>Notes</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>GBP Setup / Optimization</td>
+                      <td><span class="c360-tos-badge-nr">No Refund</span></td>
+                      <td>One-time service. Once profile work has begun, the service is considered rendered.</td>
+                    </tr>
+                    <tr>
+                      <td>GBP Management (Monthly)</td>
+                      <td><span class="c360-tos-badge-nr">No Refund</span></td>
+                      <td>Current billing period is non-refundable. Cancel before your next billing date to stop future charges.</td>
+                    </tr>
+                    <tr>
+                      <td>Local SEO Booster (Annual)</td>
+                      <td><span class="c360-tos-badge-nr">No Refund</span></td>
+                      <td>Once directory listings have been submitted and activated, the annual fee is non-refundable. The cost covers the full-year subscription to the directory network.</td>
+                    </tr>
+                    <tr>
+                      <td>Local Service Ads — Setup Fee</td>
+                      <td><span class="c360-tos-badge-nr">No Refund</span></td>
+                      <td>Setup fees are non-refundable once the onboarding and verification process has begun.</td>
+                    </tr>
+                    <tr>
+                      <td>Local Service Ads — Management</td>
+                      <td><span class="c360-tos-badge-nr">No Refund</span></td>
+                      <td>Current billing period is non-refundable. Cancel before your next billing date.</td>
+                    </tr>
+                    <tr>
+                      <td>Geo-Fencing Ads</td>
+                      <td><span class="c360-tos-badge-nr">No Refund</span></td>
+                      <td>Non-refundable once campaign creative has been produced or the campaign has launched. Unused future budget may be credited at our discretion.</td>
+                    </tr>
+                    <tr>
+                      <td>Website Design — Deposit</td>
+                      <td><span class="c360-tos-badge-nr">No Refund</span></td>
+                      <td>Deposits are non-refundable. They cover the initial discovery, planning, and design work performed before the full balance is due.</td>
+                    </tr>
+                    <tr>
+                      <td>Website Design — Final Payment</td>
+                      <td><span class="c360-tos-badge-nr">No Refund</span></td>
+                      <td>Non-refundable once the completed website has been delivered and approved for launch.</td>
+                    </tr>
+                    <tr>
+                      <td>Website Hosting (Monthly)</td>
+                      <td><span class="c360-tos-badge-nr">No Refund</span></td>
+                      <td>Current billing period is non-refundable. Cancel before your next billing date.</td>
+                    </tr>
+                    <tr>
+                      <td>CRM Platform (Monthly)</td>
+                      <td><span class="c360-tos-badge-nr">No Refund</span></td>
+                      <td>Current billing period is non-refundable. You may cancel at any time to prevent future charges.</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="c360-tos-warning">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p>If you believe a charge was made in error, please contact us within <strong>7 days</strong> of the charge at <a href="tel:+18665276205" style="color:#b45309;font-weight:600;">(866) 527-6205</a>. We will review all billing disputes in good faith and work to reach a fair resolution.</p>
+              </div>
+
+              <div class="c360-tos-callout">
+                <i class="fa-solid fa-circle-check"></i>
+                <p><strong>Satisfaction Guarantee:</strong> If you are not satisfied with the results of your Complete360 marketing campaign at the end of your service period, we will extend your campaign duration at no additional charge. This guarantee applies to eligible ongoing marketing services and requires that the client has met all onboarding and communication requirements. Contact us to discuss eligibility.</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 6. CANCELLATION -->
+          <div class="c360-tos-section" id="tos-6">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">6</div>
+              <div class="c360-tos-section-title">Cancellation Policy</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Monthly services</strong> may be cancelled at any time. To avoid being charged for the next billing cycle, cancellation must be submitted before your next renewal date.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Annual services</strong> may be cancelled at any time but are not eligible for a prorated refund. Your access will continue through the end of the paid period.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Website projects</strong> in progress may be cancelled by the client, however the deposit is non-refundable and any work completed up to the point of cancellation may be invoiced at our standard hourly rate.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>CRM data export</strong> — upon cancellation of your CRM subscription, you have 30 days to export your data. We will assist with data export upon request. After 30 days, data may be purged.</span></li>
+              </ul>
+              <p>To cancel any service, contact us at <strong>(866) 527-6205</strong> or submit a written request via our <a href="/contact-us" style="color:var(--tos-green);font-weight:600;">contact page</a>. Verbal cancellations are not accepted — all cancellations must be confirmed in writing.</p>
+            </div>
+          </div>
+
+
+          <!-- 7. CLIENT RESPONSIBILITIES -->
+          <div class="c360-tos-section" id="tos-7">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">7</div>
+              <div class="c360-tos-section-title">Client Responsibilities</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>To allow us to deliver the best possible results, you agree to:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span>Provide accurate, complete, and up-to-date information about your business, including ownership documentation when required for Google verification or LSA setup.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>Respond to onboarding requests, approvals, and feedback in a timely manner. Delays on your end may affect launch timelines and do not entitle you to a refund or service extension.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>Keep your login credentials confidential. You are responsible for all activity that occurs under your account.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>Use all services and the CRM platform lawfully and in accordance with applicable federal, state, and local regulations — including anti-spam laws (CAN-SPAM, TCPA) for SMS and email marketing.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>Not use our platform or services to engage in any deceptive, abusive, or illegal activity, or to harass any person.</span></li>
+              </ul>
+              <div class="c360-tos-warning">
+                <i class="fa-solid fa-triangle-exclamation"></i>
+                <p>We reserve the right to suspend or terminate your account immediately and without refund if we determine that your use of our services violates these terms, applicable law, or the policies of any third-party platform (including Google).</p>
+              </div>
+            </div>
+          </div>
+
+
+          <!-- 8. INTELLECTUAL PROPERTY -->
+          <div class="c360-tos-section" id="tos-8">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">8</div>
+              <div class="c360-tos-section-title">Intellectual Property</div>
+            </div>
+            <div class="c360-tos-section-body">
+
+              <div class="c360-tos-sub">
+                <div class="c360-tos-sub-head">8.1 — Complete360 Property</div>
+                <div class="c360-tos-sub-body">
+                  <p>All content, templates, code, tools, workflows, and platform features created by Complete360 remain the intellectual property of Home Town Hero LLC. You are granted a limited, non-exclusive license to use these for the purpose of your service agreement. You may not reproduce, resell, or distribute our proprietary materials without written permission.</p>
+                </div>
+              </div>
+
+              <div class="c360-tos-sub">
+                <div class="c360-tos-sub-head">8.2 — Your Content</div>
+                <div class="c360-tos-sub-body">
+                  <p>Any text, images, logos, or other materials you provide to us remain your property. By submitting content to us, you grant Complete360 a license to use, display, and reproduce that content solely for the purpose of delivering your agreed services.</p>
+                </div>
+              </div>
+
+              <div class="c360-tos-sub">
+                <div class="c360-tos-sub-head">8.3 — Website Ownership</div>
+                <div class="c360-tos-sub-body">
+                  <p>Upon full payment of your website project, ownership of the website design and custom content transfers to you. However, websites built on the Complete360 platform require an active hosting subscription to remain live. Platform infrastructure, proprietary templates, and third-party integrations remain the property of Complete360 or their respective owners.</p>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+
+          <!-- 9. PRIVACY -->
+          <div class="c360-tos-section" id="tos-9">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">9</div>
+              <div class="c360-tos-section-title">Privacy</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>Your privacy is important to us. Our collection, use, and protection of your personal information is governed by our <a href="https://complete360.app/privacy-policy" target="_blank" rel="noopener" style="color:var(--tos-green);font-weight:600;">Privacy Policy</a>, which is incorporated into these Terms of Service by reference.</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span>We do not sell your personal data to third parties.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>We use industry-standard security measures to protect your account and payment information.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span>By using our CRM platform, you acknowledge that lead and contact data you store in the platform is subject to applicable privacy laws including TCPA and CAN-SPAM, and that you are responsible for obtaining any required consents from your own customers.</span></li>
+              </ul>
+            </div>
+          </div>
+
+
+          <!-- 10. DISCLAIMERS -->
+          <div class="c360-tos-section" id="tos-10">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">10</div>
+              <div class="c360-tos-section-title">Disclaimers</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>We work hard to deliver excellent results for every client, but we cannot guarantee specific outcomes. Marketing performance is influenced by many factors outside our control, including market competition, seasonal demand, client responsiveness, and changes to third-party platforms such as Google.</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>No performance guarantee on paid advertising:</strong> Results from Google Ads, Meta Ads, Geo-Fencing, or LSA campaigns will vary. We optimize aggressively, but we cannot guarantee a specific number of leads, calls, or conversions.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Third-party platforms:</strong> We are not responsible for outages, policy changes, or account suspensions caused by Google, Meta, or any other third-party platform, even if those events affect the delivery of your services.</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Accuracy of information:</strong> We make reasonable efforts to keep information on our website accurate and current, but we do not warrant that all content is error-free or complete.</span></li>
+              </ul>
+              <p>All services are provided "as is" and "as available" without warranties of any kind, express or implied, except as specifically stated in your service agreement.</p>
+            </div>
+          </div>
+
+
+          <!-- 11. LIMITATION OF LIABILITY -->
+          <div class="c360-tos-section" id="tos-11">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">11</div>
+              <div class="c360-tos-section-title">Limitation of Liability</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>To the fullest extent permitted by applicable law, Home Town Hero LLC (Complete360) shall not be liable for any indirect, incidental, consequential, special, or punitive damages arising from your use of our services — including but not limited to lost profits, lost data, loss of business opportunity, or reputational harm.</p>
+              <p>Our total cumulative liability to you for any claim arising out of or relating to these terms or your use of our services shall not exceed the total amount you paid to us in the <strong>three (3) months immediately preceding the event giving rise to the claim</strong>.</p>
+              <p>Some jurisdictions do not allow the exclusion of certain warranties or the limitation of liability for certain types of damages. In such jurisdictions, our liability is limited to the maximum extent permitted by law.</p>
+            </div>
+          </div>
+
+
+          <!-- 12. GOVERNING LAW -->
+          <div class="c360-tos-section" id="tos-12">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">12</div>
+              <div class="c360-tos-section-title">Governing Law</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>These Terms of Service shall be governed by and construed in accordance with the laws of the <strong>State of Arizona</strong>, without regard to its conflict of law provisions. Any legal action or proceeding arising out of or relating to these terms shall be subject to the exclusive jurisdiction of the state and federal courts located in <strong>Pima County, Arizona</strong>.</p>
+            </div>
+          </div>
+
+
+          <!-- 13. DISPUTE RESOLUTION -->
+          <div class="c360-tos-section" id="tos-13">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">13</div>
+              <div class="c360-tos-section-title">Dispute Resolution</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>We encourage you to contact us first. Most billing and service issues can be resolved quickly with a phone call or email. Please reach out to us at <strong>(866) 527-6205</strong> before initiating any formal dispute.</p>
+              <p>If a dispute cannot be resolved informally, the parties agree to first attempt resolution through good-faith mediation. If mediation is unsuccessful, disputes shall be resolved through binding arbitration in Pima County, Arizona, in accordance with the rules of the American Arbitration Association (AAA). Each party shall bear its own costs unless the arbitrator determines otherwise.</p>
+              <p>You agree to waive your right to participate in any class action lawsuit or class-wide arbitration against Complete360 or Home Town Hero LLC.</p>
+            </div>
+          </div>
+
+
+          <!-- 14. MODIFICATIONS -->
+          <div class="c360-tos-section" id="tos-14">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">14</div>
+              <div class="c360-tos-section-title">Modifications to These Terms</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>We reserve the right to update or modify these Terms of Service at any time. When we make material changes, we will update the "Last Updated" date at the top of this page. We encourage you to review these terms periodically.</p>
+              <p>Your continued use of our services after any changes to these terms constitutes your acceptance of the revised terms. If you do not agree with the updated terms, you may cancel your services in accordance with Section 6.</p>
+            </div>
+          </div>
+
+
+          <!-- 15. CONTACT -->
+          <div class="c360-tos-section" id="tos-15">
+            <div class="c360-tos-section-head">
+              <div class="c360-tos-section-num">15</div>
+              <div class="c360-tos-section-title">Contact Us</div>
+            </div>
+            <div class="c360-tos-section-body">
+              <p>If you have any questions about these Terms of Service, please contact us using any of the methods below:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Phone:</strong> <a href="tel:+18665276205" style="color:var(--tos-green);">(866) 527-6205</a> — Mon–Thu 7am–4pm · Fri 7am–1pm MST</span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Contact Form:</strong> <a href="/contact-us" style="color:var(--tos-green);">complete360.org/contact-us</a></span></li>
+                <li><i class="fa-solid fa-circle-check"></i><span><strong>Mail:</strong> Home Town Hero LLC dba Complete360, 3444 N Country Club Rd, Ste 105, Tucson, AZ 85716</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- FOOTER NOTE -->
+          <div class="c360-tos-callout">
+            <i class="fa-solid fa-scale-balanced"></i>
+            <p>These terms were last updated on <strong>May 14, 2026</strong> and supersede all prior versions. By continuing to use Complete360 services after this date, you agree to be bound by these updated terms.</p>
+          </div>
+
+        </div><!-- /content -->
+      </div><!-- /layout -->
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       CTA STRIP
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-tos-cta">
+    <div class="c360-tos-container">
+      <div class="c360-tos-cta-inner">
+        <div class="c360-tos-cta-overline">Have Questions?</div>
+        <h2>We're real people.<br><span>Just give us a call.</span></h2>
+        <p>If anything in these terms is unclear or you'd like to talk through your service agreement before signing up, our team is happy to help.</p>
+        <div class="c360-tos-cta-actions">
+          <a href="tel:+18665276205" class="c360-tos-btn-primary">
+            <i class="fa-solid fa-phone"></i>
+            (866) 527-6205
+          </a>
+          <a href="/contact-us" class="c360-tos-btn-outline">
+            <i class="fa-solid fa-envelope"></i>
+            Contact Us
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.c360-tos-wrap -->
+
+<!-- ============================================================
+     END COMPLETE360 TERMS OF SERVICE v2.0
+     ============================================================ -->
