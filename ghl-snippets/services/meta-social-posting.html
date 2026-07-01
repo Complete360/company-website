@@ -1,1 +1,1354 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Meta Social Posting (Facebook & Instagram)
+     c360-meta-social-posting-v1.0.html
+     GHL: Paste into Custom Code block on /meta-social-posting page.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Prefix: c360-msp-  (Meta Social Posting)
+     ══════════════════════════════════════════════════════════════ -->
 
+<style>
+/* ══════════════════════════════════════════════════════
+   Complete360 Meta Social Posting  |  Prefix: c360-msp-
+   Same design system as GSP. Structurally distinct.
+   ══════════════════════════════════════════════════════ */
+
+:root {
+  --msp-navy:        #122078;
+  --msp-navy-dark:   #0d1654;
+  --msp-navy-deeper: #0a1040;
+  --msp-green:       #127825;
+  --msp-green-hover: #0e5e1d;
+  --msp-green-light: #EAF3DE;
+  --msp-blue-light:  #E6F1FB;
+  --msp-grey:        #888780;
+  --msp-light-grey:  #F1EFE8;
+  --msp-text:        #0F1F5E;
+  --msp-text-muted:  #5F5E5A;
+  --msp-fb:          #1877F2;
+  --msp-fb-light:    #E7F0FD;
+  --msp-ig:          #E1306C;
+  --msp-ig-light:    #FCE8F0;
+  --msp-radius:      12px;
+  --msp-radius-lg:   20px;
+  --msp-shadow:      0 8px 32px rgba(18,32,120,0.13);
+  --msp-shadow-lg:   0 16px 56px rgba(18,32,120,0.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.c360-msp-section   { width: 100%; position: relative; }
+.c360-msp-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ── BUTTONS ── */
+.c360-msp-btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--msp-green); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 700;
+  padding: 15px 28px; border-radius: 8px;
+  text-decoration: none; border: none; cursor: pointer;
+  white-space: nowrap; line-height: 1;
+  box-shadow: 0 4px 20px rgba(18,120,37,0.35);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.c360-msp-btn-primary:hover {
+  background: var(--msp-green-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(18,120,37,0.45); color: #fff; text-decoration: none;
+}
+.c360-msp-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: rgba(255,255,255,0.85);
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 600;
+  padding: 14px 24px; border-radius: 8px;
+  text-decoration: none; line-height: 1;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.c360-msp-btn-outline:hover {
+  border-color: rgba(255,255,255,0.7); color: #fff;
+  background: rgba(255,255,255,0.08); text-decoration: none;
+}
+
+/* ── SECTION HEADER ── */
+.c360-msp-section-header { text-align: center; margin-bottom: 56px; }
+.c360-msp-overline {
+  display: inline-block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--msp-green); margin-bottom: 12px;
+}
+.c360-msp-section-header h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(26px,3.8vw,42px); font-weight: 800;
+  color: var(--msp-text); margin: 0 0 16px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-msp-section-header p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; color: var(--msp-text-muted);
+  max-width: 620px; margin: 0 auto; line-height: 1.65;
+}
+
+/* ══════════════════════════════════════════════════════
+   HERO  — diagonal split background
+   ══════════════════════════════════════════════════════ */
+.c360-msp-hero {
+  background: linear-gradient(148deg, #09103c 0%, #122078 50%, #1a2890 100%);
+  position: relative; overflow: hidden; padding: 92px 0 80px;
+}
+.c360-msp-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(24,119,242,0.14) 0%, transparent 40%),
+    radial-gradient(circle at 10% 80%, rgba(18,120,37,0.13) 0%, transparent 42%);
+  pointer-events: none;
+}
+.c360-msp-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.c360-msp-hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 56px; align-items: center;
+}
+.c360-msp-hero-badge {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(24,119,242,0.18); border: 1px solid rgba(24,119,242,0.36);
+  color: #8ab8ff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 6px 14px;
+  border-radius: 100px; margin-bottom: 22px;
+}
+.c360-msp-hero h1 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(34px,4.8vw,56px); font-weight: 800;
+  line-height: 1.07; color: #fff; margin: 0 0 20px;
+  letter-spacing: -0.025em;
+}
+.c360-msp-hero h1 em { font-style: normal; color: #2ecc52; }
+.c360-msp-hero-sub {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.7);
+  line-height: 1.65; margin: 0 0 32px; max-width: 500px;
+}
+.c360-msp-hero-actions {
+  display: flex; align-items: center; gap: 14px;
+  flex-wrap: wrap; margin-bottom: 36px;
+}
+.c360-msp-hero-micro { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.c360-msp-micro-item {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.5); font-weight: 500;
+}
+.c360-msp-micro-item i { color: #2ecc52; }
+
+/* Hero right — dual platform mockup */
+.c360-msp-hero-visual { position: relative; }
+.c360-msp-platform-stack {
+  display: flex; flex-direction: column; gap: 14px;
+}
+.c360-msp-platform-card {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: var(--msp-radius-lg); padding: 18px 20px;
+  backdrop-filter: blur(10px);
+}
+.c360-msp-platform-card-header {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 14px;
+}
+.c360-msp-platform-icon {
+  width: 32px; height: 32px; border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px; flex-shrink: 0;
+}
+.c360-msp-platform-icon.fb { background: #1877F2; color: #fff; }
+.c360-msp-platform-icon.ig {
+  background: linear-gradient(135deg, #f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  color: #fff;
+}
+.c360-msp-platform-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; color: #fff;
+}
+.c360-msp-platform-label span {
+  display: block; font-size: 11px; font-weight: 400; color: rgba(255,255,255,0.45);
+}
+.c360-msp-post-preview {
+  background: rgba(255,255,255,0.08); border-radius: 10px;
+  padding: 12px 14px;
+}
+.c360-msp-post-preview-text {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: rgba(255,255,255,0.7); line-height: 1.5; margin-bottom: 10px;
+}
+.c360-msp-post-preview-meta {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.c360-msp-post-preview-stats {
+  display: flex; gap: 14px;
+}
+.c360-msp-post-preview-stat {
+  display: flex; align-items: center; gap: 5px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; color: rgba(255,255,255,0.4); font-weight: 500;
+}
+.c360-msp-post-preview-stat i { font-size: 11px; }
+.c360-msp-post-preview-stat.green { color: #2ecc52; }
+.c360-msp-hero-stat-row {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-top: 14px;
+}
+.c360-msp-hero-stat {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.11);
+  border-radius: 10px; padding: 12px 10px; text-align: center;
+}
+.c360-msp-hero-stat-val {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 18px; font-weight: 800; color: #2ecc52; line-height: 1; margin-bottom: 3px;
+}
+.c360-msp-hero-stat-lbl {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; color: rgba(255,255,255,0.42); font-weight: 500;
+}
+
+/* ══════════════════════════════════════════════════════
+   TRUST BAR
+   ══════════════════════════════════════════════════════ */
+.c360-msp-trust-bar { background: #fff; border-bottom: 1px solid #e5e3dc; }
+.c360-msp-trust-bar-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+.c360-msp-trust-pill {
+  display: flex; align-items: center; gap: 12px;
+  padding: 18px 24px; border-right: 1px solid #e5e3dc; transition: background 0.18s;
+}
+.c360-msp-trust-pill:last-child { border-right: none; }
+.c360-msp-trust-pill:hover { background: var(--msp-blue-light); }
+.c360-msp-trust-ico {
+  width: 38px; height: 38px; border-radius: 9px;
+  display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0;
+}
+.c360-msp-trust-ico.blue  { background: var(--msp-fb-light); color: var(--msp-fb); }
+.c360-msp-trust-ico.green { background: var(--msp-green-light); color: var(--msp-green); }
+.c360-msp-trust-ico.gold  { background: #FFF8E7; color: #f59e0b; }
+.c360-msp-trust-ico.navy  { background: var(--msp-blue-light); color: var(--msp-navy); }
+.c360-msp-trust-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; color: var(--msp-text); line-height: 1.2;
+}
+.c360-msp-trust-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: var(--msp-text-muted);
+}
+
+/* ══════════════════════════════════════════════════════
+   WHY META — intro section
+   ══════════════════════════════════════════════════════ */
+.c360-msp-intro { padding: 88px 0; background: #fff; }
+.c360-msp-intro-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.c360-msp-intro-copy h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(24px,3.4vw,38px); font-weight: 800;
+  color: var(--msp-text); margin: 0 0 18px; line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-msp-intro-copy h2 span { color: var(--msp-green); }
+.c360-msp-intro-copy p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; color: var(--msp-text-muted); line-height: 1.72; margin-bottom: 20px;
+}
+.c360-msp-intro-copy p:last-of-type { margin-bottom: 28px; }
+.c360-msp-stat-trio {
+  display: grid; grid-template-columns: repeat(3,1fr); gap: 14px; margin-bottom: 28px;
+}
+.c360-msp-stat-box {
+  background: var(--msp-light-grey); border: 1.5px solid #dddbd4;
+  border-radius: 12px; padding: 16px; text-align: center;
+}
+.c360-msp-stat-box-val {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 26px; font-weight: 800; color: var(--msp-navy); line-height: 1; margin-bottom: 4px;
+}
+.c360-msp-stat-box-lbl {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; color: var(--msp-text-muted); font-weight: 500; line-height: 1.4;
+}
+
+/* Included checklist — right side */
+.c360-msp-included-grid {
+  display: flex; flex-direction: column;
+  background: var(--msp-light-grey);
+  border: 1.5px solid #dddbd4; border-radius: var(--msp-radius); overflow: hidden;
+}
+.c360-msp-included-header {
+  background: var(--msp-navy); padding: 14px 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.c360-msp-included-header span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+}
+.c360-msp-included-header i { color: #2ecc52; }
+.c360-msp-included-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 12px 20px; border-bottom: 1px solid #dddbd4;
+}
+.c360-msp-included-item:last-child { border-bottom: none; }
+.c360-msp-included-item i { color: var(--msp-green); font-size: 12px; margin-top: 3px; flex-shrink: 0; }
+.c360-msp-included-item span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; color: var(--msp-text); font-weight: 500; line-height: 1.5;
+}
+.c360-msp-included-item span em {
+  display: block; font-style: normal;
+  font-size: 12px; color: var(--msp-text-muted); font-weight: 400; margin-top: 1px;
+}
+
+/* ══════════════════════════════════════════════════════
+   TWO PLATFORMS  — FB vs IG split (new section)
+   ══════════════════════════════════════════════════════ */
+.c360-msp-platforms { padding: 80px 0; background: var(--msp-light-grey); border-top: 1px solid #e5e3dc; }
+.c360-msp-platforms-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 8px;
+}
+.c360-msp-platform-panel {
+  background: #fff; border-radius: var(--msp-radius-lg);
+  border: 2px solid #e5e3dc; overflow: hidden;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.c360-msp-platform-panel:hover { border-color: rgba(18,32,120,0.2); box-shadow: var(--msp-shadow); }
+.c360-msp-platform-panel-head {
+  padding: 22px 26px 20px;
+  display: flex; align-items: center; gap: 14px;
+  border-bottom: 1px solid #f0ede6;
+}
+.c360-msp-platform-panel-head.fb { background: var(--msp-fb-light); }
+.c360-msp-platform-panel-head.ig { background: var(--msp-ig-light); }
+.c360-msp-platform-icon-lg {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 22px; flex-shrink: 0;
+}
+.c360-msp-platform-icon-lg.fb { background: var(--msp-fb); color: #fff; }
+.c360-msp-platform-icon-lg.ig {
+  background: linear-gradient(135deg, #f09433,#e6683c,#dc2743,#cc2366,#bc1888);
+  color: #fff;
+}
+.c360-msp-platform-name {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 18px; font-weight: 800; color: var(--msp-text); margin: 0 0 2px;
+}
+.c360-msp-platform-tagline {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: var(--msp-text-muted);
+}
+.c360-msp-platform-body { padding: 22px 26px 26px; }
+.c360-msp-platform-feature-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 10px;
+}
+.c360-msp-platform-feature-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; color: var(--msp-text); font-weight: 500; line-height: 1.45;
+}
+.c360-msp-platform-feature-list li i {
+  font-size: 12px; margin-top: 3px; flex-shrink: 0;
+}
+.c360-msp-platform-feature-list li i.fb { color: var(--msp-fb); }
+.c360-msp-platform-feature-list li i.ig { color: var(--msp-ig); }
+
+/* ══════════════════════════════════════════════════════
+   CONTENT TYPES
+   ══════════════════════════════════════════════════════ */
+.c360-msp-types { padding: 88px 0; background: #fff; }
+.c360-msp-types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.c360-msp-type-card {
+  background: var(--msp-light-grey); border: 1.5px solid #e5e3dc;
+  border-radius: var(--msp-radius-lg); padding: 28px 22px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.c360-msp-type-card:hover {
+  border-color: rgba(18,120,37,0.3); box-shadow: var(--msp-shadow); transform: translateY(-3px);
+  background: #fff;
+}
+.c360-msp-type-ico {
+  width: 50px; height: 50px; border-radius: 14px;
+  background: var(--msp-navy); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px; margin-bottom: 18px;
+  transition: background 0.2s;
+}
+.c360-msp-type-card:hover .c360-msp-type-ico { background: var(--msp-green); }
+.c360-msp-type-platforms {
+  display: flex; gap: 5px; margin-bottom: 12px;
+}
+.c360-msp-type-platform-tag {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; font-weight: 700; padding: 2px 8px; border-radius: 100px;
+}
+.c360-msp-type-platform-tag.fb { background: var(--msp-fb-light); color: var(--msp-fb); }
+.c360-msp-type-platform-tag.ig { background: var(--msp-ig-light); color: var(--msp-ig); }
+.c360-msp-type-title {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 700; color: var(--msp-text); margin-bottom: 8px;
+}
+.c360-msp-type-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: var(--msp-text-muted); line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════
+   HOW IT WORKS
+   ══════════════════════════════════════════════════════ */
+.c360-msp-process { padding: 88px 0; background: var(--msp-light-grey); border-top: 1px solid #e5e3dc; }
+.c360-msp-process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; position: relative; margin-top: 16px;
+}
+.c360-msp-process-steps::before {
+  content: ''; position: absolute;
+  top: 44px; left: 12%; right: 12%; height: 2px;
+  background: linear-gradient(90deg, var(--msp-navy) 0%, var(--msp-green) 100%);
+  z-index: 0;
+}
+.c360-msp-step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 14px; position: relative; z-index: 1;
+}
+.c360-msp-step-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--msp-navy);
+  border: 3px solid var(--msp-green-light);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px; margin-bottom: 18px; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(18,32,120,0.2);
+}
+.c360-msp-step:last-child .c360-msp-step-num { background: var(--msp-green); }
+.c360-msp-step-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; font-weight: 700; color: var(--msp-text); margin-bottom: 8px; line-height: 1.3;
+}
+.c360-msp-step-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: var(--msp-text-muted); line-height: 1.55;
+}
+
+/* ══════════════════════════════════════════════════════
+   PRICING
+   ══════════════════════════════════════════════════════ */
+.c360-msp-pricing {
+  padding: 88px 0;
+  background: linear-gradient(135deg, #09103c 0%, #122078 58%, #0c1960 100%);
+  position: relative; overflow: hidden;
+}
+.c360-msp-pricing::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 20% 0%, rgba(24,119,242,0.18) 0%, transparent 45%),
+    radial-gradient(circle at 80% 100%, rgba(18,120,37,0.18) 0%, transparent 45%);
+  pointer-events: none;
+}
+.c360-msp-pricing .c360-msp-section-header h2 { color: #fff; }
+.c360-msp-pricing .c360-msp-section-header p  { color: rgba(255,255,255,0.6); }
+.c360-msp-pricing .c360-msp-overline           { color: #2ecc52; }
+.c360-msp-price-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px; position: relative; z-index: 2;
+}
+.c360-msp-price-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--msp-radius-lg); padding: 34px 28px;
+  position: relative; transition: background 0.22s, border-color 0.22s;
+  display: flex; flex-direction: column;
+}
+.c360-msp-price-card:hover {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.22);
+}
+.c360-msp-price-card--popular {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(46,204,82,0.55);
+  box-shadow: 0 0 0 4px rgba(46,204,82,0.08);
+}
+.c360-msp-popular-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--msp-green); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 5px 16px; border-radius: 100px; white-space: nowrap;
+}
+.c360-msp-plan-name {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;
+}
+.c360-msp-plan-tagline {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 20px; line-height: 1.4;
+}
+.c360-msp-price-row { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px; }
+.c360-msp-price-dollar {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 20px; font-weight: 700; color: rgba(255,255,255,0.6); padding-bottom: 10px;
+}
+.c360-msp-price-num {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 52px; font-weight: 800; color: #fff; line-height: 1; letter-spacing: -0.03em;
+}
+.c360-msp-price-period {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: rgba(255,255,255,0.4); padding-bottom: 10px;
+}
+.c360-msp-price-save {
+  display: inline-block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; color: #2ecc52; font-weight: 700;
+  background: rgba(46,204,82,0.12); border: 1px solid rgba(46,204,82,0.25);
+  border-radius: 100px; padding: 3px 10px; margin-bottom: 22px;
+}
+.c360-msp-price-save.invisible { visibility: hidden; }
+.c360-msp-price-divider { height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 22px; }
+.c360-msp-price-features {
+  list-style: none; margin: 0 0 28px; padding: 0;
+  display: flex; flex-direction: column; gap: 10px; flex: 1;
+}
+.c360-msp-price-features li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.45; font-weight: 500;
+}
+.c360-msp-price-features li i { color: #2ecc52; margin-top: 2px; flex-shrink: 0; font-size: 11px; }
+.c360-msp-price-note {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; color: rgba(255,255,255,0.35);
+  margin-bottom: 20px; padding-top: 4px;
+  display: flex; align-items: center; gap: 5px;
+}
+.c360-msp-price-note i { font-size: 11px; }
+.c360-msp-price-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 20px; border-radius: 8px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; font-weight: 700; text-decoration: none;
+  border: none; cursor: pointer; white-space: nowrap; line-height: 1;
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-msp-price-btn--outline {
+  background: transparent; color: rgba(255,255,255,0.8);
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.c360-msp-price-btn--outline:hover {
+  border-color: rgba(255,255,255,0.6); color: #fff;
+  background: rgba(255,255,255,0.07); text-decoration: none; transform: translateY(-2px);
+}
+.c360-msp-price-btn--green {
+  background: var(--msp-green); color: #fff; box-shadow: 0 4px 18px rgba(18,120,37,0.4);
+}
+.c360-msp-price-btn--green:hover {
+  background: var(--msp-green-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(18,120,37,0.5); color: #fff; text-decoration: none;
+}
+.c360-msp-pricing-foot { text-align: center; margin-top: 42px; position: relative; z-index: 2; }
+.c360-msp-pricing-foot p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.38); margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   BRIDGE — to Google Posting / GBP
+   ══════════════════════════════════════════════════════ */
+.c360-msp-bridge { padding: 72px 0; background: var(--msp-blue-light); border-bottom: 1px solid #d0e6f7; }
+.c360-msp-bridge-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 20px;
+}
+.c360-msp-bridge-card {
+  background: #fff; border: 1.5px solid #d0e6f7; border-radius: var(--msp-radius-lg);
+  padding: 30px 28px; box-shadow: var(--msp-shadow);
+  display: flex; flex-direction: column; gap: 12px;
+}
+.c360-msp-bridge-card-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  background: var(--msp-blue-light); color: var(--msp-navy);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 20px;
+}
+.c360-msp-bridge-card-icon.green { background: var(--msp-green-light); color: var(--msp-green); }
+.c360-msp-bridge-card h3 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; font-weight: 800; color: var(--msp-text); margin: 0; line-height: 1.2;
+}
+.c360-msp-bridge-card p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; color: var(--msp-text-muted); line-height: 1.6; margin: 0; flex: 1;
+}
+.c360-msp-bridge-link {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; color: var(--msp-navy);
+  text-decoration: none; transition: gap 0.2s;
+}
+.c360-msp-bridge-link:hover { gap: 11px; color: var(--msp-green); text-decoration: none; }
+.c360-msp-bridge-link i { font-size: 12px; }
+
+/* ══════════════════════════════════════════════════════
+   REVIEWS
+   ══════════════════════════════════════════════════════ */
+.c360-msp-reviews { padding: 88px 0; background: #fff; }
+
+/* ══════════════════════════════════════════════════════
+   FINAL CTA
+   ══════════════════════════════════════════════════════ */
+.c360-msp-cta {
+  padding: 96px 0;
+  background: linear-gradient(148deg, #09103c 0%, #122078 55%, #1a2890 100%);
+  position: relative; overflow: hidden; text-align: center;
+}
+.c360-msp-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 30% 0%, rgba(24,119,242,0.16) 0%, transparent 45%),
+    radial-gradient(circle at 70% 100%, rgba(18,120,37,0.18) 0%, transparent 45%);
+  pointer-events: none;
+}
+.c360-msp-cta-inner { position: relative; z-index: 2; max-width: 700px; margin: 0 auto; }
+.c360-msp-cta h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(28px,4vw,48px); font-weight: 800;
+  color: #fff; margin: 16px 0 18px; line-height: 1.09; letter-spacing: -0.025em;
+}
+.c360-msp-cta h2 em { font-style: normal; color: #2ecc52; }
+.c360-msp-cta-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 16px; color: rgba(255,255,255,0.65); margin: 0 0 38px; line-height: 1.65;
+}
+.c360-msp-cta-actions { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.c360-msp-cta-trust { display: flex; align-items: center; justify-content: center; gap: 24px; margin-top: 36px; flex-wrap: wrap; }
+.c360-msp-cta-trust span {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: rgba(255,255,255,0.4); font-weight: 500;
+}
+.c360-msp-cta-trust span i { color: #2ecc52; font-size: 12px; }
+
+/* ══════════════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════════════ */
+.c360-msp-faq { padding: 88px 0; background: var(--msp-light-grey); border-top: 1px solid #e5e3dc; }
+.c360-msp-faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+.c360-msp-faq-toggle { display: none; }
+.c360-msp-faq-item { border-bottom: 1px solid #ddd9d0; }
+.c360-msp-faq-item:first-child { border-top: 1px solid #ddd9d0; }
+.c360-msp-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 6px; cursor: pointer; gap: 16px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; font-weight: 600; color: var(--msp-text);
+  line-height: 1.4; transition: color 0.18s; user-select: none; list-style: none;
+}
+.c360-msp-faq-q:hover { color: var(--msp-navy); }
+.c360-msp-faq-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: var(--msp-blue-light); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--msp-navy); font-size: 11px;
+  transition: transform 0.3s ease, background 0.2s;
+}
+.c360-msp-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 6px; }
+.c360-msp-faq-a p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; color: var(--msp-text-muted); line-height: 1.7; margin: 0 0 22px; padding-top: 4px;
+}
+.c360-msp-faq-toggle:checked ~ .c360-msp-faq-q .c360-msp-faq-icon {
+  transform: rotate(180deg); background: var(--msp-navy); color: #fff;
+}
+.c360-msp-faq-toggle:checked ~ .c360-msp-faq-a { max-height: 600px; }
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 980px) {
+  .c360-msp-hero-inner,
+  .c360-msp-intro-inner,
+  .c360-msp-platforms-grid,
+  .c360-msp-bridge-grid { grid-template-columns: 1fr; gap: 36px; }
+  .c360-msp-hero-visual { display: none; }
+  .c360-msp-price-cards { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .c360-msp-types-grid { grid-template-columns: repeat(2, 1fr); }
+  .c360-msp-process-steps { grid-template-columns: repeat(2, 1fr); gap: 32px; }
+  .c360-msp-process-steps::before { display: none; }
+}
+@media (max-width: 768px) {
+  .c360-msp-hero, .c360-msp-cta { padding: 68px 0 56px; }
+  .c360-msp-intro, .c360-msp-platforms, .c360-msp-types,
+  .c360-msp-process, .c360-msp-pricing, .c360-msp-bridge,
+  .c360-msp-reviews, .c360-msp-faq { padding: 64px 0; }
+  .c360-msp-types-grid { grid-template-columns: 1fr; }
+  .c360-msp-trust-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .c360-msp-trust-pill { border-right: none; border-bottom: 1px solid #e5e3dc; }
+  .c360-msp-trust-pill:nth-child(odd) { border-right: 1px solid #e5e3dc; }
+  .c360-msp-trust-pill:nth-child(3), .c360-msp-trust-pill:nth-child(4) { border-bottom: none; }
+  .c360-msp-stat-trio { grid-template-columns: repeat(3,1fr); }
+  .c360-msp-section-header { margin-bottom: 40px; }
+}
+@media (max-width: 540px) {
+  .c360-msp-hero h1 { font-size: 32px; }
+  .c360-msp-hero-actions { flex-direction: column; align-items: flex-start; }
+  .c360-msp-btn-primary, .c360-msp-btn-outline { width: 100%; justify-content: center; }
+  .c360-msp-cta-actions { flex-direction: column; }
+  .c360-msp-process-steps { grid-template-columns: 1fr; }
+  .c360-msp-stat-trio { grid-template-columns: 1fr; }
+}
+</style>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 1 — HERO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-msp-section c360-msp-hero">
+  <div class="c360-msp-container">
+    <div class="c360-msp-hero-inner">
+
+      <!-- LEFT COPY -->
+      <div>
+        <div class="c360-msp-hero-badge">
+          <i class="fa-brands fa-facebook-f"></i>&nbsp;
+          <i class="fa-brands fa-instagram"></i>
+          &nbsp;Facebook &amp; Instagram Management
+        </div>
+        <h1>
+          Your Business,<br>
+          Showing Up Where<br>
+          <em>People Actually Scroll.</em>
+        </h1>
+        <p class="c360-msp-hero-sub">
+          Facebook and Instagram aren't optional anymore — they're where your customers spend their time. We create, schedule, and publish branded content on both platforms every week, so your business stays visible without you having to think about it.
+        </p>
+        <div class="c360-msp-hero-actions">
+          <a href="#c360-msp-pricing" class="c360-msp-btn-primary">
+            View Plans &amp; Pricing <i class="fa-solid fa-arrow-down"></i>
+          </a>
+          <a href="tel:+18665276205" class="c360-msp-btn-outline">
+            <i class="fa-solid fa-phone"></i> Call (866) 527-6205
+          </a>
+        </div>
+        <div class="c360-msp-hero-micro">
+          <div class="c360-msp-micro-item"><i class="fa-brands fa-facebook-f"></i> Facebook Covered</div>
+          <div class="c360-msp-micro-item"><i class="fa-brands fa-instagram"></i> Instagram Covered</div>
+          <div class="c360-msp-micro-item"><i class="fa-solid fa-calendar-check"></i> Weekly Posts, Done For You</div>
+        </div>
+      </div>
+
+      <!-- RIGHT — Dual platform mockup -->
+      <div class="c360-msp-hero-visual">
+        <div class="c360-msp-platform-stack">
+
+          <!-- Facebook preview -->
+          <div class="c360-msp-platform-card">
+            <div class="c360-msp-platform-card-header">
+              <div class="c360-msp-platform-icon fb"><i class="fa-brands fa-facebook-f"></i></div>
+              <div>
+                <div class="c360-msp-platform-label">Facebook
+                  <span>Posted today · Your Business Page</span>
+                </div>
+              </div>
+            </div>
+            <div class="c360-msp-post-preview">
+              <div class="c360-msp-post-preview-text">Big news — we just expanded our service area! Same trusted team, now serving more neighborhoods. Book your appointment today. 🎉</div>
+              <div class="c360-msp-post-preview-meta">
+                <div class="c360-msp-post-preview-stats">
+                  <span class="c360-msp-post-preview-stat green"><i class="fa-solid fa-thumbs-up"></i> 47</span>
+                  <span class="c360-msp-post-preview-stat"><i class="fa-solid fa-comment"></i> 12</span>
+                  <span class="c360-msp-post-preview-stat"><i class="fa-solid fa-share"></i> 8</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Instagram preview -->
+          <div class="c360-msp-platform-card">
+            <div class="c360-msp-platform-card-header">
+              <div class="c360-msp-platform-icon ig"><i class="fa-brands fa-instagram"></i></div>
+              <div>
+                <div class="c360-msp-platform-label">Instagram
+                  <span>2 hours ago · @yourbusiness</span>
+                </div>
+              </div>
+            </div>
+            <div class="c360-msp-post-preview">
+              <div class="c360-msp-post-preview-text">Spring special ✨ Book before month-end and save 15%. Link in bio. #LocalBusiness #Tucson</div>
+              <div class="c360-msp-post-preview-meta">
+                <div class="c360-msp-post-preview-stats">
+                  <span class="c360-msp-post-preview-stat green"><i class="fa-solid fa-heart"></i> 83</span>
+                  <span class="c360-msp-post-preview-stat"><i class="fa-solid fa-comment"></i> 9</span>
+                  <span class="c360-msp-post-preview-stat"><i class="fa-solid fa-paper-plane"></i> 14</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="c360-msp-hero-stat-row">
+          <div class="c360-msp-hero-stat">
+            <span class="c360-msp-hero-stat-val">2</span>
+            <span class="c360-msp-hero-stat-lbl">Platforms Managed</span>
+          </div>
+          <div class="c360-msp-hero-stat">
+            <span class="c360-msp-hero-stat-val">8–12</span>
+            <span class="c360-msp-hero-stat-lbl">Posts / Month</span>
+          </div>
+          <div class="c360-msp-hero-stat">
+            <span class="c360-msp-hero-stat-val">100%</span>
+            <span class="c360-msp-hero-stat-lbl">Done For You</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 2 — TRUST BAR
+     ══════════════════════════════════════════════════════ -->
+<div class="c360-msp-trust-bar">
+  <div class="c360-msp-container">
+    <div class="c360-msp-trust-bar-inner">
+      <div class="c360-msp-trust-pill">
+        <div class="c360-msp-trust-ico blue"><i class="fa-brands fa-facebook-f"></i></div>
+        <div class="c360-msp-trust-text">
+          <strong>Facebook &amp; Instagram</strong>
+          <span>Both platforms, one team</span>
+        </div>
+      </div>
+      <div class="c360-msp-trust-pill">
+        <div class="c360-msp-trust-ico green"><i class="fa-solid fa-pen-nib"></i></div>
+        <div class="c360-msp-trust-text">
+          <strong>Written &amp; Designed In-House</strong>
+          <span>Real copywriters, real graphics</span>
+        </div>
+      </div>
+      <div class="c360-msp-trust-pill">
+        <div class="c360-msp-trust-ico gold"><i class="fa-solid fa-star"></i></div>
+        <div class="c360-msp-trust-text">
+          <strong>144+ Five-Star Reviews</strong>
+          <span>Trusted by local business owners</span>
+        </div>
+      </div>
+      <div class="c360-msp-trust-pill">
+        <div class="c360-msp-trust-ico navy"><i class="fa-solid fa-calendar-check"></i></div>
+        <div class="c360-msp-trust-text">
+          <strong>Consistent Posting Cadence</strong>
+          <span>Every week, without reminders</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 3 — WHY META / WHAT WE DO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-msp-section c360-msp-intro">
+  <div class="c360-msp-container">
+    <div class="c360-msp-intro-inner">
+
+      <div class="c360-msp-intro-copy">
+        <span class="c360-msp-overline">Why It Matters</span>
+        <h2>Your customers are <span>already there.</span> Your business should be too.</h2>
+        <p>
+          Over 3 billion people use Facebook and Instagram every month. For local businesses, that means your next customer is almost certainly scrolling one of those feeds right now — and if your page hasn't posted in weeks, you're invisible to them.
+        </p>
+        <p>
+          Consistent social posting builds trust before someone ever picks up the phone. It shows your business is active, professional, and worth paying attention to. But keeping up with two platforms every week is a job in itself — which is exactly why we do it for you.
+        </p>
+
+        <div class="c360-msp-stat-trio">
+          <div class="c360-msp-stat-box">
+            <div class="c360-msp-stat-box-val">3B+</div>
+            <div class="c360-msp-stat-box-lbl">Monthly Meta users</div>
+          </div>
+          <div class="c360-msp-stat-box">
+            <div class="c360-msp-stat-box-val">68%</div>
+            <div class="c360-msp-stat-box-lbl">Check biz pages before buying</div>
+          </div>
+          <div class="c360-msp-stat-box">
+            <div class="c360-msp-stat-box-val">4×</div>
+            <div class="c360-msp-stat-box-lbl">More reach with consistent posts</div>
+          </div>
+        </div>
+
+        <a href="#c360-msp-pricing" class="c360-msp-btn-primary">
+          See Posting Plans <i class="fa-solid fa-arrow-down"></i>
+        </a>
+      </div>
+
+      <!-- What's Included checklist -->
+      <div>
+        <div class="c360-msp-included-grid">
+          <div class="c360-msp-included-header">
+            <i class="fa-solid fa-list-check"></i>
+            <span>What's Included Every Month</span>
+          </div>
+          <div class="c360-msp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>8–12 posts per month<em>Split across Facebook &amp; Instagram</em></span>
+          </div>
+          <div class="c360-msp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Custom branded graphics<em>On-brand visuals for every post</em></span>
+          </div>
+          <div class="c360-msp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Professionally written captions<em>Engaging copy with calls-to-action</em></span>
+          </div>
+          <div class="c360-msp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Hashtag &amp; keyword strategy<em>Relevant tags to expand organic reach</em></span>
+          </div>
+          <div class="c360-msp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Seasonal &amp; promotional content<em>Timely posts tied to your offers</em></span>
+          </div>
+          <div class="c360-msp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Content calendar planning<em>We map out your month before it starts</em></span>
+          </div>
+          <div class="c360-msp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Scheduled &amp; published for you<em>No logins, no approvals needed</em></span>
+          </div>
+          <div class="c360-msp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Monthly performance recap<em>Reach, engagement &amp; top posts</em></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 4 — TWO PLATFORMS (new section, no GSP equiv)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-msp-section c360-msp-platforms">
+  <div class="c360-msp-container">
+    <div class="c360-msp-section-header">
+      <span class="c360-msp-overline">Two Platforms, One Team</span>
+      <h2>We handle both — so you don't have to pick.</h2>
+      <p>Facebook and Instagram serve different audiences and content styles. We tailor posts for each platform so you're not just cross-posting the same thing twice.</p>
+    </div>
+    <div class="c360-msp-platforms-grid">
+
+      <!-- Facebook panel -->
+      <div class="c360-msp-platform-panel">
+        <div class="c360-msp-platform-panel-head fb">
+          <div class="c360-msp-platform-icon-lg fb"><i class="fa-brands fa-facebook-f"></i></div>
+          <div>
+            <div class="c360-msp-platform-name">Facebook</div>
+            <div class="c360-msp-platform-tagline">Reach your local community &amp; build trust</div>
+          </div>
+        </div>
+        <div class="c360-msp-platform-body">
+          <ul class="c360-msp-platform-feature-list">
+            <li><i class="fa-solid fa-circle-check fb"></i> Business Page posts — updates, promos &amp; announcements</li>
+            <li><i class="fa-solid fa-circle-check fb"></i> Longer-form captions that tell your story</li>
+            <li><i class="fa-solid fa-circle-check fb"></i> Seasonal &amp; community-focused content</li>
+            <li><i class="fa-solid fa-circle-check fb"></i> Event posts tied to your services or specials</li>
+            <li><i class="fa-solid fa-circle-check fb"></i> Call-to-action buttons (Call, Book, Learn More)</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Instagram panel -->
+      <div class="c360-msp-platform-panel">
+        <div class="c360-msp-platform-panel-head ig">
+          <div class="c360-msp-platform-icon-lg ig"><i class="fa-brands fa-instagram"></i></div>
+          <div>
+            <div class="c360-msp-platform-name">Instagram</div>
+            <div class="c360-msp-platform-tagline">Visual-first content that stops the scroll</div>
+          </div>
+        </div>
+        <div class="c360-msp-platform-body">
+          <ul class="c360-msp-platform-feature-list">
+            <li><i class="fa-solid fa-circle-check ig"></i> Feed posts optimized for visual impact</li>
+            <li><i class="fa-solid fa-circle-check ig"></i> Short, punchy captions with on-brand voice</li>
+            <li><i class="fa-solid fa-circle-check ig"></i> Strategic hashtag sets for organic discovery</li>
+            <li><i class="fa-solid fa-circle-check ig"></i> Before/after, testimonial &amp; service spotlight posts</li>
+            <li><i class="fa-solid fa-circle-check ig"></i> Link-in-bio calls to action driving traffic</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 5 — CONTENT TYPES
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-msp-section c360-msp-types">
+  <div class="c360-msp-container">
+    <div class="c360-msp-section-header">
+      <span class="c360-msp-overline">Content Variety</span>
+      <h2>A feed that never feels stale.</h2>
+      <p>We rotate through proven content formats that drive engagement, build trust, and keep your audience coming back — without repeating yourself.</p>
+    </div>
+    <div class="c360-msp-types-grid">
+
+      <div class="c360-msp-type-card">
+        <div class="c360-msp-type-ico"><i class="fa-solid fa-bullhorn"></i></div>
+        <div class="c360-msp-type-platforms">
+          <span class="c360-msp-type-platform-tag fb">Facebook</span>
+          <span class="c360-msp-type-platform-tag ig">Instagram</span>
+        </div>
+        <div class="c360-msp-type-title">Promotions &amp; Offers</div>
+        <div class="c360-msp-type-desc">Limited-time specials, seasonal discounts, and service bundles that give followers a reason to act now.</div>
+      </div>
+
+      <div class="c360-msp-type-card">
+        <div class="c360-msp-type-ico"><i class="fa-solid fa-trophy"></i></div>
+        <div class="c360-msp-type-platforms">
+          <span class="c360-msp-type-platform-tag fb">Facebook</span>
+          <span class="c360-msp-type-platform-tag ig">Instagram</span>
+        </div>
+        <div class="c360-msp-type-title">Social Proof</div>
+        <div class="c360-msp-type-desc">Customer shoutouts, star ratings, and before/after highlights that show your work and build credibility.</div>
+      </div>
+
+      <div class="c360-msp-type-card">
+        <div class="c360-msp-type-ico"><i class="fa-solid fa-lightbulb"></i></div>
+        <div class="c360-msp-type-platforms">
+          <span class="c360-msp-type-platform-tag fb">Facebook</span>
+          <span class="c360-msp-type-platform-tag ig">Instagram</span>
+        </div>
+        <div class="c360-msp-type-title">Tips &amp; Education</div>
+        <div class="c360-msp-type-desc">Useful advice that positions you as the local expert — the kind of content people save and share.</div>
+      </div>
+
+      <div class="c360-msp-type-card">
+        <div class="c360-msp-type-ico"><i class="fa-solid fa-store"></i></div>
+        <div class="c360-msp-type-platforms">
+          <span class="c360-msp-type-platform-tag fb">Facebook</span>
+          <span class="c360-msp-type-platform-tag ig">Instagram</span>
+        </div>
+        <div class="c360-msp-type-title">Business Updates</div>
+        <div class="c360-msp-type-desc">New services, hours changes, team news, and behind-the-scenes posts that keep your community in the loop.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 6 — HOW IT WORKS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-msp-section c360-msp-process">
+  <div class="c360-msp-container">
+    <div class="c360-msp-section-header">
+      <span class="c360-msp-overline">How It Works</span>
+      <h2>Up and running in under a week.</h2>
+      <p>A quick onboarding call, then we take it from there. Most clients are fully hands-off by week two.</p>
+    </div>
+    <div class="c360-msp-process-steps">
+      <div class="c360-msp-step">
+        <div class="c360-msp-step-num"><i class="fa-solid fa-handshake"></i></div>
+        <div class="c360-msp-step-label">Onboarding Call</div>
+        <div class="c360-msp-step-desc">We learn your brand voice, services, and audience. Takes 20–30 minutes, then you're done.</div>
+      </div>
+      <div class="c360-msp-step">
+        <div class="c360-msp-step-num"><i class="fa-solid fa-calendar-days"></i></div>
+        <div class="c360-msp-step-label">Content Calendar Built</div>
+        <div class="c360-msp-step-desc">Our team builds out a full month of posts — captions, graphics, hashtags — before the month starts.</div>
+      </div>
+      <div class="c360-msp-step">
+        <div class="c360-msp-step-num"><i class="fa-solid fa-paper-plane"></i></div>
+        <div class="c360-msp-step-label">We Publish Weekly</div>
+        <div class="c360-msp-step-desc">Posts go live on your Facebook &amp; Instagram on a consistent schedule. No action needed from you.</div>
+      </div>
+      <div class="c360-msp-step">
+        <div class="c360-msp-step-num"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="c360-msp-step-label">Monthly Recap</div>
+        <div class="c360-msp-step-desc">You receive a simple summary — posts published, reach, top performers, and what's coming next month.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 7 — PRICING
+     ══════════════════════════════════════════════════════ -->
+<section id="c360-msp-pricing" class="c360-msp-section c360-msp-pricing">
+  <div class="c360-msp-container">
+    <div class="c360-msp-section-header">
+      <span class="c360-msp-overline">Pricing &amp; Plans</span>
+      <h2>Both platforms. One simple price.</h2>
+      <p>Choose the commitment that fits your business. Every plan covers Facebook and Instagram — no platform fees, no à la carte add-ons.</p>
+    </div>
+    <div class="c360-msp-price-cards">
+
+      <!-- Monthly -->
+      <div class="c360-msp-price-card">
+        <div class="c360-msp-plan-name">Monthly</div>
+        <div class="c360-msp-plan-tagline">Flexible month-to-month posting</div>
+        <div class="c360-msp-price-row">
+          <span class="c360-msp-price-dollar">$</span>
+          <span class="c360-msp-price-num">249</span>
+          <span class="c360-msp-price-period">/mo</span>
+        </div>
+        <span class="c360-msp-price-save invisible">—</span>
+        <div class="c360-msp-price-divider"></div>
+        <ul class="c360-msp-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> 8–12 posts per month</li>
+          <li><i class="fa-solid fa-circle-check"></i> Facebook &amp; Instagram covered</li>
+          <li><i class="fa-solid fa-circle-check"></i> Custom branded graphics</li>
+          <li><i class="fa-solid fa-circle-check"></i> Captions &amp; hashtag strategy</li>
+          <li><i class="fa-solid fa-circle-check"></i> Scheduled &amp; published for you</li>
+          <li><i class="fa-solid fa-circle-check"></i> Monthly performance recap</li>
+        </ul>
+        <div class="c360-msp-price-note">
+          <i class="fa-solid fa-circle-info"></i> Billed monthly · cancel anytime
+        </div>
+        <a href="/meta-social-checkout" class="c360-msp-price-btn c360-msp-price-btn--outline">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 6-Month — POPULAR -->
+      <div class="c360-msp-price-card c360-msp-price-card--popular">
+        <div class="c360-msp-popular-badge"><i class="fa-solid fa-bolt"></i> Most Popular</div>
+        <div class="c360-msp-plan-name">6-Month</div>
+        <div class="c360-msp-plan-tagline">Six months of consistent social presence</div>
+        <div class="c360-msp-price-row">
+          <span class="c360-msp-price-dollar">$</span>
+          <span class="c360-msp-price-num">1,195</span>
+          <span class="c360-msp-price-period">paid in full</span>
+        </div>
+        <span class="c360-msp-price-save">$199/mo equivalent · Save $299</span>
+        <div class="c360-msp-price-divider"></div>
+        <ul class="c360-msp-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Everything in Monthly</li>
+          <li><i class="fa-solid fa-circle-check"></i> Lower per-month rate</li>
+          <li><i class="fa-solid fa-circle-check"></i> Priority content scheduling</li>
+          <li><i class="fa-solid fa-circle-check"></i> Seasonal campaign planning</li>
+          <li><i class="fa-solid fa-circle-check"></i> Quarterly strategy check-in</li>
+        </ul>
+        <div class="c360-msp-price-note">
+          <i class="fa-solid fa-circle-info"></i> One payment · covers 6 months
+        </div>
+        <a href="/meta-social-checkout" class="c360-msp-price-btn c360-msp-price-btn--green">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 12-Month -->
+      <div class="c360-msp-price-card">
+        <div class="c360-msp-plan-name">12-Month</div>
+        <div class="c360-msp-plan-tagline">Best value — full year of social presence</div>
+        <div class="c360-msp-price-row">
+          <span class="c360-msp-price-dollar">$</span>
+          <span class="c360-msp-price-num">2,092</span>
+          <span class="c360-msp-price-period">paid in full</span>
+        </div>
+        <span class="c360-msp-price-save">$174/mo equivalent · Save $896</span>
+        <div class="c360-msp-price-divider"></div>
+        <ul class="c360-msp-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Everything in 6-Month</li>
+          <li><i class="fa-solid fa-circle-check"></i> Lowest per-month rate</li>
+          <li><i class="fa-solid fa-circle-check"></i> Full-year content calendar</li>
+          <li><i class="fa-solid fa-circle-check"></i> Priority response &amp; revisions</li>
+          <li><i class="fa-solid fa-circle-check"></i> Annual performance review</li>
+        </ul>
+        <div class="c360-msp-price-note">
+          <i class="fa-solid fa-circle-info"></i> One payment · covers 12 months
+        </div>
+        <a href="/meta-social-checkout" class="c360-msp-price-btn c360-msp-price-btn--outline">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+    <div class="c360-msp-pricing-foot">
+      <p>Requires admin access to your Facebook Business Page and Instagram account. Questions? Call Mon–Fri 9am–5pm MST · (866) 527-6205.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 8 — BRIDGE (2-card layout vs GSP's 1-card)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-msp-section c360-msp-bridge">
+  <div class="c360-msp-container">
+    <div class="c360-msp-section-header" style="margin-bottom:36px;">
+      <span class="c360-msp-overline">Pair It With</span>
+      <h2>Social works better when the rest is dialed in too.</h2>
+      <p>Meta posting keeps your audience engaged — these services make sure they can find you, trust you, and book you.</p>
+    </div>
+    <div class="c360-msp-bridge-grid">
+
+      <div class="c360-msp-bridge-card">
+        <div class="c360-msp-bridge-card-icon"><i class="fa-solid fa-location-dot"></i></div>
+        <h3>Google Business Profile Management</h3>
+        <p>While social builds awareness, Google is where people search when they're ready to buy. Our full GBP Management keeps your profile optimized, reviewed, and ranking so you capture that intent.</p>
+        <a href="/gbp-management" class="c360-msp-bridge-link">Explore GBP Management <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+      <div class="c360-msp-bridge-card">
+        <div class="c360-msp-bridge-card-icon green"><i class="fa-solid fa-pen-nib"></i></div>
+        <h3>Social Posting — Google</h3>
+        <p>Already on Meta? Add Google Posts to stay active in local search too. Weekly posts published to your Google Business Profile — same done-for-you approach, different platform.</p>
+        <a href="/google-social-posting" class="c360-msp-bridge-link">Explore Google Social Posting <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 9 — REVIEWS WIDGET
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-msp-section c360-msp-reviews">
+  <div class="c360-msp-container">
+    <div class="c360-msp-section-header">
+      <span class="c360-msp-overline">What Our Clients Say</span>
+      <h2>Trusted by local businesses</h2>
+      <p>144+ Google reviews from business owners who let us handle their marketing.</p>
+    </div>
+    <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
+    <iframe
+      class='lc_reviews_widget'
+      src='https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u'
+      frameborder='0' scrolling='no'
+      style='min-width:100%;width:100%;display:block;'>
+    </iframe>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 10 — FINAL CTA
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-msp-section c360-msp-cta">
+  <div class="c360-msp-container">
+    <div class="c360-msp-cta-inner">
+      <span class="c360-msp-overline" style="color:#2ecc52;">Ready to Show Up Consistently?</span>
+      <h2>Stop letting your social <em>go quiet.</em></h2>
+      <p class="c360-msp-cta-desc">
+        Your competitors are posting. Your customers are scrolling. Let us keep your Facebook and Instagram active, professional, and working for your business — every single week.<br>
+        <span style="font-size:14px;opacity:0.75;">Mon–Fri 9am–5pm MST &nbsp;·&nbsp; (866) 527-6205</span>
+      </p>
+      <div class="c360-msp-cta-actions">
+        <a href="#c360-msp-pricing" class="c360-msp-btn-primary" style="font-size:16px;padding:17px 32px;">
+          View Plans &amp; Pricing <i class="fa-solid fa-arrow-down"></i>
+        </a>
+        <a href="tel:+18665276205" class="c360-msp-btn-outline">
+          <i class="fa-solid fa-phone"></i> Call (866) 527-6205
+        </a>
+      </div>
+      <div class="c360-msp-cta-trust">
+        <span><i class="fa-brands fa-facebook-f"></i> Facebook Covered</span>
+        <span><i class="fa-brands fa-instagram"></i> Instagram Covered</span>
+        <span><i class="fa-solid fa-calendar-check"></i> Weekly Posts Done For You</span>
+        <span><i class="fa-solid fa-star"></i> 144+ Five-Star Reviews</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 11 — FAQ
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-msp-section c360-msp-faq">
+  <div class="c360-msp-container">
+    <div class="c360-msp-section-header">
+      <span class="c360-msp-overline">Frequently Asked</span>
+      <h2>Questions about Meta Social Posting</h2>
+      <p>Everything you need to know before getting started.</p>
+    </div>
+    <div class="c360-msp-faq-list">
+
+      <div class="c360-msp-faq-item">
+        <input type="checkbox" id="c360MspFaq1" class="c360-msp-faq-toggle">
+        <label for="c360MspFaq1" class="c360-msp-faq-q">
+          What access do you need to my accounts?
+          <span class="c360-msp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-msp-faq-a">
+          <p>We'll ask you to add us as an editor or admin on your Facebook Business Page and grant access to your connected Instagram account through Meta Business Suite. This lets us schedule and publish on your behalf without ever needing your password. We walk you through the steps during onboarding — it takes about five minutes.</p>
+        </div>
+      </div>
+
+      <div class="c360-msp-faq-item">
+        <input type="checkbox" id="c360MspFaq2" class="c360-msp-faq-toggle">
+        <label for="c360MspFaq2" class="c360-msp-faq-q">
+          How many posts will I get per month and on which platforms?
+          <span class="c360-msp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-msp-faq-a">
+          <p>Every plan includes 8–12 posts per month split across Facebook and Instagram. The exact mix depends on your audience and which platform is more active for your industry — we'll dial that in during onboarding. Posts are tailored to each platform rather than cross-posted identically, so your content feels native on both.</p>
+        </div>
+      </div>
+
+      <div class="c360-msp-faq-item">
+        <input type="checkbox" id="c360MspFaq3" class="c360-msp-faq-toggle">
+        <label for="c360MspFaq3" class="c360-msp-faq-q">
+          Do I need to review or approve posts before they go live?
+          <span class="c360-msp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-msp-faq-a">
+          <p>It's fully done for you by default — no approvals needed. We learn your brand during onboarding and handle everything from there. If you'd prefer to see posts before they publish, just let us know and we'll share a preview each week. Either way works; most clients prefer to stay hands-off once they see the first month's content.</p>
+        </div>
+      </div>
+
+      <div class="c360-msp-faq-item">
+        <input type="checkbox" id="c360MspFaq4" class="c360-msp-faq-toggle">
+        <label for="c360MspFaq4" class="c360-msp-faq-q">
+          Does this include ads or just organic posts?
+          <span class="c360-msp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-msp-faq-a">
+          <p>This service covers organic (unpaid) posts to your Facebook and Instagram pages. If you're interested in running paid Meta Ads — boosted posts, targeted campaigns, or lead generation ads — that's a separate service we offer. Ask us about it when you call, or check back when our Meta Ads service launches.</p>
+        </div>
+      </div>
+
+      <div class="c360-msp-faq-item">
+        <input type="checkbox" id="c360MspFaq5" class="c360-msp-faq-toggle">
+        <label for="c360MspFaq5" class="c360-msp-faq-q">
+          What if I already have a business page but it hasn't been active?
+          <span class="c360-msp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-msp-faq-a">
+          <p>That's completely fine — and honestly very common. We'll take a look at your existing pages during onboarding, make sure the profile information is current, and start posting from there. There's no minimum activity required to get started. If you don't have a Facebook Page or Instagram account yet, we can help you set one up before posting begins.</p>
+        </div>
+      </div>
+
+      <div class="c360-msp-faq-item">
+        <input type="checkbox" id="c360MspFaq6" class="c360-msp-faq-toggle">
+        <label for="c360MspFaq6" class="c360-msp-faq-q">
+          Can I cancel or switch plans later?
+          <span class="c360-msp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-msp-faq-a">
+          <p>The Monthly plan is month-to-month with no long-term commitment — cancel anytime. The 6-Month and 12-Month plans are prepaid for the full term and offer a lower per-month rate in exchange for that commitment. You can upgrade to a longer term or add complementary services (like Google Social Posting or GBP Management) at any time.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
