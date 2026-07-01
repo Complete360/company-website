@@ -1,1 +1,1204 @@
+<!-- =========================================================
+     COMPLETE360 — WEBSITES HOME PAGE
+     Full page rebuild for: https://complete360.org/websites-home
+     Paste this entire block into a GHL Custom Code element.
 
+     ISOLATION GUARANTEE:
+     - All .c360w-* rules apply ONLY inside .c360w-page
+     - All gallery rules apply ONLY inside .c360-gallery
+     - Zero bare .c360-* selectors → zero collision risk with
+       the global header (c360-*) or footer (c360f-*)
+     ========================================================= -->
+
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+     
+     <style>
+       :root {
+         --c360w-navy:        #122078;
+         --c360w-navy-hover:  #0d1654;
+         --c360w-navy-text:   #0F1F5E;
+         --c360w-green:       #127825;
+         --c360w-green-hover: #0e5e1d;
+         --c360w-green-soft:  #EAF3DE;
+         --c360w-blue-soft:   #E6F1FB;
+         --c360w-grey:        #888780;
+         --c360w-grey-soft:   #F1EFE8;
+         --c360w-muted:       #5F5E5A;
+         --c360w-ink:         #0F1F5E;
+         --c360w-border:      #e4e7ef;
+         --c360w-card-bg:     #ffffff;
+         --c360w-bg:          #f8f9fc;
+         --c360w-radius-sm:   8px;
+         --c360w-radius-md:   14px;
+         --c360w-radius-lg:   20px;
+         --c360w-shadow-sm: 0 1px 2px rgba(15,23,42,.06), 0 1px 3px rgba(15,23,42,.04);
+         --c360w-shadow-md: 0 6px 14px -4px rgba(18,32,120,.12), 0 2px 4px -1px rgba(15,23,42,.05);
+         --c360w-shadow-lg: 0 22px 44px -14px rgba(18,32,120,.22), 0 8px 16px -8px rgba(15,23,42,.10);
+       }
+     
+       .c360w-page {
+         font-family: 'Poppins', 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+         color: var(--c360w-ink);
+         line-height: 1.55;
+       }
+       .c360w-page *, .c360w-page *::before, .c360w-page *::after { box-sizing: border-box; }
+     
+       .c360w-wrap { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+     
+       .c360w-eyebrow {
+         display: inline-block; font-size: 12px; font-weight: 700;
+         letter-spacing: .16em; color: var(--c360w-green);
+         text-transform: uppercase; margin-bottom: 14px;
+       }
+       .c360w-h2 {
+         font-size: clamp(28px, 3.4vw, 40px); font-weight: 800;
+         color: var(--c360w-navy); line-height: 1.15;
+         letter-spacing: -0.02em; margin: 0 0 14px;
+       }
+       .c360w-lead {
+         font-size: 16px; color: var(--c360w-muted);
+         max-width: 640px; margin: 0 auto; line-height: 1.65;
+       }
+       .c360w-accent { color: var(--c360w-green); }
+     
+       .c360w-btn {
+         display: inline-flex; align-items: center; justify-content: center;
+         gap: 8px; padding: 14px 26px; font-family: inherit; font-size: 15px;
+         font-weight: 700; border-radius: 999px; text-decoration: none;
+         border: 2px solid transparent; cursor: pointer;
+         transition: all .2s ease; white-space: nowrap;
+       }
+       .c360w-btn--primary {
+         background: var(--c360w-green); color: #fff;
+         box-shadow: 0 6px 16px rgba(18,120,37,.25);
+       }
+       .c360w-btn--primary:hover {
+         background: var(--c360w-green-hover); transform: translateY(-2px);
+         box-shadow: 0 10px 22px rgba(18,120,37,.32);
+       }
+       .c360w-btn--navy {
+         background: var(--c360w-navy); color: #fff;
+         box-shadow: 0 6px 16px rgba(18,32,120,.25);
+       }
+       .c360w-btn--navy:hover { background: var(--c360w-navy-hover); transform: translateY(-2px); }
+       .c360w-btn--outline {
+         background: transparent; color: var(--c360w-navy); border-color: var(--c360w-navy);
+       }
+       .c360w-btn--outline:hover {
+         background: var(--c360w-navy); color: #fff; transform: translateY(-2px);
+       }
+     
+       /* HERO */
+       .c360w-hero {
+         position: relative; padding: 80px 0 72px;
+         background:
+           radial-gradient(ellipse 60% 45% at 85% 20%, rgba(18,120,37,.08), transparent 70%),
+           radial-gradient(ellipse 55% 50% at 10% 85%, rgba(18,32,120,.08), transparent 70%),
+           #fff;
+         overflow: hidden;
+       }
+       .c360w-hero::before {
+         content: ""; position: absolute; inset: 0;
+         background-image:
+           linear-gradient(rgba(18,32,120,.04) 1px, transparent 1px),
+           linear-gradient(90deg, rgba(18,32,120,.04) 1px, transparent 1px);
+         background-size: 56px 56px;
+         mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 100%);
+         -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, #000 30%, transparent 100%);
+         pointer-events: none;
+       }
+       .c360w-hero__inner {
+         position: relative; text-align: center; max-width: 820px; margin: 0 auto;
+       }
+       .c360w-hero__pill {
+         display: inline-flex; align-items: center; gap: 8px;
+         background: var(--c360w-green-soft); color: var(--c360w-green-hover);
+         padding: 7px 16px; border-radius: 999px;
+         font-size: 13px; font-weight: 600; margin-bottom: 24px;
+       }
+       .c360w-hero__pill i { font-size: 11px; }
+       .c360w-hero__title {
+         font-size: clamp(36px, 5.4vw, 60px); font-weight: 800;
+         line-height: 1.04; letter-spacing: -0.025em;
+         color: var(--c360w-navy); margin: 0 0 22px;
+       }
+       .c360w-hero__title span { color: var(--c360w-green); }
+       .c360w-hero__subtitle {
+         font-size: 18px; color: var(--c360w-muted);
+         max-width: 620px; margin: 0 auto 36px; line-height: 1.6;
+       }
+       .c360w-hero__ctas {
+         display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+       }
+       .c360w-trust {
+         display: flex; justify-content: center; align-items: center;
+         gap: 40px; margin-top: 56px; flex-wrap: wrap;
+         color: var(--c360w-muted); font-size: 14px; font-weight: 500;
+       }
+       .c360w-trust__item { display: inline-flex; align-items: center; gap: 8px; }
+       .c360w-trust__item i { color: var(--c360w-green); font-size: 18px; }
+       .c360w-trust__stars { color: #fbbf24; letter-spacing: 2px; }
+     
+       /* WHY */
+       .c360w-why { padding: 88px 0; background: #fff; }
+       .c360w-section-head { text-align: center; max-width: 720px; margin: 0 auto 56px; }
+       .c360w-benefits {
+         display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px;
+       }
+       .c360w-benefit {
+         background: #fff; border: 1px solid var(--c360w-border);
+         border-radius: var(--c360w-radius-md); padding: 28px 24px;
+         transition: all .25s ease;
+       }
+       .c360w-benefit:hover {
+         transform: translateY(-4px); box-shadow: var(--c360w-shadow-md);
+         border-color: rgba(18,32,120,.25);
+       }
+       .c360w-benefit__icon {
+         width: 48px; height: 48px; border-radius: 12px;
+         display: inline-flex; align-items: center; justify-content: center;
+         font-size: 20px; margin-bottom: 18px;
+       }
+       .c360w-benefit__icon--navy { background: var(--c360w-blue-soft); color: var(--c360w-navy); }
+       .c360w-benefit__icon--green { background: var(--c360w-green-soft); color: var(--c360w-green-hover); }
+       .c360w-benefit__title {
+         font-size: 17px; font-weight: 700; color: var(--c360w-navy);
+         margin: 0 0 8px; line-height: 1.3;
+       }
+       .c360w-benefit__text { font-size: 14px; color: var(--c360w-muted); margin: 0; line-height: 1.6; }
+     
+       /* PRICING TEASER */
+       .c360w-pricing-teaser { padding: 88px 0; background: var(--c360w-bg); }
+       .c360w-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 40px; }
+       .c360w-tier {
+         background: #fff; border: 1.5px solid var(--c360w-border);
+         border-radius: var(--c360w-radius-md); padding: 28px 26px;
+         position: relative; transition: all .25s ease;
+       }
+       .c360w-tier:hover {
+         transform: translateY(-4px); box-shadow: var(--c360w-shadow-lg); border-color: var(--c360w-navy);
+       }
+       .c360w-tier--popular {
+         border-color: var(--c360w-green); border-width: 2px;
+         box-shadow: 0 10px 30px -8px rgba(18,120,37,.2);
+       }
+       .c360w-tier__badge {
+         position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+         background: var(--c360w-green); color: #fff; font-size: 11px; font-weight: 700;
+         letter-spacing: .1em; padding: 5px 14px; border-radius: 999px; text-transform: uppercase;
+       }
+       .c360w-tier__name {
+         font-size: 14px; font-weight: 700; color: var(--c360w-green);
+         text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px;
+       }
+       .c360w-tier__price {
+         font-size: 40px; font-weight: 800; color: var(--c360w-navy);
+         line-height: 1; margin-bottom: 4px; letter-spacing: -0.02em;
+       }
+       .c360w-tier__price small { font-size: 14px; font-weight: 500; color: var(--c360w-muted); letter-spacing: 0; }
+       .c360w-tier__monthly { font-size: 13px; color: var(--c360w-muted); margin-bottom: 18px; }
+       .c360w-tier__desc { font-size: 14px; color: var(--c360w-muted); margin: 0 0 22px; line-height: 1.55; min-height: 44px; }
+       .c360w-tier__cta {
+         display: block; text-align: center; padding: 12px 18px;
+         background: var(--c360w-bg); color: var(--c360w-navy);
+         font-weight: 700; font-size: 14px; border-radius: 10px;
+         text-decoration: none; transition: all .2s ease; border: 1.5px solid var(--c360w-border);
+       }
+       .c360w-tier__cta:hover { background: var(--c360w-navy); color: #fff; border-color: var(--c360w-navy); }
+       .c360w-tier--popular .c360w-tier__cta { background: var(--c360w-green); color: #fff; border-color: var(--c360w-green); }
+       .c360w-tier--popular .c360w-tier__cta:hover { background: var(--c360w-green-hover); border-color: var(--c360w-green-hover); }
+       .c360w-pricing-teaser__foot { text-align: center; margin-top: 28px; color: var(--c360w-muted); font-size: 14px; }
+       .c360w-pricing-teaser__foot a {
+         color: var(--c360w-navy); font-weight: 700; text-decoration: none;
+         border-bottom: 2px solid transparent; transition: border-color .2s ease;
+       }
+       .c360w-pricing-teaser__foot a:hover { border-color: var(--c360w-green); }
+     
+       /* FAQ */
+       .c360w-faq { padding: 88px 0; background: #fff; }
+       .c360w-faq__list { max-width: 820px; margin: 40px auto 0; }
+       .c360w-faq__item { border-bottom: 1px solid var(--c360w-border); }
+       .c360w-faq__item:first-child { border-top: 1px solid var(--c360w-border); }
+       .c360w-faq__q {
+         width: 100%; background: transparent; border: 0; padding: 22px 0;
+         text-align: left; font-family: inherit; font-size: 16px; font-weight: 600;
+         color: var(--c360w-navy); cursor: pointer;
+         display: flex; justify-content: space-between; align-items: center; gap: 16px;
+       }
+       .c360w-faq__q i { color: var(--c360w-green); font-size: 14px; transition: transform .2s ease; }
+       .c360w-faq__item.is-open .c360w-faq__q i { transform: rotate(45deg); }
+       .c360w-faq__a {
+         max-height: 0; overflow: hidden; transition: max-height .3s ease;
+         color: var(--c360w-muted); font-size: 15px; line-height: 1.7;
+       }
+       .c360w-faq__a p { margin: 0 0 18px; }
+       .c360w-faq__item.is-open .c360w-faq__a { max-height: 400px; }
+     
+       /* FINAL CTA */
+       .c360w-cta {
+         padding: 80px 0 96px;
+         background: linear-gradient(135deg, var(--c360w-navy) 0%, #1a2b8a 60%, var(--c360w-green) 180%);
+         color: #fff; text-align: center; position: relative; overflow: hidden;
+       }
+       .c360w-cta::before {
+         content: ""; position: absolute; inset: 0;
+         background-image:
+           radial-gradient(circle at 15% 40%, rgba(255,255,255,.08), transparent 40%),
+           radial-gradient(circle at 85% 70%, rgba(18,120,37,.25), transparent 45%);
+         pointer-events: none;
+       }
+       .c360w-cta__inner { position: relative; max-width: 680px; margin: 0 auto; }
+       .c360w-cta__title {
+         font-size: clamp(28px, 4vw, 42px); font-weight: 800;
+         line-height: 1.15; margin: 0 0 14px; letter-spacing: -0.02em;
+       }
+       .c360w-cta__title span { color: #86e299; }
+       .c360w-cta__text { font-size: 17px; opacity: .88; margin: 0 0 32px; line-height: 1.6; }
+       .c360w-cta .c360w-btn--outline { color: #fff; border-color: rgba(255,255,255,.35); }
+       .c360w-cta .c360w-btn--outline:hover { background: #fff; color: var(--c360w-navy); border-color: #fff; }
+     
+       /* RESPONSIVE */
+       @media (max-width: 960px) {
+         .c360w-benefits { grid-template-columns: repeat(2, 1fr); }
+         .c360w-tiers { grid-template-columns: 1fr; }
+       }
+       @media (max-width: 640px) {
+         .c360w-hero { padding: 56px 0 52px; }
+         .c360w-why, .c360w-pricing-teaser, .c360w-faq { padding: 64px 0; }
+         .c360w-cta { padding: 64px 0 76px; }
+         .c360w-hero__ctas { flex-direction: column; align-items: stretch; }
+         .c360w-hero__ctas .c360w-btn { width: 100%; }
+         .c360w-trust { gap: 20px 28px; margin-top: 40px; }
+         .c360w-benefits { grid-template-columns: 1fr; }
+       }
+     
+       /* SHOWCASE */
+       .c360w-showcase { background: #0a0e1f; padding: 80px 0; overflow: hidden; }
+       .c360w-showcase__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+       .c360w-showcase .c360w-eyebrow { color: #86e299; }
+       .c360w-showcase__title {
+         font-size: clamp(28px, 3.2vw, 40px); font-weight: 800;
+         line-height: 1.12; color: #fff; letter-spacing: -0.02em; margin: 0 0 16px;
+       }
+       .c360w-showcase__title span { color: #86e299; }
+       .c360w-showcase__text { font-size: 15px; color: rgba(255,255,255,.68); line-height: 1.7; margin: 0 0 28px; }
+       .c360w-showcase__img-wrap { position: relative; border-radius: 16px; overflow: hidden; }
+       .c360w-showcase__img {
+         width: 100%; display: block; border-radius: 16px;
+         background: linear-gradient(135deg, #122078, #0d1654);
+         min-height: 320px; object-fit: cover;
+       }
+       .c360w-img-ph {
+         background: linear-gradient(135deg, #122078 0%, #1a2b8a 100%);
+         border-radius: 16px; min-height: 340px;
+         display: flex; flex-direction: column; align-items: center; justify-content: center;
+         gap: 10px; color: rgba(255,255,255,.5);
+         font-size: 13px; font-weight: 600; text-align: center; padding: 24px;
+       }
+       .c360w-img-ph i { font-size: 32px; opacity: .5; }
+       @media (max-width: 860px) {
+         .c360w-showcase__inner { grid-template-columns: 1fr; gap: 32px; }
+         .c360w-showcase__img-wrap { order: -1; }
+       }
+       @media (max-width: 640px) { .c360w-showcase { padding: 56px 0; } }
+     
+       /* FEATURE SPLIT */
+       .c360w-feature-split { padding: 88px 0; background: var(--c360w-bg); }
+       .c360w-feature-split__inner { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+       .c360w-feature-split__img {
+         width: 100%; display: block; border-radius: 16px; box-shadow: var(--c360w-shadow-lg);
+         background: linear-gradient(135deg, #e6f1fb, #eaf3de); min-height: 280px; object-fit: cover;
+       }
+       .c360w-feature-split__checklist {
+         list-style: none; padding: 0; margin: 20px 0 28px;
+         display: flex; flex-direction: column; gap: 12px;
+       }
+       .c360w-feature-split__checklist li {
+         display: flex; align-items: flex-start; gap: 12px;
+         font-size: 15px; color: var(--c360w-muted); line-height: 1.5;
+       }
+       .c360w-feature-split__checklist li i {
+         color: var(--c360w-green); font-size: 16px; margin-top: 2px; flex-shrink: 0;
+       }
+       @media (max-width: 860px) { .c360w-feature-split__inner { grid-template-columns: 1fr; gap: 36px; } }
+       @media (max-width: 640px) { .c360w-feature-split { padding: 64px 0; } }
+     
+       /* SOCIAL PROOF */
+       .c360w-social-proof { padding: 80px 0; background: #fff; }
+       .c360w-social-proof__inner { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
+       .c360w-social-proof__title {
+         font-size: clamp(24px, 2.8vw, 36px); font-weight: 800;
+         color: var(--c360w-navy); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 14px;
+       }
+       .c360w-social-proof__title span { color: var(--c360w-green); }
+       .c360w-social-proof__text { font-size: 15px; color: var(--c360w-muted); line-height: 1.7; margin: 0 0 28px; }
+       .c360w-social-proof__stats { display: flex; gap: 32px; flex-wrap: wrap; }
+       .c360w-social-proof__stat strong {
+         display: block; font-size: 32px; font-weight: 800; color: var(--c360w-navy);
+         letter-spacing: -0.02em; line-height: 1; margin-bottom: 4px;
+       }
+       .c360w-social-proof__stat span { font-size: 13px; color: var(--c360w-muted); font-weight: 500; }
+       .c360w-social-proof__img {
+         width: 100%; display: block; border-radius: 16px; box-shadow: var(--c360w-shadow-md);
+         background: linear-gradient(135deg, #e6f1fb, #eaf3de); min-height: 280px; object-fit: cover;
+       }
+       @media (max-width: 860px) {
+         .c360w-social-proof__inner { grid-template-columns: 1fr; gap: 36px; }
+         .c360w-social-proof__inner .c360w-social-proof__img-wrap { order: -1; }
+       }
+       @media (max-width: 640px) {
+         .c360w-social-proof { padding: 56px 0; }
+         .c360w-social-proof__stats { gap: 24px; }
+         .c360w-social-proof__stat strong { font-size: 28px; }
+       }
+     
+       /* =========================================================
+          GALLERY — 100% ISOLATED
+          Every single selector in this block is prefixed with
+          .c360-gallery, guaranteeing no rule can ever match an
+          element outside the gallery section (header, footer, etc.)
+          ========================================================= */
+       .c360-gallery {
+         --c360g-navy: #122078;
+         --c360g-navy-dark: #0d1759;
+         --c360g-green: #127825;
+         --c360g-green-dark: #0d5a1c;
+         --c360g-ink: #0f172a;
+         --c360g-muted: #64748b;
+         --c360g-border: #e2e8f0;
+         --c360g-bg: #f8fafc;
+         --c360g-card-bg: #ffffff;
+         --c360g-shadow-sm: 0 1px 2px rgba(15,23,42,.06), 0 1px 3px rgba(15,23,42,.04);
+         --c360g-shadow-md: 0 4px 6px -1px rgba(15,23,42,.08), 0 2px 4px -2px rgba(15,23,42,.06);
+         --c360g-shadow-lg: 0 20px 40px -12px rgba(15,23,42,.18), 0 8px 16px -8px rgba(15,23,42,.10);
+         font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+         color: var(--c360g-ink);
+         max-width: 1280px;
+         margin: 0 auto;
+         padding: 88px 24px 96px;
+         box-sizing: border-box;
+         overflow-x: hidden;
+         background: var(--c360g-bg);
+       }
+       .c360-gallery *,
+       .c360-gallery *::before,
+       .c360-gallery *::after { box-sizing: border-box; }
+     
+       .c360-gallery .c360-gallery__header { text-align: center; margin-bottom: 40px; }
+       .c360-gallery .c360-gallery__eyebrow {
+         display: inline-block; font-size: 12px; font-weight: 700;
+         letter-spacing: .14em; color: var(--c360g-green); text-transform: uppercase; margin-bottom: 12px;
+       }
+       .c360-gallery .c360-gallery__title {
+         font-size: clamp(28px, 4vw, 44px); font-weight: 800;
+         line-height: 1.1; color: var(--c360g-navy); margin: 0 0 14px; letter-spacing: -0.02em;
+       }
+       .c360-gallery .c360-gallery__subtitle { font-size: 16px; color: var(--c360g-muted); max-width: 640px; margin: 0 auto; line-height: 1.6; }
+     
+       .c360-gallery .c360-filters {
+         background: #fff; border: 1px solid var(--c360g-border); border-radius: 16px;
+         padding: 20px; margin-bottom: 32px; box-shadow: var(--c360g-shadow-sm);
+       }
+       .c360-gallery .c360-filter-group { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+       .c360-gallery .c360-filter-group + .c360-filter-group { margin-top: 16px; padding-top: 16px; border-top: 1px solid var(--c360g-border); }
+       .c360-gallery .c360-filter-label { font-size: 12px; font-weight: 700; color: var(--c360g-muted); letter-spacing: .08em; text-transform: uppercase; min-width: 72px; }
+     
+       .c360-gallery .c360-tier-pills { display: inline-flex; background: var(--c360g-bg); border-radius: 999px; padding: 4px; gap: 2px; flex-wrap: wrap; }
+       .c360-gallery .c360-tier-pill {
+         appearance: none; border: 0; background: transparent; color: var(--c360g-muted);
+         font-size: 14px; font-weight: 600; padding: 9px 18px; border-radius: 999px;
+         cursor: pointer; transition: all .2s ease; font-family: inherit;
+       }
+       .c360-gallery .c360-tier-pill:hover { color: var(--c360g-navy); }
+       .c360-gallery .c360-tier-pill.is-active { background: var(--c360g-navy); color: #fff; box-shadow: 0 2px 8px rgba(18,32,120,.28); }
+       .c360-gallery .c360-tier-pill--premium.is-active { background: linear-gradient(135deg, var(--c360g-navy), var(--c360g-green)); }
+     
+       .c360-gallery .c360-industries { display: flex; gap: 8px; flex-wrap: wrap; flex: 1; }
+       .c360-gallery .c360-chip {
+         appearance: none; font-family: inherit; font-size: 13px; font-weight: 600;
+         color: var(--c360g-ink); background: #fff; border: 1.5px solid var(--c360g-border);
+         border-radius: 999px; padding: 7px 14px; cursor: pointer; transition: all .18s ease; white-space: nowrap;
+       }
+       .c360-gallery .c360-chip:hover { border-color: var(--c360g-navy); color: var(--c360g-navy); }
+       .c360-gallery .c360-chip.is-active { background: var(--c360g-green); border-color: var(--c360g-green); color: #fff; }
+       .c360-gallery .c360-chip__count { opacity: .6; font-weight: 500; margin-left: 4px; }
+     
+       .c360-gallery .c360-industries-toggle {
+         display: none; align-items: center; justify-content: space-between; gap: 10px;
+         width: 100%; background: #fff; border: 1.5px solid var(--c360g-border); border-radius: 12px;
+         padding: 12px 16px; font-family: inherit; font-size: 14px; font-weight: 600;
+         color: var(--c360g-ink); cursor: pointer; min-height: 48px;
+         transition: border-color .18s ease; -webkit-tap-highlight-color: transparent; text-align: left;
+       }
+       .c360-gallery .c360-industries-toggle:hover,
+       .c360-gallery .c360-industries-toggle:focus-visible { border-color: var(--c360g-navy); outline: none; }
+       .c360-gallery .c360-industries-toggle__label { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+       .c360-gallery .c360-industries-toggle__prefix { color: var(--c360g-muted); font-weight: 500; margin-right: 6px; }
+       .c360-gallery .c360-industries-toggle__icon { flex: 0 0 auto; color: var(--c360g-muted); transition: transform .22s ease; }
+       .c360-gallery .c360-filter-group.is-open .c360-industries-toggle__icon { transform: rotate(180deg); color: var(--c360g-navy); }
+       .c360-gallery .c360-filter-group.is-open .c360-industries-toggle { border-color: var(--c360g-navy); }
+     
+       .c360-gallery .c360-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; font-size: 14px; color: var(--c360g-muted); }
+       .c360-gallery .c360-meta strong { color: var(--c360g-navy); font-weight: 700; }
+       .c360-gallery .c360-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 24px; }
+     
+       .c360-gallery .c360-card {
+         background: var(--c360g-card-bg); border: 1px solid var(--c360g-border); border-radius: 16px;
+         overflow: hidden; display: flex; flex-direction: column; box-shadow: var(--c360g-shadow-sm);
+         transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+         animation: c360gFadeIn .35s ease both;
+       }
+       .c360-gallery .c360-card.is-hidden { display: none; }
+       .c360-gallery .c360-card:hover { transform: translateY(-4px); box-shadow: var(--c360g-shadow-lg); border-color: #cbd5e1; }
+     
+       @keyframes c360gFadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+     
+       .c360-gallery .c360-card__preview {
+         position: relative; height: 260px; overflow: hidden; background: var(--c360g-bg);
+         cursor: pointer; -webkit-tap-highlight-color: transparent;
+       }
+       .c360-gallery .c360-card__screenshot {
+         width: 100%; display: block; transition: transform 6s linear;
+         transform: translateY(0); will-change: transform; pointer-events: none;
+       }
+     
+       @media (hover: hover) and (pointer: fine) {
+         .c360-gallery .c360-card:hover .c360-card__screenshot { transform: translateY(calc(-100% + 260px)); }
+         .c360-gallery .c360-card:hover .c360-card__overlay { opacity: 1; }
+       }
+     
+       .c360-gallery .c360-card.is-scrolling .c360-card__screenshot { transform: translateY(calc(-100% + 260px)); transition: transform 4s linear; }
+     
+       .c360-gallery .c360-card__overlay {
+         position: absolute; inset: 0;
+         background: linear-gradient(180deg, transparent 55%, rgba(15,23,42,.75) 100%);
+         display: flex; align-items: flex-end; justify-content: center;
+         padding: 16px; opacity: 0; transition: opacity .25s ease; pointer-events: none;
+       }
+       .c360-gallery .c360-card__hint {
+         position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+         background: rgba(18,32,120,.92); color: #fff; font-size: 12px; font-weight: 700;
+         padding: 6px 12px; border-radius: 999px; display: none;
+         backdrop-filter: blur(4px); pointer-events: none; animation: c360gPulse 2s ease-in-out infinite;
+       }
+       @keyframes c360gPulse { 0%,100% { opacity: .85; } 50% { opacity: 1; } }
+     
+       .c360-gallery .c360-card.is-touch .c360-card__hint { display: block; }
+       .c360-gallery .c360-card.is-scrolling .c360-card__hint,
+       .c360-gallery .c360-card.has-been-tapped .c360-card__hint { display: none; }
+     
+       .c360-gallery .c360-card__overlay-label {
+         background: #fff; color: var(--c360g-navy); font-size: 13px; font-weight: 700;
+         padding: 8px 16px; border-radius: 999px; display: inline-flex; align-items: center; gap: 6px;
+       }
+       .c360-gallery .c360-card__overlay-label::after { content: "↗"; font-size: 15px; line-height: 1; }
+     
+       .c360-gallery .c360-badge {
+         position: absolute; top: 12px; left: 12px; font-size: 11px; font-weight: 800;
+         letter-spacing: .08em; text-transform: uppercase; padding: 6px 10px; border-radius: 6px;
+         color: #fff; backdrop-filter: blur(6px); box-shadow: 0 2px 6px rgba(0,0,0,.15);
+       }
+       .c360-gallery .c360-badge--essentials { background: rgba(100,116,139,.95); }
+       .c360-gallery .c360-badge--pro { background: rgba(18,32,120,.95); }
+       .c360-gallery .c360-badge--premium { background: linear-gradient(135deg, rgba(18,32,120,.95), rgba(18,120,37,.95)); }
+     
+       .c360-gallery .c360-card__body { padding: 18px 20px 20px; display: flex; flex-direction: column; flex: 1; }
+       .c360-gallery .c360-card__industry { font-size: 11px; font-weight: 700; letter-spacing: .09em; text-transform: uppercase; color: var(--c360g-green); margin-bottom: 6px; }
+       .c360-gallery .c360-card__name { font-size: 17px; font-weight: 700; color: var(--c360g-navy); margin: 0 0 4px; line-height: 1.3; }
+       .c360-gallery .c360-card__meta { font-size: 13px; color: var(--c360g-muted); margin: 0 0 16px; }
+       .c360-gallery .c360-card__actions { display: flex; gap: 8px; margin-top: auto; }
+     
+       .c360-gallery .c360-btn {
+         flex: 1; font-family: inherit; font-size: 13px; font-weight: 700;
+         padding: 11px 14px; border-radius: 10px; cursor: pointer; text-align: center;
+         text-decoration: none; transition: all .18s ease; border: 1.5px solid transparent;
+         display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+       }
+       .c360-gallery .c360-btn--ghost { background: #fff; color: var(--c360g-navy); border-color: var(--c360g-border); }
+       .c360-gallery .c360-btn--ghost:hover { border-color: var(--c360g-navy); background: var(--c360g-bg); }
+       .c360-gallery .c360-btn--primary { background: var(--c360g-green); color: #fff; }
+       .c360-gallery .c360-btn--primary:hover { background: var(--c360g-green-dark); transform: translateY(-1px); }
+     
+       .c360-gallery .c360-empty {
+         display: none; text-align: center; padding: 80px 24px; background: #fff;
+         border: 1px dashed var(--c360g-border); border-radius: 16px; color: var(--c360g-muted);
+       }
+       .c360-gallery .c360-empty.is-visible { display: block; }
+       .c360-gallery .c360-empty h3 { color: var(--c360g-navy); font-size: 18px; margin: 0 0 6px; }
+     
+       @media (max-width: 900px) {
+         .c360-gallery { padding: 64px 20px 72px; }
+         .c360-gallery .c360-grid { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+         .c360-gallery .c360-card__preview { height: 220px; }
+       }
+       @media (max-width: 640px) {
+         .c360-gallery { padding: 56px 14px 64px; }
+         .c360-gallery .c360-gallery__title { font-size: 26px; }
+         .c360-gallery .c360-gallery__subtitle { font-size: 14px; }
+         .c360-gallery .c360-filters { padding: 14px; border-radius: 14px; }
+         .c360-gallery .c360-filter-group { flex-direction: column; align-items: stretch; gap: 10px; }
+         .c360-gallery .c360-filter-group + .c360-filter-group { margin-top: 12px; padding-top: 12px; }
+         .c360-gallery .c360-filter-label { width: 100%; min-width: 0; }
+         .c360-gallery .c360-tier-pills { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+         .c360-gallery .c360-tier-pill { padding: 11px 6px; font-size: 12px; text-align: center; min-height: 44px; }
+         .c360-gallery .c360-industries-toggle { display: flex; }
+         .c360-gallery .c360-industries {
+           display: none; flex-wrap: wrap; gap: 8px; padding: 12px;
+           background: var(--c360g-bg); border-radius: 12px; max-height: 55vh;
+           overflow-y: auto; -webkit-overflow-scrolling: touch;
+         }
+         .c360-gallery .c360-filter-group.is-open .c360-industries { display: flex; animation: c360gFadeIn .18s ease both; }
+         .c360-gallery .c360-chip { flex: 0 0 auto; min-height: 38px; padding: 8px 14px; }
+         .c360-gallery .c360-meta { flex-direction: column; align-items: flex-start; gap: 4px; margin-bottom: 16px; font-size: 13px; }
+         .c360-gallery .c360-grid { grid-template-columns: 1fr; gap: 16px; }
+         .c360-gallery .c360-card__preview { height: 240px; }
+         .c360-gallery .c360-card.is-scrolling .c360-card__screenshot { transform: translateY(calc(-100% + 240px)); }
+         .c360-gallery .c360-card__body { padding: 16px 16px 18px; }
+         .c360-gallery .c360-card__name { font-size: 16px; }
+         .c360-gallery .c360-btn { min-height: 46px; font-size: 14px; }
+       }
+       @media (max-width: 380px) {
+         .c360-gallery .c360-card__actions { flex-direction: column; }
+       }
+     
+       html { scroll-behavior: smooth; }
+     </style>
+     
+     
+     <div class="c360w-page">
+     
+       <!-- HERO -->
+       <section class="c360w-hero" id="top">
+         <div class="c360w-wrap">
+           <div class="c360w-hero__inner">
+             <span class="c360w-hero__pill">
+               <i class="fa-solid fa-sparkles"></i>
+               20+ Industry-Ready Templates · Fully Managed
+             </span>
+             <h1 class="c360w-hero__title">
+               Websites Built to Turn Visitors <span>Into Customers</span>
+             </h1>
+             <p class="c360w-hero__subtitle">
+               Professionally designed, conversion-focused websites for local service businesses.
+               Fully managed — hosting, security, edits, and ongoing support included in every plan.
+             </p>
+             <div class="c360w-hero__ctas">
+               <a href="#templates" class="c360w-btn c360w-btn--primary">
+                 Browse Templates <i class="fa-solid fa-arrow-down"></i>
+               </a>
+               <a href="https://complete360.org/website-pricing" class="c360w-btn c360w-btn--outline">
+                 See Plans &amp; Pricing
+               </a>
+             </div>
+             <div class="c360w-trust">
+               <div class="c360w-trust__item">
+                 <span class="c360w-trust__stars">★★★★★</span>
+                 <span>144+ Google Reviews</span>
+               </div>
+               <div class="c360w-trust__item">
+                 <i class="fa-brands fa-google"></i>
+                 <span>Google Partner Agency</span>
+               </div>
+               <div class="c360w-trust__item">
+                 <i class="fa-solid fa-location-dot"></i>
+                 <span>Built in Tucson, AZ</span>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
+     
+       <!-- TEMPLATE SHOWCASE -->
+       <section class="c360w-showcase">
+         <div class="c360w-wrap">
+           <div class="c360w-showcase__inner">
+             <div>
+               <span class="c360w-eyebrow">20+ Industry-Ready Designs</span>
+               <h2 class="c360w-showcase__title">
+                 Every template is built to <span>make the phone ring</span>
+               </h2>
+               <p class="c360w-showcase__text">
+                 We don't design websites that win awards. We design websites that win customers.
+                 Every template in our library is structured around how local service buyers
+                 actually make decisions — and optimized to get them to call or submit a form.
+               </p>
+               <a href="#templates" class="c360w-btn c360w-btn--primary">
+                 Browse All Templates <i class="fa-solid fa-arrow-down"></i>
+               </a>
+             </div>
+             <div class="c360w-showcase__img-wrap">
+               <img
+                 class="c360w-showcase__img"
+                 src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69e8674c8381f92678a8ac0c.png"
+                 alt="Complete360 website template designs across multiple industries"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+               />
+               <div class="c360w-img-ph" style="display:none">
+                 <i class="fa-solid fa-images"></i>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
+     
+       <!-- WHY SECTION -->
+       <section class="c360w-why" id="why">
+         <div class="c360w-wrap">
+           <div class="c360w-section-head">
+             <span class="c360w-eyebrow">Why Complete360</span>
+             <h2 class="c360w-h2">A website that <span class="c360w-accent">works as hard as you do</span></h2>
+             <p class="c360w-lead">
+               Every site is built on the same proven conversion framework that's driven thousands of
+               calls and form submissions for our local service clients.
+             </p>
+           </div>
+           <div class="c360w-benefits">
+             <div class="c360w-benefit">
+               <div class="c360w-benefit__icon c360w-benefit__icon--green">
+                 <i class="fa-solid fa-chart-line"></i>
+               </div>
+               <h3 class="c360w-benefit__title">Built to Convert</h3>
+               <p class="c360w-benefit__text">
+                 Every template is structured around the decisions buyers actually make —
+                 clear offers, strong CTAs, proof above the fold.
+               </p>
+             </div>
+             <div class="c360w-benefit">
+               <div class="c360w-benefit__icon c360w-benefit__icon--navy">
+                 <i class="fa-solid fa-mobile-screen"></i>
+               </div>
+               <h3 class="c360w-benefit__title">Mobile-First by Default</h3>
+               <p class="c360w-benefit__text">
+                 More than 70% of local service searches happen on a phone. Your site looks
+                 sharp and loads fast on every screen size.
+               </p>
+             </div>
+             <div class="c360w-benefit">
+               <div class="c360w-benefit__icon c360w-benefit__icon--green">
+                 <i class="fa-solid fa-plug-circle-bolt"></i>
+               </div>
+               <h3 class="c360w-benefit__title">Integrated With Your CRM</h3>
+               <p class="c360w-benefit__text">
+                 Leads from your forms, chat widget, and phone system flow directly into
+                 the Complete360 platform — no copy-paste, no lost leads.
+               </p>
+             </div>
+             <div class="c360w-benefit">
+               <div class="c360w-benefit__icon c360w-benefit__icon--navy">
+                 <i class="fa-solid fa-headset"></i>
+               </div>
+               <h3 class="c360w-benefit__title">Fully Managed</h3>
+               <p class="c360w-benefit__text">
+                 Hosting, security updates, content edits, and ongoing support are all
+                 included. You run your business — we'll run your website.
+               </p>
+             </div>
+           </div>
+         </div>
+       </section>
+     
+       <!-- CRM INTEGRATION FEATURE SPLIT -->
+       <section class="c360w-feature-split">
+         <div class="c360w-wrap">
+           <div class="c360w-feature-split__inner">
+             <div>
+               <img
+                 class="c360w-feature-split__img"
+                 src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69e8674c8381f92678a8abf9.png"
+                 alt="Online booking and appointment scheduling on desktop and mobile"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+               />
+               <div class="c360w-img-ph" style="display:none;min-height:280px">
+                 <i class="fa-solid fa-calendar-check"></i>
+               </div>
+             </div>
+             <div>
+               <span class="c360w-eyebrow">Integrated Platform</span>
+               <h2 class="c360w-h2">Your website connects to <span class="c360w-accent">everything</span></h2>
+               <p style="font-size:15px;color:var(--c360w-muted);margin:0 0 4px;line-height:1.7">
+                 Most web designers hand you a finished site and disappear. Every Complete360
+                 website is wired directly into your marketing stack from day one.
+               </p>
+               <ul class="c360w-feature-split__checklist">
+                 <li><i class="fa-solid fa-circle-check"></i>Online booking and appointment scheduling built in</li>
+                 <li><i class="fa-solid fa-circle-check"></i>Lead forms feed directly into your CRM pipeline</li>
+                 <li><i class="fa-solid fa-circle-check"></i>Missed-call text-back fires automatically</li>
+                 <li><i class="fa-solid fa-circle-check"></i>Review requests sent after every job — hands free</li>
+                 <li><i class="fa-solid fa-circle-check"></i>Email &amp; SMS follow-up sequences ready to launch</li>
+               </ul>
+               <a href="https://complete360.org/website-pricing" class="c360w-btn c360w-btn--navy">
+                 See What's Included <i class="fa-solid fa-arrow-right"></i>
+               </a>
+             </div>
+           </div>
+         </div>
+       </section>
+     
+       <!-- PRICING TEASER -->
+       <section class="c360w-pricing-teaser" id="pricing">
+         <div class="c360w-wrap">
+           <div class="c360w-section-head">
+             <span class="c360w-eyebrow">Simple, Transparent Pricing</span>
+             <h2 class="c360w-h2">Three plans. One goal: <span class="c360w-accent">more calls</span>.</h2>
+             <p class="c360w-lead">
+               Every plan is fully managed with hosting, security, and ongoing edits baked in.
+               Pick the tier that fits where your business is today.
+             </p>
+           </div>
+           <div class="c360w-tiers">
+             <div class="c360w-tier">
+               <div class="c360w-tier__name">Essentials</div>
+               <div class="c360w-tier__price">$999<small> one-time</small></div>
+               <div class="c360w-tier__monthly">+ $97/mo hosting &amp; support</div>
+               <p class="c360w-tier__desc">A clean, fast, conversion-ready site for small businesses getting online.</p>
+               <a class="c360w-tier__cta" href="https://complete360.org/website-pricing">See What's Included</a>
+             </div>
+             <div class="c360w-tier c360w-tier--popular">
+               <span class="c360w-tier__badge">Most Popular</span>
+               <div class="c360w-tier__name">Pro</div>
+               <div class="c360w-tier__price">$1,499<small> one-time</small></div>
+               <div class="c360w-tier__monthly">+ $97/mo hosting &amp; support</div>
+               <p class="c360w-tier__desc">For growing businesses that need dedicated service pages and stronger SEO.</p>
+               <a class="c360w-tier__cta" href="https://complete360.org/website-pricing">See What's Included</a>
+             </div>
+             <div class="c360w-tier">
+               <div class="c360w-tier__name">Premium</div>
+               <div class="c360w-tier__price">$1,999<small> one-time</small></div>
+               <div class="c360w-tier__monthly">+ $197/mo hosting, support &amp; automation</div>
+               <p class="c360w-tier__desc">A complete digital presence with blog, gallery, and automation built in.</p>
+               <a class="c360w-tier__cta" href="https://complete360.org/website-pricing">See What's Included</a>
+             </div>
+           </div>
+           <div class="c360w-pricing-teaser__foot">
+             Need a full breakdown? <a href="https://complete360.org/website-pricing">Compare all features side-by-side →</a>
+           </div>
+         </div>
+       </section>
+     
+       <!-- TEMPLATE GALLERY -->
+       <section class="c360-gallery" id="templates">
+         <header class="c360-gallery__header">
+           <span class="c360-gallery__eyebrow">Template Library</span>
+           <h2 class="c360-gallery__title">Find the right starting point for your industry</h2>
+           <p class="c360-gallery__subtitle">
+             Filter by tier and industry to see the exact build your business can launch with.
+             Click any template to preview the live design.
+           </p>
+         </header>
+     
+         <div class="c360-filters">
+           <div class="c360-filter-group">
+             <span class="c360-filter-label">Tier</span>
+             <div class="c360-tier-pills" role="tablist" aria-label="Filter by tier">
+               <button class="c360-tier-pill is-active" data-tier="all">All Tiers</button>
+               <button class="c360-tier-pill" data-tier="essentials">Essentials</button>
+               <button class="c360-tier-pill" data-tier="pro">Pro</button>
+               <button class="c360-tier-pill c360-tier-pill--premium" data-tier="premium">Premium</button>
+             </div>
+           </div>
+           <div class="c360-filter-group" id="c360-industry-group">
+             <span class="c360-filter-label">Industry</span>
+             <button class="c360-industries-toggle" id="c360-industries-toggle" type="button" aria-expanded="false" aria-controls="c360-industries">
+               <span class="c360-industries-toggle__label">
+                 <span class="c360-industries-toggle__prefix">Showing:</span><span id="c360-industries-toggle-label">All Industries</span>
+               </span>
+               <svg class="c360-industries-toggle__icon" width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                 <path d="M3 5l4 4 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+               </svg>
+             </button>
+             <div class="c360-industries" id="c360-industries"></div>
+           </div>
+         </div>
+     
+         <div class="c360-meta">
+           <div>Showing <strong id="c360-count">0</strong> templates</div>
+           <div id="c360-active-filters"></div>
+         </div>
+         <div class="c360-grid" id="c360-grid"></div>
+         <div class="c360-empty" id="c360-empty">
+           <h3>No templates match those filters</h3>
+           <p>Try a different tier or industry combination, or reset the filters to see everything.</p>
+         </div>
+       </section>
+     
+       <!-- SOCIAL PROOF -->
+       <section class="c360w-social-proof">
+         <div class="c360w-wrap">
+           <div class="c360w-social-proof__inner">
+             <div>
+               <span class="c360w-eyebrow">Real Businesses. Real Results.</span>
+               <h2 class="c360w-social-proof__title">
+                 Local service owners trust us to <span>represent their brand</span>
+               </h2>
+               <p class="c360w-social-proof__text">
+                 From HVAC companies in Phoenix to insurance agents in Tampa, the businesses
+                 that work with Complete360 get more calls, more reviews, and more repeat
+                 customers — because their website is finally doing its job.
+               </p>
+               <div class="c360w-social-proof__stats">
+                 <div class="c360w-social-proof__stat">
+                   <strong>144+</strong>
+                   <span>Google 5-Star Reviews</span>
+                 </div>
+                 <div class="c360w-social-proof__stat">
+                   <strong>20+</strong>
+                   <span>Industries Served</span>
+                 </div>
+                 <div class="c360w-social-proof__stat">
+                   <strong>100%</strong>
+                   <span>Fully Managed</span>
+                 </div>
+               </div>
+             </div>
+             <div class="c360w-social-proof__img-wrap">
+               <img
+                 class="c360w-social-proof__img"
+                 src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69e8674c033b8ae4a4cd6cfd.png"
+                 alt="Local business owners served by Complete360"
+                 onerror="this.style.display='none';this.nextElementSibling.style.display='flex'"
+               />
+               <div class="c360w-img-ph" style="display:none;min-height:280px">
+                 <i class="fa-solid fa-users"></i>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
+     
+       <!-- FINAL CTA -->
+       <section class="c360w-cta">
+         <div class="c360w-wrap">
+           <div class="c360w-cta__inner">
+             <h2 class="c360w-cta__title">Ready for a site that <span>earns its keep?</span></h2>
+             <p class="c360w-cta__text">
+               Book a free strategy call and we'll walk you through the templates, pricing,
+               and timeline — no pressure, no obligation.
+             </p>
+             <div class="c360w-hero__ctas">
+               <a href="https://complete360.org/website-pricing" class="c360w-btn c360w-btn--primary">
+                 See Plans &amp; Pricing
+               </a>
+               <a href="#templates" class="c360w-btn c360w-btn--outline">
+                 Browse Templates
+               </a>
+             </div>
+           </div>
+         </div>
+       </section>
+     
+       <!-- FAQ -->
+       <section class="c360w-faq" id="faq">
+         <div class="c360w-wrap">
+           <div class="c360w-section-head">
+             <span class="c360w-eyebrow">Questions, Answered</span>
+             <h2 class="c360w-h2">Frequently asked questions</h2>
+           </div>
+           <div class="c360w-faq__list">
+             <div class="c360w-faq__item">
+               <button class="c360w-faq__q" type="button">
+                 How long does it take to build my website?
+                 <i class="fa-solid fa-plus"></i>
+               </button>
+               <div class="c360w-faq__a">
+                 <p>Most Essentials builds are live in about 7–10 business days. Pro sites typically take 2 weeks, and Premium builds run 3–4 weeks depending on how much custom content, imagery, and automation you need. We'll give you a clear timeline on your strategy call.</p>
+               </div>
+             </div>
+             <div class="c360w-faq__item">
+               <button class="c360w-faq__q" type="button">
+                 Can I make changes to my site after it launches?
+                 <i class="fa-solid fa-plus"></i>
+               </button>
+               <div class="c360w-faq__a">
+                 <p>Yes — and that's the whole point of the monthly plan. Ongoing edits and modifications are included as long as your site is with us. Just email or message your account manager, and we'll handle it.</p>
+               </div>
+             </div>
+             <div class="c360w-faq__item">
+               <button class="c360w-faq__q" type="button">
+                 Can I transfer my existing domain to my new site?
+                 <i class="fa-solid fa-plus"></i>
+               </button>
+               <div class="c360w-faq__a">
+                 <p>Absolutely. You keep ownership of your domain, and our team handles the DNS changes so the cutover is seamless. No downtime, no lost emails.</p>
+               </div>
+             </div>
+             <div class="c360w-faq__item">
+               <button class="c360w-faq__q" type="button">
+                 What custom features are available?
+                 <i class="fa-solid fa-plus"></i>
+               </button>
+               <div class="c360w-faq__a">
+                 <p>Online booking, live chat widgets, payment collection, review widgets, multi-location support, custom forms, membership areas, and more. If it's possible on the web, it's probably possible here — just ask.</p>
+               </div>
+             </div>
+             <div class="c360w-faq__item">
+               <button class="c360w-faq__q" type="button">
+                 Do the templates all look the same once they're live?
+                 <i class="fa-solid fa-plus"></i>
+               </button>
+               <div class="c360w-faq__a">
+                 <p>Not at all. Templates are starting points — we swap in your brand colors, logo, photography, and messaging so your site looks and feels distinctly yours. The template gives us (and you) a head start on structure that's already proven to convert.</p>
+               </div>
+             </div>
+           </div>
+         </div>
+       </section>
+     
+     </div>
+     
+     
+     <script>
+     (function(){
+       var PRICING_URL = "https://complete360.org/website-pricing";
+     
+       var INDUSTRIES = [
+        { key: "all",                  label: "All Industries" },
+        { key: "hvac",                 label: "HVAC" },
+        { key: "plumbing",             label: "Plumbing" },
+        { key: "electrical",           label: "Electrical" },
+        { key: "roofing",              label: "Roofing" },
+        { key: "pest-control",         label: "Pest Control" },
+        { key: "lawn-care",            label: "Lawn Care" },
+        { key: "cleaning",             label: "Cleaning" },
+        { key: "painting",             label: "Painting" },
+        { key: "handyman",             label: "Handyman" },
+        { key: "general-contracting",  label: "General Contracting" },
+        { key: "insurance",            label: "Health Insurance" },
+        { key: "real-estate",          label: "Real Estate" },
+        { key: "assisted-living",      label: "Assisted Living" },
+        { key: "auto-repair",          label: "Automotive Services" },
+        { key: "funeral",              label: "Funeral Homes" },
+        { key: "financial-services",   label: "Financial Services" },
+       ];
+     
+
+       var TEMPLATES = [
+  // ── HVAC ──────────────────────────────────────────────────────────────
+  { id:"hvac-1001",   name:"HVAC 1001",                tier:"essentials", industry:"hvac",               pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69ea4290821e8babd836ecaa.png", preview:"https://app.complete360.org/v2/preview/nU4jbDd38QWTCIPZouWV?notrack=true" },
+  { id:"hvac-1002",   name:"HVAC 1002",                tier:"pro",        industry:"hvac",               pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69ea41ed6588a29ac2b2e100.png", preview:"https://app.complete360.org/v2/preview/z57CmmK6huCylcdBuW03?notrack=true" },
+  { id:"hvac-1003",   name:"HVAC 1003",                tier:"premium",    industry:"hvac",               pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69ea67f0dddb92342c20b5ff.png", preview:"https://app.complete360.org/v2/preview/Wygj3necDfwn9KcdBZi7?notrack=true" },
+
+  // ── PLUMBING ───────────────────────────────────────────────────────────
+  { id:"plumb-1001",  name:"Plumbing 1001",            tier:"essentials", industry:"plumbing",           pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69ea96fe6588a29ac2c8f435.png", preview:"https://app.complete360.org/v2/preview/vhzmcnvYTaDyAKq2gOQN?notrack=true" },
+  { id:"plumb-1002",  name:"Plumbing 1002",            tier:"pro",        industry:"plumbing",           pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69eba5d7a48992f6893e64b4.png", preview:"https://app.complete360.org/v2/preview/zjHRAmACFsVOYeSAQhWX?notrack=true" },
+  { id:"plumb-1003",  name:"Plumbing 1003",            tier:"premium",    industry:"plumbing",           pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69eba838717d5dd4e1af5959.png", preview:"https://app.complete360.org/v2/preview/SO9R4LGlgWTaWwxHSnAn?notrack=true" },
+
+  // ── ELECTRICAL ─────────────────────────────────────────────────────────
+  { id:"elec-1001",   name:"Electrical 1001",          tier:"essentials", industry:"electrical",         pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f21c6afab44d4020a2192f.png", preview:"https://app.complete360.org/v2/preview/7AtfO96li532kQRExFgv?notrack=true" },
+  { id:"elec-1002",   name:"Electrical 1002",          tier:"pro",        industry:"electrical",         pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f262f5663e5f92fffc3644.png", preview:"https://app.complete360.org/v2/preview/OQJA0Sh3BQOkpIFdLTY4?notrack=true" },
+  { id:"elec-1003",   name:"Electrical 1003",          tier:"premium",    industry:"electrical",         pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f2697bf50d9ecd2e2a8eb6.png", preview:"https://app.complete360.org/v2/preview/YmHNbLYP59RnNilYTIN0?notrack=true" },
+
+  // ── ROOFING ────────────────────────────────────────────────────────────
+  { id:"roof-1001",   name:"Roofing 1001",             tier:"essentials", industry:"roofing",            pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69ebb4def42ae50232f25cbb.png", preview:"https://app.complete360.org/v2/preview/Gbpc376qr8MadKmD0u5o?notrack=true" },
+  { id:"roof-1002",   name:"Roofing 1002",             tier:"pro",        industry:"roofing",            pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69ef93437a52d611f4829f66.png", preview:"https://app.complete360.org/v2/preview/KyyrWmA2N5ped6SLOmSg?notrack=true" },
+  { id:"roof-1003",   name:"Roofing 1003",             tier:"premium",    industry:"roofing",            pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69ef98fa05d41990010d0615.png", preview:"https://app.complete360.org/v2/preview/QrAUyB2MkAEa3cen582w?notrack=true" },
+
+  // ── PEST CONTROL ───────────────────────────────────────────────────────
+  { id:"pest-1001",   name:"Pest Control 1001",        tier:"essentials", industry:"pest-control",       pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a04d5778f7fc91d3511ff38.png", preview:"https://app.complete360.org/v2/preview/H7QIhJxuIwQaBEdmuD6a?notrack=true" },
+  { id:"pest-1002",   name:"Pest Control 1002",        tier:"pro",        industry:"pest-control",       pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a0f6988ca9579c76bbf8b4e.png", preview:"https://app.complete360.org/v2/preview/mG2yjrrGzaopk1uRPizC" },
+  { id:"pest-1003",   name:"Pest Control 1003",        tier:"premium",    industry:"pest-control",       pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a15f2945a7f217776733f47.png", preview:"https://app.complete360.org/v2/preview/SQCt5UgC8u9fA1RDR9pv?notrack=true" },
+
+  // ── LAWN CARE ──────────────────────────────────────────────────────────
+  { id:"lawn-1001",   name:"Lawn Care 1001",           tier:"essentials", industry:"lawn-care",          pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a0df7e83a4855d043426c8e.png", preview:"https://app.complete360.org/v2/preview/ENzwGrSS6bEA3JjOiaC1?notrack=true" },
+  { id:"lawn-1002",   name:"Lawn Care 1002",           tier:"pro",        industry:"lawn-care",          pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a0f2270ca9579c76bb9678b.png", preview:"https://app.complete360.org/v2/preview/ZeQPah1mJyGwX1bUwVdi?notrack=true" },
+  { id:"lawn-1003",   name:"Lawn Care 1003",           tier:"premium",    industry:"lawn-care",          pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a0f4846801633505ef9d69c.png", preview:"https://app.complete360.org/v2/preview/IFkEGpEBWyLx8Q8GSkka?notrack=true" },
+
+  // ── CLEANING ───────────────────────────────────────────────────────────
+  { id:"clean-1001",  name:"Cleaning 1001",            tier:"essentials", industry:"cleaning",           pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f27974d6968461204af0b3.png", preview:"https://app.complete360.org/v2/preview/xxLZghrslbIlF6Y8nc5C" },
+  { id:"clean-1002",  name:"Cleaning 1002",            tier:"pro",        industry:"cleaning",           pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f279f0663e5f92ff01f27f.png", preview:"https://app.complete360.org/v2/preview/uwm7ubI25ycUUz3qsy2w" },
+  { id:"clean-1003",  name:"Cleaning 1003",            tier:"premium",    industry:"cleaning",           pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f27a33d6968461204b1a75.png", preview:"https://app.complete360.org/v2/preview/gj6NBZD0MMErAmeJc0bn" },
+
+  // ── PAINTING ───────────────────────────────────────────────────────────
+  { id:"paint-1001",  name:"Painting 1001",            tier:"essentials", industry:"painting",           pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f375308a4be81f3aed5cfa.png", preview:"https://app.complete360.org/v2/preview/8AWZr12TvpjXYXMLTrXy?notrack=true" },
+  { id:"paint-1002",  name:"Painting 1002",            tier:"pro",        industry:"painting",           pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69fa728076fece504387ae4f.png", preview:"https://app.complete360.org/v2/preview/9a5oiFkdWBLIabDdG0AP?notrack=true" },
+  { id:"paint-1003",  name:"Painting 1003",            tier:"premium",    industry:"painting",           pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69fa753a7167fd9a359f8e04.png", preview:"https://app.complete360.org/v2/preview/UVTqA1MAo0ANtcXHVe7V?notrack=true" },
+
+  // ── HANDYMAN ───────────────────────────────────────────────────────────
+  { id:"handy-1001",  name:"Handyman 1001",            tier:"essentials", industry:"handyman",           pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f8d9d08416833e7de40a3f.png", preview:"https://app.complete360.org/v2/preview/WOaswd09XJ1KW4ZIwzx0?notrack=true" },
+  { id:"handy-1002",  name:"Handyman 1002",            tier:"pro",        industry:"handyman",           pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69fa085496effa7019130644.png", preview:"https://app.complete360.org/v2/preview/1cOYbiSPPCV1uubsltNF?notrack=true" },
+  { id:"handy-1003",  name:"Handyman 1003",            tier:"premium",    industry:"handyman",           pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69fa0fe73637549c491bdb57.png", preview:"https://app.complete360.org/v2/preview/y20QM4YFHmqKtEMUqLsT?notrack=true" },
+
+  // ── GENERAL CONTRACTING ────────────────────────────────────────────────
+  { id:"gc-1001",     name:"General Contracting 1001", tier:"essentials", industry:"general-contracting",pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a03900667457445b9e9fa8c.png", preview:"https://app.complete360.org/v2/preview/vtp5NDzSDjYhLod4GGKc?notrack=true" },
+  { id:"gc-1002",     name:"General Contracting 1002", tier:"pro",        industry:"general-contracting",pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a04afb482125b9874c14aee.png", preview:"https://app.complete360.org/v2/preview/GbotpBACEsyUHkqXnQbv?notrack=true" },
+  { id:"gc-1003",     name:"General Contracting 1003", tier:"premium",    industry:"general-contracting",pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a04d22051d5d92ddcacf0ec.png", preview:"https://app.complete360.org/v2/preview/Pdr57Ylks95n8Nz3MB4f?notrack=true" },
+
+  // ── HEALTH INSURANCE ───────────────────────────────────────────────────
+  { id:"ins-1001",    name:"Health Insurance 1001",    tier:"essentials", industry:"insurance",          pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f2162749d7293cbd4d7f53.png", preview:"https://app.complete360.org/v2/preview/aVBbsolO5TLe66gyEzoG" },
+  { id:"ins-1002",    name:"Health Insurance 1002",    tier:"pro",        industry:"insurance",          pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f216ace84e52bef4b37913.png", preview:"https://app.complete360.org/v2/preview/vhsPlRcWXyL42rgkjdrW" },
+  { id:"ins-1003",    name:"Health Insurance 1003",    tier:"premium",    industry:"insurance",          pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f21843d6968461202f74ef.png", preview:"https://app.complete360.org/v2/preview/BAKbjkZYkOAIXz47j8WE" },
+
+  // ── REAL ESTATE ────────────────────────────────────────────────────────
+  { id:"re-1001",     name:"Real Estate 1001",         tier:"essentials", industry:"real-estate",        pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f0e0a0d0efad0b4cb4c468.png", preview:"https://app.complete360.org/v2/preview/pTTXVhEi2fKJujqI8i7I" },
+  { id:"re-1002",     name:"Real Estate 1002",         tier:"pro",        industry:"real-estate",        pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f0dfacd0efad0b4cb48401.png", preview:"https://app.complete360.org/v2/preview/q3o7BucE9yy9Po4xQaty?notrack=true" },
+  { id:"re-1003",     name:"Real Estate 1003",         tier:"premium",    industry:"real-estate",        pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f13935c428703a043220ee.png", preview:"https://app.complete360.org/v2/preview/hkxTDtvvRmhvOQ7ArmpO" },
+
+  // ── ASSISTED LIVING ────────────────────────────────────────────────────
+  { id:"al-1001",     name:"Assisted Living 1001",     tier:"essentials", industry:"assisted-living",    pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f3d7738a4be81f3a082b6a.png", preview:"https://app.complete360.org/v2/preview/YDwREazH9IInIMqe73LI" },
+  { id:"al-1002",     name:"Assisted Living 1002",     tier:"pro",        industry:"assisted-living",    pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f3d87614daed238d6e51d2.png", preview:"https://app.complete360.org/v2/preview/ozm98W9k8Pegxzh0glFw" },
+  { id:"al-1003",     name:"Assisted Living 1003",     tier:"premium",    industry:"assisted-living",    pages:9, screenshot:"SCREENSHOT_URL", preview:"PREVIEW_URL" },
+
+  // ── AUTOMOTIVE SERVICES ────────────────────────────────────────────────
+  { id:"auto-1001",   name:"Automotive Services 1001", tier:"essentials", industry:"auto-repair",        pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f27abbfab44d4020bc7178.png", preview:"https://app.complete360.org/v2/preview/Mn1aO5fdPtKMQFBdiLfk" },
+  { id:"auto-1002",   name:"Automotive Services 1002", tier:"pro",        industry:"auto-repair",        pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f27b22e84e52bef4cff5a5.png", preview:"https://app.complete360.org/v2/preview/XQvUF1c9q4B2S3DXY5EQ" },
+  { id:"auto-1003",   name:"Automotive Services 1003", tier:"premium",    industry:"auto-repair",        pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69f27bb8590487fe57df456c.png", preview:"https://app.complete360.org/v2/preview/2dCLH95vXiZSWJ8RWRhX" },
+
+  // ── FUNERAL HOMES ──────────────────────────────────────────────────────
+  { id:"fun-1001",    name:"Funeral Home 1001",        tier:"essentials", industry:"funeral",            pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69fb75b6516b813067d198ee.png", preview:"https://app.complete360.org/v2/preview/qdUojjDxB2pc6DC8Imdf?notrack=true" },
+  { id:"fun-1002",    name:"Funeral Home 1002",        tier:"pro",        industry:"funeral",            pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69fb8ee2a6982c16558b724a.png", preview:"https://app.complete360.org/v2/preview/czDX9iBUBqhK1msVQ13K?notrack=true" },
+  { id:"fun-1003",    name:"Funeral Home 1003",        tier:"premium",    industry:"funeral",            pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69fb9bb0019ea471ed1c02d0.png", preview:"https://app.complete360.org/v2/preview/UaNPaG3MfnEMmrlKe3gw?notrack=true" },
+
+  // ── FINANCIAL SERVICES ─────────────────────────────────────────────────
+   { id:"fin-1001",    name:"Financial Services 1001",  tier:"essentials", industry:"financial-services", pages:4, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69fba3097c0e0f0a9e5b1782.png", preview:"https://app.complete360.org/v2/preview/OXydUW7sTibJ7WvUX2i8?notrack=true" },
+   { id:"fin-1002",    name:"Financial Services 1002",  tier:"pro",        industry:"financial-services", pages:6, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69fcbcee5f98a4e47bef5e6e.png", preview:"https://app.complete360.org/v2/preview/Ee50x6li2nLLcsv4FCXj?notrack=true" },
+   { id:"fin-1003",    name:"Financial Services 1003",  tier:"premium",    industry:"financial-services", pages:9, screenshot:"https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/69fe00696982746982fdd6db.png", preview:"https://app.complete360.org/v2/preview/5ab0bv4oT0Hbpaa2NFCQ?notrack=true" },
+   ];
+     
+       var state = { tier: "all", industry: "all" };
+       var isTouch = window.matchMedia
+         ? window.matchMedia("(hover: none), (pointer: coarse)").matches
+         : ("ontouchstart" in window);
+     
+       // Scope all JS queries to the gallery section so nothing accidentally
+       // grabs elements elsewhere on the page.
+       var galleryEl = document.querySelector(".c360-gallery");
+     
+       function placeholderFor(t){
+         var colors = { essentials:["#122078","#1a2b8a"], pro:["#122078","#0d1654"], premium:["#122078","#127825"] };
+         var pair = colors[t.tier] || ["#122078","#0d1654"];
+         var label = t.name || "Preview Coming Soon";
+         var svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 1800">'
+           +'<defs><linearGradient id="g" x1="0" y1="0" x2="0" y2="1">'
+           +'<stop offset="0%" stop-color="'+pair[0]+'"/><stop offset="100%" stop-color="'+pair[1]+'"/>'
+           +'</linearGradient></defs>'
+           +'<rect width="600" height="1800" fill="url(#g)"/>'
+           +'<rect x="40" y="40" width="520" height="60" rx="8" fill="rgba(255,255,255,.9)"/>'
+           +'<rect x="40" y="160" width="520" height="300" rx="12" fill="rgba(255,255,255,.22)"/>'
+           +'<rect x="40" y="500" width="340" height="24" rx="4" fill="rgba(255,255,255,.9)"/>'
+           +'<rect x="40" y="540" width="440" height="16" rx="4" fill="rgba(255,255,255,.55)"/>'
+           +'<rect x="40" y="640" width="160" height="44" rx="6" fill="rgba(255,255,255,.95)"/>'
+           +'<rect x="40" y="760" width="240" height="200" rx="10" fill="rgba(255,255,255,.28)"/>'
+           +'<rect x="320" y="760" width="240" height="200" rx="10" fill="rgba(255,255,255,.28)"/>'
+           +'<rect x="40" y="1000" width="520" height="220" rx="10" fill="rgba(255,255,255,.18)"/>'
+           +'<rect x="40" y="1260" width="240" height="160" rx="10" fill="rgba(255,255,255,.28)"/>'
+           +'<rect x="320" y="1260" width="240" height="160" rx="10" fill="rgba(255,255,255,.28)"/>'
+           +'<rect x="40" y="1460" width="520" height="300" rx="10" fill="rgba(255,255,255,.18)"/>'
+           +'<text x="300" y="900" font-family="Poppins,Arial,sans-serif" font-size="28" font-weight="700" fill="rgba(255,255,255,.95)" text-anchor="middle">'+label+'</text>'
+           +'<text x="300" y="940" font-family="Poppins,Arial,sans-serif" font-size="16" font-weight="500" fill="rgba(255,255,255,.75)" text-anchor="middle">Screenshot coming soon</text>'
+           +'</svg>';
+         return 'data:image/svg+xml;utf8,'+encodeURIComponent(svg);
+       }
+     
+       function screenshotFor(t){ return (!t.screenshot||t.screenshot==="SCREENSHOT_URL")?placeholderFor(t):t.screenshot; }
+       function previewFor(t){ return (!t.preview||t.preview==="PREVIEW_URL")?"#":t.preview; }
+     
+       var gridEl=document.getElementById("c360-grid");
+       var industriesEl=document.getElementById("c360-industries");
+       var countEl=document.getElementById("c360-count");
+       var emptyEl=document.getElementById("c360-empty");
+       var activeEl=document.getElementById("c360-active-filters");
+       var industryGroupEl=document.getElementById("c360-industry-group");
+       var industryToggleEl=document.getElementById("c360-industries-toggle");
+       var industryLabelEl=document.getElementById("c360-industries-toggle-label");
+     
+       function tierLabel(t){ return {essentials:"Essentials",pro:"Pro",premium:"Premium"}[t]||""; }
+       function industryLabel(key){ for(var i=0;i<INDUSTRIES.length;i++) if(INDUSTRIES[i].key===key) return INDUSTRIES[i].label; return key; }
+     
+       function renderIndustries(){
+         var counts={};
+         TEMPLATES.forEach(function(t){ counts[t.industry]=(counts[t.industry]||0)+1; });
+         var html="";
+         INDUSTRIES.forEach(function(ind){
+           var total=ind.key==="all"?TEMPLATES.length:(counts[ind.key]||0);
+           if(ind.key!=="all"&&total===0) return;
+           html+='<button class="c360-chip'+(ind.key===state.industry?' is-active':'')+'" data-industry="'+ind.key+'">'+ind.label+'<span class="c360-chip__count">('+total+')</span></button>';
+         });
+         industriesEl.innerHTML=html;
+       }
+     
+       function renderCards(){
+         var filtered=TEMPLATES.filter(function(t){
+           return (state.tier==="all"||t.tier===state.tier)&&(state.industry==="all"||t.industry===state.industry);
+         });
+         countEl.textContent=filtered.length;
+         var parts=[];
+         if(state.tier!=="all") parts.push(tierLabel(state.tier));
+         if(state.industry!=="all") parts.push(industryLabel(state.industry));
+         activeEl.textContent=parts.length?"Filtered by: "+parts.join(" · "):"";
+         if(filtered.length===0){ gridEl.innerHTML=""; emptyEl.classList.add("is-visible"); return; }
+         emptyEl.classList.remove("is-visible");
+         gridEl.innerHTML=filtered.map(function(t){
+           var pl=previewFor(t), sc=screenshotFor(t);
+           return '<article class="c360-card" data-tier="'+t.tier+'" data-industry="'+t.industry+'" data-preview="'+pl+'">'
+             +'<div class="c360-card__preview">'
+             +'<span class="c360-badge c360-badge--'+t.tier+'">'+tierLabel(t.tier)+'</span>'
+             +'<img class="c360-card__screenshot" src="'+sc+'" alt="'+t.name+' preview" loading="lazy"/>'
+             +'<div class="c360-card__overlay"><span class="c360-card__overlay-label">View Live Preview</span></div>'
+             +'<span class="c360-card__hint">Tap to preview design</span>'
+             +'</div>'
+             +'<div class="c360-card__body">'
+             +'<div class="c360-card__industry">'+industryLabel(t.industry)+'</div>'
+             +'<h3 class="c360-card__name">'+t.name+'</h3>'
+             +'<p class="c360-card__meta">'+t.pages+' pages · '+tierLabel(t.tier)+' tier</p>'
+             +'<div class="c360-card__actions">'
+             +'<a class="c360-btn c360-btn--ghost" href="'+pl+'" target="_blank" rel="noopener">View Live Site</a>'
+             +'<a class="c360-btn c360-btn--primary" href="'+PRICING_URL+'">Get This Template</a>'
+             +'</div></div></article>';
+         }).join("");
+         // SCOPED: only touch cards inside the gallery, never in the header
+         if(isTouch && galleryEl) galleryEl.querySelectorAll(".c360-card").forEach(function(c){ c.classList.add("is-touch"); });
+       }
+     
+       function updateTierPills(){
+         if(!galleryEl) return;
+         galleryEl.querySelectorAll(".c360-tier-pill").forEach(function(b){ b.classList.toggle("is-active",b.getAttribute("data-tier")===state.tier); });
+       }
+       function updateIndustryChips(){
+         if(!galleryEl) return;
+         galleryEl.querySelectorAll(".c360-chip").forEach(function(b){ b.classList.toggle("is-active",b.getAttribute("data-industry")===state.industry); });
+       }
+     
+       if(galleryEl){
+         galleryEl.querySelectorAll(".c360-tier-pill").forEach(function(btn){
+           btn.addEventListener("click",function(){ state.tier=btn.getAttribute("data-tier"); updateTierPills(); renderCards(); });
+         });
+       }
+       industriesEl.addEventListener("click",function(e){
+         var btn=e.target.closest(".c360-chip"); if(!btn) return;
+         state.industry=btn.getAttribute("data-industry"); updateIndustryChips(); renderCards(); updateAccordionLabel(); closeAccordion();
+       });
+     
+       function updateAccordionLabel(){ industryLabelEl.textContent=industryLabel(state.industry); }
+       function openAccordion(){ industryGroupEl.classList.add("is-open"); industryToggleEl.setAttribute("aria-expanded","true"); }
+       function closeAccordion(){ industryGroupEl.classList.remove("is-open"); industryToggleEl.setAttribute("aria-expanded","false"); }
+       industryToggleEl.addEventListener("click",function(){ if(industryGroupEl.classList.contains("is-open")) closeAccordion(); else openAccordion(); });
+       document.addEventListener("click",function(e){ if(!industryGroupEl.classList.contains("is-open")) return; if(industryGroupEl.contains(e.target)) return; closeAccordion(); });
+     
+       gridEl.addEventListener("click",function(e){
+         if(e.target.closest(".c360-btn")) return;
+         var preview=e.target.closest(".c360-card__preview"); if(!preview) return;
+         var card=preview.closest(".c360-card");
+         var url=card.getAttribute("data-preview");
+         if(isTouch){
+           card.classList.add("has-been-tapped");
+           if(card.classList.contains("is-scrolling")){ card.classList.remove("is-scrolling"); }
+           else{
+             // SCOPED: only touch scrolling cards inside gallery
+             if(galleryEl) galleryEl.querySelectorAll(".c360-card.is-scrolling").forEach(function(c){ if(c!==card) c.classList.remove("is-scrolling"); });
+             card.classList.add("is-scrolling");
+           }
+           return;
+         }
+         if(url&&url!=="#") window.open(url,"_blank","noopener");
+       });
+     
+       document.querySelectorAll(".c360w-faq__q").forEach(function(q){
+         q.addEventListener("click",function(){ q.parentElement.classList.toggle("is-open"); });
+       });
+     
+       renderIndustries();
+       renderCards();
+       updateAccordionLabel();
+     })();
+     </script>
