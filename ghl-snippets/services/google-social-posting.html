@@ -1,1 +1,1145 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Google Social Posting (Google Posts Service)
+     c360-google-social-posting-v1.0.html
+     GHL: Paste into Custom Code block on /social-posting-google page.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Prefix: c360-gsp-  (Google Social Posting)
+     ══════════════════════════════════════════════════════════════ -->
 
+<style>
+/* ══════════════════════════════════════════════════════
+   Complete360 Google Social Posting  |  Prefix: c360-gsp-
+   Matches the GBP Management design system.
+   ══════════════════════════════════════════════════════ */
+
+:root {
+  --gsp-navy:        #122078;
+  --gsp-navy-dark:   #0d1654;
+  --gsp-navy-deeper: #0a1040;
+  --gsp-green:       #127825;
+  --gsp-green-hover: #0e5e1d;
+  --gsp-green-light: #EAF3DE;
+  --gsp-blue-light:  #E6F1FB;
+  --gsp-grey:        #888780;
+  --gsp-light-grey:  #F1EFE8;
+  --gsp-text:        #0F1F5E;
+  --gsp-text-muted:  #5F5E5A;
+  --gsp-radius:      12px;
+  --gsp-radius-lg:   20px;
+  --gsp-shadow:      0 8px 32px rgba(18,32,120,0.13);
+  --gsp-shadow-lg:   0 16px 56px rgba(18,32,120,0.18);
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.c360-gsp-section   { width: 100%; position: relative; }
+.c360-gsp-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ── BUTTONS ── */
+.c360-gsp-btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--gsp-green); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 700;
+  padding: 15px 28px; border-radius: 8px;
+  text-decoration: none; border: none; cursor: pointer;
+  white-space: nowrap; line-height: 1;
+  box-shadow: 0 4px 20px rgba(18,120,37,0.35);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.c360-gsp-btn-primary:hover {
+  background: var(--gsp-green-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(18,120,37,0.45); color: #fff; text-decoration: none;
+}
+.c360-gsp-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: rgba(255,255,255,0.85);
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 600;
+  padding: 14px 24px; border-radius: 8px;
+  text-decoration: none; line-height: 1;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.c360-gsp-btn-outline:hover {
+  border-color: rgba(255,255,255,0.7); color: #fff;
+  background: rgba(255,255,255,0.08); text-decoration: none;
+}
+
+/* ── SECTION HEADER ── */
+.c360-gsp-section-header { text-align: center; margin-bottom: 56px; }
+.c360-gsp-overline {
+  display: inline-block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gsp-green); margin-bottom: 12px;
+}
+.c360-gsp-section-header h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(26px,3.8vw,42px); font-weight: 800;
+  color: var(--gsp-text); margin: 0 0 16px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-gsp-section-header p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; color: var(--gsp-text-muted);
+  max-width: 620px; margin: 0 auto; line-height: 1.65;
+}
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════ */
+.c360-gsp-hero {
+  background: linear-gradient(135deg, #09103c 0%, #122078 55%, #0c1960 100%);
+  position: relative; overflow: hidden; padding: 92px 0 80px;
+}
+.c360-gsp-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 15% 60%, rgba(18,120,37,0.16) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-gsp-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.c360-gsp-hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.1fr 0.9fr;
+  gap: 64px; align-items: center;
+}
+.c360-gsp-hero-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(18,120,37,0.18); border: 1px solid rgba(18,120,37,0.36);
+  color: #7ddc80;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 6px 14px;
+  border-radius: 100px; margin-bottom: 22px;
+}
+.c360-gsp-hero h1 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(34px,4.8vw,56px); font-weight: 800;
+  line-height: 1.07; color: #fff; margin: 0 0 20px;
+  letter-spacing: -0.025em;
+}
+.c360-gsp-hero h1 span { color: #2ecc52; }
+.c360-gsp-hero-sub {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.72);
+  line-height: 1.65; margin: 0 0 32px; max-width: 520px;
+}
+.c360-gsp-hero-actions {
+  display: flex; align-items: center; gap: 14px;
+  flex-wrap: wrap; margin-bottom: 36px;
+}
+.c360-gsp-hero-micro { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; }
+.c360-gsp-micro-item {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500;
+}
+.c360-gsp-micro-item i { color: #2ecc52; }
+
+/* Hero right — Google Post mockup */
+.c360-gsp-hero-visual {
+  background: rgba(255,255,255,0.055);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--gsp-radius-lg); padding: 30px;
+  backdrop-filter: blur(10px);
+}
+.c360-gsp-hero-visual-title {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.38);
+  margin-bottom: 18px;
+}
+.c360-gsp-post-card {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.35); margin-bottom: 16px;
+}
+.c360-gsp-post-img {
+  height: 120px; position: relative;
+  background: linear-gradient(135deg, #1e6128 0%, #16882e 55%, #1a3d1e 100%);
+  display: flex; align-items: center; justify-content: center;
+}
+.c360-gsp-post-img::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle at 70% 30%, rgba(255,255,255,0.08) 0%, transparent 45%);
+}
+.c360-gsp-post-type {
+  position: absolute; top: 12px; left: 12px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 5px;
+  background: rgba(255,255,255,0.92); border-radius: 100px; padding: 4px 11px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10.5px; font-weight: 700; color: var(--gsp-green);
+}
+.c360-gsp-post-img i { color: rgba(255,255,255,0.85); font-size: 30px; position: relative; z-index: 1; }
+.c360-gsp-post-body { padding: 14px 16px; }
+.c360-gsp-post-meta {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 9px;
+}
+.c360-gsp-post-avatar {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: var(--gsp-blue-light); color: var(--gsp-navy);
+  display: flex; align-items: center; justify-content: center; font-size: 11px; flex-shrink: 0;
+}
+.c360-gsp-post-meta-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; color: #1a1a2e; line-height: 1.2;
+}
+.c360-gsp-post-meta-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10.5px; color: var(--gsp-text-muted);
+}
+.c360-gsp-post-text {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: #2a2a3c; line-height: 1.5; margin-bottom: 12px;
+}
+.c360-gsp-post-cta {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; color: var(--gsp-navy);
+  border: 1px solid #d6e3f2; border-radius: 7px; padding: 7px 13px;
+}
+.c360-gsp-schedule-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.c360-gsp-schedule-pill {
+  background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 10px; padding: 12px 10px; text-align: center;
+}
+.c360-gsp-schedule-val {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 19px; font-weight: 800; color: #2ecc52; line-height: 1; margin-bottom: 3px;
+}
+.c360-gsp-schedule-lbl {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; color: rgba(255,255,255,0.45); font-weight: 500;
+}
+
+/* ══════════════════════════════════════════════════════
+   TRUST BAR
+   ══════════════════════════════════════════════════════ */
+.c360-gsp-trust-bar { background: #fff; border-bottom: 1px solid #e5e3dc; }
+.c360-gsp-trust-bar-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+.c360-gsp-trust-pill {
+  display: flex; align-items: center; gap: 12px;
+  padding: 18px 24px; border-right: 1px solid #e5e3dc; transition: background 0.18s;
+}
+.c360-gsp-trust-pill:last-child { border-right: none; }
+.c360-gsp-trust-pill:hover { background: var(--gsp-blue-light); }
+.c360-gsp-trust-ico {
+  width: 38px; height: 38px; background: var(--gsp-blue-light);
+  border-radius: 9px; display: flex; align-items: center;
+  justify-content: center; color: var(--gsp-navy); font-size: 16px; flex-shrink: 0;
+}
+.c360-gsp-trust-ico.green { background: var(--gsp-green-light); color: var(--gsp-green); }
+.c360-gsp-trust-ico.gold  { background: #FFF8E7; color: #f59e0b; }
+.c360-gsp-trust-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; color: var(--gsp-text); line-height: 1.2;
+}
+.c360-gsp-trust-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: var(--gsp-text-muted);
+}
+
+/* ══════════════════════════════════════════════════════
+   INTRO / WHAT WE DO
+   ══════════════════════════════════════════════════════ */
+.c360-gsp-intro { padding: 88px 0; background: #fff; }
+.c360-gsp-intro-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.c360-gsp-intro-copy h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(24px,3.4vw,38px); font-weight: 800;
+  color: var(--gsp-text); margin: 0 0 18px; line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-gsp-intro-copy h2 span { color: var(--gsp-green); }
+.c360-gsp-intro-copy p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; color: var(--gsp-text-muted); line-height: 1.72; margin-bottom: 20px;
+}
+.c360-gsp-intro-copy p:last-of-type { margin-bottom: 28px; }
+.c360-gsp-alert-box {
+  background: var(--gsp-green-light);
+  border: 1px solid rgba(18,120,37,0.25);
+  border-left: 4px solid var(--gsp-green);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 18px; margin-bottom: 28px;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.c360-gsp-alert-box i { color: var(--gsp-green); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+.c360-gsp-alert-box p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: var(--gsp-text); font-weight: 500; line-height: 1.55; margin: 0;
+}
+.c360-gsp-included-grid {
+  display: flex; flex-direction: column; gap: 0;
+  background: var(--gsp-light-grey);
+  border: 1.5px solid #dddbd4; border-radius: var(--gsp-radius); overflow: hidden;
+}
+.c360-gsp-included-header {
+  background: var(--gsp-navy); padding: 14px 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.c360-gsp-included-header span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+}
+.c360-gsp-included-header i { color: #2ecc52; }
+.c360-gsp-included-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 13px 20px; border-bottom: 1px solid #dddbd4;
+}
+.c360-gsp-included-item:last-child { border-bottom: none; }
+.c360-gsp-included-item i { color: var(--gsp-green); font-size: 12px; margin-top: 3px; flex-shrink: 0; }
+.c360-gsp-included-item span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: var(--gsp-text); font-weight: 500; line-height: 1.5;
+}
+.c360-gsp-included-item span em {
+  display: block; font-style: normal;
+  font-size: 12px; color: var(--gsp-text-muted); font-weight: 400; margin-top: 1px;
+}
+
+/* ══════════════════════════════════════════════════════
+   POST TYPES SHOWCASE
+   ══════════════════════════════════════════════════════ */
+.c360-gsp-types { padding: 88px 0; background: var(--gsp-light-grey); }
+.c360-gsp-types-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
+.c360-gsp-type-card {
+  background: #fff; border: 1.5px solid #e5e3dc; border-radius: var(--gsp-radius-lg);
+  padding: 26px 22px; text-align: center;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.c360-gsp-type-card:hover {
+  border-color: rgba(18,120,37,0.3); box-shadow: var(--gsp-shadow); transform: translateY(-3px);
+}
+.c360-gsp-type-ico {
+  width: 52px; height: 52px; border-radius: 14px; margin: 0 auto 16px;
+  background: var(--gsp-navy); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-size: 21px;
+  transition: background 0.2s;
+}
+.c360-gsp-type-card:hover .c360-gsp-type-ico { background: var(--gsp-green); }
+.c360-gsp-type-title {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; font-weight: 700; color: var(--gsp-text); margin-bottom: 9px;
+}
+.c360-gsp-type-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: var(--gsp-text-muted); line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════
+   HOW IT WORKS
+   ══════════════════════════════════════════════════════ */
+.c360-gsp-process { padding: 88px 0; background: #fff; }
+.c360-gsp-process-steps {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 0; position: relative; margin-top: 16px;
+}
+.c360-gsp-process-steps::before {
+  content: ''; position: absolute;
+  top: 44px; left: 12%; right: 12%; height: 2px;
+  background: linear-gradient(90deg, var(--gsp-navy) 0%, var(--gsp-green) 100%);
+  z-index: 0;
+}
+.c360-gsp-step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 12px; position: relative; z-index: 1;
+}
+.c360-gsp-step-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--gsp-navy);
+  border: 3px solid var(--gsp-green-light);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px; margin-bottom: 18px; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(18,32,120,0.2);
+}
+.c360-gsp-step:last-child .c360-gsp-step-num { background: var(--gsp-green); }
+.c360-gsp-step-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; font-weight: 700; color: var(--gsp-text); margin-bottom: 8px; line-height: 1.3;
+}
+.c360-gsp-step-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: var(--gsp-text-muted); line-height: 1.55;
+}
+
+/* ══════════════════════════════════════════════════════
+   PRICING
+   ══════════════════════════════════════════════════════ */
+.c360-gsp-pricing {
+  padding: 88px 0;
+  background: linear-gradient(135deg, #09103c 0%, #122078 58%, #0c1960 100%);
+  position: relative; overflow: hidden;
+}
+.c360-gsp-pricing::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(18,120,37,0.2) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-gsp-pricing .c360-gsp-section-header h2 { color: #fff; }
+.c360-gsp-pricing .c360-gsp-section-header p  { color: rgba(255,255,255,0.6); }
+.c360-gsp-pricing .c360-gsp-overline           { color: #2ecc52; }
+.c360-gsp-price-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 22px; position: relative; z-index: 2;
+}
+.c360-gsp-price-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--gsp-radius-lg); padding: 34px 28px;
+  position: relative; transition: background 0.22s, border-color 0.22s;
+  display: flex; flex-direction: column;
+}
+.c360-gsp-price-card:hover {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.22);
+}
+.c360-gsp-price-card--popular {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(46,204,82,0.55);
+  box-shadow: 0 0 0 4px rgba(46,204,82,0.08);
+}
+.c360-gsp-popular-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--gsp-green); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 5px 16px; border-radius: 100px; white-space: nowrap;
+}
+.c360-gsp-plan-name {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;
+}
+.c360-gsp-plan-tagline {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 20px; line-height: 1.4;
+}
+.c360-gsp-price-row { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px; }
+.c360-gsp-price-dollar {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 20px; font-weight: 700; color: rgba(255,255,255,0.6); padding-bottom: 10px;
+}
+.c360-gsp-price-num {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 52px; font-weight: 800; color: #fff; line-height: 1; letter-spacing: -0.03em;
+}
+.c360-gsp-price-period {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: rgba(255,255,255,0.4); padding-bottom: 10px;
+}
+.c360-gsp-price-save {
+  display: inline-block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; color: #2ecc52; font-weight: 700;
+  background: rgba(46,204,82,0.12); border: 1px solid rgba(46,204,82,0.25);
+  border-radius: 100px; padding: 3px 10px; margin-bottom: 22px;
+}
+.c360-gsp-price-save.invisible { visibility: hidden; }
+.c360-gsp-price-divider { height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 22px; }
+.c360-gsp-price-features {
+  list-style: none; margin: 0 0 28px; padding: 0;
+  display: flex; flex-direction: column; gap: 10px; flex: 1;
+}
+.c360-gsp-price-features li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.72); line-height: 1.45; font-weight: 500;
+}
+.c360-gsp-price-features li i { color: #2ecc52; margin-top: 2px; flex-shrink: 0; font-size: 11px; }
+.c360-gsp-price-note {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; color: rgba(255,255,255,0.35);
+  margin-bottom: 20px; padding-top: 4px;
+  display: flex; align-items: center; gap: 5px;
+}
+.c360-gsp-price-note i { font-size: 11px; }
+.c360-gsp-price-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 20px; border-radius: 8px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; font-weight: 700; text-decoration: none;
+  border: none; cursor: pointer; white-space: nowrap; line-height: 1;
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-gsp-price-btn--outline {
+  background: transparent; color: rgba(255,255,255,0.8);
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.c360-gsp-price-btn--outline:hover {
+  border-color: rgba(255,255,255,0.6); color: #fff;
+  background: rgba(255,255,255,0.07); text-decoration: none; transform: translateY(-2px);
+}
+.c360-gsp-price-btn--green {
+  background: var(--gsp-green); color: #fff; box-shadow: 0 4px 18px rgba(18,120,37,0.4);
+}
+.c360-gsp-price-btn--green:hover {
+  background: var(--gsp-green-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(18,120,37,0.5); color: #fff; text-decoration: none;
+}
+.c360-gsp-pricing-foot { text-align: center; margin-top: 42px; position: relative; z-index: 2; }
+.c360-gsp-pricing-foot p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.38); margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   UPGRADE BRIDGE
+   ══════════════════════════════════════════════════════ */
+.c360-gsp-bridge { padding: 72px 0; background: var(--gsp-blue-light); border-bottom: 1px solid #d0e6f7; }
+.c360-gsp-bridge-card {
+  background: #fff; border: 1.5px solid #d0e6f7; border-radius: var(--gsp-radius-lg);
+  padding: 40px; display: grid; grid-template-columns: 1fr auto; gap: 32px; align-items: center;
+  box-shadow: var(--gsp-shadow);
+}
+.c360-gsp-bridge-card h3 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 23px; font-weight: 800; color: var(--gsp-text); margin: 0 0 10px; line-height: 1.2;
+}
+.c360-gsp-bridge-card h3 span { color: var(--gsp-green); }
+.c360-gsp-bridge-card p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14.5px; color: var(--gsp-text-muted); line-height: 1.65; margin: 0;
+}
+.c360-gsp-bridge-btn {
+  display: inline-flex; align-items: center; gap: 9px; white-space: nowrap;
+  background: var(--gsp-navy); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; font-weight: 700; padding: 15px 26px; border-radius: 8px;
+  text-decoration: none; transition: background 0.2s, transform 0.15s;
+}
+.c360-gsp-bridge-btn:hover { background: var(--gsp-navy-dark); transform: translateY(-2px); color: #fff; text-decoration: none; }
+
+/* ══════════════════════════════════════════════════════
+   REVIEWS
+   ══════════════════════════════════════════════════════ */
+.c360-gsp-reviews { padding: 88px 0; background: #fff; }
+
+/* ══════════════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════════════ */
+.c360-gsp-faq { padding: 88px 0; background: var(--gsp-light-grey); border-top: 1px solid #e5e3dc; }
+.c360-gsp-faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+.c360-gsp-faq-toggle { display: none; }
+.c360-gsp-faq-item { border-bottom: 1px solid #ddd9d0; }
+.c360-gsp-faq-item:first-child { border-top: 1px solid #ddd9d0; }
+.c360-gsp-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 6px; cursor: pointer; gap: 16px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; font-weight: 600; color: var(--gsp-text);
+  line-height: 1.4; transition: color 0.18s; user-select: none; list-style: none;
+}
+.c360-gsp-faq-q:hover { color: var(--gsp-navy); }
+.c360-gsp-faq-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: var(--gsp-blue-light); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--gsp-navy); font-size: 11px;
+  transition: transform 0.3s ease, background 0.2s;
+}
+.c360-gsp-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 6px; }
+.c360-gsp-faq-a p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; color: var(--gsp-text-muted); line-height: 1.7; margin: 0 0 22px; padding-top: 4px;
+}
+.c360-gsp-faq-toggle:checked ~ .c360-gsp-faq-q .c360-gsp-faq-icon {
+  transform: rotate(180deg); background: var(--gsp-navy); color: #fff;
+}
+.c360-gsp-faq-toggle:checked ~ .c360-gsp-faq-a { max-height: 600px; }
+
+/* ══════════════════════════════════════════════════════
+   FINAL CTA
+   ══════════════════════════════════════════════════════ */
+.c360-gsp-cta {
+  padding: 96px 0;
+  background: linear-gradient(135deg, #09103c 0%, #122078 58%, #0c1960 100%);
+  position: relative; overflow: hidden; text-align: center;
+}
+.c360-gsp-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(18,120,37,0.22) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-gsp-cta-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+.c360-gsp-cta h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(28px,4vw,48px); font-weight: 800;
+  color: #fff; margin: 16px 0 18px; line-height: 1.09; letter-spacing: -0.025em;
+}
+.c360-gsp-cta h2 span { color: #2ecc52; }
+.c360-gsp-cta-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 16px; color: rgba(255,255,255,0.65); margin: 0 0 38px; line-height: 1.65;
+}
+.c360-gsp-cta-actions { display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap; }
+.c360-gsp-cta-trust { display: flex; align-items: center; justify-content: center; gap: 28px; margin-top: 36px; flex-wrap: wrap; }
+.c360-gsp-cta-trust span {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: rgba(255,255,255,0.42); font-weight: 500;
+}
+.c360-gsp-cta-trust span i { color: #2ecc52; font-size: 12px; }
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 980px) {
+  .c360-gsp-hero-inner,
+  .c360-gsp-intro-inner { grid-template-columns: 1fr; gap: 40px; }
+  .c360-gsp-hero-visual { display: none; }
+  .c360-gsp-price-cards { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .c360-gsp-types-grid { grid-template-columns: repeat(2, 1fr); }
+  .c360-gsp-process-steps { grid-template-columns: repeat(2, 1fr); gap: 32px 0; }
+  .c360-gsp-process-steps::before { display: none; }
+  .c360-gsp-bridge-card { grid-template-columns: 1fr; text-align: center; }
+  .c360-gsp-bridge-btn { justify-content: center; }
+}
+@media (max-width: 768px) {
+  .c360-gsp-hero, .c360-gsp-cta { padding: 68px 0 56px; }
+  .c360-gsp-intro, .c360-gsp-types, .c360-gsp-process,
+  .c360-gsp-pricing, .c360-gsp-reviews, .c360-gsp-faq { padding: 64px 0; }
+  .c360-gsp-types-grid { grid-template-columns: 1fr; }
+  .c360-gsp-trust-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .c360-gsp-trust-pill { border-right: none; border-bottom: 1px solid #e5e3dc; }
+  .c360-gsp-trust-pill:nth-child(odd) { border-right: 1px solid #e5e3dc; }
+  .c360-gsp-trust-pill:nth-child(3), .c360-gsp-trust-pill:nth-child(4) { border-bottom: none; }
+  .c360-gsp-section-header { margin-bottom: 40px; }
+}
+@media (max-width: 540px) {
+  .c360-gsp-hero h1 { font-size: 32px; }
+  .c360-gsp-hero-actions { flex-direction: column; align-items: flex-start; }
+  .c360-gsp-btn-primary, .c360-gsp-btn-outline { width: 100%; justify-content: center; }
+  .c360-gsp-cta-actions { flex-direction: column; }
+  .c360-gsp-process-steps { grid-template-columns: 1fr; }
+}
+</style>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 1 — HERO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gsp-section c360-gsp-hero">
+  <div class="c360-gsp-container">
+    <div class="c360-gsp-hero-inner">
+
+      <!-- LEFT COPY -->
+      <div>
+        <div class="c360-gsp-hero-badge">
+          <i class="fa-brands fa-google"></i>
+          Google Business Profile Posting
+        </div>
+        <h1>
+          Stay Active on<br>
+          <span>Google</span> — Every<br>
+          Single Week.
+        </h1>
+        <p class="c360-gsp-hero-sub">
+          Google rewards profiles that post consistently with better local ranking and more clicks. We write, design, and publish professional Google Posts on your profile every week — so you stay visible without lifting a finger.
+        </p>
+        <div class="c360-gsp-hero-actions">
+          <a href="#c360-gsp-pricing" class="c360-gsp-btn-primary">
+            View Posting Plans <i class="fa-solid fa-arrow-down"></i>
+          </a>
+          <a href="tel:+18665276205" class="c360-gsp-btn-outline">
+            <i class="fa-solid fa-phone"></i> Call (866) 527-6205
+          </a>
+        </div>
+        <div class="c360-gsp-hero-micro">
+          <div class="c360-gsp-micro-item"><i class="fa-brands fa-google"></i> Google Partner Agency</div>
+          <div class="c360-gsp-micro-item"><i class="fa-solid fa-star"></i> 144+ Five-Star Reviews</div>
+          <div class="c360-gsp-micro-item"><i class="fa-solid fa-calendar-check"></i> Weekly Posts, Done For You</div>
+        </div>
+      </div>
+
+      <!-- RIGHT — Google Post mockup -->
+      <div>
+        <div class="c360-gsp-hero-visual">
+          <div class="c360-gsp-hero-visual-title">A Post We Publish For You</div>
+          <div class="c360-gsp-post-card">
+            <div class="c360-gsp-post-img">
+              <span class="c360-gsp-post-type"><i class="fa-solid fa-tag" style="font-size:9px;"></i> Offer</span>
+              <i class="fa-solid fa-image"></i>
+            </div>
+            <div class="c360-gsp-post-body">
+              <div class="c360-gsp-post-meta">
+                <div class="c360-gsp-post-avatar"><i class="fa-solid fa-store"></i></div>
+                <div class="c360-gsp-post-meta-text">
+                  <strong>Your Business Name</strong>
+                  <span>Posted today · Google Business Profile</span>
+                </div>
+              </div>
+              <div class="c360-gsp-post-text">Spring special — book this week and save 15% on your first service. Trusted by 144+ happy local customers. Tap below to claim it!</div>
+              <span class="c360-gsp-post-cta">Call now <i class="fa-solid fa-arrow-right" style="font-size:10px;"></i></span>
+            </div>
+          </div>
+          <div class="c360-gsp-schedule-row">
+            <div class="c360-gsp-schedule-pill">
+              <span class="c360-gsp-schedule-val">4–5</span>
+              <span class="c360-gsp-schedule-lbl">Posts / Month</span>
+            </div>
+            <div class="c360-gsp-schedule-pill">
+              <span class="c360-gsp-schedule-val">100%</span>
+              <span class="c360-gsp-schedule-lbl">Done For You</span>
+            </div>
+            <div class="c360-gsp-schedule-pill">
+              <span class="c360-gsp-schedule-val">+35%</span>
+              <span class="c360-gsp-schedule-lbl">More Clicks*</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 2 — TRUST BAR
+     ══════════════════════════════════════════════════════ -->
+<div class="c360-gsp-trust-bar">
+  <div class="c360-gsp-container">
+    <div class="c360-gsp-trust-bar-inner">
+      <div class="c360-gsp-trust-pill">
+        <div class="c360-gsp-trust-ico"><i class="fa-brands fa-google"></i></div>
+        <div class="c360-gsp-trust-text">
+          <strong>Google Partner Agency</strong>
+          <span>Certified &amp; trained by Google</span>
+        </div>
+      </div>
+      <div class="c360-gsp-trust-pill">
+        <div class="c360-gsp-trust-ico green"><i class="fa-solid fa-pen-nib"></i></div>
+        <div class="c360-gsp-trust-text">
+          <strong>Written &amp; Designed In-House</strong>
+          <span>Real copywriters, not auto-spam</span>
+        </div>
+      </div>
+      <div class="c360-gsp-trust-pill">
+        <div class="c360-gsp-trust-ico gold"><i class="fa-solid fa-star"></i></div>
+        <div class="c360-gsp-trust-text">
+          <strong>144+ Five-Star Reviews</strong>
+          <span>Real results from real businesses</span>
+        </div>
+      </div>
+      <div class="c360-gsp-trust-pill">
+        <div class="c360-gsp-trust-ico green"><i class="fa-solid fa-calendar-check"></i></div>
+        <div class="c360-gsp-trust-text">
+          <strong>Never Miss a Week</strong>
+          <span>Consistent posting on autopilot</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 3 — INTRO / WHAT WE DO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gsp-section c360-gsp-intro">
+  <div class="c360-gsp-container">
+    <div class="c360-gsp-intro-inner">
+
+      <div class="c360-gsp-intro-copy">
+        <span class="c360-gsp-overline">What We Do</span>
+        <h2>Your Google Posts,<br><span>written &amp; published for you.</span></h2>
+        <p>
+          Google Posts are one of the easiest ways to climb in local search — yet almost no business owner keeps up with them. A profile that posts every week signals to Google that you're active and relevant, and shows up in more searches than a profile that's gone quiet.
+        </p>
+        <p>
+          We handle the whole thing. Every week our team writes keyword-optimized copy, pairs it with a clean branded graphic, adds a call-to-action button, and publishes it straight to your Google Business Profile. You get the visibility — without ever logging in.
+        </p>
+        <div class="c360-gsp-alert-box">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <p>Posts that haven't been touched in months tell Google your business may be inactive — quietly pushing you below competitors who post every week.</p>
+        </div>
+        <a href="#c360-gsp-pricing" class="c360-gsp-btn-primary">
+          See Posting Plans <i class="fa-solid fa-arrow-down"></i>
+        </a>
+      </div>
+
+      <!-- What's included checklist -->
+      <div>
+        <div class="c360-gsp-included-grid">
+          <div class="c360-gsp-included-header">
+            <i class="fa-solid fa-list-check"></i>
+            <span>What's Included Every Month</span>
+          </div>
+          <div class="c360-gsp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>4–5 Google Posts per month<em>Consistent weekly posting cadence</em></span>
+          </div>
+          <div class="c360-gsp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>SEO-optimized post copy<em>Local keywords &amp; clear calls-to-action</em></span>
+          </div>
+          <div class="c360-gsp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Custom branded graphics<em>Each post paired with an on-brand image</em></span>
+          </div>
+          <div class="c360-gsp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Multiple post types<em>What's New, Offers, Events &amp; Products</em></span>
+          </div>
+          <div class="c360-gsp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Action buttons on every post<em>Call, Book, Order or Learn More</em></span>
+          </div>
+          <div class="c360-gsp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Seasonal &amp; promotional content<em>Holidays, specials &amp; timely updates</em></span>
+          </div>
+          <div class="c360-gsp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Content planned around your business<em>Tell us your offers — we do the rest</em></span>
+          </div>
+          <div class="c360-gsp-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Monthly posting summary<em>See everything we published, at a glance</em></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 4 — POST TYPES SHOWCASE
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gsp-section c360-gsp-types">
+  <div class="c360-gsp-container">
+    <div class="c360-gsp-section-header">
+      <span class="c360-gsp-overline">Post Variety</span>
+      <h2>Not the same post every week.</h2>
+      <p>We rotate through the post formats Google actually surfaces — keeping your profile fresh and giving searchers a reason to click.</p>
+    </div>
+    <div class="c360-gsp-types-grid">
+
+      <div class="c360-gsp-type-card">
+        <div class="c360-gsp-type-ico"><i class="fa-solid fa-bullhorn"></i></div>
+        <div class="c360-gsp-type-title">What's New</div>
+        <div class="c360-gsp-type-desc">Updates, announcements, and behind-the-scenes posts that keep your profile alive and current.</div>
+      </div>
+
+      <div class="c360-gsp-type-card">
+        <div class="c360-gsp-type-ico"><i class="fa-solid fa-tag"></i></div>
+        <div class="c360-gsp-type-title">Offers &amp; Specials</div>
+        <div class="c360-gsp-type-desc">Limited-time promotions with start/end dates and a button that drives calls and bookings.</div>
+      </div>
+
+      <div class="c360-gsp-type-card">
+        <div class="c360-gsp-type-ico"><i class="fa-solid fa-calendar-day"></i></div>
+        <div class="c360-gsp-type-title">Events</div>
+        <div class="c360-gsp-type-desc">Sales, open houses, and seasonal events posted so they show up right when locals are searching.</div>
+      </div>
+
+      <div class="c360-gsp-type-card">
+        <div class="c360-gsp-type-ico"><i class="fa-solid fa-box-open"></i></div>
+        <div class="c360-gsp-type-title">Products &amp; Services</div>
+        <div class="c360-gsp-type-desc">Highlight what you offer where buyers look first — putting your best services front and center.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 5 — HOW IT WORKS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gsp-section c360-gsp-process">
+  <div class="c360-gsp-container">
+    <div class="c360-gsp-section-header">
+      <span class="c360-gsp-overline">How It Works</span>
+      <h2>Set it once. We post forever.</h2>
+      <p>A quick setup on your end, then weekly Google Posts handled by our team — no logins, no reminders, no chasing.</p>
+    </div>
+    <div class="c360-gsp-process-steps">
+      <div class="c360-gsp-step">
+        <div class="c360-gsp-step-num"><i class="fa-solid fa-clipboard-list"></i></div>
+        <div class="c360-gsp-step-label">Quick Onboarding</div>
+        <div class="c360-gsp-step-desc">Tell us about your business, your offers, and grant posting access. Takes under 15 minutes.</div>
+      </div>
+      <div class="c360-gsp-step">
+        <div class="c360-gsp-step-num"><i class="fa-solid fa-pen-ruler"></i></div>
+        <div class="c360-gsp-step-label">We Create Your Posts</div>
+        <div class="c360-gsp-step-desc">Our team writes the copy and designs the graphic for each post, on brand and optimized.</div>
+      </div>
+      <div class="c360-gsp-step">
+        <div class="c360-gsp-step-num"><i class="fa-solid fa-paper-plane"></i></div>
+        <div class="c360-gsp-step-label">We Publish Weekly</div>
+        <div class="c360-gsp-step-desc">Posts go live on your Google profile every week — keeping you active and visible.</div>
+      </div>
+      <div class="c360-gsp-step">
+        <div class="c360-gsp-step-num"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="c360-gsp-step-label">Monthly Recap</div>
+        <div class="c360-gsp-step-desc">Get a simple summary of everything we posted and how your profile is performing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 6 — PRICING
+     ══════════════════════════════════════════════════════ -->
+<section id="c360-gsp-pricing" class="c360-gsp-section c360-gsp-pricing">
+  <div class="c360-gsp-container">
+    <div class="c360-gsp-section-header">
+      <span class="c360-gsp-overline">Pricing &amp; Plans</span>
+      <h2>Simple pricing for done-for-you<br>Google Posts.</h2>
+      <p>Pick a term that fits — the longer you commit, the lower your monthly rate. Every plan includes weekly posts, copy, and custom graphics.</p>
+    </div>
+    <div class="c360-gsp-price-cards">
+
+      <!-- Monthly -->
+      <div class="c360-gsp-price-card">
+        <div class="c360-gsp-plan-name">Monthly</div>
+        <div class="c360-gsp-plan-tagline">Flexible, month-to-month posting</div>
+        <div class="c360-gsp-price-row">
+          <span class="c360-gsp-price-dollar">$</span>
+          <span class="c360-gsp-price-num">149</span>
+          <span class="c360-gsp-price-period">/mo</span>
+        </div>
+        <span class="c360-gsp-price-save invisible">—</span>
+        <div class="c360-gsp-price-divider"></div>
+        <ul class="c360-gsp-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> 4–5 Google Posts every month</li>
+          <li><i class="fa-solid fa-circle-check"></i> SEO-optimized post copy</li>
+          <li><i class="fa-solid fa-circle-check"></i> Custom branded graphics</li>
+          <li><i class="fa-solid fa-circle-check"></i> Offers, events &amp; product posts</li>
+          <li><i class="fa-solid fa-circle-check"></i> Action buttons on every post</li>
+          <li><i class="fa-solid fa-circle-check"></i> Monthly posting summary</li>
+        </ul>
+        <div class="c360-gsp-price-note">
+          <i class="fa-solid fa-circle-info"></i> Billed monthly · cancel anytime
+        </div>
+        <a href="https://complete360.org/google-social-checkout" class="c360-gsp-price-btn c360-gsp-price-btn--outline">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 6-Month — POPULAR -->
+      <div class="c360-gsp-price-card c360-gsp-price-card--popular">
+        <div class="c360-gsp-popular-badge"><i class="fa-solid fa-bolt"></i> Most Popular</div>
+        <div class="c360-gsp-plan-name">6-Month</div>
+        <div class="c360-gsp-plan-tagline">Six months of consistent posting</div>
+        <div class="c360-gsp-price-row">
+          <span class="c360-gsp-price-dollar">$</span>
+          <span class="c360-gsp-price-num">715</span>
+          <span class="c360-gsp-price-period">paid in full</span>
+        </div>
+        <span class="c360-gsp-price-save">$119/mo equivalent · Save $179</span>
+        <div class="c360-gsp-price-divider"></div>
+        <ul class="c360-gsp-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Everything in Monthly</li>
+          <li><i class="fa-solid fa-circle-check"></i> Lower per-month rate</li>
+          <li><i class="fa-solid fa-circle-check"></i> Priority content scheduling</li>
+          <li><i class="fa-solid fa-circle-check"></i> Seasonal campaign planning</li>
+          <li><i class="fa-solid fa-circle-check"></i> Quarterly content check-in</li>
+        </ul>
+        <div class="c360-gsp-price-note">
+          <i class="fa-solid fa-circle-info"></i> One payment · covers 6 months of posting
+        </div>
+        <a href="https://complete360.org/google-social-checkout" class="c360-gsp-price-btn c360-gsp-price-btn--green">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- 12-Month -->
+      <div class="c360-gsp-price-card">
+        <div class="c360-gsp-plan-name">12-Month</div>
+        <div class="c360-gsp-plan-tagline">Best value — lowest monthly rate</div>
+        <div class="c360-gsp-price-row">
+          <span class="c360-gsp-price-dollar">$</span>
+          <span class="c360-gsp-price-num">1,252</span>
+          <span class="c360-gsp-price-period">paid in full</span>
+        </div>
+        <span class="c360-gsp-price-save">$104/mo equivalent · Save $536</span>
+        <div class="c360-gsp-price-divider"></div>
+        <ul class="c360-gsp-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Everything in 6-Month</li>
+          <li><i class="fa-solid fa-circle-check"></i> Our lowest per-month price</li>
+          <li><i class="fa-solid fa-circle-check"></i> Full-year content calendar</li>
+          <li><i class="fa-solid fa-circle-check"></i> Priority response &amp; revisions</li>
+          <li><i class="fa-solid fa-circle-check"></i> Annual posting performance review</li>
+        </ul>
+        <div class="c360-gsp-price-note">
+          <i class="fa-solid fa-circle-info"></i> One payment · covers 12 months of posting
+        </div>
+        <a href="https://complete360.org/google-social-checkout" class="c360-gsp-price-btn c360-gsp-price-btn--outline">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+    <div class="c360-gsp-pricing-foot">
+      <p>Posting requires an existing, verified Google Business Profile. Don't have one yet? We can set it up for $399. &nbsp;|&nbsp; Questions? Call Mon–Fri 9am–5pm MST.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 7 — UPGRADE BRIDGE (to full GBP Management)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gsp-section c360-gsp-bridge">
+  <div class="c360-gsp-container">
+    <div class="c360-gsp-bridge-card">
+      <div>
+        <h3>Want the <span>full picture</span> handled too?</h3>
+        <p>Google Posting keeps you active — but our complete GBP Management adds review generation &amp; responses, profile optimization, citation &amp; AI-platform sync (Yext), and monthly rank reporting. If you want your entire Google presence managed for you, that's the next step up.</p>
+      </div>
+      <a href="/gbp-management" class="c360-gsp-bridge-btn">
+        Explore GBP Management <i class="fa-solid fa-arrow-right"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 8 — REVIEWS WIDGET
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gsp-section c360-gsp-reviews">
+  <div class="c360-gsp-container">
+    <div class="c360-gsp-section-header">
+      <span class="c360-gsp-overline">What Our Clients Say</span>
+      <h2>Trusted by local businesses</h2>
+      <p>144+ Google reviews from business owners just like you.</p>
+    </div>
+    <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
+    <iframe
+      class='lc_reviews_widget'
+      src='https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u'
+      frameborder='0' scrolling='no'
+      style='min-width:100%;width:100%;display:block;'>
+    </iframe>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 9 — FINAL CTA
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gsp-section c360-gsp-cta">
+  <div class="c360-gsp-container">
+    <div class="c360-gsp-cta-inner">
+      <span class="c360-gsp-overline" style="color:#2ecc52;">Ready to Stay Active?</span>
+      <h2>Keep your Google profile <span>posting every week.</span></h2>
+      <p class="c360-gsp-cta-desc">
+        Let us handle the posts while you run your business. Call us with any questions — no pressure, no contracts required to chat.<br>
+        <span style="font-size:14px;opacity:0.75;">Mon–Fri 9am–5pm MST &nbsp;·&nbsp; (866) 527-6205</span>
+      </p>
+      <div class="c360-gsp-cta-actions">
+        <a href="#c360-gsp-pricing" class="c360-gsp-btn-primary" style="font-size:16px;padding:17px 32px;">
+          View Posting Plans <i class="fa-solid fa-arrow-down"></i>
+        </a>
+        <a href="tel:+18665276205" class="c360-gsp-btn-outline">
+          <i class="fa-solid fa-phone"></i> Call (866) 527-6205
+        </a>
+      </div>
+      <div class="c360-gsp-cta-trust">
+        <span><i class="fa-brands fa-google"></i> Google Partner</span>
+        <span><i class="fa-solid fa-star"></i> 144+ Five-Star Reviews</span>
+        <span><i class="fa-solid fa-calendar-check"></i> Weekly Posts Done For You</span>
+        <span><i class="fa-solid fa-map-pin"></i> Tucson-Based &amp; Nationwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 10 — FAQ
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-gsp-section c360-gsp-faq">
+  <div class="c360-gsp-container">
+    <div class="c360-gsp-section-header">
+      <span class="c360-gsp-overline">Frequently Asked</span>
+      <h2>Questions about Google Posting</h2>
+      <p>Get clear answers before you get started.</p>
+    </div>
+    <div class="c360-gsp-faq-list">
+
+      <div class="c360-gsp-faq-item">
+        <input type="checkbox" id="c360GspFaq1" class="c360-gsp-faq-toggle">
+        <label for="c360GspFaq1" class="c360-gsp-faq-q">
+          What exactly is a Google Post?
+          <span class="c360-gsp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gsp-faq-a">
+          <p>Google Posts are short, social-media-style updates that appear directly on your Google Business Profile in Search and Maps. They can highlight an offer, an event, a new product, or general news. Posting consistently signals to Google that your business is active, which helps your local ranking and gives searchers another reason to choose you over a competitor.</p>
+        </div>
+      </div>
+
+      <div class="c360-gsp-faq-item">
+        <input type="checkbox" id="c360GspFaq2" class="c360-gsp-faq-toggle">
+        <label for="c360GspFaq2" class="c360-gsp-faq-q">
+          How is this different from full GBP Management?
+          <span class="c360-gsp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gsp-faq-a">
+          <p>This service is focused purely on posting — we write, design, and publish weekly Google Posts for you. Full GBP Management does that and a lot more: review generation and responses, profile optimization, citation and AI-platform sync through Yext, and monthly rank reporting. Google Posting is a great fit if you already have a profile in good shape and just need the posting handled. If you'd like everything managed, we can step you up to full management anytime.</p>
+        </div>
+      </div>
+
+      <div class="c360-gsp-faq-item">
+        <input type="checkbox" id="c360GspFaq3" class="c360-gsp-faq-toggle">
+        <label for="c360GspFaq3" class="c360-gsp-faq-q">
+          Do I need an existing Google Business Profile?
+          <span class="c360-gsp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gsp-faq-a">
+          <p>Yes — posting requires a verified Google Business Profile that we can access to publish on your behalf. If you don't have one yet, no problem: we offer a one-time GBP Setup for $399 to get you verified and ready, then posting can begin.</p>
+        </div>
+      </div>
+
+      <div class="c360-gsp-faq-item">
+        <input type="checkbox" id="c360GspFaq4" class="c360-gsp-faq-toggle">
+        <label for="c360GspFaq4" class="c360-gsp-faq-q">
+          Do I have to write or approve the posts?
+          <span class="c360-gsp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gsp-faq-a">
+          <p>No — it's fully done for you. During onboarding you tell us about your business, services, and any recurring offers, and from there our team handles the writing and design every week. If you'd like to review posts before they go live or send us specific promotions to feature, just let your account contact know and we'll work it into the schedule.</p>
+        </div>
+      </div>
+
+      <div class="c360-gsp-faq-item">
+        <input type="checkbox" id="c360GspFaq5" class="c360-gsp-faq-toggle">
+        <label for="c360GspFaq5" class="c360-gsp-faq-q">
+          How many posts will I get each month?
+          <span class="c360-gsp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gsp-faq-a">
+          <p>You'll get roughly 4–5 posts per month — a consistent weekly cadence, which is the sweet spot Google looks for. Each post includes optimized copy, a custom graphic, and an action button. We rotate through different post types so your profile never looks repetitive.</p>
+        </div>
+      </div>
+
+      <div class="c360-gsp-faq-item">
+        <input type="checkbox" id="c360GspFaq6" class="c360-gsp-faq-toggle">
+        <label for="c360GspFaq6" class="c360-gsp-faq-q">
+          Can I cancel or change plans later?
+          <span class="c360-gsp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-gsp-faq-a">
+          <p>The Monthly plan is month-to-month and can be cancelled anytime. The 6-Month and 12-Month plans are prepaid for the term and offer a lower monthly rate in exchange for that commitment. You can always upgrade to a longer term — or step up to full GBP Management — whenever it makes sense for your business.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
