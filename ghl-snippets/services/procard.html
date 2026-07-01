@@ -1,1 +1,474 @@
+<!-- ============================================================
+   PROCARD PAGE — Complete360
+   Prefix: pc- (procard page styles, no collision with c360- or c360f-)
+   ============================================================ -->
+<style>
 
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --pc-blue:        #122078;
+  --pc-blue-hover:  #0d1654;
+  --pc-blue-mid:    #1a2e99;
+  --pc-green:       #127825;
+  --pc-green-hover: #0e5e1d;
+  --pc-green-light: #EAF3DE;
+  --pc-blue-light:  #E6F1FB;
+  --pc-grey:        #888780;
+  --pc-grey-light:  #F1EFE8;
+  --pc-border:      rgba(0,0,0,0.08);
+  --pc-text:        #0F1F5E;
+  --pc-muted:       #5F5E5A;
+  --pc-font:        'Poppins', 'Helvetica Neue', sans-serif;
+}
+
+body { font-family: var(--pc-font); color: var(--pc-text); background: #fff; -webkit-font-smoothing: antialiased; }
+
+.pc-container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.pc-btn-green { display: inline-flex; align-items: center; gap: 8px; background: var(--pc-green); color: #fff; padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-family: var(--pc-font); transition: background 0.2s ease, transform 0.1s ease; }
+.pc-btn-green:hover { background: var(--pc-green-hover); }
+.pc-btn-green:active { transform: scale(0.98); }
+.pc-btn-outline { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--pc-blue); padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; border: 2px solid var(--pc-blue); cursor: pointer; font-family: var(--pc-font); transition: background 0.2s ease, color 0.2s ease; }
+.pc-btn-outline:hover { background: var(--pc-blue); color: #fff; }
+.pc-eyebrow { display: inline-block; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--pc-green); background: var(--pc-green-light); padding: 5px 12px; border-radius: 4px; margin-bottom: 14px; }
+.pc-section-title { font-size: 36px; font-weight: 700; color: var(--pc-blue); line-height: 1.2; margin-bottom: 14px; }
+.pc-section-sub { font-size: 16px; color: var(--pc-muted); line-height: 1.65; max-width: 600px; }
+
+/* PHONE MOCKUP */
+.pc-phone { flex-shrink: 0; position: relative; }
+.pc-phone.pc-phone-sm { width: 170px; }
+.pc-phone.pc-phone-lg { width: 228px; }
+.pc-phone { width: 200px; }
+.pc-phone-frame { position: relative; width: 100%; border-radius: 32px; overflow: hidden; box-shadow: 0 24px 48px rgba(18,32,120,0.18), 0 8px 16px rgba(0,0,0,0.12); }
+.pc-phone-screen { position: relative; width: 100%; background: #fff; border-radius: 32px; overflow: hidden; }
+
+/* PROCARD DESIGNS */
+.pc-card { font-family: var(--pc-font); background: #fff; height: 100%; min-height: unset; display: flex; flex-direction: column; }
+.pc-card-hero { height: 130px; position: relative; flex-shrink: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-start; padding-top: 14px; gap: 5px; overflow: visible; }
+.pc-card-avatar { width: 64px; height: 64px; border-radius: 50%; border: 3px solid #fff; position: absolute; bottom: -28px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: center; font-size: 20px; font-weight: 800; color: #fff; z-index: 2; overflow: hidden; font-family: var(--pc-font); }
+.pc-card-avatar img { width: 100%; height: 100%; object-fit: cover; object-position: center top; display: block; border-radius: 50%; }
+.pc-card-company { font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; text-align: center; line-height: 1.3; padding: 0 10px; position: relative; z-index: 1; }
+.pc-card-category { font-size: 6.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.28); border-radius: 6px; padding: 2px 8px; color: rgba(255,255,255,0.90); white-space: nowrap; position: relative; z-index: 1; }
+.pc-card-body { padding: 36px 12px 10px; text-align: center; flex: 1; display: flex; flex-direction: column; }
+.pc-card-name { font-size: 15px; font-weight: 700; color: #111; margin-bottom: 2px; line-height: 1.2; }
+.pc-card-title-tag { font-size: 8px; color: #999; text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 7px; }
+.pc-card-stars { display: flex; align-items: center; justify-content: center; gap: 4px; margin-bottom: 10px; }
+.pc-card-stars-icons { color: #f59e0b; font-size: 9px; letter-spacing: 0.5px; }
+.pc-card-stars-count { font-size: 8px; color: #bbb; font-weight: 500; }
+.pc-card-actions { display: flex; justify-content: center; gap: 7px; margin-bottom: 9px; }
+.pc-card-btn { display: flex; flex-direction: column; align-items: center; gap: 3px; width: 40px; }
+.pc-card-btn-icon { width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; color: #fff; }
+.pc-card-btn-label { font-size: 6.5px; color: #999; text-transform: uppercase; letter-spacing: 0.3px; font-weight: 600; }
+.pc-card-tags { font-size: 8.5px; color: #bbb; text-align: center; margin-bottom: 7px; line-height: 1.5; padding: 0 4px; }
+.pc-card-socials { display: flex; justify-content: center; gap: 6px; margin-top: auto; padding-top: 7px; border-top: 1px solid #f0f0f0; }
+.pc-card-social-icon { width: 26px; height: 26px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 9px; color: #fff; }
+.pc-card-save { color: #fff; text-align: center; padding: 10px; font-size: 8.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; display: flex; align-items: center; justify-content: center; gap: 6px; }
+
+/* CARD THEMES */
+.pc-card-realestate .pc-card-hero { background: linear-gradient(170deg, rgba(10,8,28,0.68) 0%, rgba(18,14,42,0.88) 100%), url('https://images.unsplash.com/photo-1477959858617-67f85cf4f1df?auto=format&fit=crop&w=400&q=70') center/cover no-repeat; }
+.pc-card-realestate .pc-card-company { color: #d4a843; }
+.pc-card-realestate .pc-card-avatar { background: linear-gradient(135deg, #a87c28 0%, #e8c96d 100%); border-color: #d4a843; box-shadow: 0 0 0 4px rgba(212,168,67,0.25), 0 6px 16px rgba(0,0,0,0.35); }
+.pc-card-realestate .pc-card-save { background: linear-gradient(90deg, #0b0b1e, #b8922d); }
+.pc-card-hvac .pc-card-hero { background: linear-gradient(170deg, rgba(4,20,38,0.70) 0%, rgba(8,50,90,0.88) 100%), url('https://images.unsplash.com/photo-1560472354-b33ff0c44a43?auto=format&fit=crop&w=400&q=70') center/cover no-repeat; }
+.pc-card-hvac .pc-card-company { color: #ff8a50; }
+.pc-card-hvac .pc-card-avatar { background: linear-gradient(135deg, #d45520 0%, #ff9060 100%); border-color: #fff; box-shadow: 0 0 0 4px rgba(255,138,80,0.2), 0 6px 16px rgba(0,0,0,0.35); }
+.pc-card-hvac .pc-card-save { background: linear-gradient(90deg, #041e30, #0d4e80); }
+.pc-card-insurance .pc-card-hero { background: linear-gradient(170deg, rgba(40,4,4,0.72) 0%, rgba(90,10,10,0.88) 100%), url('https://images.unsplash.com/photo-1444723121867-7a241cacace9?auto=format&fit=crop&w=400&q=70') center/cover no-repeat; }
+.pc-card-insurance .pc-card-company { color: #ffcdd2; }
+.pc-card-insurance .pc-card-avatar { background: linear-gradient(135deg, #7a1515 0%, #d63031 100%); border-color: #fff; box-shadow: 0 0 0 4px rgba(214,48,49,0.2), 0 6px 16px rgba(0,0,0,0.35); }
+.pc-card-insurance .pc-card-save { background: linear-gradient(90deg, #3a0505, #7a1515); }
+.pc-card-roofing .pc-card-hero { background: linear-gradient(170deg, rgba(10,18,10,0.70) 0%, rgba(20,38,22,0.88) 100%), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?auto=format&fit=crop&w=400&q=70') center/cover no-repeat; }
+.pc-card-roofing .pc-card-company { color: #f5c842; }
+.pc-card-roofing .pc-card-avatar { background: linear-gradient(135deg, #2e5230 0%, #4e8054 100%); border-color: #f5c842; box-shadow: 0 0 0 4px rgba(245,200,66,0.2), 0 6px 16px rgba(0,0,0,0.35); }
+.pc-card-roofing .pc-card-save { background: linear-gradient(90deg, #111a12, #294a2c); }
+.pc-card-dental .pc-card-hero { background: linear-gradient(170deg, rgba(0,22,24,0.70) 0%, rgba(0,55,62,0.88) 100%), url('https://images.unsplash.com/photo-1629909615957-be38d48fbbe4?auto=format&fit=crop&w=400&q=70') center/cover no-repeat; }
+.pc-card-dental .pc-card-company { color: #80deea; }
+.pc-card-dental .pc-card-avatar { background: linear-gradient(135deg, #006970 0%, #00a8b4 100%); border-color: #fff; box-shadow: 0 0 0 4px rgba(0,168,180,0.2), 0 6px 16px rgba(0,0,0,0.35); }
+.pc-card-dental .pc-card-save { background: linear-gradient(90deg, #001c1f, #005058); }
+.pc-card-auto .pc-card-hero { background: linear-gradient(170deg, rgba(6,6,6,0.72) 0%, rgba(20,8,8,0.88) 100%), url('https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=400&q=70') center/cover no-repeat; }
+.pc-card-auto .pc-card-company { color: #ef5350; }
+.pc-card-auto .pc-card-avatar { background: linear-gradient(135deg, #b71c1c 0%, #ef5350 100%); border-color: #fff; box-shadow: 0 0 0 4px rgba(239,83,80,0.2), 0 6px 16px rgba(0,0,0,0.35); }
+.pc-card-auto .pc-card-save { background: linear-gradient(90deg, #080808, #ef5350); }
+
+/* HERO */
+.pc-hero { background: linear-gradient(160deg, #f8f9ff 0%, #eef1fb 50%, #f0f8f0 100%); padding: 80px 0 60px; overflow: hidden; position: relative; }
+.pc-hero::before { content: ''; position: absolute; top: -120px; right: -120px; width: 500px; height: 500px; border-radius: 50%; background: radial-gradient(circle, rgba(18,120,37,0.06) 0%, transparent 70%); }
+.pc-hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; max-width: 1200px; margin: 0 auto; padding: 0 32px; }
+.pc-hero-badge { display: inline-flex; align-items: center; gap: 8px; background: #fff; border: 1px solid var(--pc-border); border-radius: 24px; padding: 6px 14px 6px 8px; font-size: 12px; font-weight: 500; color: var(--pc-green); margin-bottom: 20px; box-shadow: 0 2px 8px rgba(18,32,120,0.06); }
+.pc-hero-badge-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--pc-green); animation: pc-pulse 2s ease infinite; }
+@keyframes pc-pulse { 0%,100%{opacity:1;transform:scale(1);}50%{opacity:0.6;transform:scale(1.3);} }
+.pc-hero h1 { font-size: 48px; font-weight: 800; color: var(--pc-blue); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.5px; }
+.pc-hero h1 span { color: var(--pc-green); }
+.pc-hero-sub { font-size: 17px; color: var(--pc-muted); line-height: 1.65; margin-bottom: 32px; max-width: 480px; }
+.pc-hero-btns { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 36px; }
+.pc-hero-trust { display: flex; flex-direction: column; gap: 10px; }
+@media (min-width: 640px) { .pc-hero-trust { flex-direction: row; flex-wrap: nowrap; gap: 20px; } }
+.pc-hero-trust-item { display: flex; align-items: center; gap: 7px; font-size: 13px; color: var(--pc-muted); font-weight: 500; }
+.pc-hero-trust-item i { color: var(--pc-green); font-size: 13px; }
+.pc-hero-visual { display: flex; justify-content: center; align-items: flex-end; gap: 12px; padding-bottom: 0; }
+.pc-phone-left  { transform: translateY(24px) rotate(-4deg); opacity: 0.8; }
+.pc-phone-right { transform: translateY(24px) rotate(4deg);  opacity: 0.8; }
+.pc-phone-center { opacity: 1; }
+
+/* HOW IT WORKS */
+.pc-how { padding: 80px 0; background: #fff; }
+.pc-how-header { text-align: center; margin-bottom: 56px; }
+.pc-how-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 0; position: relative; max-width: 900px; margin: 0 auto; }
+.pc-how-grid::before { content: ''; position: absolute; top: 32px; left: calc(16.67% + 32px); right: calc(16.67% + 32px); height: 2px; background: linear-gradient(90deg, var(--pc-green), var(--pc-blue)); z-index: 0; }
+.pc-how-step { text-align: center; padding: 0 32px; position: relative; z-index: 1; }
+.pc-how-num { width: 64px; height: 64px; border-radius: 50%; background: var(--pc-blue); color: #fff; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; border: 4px solid #fff; box-shadow: 0 0 0 3px var(--pc-blue); }
+.pc-how-step:nth-child(2) .pc-how-num { background: var(--pc-green); box-shadow: 0 0 0 3px var(--pc-green); }
+.pc-how-step:nth-child(3) .pc-how-num { background: var(--pc-blue-mid); box-shadow: 0 0 0 3px var(--pc-blue-mid); }
+.pc-how-step-title { font-size: 16px; font-weight: 600; color: var(--pc-text); margin-bottom: 8px; }
+.pc-how-step-desc { font-size: 13px; color: var(--pc-muted); line-height: 1.6; }
+
+/* SHOWCASE */
+.pc-showcase { padding: 80px 0; background: linear-gradient(180deg, var(--pc-grey-light) 0%, #f4f6ff 100%); }
+.pc-showcase-header { text-align: center; margin-bottom: 28px; }
+.pc-tabs { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+.pc-tab { padding: 9px 20px; border-radius: 24px; font-size: 13px; font-weight: 500; cursor: pointer; border: 1.5px solid var(--pc-border); background: #fff; color: var(--pc-muted); font-family: var(--pc-font); transition: all 0.2s ease; display: flex; align-items: center; gap: 7px; }
+.pc-tab:hover { border-color: var(--pc-green); color: var(--pc-green); }
+.pc-tab.active { background: var(--pc-blue); border-color: var(--pc-blue); color: #fff; }
+.pc-tab i { font-size: 12px; }
+.pc-showcase-stage { display: flex; justify-content: center; align-items: flex-end; gap: 24px; min-height: unset; }
+.pc-card-wrap { display: none; justify-content: center; align-items: flex-end; gap: 20px; width: 100%; }
+.pc-card-wrap.active { display: flex; }
+
+/* FEATURES */
+.pc-features { padding: 80px 0; background: #fff; }
+.pc-features-header { text-align: center; margin-bottom: 56px; }
+.pc-features-header .pc-section-sub { margin: 0 auto; }
+.pc-features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+.pc-feature-card { background: #fff; border: 1px solid var(--pc-border); border-radius: 12px; padding: 28px 24px; transition: box-shadow 0.2s ease, border-color 0.2s ease; }
+.pc-feature-card:hover { box-shadow: 0 8px 24px rgba(18,32,120,0.08); border-color: var(--pc-green); }
+.pc-feature-icon { width: 48px; height: 48px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 16px; }
+.pc-feature-icon-green { background: var(--pc-green-light); color: var(--pc-green); }
+.pc-feature-icon-blue  { background: var(--pc-blue-light);  color: var(--pc-blue); }
+.pc-feature-title { font-size: 15px; font-weight: 600; color: var(--pc-text); margin-bottom: 8px; }
+.pc-feature-desc { font-size: 13px; color: var(--pc-muted); line-height: 1.6; }
+.pc-feature-badge { display: inline-block; font-size: 9px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.4px; padding: 2px 8px; border-radius: 8px; background: var(--pc-blue); color: #fff; margin-top: 10px; }
+.pc-feature-badge.green { background: var(--pc-green); }
+
+/* PRICING */
+.pc-pricing { padding: 80px 0; background: linear-gradient(180deg, #f4f6ff 0%, var(--pc-grey-light) 100%); }
+.pc-pricing-header { text-align: center; margin-bottom: 28px; }
+.pc-pricing-header .pc-section-sub { margin: 0 auto; }
+.pc-pricing-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; max-width: 860px; margin: 0 auto; align-items: stretch; }
+.pc-pricing-card { background: #fff; border: 1.5px solid var(--pc-border); border-radius: 16px; padding: 36px 32px; position: relative; transition: box-shadow 0.2s ease; display: flex; flex-direction: column; }
+.pc-pricing-card:hover { box-shadow: 0 16px 48px rgba(18,32,120,0.1); }
+.pc-pricing-card.featured { border-color: var(--pc-green); box-shadow: 0 8px 32px rgba(18,120,37,0.12); }
+.pc-pricing-popular { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: var(--pc-green); color: #fff; font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; padding: 4px 16px; border-radius: 12px; white-space: nowrap; }
+.pc-pricing-tier { font-size: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; color: var(--pc-muted); margin-bottom: 8px; }
+.pc-pricing-name { font-size: 26px; font-weight: 700; color: var(--pc-blue); margin-bottom: 6px; }
+.pc-pricing-price { font-size: 48px; font-weight: 800; color: var(--pc-text); line-height: 1; margin-bottom: 4px; }
+.pc-pricing-price sup { font-size: 24px; font-weight: 600; vertical-align: top; margin-top: 8px; display: inline-block; }
+.pc-pricing-onetime { font-size: 12px; color: var(--pc-muted); margin-bottom: 6px; }
+.pc-pricing-note { font-size: 12px; color: var(--pc-green); font-weight: 500; margin-bottom: 28px; display: flex; align-items: center; gap: 5px; }
+.pc-pricing-divider { border: none; border-top: 1px solid var(--pc-border); margin: 0 0 24px; }
+.pc-pricing-list { list-style: none; margin-bottom: 32px; display: flex; flex-direction: column; gap: 11px; flex: 1; }
+.pc-pricing-list li { font-size: 14px; color: var(--pc-text); display: flex; align-items: flex-start; gap: 10px; line-height: 1.4; }
+.pc-pricing-list li i { color: var(--pc-green); font-size: 13px; flex-shrink: 0; margin-top: 2px; }
+.pc-pricing-list li.extra i { color: var(--pc-blue); }
+.pc-pricing-cta { width: 100%; text-align: center; justify-content: center; padding: 14px; font-size: 15px; margin-top: auto; }
+
+/* SHARE STRIP */
+.pc-share { padding: 64px 0; background: #fff; }
+.pc-share-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+.pc-share-title { font-size: 30px; font-weight: 700; color: var(--pc-blue); line-height: 1.2; margin-bottom: 14px; }
+.pc-share-desc { font-size: 15px; color: var(--pc-muted); line-height: 1.65; margin-bottom: 28px; }
+.pc-share-methods { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.pc-share-method { display: flex; align-items: center; gap: 12px; background: var(--pc-grey-light); border-radius: 10px; padding: 14px; }
+.pc-share-method-icon { width: 40px; height: 40px; border-radius: 8px; background: var(--pc-blue-light); color: var(--pc-blue); display: flex; align-items: center; justify-content: center; font-size: 16px; flex-shrink: 0; }
+.pc-share-method-icon.green { background: var(--pc-green-light); color: var(--pc-green); }
+.pc-share-method-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--pc-text); margin-bottom: 2px; }
+.pc-share-method-text span { font-size: 11px; color: var(--pc-muted); }
+.pc-qr-visual { display: flex; justify-content: center; }
+.pc-qr-card { background: #fff; border: 1px solid var(--pc-border); border-radius: 20px; padding: 32px; box-shadow: 0 16px 48px rgba(18,32,120,0.1); text-align: center; max-width: 260px; }
+.pc-qr-label { font-size: 13px; font-weight: 600; color: var(--pc-text); margin-bottom: 6px; }
+.pc-qr-sub { font-size: 11px; color: var(--pc-muted); }
+
+/* FINAL CTA */
+.pc-cta { padding: 80px 0; background: linear-gradient(135deg, var(--pc-blue) 0%, var(--pc-blue-mid) 100%); text-align: center; position: relative; overflow: hidden; }
+.pc-cta::before { content: ''; position: absolute; top: -100px; right: -100px; width: 400px; height: 400px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+.pc-cta::after  { content: ''; position: absolute; bottom: -80px; left: -80px; width: 300px; height: 300px; border-radius: 50%; background: rgba(255,255,255,0.04); }
+.pc-cta-inner { position: relative; z-index: 1; }
+.pc-cta h2 { font-size: 40px; font-weight: 800; color: #fff; margin-bottom: 16px; line-height: 1.15; }
+.pc-cta h2 span { color: #7ee89d; }
+.pc-cta p { font-size: 17px; color: rgba(255,255,255,0.75); max-width: 520px; margin: 0 auto 36px; line-height: 1.6; }
+.pc-cta-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.pc-btn-white { display: inline-flex; align-items: center; gap: 8px; background: #fff; color: var(--pc-blue); padding: 14px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; transition: background 0.2s ease; }
+.pc-btn-white:hover { background: #f0f4ff; }
+.pc-btn-ghost { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: #fff; padding: 13px 28px; border-radius: 8px; font-size: 15px; font-weight: 600; text-decoration: none; border: 2px solid rgba(255,255,255,0.4); transition: border-color 0.2s ease, background 0.2s ease; }
+.pc-btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+/* FAQ */
+.pc-faq { padding: 80px 0; background: var(--pc-grey-light); }
+.pc-faq-header { text-align: center; margin-bottom: 28px; }
+.pc-faq-list { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.pc-faq-item { background: #fff; border-radius: 10px; border: 1px solid var(--pc-border); overflow: hidden; }
+.pc-faq-q { width: 100%; background: transparent; border: none; padding: 20px 24px; text-align: left; font-family: var(--pc-font); font-size: 15px; font-weight: 500; color: var(--pc-text); cursor: pointer; display: flex; align-items: center; justify-content: space-between; gap: 16px; transition: color 0.15s ease; }
+.pc-faq-q:hover { color: var(--pc-green); }
+.pc-faq-q i { font-size: 13px; color: var(--pc-muted); transition: transform 0.25s ease, color 0.15s ease; flex-shrink: 0; }
+.pc-faq-item.open .pc-faq-q { color: var(--pc-green); }
+.pc-faq-item.open .pc-faq-q i { transform: rotate(90deg); color: var(--pc-green); }
+.pc-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.pc-faq-item.open .pc-faq-a { max-height: 300px; }
+.pc-faq-a-inner { padding: 16px 24px 20px; font-size: 14px; color: var(--pc-muted); line-height: 1.7; border-top: 1px solid var(--pc-border); }
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .pc-hero-inner { grid-template-columns: 1fr; gap: 40px; }
+  .pc-hero h1 { font-size: 36px; }
+  .pc-hero-visual { display: none; }
+  .pc-how-grid { grid-template-columns: 1fr; gap: 40px; }
+  .pc-how-grid::before { display: none; }
+  .pc-features-grid { grid-template-columns: 1fr 1fr; }
+  .pc-pricing-grid { grid-template-columns: 1fr; max-width: 440px; }
+  .pc-share-inner { grid-template-columns: 1fr; }
+  .pc-qr-visual { display: none; }
+  .pc-section-title { font-size: 28px; }
+  .pc-cta h2 { font-size: 30px; }
+  .pc-phone-left, .pc-phone-right { display: none; }
+}
+@media (max-width: 600px) {
+  .pc-container { padding: 0 20px; }
+  .pc-features-grid { grid-template-columns: 1fr; }
+  .pc-share-methods { grid-template-columns: 1fr; }
+  .pc-tabs { gap: 6px; }
+  .pc-tab { font-size: 12px; padding: 7px 14px; }
+}
+</style>
+
+<section class="pc-hero">
+  <div class="pc-hero-inner">
+    <div class="pc-hero-content">
+      <div class="pc-hero-badge"><span class="pc-hero-badge-dot"></span>New — Digital Business Cards</div>
+      <h1>Turn Every Introduction Into a <span>Paying Client</span></h1>
+      <p class="pc-hero-sub">A ProCard is a mobile-optimized digital business card — professionally designed, instantly shareable, and built to make prospects take action the moment they tap.</p>
+      <div class="pc-hero-btns">
+        <!-- ✅ UPDATED: checkout URL -->
+        <a href="https://complete360.org/procard-checkout" class="pc-btn-green"><i class="fa-solid fa-address-card"></i>Get My ProCard</a>
+        <a href="#pricing" class="pc-btn-outline"><i class="fa-solid fa-tag"></i>See Pricing</a>
+      </div>
+      <div class="pc-hero-trust">
+        <div class="pc-hero-trust-item"><i class="fa-solid fa-check-circle"></i>Lifetime license — you own it</div>
+        <div class="pc-hero-trust-item"><i class="fa-solid fa-check-circle"></i>No monthly fees</div>
+        <div class="pc-hero-trust-item"><i class="fa-solid fa-check-circle"></i>QR code included</div>
+      </div>
+    </div>
+    <div class="pc-hero-visual">
+      <div class="pc-phone pc-phone-sm pc-phone-left"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-hvac"><div class="pc-card-hero"><div class="pc-card-company">Torres Comfort Systems</div><div class="pc-card-category">Licensed &amp; Insured</div><div class="pc-card-avatar"><img src="https://i.pravatar.cc/150?img=12" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Mike Torres</div><div class="pc-card-title-tag">HVAC Owner · Tucson, AZ</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">89 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#041e30;"><i class="fa-solid fa-phone" style="font-size:11px;"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#d45520;"><i class="fa-solid fa-envelope" style="font-size:11px;"></i></div><span class="pc-card-btn-label">Email</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#0d4e80;"><i class="fa-solid fa-calendar" style="font-size:11px;"></i></div><span class="pc-card-btn-label">Book</span></div></div><div class="pc-card-tags">AC Repair · Heating · Air Quality</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#e1306c;"><i class="fa-brands fa-instagram"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+      <div class="pc-phone pc-phone-lg pc-phone-center"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-realestate"><div class="pc-card-hero"><div class="pc-card-company" style="letter-spacing:2px;">Premier Realty Group</div><div class="pc-card-category">REALTOR® · DRE #02041187</div><div class="pc-card-avatar" style="width:68px;height:68px;"><img src="https://i.pravatar.cc/150?img=47" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Sarah Mitchell</div><div class="pc-card-title-tag">Residential &amp; Luxury Sales</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">127 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#0b0b1e;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#a87c28;"><i class="fa-solid fa-envelope"></i></div><span class="pc-card-btn-label">Email</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#1c1c38;"><i class="fa-solid fa-house"></i></div><span class="pc-card-btn-label">Listings</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#a87c28;"><i class="fa-solid fa-calendar"></i></div><span class="pc-card-btn-label">Book</span></div></div><div class="pc-card-tags">Buyers · Sellers · Investments · Relocation</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#e1306c;"><i class="fa-brands fa-instagram"></i></div><div class="pc-card-social-icon" style="background:#0a66c2;"><i class="fa-brands fa-linkedin-in"></i></div><div class="pc-card-social-icon" style="background:#111;"><i class="fa-brands fa-x-twitter"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+      <div class="pc-phone pc-phone-sm pc-phone-right"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-insurance"><div class="pc-card-hero"><div class="pc-card-company">Walsh Insurance Group</div><div class="pc-card-category">Licensed Agent</div><div class="pc-card-avatar"><img src="https://i.pravatar.cc/150?img=44" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Jennifer Walsh</div><div class="pc-card-title-tag">Insurance Agent · Tucson, AZ</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">63 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#3a0505;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#7a1515;"><i class="fa-solid fa-envelope"></i></div><span class="pc-card-btn-label">Email</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#3a0505;"><i class="fa-solid fa-file-invoice"></i></div><span class="pc-card-btn-label">Quote</span></div></div><div class="pc-card-tags">Auto · Home · Life · Medicare</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#0a66c2;"><i class="fa-brands fa-linkedin-in"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pc-how">
+  <div class="pc-container">
+    <div class="pc-how-header"><div class="pc-eyebrow">Simple process</div><h2 class="pc-section-title">From order to sharing in days — not weeks</h2><p class="pc-section-sub" style="margin:0 auto;">We handle the entire design. You focus on the conversations.</p></div>
+    <div class="pc-how-grid">
+      <div class="pc-how-step"><div class="pc-how-num">1</div><div class="pc-how-step-title">We design your card</div><div class="pc-how-step-desc">Share your logo, headshot, and contact info. We build a custom ProCard matched to your brand.</div></div>
+      <div class="pc-how-step"><div class="pc-how-num">2</div><div class="pc-how-step-title">You get your link &amp; QR code</div><div class="pc-how-step-desc">Your ProCard lives at a dedicated link. We provide a QR code to print on any material.</div></div>
+      <div class="pc-how-step"><div class="pc-how-num">3</div><div class="pc-how-step-title">Share it everywhere</div><div class="pc-how-step-desc">Text it, email it, add it to your social bio. Every tap gives prospects instant access to your contact info.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pc-showcase">
+  <div class="pc-container">
+    <div class="pc-showcase-header"><div class="pc-eyebrow">Industry examples</div><h2 class="pc-section-title">Built for your type of business</h2><p class="pc-section-sub" style="margin:0 auto;">Every ProCard is custom-designed to match your brand, industry, and personality.</p></div>
+    <div class="pc-tabs">
+      <button class="pc-tab active" data-target="tab-realestate"><i class="fa-solid fa-house"></i> Real Estate</button>
+      <button class="pc-tab" data-target="tab-hvac"><i class="fa-solid fa-fan"></i> HVAC</button>
+      <button class="pc-tab" data-target="tab-insurance"><i class="fa-solid fa-shield-halved"></i> Insurance</button>
+      <button class="pc-tab" data-target="tab-roofing"><i class="fa-solid fa-house-chimney"></i> Roofing</button>
+      <button class="pc-tab" data-target="tab-dental"><i class="fa-solid fa-tooth"></i> Dental</button>
+      <button class="pc-tab" data-target="tab-auto"><i class="fa-solid fa-car"></i> Auto Shop</button>
+    </div>
+    <div class="pc-showcase-stage">
+      <div class="pc-card-wrap active" id="tab-realestate">
+        <div class="pc-phone pc-phone-sm pc-phone-left"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-dental"><div class="pc-card-hero"><div class="pc-card-company">Bright Smile Dental</div><div class="pc-card-category">General &amp; Cosmetic · DDS</div><div class="pc-card-avatar"><img src="https://i.pravatar.cc/150?img=32" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Dr. Amanda Chen</div><div class="pc-card-title-tag">Dentist · Tucson, AZ</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">211 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#001c1f;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#006970;"><i class="fa-solid fa-calendar"></i></div><span class="pc-card-btn-label">Book</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#001c1f;"><i class="fa-solid fa-globe"></i></div><span class="pc-card-btn-label">Website</span></div></div><div class="pc-card-tags">Cleanings · Whitening · Invisalign · Implants</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#e1306c;"><i class="fa-brands fa-instagram"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+        <div class="pc-phone pc-phone-lg pc-phone-center"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-realestate"><div class="pc-card-hero"><div class="pc-card-company" style="letter-spacing:2px;">Premier Realty Group</div><div class="pc-card-category">REALTOR® · DRE #02041187</div><div class="pc-card-avatar" style="width:68px;height:68px;"><img src="https://i.pravatar.cc/150?img=47" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Sarah Mitchell</div><div class="pc-card-title-tag">Residential &amp; Luxury Sales · Tucson</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">127 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#0b0b1e;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#a87c28;"><i class="fa-solid fa-envelope"></i></div><span class="pc-card-btn-label">Email</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#1c1c38;"><i class="fa-solid fa-house"></i></div><span class="pc-card-btn-label">Listings</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#a87c28;"><i class="fa-solid fa-calendar"></i></div><span class="pc-card-btn-label">Book</span></div></div><div class="pc-card-tags">Buyers · Sellers · Investment · Relocation</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#e1306c;"><i class="fa-brands fa-instagram"></i></div><div class="pc-card-social-icon" style="background:#0a66c2;"><i class="fa-brands fa-linkedin-in"></i></div><div class="pc-card-social-icon" style="background:#111;"><i class="fa-brands fa-x-twitter"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+        <div class="pc-phone pc-phone-sm pc-phone-right"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-insurance"><div class="pc-card-hero"><div class="pc-card-company">Walsh Insurance Group</div><div class="pc-card-category">Licensed Agent</div><div class="pc-card-avatar"><img src="https://i.pravatar.cc/150?img=44" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Jennifer Walsh</div><div class="pc-card-title-tag">Insurance Agent · Tucson, AZ</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">63 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#3a0505;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#7a1515;"><i class="fa-solid fa-envelope"></i></div><span class="pc-card-btn-label">Email</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#3a0505;"><i class="fa-solid fa-file-invoice"></i></div><span class="pc-card-btn-label">Quote</span></div></div><div class="pc-card-tags">Auto · Home · Life · Medicare</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#0a66c2;"><i class="fa-brands fa-linkedin-in"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+      </div>
+      <div class="pc-card-wrap" id="tab-hvac">
+        <div class="pc-phone pc-phone-sm pc-phone-left"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-roofing"><div class="pc-card-hero"><div class="pc-card-company">Summit Roofing Co.</div><div class="pc-card-category">Licensed · Bonded · Insured</div><div class="pc-card-avatar"><img src="https://i.pravatar.cc/150?img=52" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Dave Ramirez</div><div class="pc-card-title-tag">Master Roofer · Owner</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">94 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#111a12;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#294a2c;"><i class="fa-solid fa-envelope"></i></div><span class="pc-card-btn-label">Email</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#f5c842;color:#111;"><i class="fa-solid fa-file-invoice-dollar"></i></div><span class="pc-card-btn-label">Quote</span></div></div><div class="pc-card-tags">Repairs · Replacements · Storm Damage</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#e1306c;"><i class="fa-brands fa-instagram"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+        <div class="pc-phone pc-phone-lg pc-phone-center"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-hvac"><div class="pc-card-hero"><div class="pc-card-company">Torres Comfort Systems</div><div class="pc-card-category">Licensed &amp; Insured · ROC#</div><div class="pc-card-avatar" style="width:68px;height:68px;"><img src="https://i.pravatar.cc/150?img=12" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Mike Torres</div><div class="pc-card-title-tag">HVAC Owner · Tucson, AZ</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">89 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#041e30;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#d45520;"><i class="fa-solid fa-envelope"></i></div><span class="pc-card-btn-label">Email</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#0d4e80;"><i class="fa-solid fa-globe"></i></div><span class="pc-card-btn-label">Website</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#d45520;"><i class="fa-solid fa-calendar"></i></div><span class="pc-card-btn-label">Book</span></div></div><div class="pc-card-tags">AC Repair &amp; Install · Heating · Air Quality</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#e1306c;"><i class="fa-brands fa-instagram"></i></div><div class="pc-card-social-icon" style="background:#333;"><i class="fa-brands fa-x-twitter"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+        <div class="pc-phone pc-phone-sm pc-phone-right"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-auto"><div class="pc-card-hero"><div class="pc-card-company">Desert Auto &amp; Tire</div><div class="pc-card-category">ASE Certified</div><div class="pc-card-avatar"><img src="https://i.pravatar.cc/150?img=57" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Carlos Vega</div><div class="pc-card-title-tag">Shop Owner · Tucson, AZ</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">156 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#080808;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#b71c1c;"><i class="fa-solid fa-calendar"></i></div><span class="pc-card-btn-label">Book</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#22222e;"><i class="fa-solid fa-globe"></i></div><span class="pc-card-btn-label">Website</span></div></div><div class="pc-card-tags">Oil · Brakes · Tires · AC Service</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#e1306c;"><i class="fa-brands fa-instagram"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+      </div>
+      <div class="pc-card-wrap" id="tab-insurance">
+        <div class="pc-phone pc-phone-lg pc-phone-center"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-insurance"><div class="pc-card-hero"><div class="pc-card-company">Walsh Insurance Group</div><div class="pc-card-category">Licensed · All Lines</div><div class="pc-card-avatar" style="width:68px;height:68px;"><img src="https://i.pravatar.cc/150?img=44" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Jennifer Walsh</div><div class="pc-card-title-tag">Licensed Insurance Agent · AZ</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">63 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#3a0505;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#7a1515;"><i class="fa-solid fa-envelope"></i></div><span class="pc-card-btn-label">Email</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#3a0505;"><i class="fa-solid fa-file-invoice"></i></div><span class="pc-card-btn-label">Quote</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#7a1515;"><i class="fa-solid fa-calendar"></i></div><span class="pc-card-btn-label">Book</span></div></div><div class="pc-card-tags">Auto · Home · Life · Commercial · Medicare</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#0a66c2;"><i class="fa-brands fa-linkedin-in"></i></div><div class="pc-card-social-icon" style="background:#e1306c;"><i class="fa-brands fa-instagram"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+      </div>
+      <div class="pc-card-wrap" id="tab-roofing">
+        <div class="pc-phone pc-phone-lg pc-phone-center"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-roofing"><div class="pc-card-hero"><div class="pc-card-company">Summit Roofing Co.</div><div class="pc-card-category">Licensed · ROC #267841</div><div class="pc-card-avatar" style="width:68px;height:68px;"><img src="https://i.pravatar.cc/150?img=52" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Dave Ramirez</div><div class="pc-card-title-tag">Master Roofer · Owner · Tucson, AZ</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">94 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#111a12;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#294a2c;"><i class="fa-solid fa-envelope"></i></div><span class="pc-card-btn-label">Email</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#f5c842;color:#111;"><i class="fa-solid fa-file-invoice-dollar"></i></div><span class="pc-card-btn-label">Quote</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#111a12;"><i class="fa-solid fa-globe"></i></div><span class="pc-card-btn-label">Website</span></div></div><div class="pc-card-tags">Repairs · Replacements · Storm · TPO &amp; Shingle</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#e1306c;"><i class="fa-brands fa-instagram"></i></div><div class="pc-card-social-icon" style="background:#333;"><i class="fa-brands fa-x-twitter"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+      </div>
+      <div class="pc-card-wrap" id="tab-dental">
+        <div class="pc-phone pc-phone-lg pc-phone-center"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-dental"><div class="pc-card-hero"><div class="pc-card-company">Bright Smile Dental</div><div class="pc-card-category">General &amp; Cosmetic · NPI #</div><div class="pc-card-avatar" style="width:68px;height:68px;"><img src="https://i.pravatar.cc/150?img=32" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Dr. Amanda Chen</div><div class="pc-card-title-tag">General &amp; Cosmetic Dentist · DDS</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">211 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#001c1f;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#006970;"><i class="fa-solid fa-calendar"></i></div><span class="pc-card-btn-label">Book</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#001c1f;"><i class="fa-solid fa-globe"></i></div><span class="pc-card-btn-label">Website</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#006970;"><i class="fa-solid fa-map-marker-alt"></i></div><span class="pc-card-btn-label">Find Us</span></div></div><div class="pc-card-tags">Cleanings · Whitening · Invisalign · Implants</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#e1306c;"><i class="fa-brands fa-instagram"></i></div><div class="pc-card-social-icon" style="background:#333;"><i class="fa-brands fa-x-twitter"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+      </div>
+      <div class="pc-card-wrap" id="tab-auto">
+        <div class="pc-phone pc-phone-lg pc-phone-center"><div class="pc-phone-frame"><div class="pc-phone-screen"><div class="pc-card pc-card-auto"><div class="pc-card-hero"><div class="pc-card-company">Desert Auto &amp; Tire</div><div class="pc-card-category">ASE Master Certified · ROC#</div><div class="pc-card-avatar" style="width:68px;height:68px;"><img src="https://i.pravatar.cc/150?img=57" alt=""></div></div><div class="pc-card-body"><div class="pc-card-name">Carlos Vega</div><div class="pc-card-title-tag">Shop Owner · ASE Master · Tucson</div><div class="pc-card-stars"><span class="pc-card-stars-icons">★★★★★</span><span class="pc-card-stars-count">156 reviews</span></div><div class="pc-card-actions"><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#080808;"><i class="fa-solid fa-phone"></i></div><span class="pc-card-btn-label">Call</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#b71c1c;"><i class="fa-solid fa-calendar"></i></div><span class="pc-card-btn-label">Book</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#22222e;"><i class="fa-solid fa-globe"></i></div><span class="pc-card-btn-label">Website</span></div><div class="pc-card-btn"><div class="pc-card-btn-icon" style="background:#b71c1c;"><i class="fa-solid fa-map-marker-alt"></i></div><span class="pc-card-btn-label">Find Us</span></div></div><div class="pc-card-tags">Oil · Brakes · Tires · Engine · AC Service</div><div class="pc-card-socials"><div class="pc-card-social-icon" style="background:#1877f2;"><i class="fa-brands fa-facebook-f"></i></div><div class="pc-card-social-icon" style="background:#e1306c;"><i class="fa-brands fa-instagram"></i></div><div class="pc-card-social-icon" style="background:#333;"><i class="fa-brands fa-x-twitter"></i></div></div></div><div class="pc-card-save"><i class="fa-solid fa-user-plus" style="font-size:8px;"></i> Save Contact</div></div></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pc-features">
+  <div class="pc-container">
+    <div class="pc-features-header"><div class="pc-eyebrow">What's inside</div><h2 class="pc-section-title">Everything a prospect needs to take action</h2><p class="pc-section-sub">Your ProCard loads instantly on any phone — no app download required.</p></div>
+    <div class="pc-features-grid">
+      <div class="pc-feature-card"><div class="pc-feature-icon pc-feature-icon-green"><i class="fa-solid fa-image-portrait"></i></div><div class="pc-feature-title">Headshot + Logo</div><div class="pc-feature-desc">Put a face to your name instantly. Your brand, your photo — professionally composed on every card.</div></div>
+      <div class="pc-feature-card"><div class="pc-feature-icon pc-feature-icon-blue"><i class="fa-solid fa-hand-pointer"></i></div><div class="pc-feature-title">One-tap action buttons</div><div class="pc-feature-desc">Call, email, book, get directions — up to 5 custom action buttons that send prospects straight to the next step.</div></div>
+      <div class="pc-feature-card"><div class="pc-feature-icon pc-feature-icon-green"><i class="fa-solid fa-share-nodes"></i></div><div class="pc-feature-title">Social media links</div><div class="pc-feature-desc">Direct links to every platform — Facebook, Instagram, LinkedIn, X, TikTok, Pinterest, and more.</div></div>
+      <div class="pc-feature-card"><div class="pc-feature-icon pc-feature-icon-blue"><i class="fa-solid fa-qrcode"></i></div><div class="pc-feature-title">QR code included</div><div class="pc-feature-desc">Print it on flyers, yard signs, vehicle wraps, or business cards. One scan opens your ProCard instantly.</div></div>
+      <div class="pc-feature-card"><div class="pc-feature-icon pc-feature-icon-green"><i class="fa-solid fa-address-book"></i></div><div class="pc-feature-title">vCard save button</div><div class="pc-feature-desc">One tap saves your full contact info directly into the prospect's phone. No typing. No misspelling your name.</div></div>
+      <div class="pc-feature-card"><div class="pc-feature-icon pc-feature-icon-blue"><i class="fa-solid fa-mobile-screen"></i></div><div class="pc-feature-title">Mobile-first design</div><div class="pc-feature-desc">Built exclusively for phone screens — loads in under a second, no app needed, works on every device.</div></div>
+      <div class="pc-feature-card"><div class="pc-feature-icon pc-feature-icon-green"><i class="fa-solid fa-user-circle"></i></div><div class="pc-feature-title">Bio page <span class="pc-feature-badge green">Premium</span></div><div class="pc-feature-desc">Tell your story. A full bio section explains who you are, what you do, and why prospects should choose you.</div></div>
+      <div class="pc-feature-card"><div class="pc-feature-icon pc-feature-icon-blue"><i class="fa-solid fa-file-arrow-down"></i></div><div class="pc-feature-title">Lead magnet / e-book <span class="pc-feature-badge">Premium</span></div><div class="pc-feature-desc">Offer a free download — a home buying guide, insurance checklist, or any PDF — right from your card.</div></div>
+      <div class="pc-feature-card"><div class="pc-feature-icon pc-feature-icon-green"><i class="fa-solid fa-map-location-dot"></i></div><div class="pc-feature-title">Office map <span class="pc-feature-badge green">Premium</span></div><div class="pc-feature-desc">Show prospects exactly where you're located with an embedded map pin — great for walk-in businesses.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="pc-share">
+  <div class="pc-container">
+    <div class="pc-share-inner">
+      <div>
+        <div class="pc-eyebrow">Sharing</div>
+        <div class="pc-share-title">Put it everywhere your name already goes</div>
+        <div class="pc-share-desc">Your ProCard lives at a permanent link. Share it in a text, drop it in an email signature, add it to your social bio — or let the QR code do the work on printed materials.</div>
+        <div class="pc-share-methods">
+          <div class="pc-share-method"><div class="pc-share-method-icon"><i class="fa-solid fa-comment-sms"></i></div><div class="pc-share-method-text"><strong>Text message</strong><span>Share your link instantly in any conversation</span></div></div>
+          <div class="pc-share-method"><div class="pc-share-method-icon green"><i class="fa-solid fa-qrcode"></i></div><div class="pc-share-method-text"><strong>QR code</strong><span>Print on flyers, signage, vehicles &amp; cards</span></div></div>
+          <div class="pc-share-method"><div class="pc-share-method-icon"><i class="fa-solid fa-envelope"></i></div><div class="pc-share-method-text"><strong>Email signature</strong><span>Every email becomes a conversion opportunity</span></div></div>
+          <div class="pc-share-method"><div class="pc-share-method-icon green"><i class="fa-solid fa-share-nodes"></i></div><div class="pc-share-method-text"><strong>Social bio link</strong><span>One link in bio, complete card in hand</span></div></div>
+        </div>
+      </div>
+      <div class="pc-qr-visual">
+        <div class="pc-qr-card">
+          <div style="font-size:11px;color:#888;text-transform:uppercase;letter-spacing:0.6px;margin-bottom:14px;">Scan to view ProCard</div>
+          <div style="position:relative;width:140px;height:140px;margin:0 auto 16px;border:2px solid #111;border-radius:10px;padding:10px;background:#fff;">
+            <div style="position:absolute;top:8px;left:8px;width:30px;height:30px;border:3px solid #111;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#fff;"><div style="width:14px;height:14px;background:#111;border-radius:2px;"></div></div>
+            <div style="position:absolute;top:8px;right:8px;width:30px;height:30px;border:3px solid #111;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#fff;"><div style="width:14px;height:14px;background:#111;border-radius:2px;"></div></div>
+            <div style="position:absolute;bottom:8px;left:8px;width:30px;height:30px;border:3px solid #111;border-radius:4px;display:flex;align-items:center;justify-content:center;background:#fff;"><div style="width:14px;height:14px;background:#111;border-radius:2px;"></div></div>
+            <div style="position:absolute;inset:44px;display:grid;grid-template-columns:repeat(5,1fr);grid-template-rows:repeat(5,1fr);gap:2px;"><div style="background:#111;border-radius:1px;"></div><div></div><div style="background:#111;border-radius:1px;"></div><div style="background:#111;border-radius:1px;"></div><div></div><div></div><div style="background:#111;border-radius:1px;"></div><div></div><div></div><div style="background:#111;border-radius:1px;"></div><div style="background:#111;border-radius:1px;"></div><div style="background:#111;border-radius:1px;"></div><div></div><div style="background:#111;border-radius:1px;"></div><div></div><div></div><div></div><div style="background:#111;border-radius:1px;"></div><div></div><div style="background:#111;border-radius:1px;"></div><div style="background:#111;border-radius:1px;"></div><div></div><div style="background:#111;border-radius:1px;"></div><div style="background:#111;border-radius:1px;"></div><div></div></div>
+            <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:#fff;border-radius:4px;padding:2px 4px;font-size:8px;font-weight:700;color:#122078;font-family:'Poppins',sans-serif;">C<span style="color:#127825;">360</span></div>
+          </div>
+          <div class="pc-qr-label">Your ProCard</div>
+          <div class="pc-qr-sub">complete360.org/your-name</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pc-pricing" id="pricing">
+  <div class="pc-container">
+    <div class="pc-pricing-header">
+      <div class="pc-eyebrow">Pricing</div>
+      <h2 class="pc-section-title">One-time investment. Yours to keep.</h2>
+      <p class="pc-section-sub">No subscriptions. No monthly fees. Pay once and own your ProCard — including a yearly refresh to keep it current.</p>
+    </div>
+    <div class="pc-pricing-grid">
+      <div class="pc-pricing-card">
+        <div class="pc-pricing-tier">Basic</div>
+        <div class="pc-pricing-name">ProCard Basic</div>
+        <div class="pc-pricing-price"><sup>$</sup>299</div>
+        <div class="pc-pricing-onetime">one-time · you own it</div>
+        <div class="pc-pricing-note"><i class="fa-solid fa-rotate"></i> Includes yearly "Freshen Up"</div>
+        <hr class="pc-pricing-divider">
+        <ul class="pc-pricing-list">
+          <li><i class="fa-solid fa-check"></i>Custom-designed ProCard</li>
+          <li><i class="fa-solid fa-check"></i>Your headshot &amp; company logo</li>
+          <li><i class="fa-solid fa-check"></i>Up to 5 action buttons (call, email, book, etc.)</li>
+          <li><i class="fa-solid fa-check"></i>Direct social media links</li>
+          <li><i class="fa-solid fa-check"></i>vCard one-tap contact save</li>
+          <li><i class="fa-solid fa-check"></i>Custom QR code for print materials</li>
+          <li><i class="fa-solid fa-check"></i>Text &amp; share option built in</li>
+          <li><i class="fa-solid fa-check"></i>Lifetime license — no monthly fee</li>
+          <li><i class="fa-solid fa-check"></i>Yearly design refresh included</li>
+        </ul>
+        <!-- ✅ UPDATED: checkout URL -->
+        <a href="https://complete360.org/procard-checkout" class="pc-btn-green pc-pricing-cta">Get ProCard Basic</a>
+      </div>
+      <div class="pc-pricing-card featured">
+        <div class="pc-pricing-popular">Most Popular</div>
+        <div class="pc-pricing-tier">Premium</div>
+        <div class="pc-pricing-name">ProCard Premium</div>
+        <div class="pc-pricing-price"><sup>$</sup>399</div>
+        <div class="pc-pricing-onetime">one-time · you own it</div>
+        <div class="pc-pricing-note"><i class="fa-solid fa-rotate"></i> Includes yearly "Freshen Up"</div>
+        <hr class="pc-pricing-divider">
+        <ul class="pc-pricing-list">
+          <li><i class="fa-solid fa-check"></i>Everything in Basic, plus:</li>
+          <li class="extra"><i class="fa-solid fa-plus"></i>Full bio page — who you are &amp; what you do</li>
+          <li class="extra"><i class="fa-solid fa-plus"></i>Lead magnet form (capture prospects directly)</li>
+          <li class="extra"><i class="fa-solid fa-plus"></i>E-book / PDF download offer</li>
+          <li class="extra"><i class="fa-solid fa-plus"></i>Embedded office map</li>
+          <li class="extra"><i class="fa-solid fa-plus"></i>Live news feed (updated daily)</li>
+          <li class="extra"><i class="fa-solid fa-plus"></i>Calendly / booking link integration</li>
+          <li><i class="fa-solid fa-check"></i>Lifetime license — no monthly fee</li>
+          <li><i class="fa-solid fa-check"></i>Yearly design refresh included</li>
+        </ul>
+        <!-- ✅ UPDATED: checkout URL -->
+        <a href="https://complete360.org/procard-checkout" class="pc-btn-green pc-pricing-cta">Get ProCard Premium</a>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:28px;font-size:13px;color:#888;">
+      <i class="fa-solid fa-shield-halved" style="color:var(--pc-green);margin-right:6px;"></i>
+      Not sure which tier is right for you? <a href="/schedule-demo" style="color:var(--pc-blue);font-weight:500;">Book a free 15-minute call</a> and we'll recommend the best fit.
+    </div>
+  </div>
+</section>
+
+<section class="pc-cta">
+  <div class="pc-container">
+    <div class="pc-cta-inner">
+      <h2>Stop handing out cards that<br><span>get thrown away</span></h2>
+      <p>Your ProCard lives in a prospect's phone — right next to their contacts, ready the moment they need you. Get yours designed and live in under a week.</p>
+      <div class="pc-cta-btns">
+        <!-- ✅ UPDATED: checkout URL -->
+        <a href="https://complete360.org/procard-checkout" class="pc-btn-white"><i class="fa-solid fa-address-card"></i>Get My ProCard</a>
+        <a href="/schedule-demo" class="pc-btn-ghost"><i class="fa-solid fa-calendar"></i>Schedule a Call First</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="pc-faq">
+  <div class="pc-container">
+    <div class="pc-faq-header"><div class="pc-eyebrow">FAQ</div><h2 class="pc-section-title">Common questions</h2></div>
+    <div class="pc-faq-list">
+      <div class="pc-faq-item"><button class="pc-faq-q">What exactly is a ProCard?<i class="fa-solid fa-chevron-right"></i></button><div class="pc-faq-a"><div class="pc-faq-a-inner">A ProCard is a mobile-optimized digital business card that lives at a permanent web link. When someone taps your link or scans your QR code, they see your photo, contact info, and action buttons — all designed to make them contact you or save your number instantly. No app download needed.</div></div></div>
+      <div class="pc-faq-item"><button class="pc-faq-q">Is there a monthly fee after I purchase?<i class="fa-solid fa-chevron-right"></i></button><div class="pc-faq-a"><div class="pc-faq-a-inner">No. You pay once and own your ProCard for life. There are no monthly fees, no hosting charges, and no renewal costs. The yearly "Freshen Up" to update your design is included in both plans at no extra charge.</div></div></div>
+      <div class="pc-faq-item"><button class="pc-faq-q">How long does it take to get my ProCard?<i class="fa-solid fa-chevron-right"></i></button><div class="pc-faq-a"><div class="pc-faq-a-inner">Most ProCards are delivered within 3–5 business days after we receive your photo, logo, and contact info. We handle the entire design — you just review and approve before it goes live.</div></div></div>
+      <div class="pc-faq-item"><button class="pc-faq-q">What's the "Yearly Freshen Up"?<i class="fa-solid fa-chevron-right"></i></button><div class="pc-faq-a"><div class="pc-faq-a-inner">Once a year we'll update your ProCard — new photo, updated contact info, refreshed design — at no extra cost. This keeps your card feeling current and ensures your information is always accurate. We'll reach out to you around your anniversary date.</div></div></div>
+      <div class="pc-faq-item"><button class="pc-faq-q">Can I share my ProCard on printed materials?<i class="fa-solid fa-chevron-right"></i></button><div class="pc-faq-a"><div class="pc-faq-a-inner">Yes — your QR code can be printed on flyers, business cards, yard signs, vehicle wraps, direct mail, and anywhere else. Anyone who scans it lands directly on your ProCard. We provide a high-resolution QR code file ready for print.</div></div></div>
+      <div class="pc-faq-item"><button class="pc-faq-q">What's the difference between Basic and Premium?<i class="fa-solid fa-chevron-right"></i></button><div class="pc-faq-a"><div class="pc-faq-a-inner">Basic includes your headshot, logo, action buttons, social links, vCard save, and QR code — everything you need to get your contact info in someone's hand fast. Premium adds a full bio page, a lead capture form, an e-book or PDF download offer, an office map, a live news feed, and booking integrations. Premium is ideal for anyone who wants their ProCard to actively generate leads, not just share contact info.</div></div></div>
+      <div class="pc-faq-item"><button class="pc-faq-q">What industries does ProCard work for?<i class="fa-solid fa-chevron-right"></i></button><div class="pc-faq-a"><div class="pc-faq-a-inner">ProCards work for any business where you meet people in person or hand out contact information — real estate, insurance, HVAC, roofing, plumbing, dental, legal, mortgage, auto, restaurants, and more. If you currently hand out a paper business card or want people to be able to contact you quickly, a ProCard is a better alternative.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  var tabs = document.querySelectorAll('.pc-tab');
+  tabs.forEach(function(tab) {
+    tab.addEventListener('click', function() {
+      tabs.forEach(function(t) { t.classList.remove('active'); });
+      document.querySelectorAll('.pc-card-wrap').forEach(function(w) { w.classList.remove('active'); });
+      tab.classList.add('active');
+      var target = document.getElementById(tab.getAttribute('data-target'));
+      if (target) target.classList.add('active');
+    });
+  });
+  document.querySelectorAll('.pc-faq-q').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.pc-faq-item');
+      var wasOpen = item.classList.contains('open');
+      document.querySelectorAll('.pc-faq-item').forEach(function(i) { i.classList.remove('open'); });
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+})();
+</script>
