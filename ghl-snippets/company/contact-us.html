@@ -1,1 +1,881 @@
+<!-- ============================================================
+     COMPLETE360 — CONTACT US PAGE  v1.0
+     Paste into GHL Custom Code block on /contact-us page.
+     Prefix: c360-cu-  |  Header/footer loaded globally.
+     Font Awesome & Poppins loaded via global header.
+     ============================================================ -->
 
+<style>
+/* ══════════════════════════════════════════════════════
+   Contact Us  |  Prefix: c360-cu-
+   ══════════════════════════════════════════════════════ */
+:root {
+  --cu-navy:        #122078;
+  --cu-navy-dark:   #0d1654;
+  --cu-navy-deeper: #09103c;
+  --cu-green:       #127825;
+  --cu-green-hover: #0e5e1d;
+  --cu-green-light: #EAF3DE;
+  --cu-green-glow:  #2ecc52;
+  --cu-blue-light:  #E6F1FB;
+  --cu-grey:        #888780;
+  --cu-light-grey:  #F1EFE8;
+  --cu-border:      #e5e3dc;
+  --cu-text:        #0F1F5E;
+  --cu-text-muted:  #5F5E5A;
+  --cu-radius:      12px;
+  --cu-radius-lg:   20px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+
+.c360-cu-wrap {
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  width: 100%;
+}
+.c360-cu-wrap i.fa-solid,
+.c360-cu-wrap i.fa-brands {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+}
+.c360-cu-wrap i.fa-brands {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+}
+.c360-cu-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ══════════════════════════════════════════════════════
+   HERO BANNER
+   ══════════════════════════════════════════════════════ */
+.c360-cu-hero {
+  background: linear-gradient(135deg, var(--cu-navy-deeper) 0%, var(--cu-navy) 60%, #0c1960 100%);
+  padding: 72px 0 64px;
+  position: relative;
+  overflow: hidden;
+}
+.c360-cu-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 12% 65%, rgba(18,120,37,0.2) 0%, transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-cu-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.c360-cu-hero-inner {
+  position: relative; z-index: 2;
+  text-align: center;
+}
+.c360-cu-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(18,120,37,0.2);
+  border: 1px solid rgba(18,120,37,0.38);
+  color: #7ddc80;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 6px 16px;
+  border-radius: 100px; margin-bottom: 20px;
+}
+.c360-cu-hero h1 {
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 800;
+  color: #fff;
+  margin: 0 0 16px;
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+.c360-cu-hero h1 span { color: var(--cu-green-glow); }
+.c360-cu-hero-sub {
+  font-size: 17px;
+  color: rgba(255,255,255,0.68);
+  max-width: 560px;
+  margin: 0 auto 36px;
+  line-height: 1.65;
+}
+.c360-cu-chips {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-wrap: wrap;
+}
+.c360-cu-chip {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 8px; padding: 11px 20px;
+  text-decoration: none;
+  font-size: 13.5px; font-weight: 600;
+  color: rgba(255,255,255,0.85);
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+}
+.c360-cu-chip:hover {
+  background: rgba(255,255,255,0.14);
+  border-color: rgba(255,255,255,0.3);
+  color: #fff; text-decoration: none;
+  transform: translateY(-1px);
+}
+.c360-cu-chip i { color: var(--cu-green-glow); font-size: 13px; flex-shrink: 0; }
+.c360-cu-chip-primary {
+  background: var(--cu-green);
+  border-color: var(--cu-green);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(18,120,37,0.42);
+}
+.c360-cu-chip-primary:hover {
+  background: var(--cu-green-hover);
+  border-color: var(--cu-green-hover);
+  color: #fff; transform: translateY(-2px);
+  box-shadow: 0 6px 22px rgba(18,120,37,0.52);
+}
+.c360-cu-chip-primary i { color: #fff; }
+
+/* ══════════════════════════════════════════════════════
+   MAIN 2-COLUMN GRID
+   ══════════════════════════════════════════════════════ */
+.c360-cu-main {
+  background: var(--cu-light-grey);
+  padding: 64px 0 80px;
+}
+.c360-cu-grid {
+  display: grid;
+  grid-template-columns: 390px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── LEFT COLUMN ── */
+.c360-cu-sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+.c360-cu-card {
+  background: #fff;
+  border: 1px solid var(--cu-border);
+  border-radius: var(--cu-radius);
+  padding: 26px 24px;
+}
+.c360-cu-card-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--cu-grey);
+  margin-bottom: 16px;
+}
+.c360-cu-phone-row {
+  display: flex; align-items: center; gap: 12px;
+  text-decoration: none; margin-bottom: 4px;
+}
+.c360-cu-phone-icon {
+  width: 46px; height: 46px; flex-shrink: 0;
+  background: var(--cu-green-light); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cu-green); font-size: 18px;
+  transition: background 0.2s;
+}
+.c360-cu-phone-row:hover .c360-cu-phone-icon { background: var(--cu-green); }
+.c360-cu-phone-row:hover .c360-cu-phone-icon i { color: #fff; }
+.c360-cu-phone-num {
+  font-size: 23px; font-weight: 800;
+  color: var(--cu-text); line-height: 1;
+  transition: color 0.2s;
+}
+.c360-cu-phone-row:hover .c360-cu-phone-num { color: var(--cu-green); }
+.c360-cu-phone-hours {
+  font-size: 12px; color: var(--cu-text-muted);
+  margin: 6px 0 16px 58px; line-height: 1.55;
+}
+.c360-cu-card-divider {
+  border: none; border-top: 1px solid var(--cu-border); margin: 0 0 16px;
+}
+.c360-cu-csr-row {
+  display: flex; align-items: center; gap: 10px;
+}
+.c360-cu-csr-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  background: var(--cu-blue-light); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cu-navy); font-size: 14px;
+}
+.c360-cu-csr-text { font-size: 12.5px; color: var(--cu-text-muted); line-height: 1.4; }
+.c360-cu-csr-text strong { display: block; font-weight: 600; color: var(--cu-text); font-size: 13px; }
+
+.c360-cu-info-rows { display: flex; flex-direction: column; gap: 14px; }
+.c360-cu-info-row { display: flex; align-items: flex-start; gap: 11px; }
+.c360-cu-info-icon {
+  width: 32px; height: 32px; flex-shrink: 0;
+  background: var(--cu-blue-light); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cu-navy); font-size: 12px; margin-top: 2px;
+}
+.c360-cu-info-text { font-size: 13px; color: var(--cu-text-muted); line-height: 1.5; }
+.c360-cu-info-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--cu-text); margin-bottom: 1px; }
+.c360-cu-info-text a { color: var(--cu-text-muted); text-decoration: none; }
+.c360-cu-info-text a:hover { color: var(--cu-navy); }
+
+.c360-cu-reviews-badge {
+  display: flex; align-items: center; gap: 12px;
+  background: #fff; border: 1px solid var(--cu-border);
+  border-radius: var(--cu-radius); padding: 14px 18px;
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.c360-cu-reviews-badge:hover {
+  background: var(--cu-blue-light);
+  border-color: rgba(18,32,120,0.15);
+}
+.c360-cu-reviews-stars { color: #f59e0b; font-size: 14px; letter-spacing: 1.5px; }
+.c360-cu-reviews-text { font-size: 12.5px; color: var(--cu-text-muted); line-height: 1.35; }
+.c360-cu-reviews-text strong { display: block; font-size: 14px; color: var(--cu-text); font-weight: 700; }
+
+.c360-cu-schedule-card {
+  background: var(--cu-navy);
+  border-radius: var(--cu-radius);
+  padding: 26px 24px;
+  position: relative; overflow: hidden;
+}
+.c360-cu-schedule-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 90% 10%, rgba(18,120,37,0.22) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-cu-schedule-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  margin-bottom: 10px; position: relative; z-index: 1;
+}
+.c360-cu-schedule-title {
+  font-size: 16px; font-weight: 700; color: #fff;
+  margin-bottom: 8px; line-height: 1.3; position: relative; z-index: 1;
+}
+.c360-cu-schedule-desc {
+  font-size: 12.5px; color: rgba(255,255,255,0.55);
+  line-height: 1.6; margin-bottom: 18px; position: relative; z-index: 1;
+}
+.c360-cu-schedule-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--cu-green); color: #fff;
+  font-size: 13px; font-weight: 700;
+  padding: 12px 20px; border-radius: 8px;
+  text-decoration: none; position: relative; z-index: 1;
+  box-shadow: 0 4px 14px rgba(18,120,37,0.42);
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-cu-schedule-btn:hover {
+  background: var(--cu-green-hover); transform: translateY(-1px);
+  color: #fff; text-decoration: none;
+}
+
+.c360-cu-social-row { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.c360-cu-social-btn {
+  width: 36px; height: 36px;
+  background: var(--cu-light-grey); border: 1px solid var(--cu-border);
+  border-radius: 8px; display: flex; align-items: center; justify-content: center;
+  color: var(--cu-text-muted); font-size: 13px;
+  text-decoration: none;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+}
+.c360-cu-social-btn:hover {
+  background: var(--cu-blue-light); border-color: rgba(18,32,120,0.2); color: var(--cu-navy);
+}
+.c360-cu-social-label { font-size: 12px; color: var(--cu-text-muted); margin-left: 4px; }
+
+/* ── RIGHT COLUMN — Form ── */
+.c360-cu-form-card {
+  background: #fff;
+  border: 1px solid var(--cu-border);
+  border-radius: var(--cu-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(18,32,120,0.08);
+}
+.c360-cu-form-header {
+  background: linear-gradient(135deg, var(--cu-navy-deeper) 0%, var(--cu-navy) 100%);
+  padding: 28px 32px 24px;
+  position: relative; overflow: hidden;
+}
+.c360-cu-form-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 85% 20%, rgba(18,120,37,0.18) 0%, transparent 50%);
+  pointer-events: none;
+}
+.c360-cu-form-eyebrow {
+  display: inline-block;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--cu-green-glow);
+  background: rgba(46,204,82,0.12); border: 1px solid rgba(46,204,82,0.25);
+  padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 12px; position: relative; z-index: 1;
+}
+.c360-cu-form-title {
+  font-size: 22px; font-weight: 800; color: #fff;
+  margin: 0 0 6px; line-height: 1.2; position: relative; z-index: 1;
+}
+.c360-cu-form-subtitle {
+  font-size: 13px; color: rgba(255,255,255,0.58);
+  line-height: 1.5; margin: 0; position: relative; z-index: 1;
+}
+.c360-cu-response-strip {
+  display: flex; align-items: center; gap: 20px;
+  padding: 12px 32px;
+  background: rgba(18,120,37,0.06);
+  border-bottom: 1px solid var(--cu-border);
+  flex-wrap: wrap;
+}
+.c360-cu-response-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--cu-text-muted); font-weight: 500;
+}
+.c360-cu-response-item i { color: var(--cu-green); font-size: 11px; }
+.c360-cu-form-body { padding: 0; }
+.c360-cu-form-body iframe {
+  width: 100% !important;
+  min-height: 589px;
+  display: block;
+  border: none;
+}
+.c360-cu-form-footer {
+  padding: 14px 32px 20px;
+  border-top: 1px solid var(--cu-border);
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11.5px; color: var(--cu-text-muted);
+}
+.c360-cu-form-footer i { color: var(--cu-green); font-size: 11px; }
+
+/* ══════════════════════════════════════════════════════
+   WHAT TO EXPECT
+   ══════════════════════════════════════════════════════ */
+.c360-cu-next {
+  background: #fff;
+  border-top: 1px solid var(--cu-border);
+  padding: 56px 0;
+}
+.c360-cu-next-label {
+  text-align: center;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--cu-grey);
+  margin-bottom: 36px;
+}
+.c360-cu-steps {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px;
+}
+.c360-cu-step { display: flex; align-items: flex-start; gap: 14px; }
+.c360-cu-step-num {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: var(--cu-navy); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; font-weight: 800; color: #fff; line-height: 1;
+}
+.c360-cu-step-title {
+  font-size: 14px; font-weight: 700; color: var(--cu-text); margin-bottom: 5px;
+}
+.c360-cu-step-desc {
+  font-size: 12.5px; color: var(--cu-text-muted); line-height: 1.6; margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════════════ */
+.c360-cu-faq {
+  background: #fff;
+  padding: 72px 0 80px;
+  border-top: none;
+}
+.c360-cu-faq-header { text-align: center; margin-bottom: 48px; }
+.c360-cu-faq-overline {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--cu-green); margin-bottom: 10px;
+}
+.c360-cu-faq-header h2 {
+  font-size: clamp(24px, 3.5vw, 36px); font-weight: 800;
+  color: var(--cu-text); margin: 0 0 12px;
+  letter-spacing: -0.02em; line-height: 1.2;
+}
+.c360-cu-faq-header p {
+  font-size: 16px; color: var(--cu-text-muted);
+  max-width: 500px; margin: 0 auto; line-height: 1.6;
+}
+.c360-cu-faq-list { max-width: 780px; margin: 0 auto; }
+.c360-cu-faq-toggle { display: none; }
+.c360-cu-faq-item { border-bottom: 1px solid var(--cu-border); }
+.c360-cu-faq-item:first-child { border-top: 1px solid var(--cu-border); }
+.c360-cu-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 4px; cursor: pointer; gap: 16px;
+  font-size: 15px; font-weight: 600; color: var(--cu-text);
+  line-height: 1.4; transition: color 0.18s;
+  user-select: none; list-style: none;
+}
+.c360-cu-faq-q:hover { color: var(--cu-navy); }
+.c360-cu-faq-icon {
+  width: 26px; height: 26px; flex-shrink: 0;
+  background: var(--cu-blue-light); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--cu-navy); font-size: 10px;
+  transition: transform 0.3s ease, background 0.2s;
+}
+.c360-cu-faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease; padding: 0 4px;
+}
+.c360-cu-faq-a p {
+  font-size: 14px; color: var(--cu-text-muted);
+  line-height: 1.7; margin: 0 0 20px; padding-top: 2px;
+}
+.c360-cu-faq-toggle:checked ~ .c360-cu-faq-q .c360-cu-faq-icon {
+  transform: rotate(180deg); background: var(--cu-navy); color: #fff;
+}
+.c360-cu-faq-toggle:checked ~ .c360-cu-faq-a { max-height: 400px; }
+
+/* ══════════════════════════════════════════════════════
+   FINAL CTA STRIP
+   ══════════════════════════════════════════════════════ */
+.c360-cu-cta-strip {
+  background: linear-gradient(135deg, var(--cu-navy-deeper) 0%, var(--cu-navy) 60%, #0c1960 100%);
+  padding: 72px 0; text-align: center; position: relative; overflow: hidden;
+}
+.c360-cu-cta-strip::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(18,120,37,0.22) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-cu-cta-inner { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; }
+.c360-cu-cta-overline {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--cu-green-glow);
+  display: inline-block; margin-bottom: 10px;
+}
+.c360-cu-cta-strip h2 {
+  font-size: clamp(26px, 4vw, 40px); font-weight: 800;
+  color: #fff; margin: 0 0 14px;
+  line-height: 1.12; letter-spacing: -0.02em;
+}
+.c360-cu-cta-strip h2 span { color: var(--cu-green-glow); }
+.c360-cu-cta-strip p {
+  font-size: 15.5px; color: rgba(255,255,255,0.62);
+  margin: 0 0 32px; line-height: 1.65;
+}
+.c360-cu-cta-actions {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-wrap: wrap;
+}
+.c360-cu-btn-primary {
+  display: inline-flex; align-items: center; gap: 9px;
+  background: var(--cu-green); color: #fff;
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 15px; font-weight: 700;
+  padding: 15px 28px; border-radius: 8px;
+  text-decoration: none; border: none; cursor: pointer;
+  box-shadow: 0 4px 20px rgba(18,120,37,0.42);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.c360-cu-btn-primary:hover {
+  background: var(--cu-green-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 26px rgba(18,120,37,0.52);
+  color: #fff; text-decoration: none;
+}
+.c360-cu-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: rgba(255,255,255,0.82);
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 15px; font-weight: 600;
+  padding: 14px 24px; border-radius: 8px;
+  text-decoration: none; border: 1.5px solid rgba(255,255,255,0.28);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.c360-cu-btn-outline:hover {
+  border-color: rgba(255,255,255,0.7); color: #fff;
+  background: rgba(255,255,255,0.08); text-decoration: none;
+}
+.c360-cu-cta-trust {
+  display: flex; align-items: center; justify-content: center;
+  gap: 24px; margin-top: 28px; flex-wrap: wrap;
+}
+.c360-cu-cta-trust span {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: rgba(255,255,255,0.42); font-weight: 500;
+}
+.c360-cu-cta-trust span i { color: var(--cu-green-glow); font-size: 11px; }
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .c360-cu-grid { grid-template-columns: 340px 1fr; gap: 24px; }
+}
+@media (max-width: 860px) {
+  .c360-cu-grid { grid-template-columns: 1fr; }
+  .c360-cu-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .c360-cu-schedule-card { grid-column: span 2; }
+  .c360-cu-steps { grid-template-columns: 1fr; gap: 20px; }
+}
+@media (max-width: 640px) {
+  .c360-cu-hero { padding: 56px 0 48px; }
+  .c360-cu-chips { flex-direction: column; align-items: stretch; max-width: 320px; margin: 0 auto; }
+  .c360-cu-chip { justify-content: center; }
+  .c360-cu-sidebar { grid-template-columns: 1fr; }
+  .c360-cu-schedule-card { grid-column: span 1; }
+  .c360-cu-form-header { padding: 22px 20px 18px; }
+  .c360-cu-response-strip { padding: 10px 20px; gap: 12px; }
+  .c360-cu-form-footer { padding: 12px 20px 16px; }
+  .c360-cu-cta-actions { flex-direction: column; align-items: stretch; max-width: 300px; margin: 0 auto; }
+  .c360-cu-btn-primary, .c360-cu-btn-outline { justify-content: center; }
+  .c360-cu-main { padding: 48px 0 60px; }
+  .c360-cu-next { padding: 44px 0; }
+  .c360-cu-faq { padding: 56px 0 64px; }
+  .c360-cu-cta-strip { padding: 56px 0; }
+}
+</style>
+
+
+<div class="c360-cu-wrap">
+
+  <!-- ══════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-cu-hero">
+    <div class="c360-cu-container">
+      <div class="c360-cu-hero-inner">
+        <div class="c360-cu-hero-eyebrow">
+          <i class="fa-solid fa-headset"></i>
+          We're here to help
+        </div>
+        <h1>Let's talk about <span>growing<br>your business.</span></h1>
+        <p class="c360-cu-hero-sub">
+          Fill out the form below, call us directly, or book a free strategy call.
+          A real person from our Tucson team will reach out within 1 business day.
+        </p>
+        <div class="c360-cu-chips">
+          <a href="tel:+18665276205" class="c360-cu-chip c360-cu-chip-primary">
+            <i class="fa-solid fa-phone"></i>
+            Call (866) 527-6205
+          </a>
+          <a href="/schedule-demo" class="c360-cu-chip">
+            <i class="fa-solid fa-calendar-check"></i>
+            Schedule a Free Call
+          </a>
+          <a href="https://maps.app.goo.gl/3zNANtaqrr1FJC1z6" target="_blank" rel="noopener" class="c360-cu-chip">
+            <i class="fa-brands fa-google"></i>
+            144+ Five-Star Reviews
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       MAIN 2-COLUMN
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-cu-main">
+    <div class="c360-cu-container">
+      <div class="c360-cu-grid">
+
+        <!-- LEFT — Contact Details -->
+        <div class="c360-cu-sidebar">
+
+          <!-- Phone -->
+          <div class="c360-cu-card">
+            <div class="c360-cu-card-label">Call or Text</div>
+            <a href="tel:+18665276205" class="c360-cu-phone-row">
+              <div class="c360-cu-phone-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="c360-cu-phone-num">(866) 527-6205</div>
+            </a>
+            <p class="c360-cu-phone-hours">
+              Mon–Thu &nbsp;7am – 4pm MST<br>
+              Friday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7am – 1pm MST
+            </p>
+            <hr class="c360-cu-card-divider">
+            <div class="c360-cu-csr-row">
+              <div class="c360-cu-csr-icon"><i class="fa-solid fa-headset"></i></div>
+              <div class="c360-cu-csr-text">
+                <strong>Customer Support</strong>
+                (800) 863-2541
+              </div>
+            </div>
+          </div>
+
+          <!-- Location -->
+          <div class="c360-cu-card">
+            <div class="c360-cu-card-label">Our Location</div>
+            <div class="c360-cu-info-rows">
+              <div class="c360-cu-info-row">
+                <div class="c360-cu-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="c360-cu-info-text">
+                  <strong>Office Address</strong>
+                  3444 N Country Club Rd. Ste 105<br>
+                  Tucson, AZ 85716
+                </div>
+              </div>
+              <div class="c360-cu-info-row">
+                <div class="c360-cu-info-icon"><i class="fa-solid fa-clock"></i></div>
+                <div class="c360-cu-info-text">
+                  <strong>Office Hours</strong>
+                  Mon–Thu 7am–4pm<br>
+                  Fri 7am–1pm MST
+                </div>
+              </div>
+              <div class="c360-cu-info-row">
+                <div class="c360-cu-info-icon"><i class="fa-brands fa-google"></i></div>
+                <div class="c360-cu-info-text">
+                  <strong>Find Us on Google</strong>
+                  <a href="https://maps.app.goo.gl/3zNANtaqrr1FJC1z6" target="_blank" rel="noopener">
+                    View Business Profile →
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Reviews badge -->
+          <a href="https://maps.app.goo.gl/3zNANtaqrr1FJC1z6" target="_blank" rel="noopener" class="c360-cu-reviews-badge">
+            <div>
+              <div class="c360-cu-reviews-stars">★★★★★</div>
+              <div style="font-size:10px;color:var(--cu-grey);margin-top:3px;">Google Reviews</div>
+            </div>
+            <div class="c360-cu-reviews-text">
+              <strong>144+ Reviews</strong>
+              5.0 rating on Google
+            </div>
+          </a>
+
+          <!-- Schedule CTA -->
+          <div class="c360-cu-schedule-card">
+            <div class="c360-cu-schedule-label">Prefer a live conversation?</div>
+            <div class="c360-cu-schedule-title">Book a free 15-minute strategy call</div>
+            <p class="c360-cu-schedule-desc">
+              Not sure what you need? Our team will ask a few questions and recommend exactly what would move the needle for your business — no pressure.
+            </p>
+            <a href="/schedule-demo" class="c360-cu-schedule-btn">
+              <i class="fa-solid fa-calendar-check"></i>
+              Schedule a Call
+            </a>
+          </div>
+
+          <!-- Social -->
+          <div class="c360-cu-card">
+            <div class="c360-cu-card-label">Follow Us</div>
+            <div class="c360-cu-social-row">
+              <a href="https://www.facebook.com/complete360marketing" target="_blank" rel="noopener" class="c360-cu-social-btn" aria-label="Facebook">
+                <i class="fa-brands fa-facebook-f"></i>
+              </a>
+              <a href="https://www.instagram.com/Complete360marketing/" target="_blank" rel="noopener" class="c360-cu-social-btn" aria-label="Instagram">
+                <i class="fa-brands fa-instagram"></i>
+              </a>
+              <a href="https://twitter.com/Complete360mktg" target="_blank" rel="noopener" class="c360-cu-social-btn" aria-label="X / Twitter">
+                <i class="fa-brands fa-x-twitter"></i>
+              </a>
+              <a href="https://maps.app.goo.gl/3zNANtaqrr1FJC1z6" target="_blank" rel="noopener" class="c360-cu-social-btn" aria-label="Google">
+                <i class="fa-brands fa-google"></i>
+              </a>
+            </div>
+          </div>
+
+        </div><!-- /sidebar -->
+
+
+        <!-- RIGHT — Form -->
+        <div class="c360-cu-form-col">
+          <div class="c360-cu-form-card">
+
+            <div class="c360-cu-form-header">
+              <div class="c360-cu-form-eyebrow">Send Us a Message</div>
+              <div class="c360-cu-form-title">Tell us about your business</div>
+              <p class="c360-cu-form-subtitle">Fill out the form and we'll reach out within 1 business day to get the conversation started.</p>
+            </div>
+
+            <div class="c360-cu-response-strip">
+              <div class="c360-cu-response-item">
+                <i class="fa-solid fa-circle-check"></i>
+                Response within 1 business day
+              </div>
+              <div class="c360-cu-response-item">
+                <i class="fa-solid fa-circle-check"></i>
+                No sales pressure
+              </div>
+              <div class="c360-cu-response-item">
+                <i class="fa-solid fa-circle-check"></i>
+                Free strategy call included
+              </div>
+            </div>
+
+            <!-- GHL Form Embed -->
+            <div class="c360-cu-form-body">
+              <iframe
+                src="https://link.complete360.org/widget/form/33zcmOE6nsoHdtrQxXX7"
+                style="width:100%;height:100%;border:none;"
+                id="inline-33zcmOE6nsoHdtrQxXX7"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Z-003-4. Contact Us Form (on the website)"
+                data-height="589"
+                data-layout-iframe-id="inline-33zcmOE6nsoHdtrQxXX7"
+                data-form-id="33zcmOE6nsoHdtrQxXX7"
+                title="Z-003-4. Contact Us Form (on the website)">
+              </iframe>
+            </div>
+
+            <div class="c360-cu-form-footer">
+              <i class="fa-solid fa-lock"></i>
+              Your information is private and secure. We never share or sell your data.
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /grid -->
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       WHAT TO EXPECT
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-cu-next">
+    <div class="c360-cu-container">
+      <div class="c360-cu-next-label">What happens after you reach out</div>
+      <div class="c360-cu-steps">
+        <div class="c360-cu-step">
+          <div class="c360-cu-step-num">1</div>
+          <div>
+            <div class="c360-cu-step-title">We review your submission</div>
+            <p class="c360-cu-step-desc">A real team member reads every inquiry — no bots. We typically respond within a few hours during business hours.</p>
+          </div>
+        </div>
+        <div class="c360-cu-step">
+          <div class="c360-cu-step-num">2</div>
+          <div>
+            <div class="c360-cu-step-title">We schedule a free strategy call</div>
+            <p class="c360-cu-step-desc">We'll reach out to set up a 15-minute call to understand your goals, current situation, and what would actually move the needle.</p>
+          </div>
+        </div>
+        <div class="c360-cu-step">
+          <div class="c360-cu-step-num">3</div>
+          <div>
+            <div class="c360-cu-step-title">You get a clear plan — no pressure</div>
+            <p class="c360-cu-step-desc">We'll walk you through a tailored recommendation. You decide what fits, at your own pace. No high-pressure pitches, ever.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       FINAL CTA STRIP
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-cu-cta-strip">
+    <div class="c360-cu-container">
+      <div class="c360-cu-cta-inner">
+        <div class="c360-cu-cta-overline">Prefer to Talk First?</div>
+        <h2>We answer the phone.<br><span>Give us a call.</span></h2>
+        <p>Our team is standing by to answer your questions and point you in the right direction — no scripts, no runaround.</p>
+        <div class="c360-cu-cta-actions">
+          <a href="tel:+18665276205" class="c360-cu-btn-primary">
+            <i class="fa-solid fa-phone"></i>
+            (866) 527-6205
+          </a>
+          <a href="/schedule-demo" class="c360-cu-btn-outline">
+            <i class="fa-solid fa-calendar-check"></i>
+            Schedule a Free Call
+          </a>
+        </div>
+        <div class="c360-cu-cta-trust">
+          <span><i class="fa-solid fa-star"></i> 144+ Five-Star Reviews</span>
+          <span><i class="fa-brands fa-google"></i> Google Partner</span>
+          <span><i class="fa-solid fa-map-pin"></i> Tucson, AZ — Serving Nationwide</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       FAQ  (sits directly above footer)
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-cu-faq">
+    <div class="c360-cu-container">
+      <div class="c360-cu-faq-header">
+        <div class="c360-cu-faq-overline">Before You Reach Out</div>
+        <h2>Common questions we get</h2>
+        <p>Quick answers so you know exactly what to expect when you contact us.</p>
+      </div>
+
+      <div class="c360-cu-faq-list">
+
+        <div class="c360-cu-faq-item">
+          <input type="checkbox" id="cu-faq1" class="c360-cu-faq-toggle">
+          <label for="cu-faq1" class="c360-cu-faq-q">
+            How fast will someone get back to me?
+            <span class="c360-cu-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </label>
+          <div class="c360-cu-faq-a">
+            <p>We respond to all inquiries within 1 business day — usually much faster. During business hours (Mon–Thu 7am–4pm, Fri 7am–1pm MST) you can also call us directly at (866) 527-6205 and reach a real person.</p>
+          </div>
+        </div>
+
+        <div class="c360-cu-faq-item">
+          <input type="checkbox" id="cu-faq2" class="c360-cu-faq-toggle">
+          <label for="cu-faq2" class="c360-cu-faq-q">
+            Do I have to buy something to get a strategy call?
+            <span class="c360-cu-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </label>
+          <div class="c360-cu-faq-a">
+            <p>Absolutely not. Our strategy calls are completely free with no obligation. We genuinely want to help you figure out what makes sense for your business — even if that means recommending you don't need our services yet.</p>
+          </div>
+        </div>
+
+        <div class="c360-cu-faq-item">
+          <input type="checkbox" id="cu-faq3" class="c360-cu-faq-toggle">
+          <label for="cu-faq3" class="c360-cu-faq-q">
+            I'm already working with another agency. Can you still help?
+            <span class="c360-cu-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </label>
+          <div class="c360-cu-faq-a">
+            <p>Yes. We work with businesses at every stage — whether you're starting from scratch, unhappy with your current provider, or looking to layer on additional services like the CRM. We'll audit what you have and be honest about where we can add real value.</p>
+          </div>
+        </div>
+
+        <div class="c360-cu-faq-item">
+          <input type="checkbox" id="cu-faq4" class="c360-cu-faq-toggle">
+          <label for="cu-faq4" class="c360-cu-faq-q">
+            Do you work with businesses outside of Arizona?
+            <span class="c360-cu-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </label>
+          <div class="c360-cu-faq-a">
+            <p>Yes — we're Arizona-based but serve businesses nationwide. Our digital services (GBP management, paid ads, websites, CRM) work for any local service business in any market.</p>
+          </div>
+        </div>
+
+        <div class="c360-cu-faq-item">
+          <input type="checkbox" id="cu-faq5" class="c360-cu-faq-toggle">
+          <label for="cu-faq5" class="c360-cu-faq-q">
+            What's the best way to reach you for urgent support?
+            <span class="c360-cu-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </label>
+          <div class="c360-cu-faq-a">
+            <p>For urgent matters, call our main line at (866) 527-6205 during business hours. For existing clients with account issues, our customer support team is available at (800) 863-2541. The contact form is best for non-urgent new inquiries.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.c360-cu-wrap -->
+
+<!-- GHL form embed script -->
+<script src="https://link.complete360.org/js/form_embed.js"></script>
+
+<!-- ============================================================
+     END COMPLETE360 CONTACT US v1.0
+     ============================================================ -->
