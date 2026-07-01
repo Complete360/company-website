@@ -1,0 +1,1103 @@
+<!-- ============================================================
+     COMPLETE360 — FAQ PAGE  v2.0
+     Paste into GHL Custom Code block on /faq page.
+     Prefix: c360-faq-  |  Header/footer loaded globally.
+     Font Awesome & Poppins loaded via global header.
+     ============================================================ -->
+
+<style>
+/* ══════════════════════════════════════════════════════
+   FAQ Page  |  Prefix: c360-faq-
+   ══════════════════════════════════════════════════════ */
+:root {
+  --faq-navy:        #122078;
+  --faq-navy-dark:   #0d1654;
+  --faq-navy-deeper: #09103c;
+  --faq-green:       #127825;
+  --faq-green-hover: #0e5e1d;
+  --faq-green-light: #EAF3DE;
+  --faq-green-glow:  #2ecc52;
+  --faq-blue-light:  #E6F1FB;
+  --faq-grey:        #888780;
+  --faq-light-grey:  #F1EFE8;
+  --faq-border:      #e5e3dc;
+  --faq-text:        #0F1F5E;
+  --faq-text-muted:  #5F5E5A;
+  --faq-radius:      10px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+
+.c360-faq-wrap {
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  width: 100%;
+}
+.c360-faq-wrap i.fa-solid,
+.c360-faq-wrap i.fa-brands {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+}
+.c360-faq-container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+.c360-faq-container-wide { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════ */
+.c360-faq-hero {
+  background: linear-gradient(135deg, var(--faq-navy-deeper) 0%, var(--faq-navy) 60%, #0c1960 100%);
+  padding: 64px 0 56px;
+  position: relative; overflow: hidden;
+}
+.c360-faq-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 10% 70%, rgba(18,120,37,0.18) 0%, transparent 50%),
+    radial-gradient(circle at 85% 15%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-faq-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.c360-faq-hero-inner {
+  position: relative; z-index: 2; text-align: center;
+}
+.c360-faq-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(18,120,37,0.2);
+  border: 1px solid rgba(18,120,37,0.38);
+  color: #7ddc80;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 6px 16px;
+  border-radius: 100px; margin-bottom: 18px;
+}
+.c360-faq-hero h1 {
+  font-size: clamp(30px, 4.5vw, 48px); font-weight: 800;
+  color: #fff; margin: 0 0 14px; line-height: 1.1; letter-spacing: -0.025em;
+}
+.c360-faq-hero-sub {
+  font-size: 16px; color: rgba(255,255,255,0.65);
+  max-width: 520px; margin: 0 auto 32px; line-height: 1.65;
+}
+/* Search bar */
+.c360-faq-search-wrap {
+  max-width: 520px; margin: 0 auto;
+  position: relative;
+}
+.c360-faq-search-icon {
+  position: absolute; left: 16px; top: 50%; transform: translateY(-50%);
+  color: rgba(255,255,255,0.4); font-size: 14px; pointer-events: none;
+}
+.c360-faq-search {
+  width: 100%;
+  background: rgba(255,255,255,0.1);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 14px 16px 14px 44px;
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 14px; color: #fff;
+  outline: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+.c360-faq-search::placeholder { color: rgba(255,255,255,0.4); }
+.c360-faq-search:focus {
+  background: rgba(255,255,255,0.15);
+  border-color: rgba(255,255,255,0.4);
+}
+
+/* ══════════════════════════════════════════════════════
+   FILTER BAR (sticky)
+   ══════════════════════════════════════════════════════ */
+.c360-faq-filter-bar {
+  background: #fff;
+  border-bottom: 1px solid var(--faq-border);
+  position: sticky;
+  top: var(--faq-header-h, 0px);
+  z-index: 90;
+  box-shadow: 0 2px 12px rgba(18,32,120,0.06);
+}
+.c360-faq-filter-inner {
+  display: flex; align-items: center; gap: 8px;
+  padding: 14px 0; overflow-x: auto;
+  scrollbar-width: none;
+}
+.c360-faq-filter-inner::-webkit-scrollbar { display: none; }
+.c360-faq-filter-btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 16px; border-radius: 100px;
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 13px; font-weight: 600;
+  color: var(--faq-text-muted); background: var(--faq-light-grey);
+  border: 1.5px solid var(--faq-border);
+  cursor: pointer; white-space: nowrap;
+  transition: all 0.18s;
+  flex-shrink: 0;
+}
+.c360-faq-filter-btn:hover {
+  background: var(--faq-blue-light);
+  border-color: rgba(18,32,120,0.2);
+  color: var(--faq-navy);
+}
+.c360-faq-filter-btn.c360-faq-active {
+  background: var(--faq-navy);
+  border-color: var(--faq-navy);
+  color: #fff;
+}
+.c360-faq-filter-btn i { font-size: 11px; }
+.c360-faq-filter-count {
+  background: rgba(255,255,255,0.2);
+  border-radius: 100px; padding: 1px 7px;
+  font-size: 10px; font-weight: 700;
+}
+.c360-faq-filter-btn:not(.c360-faq-active) .c360-faq-filter-count {
+  background: rgba(18,32,120,0.1);
+  color: var(--faq-navy);
+}
+
+/* ══════════════════════════════════════════════════════
+   FAQ BODY
+   ══════════════════════════════════════════════════════ */
+.c360-faq-body {
+  background: var(--faq-light-grey);
+  padding: 48px 0 80px;
+  min-height: 400px;
+}
+
+/* Category group */
+.c360-faq-group {
+  margin-bottom: 36px;
+  transition: opacity 0.2s;
+}
+.c360-faq-group.c360-faq-hidden { display: none; }
+
+.c360-faq-group-header {
+  display: flex; align-items: center; gap: 12px;
+  margin-bottom: 14px;
+}
+.c360-faq-group-icon {
+  width: 34px; height: 34px; flex-shrink: 0;
+  background: var(--faq-navy); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 14px;
+}
+.c360-faq-group-title {
+  font-size: 14px; font-weight: 700; color: var(--faq-text);
+  letter-spacing: 0.04em; text-transform: uppercase;
+}
+.c360-faq-group-line {
+  flex: 1; height: 1px; background: var(--faq-border);
+}
+
+/* FAQ items */
+.c360-faq-list { display: flex; flex-direction: column; gap: 0; }
+
+.c360-faq-item {
+  background: #fff;
+  border: 1px solid var(--faq-border);
+  border-radius: var(--faq-radius);
+  margin-bottom: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.2s;
+}
+.c360-faq-item:hover { box-shadow: 0 2px 12px rgba(18,32,120,0.07); }
+.c360-faq-item.c360-faq-item-hidden { display: none; }
+
+.c360-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 18px 20px; cursor: pointer; gap: 16px;
+  font-size: 14.5px; font-weight: 600; color: var(--faq-text);
+  line-height: 1.4; user-select: none;
+  transition: color 0.15s;
+  background: transparent; border: none; width: 100%;
+  text-align: left; font-family: inherit;
+}
+.c360-faq-q:hover { color: var(--faq-navy); }
+.c360-faq-q-icon {
+  width: 26px; height: 26px; flex-shrink: 0;
+  background: var(--faq-blue-light); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--faq-navy); font-size: 10px;
+  transition: transform 0.3s ease, background 0.2s;
+}
+.c360-faq-item.c360-faq-open .c360-faq-q-icon {
+  transform: rotate(180deg);
+  background: var(--faq-navy); color: #fff;
+}
+.c360-faq-item.c360-faq-open .c360-faq-q { color: var(--faq-navy); }
+
+.c360-faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.38s ease, padding 0.25s ease;
+  padding: 0 20px;
+}
+.c360-faq-item.c360-faq-open .c360-faq-a {
+  max-height: 600px;
+  padding: 0 20px 20px;
+}
+.c360-faq-a p {
+  font-size: 14px; color: var(--faq-text-muted);
+  line-height: 1.75; margin: 0 0 10px;
+}
+.c360-faq-a p:last-child { margin-bottom: 0; }
+.c360-faq-a ul {
+  margin: 8px 0 10px; padding: 0; list-style: none;
+  display: flex; flex-direction: column; gap: 6px;
+}
+.c360-faq-a ul li {
+  display: flex; align-items: flex-start; gap: 8px;
+  font-size: 13.5px; color: var(--faq-text-muted); line-height: 1.6;
+}
+.c360-faq-a ul li i {
+  color: var(--faq-green); font-size: 10px; margin-top: 4px; flex-shrink: 0;
+}
+.c360-faq-a a { color: var(--faq-green); font-weight: 600; text-decoration: none; }
+.c360-faq-a a:hover { text-decoration: underline; }
+
+/* Divider between Q and A */
+.c360-faq-a-divider {
+  height: 1px; background: var(--faq-border); margin-bottom: 16px;
+}
+
+/* Empty state */
+.c360-faq-empty {
+  display: none; text-align: center; padding: 64px 24px;
+}
+.c360-faq-empty.c360-faq-visible { display: block; }
+.c360-faq-empty-icon {
+  font-size: 40px; color: var(--faq-border); margin-bottom: 16px;
+}
+.c360-faq-empty h3 {
+  font-size: 18px; font-weight: 700; color: var(--faq-text);
+  margin: 0 0 8px;
+}
+.c360-faq-empty p {
+  font-size: 14px; color: var(--faq-text-muted); margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   CTA STRIP (white)
+   ══════════════════════════════════════════════════════ */
+.c360-faq-cta {
+  background: #fff;
+  border-top: 1px solid var(--faq-border);
+  padding: 64px 0; text-align: center;
+}
+.c360-faq-cta-inner { max-width: 640px; margin: 0 auto; }
+.c360-faq-cta-overline {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--faq-green);
+  display: inline-block; margin-bottom: 10px;
+}
+.c360-faq-cta h2 {
+  font-size: clamp(22px, 3.5vw, 34px); font-weight: 800;
+  color: var(--faq-text); margin: 0 0 12px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-faq-cta h2 span { color: var(--faq-green); }
+.c360-faq-cta p {
+  font-size: 15px; color: var(--faq-text-muted); margin: 0 0 28px; line-height: 1.65;
+}
+.c360-faq-cta-actions {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; flex-wrap: wrap;
+}
+.c360-faq-btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--faq-green); color: #fff;
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 14px; font-weight: 700;
+  padding: 13px 24px; border-radius: 8px; text-decoration: none;
+  box-shadow: 0 4px 18px rgba(18,120,37,0.4);
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-faq-btn-primary:hover {
+  background: var(--faq-green-hover); transform: translateY(-1px);
+  color: #fff; text-decoration: none;
+}
+.c360-faq-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: #fff; color: var(--faq-navy);
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  font-size: 14px; font-weight: 600;
+  padding: 12px 22px; border-radius: 8px; text-decoration: none;
+  border: 1.5px solid var(--faq-border);
+  transition: border-color 0.2s, background 0.2s;
+}
+.c360-faq-btn-outline:hover {
+  border-color: var(--faq-navy); background: var(--faq-blue-light);
+  color: var(--faq-navy); text-decoration: none;
+}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 640px) {
+  .c360-faq-hero { padding: 50px 0 44px; }
+  .c360-faq-body { padding: 36px 0 64px; }
+  .c360-faq-filter-inner { padding: 12px 0; gap: 6px; }
+  .c360-faq-q { padding: 16px; font-size: 13.5px; }
+  .c360-faq-item.c360-faq-open .c360-faq-a { padding: 0 16px 16px; }
+  .c360-faq-cta { padding: 52px 0; }
+  .c360-faq-cta-actions { flex-direction: column; align-items: stretch; max-width: 280px; margin: 0 auto; }
+  .c360-faq-btn-primary, .c360-faq-btn-outline { justify-content: center; }
+}
+</style>
+
+
+<div class="c360-faq-wrap">
+
+  <!-- ══════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-faq-hero">
+    <div class="c360-faq-container">
+      <div class="c360-faq-hero-inner">
+        <div class="c360-faq-hero-eyebrow">
+          <i class="fa-solid fa-circle-question"></i>
+          We've Got Answers
+        </div>
+        <h1>Frequently Asked Questions</h1>
+        <p class="c360-faq-hero-sub">Browse by category or search for any topic. Can't find what you're looking for? Give us a call — we're happy to help.</p>
+        <div class="c360-faq-search-wrap">
+          <i class="fa-solid fa-magnifying-glass c360-faq-search-icon"></i>
+          <input type="text" class="c360-faq-search" id="c360FaqSearch" placeholder="Search questions — e.g. &quot;cancel&quot;, &quot;GBP&quot;, &quot;refund&quot;..." autocomplete="off">
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       FILTER BAR
+       ══════════════════════════════════════════════════ -->
+  <div class="c360-faq-filter-bar">
+    <div class="c360-faq-container">
+      <div class="c360-faq-filter-inner" id="c360FaqFilters">
+        <button class="c360-faq-filter-btn c360-faq-active" data-filter="all">
+          <i class="fa-solid fa-border-all"></i> All <span class="c360-faq-filter-count" id="cnt-all"></span>
+        </button>
+        <button class="c360-faq-filter-btn" data-filter="general">
+          <i class="fa-solid fa-building"></i> General <span class="c360-faq-filter-count" id="cnt-general"></span>
+        </button>
+        <button class="c360-faq-filter-btn" data-filter="google">
+          <i class="fa-brands fa-google"></i> Google Marketing <span class="c360-faq-filter-count" id="cnt-google"></span>
+        </button>
+        <button class="c360-faq-filter-btn" data-filter="ads">
+          <i class="fa-solid fa-bullseye"></i> Paid Advertising <span class="c360-faq-filter-count" id="cnt-ads"></span>
+        </button>
+        <button class="c360-faq-filter-btn" data-filter="websites">
+          <i class="fa-solid fa-desktop"></i> Website Design <span class="c360-faq-filter-count" id="cnt-websites"></span>
+        </button>
+        <button class="c360-faq-filter-btn" data-filter="crm">
+          <i class="fa-solid fa-layer-group"></i> CRM Platform <span class="c360-faq-filter-count" id="cnt-crm"></span>
+        </button>
+        <button class="c360-faq-filter-btn" data-filter="billing">
+          <i class="fa-solid fa-receipt"></i> Billing &amp; Refunds <span class="c360-faq-filter-count" id="cnt-billing"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ══════════════════════════════════════════════════
+       FAQ BODY
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-faq-body" id="c360FaqBody">
+    <div class="c360-faq-container">
+
+      <!-- Empty state -->
+      <div class="c360-faq-empty" id="c360FaqEmpty">
+        <div class="c360-faq-empty-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+        <h3>No results found</h3>
+        <p>Try a different search term or browse by category above. You can also <a href="tel:+18665276205" style="color:var(--faq-green);">call us directly</a> — we're happy to answer any question.</p>
+      </div>
+
+
+      <!-- ════════ GENERAL ════════ -->
+      <div class="c360-faq-group" data-group="general">
+        <div class="c360-faq-group-header">
+          <div class="c360-faq-group-icon"><i class="fa-solid fa-building"></i></div>
+          <div class="c360-faq-group-title">General &amp; Company</div>
+          <div class="c360-faq-group-line"></div>
+        </div>
+        <div class="c360-faq-list">
+
+          <div class="c360-faq-item" data-category="general" data-question="where are you located tucson arizona">
+            <button class="c360-faq-q">
+              Where is Complete360 located?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>We are based in Tucson, Arizona — our office is at 3444 N Country Club Rd, Ste 105, Tucson, AZ 85716. While we're Arizona-rooted, we serve local service businesses nationwide. About half of our active clients are located outside of Arizona.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="general" data-question="what makes complete360 different other agency">
+            <button class="c360-faq-q">
+              What makes Complete360 different from other digital marketing agencies?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Most agencies specialize in one channel — SEO, ads, or websites. We combine all of it under one roof alongside our own all-in-one CRM platform, so your marketing and your lead management actually work together. A few other things that set us apart:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i>We're a Google Partner with a Google Product Expert on our team.</li>
+                <li><i class="fa-solid fa-circle-check"></i>144+ verified five-star Google reviews from real local service businesses.</li>
+                <li><i class="fa-solid fa-circle-check"></i>You get a dedicated team — not a ticket queue. We respond in hours, not days.</li>
+                <li><i class="fa-solid fa-circle-check"></i>We don't lock you into long-term contracts on most services.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="general" data-question="how do i get started sign up">
+            <button class="c360-faq-q">
+              How do I get started with Complete360?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>The easiest first step is a free 15-minute strategy call — no sales pressure, just a conversation about your business and what would actually move the needle for you. You can <a href="/schedule-demo">schedule a call here</a> or call us directly at <a href="tel:+18665276205">(866) 527-6205</a>. We'll ask a few questions and recommend exactly where to start.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="general" data-question="do you work outside arizona nationwide">
+            <button class="c360-faq-q">
+              Do you work with businesses outside of Arizona?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Yes — all of our digital services work for local service businesses in any U.S. market. GBP management, paid ads, website design, and the CRM platform are all delivered remotely and don't require us to be in your city. We're Arizona-based but serve clients coast to coast.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="general" data-question="how do i contact support customer service">
+            <button class="c360-faq-q">
+              How do I reach your team for support?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>You can reach us several ways:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Main line:</strong> (866) 527-6205 — Mon–Thu 7am–4pm · Fri 7am–1pm MST</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Customer support:</strong> (800) 863-2541 for existing account and platform issues.</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Contact form:</strong> <a href="/contact-us">complete360.org/contact-us</a></li>
+              </ul>
+              <p>We aim to respond to all inquiries within 1 business day — usually much faster during business hours.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ════════ GOOGLE MARKETING ════════ -->
+      <div class="c360-faq-group" data-group="google">
+        <div class="c360-faq-group-header">
+          <div class="c360-faq-group-icon" style="background:#4285F4;"><i class="fa-brands fa-google"></i></div>
+          <div class="c360-faq-group-title">Google Marketing</div>
+          <div class="c360-faq-group-line"></div>
+        </div>
+        <div class="c360-faq-list">
+
+          <div class="c360-faq-item" data-category="google" data-question="what is google business profile management gbp">
+            <button class="c360-faq-q">
+              What is Google Business Profile (GBP) Management?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Google Business Profile (formerly Google My Business) is the free listing that shows up in Google Search and Maps when someone looks for your type of business nearby. Our monthly GBP Management service optimizes and actively manages that profile on your behalf — including posting updates, managing photos, responding to reviews, updating hours/services, and monitoring your profile's performance. Starting at $349/mo.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="google" data-question="difference between gbp setup and management one-time monthly">
+            <button class="c360-faq-q">
+              What's the difference between GBP Setup and GBP Management?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p><strong>GBP Setup ($399 one-time)</strong> is for businesses that don't have a Google Business Profile yet, or whose existing profile is incomplete, unverified, or poorly optimized. It's a one-time service that launches and fully optimizes the profile from scratch.</p>
+              <p><strong>GBP Management ($349+/mo)</strong> is an ongoing monthly service for businesses that already have a profile and want it actively maintained, updated, and optimized every month to continually improve rankings and visibility.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="google" data-question="how long does it take to see results gbp local seo">
+            <button class="c360-faq-q">
+              How long until I see results from GBP Management or Local SEO?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Most clients see measurable improvement in profile views and direction requests within 30–60 days of consistent optimization. Ranking improvements in Google Maps (the "3-pack") typically build over 60–90 days. Local SEO through directory listings is cumulative — the full impact of 70+ directory submissions builds over 3–6 months. We track everything monthly so you can see the progress.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="google" data-question="what is local seo booster directory listings">
+            <button class="c360-faq-q">
+              What is the Local SEO Booster and why does it matter?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Google uses directory citations (consistent business name, address, and phone across the web) as a local ranking signal. Our Local SEO Booster submits and maintains your business information across 70+ directories — Yelp, Apple Maps, Bing, Facebook, and dozens of industry-specific sites. This builds the citation consistency Google needs to trust your business and rank it higher in local search results. Starting at $1,198/year.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="google" data-question="do i need to own google business profile already">
+            <button class="c360-faq-q">
+              Do I need to already have a Google Business Profile?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>No. If you don't have one, or if your current profile is unclaimed or unverified, our GBP Setup service handles everything — including the Google verification process. If you do have a profile already, we'll do a full audit before recommending setup vs. management. Just tell us where you're starting from and we'll figure it out on our strategy call.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ════════ PAID ADVERTISING ════════ -->
+      <div class="c360-faq-group" data-group="ads">
+        <div class="c360-faq-group-header">
+          <div class="c360-faq-group-icon" style="background:var(--faq-green);"><i class="fa-solid fa-bullseye"></i></div>
+          <div class="c360-faq-group-title">Paid Advertising</div>
+          <div class="c360-faq-group-line"></div>
+        </div>
+        <div class="c360-faq-list">
+
+          <div class="c360-faq-item" data-category="ads" data-question="what are local service ads lsa google guaranteed badge">
+            <button class="c360-faq-q">
+              What are Local Service Ads (LSA) and the Google Guaranteed badge?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Local Service Ads are Google's pay-per-lead ad product that appears at the very top of search results — above regular Google Ads. When your business is approved, you receive a green "Google Guaranteed" checkmark badge that signals to customers that Google has verified your business, license, and insurance. You only pay when a customer contacts you directly through the ad. We handle the full setup, verification, and ongoing management starting at $499 setup.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ads" data-question="what is geo-fencing how does it work">
+            <button class="c360-faq-q">
+              What is Geo-Fencing and how does it work?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Geo-Fencing lets you draw a virtual boundary around any physical location — a neighborhood, a zip code, a competitor's parking lot, or a specific street — and serve ads to anyone who enters that zone on their mobile device or connected TV (streaming apps). It's hyper-local targeting with no wasted spend on people outside your service area. We offer three tiers — Starter, Growth, and Pro — depending on your market size and goals.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ads" data-question="difference between geo-fencing and google ads ppc">
+            <button class="c360-faq-q">
+              How is Geo-Fencing different from Google PPC?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Google PPC targets people based on what they search for. Geo-Fencing targets people based on where they physically are or have been. They work differently and often complement each other:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Google PPC:</strong> Best for capturing people actively searching for your service right now.</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Geo-Fencing:</strong> Best for brand awareness and targeting within a specific geographic area — including competitor locations and your own service territory.</li>
+              </ul>
+              <p>Many clients run both for maximum coverage — capturing high-intent search traffic with PPC and staying top-of-mind in their local area with Geo-Fencing.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ads" data-question="what is ctv connected tv advertising streaming">
+            <button class="c360-faq-q">
+              What is CTV (Connected TV) advertising?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Connected TV (CTV) refers to streaming devices and smart TVs — Roku, Fire TV, Apple TV, Hulu, and similar platforms. Our Geo-Fencing program includes CTV ad placements, so your video ad can appear in streaming apps on the TVs of people who have entered your geo-fenced area. It's like local TV advertising but targeted to your exact geographic audience without the massive cost of traditional broadcast.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ads" data-question="are there ad spend costs separate management fees">
+            <button class="c360-faq-q">
+              Are ad spend costs included in your management fees?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>It depends on the service. For <strong>Local Service Ads</strong>, you set and control your own monthly budget directly with Google — we manage the campaign, but you fund the ad spend separately. For <strong>Geo-Fencing</strong>, your campaign budget is included in the package pricing. For <strong>Google PPC and Meta Ads</strong>, ad spend is typically separate from our management fee. We'll be clear about this on your strategy call before you commit to anything.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ads" data-question="farmers insurance co-op cost share approved advertising agents">
+            <button class="c360-faq-q">
+              I'm a Farmers Insurance agent — do you have a co-op approved program?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Yes. Our mobile and CTV geo-fencing program has been approved for Farmers Insurance agent co-op ad dollar reimbursement. This means eligible Farmers agents can use their co-op budget to fund campaigns through Complete360. Visit our <a href="/farmers-insurance">Farmers Insurance partners page</a> to learn more or call us at <a href="tel:+18665276205">(866) 527-6205</a> to discuss qualification.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ════════ WEBSITE DESIGN ════════ -->
+      <div class="c360-faq-group" data-group="websites">
+        <div class="c360-faq-group-header">
+          <div class="c360-faq-group-icon"><i class="fa-solid fa-desktop"></i></div>
+          <div class="c360-faq-group-title">Website Design</div>
+          <div class="c360-faq-group-line"></div>
+        </div>
+        <div class="c360-faq-list">
+
+          <div class="c360-faq-item" data-category="websites" data-question="what website packages plans pricing essentials pro premium">
+            <button class="c360-faq-q">
+              What website packages do you offer and what's the pricing?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>We offer three website design packages:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Essentials — $999 + $97/mo:</strong> A clean, professional website from one of our industry-ready templates. Ideal for businesses that need a solid online presence fast.</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Pro — $1,499 + $97/mo:</strong> Our most popular package. More pages, more customization, and includes enhanced conversion features.</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Premium — $1,999 + $197/mo:</strong> Our most comprehensive package with full custom design, more pages, and priority support.</li>
+              </ul>
+              <p>All plans include hosting, maintenance, and SSL. See the full breakdown on our <a href="/website-pricing">Website Pricing page</a>.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="websites" data-question="how long does it take to build website timeline launch">
+            <button class="c360-faq-q">
+              How long does it take to build and launch my website?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Most websites launch within <strong>7–14 business days</strong> from the time we receive your deposit and onboarding information. The biggest factor in timeline is how quickly you provide your content (logo, photos, service descriptions) and approve design mockups. We'll keep you updated at every stage and work around your schedule.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="websites" data-question="do i own my website what platform">
+            <button class="c360-faq-q">
+              Do I own my website? What platform is it built on?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Yes — upon full payment, you own the website content and design. Websites are built and hosted on the Complete360 platform (which requires an active monthly hosting subscription to stay live). If you ever cancel hosting, we'll work with you on options for migrating your content. Your custom content always belongs to you.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="websites" data-question="can i update website myself edit content">
+            <button class="c360-faq-q">
+              Can I update my website myself after it's built?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Yes, with access to the platform you can make content edits. We also handle routine updates for our hosting clients — if you need text changes, new photos, or page updates, just reach out and we'll take care of it. Major structural redesigns would be quoted separately.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="websites" data-question="are websites mobile friendly seo ready fast">
+            <button class="c360-faq-q">
+              Are your websites mobile-friendly and SEO-ready?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Yes on both. All our websites are built mobile-first — they look and function great on phones, tablets, and desktops. They're also built with SEO fundamentals in place out of the box: fast load times, clean code structure, proper heading hierarchy, meta tags, and SSL security. For businesses who want deeper local SEO coverage, we recommend pairing the website with our GBP Management and Local SEO Booster services.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ════════ CRM PLATFORM ════════ -->
+      <div class="c360-faq-group" data-group="crm">
+        <div class="c360-faq-group-header">
+          <div class="c360-faq-group-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <div class="c360-faq-group-title">CRM Platform</div>
+          <div class="c360-faq-group-line"></div>
+        </div>
+        <div class="c360-faq-list">
+
+          <div class="c360-faq-item" data-category="crm" data-question="what is complete360 crm platform all in one">
+            <button class="c360-faq-q">
+              What is the Complete360 CRM and what does it do?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>The Complete360 CRM is an all-in-one business platform designed to replace the 5+ separate tools most businesses use. It covers the full client journey from first contact to payment and review. Key capabilities include:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i>Lead capture (forms, chat widget, booking calendar, social media management)</li>
+                <li><i class="fa-solid fa-circle-check"></i>Automated follow-up via email, SMS, and phone</li>
+                <li><i class="fa-solid fa-circle-check"></i>All-in-one inbox (SMS, email, Facebook, Instagram, Google — one dashboard)</li>
+                <li><i class="fa-solid fa-circle-check"></i>Sales pipeline and CRM contact management</li>
+                <li><i class="fa-solid fa-circle-check"></i>Invoicing and payment processing</li>
+                <li><i class="fa-solid fa-circle-check"></i>Review request automation and reputation management</li>
+                <li><i class="fa-solid fa-circle-check"></i>Reporting and analytics</li>
+              </ul>
+              <p>See the full <a href="/pricing">CRM pricing and plans here</a>.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="crm" data-question="capture nurture close what does it mean phases">
+            <button class="c360-faq-q">
+              What does "Capture → Nurture → Close" mean?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>It's how we've organized the CRM to match how a real business operates:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Capture:</strong> Get leads in the door — forms, chat widgets, booking calendars, social media management, website templates.</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Nurture:</strong> Stay in front of every lead automatically — email/SMS sequences, phone system, all-in-one inbox, task automation.</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Close:</strong> Convert and keep clients — sales pipeline, invoicing, review requests, reporting and analytics.</li>
+              </ul>
+              <p>Most businesses lose leads in the Nurture phase because no one follows up fast enough. Our automation handles that so no lead ever falls through the cracks.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="crm" data-question="is there a mobile app ios android phone">
+            <button class="c360-faq-q">
+              Is there a mobile app for the CRM?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Yes. The CRM is available as a mobile app on both iOS and Android, making it easy to manage leads, respond to messages, and check your pipeline from anywhere. Download links:</p>
+              <ul>
+                <li><i class="fa-brands fa-apple"></i><a href="https://apps.apple.com/us/app/lead-connector/id1564302502" target="_blank" rel="noopener">App Store (iPhone/iPad)</a></li>
+                <li><i class="fa-brands fa-google-play"></i><a href="https://play.google.com/store/apps/details?id=com.LeadConnector" target="_blank" rel="noopener">Google Play (Android)</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="crm" data-question="do i get training onboarding setup crm">
+            <button class="c360-faq-q">
+              Do I get training and onboarding when I sign up for the CRM?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Yes. Our onboarding team sets up your account, builds out your automations, configures your pipeline, and walks you through how everything works. Most clients are up and running within a week and describe themselves as "not tech people" — our team makes it simple. Ongoing support is available via phone and our support line.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="crm" data-question="can crm replace tools i already use zapier email sms">
+            <button class="c360-faq-q">
+              Can the Complete360 CRM replace tools I'm already using?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>In most cases, yes. The platform is designed to replace:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i>Scheduling tools (Calendly, Acuity)</li>
+                <li><i class="fa-solid fa-circle-check"></i>Email marketing tools (Mailchimp, Constant Contact)</li>
+                <li><i class="fa-solid fa-circle-check"></i>SMS marketing tools</li>
+                <li><i class="fa-solid fa-circle-check"></i>CRM tools (HubSpot, Pipedrive, basic Salesforce setups)</li>
+                <li><i class="fa-solid fa-circle-check"></i>Review management tools (Birdeye, Podium)</li>
+                <li><i class="fa-solid fa-circle-check"></i>Basic invoicing tools</li>
+              </ul>
+              <p>We'll review what you currently use on your strategy call and confirm what can be consolidated before you commit.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="crm" data-question="what communication channels does crm support inbox sms email facebook">
+            <button class="c360-faq-q">
+              What communication channels does the CRM support?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>The All-in-One Inbox consolidates messages from all your channels into a single dashboard:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i>Two-way SMS / text messaging</li>
+                <li><i class="fa-solid fa-circle-check"></i>Email (send, receive, and automate)</li>
+                <li><i class="fa-solid fa-circle-check"></i>Phone calls and voicemail drops</li>
+                <li><i class="fa-solid fa-circle-check"></i>Facebook Messenger</li>
+                <li><i class="fa-solid fa-circle-check"></i>Instagram DMs</li>
+                <li><i class="fa-solid fa-circle-check"></i>Google Business Messages</li>
+                <li><i class="fa-solid fa-circle-check"></i>Website chat widget</li>
+              </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ════════ BILLING & REFUNDS ════════ -->
+      <div class="c360-faq-group" data-group="billing">
+        <div class="c360-faq-group-header">
+          <div class="c360-faq-group-icon"><i class="fa-solid fa-receipt"></i></div>
+          <div class="c360-faq-group-title">Billing &amp; Refunds</div>
+          <div class="c360-faq-group-line"></div>
+        </div>
+        <div class="c360-faq-list">
+
+          <div class="c360-faq-item" data-category="billing" data-question="can i cancel anytime no long term contract">
+            <button class="c360-faq-q">
+              Can I cancel anytime? Are there long-term contracts?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>No long-term contracts on most services. Monthly services (GBP Management, CRM, website hosting) can be cancelled anytime — just let us know before your next billing date and you won't be charged again. Annual services (Local SEO Booster) are billed yearly and are not eligible for a prorated refund, but you can cancel to avoid renewal.</p>
+              <p>We earn your business month to month. That said, services like SEO and GBP management take time to compound — clients who stick with a consistent strategy for 90+ days see the best results.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="billing" data-question="what payment methods do you accept visa paypal venmo klarna">
+            <button class="c360-faq-q">
+              What payment methods do you accept?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>We accept all major payment methods through our secure online payment portal at <a href="/payments">complete360.org/payments</a>:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i>All major credit and debit cards (Visa, Mastercard, Amex, Discover)</li>
+                <li><i class="fa-solid fa-circle-check"></i>PayPal and PayPal Pay Later</li>
+                <li><i class="fa-solid fa-circle-check"></i>Venmo</li>
+                <li><i class="fa-solid fa-circle-check"></i>Klarna (buy now, pay later)</li>
+                <li><i class="fa-solid fa-circle-check"></i>Amazon Pay</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="billing" data-question="what is your refund policy do you offer refunds">
+            <button class="c360-faq-q">
+              What is your refund policy?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Because our services are digital and work begins immediately upon purchase, most services are non-refundable once work has started. This applies to setup fees, completed website work, and active billing periods for monthly services. For full details by service, see our <a href="/return-policy">Return &amp; Refund Policy</a>.</p>
+              <p>If you believe you were charged in error, contact us within 7 days at <a href="tel:+18665276205">(866) 527-6205</a> — we review all billing disputes in good faith.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="billing" data-question="satisfaction guarantee campaign extension">
+            <button class="c360-faq-q">
+              Do you have a satisfaction guarantee?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Yes. If you're not satisfied with the results of your Complete360 marketing campaign at the end of your service period, we will extend your campaign duration at no additional charge. This applies to eligible ongoing marketing services where the client has met all onboarding requirements. Contact us to discuss eligibility — we stand behind our work.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="billing" data-question="what happens if i miss a payment failed charge">
+            <button class="c360-faq-q">
+              What happens if a payment fails or I miss a billing date?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>If a payment fails, our system will automatically retry it. If the payment is still unsuccessful after two attempts, your services may be temporarily paused until the balance is resolved. We'll notify you by email if this happens. To update your payment method or resolve a failed payment, contact us at <a href="tel:+18665276205">(866) 527-6205</a> and we'll get it sorted quickly.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="billing" data-question="will i receive a receipt invoice confirmation">
+            <button class="c360-faq-q">
+              Will I receive a receipt after making a payment?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Yes — a receipt is automatically emailed to the address on file after every payment. If you don't see it, check your spam or promotions folder. If you still can't find it, call us at <a href="tel:+18665276205">(866) 527-6205</a> and we'll resend it right away. You can also make payments directly at <a href="/payments">complete360.org/payments</a>.</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div><!-- /container -->
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       CTA STRIP (white — no collision with footer)
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-faq-cta">
+    <div class="c360-faq-container">
+      <div class="c360-faq-cta-inner">
+        <div class="c360-faq-cta-overline">Still Have Questions?</div>
+        <h2>We answer the phone. <span>Just call us.</span></h2>
+        <p>Can't find what you're looking for above? Our team is standing by — no scripts, no hold music, just real people who know the answers.</p>
+        <div class="c360-faq-cta-actions">
+          <a href="tel:+18665276205" class="c360-faq-btn-primary">
+            <i class="fa-solid fa-phone"></i>
+            (866) 527-6205
+          </a>
+          <a href="/schedule-demo" class="c360-faq-btn-outline">
+            <i class="fa-solid fa-calendar-check"></i>
+            Schedule a Free Call
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.c360-faq-wrap -->
+
+
+<script>
+(function() {
+  /* ════════════════════════════════════════
+     FAQ — Filter + Search + Accordion
+     ════════════════════════════════════════ */
+
+  var items      = document.querySelectorAll('.c360-faq-item');
+  var groups     = document.querySelectorAll('.c360-faq-group');
+  var filters    = document.querySelectorAll('.c360-faq-filter-btn');
+  var search     = document.getElementById('c360FaqSearch');
+  var empty      = document.getElementById('c360FaqEmpty');
+  var filterBar  = document.querySelector('.c360-faq-filter-bar');
+  var faqBody    = document.getElementById('c360FaqBody');
+  var current    = 'all';
+  var query      = '';
+
+  /* ── Dynamic header height → CSS variable ── */
+  function setHeaderHeight() {
+    /* Try to find the global sticky header by common GHL/c360 selectors */
+    var header =
+      document.getElementById('c360Header') ||
+      document.querySelector('.c360-header') ||
+      document.querySelector('.c360-mobile-header') ||
+      document.querySelector('header') ||
+      null;
+
+    var h = 0;
+    if (header && getComputedStyle(header).position === 'sticky') {
+      h = header.offsetHeight;
+    } else if (header) {
+      h = header.offsetHeight;
+    }
+
+    /* On mobile the desktop header is hidden — check mobile header instead */
+    var mobileHeader = document.getElementById('c360MobileHeader');
+    if (mobileHeader && getComputedStyle(mobileHeader).display !== 'none') {
+      h = mobileHeader.offsetHeight;
+    }
+
+    document.documentElement.style.setProperty('--faq-header-h', h + 'px');
+  }
+
+  setHeaderHeight();
+  window.addEventListener('resize', setHeaderHeight);
+
+  /* ── Scroll to FAQ body (just below filter bar) ── */
+  function scrollToFaq() {
+    if (!filterBar || !faqBody) return;
+    var headerH = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--faq-header-h') || '0', 10);
+    var filterH = filterBar.offsetHeight;
+    var bodyTop = faqBody.getBoundingClientRect().top + window.pageYOffset;
+    var target  = bodyTop - headerH - filterH;
+    window.scrollTo({ top: target, behavior: 'smooth' });
+  }
+
+  /* ── Count badges ── */
+  var counts = { all: 0, general: 0, google: 0, ads: 0, websites: 0, crm: 0, billing: 0 };
+  items.forEach(function(item) {
+    var cat = item.getAttribute('data-category');
+    if (counts[cat] !== undefined) counts[cat]++;
+    counts.all++;
+  });
+  Object.keys(counts).forEach(function(key) {
+    var el = document.getElementById('cnt-' + key);
+    if (el) el.textContent = counts[key];
+  });
+
+  /* ── Accordion ── */
+  items.forEach(function(item) {
+    var btn = item.querySelector('.c360-faq-q');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+      var isOpen = item.classList.contains('c360-faq-open');
+      items.forEach(function(i) { i.classList.remove('c360-faq-open'); });
+      if (!isOpen) item.classList.add('c360-faq-open');
+    });
+  });
+
+  /* ── Filter + Search ── */
+  function applyFilters() {
+    var visibleItems = 0;
+
+    items.forEach(function(item) {
+      var cat      = item.getAttribute('data-category') || '';
+      var qText    = (item.getAttribute('data-question') || '').toLowerCase();
+      var btnText  = (item.querySelector('.c360-faq-q') ? item.querySelector('.c360-faq-q').textContent : '').toLowerCase();
+      var aText    = (item.querySelector('.c360-faq-a') ? item.querySelector('.c360-faq-a').textContent : '').toLowerCase();
+      var fullText = qText + ' ' + btnText + ' ' + aText;
+
+      var catMatch   = (current === 'all') || (cat === current);
+      var queryMatch = (query === '') || (fullText.indexOf(query) > -1);
+      var visible    = catMatch && queryMatch;
+
+      item.classList.toggle('c360-faq-item-hidden', !visible);
+      if (visible) visibleItems++;
+    });
+
+    groups.forEach(function(group) {
+      var groupCat   = group.getAttribute('data-group');
+      var catVisible = (current === 'all') || (groupCat === current);
+      var hasVisible = Array.from(group.querySelectorAll('.c360-faq-item')).some(function(i) {
+        return !i.classList.contains('c360-faq-item-hidden');
+      });
+      group.classList.toggle('c360-faq-hidden', !(catVisible && hasVisible));
+    });
+
+    empty.classList.toggle('c360-faq-visible', visibleItems === 0);
+  }
+
+  /* ── Filter clicks — filter + scroll up ── */
+  filters.forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      current = btn.getAttribute('data-filter');
+      filters.forEach(function(b) { b.classList.remove('c360-faq-active'); });
+      btn.classList.add('c360-faq-active');
+      applyFilters();
+      /* Scroll so the FAQ body is visible just below the sticky filter bar */
+      scrollToFaq();
+    });
+  });
+
+  /* ── Search input ── */
+  if (search) {
+    search.addEventListener('input', function() {
+      query = search.value.trim().toLowerCase();
+      if (query !== '') {
+        current = 'all';
+        filters.forEach(function(b) { b.classList.remove('c360-faq-active'); });
+        document.querySelector('[data-filter="all"]').classList.add('c360-faq-active');
+      }
+      applyFilters();
+    });
+  }
+
+  applyFilters();
+
+})();
+</script>
+
+<!-- ============================================================
+     END COMPLETE360 FAQ v2.0
+     ============================================================ -->
