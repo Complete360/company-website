@@ -1,0 +1,3091 @@
+<!-- ============================================================
+     COMPLETE360 MEGA MENU — v1.9.3
+     Paste at top of GHL global header code.
+     All styles/scripts prefixed with c360- to avoid collisions.
+
+     Changes from v1.9.2:
+     - SOCIAL POSTING IS LIVE (Meta + Google). Both cards in the "Get Found
+       Organically" pane flipped Soon -> live links, desktop AND mobile:
+         Meta   -> https://complete360.org/meta-social-posting
+         Google -> https://complete360.org/google-social-posting
+       Desktop: .c360-coming-soon <div> -> <a> (that class sets
+       pointer-events:none, so it had to be dropped, not just re-styled).
+       Icons switched c360-icon-grey -> c360-icon-green to match sibling
+       organic cards. Soon badges removed.
+       Mobile: .c360-mobile-disabled <span> -> <a href>.
+     - "Get Found Organically" count unchanged (still 6 — both cards were
+       already counted while marked Soon).
+
+     Changes from v1.9.1:
+     - Geo-Fencing moved from "Paid Lead Generation" -> "Get Found Organically"
+       in BOTH the Solutions and Pricing menus, desktop AND mobile. Per Jared:
+       treat geo as pure advertising / brand visibility, not a tracked paid
+       lead-gen channel. (Categorization call, not a technical fix.)
+     - Solutions category counts updated to match: Get Found Organically 5 -> 6,
+       Paid Lead Generation 4 -> 3.
+     - Geo card icon switched to c360-icon-green in its new panes to match the
+       organic panes (was c360-icon-blue).
+     - Pricing category hints unchanged: geo has no listed "from" price, so
+       "From $399/mo" (organic) and "From $499/mo" (paid) still hold.
+
+     Changes from v1.9:
+     - FIX: the v1.9 Home link sat too high. It used a bare <li> while its
+       siblings are .c360-nav-item (which supplies the 8px vertical padding);
+       flex stretch then pinned the label to the top. Home now carries
+       .c360-nav-item, and the mega-menu JS is scoped to
+       .c360-nav-item[data-menu] so it still skips it.
+     - AI Agents pane: overview banner added -> /ai-agents. Every card in that
+       pane was a #anchor deep link, so there was no way to reach the page top.
+       Mirrors the CRM Platform Overview banner.
+
+     Changes from v1.8:
+     - Home link added to desktop nav and mobile panel. Note the logo already
+       links to "/" (standard convention) — this is mainly for mobile, where
+       every panel item is an accordion and nothing navigated home.
+     - Uses .c360-nav-link, NOT .c360-nav-item. The latter is bound to the
+       mega-menu JS and would try to open a data-menu panel that doesn't exist.
+     - On the homepage only, add aria-current="page" to the Home link to get
+       the green active underline:
+         <a href="/" class="c360-nav-link" aria-current="page">Home</a>
+
+     Changes from v1.7:
+     - AI AGENTS IS LIVE. Category badge Soon -> New. The four .c360-coming-soon
+       cards (pointer-events:none, so they could never link anywhere) replaced
+       with five real links. "Launching soon" tag removed.
+     - REVIEWS AGENT card added — the page always had this section but the menu
+       never listed it, so the menu advertised 4 agents while the page had 5.
+     - Deep links use the page anchors:
+         /ai-agents#voice-agent  #chat-agent  #booking-agent
+         /ai-agents#reviews-agent  #custom-agents  #pricing
+       ** SLUG ASSUMED /ai-agents — confirm, then find-replace if different.
+     - Pricing menu: AI Agents category added ($299/mo Voice, $499/mo
+       Assistant, both + $2,000 setup). CTA -> /ai-checkout.
+     - Mobile menu mirrors all of the above.
+     - Pairs with Footer v1.2 (AI Agents link + official Google Partner badge).
+
+     Changes from v1.6:
+     - "Website Design" category renamed to "Web Presence" (Solutions + Pricing)
+     - ProCard — Digital Business Card added to Web Presence (active, /procard)
+     - Website Pricing card removed from Solutions > Web Presence pane
+       (pricing belongs in the Pricing menu, not Solutions)
+     - Web Presence pricing pane now includes ProCard Basic ($299) + Premium ($399)
+     - CRM Platform pane: Platform Overview banner card added above 3-column grid
+       linking to /crm-home
+     - Mobile menu updated to match all of the above
+     - Footer: add ProCard to Marketing Services column (see footer note at bottom)
+     ============================================================ -->
+
+<!-- Font Awesome 6 Free — loaded from cdnjs for reliable icon rendering -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* ---------- Brand tokens ---------- */
+.c360-header, .c360-mega-menu, .c360-modal,
+.c360-mobile-header, .c360-mobile-panel, .c360-mobile-backdrop {
+  --c360-blue: #122078;
+  --c360-blue-hover: #0d1654;
+  --c360-green: #127825;
+  --c360-green-hover: #0e5e1d;
+  --c360-green-light: #EAF3DE;
+  --c360-blue-light: #E6F1FB;
+  --c360-grey: #888780;
+  --c360-grey-light: #F1EFE8;
+  --c360-border: rgba(0, 0, 0, 0.08);
+  --c360-text: #0F1F5E;
+  --c360-text-muted: #5F5E5A;
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+}
+
+.c360-header i.fa-solid,
+.c360-header i.fa-regular,
+.c360-modal i.fa-solid,
+.c360-mobile-header i.fa-solid,
+.c360-mobile-panel i.fa-solid {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+  line-height: 1;
+}
+
+body:has(.c360-header) .hl_header,
+body:has(.c360-header) nav.hl_nav-default { display: none !important; }
+
+/* ---------- Desktop header bar ---------- */
+.c360-header {
+  position: sticky;
+  top: 0;
+  z-index: 9998;
+  background: #fff;
+  border-bottom: 1px solid var(--c360-border);
+  box-shadow: 0 2px 8px rgba(18, 32, 120, 0.04);
+}
+
+.c360-nav-wrapper {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 18px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.c360-logo {
+  font-size: 22px;
+  font-weight: 600;
+  letter-spacing: -0.3px;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+.c360-logo-complete { color: var(--c360-blue); }
+.c360-logo-360 { color: var(--c360-green); }
+
+.c360-nav-items {
+  display: flex;
+  gap: 36px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+  justify-content: center;
+}
+
+.c360-nav-item {
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: -0.1px;
+  color: var(--c360-text);
+  cursor: pointer;
+  position: relative;
+  padding: 8px 0;
+  transition: color 0.2s ease;
+}
+.c360-nav-item:hover,
+.c360-nav-item.c360-active { color: var(--c360-green); }
+
+/* v1.9.1 — Home. It keeps the .c360-nav-item class so it inherits the exact
+   same box (incl. the 8px vertical padding) and lines up with its siblings.
+   v1.9 used a bare <li> and the label sat high — flex align-items defaults to
+   stretch, so the <a> pinned to the top of a stretched <li> while every other
+   label was pushed down by .c360-nav-item's padding.
+   The mega-menu JS is scoped to .c360-nav-item[data-menu], so Home is ignored
+   by it despite sharing the class. */
+.c360-nav-link {
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+.c360-nav-item.c360-active::after {
+  content: '';
+  position: absolute;
+  bottom: -19px;
+  left: -4px;
+  right: -4px;
+  height: 2px;
+  background: var(--c360-green);
+}
+
+.c360-cta-group {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  flex-shrink: 0;
+}
+
+.c360-login {
+  font-size: 14px;
+  color: var(--c360-text);
+  text-decoration: none;
+  font-weight: 500;
+}
+.c360-login:hover { color: var(--c360-green); }
+
+.c360-get-started {
+  background: var(--c360-green);
+  color: #fff !important;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+  font-family: inherit;
+}
+.c360-get-started:hover { background: var(--c360-green-hover); }
+.c360-get-started:active { transform: scale(0.98); }
+
+/* ---------- Mega menu panel ---------- */
+.c360-mega-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  border-top: 1px solid var(--c360-border);
+  box-shadow: 0 12px 32px rgba(18, 32, 120, 0.12);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  z-index: 9997;
+}
+.c360-mega-menu.c360-open {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.c360-mega-inner {
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 28px 32px 32px;
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 36px;
+}
+
+.c360-mega-left { display: flex; flex-direction: column; gap: 2px; }
+
+.c360-mega-eyebrow {
+  font-size: 11px;
+  color: var(--c360-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  padding: 4px 12px;
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.c360-category {
+  padding: 14px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  transition: background 0.15s ease;
+  border: none;
+  background: transparent;
+  text-align: left;
+  font-family: inherit;
+  width: 100%;
+}
+.c360-category:hover { background: rgba(18, 32, 120, 0.04); }
+.c360-category.c360-cat-active { background: var(--c360-green-light); }
+
+.c360-category-label {
+  font-size: 14px;
+  color: var(--c360-text);
+  font-weight: 400;
+  transition: font-weight 0.15s ease;
+}
+.c360-category.c360-cat-active .c360-category-label {
+  font-weight: 500;
+  color: #0a4010;
+}
+.c360-category-hint {
+  font-size: 11px;
+  color: var(--c360-grey);
+  margin-top: 2px;
+}
+.c360-category.c360-cat-active .c360-category-hint { color: #2d5510; }
+
+.c360-category-chevron {
+  color: #B4B2A9;
+  font-size: 14px;
+  transition: color 0.15s ease;
+}
+.c360-category.c360-cat-active .c360-category-chevron { color: var(--c360-green); }
+
+.c360-mega-right { display: flex; flex-direction: column; }
+
+.c360-right-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  min-height: 18px;
+}
+
+.c360-right-title {
+  font-size: 11px;
+  color: var(--c360-grey);
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  font-weight: 500;
+}
+
+.c360-soon-tag {
+  font-size: 10px;
+  color: var(--c360-text-muted);
+  background: var(--c360-grey-light);
+  padding: 3px 10px;
+  border-radius: 10px;
+  font-weight: 500;
+}
+
+.c360-cards-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 20px;
+}
+
+.c360-card {
+  display: flex;
+  gap: 12px;
+  padding: 14px;
+  border-radius: 8px;
+  border: 1px solid var(--c360-border);
+  text-decoration: none;
+  transition: border-color 0.15s ease, transform 0.1s ease;
+  background: #fff;
+}
+.c360-card:hover {
+  border-color: var(--c360-green);
+  transform: translateY(-1px);
+}
+.c360-card.c360-coming-soon {
+  border-style: dashed;
+  opacity: 0.7;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.c360-card-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 16px;
+}
+.c360-icon-green { background: var(--c360-green-light); color: var(--c360-green); }
+.c360-icon-blue { background: var(--c360-blue-light); color: var(--c360-blue); }
+.c360-icon-grey { background: var(--c360-grey-light); color: var(--c360-grey); }
+
+.c360-card-text { flex: 1; min-width: 0; }
+
+.c360-card-title {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--c360-text);
+  margin: 0 0 2px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.c360-card-desc {
+  font-size: 11px;
+  color: var(--c360-text-muted);
+  margin: 0;
+  line-height: 1.4;
+}
+
+.c360-badge {
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 8px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+.c360-badge-new { background: var(--c360-green); color: #fff; }
+.c360-badge-soon { background: var(--c360-grey); color: #fff; }
+.c360-badge-anchor {
+  background: var(--c360-blue-light);
+  color: var(--c360-blue);
+  font-family: 'SF Mono', 'Consolas', monospace;
+  text-transform: none;
+}
+
+.c360-price-tag {
+  font-size: 11px;
+  color: var(--c360-green);
+  font-weight: 500;
+}
+
+/* 3-column CRM layout (desktop) */
+.c360-crm-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 28px;
+}
+.c360-crm-column { display: flex; flex-direction: column; }
+.c360-crm-col-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 10px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--c360-border);
+}
+.c360-crm-col-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 14px;
+}
+.c360-crm-col-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--c360-text);
+  flex: 1;
+}
+.c360-crm-col-viewall {
+  font-size: 11px;
+  color: var(--c360-green);
+  text-decoration: none;
+  font-weight: 500;
+  transition: opacity 0.15s ease;
+}
+.c360-crm-col-viewall:hover { opacity: 0.7; }
+.c360-crm-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.c360-crm-list a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 13px;
+  color: var(--c360-text);
+  text-decoration: none;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+.c360-crm-list a:hover {
+  background: var(--c360-blue-light);
+  color: var(--c360-blue);
+}
+.c360-crm-list a i {
+  font-size: 12px;
+  color: var(--c360-grey);
+  width: 14px;
+  text-align: center;
+}
+.c360-crm-list a:hover i { color: var(--c360-blue); }
+
+/* *** NEW v1.7 — CRM Platform Overview banner card *** */
+.c360-crm-overview-card {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--c360-blue-light);
+  background: var(--c360-blue-light);
+  text-decoration: none;
+  margin-bottom: 18px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.c360-crm-overview-card:hover {
+  border-color: rgba(18, 32, 120, 0.25);
+  background: #d8eaf9;
+}
+.c360-crm-overview-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: var(--c360-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  font-size: 15px;
+  color: #fff;
+}
+.c360-crm-overview-text { flex: 1; min-width: 0; }
+.c360-crm-overview-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--c360-blue);
+  margin: 0 0 2px;
+}
+.c360-crm-overview-desc {
+  font-size: 11px;
+  color: var(--c360-text-muted);
+  margin: 0;
+}
+.c360-crm-overview-cta {
+  font-size: 12px;
+  color: var(--c360-blue);
+  font-weight: 600;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Bottom CTA card */
+.c360-mega-cta {
+  margin-top: 20px;
+  padding: 16px 18px;
+  background: var(--c360-blue);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  text-decoration: none;
+  transition: background 0.2s ease;
+}
+.c360-mega-cta:hover { background: var(--c360-blue-hover); }
+.c360-mega-cta-text { flex: 1; }
+.c360-mega-cta-title { font-size: 13px; font-weight: 500; color: #fff; margin: 0; }
+.c360-mega-cta-subtitle { font-size: 11px; color: #B5D4F4; margin: 2px 0 0; }
+.c360-mega-cta-btn {
+  background: var(--c360-green);
+  color: #fff;
+  font-size: 12px;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+/* ========================================
+   MOBILE HEADER + PANEL (≤991px)
+   ======================================== */
+.c360-mobile-header { display: none; }
+.c360-mobile-backdrop,
+.c360-mobile-panel { display: none; }
+
+@media (max-width: 991px) {
+  .c360-header { display: none !important; }
+
+  .c360-mobile-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: sticky;
+    top: 0;
+    z-index: 9998;
+    background: #fff;
+    border-bottom: 1px solid var(--c360-border);
+    padding: 14px 20px;
+    box-shadow: 0 2px 8px rgba(18, 32, 120, 0.04);
+  }
+
+  .c360-mobile-logo {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+    text-decoration: none;
+  }
+  .c360-mobile-logo .c-blue { color: var(--c360-blue); }
+  .c360-mobile-logo .c-green { color: var(--c360-green); }
+
+  .c360-mobile-toggle {
+    background: transparent;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--c360-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+  }
+  .c360-mobile-toggle:hover { background: var(--c360-grey-light); }
+
+  .c360-mobile-backdrop {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 32, 120, 0.4);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+    z-index: 9998;
+  }
+  .c360-mobile-backdrop.c360-mobile-open {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .c360-mobile-panel {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: min(420px, 88vw);
+    background: #fff;
+    z-index: 9999;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    box-shadow: -8px 0 32px rgba(18, 32, 120, 0.2);
+  }
+  .c360-mobile-panel.c360-mobile-open {
+    transform: translateX(0);
+  }
+
+  .c360-mobile-panel-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--c360-border);
+    flex-shrink: 0;
+  }
+
+  .c360-mobile-close {
+    background: transparent;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 20px;
+    color: var(--c360-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease;
+  }
+  .c360-mobile-close:hover { background: var(--c360-grey-light); }
+
+  .c360-mobile-nav {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 12px 20px;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .c360-mobile-group { border-bottom: 1px solid var(--c360-border); }
+  .c360-mobile-group:last-child { border-bottom: none; }
+
+  /* v1.9 — Home. Every other mobile item is an accordion that expands rather
+     than navigates, so there was no way to reach the homepage from this panel
+     except the small logo above. */
+  .c360-mobile-group-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 18px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--c360-text);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+  .c360-mobile-group-link:active { color: var(--c360-green); }
+  .c360-mobile-group-link i { font-size: 12px; color: var(--c360-grey); }
+
+  .c360-mobile-group-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    padding: 18px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--c360-text);
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+    transition: color 0.15s ease;
+  }
+  .c360-mobile-group-trigger:active { color: var(--c360-green); }
+  .c360-mobile-group-trigger i {
+    font-size: 12px;
+    color: var(--c360-grey);
+    transition: transform 0.25s ease, color 0.15s ease;
+  }
+  .c360-mobile-group.c360-mobile-expanded .c360-mobile-group-trigger { color: var(--c360-green); }
+  .c360-mobile-group.c360-mobile-expanded .c360-mobile-group-trigger i {
+    transform: rotate(90deg);
+    color: var(--c360-green);
+  }
+
+  .c360-mobile-group-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    padding-left: 6px;
+  }
+  .c360-mobile-group.c360-mobile-expanded .c360-mobile-group-content {
+    max-height: 3000px;
+  }
+
+  .c360-mobile-cat { margin-bottom: 4px; }
+
+  .c360-mobile-cat-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: transparent;
+    border: none;
+    padding: 12px 10px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--c360-text);
+    font-family: inherit;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+  }
+  .c360-mobile-cat-trigger:hover,
+  .c360-mobile-cat-trigger:active {
+    background: var(--c360-grey-light);
+  }
+  .c360-mobile-cat-trigger i {
+    font-size: 11px;
+    color: var(--c360-grey);
+    transition: transform 0.25s ease;
+  }
+  .c360-mobile-cat.c360-mobile-expanded .c360-mobile-cat-trigger i {
+    transform: rotate(90deg);
+  }
+
+  .c360-mobile-cat-items {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .c360-mobile-cat.c360-mobile-expanded .c360-mobile-cat-items {
+    max-height: 1200px;
+  }
+
+  .c360-mobile-cat-items li { margin: 0; }
+  .c360-mobile-cat-items a,
+  .c360-mobile-cat-items .c360-mobile-disabled {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px 11px 22px;
+    font-size: 13px;
+    color: var(--c360-text);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+  }
+  .c360-mobile-cat-items a:active {
+    background: var(--c360-green-light);
+    color: var(--c360-green);
+  }
+  .c360-mobile-cat-items a i,
+  .c360-mobile-cat-items .c360-mobile-disabled i {
+    font-size: 12px;
+    color: var(--c360-grey);
+    width: 16px;
+    text-align: center;
+  }
+
+  .c360-mobile-disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+
+  /* *** NEW v1.7 — CRM overview link in mobile CRM section *** */
+  .c360-mobile-crm-overview {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 10px 12px;
+    margin-bottom: 4px;
+    text-decoration: none;
+    border-radius: 6px;
+    border: 1px solid var(--c360-blue-light);
+    background: var(--c360-blue-light);
+    margin-top: 8px;
+    transition: background 0.15s ease;
+  }
+  .c360-mobile-crm-overview:active {
+    background: #d8eaf9;
+  }
+  .c360-mobile-crm-overview-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    background: var(--c360-blue);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #fff;
+    flex-shrink: 0;
+  }
+  .c360-mobile-crm-overview-label {
+    flex: 1;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--c360-blue);
+  }
+  .c360-mobile-crm-overview-arrow {
+    font-size: 11px;
+    color: var(--c360-blue);
+    font-weight: 600;
+  }
+
+  .c360-mobile-crm-section {
+    margin-top: 14px;
+    padding: 0 10px;
+  }
+  .c360-mobile-crm-section:first-of-type { margin-top: 8px; }
+
+  .c360-mobile-crm-section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-bottom: 8px;
+    margin-bottom: 4px;
+    border-bottom: 1px solid var(--c360-border);
+  }
+  .c360-mobile-crm-section-icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .c360-mobile-crm-section-title {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--c360-text);
+    flex: 1;
+  }
+  .c360-mobile-crm-section-view {
+    font-size: 11px;
+    color: var(--c360-green);
+    font-weight: 500;
+    text-decoration: none;
+  }
+  .c360-mobile-crm-section-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .c360-mobile-crm-section-list a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 9px 10px;
+    font-size: 13px;
+    color: var(--c360-text);
+    text-decoration: none;
+    border-radius: 6px;
+    transition: background 0.15s ease;
+  }
+  .c360-mobile-crm-section-list a:active {
+    background: var(--c360-green-light);
+    color: var(--c360-green);
+  }
+  .c360-mobile-crm-section-list a i {
+    font-size: 11px;
+    color: var(--c360-grey);
+    width: 14px;
+    text-align: center;
+  }
+
+  .c360-mobile-footer {
+    padding: 16px 20px 22px;
+    border-top: 1px solid var(--c360-border);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-shrink: 0;
+    background: #fff;
+  }
+  .c360-mobile-cta {
+    background: var(--c360-green);
+    color: #fff;
+    border: none;
+    padding: 14px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+  .c360-mobile-cta:active { background: var(--c360-green-hover); }
+
+  .c360-mobile-cta-secondary {
+    display: block;
+    text-align: center;
+    background: #fff;
+    color: var(--c360-green);
+    border: 2px solid var(--c360-green);
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 500;
+    font-family: inherit;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s ease, color 0.2s ease;
+  }
+  .c360-mobile-cta-secondary:active {
+    background: var(--c360-green-light);
+  }
+
+  body.c360-mobile-locked {
+    overflow: hidden;
+    position: relative;
+  }
+}
+
+@media (min-width: 992px) {
+  .c360-mobile-header,
+  .c360-mobile-panel,
+  .c360-mobile-backdrop { display: none !important; }
+}
+
+/* ---------- Get Started Modal ---------- */
+.c360-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+.c360-modal.c360-modal-open { display: flex; }
+
+.c360-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 32, 120, 0.55);
+  backdrop-filter: blur(3px);
+  animation: c360fadeIn 0.2s ease;
+}
+
+.c360-modal-content {
+  position: relative;
+  background: #fff;
+  border-radius: 12px;
+  max-width: 560px;
+  width: 100%;
+  max-height: 92vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+  animation: c360slideUp 0.25s ease;
+}
+
+.c360-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 20px;
+  color: var(--c360-grey);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease, color 0.15s ease;
+  z-index: 2;
+}
+.c360-modal-close:hover { background: var(--c360-grey-light); color: var(--c360-text); }
+
+.c360-modal-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px 32px 28px;
+}
+
+.c360-form-intro { margin-bottom: 22px; }
+.c360-form-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--c360-green);
+  background: var(--c360-green-light);
+  padding: 4px 10px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+.c360-form-heading {
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--c360-text);
+  margin: 0 0 8px;
+  line-height: 1.25;
+}
+.c360-form-subheading {
+  font-size: 13px;
+  color: var(--c360-text-muted);
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* GHL form iframe wrapper */
+.c360-ghl-form-wrap {
+  width: 100%;
+  min-height: 560px;
+  margin-bottom: 14px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+.c360-ghl-form-wrap iframe {
+  width: 100% !important;
+  min-height: 560px;
+  display: block;
+  border: none;
+}
+
+.c360-form-footer {
+  margin-top: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  font-size: 11px;
+  color: var(--c360-text-muted);
+}
+.c360-form-footer i { font-size: 11px; }
+
+@keyframes c360fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes c360slideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 520px) {
+  .c360-modal-body { padding: 28px 22px 22px; }
+}
+</style>
+
+<!-- ============ DESKTOP HEADER (≥992px) ============ -->
+<div class="c360-header" id="c360Header">
+  <div class="c360-nav-wrapper">
+    <a href="/" class="c360-logo">
+      <span class="c360-logo-complete">Complete</span><span class="c360-logo-360">360</span>
+    </a>
+
+    <ul class="c360-nav-items">
+      <li class="c360-nav-item"><a href="/" class="c360-nav-link">Home</a></li>
+      <li class="c360-nav-item" data-menu="solutions">Solutions</li>
+      <li class="c360-nav-item" data-menu="industries">Industries</li>
+      <li class="c360-nav-item" data-menu="pricing">Pricing</li>
+      <li class="c360-nav-item" data-menu="resources">Resources</li>
+    </ul>
+
+    <div class="c360-cta-group">
+      <a href="https://app.complete360.org" class="c360-login">Login</a>
+      <button type="button" class="c360-get-started c360-popup-trigger">Get Started</button>
+    </div>
+  </div>
+
+  <!-- ============ SOLUTIONS MEGA MENU ============ -->
+  <div class="c360-mega-menu" data-panel="solutions">
+    <div class="c360-mega-inner">
+      <div class="c360-mega-left">
+        <div class="c360-mega-eyebrow">Explore by category</div>
+        <button class="c360-category c360-cat-active" data-cat="sol-google">
+          <div>
+            <div class="c360-category-label">Get Found Organically</div>
+            <div class="c360-category-hint">6 services</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <button class="c360-category" data-cat="sol-ads">
+          <div>
+            <div class="c360-category-label">Paid Lead Generation</div>
+            <div class="c360-category-hint">3 services</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <!-- *** RENAMED: Website Design → Web Presence *** -->
+        <button class="c360-category" data-cat="sol-web">
+          <div>
+            <div class="c360-category-label">Web Presence</div>
+            <div class="c360-category-hint">Websites & digital cards</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <button class="c360-category" data-cat="sol-crm">
+          <div>
+            <div class="c360-category-label">CRM Platform</div>
+            <div class="c360-category-hint">Capture · Nurture · Close</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <button class="c360-category" data-cat="sol-ai">
+          <div>
+            <div class="c360-category-label">AI Agents <span class="c360-badge c360-badge-new" style="margin-left:6px;">New</span></div>
+            <div class="c360-category-hint">5 agents · voice, chat & workflow</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+      </div>
+
+      <div class="c360-mega-right">
+
+        <!-- Get Found Organically pane -->
+        <div class="c360-pane" data-pane="sol-google">
+          <div class="c360-right-header">
+            <div class="c360-right-title">Get Found Organically</div>
+          </div>
+          <div class="c360-cards-grid">
+            <a href="/gbp-management" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Google Business Profile Management</p>
+                <p class="c360-card-desc">Monthly profile optimization</p>
+              </div>
+            </a>
+            <a href="https://complete360.org/google-business-profile" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-rocket"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Google Business Profile Setup/Optimization</p>
+                <p class="c360-card-desc">One-time profile launch/optimization</p>
+              </div>
+            </a>
+            <a href="/local-seo-booster" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Local SEO Booster</p>
+                <p class="c360-card-desc">70+ listing integrations</p>
+              </div>
+            </a>
+            <a href="/geo-fencing" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-location-crosshairs"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Geo-Fencing Ads</p>
+                <p class="c360-card-desc">Hyper-local audience targeting</p>
+              </div>
+            </a>
+            <a href="https://complete360.org/meta-social-posting" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-share-nodes"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Social Posting — Meta</p>
+                <p class="c360-card-desc">Managed Facebook & Instagram posts</p>
+              </div>
+            </a>
+            <a href="https://complete360.org/google-social-posting" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-pen-nib"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Social Posting — Google</p>
+                <p class="c360-card-desc">Google Business Profile posts & updates</p>
+              </div>
+            </a>
+          </div>
+          <a href="/schedule-demo" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Not sure which service fits?</p>
+              <p class="c360-mega-cta-subtitle">Book a free 15-minute strategy call</p>
+            </div>
+            <span class="c360-mega-cta-btn">Schedule →</span>
+          </a>
+        </div>
+
+        <!-- Paid Lead Generation pane -->
+        <div class="c360-pane" data-pane="sol-ads" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">Paid Lead Generation</div>
+          </div>
+          <div class="c360-cards-grid">
+            <a href="/local-service-ads" class="c360-card">
+              <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Local Service Ads</p>
+                <p class="c360-card-desc">Google Guaranteed leads</p>
+              </div>
+            </a>
+            <a href="/google-ppc" class="c360-card">
+                <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-bullseye"></i></div>
+                <div class="c360-card-text">
+                  <p class="c360-card-title">Google PPC</p>
+                  <p class="c360-card-desc">Search campaign management</p>
+                </div>
+              </a>
+              <a href="/meta-ads" class="c360-card">
+                <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="c360-card-text">
+                  <p class="c360-card-title">Meta Ads</p>
+                  <p class="c360-card-desc">Facebook & Instagram campaigns</p>
+                </div>
+              </a>
+          </div>
+          <a href="/schedule-demo" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Ready to fill your pipeline?</p>
+              <p class="c360-mega-cta-subtitle">We'll recommend the right ad mix for your business</p>
+            </div>
+            <span class="c360-mega-cta-btn">Schedule →</span>
+          </a>
+        </div>
+
+        <!-- *** RENAMED + UPDATED: Web Presence pane
+             Removed: Website Pricing card
+             Added: ProCard card *** -->
+        <div class="c360-pane" data-pane="sol-web" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">Websites & Digital Presence</div>
+          </div>
+          <div class="c360-cards-grid">
+            <a href="/websites-home" class="c360-card">
+              <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-desktop"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Website Design</p>
+                <p class="c360-card-desc">Overview & process</p>
+              </div>
+            </a>
+            <a href="/websites-home#templates" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-table-cells-large"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Browse Templates</p>
+                <p class="c360-card-desc">20+ industry-ready designs</p>
+              </div>
+            </a>
+            <!-- *** NEW: ProCard *** -->
+            <a href="/procard" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-address-card"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">ProCard <span class="c360-badge c360-badge-new">New</span></p>
+                <p class="c360-card-desc">Mobile-optimized digital business card</p>
+              </div>
+            </a>
+            <div class="c360-card c360-coming-soon">
+              <div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-images"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Portfolio <span class="c360-badge c360-badge-soon">Soon</span></p>
+                <p class="c360-card-desc">Recent builds & case studies</p>
+              </div>
+            </div>
+          </div>
+          <a href="/websites-home#templates" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">See what your site could look like</p>
+              <p class="c360-mega-cta-subtitle">Browse templates built for your industry</p>
+            </div>
+            <span class="c360-mega-cta-btn">Browse →</span>
+          </a>
+        </div>
+
+        <!-- *** UPDATED: CRM pane with Platform Overview banner *** -->
+        <div class="c360-pane" data-pane="sol-crm" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">Create life-long clients on autopilot</div>
+          </div>
+
+          <!-- Platform Overview banner card -->
+          <a href="/crm-home" class="c360-crm-overview-card">
+            <div class="c360-crm-overview-icon"><i class="fa-solid fa-table-columns"></i></div>
+            <div class="c360-crm-overview-text">
+              <p class="c360-crm-overview-title">CRM Platform Overview</p>
+              <p class="c360-crm-overview-desc">See how Capture, Nurture & Close work together to grow your business on autopilot</p>
+            </div>
+            <span class="c360-crm-overview-cta">Explore →</span>
+          </a>
+
+          <div class="c360-crm-grid">
+            <div class="c360-crm-column">
+              <div class="c360-crm-col-header">
+                <div class="c360-crm-col-icon c360-icon-blue"><i class="fa-solid fa-filter"></i></div>
+                <div class="c360-crm-col-title">Capture</div>
+                <a href="{{ custom_values.sub_domain_url }}/capture" class="c360-crm-col-viewall">View →</a>
+              </div>
+              <ul class="c360-crm-list">
+                <li><a href="{{ custom_values.sub_domain_url }}/capture#section--jUucpMd-O"><i class="fa-solid fa-hashtag"></i>Social Media Management</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/chat-widget-feature-page"><i class="fa-solid fa-comments"></i>Website Chat Widget</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/forms-feature-page"><i class="fa-solid fa-clipboard-list"></i>Forms & Surveys</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/calendar-feature"><i class="fa-solid fa-calendar-check"></i>Online Appointment Booking</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/website-templates-home"><i class="fa-solid fa-layer-group"></i>Website Templates</a></li>
+              </ul>
+            </div>
+
+            <div class="c360-crm-column">
+              <div class="c360-crm-col-header">
+                <div class="c360-crm-col-icon c360-icon-green"><i class="fa-solid fa-seedling"></i></div>
+                <div class="c360-crm-col-title">Nurture</div>
+                <a href="{{ custom_values.sub_domain_url }}/nurture" class="c360-crm-col-viewall">View →</a>
+              </div>
+              <ul class="c360-crm-list">
+                <li><a href="{{ custom_values.sub_domain_url }}/nurture"><i class="fa-solid fa-diagram-project"></i>Automated Nurture Sequence</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/nurture#section-rzT06fEwVX"><i class="fa-solid fa-envelope"></i>Email & SMS Marketing</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/nurture#section-npaJ_SciNU"><i class="fa-solid fa-phone"></i>Phone System & AutoDialer</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/all-in-one-inbox-feature-page"><i class="fa-solid fa-inbox"></i>All In One Inbox</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/nurture#section-NuOoXkaZ-e"><i class="fa-solid fa-list-check"></i>Automate Tasks</a></li>
+              </ul>
+            </div>
+
+            <div class="c360-crm-column">
+              <div class="c360-crm-col-header">
+                <div class="c360-crm-col-icon c360-icon-blue"><i class="fa-solid fa-handshake"></i></div>
+                <div class="c360-crm-col-title">Close</div>
+                <a href="{{ custom_values.sub_domain_url }}/close" class="c360-crm-col-viewall">View →</a>
+              </div>
+              <ul class="c360-crm-list">
+                <li><a href="{{ custom_values.sub_domain_url }}/close#section-lvLmGmzqf8"><i class="fa-solid fa-chart-column"></i>CRM & Sales Pipeline</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/close#section-2vrc2jEfxR"><i class="fa-solid fa-file-invoice-dollar"></i>Invoicing & Payments</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/review-reputation-management-features-page"><i class="fa-solid fa-star"></i>Review & Reputation Management</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/close#section-99aPORIMTz"><i class="fa-solid fa-chart-line"></i>Reporting & Analytics</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <a href="{{ custom_values.sub_domain_url }}/pricing" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">See all CRM features side-by-side</p>
+              <p class="c360-mega-cta-subtitle">Compare plans and pick the tier that fits</p>
+            </div>
+            <span class="c360-mega-cta-btn">View Pricing →</span>
+          </a>
+        </div>
+
+        <!-- AI Agents pane -->
+        <div class="c360-pane" data-pane="sol-ai" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">AI Agents</div>
+          </div>
+
+          <!-- v1.9.1: overview banner -> /ai-agents. Without this every card
+               in this pane was a deep link (#voice-agent etc) and there was no
+               way to reach the top of the page. Reuses the .c360-crm-overview-*
+               classes deliberately — same component, CRM-era name. -->
+          <a href="/ai-agents" class="c360-crm-overview-card">
+            <div class="c360-crm-overview-icon"><i class="fa-solid fa-robot"></i></div>
+            <div class="c360-crm-overview-text">
+              <p class="c360-crm-overview-title">AI Agents Overview</p>
+              <p class="c360-crm-overview-desc">See all five agents, hear a live demo, and compare plans</p>
+            </div>
+            <span class="c360-crm-overview-cta">Explore →</span>
+          </a>
+
+          <div class="c360-cards-grid">
+            <a href="/ai-agents#voice-agent" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-phone-volume"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Voice Agent</p>
+                <p class="c360-card-desc">24/7 inbound call handling</p>
+              </div>
+            </a>
+            <a href="/ai-agents#chat-agent" class="c360-card">
+              <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-comments"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Chat Agent</p>
+                <p class="c360-card-desc">Website & SMS lead qualification</p>
+              </div>
+            </a>
+            <a href="/ai-agents#booking-agent" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-calendar-check"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Booking Agent</p>
+                <p class="c360-card-desc">Automated appointment scheduling</p>
+              </div>
+            </a>
+            <!-- v1.8: Reviews Agent card added — the page has always had this
+                 section but the menu never listed it. -->
+            <a href="/ai-agents#reviews-agent" class="c360-card">
+              <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-star"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Reviews Agent</p>
+                <p class="c360-card-desc">Automatic review requests & replies</p>
+              </div>
+            </a>
+            <a href="/ai-agents#custom-agents" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Custom Agents</p>
+                <p class="c360-card-desc">Built to your workflow</p>
+              </div>
+            </a>
+          </div>
+          <a href="/ai-agents#pricing" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Put your AI team to work</p>
+              <p class="c360-mega-cta-subtitle">Flat monthly pricing — no per-minute fees</p>
+            </div>
+            <span class="c360-mega-cta-btn">View Pricing →</span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ INDUSTRIES MEGA MENU ============ -->
+  <div class="c360-mega-menu" data-panel="industries">
+    <div class="c360-mega-inner">
+      <div class="c360-mega-left">
+        <div class="c360-mega-eyebrow">Who we serve</div>
+        <button class="c360-category c360-cat-active" data-cat="ind-contractors">
+          <div>
+            <div class="c360-category-label">Contractors & Trades</div>
+            <div class="c360-category-hint">HVAC, plumbing, roofing +3</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <button class="c360-category" data-cat="ind-home">
+          <div>
+            <div class="c360-category-label">Home Services</div>
+            <div class="c360-category-hint">Lawn, pool, cleaning +1</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <button class="c360-category" data-cat="ind-prof">
+          <div>
+            <div class="c360-category-label">Professional & Financial</div>
+            <div class="c360-category-hint">Real estate, insurance +2</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <button class="c360-category" data-cat="ind-specialty">
+          <div>
+            <div class="c360-category-label">Specialty Businesses</div>
+            <div class="c360-category-hint">Auto, dispensaries +2</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <button class="c360-category" data-cat="ind-partners">
+          <div>
+            <div class="c360-category-label">Cost-Share Partners</div>
+            <div class="c360-category-hint">Farmers Insurance +more</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+      </div>
+
+      <div class="c360-mega-right">
+        <div class="c360-pane" data-pane="ind-contractors">
+          <div class="c360-right-header">
+            <div class="c360-right-title">Contractors & Trades</div>
+            <div class="c360-soon-tag">Industry pages launching soon</div>
+          </div>
+          <div class="c360-cards-grid">
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-fan"></i></div><div class="c360-card-text"><p class="c360-card-title">HVAC <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Heating & cooling contractors</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-wrench"></i></div><div class="c360-card-text"><p class="c360-card-title">Plumbing <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Residential & commercial</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-house"></i></div><div class="c360-card-text"><p class="c360-card-title">Roofing <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Repair, replace, inspect</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-paint-roller"></i></div><div class="c360-card-text"><p class="c360-card-title">Painting <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Interior & exterior pros</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-helmet-safety"></i></div><div class="c360-card-text"><p class="c360-card-title">General Contractor <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Remodel & new builds</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-bolt"></i></div><div class="c360-card-text"><p class="c360-card-title">Electrical <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Licensed electricians</p></div></div>
+          </div>
+          <a href="/contact-us" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Don't wait for your industry page</p>
+              <p class="c360-mega-cta-subtitle">We already work with contractors — get started today</p>
+            </div>
+            <span class="c360-mega-cta-btn">Get Started →</span>
+          </a>
+        </div>
+
+        <div class="c360-pane" data-pane="ind-home" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">Home Services</div>
+            <div class="c360-soon-tag">Industry pages launching soon</div>
+          </div>
+          <div class="c360-cards-grid">
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-leaf"></i></div><div class="c360-card-text"><p class="c360-card-title">Lawn Care <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Mowing, landscaping, treatment</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-water"></i></div><div class="c360-card-text"><p class="c360-card-title">Pool Service <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Maintenance & repair</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-broom"></i></div><div class="c360-card-text"><p class="c360-card-title">Cleaning Services <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Residential & commercial</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-bug"></i></div><div class="c360-card-text"><p class="c360-card-title">Pest Control <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Extermination & prevention</p></div></div>
+          </div>
+          <a href="/contact-us" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Home service businesses are our specialty</p>
+              <p class="c360-mega-cta-subtitle">Let's grow your book of recurring clients</p>
+            </div>
+            <span class="c360-mega-cta-btn">Get Started →</span>
+          </a>
+        </div>
+
+        <div class="c360-pane" data-pane="ind-prof" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">Professional & Financial</div>
+            <div class="c360-soon-tag">Industry pages launching soon</div>
+          </div>
+          <div class="c360-cards-grid">
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-building"></i></div><div class="c360-card-text"><p class="c360-card-title">Real Estate <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Agents, brokers, teams</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-shield-halved"></i></div><div class="c360-card-text"><p class="c360-card-title">Health Insurance <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Agents & brokerages</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-stethoscope"></i></div><div class="c360-card-text"><p class="c360-card-title">Medicare Agents <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">AEP & year-round enrollment</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-dollar-sign"></i></div><div class="c360-card-text"><p class="c360-card-title">Mortgage <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Loan officers & brokers</p></div></div>
+          </div>
+          <a href="/contact-us" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Professional services require precise marketing</p>
+              <p class="c360-mega-cta-subtitle">We know your compliance & lead-quality demands</p>
+            </div>
+            <span class="c360-mega-cta-btn">Get Started →</span>
+          </a>
+        </div>
+
+        <div class="c360-pane" data-pane="ind-specialty" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">Specialty Businesses</div>
+            <div class="c360-soon-tag">Industry pages launching soon</div>
+          </div>
+          <div class="c360-cards-grid">
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-car"></i></div><div class="c360-card-text"><p class="c360-card-title">Auto Shops <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Mechanics, detail, body shops</p></div></div>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-dove"></i></div><div class="c360-card-text"><p class="c360-card-title">Funeral Homes <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Dignified local presence</p></div></div>
+            <a href="/dispensary" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-cannabis"></i></div><div class="c360-card-text"><p class="c360-card-title">Dispensaries <span class="c360-badge c360-badge-new">New</span></p><p class="c360-card-desc">Compliant cannabis marketing</p></div></a>
+            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-utensils"></i></div><div class="c360-card-text"><p class="c360-card-title">Restaurants <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Local dining & franchises</p></div></div>
+          </div>
+          <a href="/contact-us" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Unique business? We've seen it.</p>
+              <p class="c360-mega-cta-subtitle">Tell us about your industry — we'll customize the approach</p>
+            </div>
+            <span class="c360-mega-cta-btn">Get Started →</span>
+          </a>
+        </div>
+
+        <div class="c360-pane" data-pane="ind-partners" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">Cost-Share Approved Advertising</div>
+          </div>
+          <div class="c360-cards-grid">
+            <a href="/farmers-insurance" class="c360-card">
+              <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-shield"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Farmers Insurance Agents</p>
+                <p class="c360-card-desc">Mobile & CTV geo-fencing with approved co-op</p>
+              </div>
+            </a>
+            <div class="c360-card c360-coming-soon">
+              <div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-handshake-angle"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">More partners <span class="c360-badge c360-badge-soon">Soon</span></p>
+                <p class="c360-card-desc">Additional brand partnerships in the works</p>
+              </div>
+            </div>
+          </div>
+          <a href="/farmers-insurance" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Maximize your co-op ad dollars</p>
+              <p class="c360-mega-cta-subtitle">Learn how Farmers agents use geo-fencing to fill pipelines</p>
+            </div>
+            <span class="c360-mega-cta-btn">Learn More →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ PRICING MEGA MENU ============ -->
+  <div class="c360-mega-menu" data-panel="pricing">
+    <div class="c360-mega-inner">
+      <div class="c360-mega-left">
+        <div class="c360-mega-eyebrow">View pricing by category</div>
+        <button class="c360-category c360-cat-active" data-cat="pri-google">
+          <div>
+            <div class="c360-category-label">Get Found Organically</div>
+            <div class="c360-category-hint">From $399/mo</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <button class="c360-category" data-cat="pri-ads">
+          <div>
+            <div class="c360-category-label">Paid Lead Generation</div>
+            <div class="c360-category-hint">From $499/mo</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <!-- *** RENAMED: Website Design → Web Presence *** -->
+        <button class="c360-category" data-cat="pri-web">
+          <div>
+            <div class="c360-category-label">Web Presence</div>
+            <div class="c360-category-hint">From $299 · Websites from $999</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <button class="c360-category" data-cat="pri-crm">
+          <div>
+            <div class="c360-category-label">CRM Platform</div>
+            <div class="c360-category-hint">Multiple tiers</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <button class="c360-category" data-cat="pri-ai">
+          <div>
+            <div class="c360-category-label">AI Agents <span class="c360-badge c360-badge-new" style="margin-left:6px;">New</span></div>
+            <div class="c360-category-hint">From $299/mo</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+      </div>
+
+      <div class="c360-mega-right">
+        <div class="c360-pane" data-pane="pri-google">
+          <div class="c360-right-header">
+            <div class="c360-right-title">Organic Marketing Pricing</div>
+          </div>
+          <div class="c360-cards-grid">
+            <a href="/gbp-management#pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-location-dot"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Google Business Profile Management</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">From $399/mo</span></p>
+              </div>
+            </a>
+            <a href="https://complete360.org/google-business-profile" class="c360-card" target="_blank" rel="noopener">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-rocket"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Google Business Profile Setup</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">$399 one-time</span></p>
+              </div>
+            </a>
+            <a href="/local-seo-booster#pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-chart-line"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Local SEO Booster</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">From $1,198/yr</span></p>
+              </div>
+            </a>
+            <a href="/geo-fencing#pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-location-crosshairs"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Geo-Fencing</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">Starter / Growth / Pro</span></p>
+              </div>
+            </a>
+          </div>
+          <a href="/schedule-demo" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Bundle & save</p>
+              <p class="c360-mega-cta-subtitle">Ask about package pricing for multiple services</p>
+            </div>
+            <span class="c360-mega-cta-btn">Get Quote →</span>
+          </a>
+        </div>
+
+        <div class="c360-pane" data-pane="pri-ads" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">Advertising Pricing</div>
+          </div>
+          <div class="c360-cards-grid">
+            <a href="/local-service-ads#pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-shield-halved"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Local Service Ads</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">From $499 setup</span></p>
+              </div>
+            </a>
+            <a href="/google-ppc#pricing" class="c360-card">
+                <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-bullseye"></i></div>
+                <div class="c360-card-text">
+                  <p class="c360-card-title">Google PPC</p>
+                  <p class="c360-card-desc"><span class="c360-price-tag">From $399/mo</span></p>
+                </div>
+              </a>
+              <a href="/meta-ads#pricing" class="c360-card">
+                <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-bullhorn"></i></div>
+                <div class="c360-card-text">
+                  <p class="c360-card-title">Meta Ads</p>
+                  <p class="c360-card-desc"><span class="c360-price-tag">From $399/mo</span></p>
+                </div>
+              </a>
+          </div>
+          <a href="/schedule-demo" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Not sure which ad platform fits?</p>
+              <p class="c360-mega-cta-subtitle">Free strategy call — we'll recommend the right mix</p>
+            </div>
+            <span class="c360-mega-cta-btn">Schedule →</span>
+          </a>
+        </div>
+
+        <!-- *** RENAMED + UPDATED: Web Presence pricing with ProCard tiers *** -->
+        <div class="c360-pane" data-pane="pri-web" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">Web Presence Pricing</div>
+          </div>
+          <div class="c360-cards-grid">
+            <a href="/website-pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-desktop"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Essentials</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">$999 + $97/mo</span></p>
+              </div>
+            </a>
+            <a href="/website-pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-star"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Pro <span class="c360-badge c360-badge-new">Popular</span></p>
+                <p class="c360-card-desc"><span class="c360-price-tag">$1,499 + $97/mo</span></p>
+              </div>
+            </a>
+            <a href="/website-pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-crown"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Premium</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">$1,999 + $197/mo</span></p>
+              </div>
+            </a>
+            <!-- *** NEW: ProCard pricing tiers *** -->
+            <a href="/procard#pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-address-card"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">ProCard Basic</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">$299 one-time</span></p>
+              </div>
+            </a>
+            <a href="/procard#pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-id-card"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">ProCard Premium</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">$399 one-time</span></p>
+              </div>
+            </a>
+          </div>
+          <a href="/websites-home#templates" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">See templates before you decide</p>
+              <p class="c360-mega-cta-subtitle">Every website plan includes industry-ready templates</p>
+            </div>
+            <span class="c360-mega-cta-btn">Browse →</span>
+          </a>
+        </div>
+
+        <div class="c360-pane" data-pane="pri-ai" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">AI Agents Pricing</div>
+          </div>
+          <div class="c360-cards-grid">
+            <a href="/ai-agents#pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-phone-volume"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">AI Voice Agent</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">$299/mo + $2,000 setup</span></p>
+              </div>
+            </a>
+            <a href="/ai-agents#pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">AI Assistant <span class="c360-badge c360-badge-new">Popular</span></p>
+                <p class="c360-card-desc"><span class="c360-price-tag">$499/mo + $2,000 setup</span></p>
+              </div>
+            </a>
+          </div>
+          <a href="/ai-checkout" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Ready to stop missing calls?</p>
+              <p class="c360-mega-cta-subtitle">Annual billing available — 2 months free</p>
+            </div>
+            <span class="c360-mega-cta-btn">Get Started →</span>
+          </a>
+        </div>
+
+        <div class="c360-pane" data-pane="pri-crm" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">CRM Platform Pricing</div>
+          </div>
+          <div class="c360-cards-grid">
+            <a href="/pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-layer-group"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Compare all tiers</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">See full comparison</span></p>
+              </div>
+            </a>
+          </div>
+          <a href="/schedule-demo" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">See what's included at each tier</p>
+              <p class="c360-mega-cta-subtitle">Watch a 5-minute walkthrough before you choose</p>
+            </div>
+            <span class="c360-mega-cta-btn">Watch Demo →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ RESOURCES MEGA MENU ============ -->
+  <div class="c360-mega-menu" data-panel="resources">
+    <div class="c360-mega-inner">
+      <div class="c360-mega-left">
+        <div class="c360-mega-eyebrow">Learn & connect</div>
+        <button class="c360-category c360-cat-active" data-cat="res-learn">
+          <div>
+            <div class="c360-category-label">Resources</div>
+            <div class="c360-category-hint">Tools, guides, FAQ</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+        <button class="c360-category" data-cat="res-company">
+          <div>
+            <div class="c360-category-label">Company</div>
+            <div class="c360-category-hint">Contact & support</div>
+          </div>
+          <span class="c360-category-chevron">›</span>
+        </button>
+      </div>
+
+      <div class="c360-mega-right">
+        <div class="c360-pane" data-pane="res-learn">
+          <div class="c360-right-header">
+            <div class="c360-right-title">Resources</div>
+          </div>
+          <div class="c360-cards-grid">
+            <a href="/faq" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-circle-question"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">FAQ</p>
+                <p class="c360-card-desc">Common questions answered</p>
+              </div>
+            </a>
+            <div class="c360-card c360-coming-soon">
+              <div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-newspaper"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Blog <span class="c360-badge c360-badge-soon">Soon</span></p>
+                <p class="c360-card-desc">Local marketing tips & guides</p>
+              </div>
+            </div>
+            <div class="c360-card c360-coming-soon">
+              <div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-toolbox"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Free Tools <span class="c360-badge c360-badge-soon">Soon</span></p>
+                <p class="c360-card-desc">Audits & calculators</p>
+              </div>
+            </div>
+            <div class="c360-card c360-coming-soon">
+              <div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-chart-simple"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Case Studies <span class="c360-badge c360-badge-soon">Soon</span></p>
+                <p class="c360-card-desc">Real client results</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="c360-pane" data-pane="res-company" hidden>
+          <div class="c360-right-header">
+            <div class="c360-right-title">Company</div>
+          </div>
+          <div class="c360-cards-grid">
+            <a href="/contact-us" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-envelope"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Contact Us</p>
+                <p class="c360-card-desc">Get in touch with our team</p>
+              </div>
+            </a>
+            <a href="https://app.complete360.org" class="c360-card">
+              <div class="c360-card-icon c360-icon-blue"><i class="fa-solid fa-right-to-bracket"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">CRM Login</p>
+                <p class="c360-card-desc">Access your Complete360 dashboard</p>
+              </div>
+            </a>
+            <a href="https://portal.cmpusa.org/" target="_blank" rel="noopener" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-satellite-dish"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Geo Portal Login</p>
+                <p class="c360-card-desc">Geo ads, analytics & approvals</p>
+              </div>
+            </a>
+            <a href="https://complete360.org/payments" target="_blank" rel="noopener" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-credit-card"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Payments</p>
+                <p class="c360-card-desc">Pay your invoice securely online</p>
+              </div>
+            </a>
+            <div class="c360-card c360-coming-soon">
+              <div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-building"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">About Us <span class="c360-badge c360-badge-soon">Soon</span></p>
+                <p class="c360-card-desc">Our mission & team</p>
+              </div>
+            </div>
+            <div class="c360-card c360-coming-soon">
+              <div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-briefcase"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Careers <span class="c360-badge c360-badge-soon">Soon</span></p>
+                <p class="c360-card-desc">Join the team</p>
+              </div>
+            </div>
+          </div>
+          <a href="/schedule-demo" class="c360-mega-cta">
+            <div class="c360-mega-cta-text">
+              <p class="c360-mega-cta-title">Questions before you sign up?</p>
+              <p class="c360-mega-cta-subtitle">Talk to a real person — no sales pressure</p>
+            </div>
+            <span class="c360-mega-cta-btn">Schedule →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.c360-header -->
+
+<!-- ============ MOBILE HEADER (≤991px) ============ -->
+<div class="c360-mobile-header" id="c360MobileHeader">
+  <a href="/" class="c360-mobile-logo">
+    <span class="c-blue">Complete</span><span class="c-green">360</span>
+  </a>
+  <button type="button" class="c360-mobile-toggle" id="c360MobileToggle" aria-label="Open menu">
+    <i class="fa-solid fa-bars"></i>
+  </button>
+</div>
+
+<div class="c360-mobile-backdrop" id="c360MobileBackdrop"></div>
+
+<div class="c360-mobile-panel" id="c360MobilePanel" aria-hidden="true">
+  <div class="c360-mobile-panel-header">
+    <a href="/" class="c360-mobile-logo">
+      <span class="c-blue">Complete</span><span class="c-green">360</span>
+    </a>
+    <button type="button" class="c360-mobile-close" id="c360MobileClose" aria-label="Close menu">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+  </div>
+
+  <nav class="c360-mobile-nav">
+
+    <!-- HOME (v1.9) -->
+    <div class="c360-mobile-group">
+      <a href="/" class="c360-mobile-group-link">
+        Home
+        <i class="fa-solid fa-house"></i>
+      </a>
+    </div>
+
+    <!-- SOLUTIONS GROUP -->
+    <div class="c360-mobile-group">
+      <button class="c360-mobile-group-trigger" type="button">
+        Solutions
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div class="c360-mobile-group-content">
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Get Found Organically
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/gbp-management"><i class="fa-solid fa-location-dot"></i>Google Business Management</a></li>
+            <li><a href="https://complete360.org/google-business-profile" target="_blank" rel="noopener"><i class="fa-solid fa-rocket"></i>Google Business Setup</a></li>
+            <li><a href="/local-seo-booster"><i class="fa-solid fa-chart-line"></i>Local SEO Booster</a></li>
+            <li><a href="/geo-fencing"><i class="fa-solid fa-location-crosshairs"></i>Geo-Fencing Ads</a></li>
+            <li><a href="https://complete360.org/meta-social-posting"><i class="fa-solid fa-share-nodes"></i>Social Posting — Meta</a></li>
+            <li><a href="https://complete360.org/google-social-posting"><i class="fa-solid fa-pen-nib"></i>Social Posting — Google</a></li>
+          </ul>
+        </div>
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Paid Lead Generation
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/local-service-ads"><i class="fa-solid fa-shield-halved"></i>Local Service Ads</a></li>
+            <li><a href="/google-ppc"><i class="fa-solid fa-bullseye"></i>Google PPC</a></li>
+            <li><a href="/meta-ads"><i class="fa-solid fa-bullhorn"></i>Meta Ads</a></li>
+          </ul>
+        </div>
+
+        <!-- *** RENAMED + ProCard added, Website Pricing removed *** -->
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Web Presence
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/websites-home"><i class="fa-solid fa-desktop"></i>Website Design</a></li>
+            <li><a href="/websites-home#templates"><i class="fa-solid fa-table-cells-large"></i>Browse Templates</a></li>
+            <li><a href="/procard"><i class="fa-solid fa-address-card"></i>ProCard — Digital Business Card</a></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-images"></i>Portfolio <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+          </ul>
+        </div>
+
+        <!-- *** CRM Platform: overview link added at top *** -->
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            CRM Platform
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <div class="c360-mobile-cat-items" style="padding-bottom: 8px;">
+
+            <!-- Platform overview link -->
+            <a href="/crm-home" class="c360-mobile-crm-overview">
+              <div class="c360-mobile-crm-overview-icon"><i class="fa-solid fa-table-columns"></i></div>
+              <span class="c360-mobile-crm-overview-label">Platform Overview</span>
+              <span class="c360-mobile-crm-overview-arrow">Explore →</span>
+            </a>
+
+            <div class="c360-mobile-crm-section">
+              <div class="c360-mobile-crm-section-header">
+                <div class="c360-mobile-crm-section-icon c360-icon-blue"><i class="fa-solid fa-filter"></i></div>
+                <div class="c360-mobile-crm-section-title">Capture</div>
+                <a href="{{ custom_values.sub_domain_url }}/capture" class="c360-mobile-crm-section-view">View →</a>
+              </div>
+              <ul class="c360-mobile-crm-section-list">
+                <li><a href="{{ custom_values.sub_domain_url }}/capture#section--jUucpMd-O"><i class="fa-solid fa-hashtag"></i>Social Media Management</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/chat-widget-feature-page"><i class="fa-solid fa-comments"></i>Website Chat Widget</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/forms-feature-page"><i class="fa-solid fa-clipboard-list"></i>Forms & Surveys</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/calendar-feature"><i class="fa-solid fa-calendar-check"></i>Online Appointment Booking</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/website-templates-home"><i class="fa-solid fa-layer-group"></i>Website Templates</a></li>
+              </ul>
+            </div>
+
+            <div class="c360-mobile-crm-section">
+              <div class="c360-mobile-crm-section-header">
+                <div class="c360-mobile-crm-section-icon c360-icon-green"><i class="fa-solid fa-seedling"></i></div>
+                <div class="c360-mobile-crm-section-title">Nurture</div>
+                <a href="{{ custom_values.sub_domain_url }}/nurture" class="c360-mobile-crm-section-view">View →</a>
+              </div>
+              <ul class="c360-mobile-crm-section-list">
+                <li><a href="{{ custom_values.sub_domain_url }}/nurture"><i class="fa-solid fa-diagram-project"></i>Automated Nurture Sequence</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/nurture#section-rzT06fEwVX"><i class="fa-solid fa-envelope"></i>Email & SMS Marketing</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/nurture#section-npaJ_SciNU"><i class="fa-solid fa-phone"></i>Phone System & AutoDialer</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/all-in-one-inbox-feature-page"><i class="fa-solid fa-inbox"></i>All In One Inbox</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/nurture#section-NuOoXkaZ-e"><i class="fa-solid fa-list-check"></i>Automate Tasks</a></li>
+              </ul>
+            </div>
+
+            <div class="c360-mobile-crm-section">
+              <div class="c360-mobile-crm-section-header">
+                <div class="c360-mobile-crm-section-icon c360-icon-blue"><i class="fa-solid fa-handshake"></i></div>
+                <div class="c360-mobile-crm-section-title">Close</div>
+                <a href="{{ custom_values.sub_domain_url }}/close" class="c360-mobile-crm-section-view">View →</a>
+              </div>
+              <ul class="c360-mobile-crm-section-list">
+                <li><a href="{{ custom_values.sub_domain_url }}/close#section-lvLmGmzqf8"><i class="fa-solid fa-chart-column"></i>CRM & Sales Pipeline</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/close#section-2vrc2jEfxR"><i class="fa-solid fa-file-invoice-dollar"></i>Invoicing & Payments</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/review-reputation-management-features-page"><i class="fa-solid fa-star"></i>Review & Reputation Management</a></li>
+                <li><a href="{{ custom_values.sub_domain_url }}/close#section-99aPORIMTz"><i class="fa-solid fa-chart-line"></i>Reporting & Analytics</a></li>
+              </ul>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            AI Agents <span class="c360-badge c360-badge-new" style="margin-left:6px;">New</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/ai-agents"><i class="fa-solid fa-grid-2"></i>All AI Agents</a></li>
+            <li><a href="/ai-agents#voice-agent"><i class="fa-solid fa-phone-volume"></i>Voice Agent</a></li>
+            <li><a href="/ai-agents#chat-agent"><i class="fa-solid fa-comments"></i>Chat Agent</a></li>
+            <li><a href="/ai-agents#booking-agent"><i class="fa-solid fa-calendar-check"></i>Booking Agent</a></li>
+            <li><a href="/ai-agents#reviews-agent"><i class="fa-solid fa-star"></i>Reviews Agent</a></li>
+            <li><a href="/ai-agents#custom-agents"><i class="fa-solid fa-wand-magic-sparkles"></i>Custom Agents</a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- INDUSTRIES GROUP -->
+    <div class="c360-mobile-group">
+      <button class="c360-mobile-group-trigger" type="button">
+        Industries
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div class="c360-mobile-group-content">
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Contractors & Trades
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-fan"></i>HVAC <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-wrench"></i>Plumbing <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-house"></i>Roofing <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-paint-roller"></i>Painting <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-helmet-safety"></i>General Contractor <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-bolt"></i>Electrical <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+          </ul>
+        </div>
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Home Services
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-leaf"></i>Lawn Care <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-water"></i>Pool Service <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-broom"></i>Cleaning Services <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-bug"></i>Pest Control <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+          </ul>
+        </div>
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Professional & Financial
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-building"></i>Real Estate <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-shield-halved"></i>Health Insurance <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-stethoscope"></i>Medicare Agents <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-dollar-sign"></i>Mortgage <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+          </ul>
+        </div>
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Specialty Businesses
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-car"></i>Auto Shops <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-dove"></i>Funeral Homes <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><a href="/dispensary"><i class="fa-solid fa-cannabis"></i>Dispensaries</a></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-utensils"></i>Restaurants <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+          </ul>
+        </div>
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Cost-Share Partners
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/farmers-insurance"><i class="fa-solid fa-shield"></i>Farmers Insurance Agents</a></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-handshake-angle"></i>More partners <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- PRICING GROUP -->
+    <div class="c360-mobile-group">
+      <button class="c360-mobile-group-trigger" type="button">
+        Pricing
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div class="c360-mobile-group-content">
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Get Found Organically
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/gbp-management#pricing"><i class="fa-solid fa-location-dot"></i>Google Business Management — <span class="c360-price-tag">$399/mo</span></a></li>
+            <li><a href="https://complete360.org/google-business-profile" target="_blank" rel="noopener"><i class="fa-solid fa-rocket"></i>Google Business Setup — <span class="c360-price-tag">$399</span></a></li>
+            <li><a href="/local-seo-booster#pricing"><i class="fa-solid fa-chart-line"></i>Local SEO — <span class="c360-price-tag">$1,198/yr</span></a></li>
+            <li><a href="/geo-fencing#pricing"><i class="fa-solid fa-location-crosshairs"></i>Geo-Fencing — <span class="c360-price-tag">Custom</span></a></li>
+          </ul>
+        </div>
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Paid Lead Generation
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/local-service-ads#pricing"><i class="fa-solid fa-shield-halved"></i>Local Service Ads — <span class="c360-price-tag">From $499</span></a></li>
+            <li><a href="/google-ppc#pricing"><i class="fa-solid fa-bullseye"></i>Google PPC — <span class="c360-price-tag">From $399/mo</span></a></li>
+            <li><a href="/meta-ads#pricing"><i class="fa-solid fa-bullhorn"></i>Meta Ads — <span class="c360-price-tag">From $399/mo</span></a></li>
+          </ul>
+        </div>
+
+        <!-- *** RENAMED + ProCard pricing added *** -->
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Web Presence
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/website-pricing"><i class="fa-solid fa-desktop"></i>Essentials — <span class="c360-price-tag">$999</span></a></li>
+            <li><a href="/website-pricing"><i class="fa-solid fa-star"></i>Pro — <span class="c360-price-tag">$1,499</span></a></li>
+            <li><a href="/website-pricing"><i class="fa-solid fa-crown"></i>Premium — <span class="c360-price-tag">$1,999</span></a></li>
+            <li><a href="/procard#pricing"><i class="fa-solid fa-address-card"></i>ProCard Basic — <span class="c360-price-tag">$299</span></a></li>
+            <li><a href="/procard#pricing"><i class="fa-solid fa-id-card"></i>ProCard Premium — <span class="c360-price-tag">$399</span></a></li>
+          </ul>
+        </div>
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            CRM Platform
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/pricing"><i class="fa-solid fa-layer-group"></i>Compare all tiers</a></li>
+          </ul>
+        </div>
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            AI Agents <span class="c360-badge c360-badge-new" style="margin-left:6px;">New</span>
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/ai-agents#pricing"><i class="fa-solid fa-phone-volume"></i>AI Voice Agent — <span class="c360-price-tag">$299/mo</span></a></li>
+            <li><a href="/ai-agents#pricing"><i class="fa-solid fa-wand-magic-sparkles"></i>AI Assistant — <span class="c360-price-tag">$499/mo</span></a></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- RESOURCES GROUP -->
+    <div class="c360-mobile-group">
+      <button class="c360-mobile-group-trigger" type="button">
+        Resources
+        <i class="fa-solid fa-chevron-right"></i>
+      </button>
+      <div class="c360-mobile-group-content">
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Learn
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/faq"><i class="fa-solid fa-circle-question"></i>FAQ</a></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-newspaper"></i>Blog <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-toolbox"></i>Free Tools <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-chart-simple"></i>Case Studies <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+          </ul>
+        </div>
+
+        <div class="c360-mobile-cat">
+          <button class="c360-mobile-cat-trigger" type="button">
+            Company
+            <i class="fa-solid fa-chevron-right"></i>
+          </button>
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/contact-us"><i class="fa-solid fa-envelope"></i>Contact Us</a></li>
+            <li><a href="https://portal.cmpusa.org/" target="_blank" rel="noopener"><i class="fa-solid fa-satellite-dish"></i>Geo Portal Login</a></li>
+            <li><a href="https://complete360.org/payments" target="_blank" rel="noopener"><i class="fa-solid fa-credit-card"></i>Payments</a></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-building"></i>About Us <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-briefcase"></i>Careers <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+  </nav>
+
+  <div class="c360-mobile-footer">
+    <a href="/schedule-demo" class="c360-mobile-cta-secondary">Schedule a Call</a>
+    <button type="button" class="c360-mobile-cta c360-popup-trigger">Get Started</button>
+  </div>
+</div>
+
+<!-- ============ GET STARTED MODAL (shared desktop + mobile) ============ -->
+<div class="c360-modal" id="c360Modal" aria-hidden="true">
+  <div class="c360-modal-backdrop" data-close-modal></div>
+  <div class="c360-modal-content" role="dialog" aria-modal="true" aria-labelledby="c360ModalTitle">
+    <button type="button" class="c360-modal-close" data-close-modal aria-label="Close">&times;</button>
+    <div class="c360-modal-body">
+
+      <div class="c360-form-intro">
+        <span class="c360-form-eyebrow">Let's Talk</span>
+        <h2 class="c360-form-heading" id="c360ModalTitle">Let's grow your business.</h2>
+        <p class="c360-form-subheading">Tell us a bit about your business and we'll reach out within 1 business day to schedule a free strategy call.</p>
+      </div>
+
+      <div class="c360-ghl-form-wrap">
+        <iframe
+          src="https://link.complete360.org/widget/form/LdQRuUPar7Zwt5MhbBxi"
+          id="inline-LdQRuUPar7Zwt5MhbBxi"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Complete360 Popup Modal <> Main Menu"
+          data-height="545"
+          data-layout-iframe-id="inline-LdQRuUPar7Zwt5MhbBxi"
+          data-form-id="LdQRuUPar7Zwt5MhbBxi"
+          title="Complete360 Popup Modal <> Main Menu">
+        </iframe>
+      </div>
+
+      <div class="c360-form-footer">
+        <i class="fa-solid fa-lock"></i>
+        <span>Your info stays private. We never share or sell data.</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- GHL form embed script -->
+<script src="https://link.complete360.org/js/form_embed.js"></script>
+
+<script>
+(function() {
+  /* ============ DESKTOP MEGA MENU ============ */
+  var header = document.getElementById('c360Header');
+  if (header) {
+    var navItems = header.querySelectorAll('.c360-nav-item[data-menu]');
+    var megaMenus = header.querySelectorAll('.c360-mega-menu');
+    var closeTimer = null;
+
+    function closeAllMenus() {
+      megaMenus.forEach(function(m) { m.classList.remove('c360-open'); });
+      navItems.forEach(function(n) { n.classList.remove('c360-active'); });
+    }
+
+    function openMenu(menuName) {
+      clearTimeout(closeTimer);
+      closeAllMenus();
+      var panel = header.querySelector('.c360-mega-menu[data-panel="' + menuName + '"]');
+      var navItem = header.querySelector('.c360-nav-item[data-menu="' + menuName + '"]');
+      if (panel) panel.classList.add('c360-open');
+      if (navItem) navItem.classList.add('c360-active');
+    }
+
+    function scheduleClose() { closeTimer = setTimeout(closeAllMenus, 180); }
+
+    navItems.forEach(function(item) {
+      item.addEventListener('mouseenter', function() { openMenu(item.getAttribute('data-menu')); });
+      item.addEventListener('mouseleave', scheduleClose);
+      item.addEventListener('click', function() {
+        var menuName = item.getAttribute('data-menu');
+        var panel = header.querySelector('.c360-mega-menu[data-panel="' + menuName + '"]');
+        if (panel && panel.classList.contains('c360-open')) closeAllMenus();
+        else openMenu(menuName);
+      });
+    });
+
+    megaMenus.forEach(function(menu) {
+      menu.addEventListener('mouseenter', function() { clearTimeout(closeTimer); });
+      menu.addEventListener('mouseleave', scheduleClose);
+    });
+
+    header.querySelectorAll('.c360-category').forEach(function(btn) {
+      btn.addEventListener('mouseenter', function() {
+        var parentMenu = btn.closest('.c360-mega-menu');
+        var catId = btn.getAttribute('data-cat');
+        parentMenu.querySelectorAll('.c360-category').forEach(function(c) { c.classList.remove('c360-cat-active'); });
+        btn.classList.add('c360-cat-active');
+        parentMenu.querySelectorAll('.c360-pane').forEach(function(p) {
+          p.hidden = p.getAttribute('data-pane') !== catId;
+        });
+      });
+    });
+
+    document.addEventListener('click', function(e) {
+      if (!header.contains(e.target)) closeAllMenus();
+    });
+  }
+
+  /* ============ MOBILE PANEL ============ */
+  var mobileToggle = document.getElementById('c360MobileToggle');
+  var mobileClose = document.getElementById('c360MobileClose');
+  var mobileBackdrop = document.getElementById('c360MobileBackdrop');
+  var mobilePanel = document.getElementById('c360MobilePanel');
+
+  function openMobilePanel() {
+    if (!mobilePanel) return;
+    mobilePanel.classList.add('c360-mobile-open');
+    mobileBackdrop.classList.add('c360-mobile-open');
+    mobilePanel.setAttribute('aria-hidden', 'false');
+    document.body.classList.add('c360-mobile-locked');
+  }
+
+  function closeMobilePanel() {
+    if (!mobilePanel) return;
+    mobilePanel.classList.remove('c360-mobile-open');
+    mobileBackdrop.classList.remove('c360-mobile-open');
+    mobilePanel.setAttribute('aria-hidden', 'true');
+    document.body.classList.remove('c360-mobile-locked');
+  }
+
+  if (mobileToggle) mobileToggle.addEventListener('click', openMobilePanel);
+  if (mobileClose) mobileClose.addEventListener('click', closeMobilePanel);
+  if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobilePanel);
+
+  if (mobilePanel) {
+    mobilePanel.querySelectorAll('a[href]').forEach(function(link) {
+      link.addEventListener('click', function() {
+        setTimeout(closeMobilePanel, 50);
+      });
+    });
+  }
+
+  document.querySelectorAll('.c360-mobile-group-trigger').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btn.closest('.c360-mobile-group').classList.toggle('c360-mobile-expanded');
+    });
+  });
+
+  document.querySelectorAll('.c360-mobile-cat-trigger').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      btn.closest('.c360-mobile-cat').classList.toggle('c360-mobile-expanded');
+    });
+  });
+
+  /* ============ GET STARTED MODAL ============ */
+  var modal = document.getElementById('c360Modal');
+
+  function openModal() {
+    if (!modal) return;
+    modal.classList.add('c360-modal-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    if (!modal) return;
+    modal.classList.remove('c360-modal-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.c360-popup-trigger').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var isMobileOpen = mobilePanel && mobilePanel.classList.contains('c360-mobile-open');
+      if (isMobileOpen) {
+        closeMobilePanel();
+        setTimeout(openModal, 320);
+      } else {
+        openModal();
+      }
+    });
+  });
+
+  document.querySelectorAll('[data-close-modal]').forEach(function(el) {
+    el.addEventListener('click', closeModal);
+  });
+
+  /* ============ GLOBAL ESC KEY ============ */
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      if (header) header.querySelectorAll('.c360-mega-menu').forEach(function(m) { m.classList.remove('c360-open'); });
+      closeMobilePanel();
+      closeModal();
+    }
+  });
+})();
+</script>
+<!-- ============================================================
+     END COMPLETE360 MEGA MENU v1.9.2
+
+     FOOTER UPDATE REQUIRED (c360-footer):
+     In Column 2 (Marketing Services), add ProCard after Website Pricing:
+       <li><a href="/procard"><i class="fa-solid fa-address-card"></i>ProCard</a></li>
+     ============================================================ -->
+
+
+<!-- ============================================================
+     COMPLETE360 HEADER SEARCH (Command Palette) — v1.1
+     Paste as a SEPARATE GHL custom-code block (header or footer).
+     Standalone: requires the main header (v1.9.x) to be present on the
+     page. Does NOT modify the header markup — it injects its own trigger
+     buttons and builds its result index from the existing mega-menu DOM
+     at runtime, so it stays in sync as cards are added/renamed/flipped.
+
+     Prefix: c360s-  (add to CSS registry: "c360s- = Header search")
+
+     Changes from v1.0:
+     - Pricing menu EXCLUDED from the index (see INDEXED_PANELS). Its cards
+       duplicated Solutions — typing "google" listed products twice — and
+       sales wants results to open the PRODUCT page, not a #pricing anchor.
+       Now indexes Solutions + Industries + Resources. For strictly Solutions,
+       set INDEXED_PANELS = ['solutions'].
+
+     What it does:
+     - Injects a search trigger into .c360-cta-group (desktop) and next to
+       the mobile hamburger.
+     - Keyboard: Cmd/Ctrl+K or "/" opens; Up/Down move; Enter navigates;
+       Esc closes.
+     - Auto-indexes real <a href> inside the indexed mega-menus (skips the
+       bottom .c360-mega-cta cards and the dashed .c360-coming-soon items,
+       which aren't links anyway). Adds a small curated set (Home, Schedule
+       a Demo, Contact) that only exist as CTAs.
+     - Ranks title-starts-with > title-contains > body-contains, highlights
+       the match, shows a category breadcrumb (e.g. Solutions › Get Found
+       Organically).
+
+     If you want the always-visible or expanding-inline variant instead,
+     this is the piece to swap — the index + filtering logic is reusable.
+     ============================================================ -->
+
+<style>
+.c360s-root {
+  --c360s-blue: #122078;
+  --c360s-green: #127825;
+  --c360s-blue-light: #E6F1FB;
+  --c360s-green-light: #EAF3DE;
+  --c360s-grey: #888780;
+  --c360s-grey-light: #F1EFE8;
+  --c360s-text: #0F1F5E;
+  --c360s-text-muted: #5F5E5A;
+  --c360s-border: rgba(0,0,0,0.08);
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+}
+
+/* ---------- Desktop trigger (injected into .c360-cta-group) ---------- */
+.c360s-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--c360s-grey-light);
+  border: 1px solid var(--c360s-border);
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--c360s-text-muted);
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+.c360s-trigger:hover {
+  background: #fff;
+  border-color: rgba(18,32,120,0.25);
+  color: var(--c360s-text);
+}
+.c360s-trigger i { font-size: 13px; color: var(--c360s-grey); }
+.c360s-trigger:hover i { color: var(--c360s-green); }
+.c360s-trigger-label { font-weight: 400; }
+.c360s-kbd {
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--c360s-grey);
+  background: #fff;
+  border: 1px solid var(--c360s-border);
+  border-radius: 5px;
+  padding: 1px 6px;
+  line-height: 1.4;
+}
+/* Collapse to icon-only when the bar gets tight */
+@media (max-width: 1160px) {
+  .c360s-trigger { padding: 8px; }
+  .c360s-trigger-label, .c360s-kbd { display: none; }
+}
+
+/* ---------- Mobile trigger (injected into .c360-mobile-header) ---------- */
+.c360s-mtrigger {
+  background: transparent;
+  border: none;
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 18px;
+  color: var(--c360s-text);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.15s ease;
+}
+.c360s-mtrigger:hover { background: var(--c360s-grey-light); }
+@media (max-width: 991px) { .c360s-mtrigger { display: inline-flex; } }
+
+/* ---------- Overlay + palette ---------- */
+.c360s-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 100000;
+  display: none;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 12vh 20px 20px;
+}
+.c360s-overlay.c360s-open { display: flex; }
+.c360s-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(18,32,120,0.45);
+  backdrop-filter: blur(3px);
+  animation: c360s-fade 0.18s ease;
+}
+.c360s-panel {
+  position: relative;
+  width: 100%;
+  max-width: 600px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 24px 64px rgba(0,0,0,0.28);
+  overflow: hidden;
+  animation: c360s-pop 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  max-height: 70vh;
+}
+
+/* Search input row */
+.c360s-inputwrap {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 18px;
+  border-bottom: 1px solid var(--c360s-border);
+  flex-shrink: 0;
+}
+.c360s-inputwrap > i {
+  font-size: 16px;
+  color: var(--c360s-grey);
+  flex-shrink: 0;
+}
+.c360s-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--c360s-text);
+  background: transparent;
+  padding: 0;
+}
+.c360s-input::placeholder { color: var(--c360s-grey); }
+.c360s-esc {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--c360s-grey);
+  background: var(--c360s-grey-light);
+  border: 1px solid var(--c360s-border);
+  border-radius: 5px;
+  padding: 2px 7px;
+  flex-shrink: 0;
+}
+
+/* Results */
+.c360s-results {
+  overflow-y: auto;
+  padding: 8px;
+  -webkit-overflow-scrolling: touch;
+}
+.c360s-result {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background 0.1s ease;
+}
+.c360s-result:hover,
+.c360s-result.c360s-active {
+  background: var(--c360s-blue-light);
+}
+.c360s-result-icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: var(--c360s-green-light);
+  color: var(--c360s-green);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.c360s-result.c360s-active .c360s-result-icon {
+  background: var(--c360s-blue);
+  color: #fff;
+}
+.c360s-result-text { flex: 1; min-width: 0; }
+.c360s-result-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--c360s-text);
+  margin: 0 0 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.c360s-result-title mark {
+  background: rgba(18,120,37,0.16);
+  color: inherit;
+  padding: 0 1px;
+  border-radius: 3px;
+}
+.c360s-result-meta {
+  font-size: 11px;
+  color: var(--c360s-text-muted);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.c360s-result-crumb { color: var(--c360s-green); font-weight: 500; }
+.c360s-result-arrow {
+  font-size: 12px;
+  color: var(--c360s-grey);
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity 0.1s ease;
+}
+.c360s-result.c360s-active .c360s-result-arrow { opacity: 1; color: var(--c360s-blue); }
+
+/* Empty / hint states */
+.c360s-empty {
+  padding: 32px 18px;
+  text-align: center;
+  color: var(--c360s-text-muted);
+  font-size: 13px;
+}
+.c360s-empty i { font-size: 22px; color: var(--c360s-grey); display: block; margin-bottom: 10px; }
+.c360s-hint {
+  padding: 20px 18px 22px;
+  text-align: center;
+  color: var(--c360s-grey);
+  font-size: 12px;
+}
+
+/* Footer legend */
+.c360s-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 10px 16px;
+  border-top: 1px solid var(--c360s-border);
+  font-size: 11px;
+  color: var(--c360s-grey);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+}
+.c360s-legend span { display: inline-flex; align-items: center; gap: 5px; }
+.c360s-legend kbd {
+  font-family: inherit;
+  font-size: 10px;
+  background: var(--c360s-grey-light);
+  border: 1px solid var(--c360s-border);
+  border-radius: 4px;
+  padding: 1px 5px;
+  color: var(--c360s-text-muted);
+}
+@media (max-width: 520px) {
+  .c360s-overlay { padding: 8vh 12px 12px; }
+  .c360s-legend { display: none; }
+}
+
+/* Force FA icons inside the search UI */
+.c360s-root i.fa-solid, .c360s-overlay i.fa-solid {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+}
+
+@keyframes c360s-fade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes c360s-pop {
+  from { opacity: 0; transform: translateY(-10px) scale(0.98); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+</style>
+
+<!-- Overlay markup (built once; triggers injected via JS) -->
+<div class="c360s-root">
+  <div class="c360s-overlay" id="c360sOverlay" aria-hidden="true">
+    <div class="c360s-backdrop" data-c360s-close></div>
+    <div class="c360s-panel" role="dialog" aria-modal="true" aria-label="Search Complete360">
+      <div class="c360s-inputwrap">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" class="c360s-input" id="c360sInput"
+               placeholder="Search services, pricing, tools…"
+               autocomplete="off" spellcheck="false"
+               aria-label="Search" aria-controls="c360sResults">
+        <span class="c360s-esc" data-c360s-close>Esc</span>
+      </div>
+      <div class="c360s-results" id="c360sResults" role="listbox"></div>
+      <div class="c360s-legend">
+        <span><kbd>↑</kbd><kbd>↓</kbd> Navigate</span>
+        <span><kbd>↵</kbd> Open</span>
+        <span><kbd>Esc</kbd> Close</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  function init() {
+    var header = document.querySelector('.c360-header');
+    var overlay = document.getElementById('c360sOverlay');
+    var input = document.getElementById('c360sInput');
+    var resultsEl = document.getElementById('c360sResults');
+    if (!overlay || !input || !resultsEl) return;
+
+    /* ---------- helpers ---------- */
+    function txt(node) {
+      return node ? node.textContent.replace(/\s+/g, ' ').trim() : '';
+    }
+    function cleanTitle(node) {
+      // clone so we can strip badges/price tags without touching the DOM
+      var c = node.cloneNode(true);
+      c.querySelectorAll('.c360-badge, .c360-price-tag, .c360-new-pill, .c360-soon-pill')
+        .forEach(function (b) { b.remove(); });
+      return txt(c);
+    }
+    function esc(s) {
+      return s.replace(/[&<>"']/g, function (m) {
+        return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m];
+      });
+    }
+    function menuLabel(key) {
+      return ({
+        solutions: 'Solutions',
+        industries: 'Industries',
+        pricing: 'Pricing',
+        resources: 'Resources'
+      })[key] || '';
+    }
+
+    /* ---------- build the index from the mega-menu DOM ---------- */
+    var INDEX = [];
+    (function buildIndex() {
+      var seen = {};
+      function push(item) {
+        if (!item.title || !item.href || item.href === '#') return;
+        var key = item.href + '|' + item.title.toLowerCase();
+        if (seen[key]) return;
+        seen[key] = true;
+        INDEX.push(item);
+      }
+
+      // Which mega-menus feed the search. 'pricing' is intentionally OFF:
+      // its cards duplicate Solutions (e.g. "google" would list a product
+      // twice) and the sales team wants results to land on the PRODUCT page,
+      // not a #pricing anchor. To include a menu, add its data-panel value;
+      // to make search Solutions-only, cut this to ['solutions'].
+      var INDEXED_PANELS = ['solutions', 'industries', 'resources'];
+
+      if (header) {
+        header.querySelectorAll('.c360-mega-menu').forEach(function (menu) {
+          var panelKey = menu.getAttribute('data-panel');
+          if (INDEXED_PANELS.indexOf(panelKey) === -1) return; // skip Pricing (& any not listed)
+          var top = menuLabel(panelKey);
+          menu.querySelectorAll('a[href]').forEach(function (a) {
+            if (a.classList.contains('c360-mega-cta')) return; // skip bottom CTA cards
+            var titleNode =
+              a.querySelector('.c360-card-title') ||
+              a.querySelector('.c360-crm-overview-title');
+            var title = titleNode ? cleanTitle(titleNode) : cleanTitle(a);
+            var descNode =
+              a.querySelector('.c360-card-desc') ||
+              a.querySelector('.c360-crm-overview-desc');
+            var desc = descNode ? txt(descNode) : '';
+            var iconNode = a.querySelector('i.fa-solid, i.fa-regular');
+            var icon = iconNode ? iconNode.className : 'fa-solid fa-arrow-right';
+            var pane = a.closest('.c360-pane');
+            var section = pane ? txt(pane.querySelector('.c360-right-title')) : '';
+            push({
+              title: title, desc: desc, href: a.getAttribute('href'),
+              icon: icon, top: top, section: section
+            });
+          });
+        });
+      }
+
+      // Curated supplements — destinations that only exist as CTAs / logo.
+      [
+        { title: 'Home', href: '/', icon: 'fa-solid fa-house', top: '', section: '' },
+        { title: 'Schedule a Demo', href: '/schedule-demo', icon: 'fa-solid fa-calendar', top: 'Company', section: '' },
+        { title: 'Contact Us', href: '/contact-us', icon: 'fa-solid fa-envelope', top: 'Company', section: '' }
+      ].forEach(function (i) { i.desc = i.desc || ''; push(i); });
+    })();
+
+    /* ---------- search ---------- */
+    function runSearch(q) {
+      q = q.trim().toLowerCase();
+      if (!q) return [];
+      var toks = q.split(/\s+/);
+      var scored = [];
+      INDEX.forEach(function (it) {
+        var hay = (it.title + ' ' + it.desc + ' ' + it.section + ' ' + it.top).toLowerCase();
+        if (!toks.every(function (t) { return hay.indexOf(t) !== -1; })) return;
+        var tl = it.title.toLowerCase();
+        var score = 0;
+        if (tl.indexOf(q) === 0) score = 3;
+        else if (tl.indexOf(q) !== -1) score = 2;
+        else if (tl.indexOf(toks[0]) !== -1) score = 1;
+        scored.push({ it: it, score: score });
+      });
+      scored.sort(function (a, b) {
+        return b.score - a.score || a.it.title.length - b.it.title.length;
+      });
+      return scored.slice(0, 8).map(function (s) { return s.it; });
+    }
+
+    function highlight(title, q) {
+      var i = title.toLowerCase().indexOf(q.trim().toLowerCase());
+      if (i === -1 || !q.trim()) return esc(title);
+      var len = q.trim().length;
+      return esc(title.slice(0, i)) + '<mark>' +
+             esc(title.slice(i, i + len)) + '</mark>' + esc(title.slice(i + len));
+    }
+
+    /* ---------- render ---------- */
+    var current = [];
+    var activeIdx = -1;
+
+    function render(items, q) {
+      current = items;
+      activeIdx = items.length ? 0 : -1;
+      if (!q.trim()) {
+        resultsEl.innerHTML =
+          '<div class="c360s-hint">Start typing to search services, pricing, and tools…</div>';
+        return;
+      }
+      if (!items.length) {
+        resultsEl.innerHTML =
+          '<div class="c360s-empty"><i class="fa-solid fa-magnifying-glass"></i>' +
+          'No matches for “' + esc(q) + '”</div>';
+        return;
+      }
+      resultsEl.innerHTML = items.map(function (it, idx) {
+        var crumb = [it.top, it.section].filter(Boolean).join(' › ');
+        var meta = crumb
+          ? '<span class="c360s-result-crumb">' + esc(crumb) + '</span>' +
+            (it.desc ? ' · ' + esc(it.desc) : '')
+          : esc(it.desc || '');
+        return '<a class="c360s-result' + (idx === 0 ? ' c360s-active' : '') +
+          '" href="' + esc(it.href) + '" role="option" data-idx="' + idx + '">' +
+          '<span class="c360s-result-icon"><i class="' + esc(it.icon) + '"></i></span>' +
+          '<span class="c360s-result-text">' +
+          '<p class="c360s-result-title">' + highlight(it.title, q) + '</p>' +
+          (meta ? '<p class="c360s-result-meta">' + meta + '</p>' : '') +
+          '</span>' +
+          '<i class="fa-solid fa-arrow-right c360s-result-arrow"></i>' +
+          '</a>';
+      }).join('');
+
+      resultsEl.querySelectorAll('.c360s-result').forEach(function (el) {
+        el.addEventListener('mousemove', function () {
+          setActive(parseInt(el.getAttribute('data-idx'), 10));
+        });
+      });
+    }
+
+    function setActive(idx) {
+      var nodes = resultsEl.querySelectorAll('.c360s-result');
+      if (!nodes.length) return;
+      activeIdx = Math.max(0, Math.min(idx, nodes.length - 1));
+      nodes.forEach(function (n, i) {
+        n.classList.toggle('c360s-active', i === activeIdx);
+      });
+      var active = nodes[activeIdx];
+      if (active) active.scrollIntoView({ block: 'nearest' });
+    }
+
+    function go() {
+      if (activeIdx > -1 && current[activeIdx]) {
+        window.location.href = current[activeIdx].href;
+      }
+    }
+
+    /* ---------- open / close ---------- */
+    function open() {
+      overlay.classList.add('c360s-open');
+      overlay.setAttribute('aria-hidden', 'false');
+      document.body.style.overflow = 'hidden';
+      input.value = '';
+      render([], '');
+      setTimeout(function () { input.focus(); }, 30);
+    }
+    function close() {
+      overlay.classList.remove('c360s-open');
+      overlay.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+    function isOpen() { return overlay.classList.contains('c360s-open'); }
+
+    /* ---------- wiring ---------- */
+    input.addEventListener('input', function () {
+      render(runSearch(input.value), input.value);
+    });
+
+    input.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowDown') { e.preventDefault(); setActive(activeIdx + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); setActive(activeIdx - 1); }
+      else if (e.key === 'Enter') { e.preventDefault(); go(); }
+    });
+
+    overlay.querySelectorAll('[data-c360s-close]').forEach(function (el) {
+      el.addEventListener('click', close);
+    });
+
+    // Inject desktop trigger into the CTA group (before Login)
+    var ctaGroup = header && header.querySelector('.c360-cta-group');
+    if (ctaGroup) {
+      var trigger = document.createElement('button');
+      trigger.type = 'button';
+      trigger.className = 'c360s-trigger c360s-root';
+      trigger.setAttribute('aria-label', 'Search');
+      trigger.innerHTML =
+        '<i class="fa-solid fa-magnifying-glass"></i>' +
+        '<span class="c360s-trigger-label">Search</span>' +
+        '<span class="c360s-kbd">⌘K</span>';
+      ctaGroup.insertBefore(trigger, ctaGroup.firstChild);
+      trigger.addEventListener('click', open);
+    }
+
+    // Inject mobile trigger next to the hamburger
+    var mHeader = document.querySelector('.c360-mobile-header');
+    var mToggle = document.getElementById('c360MobileToggle');
+    if (mHeader && mToggle) {
+      var mBtn = document.createElement('button');
+      mBtn.type = 'button';
+      mBtn.className = 'c360s-mtrigger c360s-root';
+      mBtn.setAttribute('aria-label', 'Search');
+      mBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
+      mHeader.insertBefore(mBtn, mToggle);
+      mBtn.addEventListener('click', open);
+    }
+
+    // Global shortcuts: Cmd/Ctrl+K and "/"
+    document.addEventListener('keydown', function (e) {
+      if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+        e.preventDefault();
+        isOpen() ? close() : open();
+        return;
+      }
+      if (e.key === 'Escape' && isOpen()) { close(); return; }
+      if (e.key === '/' && !isOpen()) {
+        var t = e.target;
+        var tag = t && t.tagName ? t.tagName.toLowerCase() : '';
+        if (tag === 'input' || tag === 'textarea' || (t && t.isContentEditable)) return;
+        e.preventDefault();
+        open();
+      }
+    });
+
+    // Swap the ⌘/Ctrl label on non-Mac
+    if (!/Mac|iPhone|iPad|iPod/.test(navigator.platform)) {
+      var kbd = document.querySelector('.c360s-kbd');
+      if (kbd) kbd.textContent = 'Ctrl K';
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', init);
+  } else {
+    init();
+  }
+})();
+</script>
+<!-- ============================================================
+     END COMPLETE360 HEADER SEARCH v1.0
+     ============================================================ -->
