@@ -5,6 +5,9 @@ Complete360 GoHighLevel site. Snippets are pasted directly
 into GHL Custom Code blocks — this repo is not a standalone
 deployable site.
 
+## Start here
+AI agents and new contributors: read `PROJECT.md` first.
+
 ## Structure
 `ai-agents/` holds the prompts for every GHL AI agent (see its README).
 
