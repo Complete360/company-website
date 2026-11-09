@@ -1,6 +1,2307 @@
-<!--
-  PLACEHOLDER: no code yet
-  GHL page: "Reputation Management"
-  Next step: paste this page's custom code from GHL here,
-  or delete this file if the page has no custom code.
--->
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Reputation Management
+     c360-reputation-management-v1.7.html
+     GHL: Paste into Custom Code block on /reputation-management page.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+
+     Built on the same design system as c360-gbp-management-v1.3.2.html
+     (same tokens, buttons, section rhythm, trust bar, pricing, FAQ pattern).
+     Prefix changed to c360-rep- so the two blocks can coexist on one site.
+
+     v1.7 (rev. Aug 24 2026):
+     - CANCELLATION TERMS corrected to the real policy: notice at least 10
+       days before the next billing date (was "30 days notice", which I had
+       assumed). Three places: the cancellation FAQ, the pricing footnote
+       (the window now appears where people are actually deciding, not only
+       in the FAQ), and the Monthly tagline — "cancel anytime" was
+       overstating it once a notice window exists, so it now reads
+       "10 days notice to cancel" and the FAQ no longer has to walk it back.
+     - The FAQ also notes the 10-day window applies to the renewal at the end
+       of a prepaid term. CONFIRM that's right — I extended the rule to
+       prepaid renewals by inference; if prepaid terms auto-renew on
+       different notice, tell me and I'll adjust that clause.
+
+     v1.6 (rev. Aug 24 2026):
+     - PRICING REBUILT on a 10 / 20 / 30% ladder off the $199 base — see the
+       PRICING table below. Quarterly now carries a real discount (it was
+       list price in v1.1–v1.5) so its save-badge is visible for the first
+       time. Plan names changed to Quarterly / Semi-Annual / Annual. Section
+       intro, both price notes, the footnote and two FAQ answers all restate
+       the new figures. Service lists untouched — still identical across all
+       four plans.
+
+     v1.5 (rev. Aug 24 2026):
+     - STICKY FIX. v1.4's sticky column did not pin on the live GHL page.
+       Cause: GHL wraps custom-code blocks in its own section/row/column divs
+       and its themes put overflow-x:hidden on those (and on html/body) to
+       suppress horizontal scrollbars. Any ancestor with overflow:hidden
+       becomes a scroll container, which disables position:sticky inside it
+       silently — no error, it just behaves like static. Removing
+       overflow:hidden from OUR section in v1.4 was necessary but not
+       sufficient; the blocker was above us in GHL's markup.
+       Fix is in two parts, both self-contained in this block:
+         (1) CSS: html, body { overflow-x: clip } — clip suppresses the same
+             scrollbar without creating a scroll container.
+         (2) JS at the bottom of the block: walks the real ancestor chain at
+             runtime and converts overflow:hidden -> clip, clears
+             contain:paint/strict/content, and relaxes fixed heights that
+             leave no travel room. Conservative — genuinely scrollable
+             ancestors are left untouched. Re-runs at 600ms and on load
+             because some GHL themes re-render sections after paint.
+       No content, copy, pricing or layout changed from v1.4.
+
+     v1.4 (rev. Aug 24 2026):
+     - NEGATIVE REVIEW MANAGEMENT: right column now pins to the top of the
+       viewport while you scroll the section, releasing when the section
+       ends. Three things this required:
+         (a) removed overflow:hidden from .c360-rep-shield — it makes the
+             section a scroll container, which kills sticky with no error;
+         (b) .c360-rep-shield-inner align-items: center -> start, so the
+             visual sits at its own height and has room to travel;
+         (c) .c360-rep-shield-visual -> position: sticky + align-self: start.
+       Offset is --rep-sticky-top (100px). Unpinned below 980px (single
+       column) and under 700px viewport height (would clip).
+
+     v1.3 (rev. Aug 24 2026):
+     - THUMBS UP / THUMBS DOWN replaces the star picker everywhere. The hero
+       gate's 5-star row is now two tiles that light in turn on the same 9s
+       loop; fork chips read THUMBS UP / THUMBS DOWN instead of 4–5 / 1–3
+       stars. Copy updated in the hero micro row, trust bar, included list,
+       review card, process step 4, service card, pricing lists (all four
+       still identical) and FAQ 1. New shield callout states the reasoning:
+       binary is a gut reaction, a star grade is a decision, and decisions
+       lose people. Old star keyframes removed.
+
+     v1.2 (rev. Aug 24 2026):
+     - QR code is now TAPPABLE. Wrapped in an anchor to the same URL it encodes,
+       because a phone can't scan a code on its own screen. A "Tap to open"
+       pill shows only on coarse-pointer devices; desktop just sees the code.
+       Anchor carries the aria-label, SVG is aria-hidden so screen readers
+       announce it once.
+
+     v1.1 (rev. Aug 24 2026):
+     - ALL FOUR PLANS NOW LIST THE IDENTICAL SERVICE. The tiered "Everything in
+       X" ladder, priority SLAs, dedicated account manager and strategy sessions
+       are gone — term and price are the only differences. New FAQ states this
+       outright so nobody on the phone has to explain it.
+     - PHYSICAL PRODUCTS REMOVED throughout. The review card is now a digital
+       asset (image + PDF) with a QR code, not a printed card. Counter stands,
+       window decals, card stock and "hand it over at the counter" copy are all
+       gone from the hero, trust bar, included list, tools section, service
+       cards, pricing and FAQ.
+
+     PRICING — v1.6 REBUILT ON A 10 / 20 / 30% DISCOUNT LADDER.
+     Base rate $199/mo. Each term is that rate times the months, less the
+     discount, then rounded to a clean per-month figure so BOTH the total and
+     the effective monthly are whole dollars:
+
+       Plan          List    Discount   Price     Effective   You save
+       Monthly       $199       —       $199      $199/mo        —
+       Quarterly     $597      10%      $537      $179/mo      $60   (10.05%)
+       Semi-Annual  $1,194     20%      $954      $159/mo      $240  (20.10%)
+       Annual       $2,388     30%     $1,668     $139/mo      $720  (30.15%)
+
+     Rounding is at most 0.15% off the exact target — $537.30 -> $537,
+     $955.20 -> $954, $1,671.60 -> $1,668 — chosen so the effective monthly
+     lands on $179 / $159 / $139 instead of $179.10 / $159.20 / $139.30.
+     Annual saving of $720 is 3.6 months free; the card says "over three
+     months free" rather than rounding up to four.
+
+     ⚠️ THESE NO LONGER MATCH THE CMP ORDER FORM. The form's "Easy Reviews"
+     retail column reads $597 / $1,074 / $1,788 (and $1,788 for 12mo PIF).
+     The site now reads $537 / $954 / $1,668. Someone has to update the order
+     form, the checkout, and any live sales quotes, or a rep will quote a
+     price the site contradicts. Flagging because this is a real pricing
+     change, not a copy tweak.
+
+     Plans were also renamed 3/6/12 Months -> Quarterly / Semi-Annual /
+     Annual, matching the GBP page's naming.
+
+     QR CODE: the code on the review-card mock is live and encodes
+       https://complete360.org/reputation-management
+       (33-module symbol, error correction level Q / 25%). On a real client
+       card this would encode THAT client's Google review link instead.
+
+     SIGNATURE ELEMENT: the hero "review gate" — an animated fork showing a
+     4–5★ customer routed to Google and a 1–3★ customer routed privately to the
+     owner's inbox. It's the one piece of motion on the page; everything else is
+     static or a quiet hover.
+     ══════════════════════════════════════════════════════════════ -->
+
+<!-- These two lines let the block render standalone. The global header already
+     loads them, so they're a harmless no-op in GHL — remove if you prefer. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+/* ══════════════════════════════════════════════════════
+   Complete360 Reputation Management  |  Prefix: c360-rep-
+   ══════════════════════════════════════════════════════ */
+
+:root {
+  --rep-navy:        #122078;
+  --rep-navy-dark:   #0d1654;
+  --rep-navy-deeper: #0a1040;
+  --rep-green:       #127825;
+  --rep-green-hover: #0e5e1d;
+  --rep-green-light: #EAF3DE;
+  --rep-blue-light:  #E6F1FB;
+  --rep-gold:        #f5a623;
+  --rep-gold-light:  #FFF8E7;
+  --rep-tint:        #eef4fb;
+  --rep-tint-soft:   #f6f9fd;
+  --rep-card:        #f7faff;
+  --rep-card-border: #e4eaf4;
+  --rep-text:        #0F1F5E;
+  --rep-text-muted:  #5F5E5A;
+  --rep-radius:      12px;
+  --rep-radius-lg:   20px;
+  --rep-shadow:      0 8px 32px rgba(18,32,120,0.13);
+  --rep-shadow-lg:   0 16px 56px rgba(18,32,120,0.18);
+  /* Gap between the top of the viewport and the pinned column in the
+     Negative Review Management section. 100px clears a sticky site header
+     of up to ~90px. If the C360 header is NOT sticky, drop this to ~40px
+     for a tighter pin. */
+  --rep-sticky-top:  100px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+.c360-rep-section   { width: 100%; position: relative; }
+.c360-rep-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* Accessibility floor — visible keyboard focus + reduced motion */
+.c360-rep-section a:focus-visible,
+.c360-rep-section button:focus-visible,
+.c360-rep-section label:focus-visible,
+.c360-rep-partner-badge:focus-visible {
+  outline: 2px solid #2ecc52;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ── BUTTONS ── */
+.c360-rep-btn-primary {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--rep-green); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 700;
+  padding: 15px 28px; border-radius: 8px;
+  text-decoration: none; border: none; cursor: pointer;
+  white-space: nowrap; line-height: 1;
+  box-shadow: 0 4px 20px rgba(18,120,37,0.35);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+.c360-rep-btn-primary:hover {
+  background: var(--rep-green-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(18,120,37,0.45); color: #fff; text-decoration: none;
+}
+.c360-rep-btn-navy {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: var(--rep-navy); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 700;
+  padding: 15px 28px; border-radius: 8px;
+  text-decoration: none; border: none; cursor: pointer;
+  white-space: nowrap; line-height: 1;
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-rep-btn-navy:hover {
+  background: var(--rep-navy-dark); transform: translateY(-2px);
+  color: #fff; text-decoration: none;
+}
+.c360-rep-btn-outline {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: transparent; color: rgba(255,255,255,0.85);
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 600;
+  padding: 14px 24px; border-radius: 8px;
+  text-decoration: none; line-height: 1;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+.c360-rep-btn-outline:hover {
+  border-color: rgba(255,255,255,0.7); color: #fff;
+  background: rgba(255,255,255,0.08); text-decoration: none;
+}
+
+/* ── SECTION HEADER ── */
+.c360-rep-section-header { text-align: center; margin-bottom: 56px; }
+.c360-rep-overline {
+  display: inline-block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--rep-green); margin-bottom: 12px;
+}
+.c360-rep-section-header h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(26px,3.8vw,42px); font-weight: 800;
+  color: var(--rep-text); margin: 0 0 16px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-rep-section-header p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; color: var(--rep-text-muted);
+  max-width: 620px; margin: 0 auto; line-height: 1.65;
+}
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════ */
+.c360-rep-hero {
+  background: linear-gradient(135deg, #09103c 0%, #122078 55%, #0c1960 100%);
+  position: relative; overflow: hidden; padding: 92px 0 80px;
+}
+.c360-rep-hero::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 15% 60%, rgba(18,120,37,0.16) 0%, transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(245,166,35,0.08) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-rep-hero::after {
+  content: ''; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 60px 60px; pointer-events: none;
+}
+.c360-rep-hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1.05fr 0.95fr;
+  gap: 60px; align-items: center;
+}
+
+/* Hero left */
+.c360-rep-hero-badge {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(18,120,37,0.18); border: 1px solid rgba(18,120,37,0.36);
+  color: #7ddc80;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 600; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 6px 14px;
+  border-radius: 100px; margin-bottom: 22px;
+}
+.c360-rep-hero h1 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(34px,4.8vw,58px); font-weight: 800;
+  line-height: 1.07; color: #fff; margin: 0 0 20px;
+  letter-spacing: -0.025em;
+}
+.c360-rep-hero h1 span { color: #2ecc52; }
+.c360-rep-hero-sub {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; font-weight: 400; color: rgba(255,255,255,0.72);
+  line-height: 1.65; margin: 0 0 32px; max-width: 520px;
+}
+.c360-rep-hero-actions {
+  display: flex; align-items: center; gap: 14px;
+  flex-wrap: wrap; margin-bottom: 30px;
+}
+.c360-rep-hero-micro {
+  display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+  margin-bottom: 30px;
+}
+.c360-rep-micro-item {
+  display: flex; align-items: center; gap: 7px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500;
+}
+.c360-rep-micro-item i { color: #2ecc52; }
+
+/* ── Hero credentials cluster (official Google Partner badge + credentials) ──
+   Same §1d dark-bg treatment as the GBP page: official gstatic snippet only,
+   height set / width auto, no white chip, no radius wrapper, clear space >=
+   1/2 badge height provided by the divider margin. Do not repack that gap. */
+.c360-rep-hero-creds {
+  display: flex; align-items: center; gap: 4px;
+  flex-wrap: wrap;
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+.c360-rep-partner-badge {
+  display: inline-block; line-height: 0; flex-shrink: 0;
+  margin: 0; padding: 0;
+  transition: transform 0.15s ease;
+  border: 0; outline: none; box-shadow: none; text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.c360-rep-partner-badge:hover { transform: translateY(-2px); }
+.c360-rep-partner-badge img {
+  display: block;
+  height: 104px;         /* set height only — never both */
+  width: auto;
+  max-width: none;
+  filter: drop-shadow(0 14px 30px rgba(0,0,0,0.42));
+  border: 0; outline: none; box-shadow: none;
+}
+.c360-rep-cred-divider {
+  width: 1px; align-self: stretch; min-height: 104px;
+  background: rgba(255,255,255,0.14);
+  flex-shrink: 0;
+  margin: 0 52px;        /* >= 1/2 badge height of clear space each side */
+}
+.c360-rep-cred-list {
+  display: flex; flex-direction: column; justify-content: space-between;
+  min-height: 104px; gap: 10px;
+}
+.c360-rep-cred-item {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: rgba(255,255,255,0.72); font-weight: 500;
+  line-height: 1.3; white-space: nowrap;
+}
+.c360-rep-cred-item i { color: #2ecc52; font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
+.c360-rep-policy-note {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10.5px; color: rgba(255,255,255,0.4);
+  line-height: 1.4; margin: 14px 0 0; max-width: 420px;
+}
+
+/* ══ Hero right — THE REVIEW GATE (signature element) ══
+   One customer, two paths. A happy customer is routed to Google; an unhappy
+   one is routed to the owner's inbox first. The whole thing runs on one
+   orchestrated 9s loop so the two outcomes read in sequence, not at once. */
+.c360-rep-hero-visual {
+  background: rgba(255,255,255,0.055);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--rep-radius-lg); padding: 26px;
+  backdrop-filter: blur(10px);
+}
+.c360-rep-hero-visual-title {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.38);
+  margin-bottom: 18px;
+}
+.c360-rep-gate { display: flex; flex-direction: column; gap: 12px; }
+
+/* Step 1 — the request that goes out */
+.c360-rep-gate-msg {
+  display: flex; align-items: flex-start; gap: 11px;
+  background: #fff; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.32);
+}
+.c360-rep-gate-msg-ico {
+  width: 32px; height: 32px; border-radius: 9px; flex-shrink: 0;
+  background: var(--rep-green-light); color: var(--rep-green);
+  display: flex; align-items: center; justify-content: center; font-size: 13px;
+}
+.c360-rep-gate-msg-body { min-width: 0; }
+.c360-rep-gate-msg-from {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: #8a94a3; margin-bottom: 3px;
+}
+.c360-rep-gate-msg-text {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: #1a2233; font-weight: 500; line-height: 1.45;
+}
+.c360-rep-gate-msg-text b { color: var(--rep-green); font-weight: 700; }
+
+/* Step 2 — the thumbs prompt.
+   Deliberately two choices, not five stars. A star picker makes the customer
+   stop and grade you; thumbs up / thumbs down is a gut reaction they answer
+   without thinking, which is why more of them answer at all. The two tiles
+   light up in turn on the same 9s loop that drives the fork below. */
+.c360-rep-gate-rating {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 12px; padding: 15px 14px; text-align: center;
+}
+.c360-rep-gate-rating-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; color: rgba(255,255,255,0.55); font-weight: 600;
+  margin-bottom: 11px;
+}
+.c360-rep-gate-choice { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.c360-rep-gate-thumb {
+  display: flex; flex-direction: column; align-items: center; gap: 7px;
+  padding: 13px 10px; border-radius: 11px;
+  border: 1.5px solid rgba(255,255,255,0.16);
+  background: rgba(255,255,255,0.05);
+  color: rgba(255,255,255,0.32);
+  animation: c360repThumbUp 9s ease-in-out infinite;
+  will-change: transform;
+}
+.c360-rep-gate-thumb--down { animation-name: c360repThumbDown; }
+.c360-rep-gate-thumb i { font-size: 23px; color: currentColor; line-height: 1; }
+.c360-rep-gate-thumb span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; color: currentColor;
+}
+
+/* the fork */
+.c360-rep-gate-fork {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+}
+.c360-rep-gate-path {
+  border-radius: 12px; padding: 13px 12px;
+  border: 1px solid rgba(255,255,255,0.13);
+  background: rgba(255,255,255,0.06);
+  position: relative;
+  animation: c360repPathA 9s ease-in-out infinite;
+}
+.c360-rep-gate-path--private { animation-name: c360repPathB; }
+.c360-rep-gate-path-head {
+  display: flex; align-items: center; gap: 7px; margin-bottom: 8px;
+}
+.c360-rep-gate-path-chip {
+  display: inline-flex; align-items: center; gap: 4px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.05em;
+  padding: 3px 8px; border-radius: 5px; white-space: nowrap;
+}
+.c360-rep-gate-path--public .c360-rep-gate-path-chip {
+  background: rgba(46,204,82,0.18); color: #2ecc52;
+}
+.c360-rep-gate-path--private .c360-rep-gate-path-chip {
+  background: rgba(245,166,35,0.18); color: var(--rep-gold);
+}
+.c360-rep-gate-path-title {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 5px;
+}
+.c360-rep-gate-path-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10.5px; color: rgba(255,255,255,0.5); line-height: 1.5;
+}
+.c360-rep-gate-path-dest {
+  display: flex; align-items: center; gap: 6px; margin-top: 9px;
+  padding-top: 9px; border-top: 1px solid rgba(255,255,255,0.1);
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10.5px; font-weight: 600; color: rgba(255,255,255,0.7);
+}
+.c360-rep-gate-path--public .c360-rep-gate-path-dest i { color: #2ecc52; }
+.c360-rep-gate-path--private .c360-rep-gate-path-dest i { color: var(--rep-gold); }
+
+/* Step 3 — the auto-response that lands under the public review */
+.c360-rep-gate-reply {
+  background: #fff; border-radius: 12px; padding: 12px 14px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.28);
+}
+.c360-rep-gate-reply-top {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 7px;
+}
+.c360-rep-gate-reply-av {
+  width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+  background: linear-gradient(135deg,#1aa53a,#0d5e1c); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Poppins','Helvetica Neue',sans-serif; font-size: 10px; font-weight: 700;
+}
+.c360-rep-gate-reply-name {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; font-weight: 700; color: #1a2233;
+}
+.c360-rep-gate-reply-stars { display: flex; gap: 2px; margin-left: auto; }
+.c360-rep-gate-reply-stars i { font-size: 9px; color: var(--rep-gold); }
+.c360-rep-gate-reply-quote {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; color: #3a4658; line-height: 1.5; margin-bottom: 9px;
+}
+.c360-rep-gate-reply-owner {
+  border-left: 3px solid var(--rep-green);
+  background: rgba(18,120,37,0.07);
+  border-radius: 0 7px 7px 0; padding: 8px 10px;
+}
+.c360-rep-gate-reply-owner-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 9px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--rep-green);
+  display: flex; align-items: center; gap: 5px; margin-bottom: 4px;
+}
+.c360-rep-gate-reply-owner-text {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; color: #4a5568; line-height: 1.5;
+}
+.c360-rep-typing {
+  display: inline-block; width: 0; overflow: hidden; white-space: nowrap;
+  vertical-align: bottom;
+  animation: c360repType 9s steps(46, end) infinite;
+}
+
+@keyframes c360repThumbUp {
+  0%, 6%, 50%, 100% {
+    color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.16); transform: scale(1); box-shadow: none;
+  }
+  12%, 44% {
+    color: #2ecc52; background: rgba(18,120,37,0.16);
+    border-color: rgba(46,204,82,0.55); transform: scale(1.045);
+    box-shadow: 0 9px 24px rgba(18,120,37,0.3);
+  }
+}
+@keyframes c360repThumbDown {
+  0%, 52%, 92%, 100% {
+    color: rgba(255,255,255,0.32); background: rgba(255,255,255,0.05);
+    border-color: rgba(255,255,255,0.16); transform: scale(1); box-shadow: none;
+  }
+  58%, 86% {
+    color: #f5a623; background: rgba(245,166,35,0.15);
+    border-color: rgba(245,166,35,0.5); transform: scale(1.045);
+    box-shadow: 0 9px 24px rgba(245,166,35,0.24);
+  }
+}
+@keyframes c360repPathA {
+  0%, 20%, 52%, 100% { border-color: rgba(255,255,255,0.13); background: rgba(255,255,255,0.06); box-shadow: none; transform: translateY(0); }
+  26%, 46%           { border-color: rgba(46,204,82,0.5);   background: rgba(18,120,37,0.14); box-shadow: 0 10px 26px rgba(18,120,37,0.28); transform: translateY(-3px); }
+}
+@keyframes c360repPathB {
+  0%, 56%, 88%, 100% { border-color: rgba(255,255,255,0.13); background: rgba(255,255,255,0.06); box-shadow: none; transform: translateY(0); }
+  62%, 82%           { border-color: rgba(245,166,35,0.5);  background: rgba(245,166,35,0.13); box-shadow: 0 10px 26px rgba(245,166,35,0.22); transform: translateY(-3px); }
+}
+@keyframes c360repType {
+  0%, 28%   { width: 0; }
+  44%, 100% { width: 100%; }
+}
+
+/* Stat pills (shared) */
+.c360-rep-stat-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; }
+.c360-rep-stat-pill {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 10px; padding: 12px 10px; text-align: center;
+}
+.c360-rep-stat-val {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 20px; font-weight: 800; color: #2ecc52; line-height: 1;
+  margin-bottom: 3px;
+}
+.c360-rep-stat-lbl {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; color: rgba(255,255,255,0.45); font-weight: 500;
+}
+
+/* ══════════════════════════════════════════════════════
+   TRUST BAR
+   ══════════════════════════════════════════════════════ */
+.c360-rep-trust-bar { background: #fff; border-bottom: 1px solid #e5e3dc; }
+.c360-rep-trust-bar-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+.c360-rep-trust-pill {
+  display: flex; align-items: center; gap: 12px;
+  padding: 18px 24px; border-right: 1px solid #e5e3dc; transition: background 0.18s;
+}
+.c360-rep-trust-pill:last-child { border-right: none; }
+.c360-rep-trust-pill:hover { background: var(--rep-blue-light); }
+.c360-rep-trust-ico {
+  width: 38px; height: 38px; background: var(--rep-blue-light);
+  border-radius: 9px; display: flex; align-items: center;
+  justify-content: center; color: var(--rep-navy); font-size: 16px; flex-shrink: 0;
+}
+.c360-rep-trust-ico.green { background: var(--rep-green-light); color: var(--rep-green); }
+.c360-rep-trust-ico.gold  { background: var(--rep-gold-light); color: var(--rep-gold); }
+.c360-rep-trust-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; color: var(--rep-text); line-height: 1.2;
+}
+.c360-rep-trust-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: var(--rep-text-muted);
+}
+
+/* ══════════════════════════════════════════════════════
+   FREE REPORT / AUDIT WIDGET
+   ══════════════════════════════════════════════════════ */
+.c360-rep-audit {
+  padding: 80px 0;
+  background:
+    radial-gradient(circle at 88% 90%, rgba(18,120,37,0.06) 0%, transparent 42%),
+    linear-gradient(180deg, #eaf3fc 0%, var(--rep-blue-light) 100%);
+  border-bottom: 1px solid #d0e6f7;
+}
+.c360-rep-audit-inner {
+  display: grid; grid-template-columns: 1fr 1.1fr;
+  gap: 64px; align-items: center;
+}
+.c360-rep-audit-copy h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(22px,3.2vw,36px); font-weight: 800;
+  color: var(--rep-text); margin: 0 0 16px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-rep-audit-copy p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; color: var(--rep-text-muted);
+  line-height: 1.7; margin-bottom: 24px;
+}
+.c360-rep-audit-bullets { display: flex; flex-direction: column; gap: 10px; }
+.c360-rep-audit-bullet {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; font-weight: 500; color: var(--rep-text);
+}
+.c360-rep-audit-bullet i { color: var(--rep-green); font-size: 13px; flex-shrink: 0; }
+.c360-rep-audit-widget {
+  background: #fff;
+  border-radius: var(--rep-radius-lg);
+  box-shadow: var(--rep-shadow-lg);
+  overflow: hidden;
+  min-height: 200px;
+}
+
+/* ══════════════════════════════════════════════════════
+   INTRO / WHAT WE DO
+   ══════════════════════════════════════════════════════ */
+.c360-rep-intro {
+  padding: 88px 0;
+  background:
+    radial-gradient(circle at 92% 4%, rgba(18,120,37,0.06) 0%, transparent 42%),
+    #ffffff;
+}
+.c360-rep-intro-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start;
+}
+.c360-rep-intro-inner .c360-rep-intro-copy { order: 2; }
+.c360-rep-intro-copy h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(24px,3.4vw,38px); font-weight: 800;
+  color: var(--rep-text); margin: 0 0 18px;
+  line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-rep-intro-copy h2 span { color: var(--rep-green); }
+.c360-rep-intro-copy p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; color: var(--rep-text-muted);
+  line-height: 1.72; margin-bottom: 20px;
+}
+.c360-rep-intro-copy p:last-of-type { margin-bottom: 28px; }
+.c360-rep-alert-box {
+  background: var(--rep-green-light);
+  border: 1px solid rgba(18,120,37,0.25);
+  border-left: 4px solid var(--rep-green);
+  border-radius: 0 10px 10px 0;
+  padding: 16px 18px; margin-bottom: 28px;
+  display: flex; align-items: flex-start; gap: 12px;
+}
+.c360-rep-alert-box i { color: var(--rep-green); font-size: 16px; margin-top: 2px; flex-shrink: 0; }
+.c360-rep-alert-box p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: var(--rep-text); font-weight: 500;
+  line-height: 1.55; margin: 0;
+}
+.c360-rep-included-grid {
+  display: flex; flex-direction: column; gap: 0;
+  background: var(--rep-card);
+  border: 1.5px solid var(--rep-card-border); border-radius: var(--rep-radius);
+  overflow: hidden;
+  box-shadow: var(--rep-shadow);
+}
+.c360-rep-included-header {
+  background: var(--rep-navy); padding: 14px 20px;
+  display: flex; align-items: center; gap: 10px;
+}
+.c360-rep-included-header span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+}
+.c360-rep-included-header i { color: #2ecc52; }
+.c360-rep-included-item {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 13px 20px; border-bottom: 1px solid var(--rep-card-border);
+}
+.c360-rep-included-item:last-child { border-bottom: none; }
+.c360-rep-included-item i {
+  color: var(--rep-green); font-size: 12px; margin-top: 3px; flex-shrink: 0;
+}
+.c360-rep-included-item span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: var(--rep-text); font-weight: 500; line-height: 1.5;
+}
+.c360-rep-included-item span em {
+  display: block; font-style: normal;
+  font-size: 12px; color: var(--rep-text-muted); font-weight: 400; margin-top: 1px;
+}
+
+/* ══════════════════════════════════════════════════════
+   REVIEW CARD + QR (light section, two-up)
+   ══════════════════════════════════════════════════════ */
+.c360-rep-tools {
+  padding: 88px 0;
+  background:
+    radial-gradient(circle at 12% 88%, rgba(18,32,120,0.06) 0%, transparent 46%),
+    linear-gradient(180deg, var(--rep-tint-soft) 0%, var(--rep-tint) 100%);
+}
+.c360-rep-tools-inner {
+  display: grid; grid-template-columns: 0.95fr 1.05fr;
+  gap: 64px; align-items: center;
+}
+.c360-rep-tools-copy h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(24px,3.4vw,38px); font-weight: 800;
+  color: var(--rep-text); margin: 0 0 18px; line-height: 1.15; letter-spacing: -0.02em;
+}
+.c360-rep-tools-copy h2 span { color: var(--rep-green); }
+.c360-rep-tools-copy p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; color: var(--rep-text-muted); line-height: 1.72; margin-bottom: 24px;
+}
+.c360-rep-tools-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 30px; }
+.c360-rep-tool-row { display: flex; align-items: flex-start; gap: 13px; }
+.c360-rep-tool-ico {
+  width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+  background: #fff; border: 1.5px solid var(--rep-card-border);
+  color: var(--rep-navy); font-size: 15px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 4px 14px rgba(18,32,120,0.07);
+}
+.c360-rep-tool-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14.5px; font-weight: 700; color: var(--rep-text); margin-bottom: 3px;
+}
+.c360-rep-tool-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; color: var(--rep-text-muted); line-height: 1.6;
+}
+
+/* the physical card mock */
+.c360-rep-cardstack { position: relative; display: flex; justify-content: center; }
+.c360-rep-reviewcard {
+  width: 100%; max-width: 430px;
+  background: linear-gradient(150deg, #122078 0%, #0d1654 60%, #0a1040 100%);
+  border-radius: 16px; padding: 26px 26px 22px;
+  box-shadow: 0 24px 60px rgba(10,16,64,0.35);
+  position: relative; overflow: hidden;
+}
+.c360-rep-reviewcard::after {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 85% 8%, rgba(46,204,82,0.16) 0%, transparent 48%);
+  pointer-events: none;
+}
+.c360-rep-reviewcard-top {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 14px; margin-bottom: 18px; position: relative; z-index: 2;
+}
+.c360-rep-reviewcard-biz {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; font-weight: 800; color: #fff; letter-spacing: -0.01em;
+}
+.c360-rep-reviewcard-tag {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; font-weight: 600; color: rgba(255,255,255,0.45);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px;
+}
+.c360-rep-reviewcard-stars { display: flex; gap: 3px; }
+.c360-rep-reviewcard-stars i { color: var(--rep-gold); font-size: 12px; }
+.c360-rep-reviewcard-body {
+  display: flex; align-items: center; gap: 20px; position: relative; z-index: 2;
+}
+/* The QR is a real link — on a phone the code can't be scanned by the same
+   device that's displaying it, so tapping it goes to the same URL the code
+   encodes. Sized well past the 44px minimum tap target. */
+.c360-rep-qr {
+  display: block; width: 122px; height: 122px; flex-shrink: 0;
+  background: #fff; border-radius: 12px; padding: 9px;
+  box-shadow: 0 10px 26px rgba(0,0,0,0.3);
+  text-decoration: none; border: 0; line-height: 0;
+  position: relative; cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.c360-rep-qr:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 34px rgba(0,0,0,0.38);
+  text-decoration: none;
+}
+.c360-rep-qr:active { transform: translateY(-1px); }
+.c360-rep-qr svg { display: block; width: 100%; height: 100%; }
+/* "Tap" hint — shown only on touch/coarse-pointer devices, where scanning
+   your own screen isn't possible. Desktop users just see the code. */
+.c360-rep-qr-tap {
+  display: none;
+  position: absolute; left: 50%; bottom: -11px; transform: translateX(-50%);
+  background: var(--rep-green); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 9.5px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; white-space: nowrap;
+  padding: 3px 10px; border-radius: 100px; line-height: 1.35;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+@media (hover: none) and (pointer: coarse) {
+  .c360-rep-qr-tap { display: block; }
+}
+.c360-rep-reviewcard-ask {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 17px; font-weight: 700; color: #fff; line-height: 1.25; margin-bottom: 8px;
+}
+.c360-rep-reviewcard-ask span { color: #2ecc52; }
+.c360-rep-reviewcard-sub {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: rgba(255,255,255,0.55); line-height: 1.55;
+}
+.c360-rep-reviewcard-foot {
+  margin-top: 18px; padding-top: 14px; position: relative; z-index: 2;
+  border-top: 1px solid rgba(255,255,255,0.12);
+  display: flex; align-items: center; gap: 8px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10.5px; color: rgba(255,255,255,0.4);
+}
+.c360-rep-reviewcard-foot i { color: #2ecc52; }
+.c360-rep-card-note {
+  text-align: center; margin-top: 16px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: var(--rep-text-muted);
+}
+
+/* ══════════════════════════════════════════════════════
+   NEGATIVE REVIEW MANAGEMENT (dark)
+   ══════════════════════════════════════════════════════ */
+.c360-rep-shield {
+  padding: 88px 0;
+  background: linear-gradient(135deg, #06092a 0%, #0d1654 55%, #0a1a40 100%);
+  position: relative;
+  /* NOTE: no overflow:hidden here — it would turn this into a scroll
+     container and silently break the sticky column below. The ::before
+     glow is inset:0, so there was nothing to clip anyway. */
+}
+.c360-rep-shield::before {
+  content: ''; position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 80% 20%, rgba(245,166,35,0.10) 0%, transparent 48%),
+    radial-gradient(circle at 10% 80%, rgba(18,120,37,0.12) 0%, transparent 44%);
+  pointer-events: none;
+}
+.c360-rep-shield-inner {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start; position: relative; z-index: 2;
+}
+.c360-rep-shield-copy .c360-rep-overline { color: #2ecc52; }
+.c360-rep-shield-h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(24px,3.4vw,38px); font-weight: 800;
+  color: #fff; margin: 0 0 18px; line-height: 1.12; letter-spacing: -0.02em;
+}
+.c360-rep-shield-h2 span { color: #2ecc52; }
+.c360-rep-shield-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; color: rgba(255,255,255,0.65);
+  line-height: 1.7; margin-bottom: 28px;
+}
+.c360-rep-shield-callout {
+  display: flex; align-items: flex-start; gap: 14px;
+  background: rgba(245,166,35,0.1); border: 1px solid rgba(245,166,35,0.28);
+  border-radius: var(--rep-radius); padding: 18px 20px; margin-bottom: 28px;
+}
+.c360-rep-shield-callout-ico {
+  width: 42px; height: 42px; flex-shrink: 0;
+  background: rgba(245,166,35,0.2); border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--rep-gold); font-size: 18px;
+}
+.c360-rep-shield-callout strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; font-weight: 700; color: var(--rep-gold); margin-bottom: 6px;
+}
+.c360-rep-shield-callout span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.6); line-height: 1.6;
+}
+.c360-rep-shield-points { display: flex; flex-direction: column; gap: 12px; margin-bottom: 30px; }
+.c360-rep-shield-point {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: rgba(255,255,255,0.72); line-height: 1.55; font-weight: 500;
+}
+.c360-rep-shield-point i { color: #2ecc52; font-size: 12px; margin-top: 4px; flex-shrink: 0; }
+
+/* right — the private feedback capture mock */
+/* Pinned column. The left copy is roughly twice as tall as this, so the
+   visual holds at the top of the viewport while the reader works down the
+   copy, then releases and scrolls away with the section. align-self:start
+   keeps this box at its own content height — a stretched grid item fills
+   the row and has nowhere to travel. */
+.c360-rep-shield-visual {
+  display: flex; flex-direction: column; gap: 12px;
+  position: sticky; top: var(--rep-sticky-top);
+  align-self: start;
+  z-index: 2;
+}
+.c360-rep-feedback-card {
+  background: #fff; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 18px 46px rgba(0,0,0,0.34);
+}
+.c360-rep-feedback-head {
+  padding: 14px 18px; border-bottom: 1px solid #eef0f4;
+  display: flex; align-items: center; gap: 10px;
+}
+.c360-rep-feedback-head-ico {
+  width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0;
+  background: var(--rep-gold-light); color: var(--rep-gold);
+  display: flex; align-items: center; justify-content: center; font-size: 13px;
+}
+.c360-rep-feedback-head-text strong {
+  display: block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; font-weight: 700; color: #1a2233;
+}
+.c360-rep-feedback-head-text span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10.5px; color: #8a94a3;
+}
+.c360-rep-feedback-body { padding: 16px 18px; }
+.c360-rep-feedback-q {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 600; color: #1a2233; margin-bottom: 10px;
+}
+.c360-rep-feedback-field {
+  background: #f4f6fa; border: 1px solid #e3e7ee; border-radius: 9px;
+  padding: 11px 13px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: #5a6473; line-height: 1.55; margin-bottom: 12px;
+}
+.c360-rep-feedback-route {
+  display: flex; align-items: center; gap: 9px;
+  background: var(--rep-green-light); border: 1px solid rgba(18,120,37,0.22);
+  border-radius: 9px; padding: 10px 12px;
+}
+.c360-rep-feedback-route i { color: var(--rep-green); font-size: 13px; }
+.c360-rep-feedback-route span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; font-weight: 600; color: #14532a; line-height: 1.45;
+}
+.c360-rep-shield-stat {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 12px; padding: 16px 20px;
+}
+.c360-rep-shield-stat-num {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 28px; font-weight: 800; color: #2ecc52; line-height: 1;
+}
+.c360-rep-shield-stat-lbl {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: rgba(255,255,255,0.55); line-height: 1.45; margin-top: 3px;
+}
+
+/* ══════════════════════════════════════════════════════
+   HOW IT WORKS
+   ══════════════════════════════════════════════════════ */
+.c360-rep-process {
+  padding: 88px 0;
+  background:
+    radial-gradient(circle at 88% 12%, rgba(18,32,120,0.06) 0%, transparent 46%),
+    #ffffff;
+}
+.c360-rep-process-steps {
+  display: grid; grid-template-columns: repeat(5, 1fr);
+  gap: 0; position: relative; margin-top: 16px;
+}
+.c360-rep-process-steps::before {
+  content: ''; position: absolute;
+  top: 44px; left: 10%; right: 10%; height: 2px;
+  background: linear-gradient(90deg, var(--rep-navy) 0%, var(--rep-green) 100%);
+  z-index: 0;
+}
+.c360-rep-step {
+  display: flex; flex-direction: column; align-items: center;
+  text-align: center; padding: 0 12px; position: relative; z-index: 1;
+}
+.c360-rep-step-num {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--rep-navy);
+  border: 3px solid var(--rep-green-light);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 18px; margin-bottom: 18px; flex-shrink: 0;
+  box-shadow: 0 4px 16px rgba(18,32,120,0.2);
+}
+.c360-rep-step:last-child .c360-rep-step-num { background: var(--rep-green); }
+.c360-rep-step-label {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; font-weight: 700; color: var(--rep-text);
+  margin-bottom: 8px; line-height: 1.3;
+}
+.c360-rep-step-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: var(--rep-text-muted); line-height: 1.55;
+}
+
+/* ══════════════════════════════════════════════════════
+   SERVICE DETAIL CARDS
+   ══════════════════════════════════════════════════════ */
+.c360-rep-services {
+  padding: 88px 0;
+  background:
+    radial-gradient(circle at 85% 12%, rgba(18,120,37,0.05) 0%, transparent 40%),
+    linear-gradient(180deg, var(--rep-tint) 0%, #ffffff 100%);
+}
+.c360-rep-services-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px;
+}
+.c360-rep-service-card {
+  background: #fff;
+  border: 1.5px solid var(--rep-card-border); border-radius: var(--rep-radius-lg);
+  padding: 28px 24px;
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+.c360-rep-service-card:hover {
+  border-color: rgba(18,120,37,0.3);
+  box-shadow: var(--rep-shadow); transform: translateY(-3px);
+}
+.c360-rep-svc-ico {
+  width: 48px; height: 48px; border-radius: 12px;
+  background: var(--rep-navy); color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 19px; margin-bottom: 16px; flex-shrink: 0;
+  transition: background 0.2s;
+}
+.c360-rep-service-card:hover .c360-rep-svc-ico { background: var(--rep-green); }
+.c360-rep-svc-title {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 16px; font-weight: 700; color: var(--rep-text); margin-bottom: 10px;
+}
+.c360-rep-svc-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13.5px; color: var(--rep-text-muted); line-height: 1.65;
+}
+
+/* ══════════════════════════════════════════════════════
+   PRICING
+   ══════════════════════════════════════════════════════ */
+.c360-rep-pricing {
+  padding: 88px 0;
+  background: linear-gradient(135deg, #09103c 0%, #122078 58%, #0c1960 100%);
+  position: relative; overflow: hidden;
+}
+.c360-rep-pricing::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(18,120,37,0.2) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-rep-pricing .c360-rep-section-header h2 { color: #fff; }
+.c360-rep-pricing .c360-rep-section-header p  { color: rgba(255,255,255,0.6); }
+.c360-rep-pricing .c360-rep-overline           { color: #2ecc52; }
+.c360-rep-price-cards {
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 18px; position: relative; z-index: 2; align-items: stretch;
+}
+.c360-rep-price-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--rep-radius-lg); padding: 30px 24px;
+  position: relative; transition: background 0.22s, border-color 0.22s, transform 0.22s;
+  display: flex; flex-direction: column;
+}
+.c360-rep-price-card:hover {
+  background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.22);
+  transform: translateY(-3px);
+}
+.c360-rep-price-card--popular {
+  background: rgba(255,255,255,0.1);
+  border: 2px solid rgba(46,204,82,0.55);
+  box-shadow: 0 0 0 4px rgba(46,204,82,0.08);
+}
+.c360-rep-price-card--popular:hover { transform: translateY(-5px); }
+.c360-rep-popular-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--rep-green); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
+  text-transform: uppercase; padding: 5px 16px; border-radius: 100px;
+  white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;
+}
+.c360-rep-plan-name {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 8px;
+}
+.c360-rep-plan-tagline {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 20px;
+  line-height: 1.4; min-height: 36px;
+}
+.c360-rep-price-row { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px; }
+.c360-rep-price-dollar {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 20px; font-weight: 700; color: rgba(255,255,255,0.6); padding-bottom: 10px;
+}
+.c360-rep-price-num {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 46px; font-weight: 800; color: #fff; line-height: 1; letter-spacing: -0.03em;
+}
+.c360-rep-price-period {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: rgba(255,255,255,0.4); padding-bottom: 10px;
+}
+.c360-rep-price-effective {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 500; margin-bottom: 10px;
+}
+.c360-rep-price-effective.invisible { visibility: hidden; }
+.c360-rep-price-save {
+  display: inline-block;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; color: #2ecc52; font-weight: 700;
+  background: rgba(46,204,82,0.12); border: 1px solid rgba(46,204,82,0.25);
+  border-radius: 100px; padding: 3px 10px; margin-bottom: 22px;
+}
+.c360-rep-price-save.invisible { visibility: hidden; }
+.c360-rep-price-divider { height: 1px; background: rgba(255,255,255,0.1); margin-bottom: 22px; }
+.c360-rep-price-features {
+  list-style: none; margin: 0 0 28px; padding: 0;
+  display: flex; flex-direction: column; gap: 10px; flex: 1;
+}
+.c360-rep-price-features li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.72);
+  line-height: 1.45; font-weight: 500;
+}
+.c360-rep-price-features li i { color: #2ecc52; margin-top: 2px; flex-shrink: 0; font-size: 11px; }
+.c360-rep-price-note {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 11.5px; color: rgba(255,255,255,0.35);
+  margin-bottom: 20px; padding-top: 4px;
+  display: flex; align-items: center; gap: 5px;
+}
+.c360-rep-price-note i { font-size: 11px; }
+.c360-rep-price-btn {
+  display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 20px; border-radius: 8px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; font-weight: 700; text-decoration: none;
+  border: none; cursor: pointer; white-space: nowrap; line-height: 1;
+  transition: background 0.2s, transform 0.15s;
+}
+.c360-rep-price-btn--outline {
+  background: transparent; color: rgba(255,255,255,0.8);
+  border: 1.5px solid rgba(255,255,255,0.25);
+}
+.c360-rep-price-btn--outline:hover {
+  border-color: rgba(255,255,255,0.6); color: #fff;
+  background: rgba(255,255,255,0.07); text-decoration: none; transform: translateY(-2px);
+}
+.c360-rep-price-btn--green {
+  background: var(--rep-green); color: #fff;
+  box-shadow: 0 4px 18px rgba(18,120,37,0.4);
+}
+.c360-rep-price-btn--green:hover {
+  background: var(--rep-green-hover); transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(18,120,37,0.5); color: #fff; text-decoration: none;
+}
+.c360-rep-pricing-foot { text-align: center; margin-top: 42px; position: relative; z-index: 2; }
+.c360-rep-pricing-foot p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 13px; color: rgba(255,255,255,0.38); margin: 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   REVIEWS
+   ══════════════════════════════════════════════════════ */
+.c360-rep-reviews {
+  padding: 88px 0;
+  background: linear-gradient(180deg, var(--rep-tint) 0%, #ffffff 100%);
+}
+
+/* ══════════════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════════════ */
+.c360-rep-faq { padding: 88px 0; background: #fff; border-top: 1px solid #e5e3dc; }
+.c360-rep-faq-list { max-width: 800px; margin: 0 auto; display: flex; flex-direction: column; gap: 0; }
+.c360-rep-faq-toggle { display: none; }
+.c360-rep-faq-item { border-bottom: 1px solid #e5e3dc; }
+.c360-rep-faq-item:first-child { border-top: 1px solid #e5e3dc; }
+.c360-rep-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 22px 6px; cursor: pointer; gap: 16px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15.5px; font-weight: 600; color: var(--rep-text);
+  line-height: 1.4; transition: color 0.18s; user-select: none; list-style: none;
+}
+.c360-rep-faq-q:hover { color: var(--rep-navy); }
+.c360-rep-faq-icon {
+  width: 28px; height: 28px; flex-shrink: 0;
+  background: var(--rep-blue-light); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--rep-navy); font-size: 11px;
+  transition: transform 0.3s ease, background 0.2s;
+}
+.c360-rep-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 6px; }
+.c360-rep-faq-a p {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 15px; color: var(--rep-text-muted); line-height: 1.7;
+  margin: 0 0 22px; padding-top: 4px;
+}
+.c360-rep-faq-toggle:checked ~ .c360-rep-faq-q .c360-rep-faq-icon {
+  transform: rotate(180deg); background: var(--rep-navy); color: #fff;
+}
+.c360-rep-faq-toggle:checked ~ .c360-rep-faq-a { max-height: 600px; }
+
+/* ══════════════════════════════════════════════════════
+   FINAL CTA
+   ══════════════════════════════════════════════════════ */
+.c360-rep-cta {
+  padding: 96px 0;
+  background: linear-gradient(135deg, #09103c 0%, #122078 58%, #0c1960 100%);
+  position: relative; overflow: hidden; text-align: center;
+}
+.c360-rep-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(18,120,37,0.22) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-rep-cta-inner { position: relative; z-index: 2; max-width: 680px; margin: 0 auto; }
+.c360-rep-cta h2 {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: clamp(28px,4vw,48px); font-weight: 800;
+  color: #fff; margin: 16px 0 18px; line-height: 1.09; letter-spacing: -0.025em;
+}
+.c360-rep-cta h2 span { color: #2ecc52; }
+.c360-rep-cta-desc {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 16px; color: rgba(255,255,255,0.65); margin: 0 0 38px; line-height: 1.65;
+}
+.c360-rep-cta-actions {
+  display: flex; align-items: center; justify-content: center; gap: 14px; flex-wrap: wrap;
+}
+.c360-rep-cta-trust {
+  display: flex; align-items: center; justify-content: center;
+  gap: 28px; margin-top: 36px; flex-wrap: wrap;
+}
+.c360-rep-cta-trust span {
+  display: flex; align-items: center; gap: 6px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12.5px; color: rgba(255,255,255,0.42); font-weight: 500;
+}
+.c360-rep-cta-trust span i { color: #2ecc52; font-size: 12px; }
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 980px) {
+  .c360-rep-hero-inner,
+  .c360-rep-intro-inner,
+  .c360-rep-tools-inner,
+  .c360-rep-shield-inner,
+  .c360-rep-audit-inner { grid-template-columns: 1fr; gap: 44px; }
+  /* Stacked single column — pinning here would park the visual over the
+     copy the reader is trying to get through. */
+  .c360-rep-shield-visual { position: static; top: auto; }
+  .c360-rep-price-cards { grid-template-columns: repeat(2, 1fr); max-width: 640px; margin: 0 auto; gap: 20px; }
+  .c360-rep-services-grid { grid-template-columns: repeat(2, 1fr); }
+  .c360-rep-process-steps { grid-template-columns: repeat(3, 1fr); }
+  .c360-rep-process-steps::before { display: none; }
+}
+@media (max-width: 768px) {
+  .c360-rep-hero, .c360-rep-cta { padding: 68px 0 56px; }
+  .c360-rep-intro, .c360-rep-tools, .c360-rep-shield, .c360-rep-process,
+  .c360-rep-services, .c360-rep-pricing, .c360-rep-reviews,
+  .c360-rep-faq { padding: 64px 0; }
+  .c360-rep-services-grid { grid-template-columns: 1fr; }
+  .c360-rep-process-steps { grid-template-columns: 1fr 1fr; }
+  .c360-rep-trust-bar-inner { grid-template-columns: repeat(2, 1fr); }
+  .c360-rep-trust-pill { border-right: none; border-bottom: 1px solid #e5e3dc; }
+  .c360-rep-trust-pill:nth-child(odd) { border-right: 1px solid #e5e3dc; }
+  .c360-rep-trust-pill:last-child { border-bottom: none; }
+  .c360-rep-trust-pill:nth-last-child(2):nth-child(odd) { border-bottom: none; }
+  .c360-rep-section-header { margin-bottom: 40px; }
+  .c360-rep-hero-creds { flex-direction: column; align-items: flex-start; gap: 22px; }
+  .c360-rep-cred-divider { display: none; }
+  .c360-rep-cred-list { min-height: 0; justify-content: flex-start; gap: 12px; }
+  .c360-rep-cred-item { white-space: normal; }
+  .c360-rep-price-cards { grid-template-columns: 1fr; max-width: 420px; }
+  .c360-rep-intro-inner .c360-rep-intro-copy { order: 0; }
+  .c360-rep-gate-fork { grid-template-columns: 1fr; }
+}
+/* ── Sticky repair, part 1 of 2 (CSS) ──
+   GHL wraps custom-code blocks in its own section/row/column divs, and its
+   themes routinely put overflow-x:hidden on those (and on html/body) to kill
+   horizontal scrollbars. Any of them turns that element into a scroll
+   container, which silently disables position:sticky on everything inside —
+   no error, the element just behaves like position:static.
+
+   overflow:clip prevents the same horizontal scrollbar but does NOT create a
+   scroll container, so sticky survives. We only override 'hidden'; anything
+   genuinely scrollable is left alone by the JS in part 2. */
+html, body { overflow-x: clip; }
+/* If the viewport is too short to show the pinned column in full, don't pin
+   it — a clipped card that never scrolls is worse than no pin at all. */
+@media (max-height: 700px) {
+  .c360-rep-shield-visual { position: static; top: auto; }
+}
+@media (max-width: 540px) {
+  .c360-rep-hero h1 { font-size: 32px; }
+  .c360-rep-hero-actions { flex-direction: column; align-items: flex-start; }
+  .c360-rep-btn-primary, .c360-rep-btn-outline { width: 100%; justify-content: center; }
+  .c360-rep-cta-actions { flex-direction: column; }
+  .c360-rep-process-steps { grid-template-columns: 1fr; }
+  .c360-rep-reviewcard-body { flex-direction: column; text-align: center; gap: 16px; }
+  .c360-rep-trust-pill { border-right: none; }
+}
+</style>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 1 — HERO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-rep-section c360-rep-hero">
+  <div class="c360-rep-container">
+    <div class="c360-rep-hero-inner">
+
+      <!-- LEFT COPY -->
+      <div>
+        <div class="c360-rep-hero-badge">
+          <i class="fa-solid fa-star"></i>
+          Reputation Management
+        </div>
+        <h1>
+          More five-star reviews.<br>
+          <span>Fewer surprises</span><br>
+          on Google.
+        </h1>
+        <p class="c360-rep-hero-sub">
+          We ask every customer for a review automatically, answer every review that comes in, and catch unhappy feedback privately — before it ever reaches your public profile.
+        </p>
+        <div class="c360-rep-hero-actions">
+          <a href="tel:+18665276205" class="c360-rep-btn-primary">
+            <i class="fa-solid fa-phone"></i> Call (866) 527-6205
+          </a>
+          <a href="#c360-rep-pricing" class="c360-rep-btn-outline">
+            View Plans <i class="fa-solid fa-arrow-down"></i>
+          </a>
+        </div>
+        <div class="c360-rep-hero-micro">
+          <div class="c360-rep-micro-item">
+            <i class="fa-solid fa-reply"></i> Automatic review responses
+          </div>
+          <div class="c360-rep-micro-item">
+            <i class="fa-solid fa-qrcode"></i> Digital review card + QR code
+          </div>
+          <div class="c360-rep-micro-item">
+            <i class="fa-solid fa-thumbs-up"></i> One-tap thumbs up or down
+          </div>
+        </div>
+
+        <!-- Credentials cluster — official Google Partner badge, dark-bg treatment -->
+        <div class="c360-rep-hero-creds">
+          <a href="https://www.google.com/partners/agency?id=9636024453"
+             target="_blank" rel="noopener"
+             class="c360-rep-partner-badge"
+             aria-label="Google Partner — view our Google Partners profile">
+            <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg"
+                 alt="Google Partner">
+          </a>
+          <div class="c360-rep-cred-divider"></div>
+          <div class="c360-rep-cred-list">
+            <div class="c360-rep-cred-item"><i class="fa-solid fa-user-check"></i> Google Product Expert</div>
+            <div class="c360-rep-cred-item"><i class="fa-solid fa-star"></i> 147 five-star reviews</div>
+            <div class="c360-rep-cred-item"><i class="fa-solid fa-calendar-check"></i> In business since 2018</div>
+            <div class="c360-rep-cred-item"><i class="fa-solid fa-location-dot"></i> Tucson-based · nationwide</div>
+          </div>
+        </div>
+        <p class="c360-rep-policy-note">We request reviews from every customer and never filter, gate, or withhold a review once it's written. Reputation services are not verified or endorsed by Google.</p>
+      </div>
+
+      <!-- RIGHT — THE REVIEW GATE (signature visual) -->
+      <div>
+        <div class="c360-rep-hero-visual">
+          <div class="c360-rep-hero-visual-title">One tap — two outcomes</div>
+
+          <div class="c360-rep-gate">
+
+            <!-- the request -->
+            <div class="c360-rep-gate-msg">
+              <div class="c360-rep-gate-msg-ico"><i class="fa-solid fa-comment-sms"></i></div>
+              <div class="c360-rep-gate-msg-body">
+                <div class="c360-rep-gate-msg-from">Sent automatically · 2 hours after the job</div>
+                <div class="c360-rep-gate-msg-text">Hi Dana — thanks for choosing us today. How did we do? <b>Tap to rate →</b></div>
+              </div>
+            </div>
+
+            <!-- the thumbs prompt — two choices, not five stars -->
+            <div class="c360-rep-gate-rating">
+              <div class="c360-rep-gate-rating-label">How did we do?</div>
+              <div class="c360-rep-gate-choice">
+                <div class="c360-rep-gate-thumb">
+                  <i class="fa-solid fa-thumbs-up"></i>
+                  <span>Good</span>
+                </div>
+                <div class="c360-rep-gate-thumb c360-rep-gate-thumb--down">
+                  <i class="fa-solid fa-thumbs-down"></i>
+                  <span>Not good</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- the fork -->
+            <div class="c360-rep-gate-fork">
+              <div class="c360-rep-gate-path c360-rep-gate-path--public">
+                <div class="c360-rep-gate-path-head">
+                  <span class="c360-rep-gate-path-chip"><i class="fa-solid fa-thumbs-up"></i> THUMBS UP</span>
+                </div>
+                <div class="c360-rep-gate-path-title">Straight to Google</div>
+                <div class="c360-rep-gate-path-desc">One tap opens your profile with the review box already open.</div>
+                <div class="c360-rep-gate-path-dest"><i class="fa-brands fa-google"></i> Posted publicly</div>
+              </div>
+              <div class="c360-rep-gate-path c360-rep-gate-path--private">
+                <div class="c360-rep-gate-path-head">
+                  <span class="c360-rep-gate-path-chip"><i class="fa-solid fa-thumbs-down"></i> THUMBS DOWN</span>
+                </div>
+                <div class="c360-rep-gate-path-title">Straight to you</div>
+                <div class="c360-rep-gate-path-desc">A private form captures what went wrong and alerts you instantly.</div>
+                <div class="c360-rep-gate-path-dest"><i class="fa-solid fa-inbox"></i> Your inbox first</div>
+              </div>
+            </div>
+
+            <!-- the auto-response -->
+            <div class="c360-rep-gate-reply">
+              <div class="c360-rep-gate-reply-top">
+                <div class="c360-rep-gate-reply-av">D</div>
+                <div class="c360-rep-gate-reply-name">Dana R.</div>
+                <div class="c360-rep-gate-reply-stars">
+                  <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                </div>
+              </div>
+              <div class="c360-rep-gate-reply-quote">Same-day service and they walked me through the whole repair. Would use again.</div>
+              <div class="c360-rep-gate-reply-owner">
+                <div class="c360-rep-gate-reply-owner-label"><i class="fa-solid fa-reply"></i> Owner response · automatic</div>
+                <div class="c360-rep-gate-reply-owner-text"><span class="c360-rep-typing">Thank you, Dana! We're glad we could get it sorted same day.</span></div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- metrics strip -->
+          <div class="c360-rep-stat-row" style="margin-top:16px;">
+            <div class="c360-rep-stat-pill">
+              <span class="c360-rep-stat-val">100%</span>
+              <span class="c360-rep-stat-lbl">Reviews Answered</span>
+            </div>
+            <div class="c360-rep-stat-pill">
+              <span class="c360-rep-stat-val">4.9★</span>
+              <span class="c360-rep-stat-lbl">Typical Rating</span>
+            </div>
+            <div class="c360-rep-stat-pill">
+              <span class="c360-rep-stat-val">&lt;24h</span>
+              <span class="c360-rep-stat-lbl">Response Time</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 2 — TRUST BAR
+     ══════════════════════════════════════════════════════ -->
+<div class="c360-rep-trust-bar">
+  <div class="c360-rep-container">
+    <div class="c360-rep-trust-bar-inner">
+      <div class="c360-rep-trust-pill">
+        <div class="c360-rep-trust-ico"><i class="fa-solid fa-circle-check"></i></div>
+        <div class="c360-rep-trust-text">
+          <strong>Google Partner Agency</strong>
+          <span>Certified &amp; trained by Google</span>
+        </div>
+      </div>
+      <div class="c360-rep-trust-pill">
+        <div class="c360-rep-trust-ico green"><i class="fa-solid fa-robot"></i></div>
+        <div class="c360-rep-trust-text">
+          <strong>Automatic Review Responses</strong>
+          <span>Every review answered, usually same day</span>
+        </div>
+      </div>
+      <div class="c360-rep-trust-pill">
+        <div class="c360-rep-trust-ico gold"><i class="fa-solid fa-qrcode"></i></div>
+        <div class="c360-rep-trust-text">
+          <strong>Digital Review Card</strong>
+          <span>A QR code that opens your review page instantly</span>
+        </div>
+      </div>
+      <div class="c360-rep-trust-pill">
+        <div class="c360-rep-trust-ico green"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="c360-rep-trust-text">
+          <strong>Thumbs Up or Thumbs Down</strong>
+          <span>One tap — and a thumbs down comes to you</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 3 — FREE REPUTATION REPORT (Prospecting Widget)
+     NOTE: this reuses the GBP page's widget ID. Swap data-widget-id if you
+     want a separate widget for this page's leads.
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-rep-section c360-rep-audit">
+  <div class="c360-rep-container">
+    <div class="c360-rep-audit-inner">
+      <div class="c360-rep-audit-copy">
+        <span class="c360-rep-overline">Free Instant Report</span>
+        <h2>See what your reviews<br>are saying — <span style="color:var(--rep-green);">right now.</span></h2>
+        <p>Enter your business name below and get an instant snapshot of your star rating, review volume, how fast reviews are coming in, and how you stack up against the shops competing for the same customers. No cost, no commitment.</p>
+        <div class="c360-rep-audit-bullets">
+          <div class="c360-rep-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Current star rating &amp; total review count</span>
+          </div>
+          <div class="c360-rep-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>How many reviews still have no response</span>
+          </div>
+          <div class="c360-rep-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Review velocity vs. local competitors</span>
+          </div>
+          <div class="c360-rep-audit-bullet">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Instant — results in under 60 seconds</span>
+          </div>
+        </div>
+      </div>
+      <div class="c360-rep-audit-widget">
+        <script src="https://services.leadconnectorhq.com/prospecting/client/widget-embed.js" data-widget-id="699344169ea04eda0c083b63"></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 4 — INTRO / WHAT WE DO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-rep-section c360-rep-intro">
+  <div class="c360-rep-container">
+    <div class="c360-rep-intro-inner">
+
+      <div class="c360-rep-intro-copy">
+        <span class="c360-rep-overline">What We Do</span>
+        <h2>Your reviews, <span>handled for you</span> — start to finish.</h2>
+        <p>
+          Nearly every customer checks reviews before they call. They're not just looking at your star rating — they're looking at how recent the reviews are and whether the owner bothers to reply. Most businesses lose on both counts, because asking for reviews is the first thing that falls off a busy day.
+        </p>
+        <p>
+          We take it off your plate. Every customer gets asked automatically. Every review that comes in gets a written response. And when someone had a bad experience, we route them to you privately instead of straight to your public profile — so you get a chance to fix it while it's still fixable.
+        </p>
+        <div class="c360-rep-alert-box">
+          <i class="fa-solid fa-triangle-exclamation"></i>
+          <p>A single unanswered one-star review sitting at the top of your profile can cost you more calls than ten good reviews win back. Response speed is the part you control.</p>
+        </div>
+        <a href="tel:+18665276205" class="c360-rep-btn-primary">
+          <i class="fa-solid fa-phone"></i> Talk to Our Team
+        </a>
+      </div>
+
+      <!-- What's included checklist -->
+      <div>
+        <div class="c360-rep-included-grid">
+          <div class="c360-rep-included-header">
+            <i class="fa-solid fa-list-check"></i>
+            <span>Included in Every Plan</span>
+          </div>
+          <div class="c360-rep-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Automatic review responses<em>Every review answered in your voice — no logging in</em></span>
+          </div>
+          <div class="c360-rep-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Thumbs up / thumbs down review flow<em>One tap decides where the feedback goes</em></span>
+          </div>
+          <div class="c360-rep-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Digital review card with QR code<em>Share it, display it, or add it to what you already send</em></span>
+          </div>
+          <div class="c360-rep-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>One-click review request form<em>Drop in a name and number — the ask goes out for you</em></span>
+          </div>
+          <div class="c360-rep-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Text &amp; email review campaigns<em>Timed to go out while the job is still fresh</em></span>
+          </div>
+          <div class="c360-rep-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Review monitoring &amp; alerts<em>You're notified the moment something lands</em></span>
+          </div>
+          <div class="c360-rep-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Reviews displayed on your website<em>An embeddable widget that updates itself</em></span>
+          </div>
+          <div class="c360-rep-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Reputation dashboard<em>Rating, volume and trend in one place</em></span>
+          </div>
+          <div class="c360-rep-included-item">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>A real person on our team<em>Someone who knows your business, not a ticket queue</em></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 5 — REVIEW CARD, QR & REQUEST FORM
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-rep-section c360-rep-tools">
+  <div class="c360-rep-container">
+    <div class="c360-rep-tools-inner">
+
+      <div class="c360-rep-tools-copy">
+        <span class="c360-rep-overline">Two Ways to Ask</span>
+        <h2>Ask on the spot. Or ask <span>from your phone.</span></h2>
+        <p>
+          The best moment to ask for a review is the moment the customer is happiest — while you're still with them, or right after you pull out of the driveway. You get both.
+        </p>
+        <div class="c360-rep-tools-list">
+          <div class="c360-rep-tool-row">
+            <div class="c360-rep-tool-ico"><i class="fa-solid fa-qrcode"></i></div>
+            <div class="c360-rep-tool-text">
+              <strong>Your review card</strong>
+              <span>A digital card branded to your business, with a QR code that opens your review page the moment a customer points their camera at it. Pull it up on your phone, put it on a screen, or drop the image into anything you already send.</span>
+            </div>
+          </div>
+          <div class="c360-rep-tool-row">
+            <div class="c360-rep-tool-ico"><i class="fa-solid fa-user-pen"></i></div>
+            <div class="c360-rep-tool-text">
+              <strong>The request form</strong>
+              <span>Type in a customer's name, phone, and email — that's it. The system sends the request, follows up if they don't respond, and stops the moment they leave a review.</span>
+            </div>
+          </div>
+          <div class="c360-rep-tool-row">
+            <div class="c360-rep-tool-ico"><i class="fa-solid fa-arrows-rotate"></i></div>
+            <div class="c360-rep-tool-text">
+              <strong>Both feed the same place</strong>
+              <span>QR scans and form requests run through the same flow, so every review lands in your dashboard and gets a response — no matter how the customer got there.</span>
+            </div>
+          </div>
+        </div>
+        <a href="tel:+18665276205" class="c360-rep-btn-primary">
+          <i class="fa-solid fa-phone"></i> See It In Action
+        </a>
+      </div>
+
+      <div>
+        <div class="c360-rep-cardstack">
+          <div class="c360-rep-reviewcard">
+            <div class="c360-rep-reviewcard-top">
+              <div>
+                <div class="c360-rep-reviewcard-biz">Your Business Name</div>
+                <div class="c360-rep-reviewcard-tag">Tucson, AZ</div>
+              </div>
+              <div class="c360-rep-reviewcard-stars">
+                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+              </div>
+            </div>
+            <div class="c360-rep-reviewcard-body">
+              <a class="c360-rep-qr"
+                 href="https://complete360.org/reputation-management"
+                 aria-label="Reputation Management — scan the code or tap to open the page">
+                <svg viewBox="0 0 33 33" xmlns="http://www.w3.org/2000/svg"
+                       shape-rendering="crispEdges" aria-hidden="true" focusable="false">
+                    <rect width="33" height="33" fill="#fff"/>
+                    <g fill="#0a1040"><rect x="0" y="0" width="7" height="1"/><rect x="8" y="0" width="1" height="1"/><rect x="10" y="0" width="1" height="1"/><rect x="13" y="0" width="3" height="1"/><rect x="17" y="0" width="1" height="1"/><rect x="21" y="0" width="2" height="1"/><rect x="26" y="0" width="7" height="1"/><rect x="0" y="1" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="8" y="1" width="1" height="1"/><rect x="10" y="1" width="3" height="1"/><rect x="15" y="1" width="1" height="1"/><rect x="20" y="1" width="1" height="1"/><rect x="24" y="1" width="1" height="1"/><rect x="26" y="1" width="1" height="1"/><rect x="32" y="1" width="1" height="1"/><rect x="0" y="2" width="1" height="1"/><rect x="2" y="2" width="3" height="1"/><rect x="6" y="2" width="1" height="1"/><rect x="10" y="2" width="1" height="1"/><rect x="13" y="2" width="2" height="1"/><rect x="18" y="2" width="5" height="1"/><rect x="26" y="2" width="1" height="1"/><rect x="28" y="2" width="3" height="1"/><rect x="32" y="2" width="1" height="1"/><rect x="0" y="3" width="1" height="1"/><rect x="2" y="3" width="3" height="1"/><rect x="6" y="3" width="1" height="1"/><rect x="9" y="3" width="2" height="1"/><rect x="16" y="3" width="1" height="1"/><rect x="18" y="3" width="2" height="1"/><rect x="21" y="3" width="1" height="1"/><rect x="23" y="3" width="2" height="1"/><rect x="26" y="3" width="1" height="1"/><rect x="28" y="3" width="3" height="1"/><rect x="32" y="3" width="1" height="1"/><rect x="0" y="4" width="1" height="1"/><rect x="2" y="4" width="3" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="12" y="4" width="2" height="1"/><rect x="15" y="4" width="1" height="1"/><rect x="18" y="4" width="4" height="1"/><rect x="23" y="4" width="1" height="1"/><rect x="26" y="4" width="1" height="1"/><rect x="28" y="4" width="3" height="1"/><rect x="32" y="4" width="1" height="1"/><rect x="0" y="5" width="1" height="1"/><rect x="6" y="5" width="1" height="1"/><rect x="9" y="5" width="2" height="1"/><rect x="13" y="5" width="3" height="1"/><rect x="17" y="5" width="2" height="1"/><rect x="22" y="5" width="1" height="1"/><rect x="26" y="5" width="1" height="1"/><rect x="32" y="5" width="1" height="1"/><rect x="0" y="6" width="7" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="14" y="6" width="1" height="1"/><rect x="16" y="6" width="1" height="1"/><rect x="18" y="6" width="1" height="1"/><rect x="20" y="6" width="1" height="1"/><rect x="22" y="6" width="1" height="1"/><rect x="24" y="6" width="1" height="1"/><rect x="26" y="6" width="7" height="1"/><rect x="10" y="7" width="4" height="1"/><rect x="15" y="7" width="1" height="1"/><rect x="18" y="7" width="3" height="1"/><rect x="22" y="7" width="1" height="1"/><rect x="1" y="8" width="1" height="1"/><rect x="6" y="8" width="3" height="1"/><rect x="10" y="8" width="2" height="1"/><rect x="16" y="8" width="2" height="1"/><rect x="19" y="8" width="1" height="1"/><rect x="22" y="8" width="4" height="1"/><rect x="31" y="8" width="2" height="1"/><rect x="3" y="9" width="1" height="1"/><rect x="8" y="9" width="1" height="1"/><rect x="10" y="9" width="1" height="1"/><rect x="12" y="9" width="5" height="1"/><rect x="18" y="9" width="2" height="1"/><rect x="21" y="9" width="1" height="1"/><rect x="23" y="9" width="1" height="1"/><rect x="28" y="9" width="3" height="1"/><rect x="5" y="10" width="5" height="1"/><rect x="15" y="10" width="2" height="1"/><rect x="18" y="10" width="1" height="1"/><rect x="22" y="10" width="1" height="1"/><rect x="24" y="10" width="2" height="1"/><rect x="28" y="10" width="1" height="1"/><rect x="30" y="10" width="2" height="1"/><rect x="2" y="11" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="7" y="11" width="1" height="1"/><rect x="13" y="11" width="2" height="1"/><rect x="18" y="11" width="3" height="1"/><rect x="24" y="11" width="1" height="1"/><rect x="27" y="11" width="4" height="1"/><rect x="32" y="11" width="1" height="1"/><rect x="0" y="12" width="1" height="1"/><rect x="4" y="12" width="7" height="1"/><rect x="13" y="12" width="6" height="1"/><rect x="20" y="12" width="1" height="1"/><rect x="23" y="12" width="2" height="1"/><rect x="26" y="12" width="1" height="1"/><rect x="31" y="12" width="2" height="1"/><rect x="1" y="13" width="1" height="1"/><rect x="3" y="13" width="3" height="1"/><rect x="9" y="13" width="4" height="1"/><rect x="14" y="13" width="3" height="1"/><rect x="18" y="13" width="3" height="1"/><rect x="23" y="13" width="1" height="1"/><rect x="26" y="13" width="2" height="1"/><rect x="29" y="13" width="4" height="1"/><rect x="0" y="14" width="1" height="1"/><rect x="3" y="14" width="1" height="1"/><rect x="5" y="14" width="3" height="1"/><rect x="10" y="14" width="1" height="1"/><rect x="13" y="14" width="1" height="1"/><rect x="17" y="14" width="2" height="1"/><rect x="20" y="14" width="3" height="1"/><rect x="25" y="14" width="2" height="1"/><rect x="29" y="14" width="3" height="1"/><rect x="0" y="15" width="2" height="1"/><rect x="3" y="15" width="3" height="1"/><rect x="7" y="15" width="3" height="1"/><rect x="11" y="15" width="2" height="1"/><rect x="14" y="15" width="1" height="1"/><rect x="18" y="15" width="1" height="1"/><rect x="22" y="15" width="1" height="1"/><rect x="25" y="15" width="1" height="1"/><rect x="28" y="15" width="3" height="1"/><rect x="32" y="15" width="1" height="1"/><rect x="1" y="16" width="1" height="1"/><rect x="3" y="16" width="1" height="1"/><rect x="6" y="16" width="1" height="1"/><rect x="8" y="16" width="2" height="1"/><rect x="11" y="16" width="1" height="1"/><rect x="14" y="16" width="1" height="1"/><rect x="17" y="16" width="1" height="1"/><rect x="22" y="16" width="2" height="1"/><rect x="25" y="16" width="1" height="1"/><rect x="27" y="16" width="3" height="1"/><rect x="32" y="16" width="1" height="1"/><rect x="4" y="17" width="1" height="1"/><rect x="7" y="17" width="1" height="1"/><rect x="10" y="17" width="1" height="1"/><rect x="12" y="17" width="2" height="1"/><rect x="15" y="17" width="1" height="1"/><rect x="19" y="17" width="1" height="1"/><rect x="23" y="17" width="1" height="1"/><rect x="26" y="17" width="1" height="1"/><rect x="29" y="17" width="4" height="1"/><rect x="0" y="18" width="3" height="1"/><rect x="4" y="18" width="1" height="1"/><rect x="6" y="18" width="2" height="1"/><rect x="10" y="18" width="2" height="1"/><rect x="13" y="18" width="2" height="1"/><rect x="16" y="18" width="1" height="1"/><rect x="18" y="18" width="6" height="1"/><rect x="25" y="18" width="1" height="1"/><rect x="27" y="18" width="1" height="1"/><rect x="29" y="18" width="2" height="1"/><rect x="32" y="18" width="1" height="1"/><rect x="0" y="19" width="4" height="1"/><rect x="7" y="19" width="2" height="1"/><rect x="10" y="19" width="1" height="1"/><rect x="12" y="19" width="5" height="1"/><rect x="22" y="19" width="1" height="1"/><rect x="25" y="19" width="1" height="1"/><rect x="28" y="19" width="5" height="1"/><rect x="0" y="20" width="1" height="1"/><rect x="2" y="20" width="1" height="1"/><rect x="6" y="20" width="2" height="1"/><rect x="9" y="20" width="5" height="1"/><rect x="15" y="20" width="1" height="1"/><rect x="17" y="20" width="2" height="1"/><rect x="22" y="20" width="4" height="1"/><rect x="27" y="20" width="3" height="1"/><rect x="31" y="20" width="2" height="1"/><rect x="0" y="21" width="3" height="1"/><rect x="4" y="21" width="2" height="1"/><rect x="9" y="21" width="3" height="1"/><rect x="15" y="21" width="3" height="1"/><rect x="19" y="21" width="1" height="1"/><rect x="22" y="21" width="3" height="1"/><rect x="27" y="21" width="2" height="1"/><rect x="30" y="21" width="1" height="1"/><rect x="0" y="22" width="1" height="1"/><rect x="3" y="22" width="1" height="1"/><rect x="5" y="22" width="2" height="1"/><rect x="8" y="22" width="1" height="1"/><rect x="10" y="22" width="1" height="1"/><rect x="12" y="22" width="1" height="1"/><rect x="14" y="22" width="1" height="1"/><rect x="16" y="22" width="2" height="1"/><rect x="20" y="22" width="3" height="1"/><rect x="24" y="22" width="1" height="1"/><rect x="27" y="22" width="1" height="1"/><rect x="30" y="22" width="2" height="1"/><rect x="0" y="23" width="1" height="1"/><rect x="2" y="23" width="1" height="1"/><rect x="4" y="23" width="1" height="1"/><rect x="7" y="23" width="1" height="1"/><rect x="10" y="23" width="2" height="1"/><rect x="13" y="23" width="1" height="1"/><rect x="15" y="23" width="2" height="1"/><rect x="20" y="23" width="1" height="1"/><rect x="22" y="23" width="2" height="1"/><rect x="25" y="23" width="3" height="1"/><rect x="29" y="23" width="3" height="1"/><rect x="0" y="24" width="5" height="1"/><rect x="6" y="24" width="3" height="1"/><rect x="12" y="24" width="1" height="1"/><rect x="22" y="24" width="1" height="1"/><rect x="24" y="24" width="5" height="1"/><rect x="8" y="25" width="1" height="1"/><rect x="10" y="25" width="1" height="1"/><rect x="12" y="25" width="1" height="1"/><rect x="15" y="25" width="3" height="1"/><rect x="19" y="25" width="1" height="1"/><rect x="22" y="25" width="1" height="1"/><rect x="24" y="25" width="1" height="1"/><rect x="28" y="25" width="1" height="1"/><rect x="30" y="25" width="1" height="1"/><rect x="32" y="25" width="1" height="1"/><rect x="0" y="26" width="7" height="1"/><rect x="8" y="26" width="1" height="1"/><rect x="10" y="26" width="4" height="1"/><rect x="15" y="26" width="1" height="1"/><rect x="17" y="26" width="2" height="1"/><rect x="22" y="26" width="3" height="1"/><rect x="26" y="26" width="1" height="1"/><rect x="28" y="26" width="1" height="1"/><rect x="30" y="26" width="1" height="1"/><rect x="0" y="27" width="1" height="1"/><rect x="6" y="27" width="1" height="1"/><rect x="10" y="27" width="1" height="1"/><rect x="14" y="27" width="2" height="1"/><rect x="17" y="27" width="3" height="1"/><rect x="23" y="27" width="2" height="1"/><rect x="28" y="27" width="4" height="1"/><rect x="0" y="28" width="1" height="1"/><rect x="2" y="28" width="3" height="1"/><rect x="6" y="28" width="1" height="1"/><rect x="13" y="28" width="2" height="1"/><rect x="18" y="28" width="1" height="1"/><rect x="22" y="28" width="1" height="1"/><rect x="24" y="28" width="6" height="1"/><rect x="31" y="28" width="1" height="1"/><rect x="0" y="29" width="1" height="1"/><rect x="2" y="29" width="3" height="1"/><rect x="6" y="29" width="1" height="1"/><rect x="10" y="29" width="2" height="1"/><rect x="13" y="29" width="2" height="1"/><rect x="16" y="29" width="1" height="1"/><rect x="19" y="29" width="2" height="1"/><rect x="23" y="29" width="1" height="1"/><rect x="25" y="29" width="1" height="1"/><rect x="27" y="29" width="4" height="1"/><rect x="32" y="29" width="1" height="1"/><rect x="0" y="30" width="1" height="1"/><rect x="2" y="30" width="3" height="1"/><rect x="6" y="30" width="1" height="1"/><rect x="9" y="30" width="3" height="1"/><rect x="13" y="30" width="1" height="1"/><rect x="15" y="30" width="2" height="1"/><rect x="19" y="30" width="1" height="1"/><rect x="22" y="30" width="1" height="1"/><rect x="25" y="30" width="1" height="1"/><rect x="27" y="30" width="2" height="1"/><rect x="30" y="30" width="3" height="1"/><rect x="0" y="31" width="1" height="1"/><rect x="6" y="31" width="1" height="1"/><rect x="8" y="31" width="1" height="1"/><rect x="10" y="31" width="2" height="1"/><rect x="13" y="31" width="1" height="1"/><rect x="20" y="31" width="1" height="1"/><rect x="22" y="31" width="1" height="1"/><rect x="25" y="31" width="6" height="1"/><rect x="0" y="32" width="7" height="1"/><rect x="10" y="32" width="2" height="1"/><rect x="13" y="32" width="4" height="1"/><rect x="18" y="32" width="1" height="1"/><rect x="20" y="32" width="1" height="1"/><rect x="23" y="32" width="5" height="1"/><rect x="29" y="32" width="1" height="1"/><rect x="31" y="32" width="1" height="1"/></g>
+                  </svg>
+                <span class="c360-rep-qr-tap">Tap to open</span>
+              </a>
+              <div>
+                <div class="c360-rep-reviewcard-ask">How did we do?<br><span>Scan and tap a thumb.</span></div>
+                <div class="c360-rep-reviewcard-sub">Point your camera at the code — it takes about fifteen seconds. Reading this on your phone? Tap the code instead.</div>
+              </div>
+            </div>
+            <div class="c360-rep-reviewcard-foot">
+              <i class="fa-solid fa-shield-halved"></i>
+              Thumbs up or thumbs down — a thumbs down comes straight to us instead.
+            </div>
+          </div>
+        </div>
+        <p class="c360-rep-card-note">Delivered as image and PDF files branded to your business — yours to use however you like.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 6 — NEGATIVE REVIEW MANAGEMENT
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-rep-section c360-rep-shield">
+  <div class="c360-rep-container">
+    <div class="c360-rep-shield-inner">
+
+      <div class="c360-rep-shield-copy">
+        <span class="c360-rep-overline">Negative Review Management</span>
+        <h2 class="c360-rep-shield-h2">Hear it from your customer <span>before you read it on Google.</span></h2>
+        <p class="c360-rep-shield-desc">
+          Most bad reviews aren't about the work — they're about something small that nobody got the chance to fix. Our review flow asks one question before anything else: thumbs up, or thumbs down? A thumbs up goes to Google. A thumbs down lands on a private feedback form and alerts you, while there's still time to make it right.
+        </p>
+
+        <div class="c360-rep-shield-callout">
+          <div class="c360-rep-shield-callout-ico"><i class="fa-solid fa-hand-pointer"></i></div>
+          <div>
+            <strong>Why two thumbs and not five stars</strong>
+            <span>A star picker asks the customer to grade you, and grading takes thought — so a lot of people close the tab instead. Thumbs up or thumbs down is a gut reaction. It answers in one tap, more people finish it, and the ones who tap down have already decided they're unhappy before they reach a review box.</span>
+          </div>
+        </div>
+
+        <div class="c360-rep-shield-callout">
+          <div class="c360-rep-shield-callout-ico"><i class="fa-solid fa-clock-rotate-left"></i></div>
+          <div>
+            <strong>The window is short</strong>
+            <span>An unhappy customer who gets a call back the same afternoon usually doesn't post at all. The one who hears nothing for three days almost always does.</span>
+          </div>
+        </div>
+
+        <div class="c360-rep-shield-points">
+          <div class="c360-rep-shield-point">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>The feedback form captures what happened, when, and who they dealt with — enough detail to actually act on.</span>
+          </div>
+          <div class="c360-rep-shield-point">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>You're alerted by text and email the moment it comes in, not in a monthly summary.</span>
+          </div>
+          <div class="c360-rep-shield-point">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>If a negative review does post publicly, we draft a calm, professional response and flag it for you before it goes up.</span>
+          </div>
+          <div class="c360-rep-shield-point">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>Nothing is blocked or filtered. Any customer who wants to post publicly still can, at any point.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="c360-rep-shield-visual">
+        <div class="c360-rep-feedback-card">
+          <div class="c360-rep-feedback-head">
+            <div class="c360-rep-feedback-head-ico"><i class="fa-solid fa-thumbs-down"></i></div>
+            <div class="c360-rep-feedback-head-text">
+              <strong>Private feedback — not published</strong>
+              <span>Goes only to the business owner</span>
+            </div>
+          </div>
+          <div class="c360-rep-feedback-body">
+            <div class="c360-rep-feedback-q">Sorry to hear that. What went wrong?</div>
+            <div class="c360-rep-feedback-field">The tech showed up two hours outside the window and nobody called to let me know. Work itself was fine.</div>
+            <div class="c360-rep-feedback-route">
+              <i class="fa-solid fa-bell"></i>
+              <span>Owner alerted by text &amp; email · 11:42 AM — 3 minutes after submission</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="c360-rep-shield-stat">
+          <div>
+            <div class="c360-rep-shield-stat-num">1 in 3</div>
+            <div class="c360-rep-shield-stat-lbl">customers will change or remove a review<br>when the business responds and resolves it</div>
+          </div>
+          <div style="width:44px;height:44px;border-radius:11px;background:rgba(46,204,82,0.15);display:flex;align-items:center;justify-content:center;color:#2ecc52;font-size:18px;flex-shrink:0;">
+            <i class="fa-solid fa-rotate-left"></i>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 7 — HOW IT WORKS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-rep-section c360-rep-process">
+  <div class="c360-rep-container">
+    <div class="c360-rep-section-header">
+      <span class="c360-rep-overline">How It Works</span>
+      <h2>Set up once. Runs on its own.</h2>
+      <p>You finish the job. Everything after that — the ask, the follow-up, the reply — happens without you.</p>
+    </div>
+    <div class="c360-rep-process-steps">
+      <div class="c360-rep-step">
+        <div class="c360-rep-step-num"><i class="fa-solid fa-clipboard-list"></i></div>
+        <div class="c360-rep-step-label">Quick Onboarding</div>
+        <div class="c360-rep-step-desc">We connect your Google profile and learn how you talk to customers. About 20 minutes.</div>
+      </div>
+      <div class="c360-rep-step">
+        <div class="c360-rep-step-num"><i class="fa-solid fa-qrcode"></i></div>
+        <div class="c360-rep-step-label">Card &amp; Links Built</div>
+        <div class="c360-rep-step-desc">Your branded review card, QR code, and request form are built and delivered to you.</div>
+      </div>
+      <div class="c360-rep-step">
+        <div class="c360-rep-step-num"><i class="fa-solid fa-paper-plane"></i></div>
+        <div class="c360-rep-step-label">Requests Go Out</div>
+        <div class="c360-rep-step-desc">Every customer gets asked — by text, email, or the card in their hand.</div>
+      </div>
+      <div class="c360-rep-step">
+        <div class="c360-rep-step-num"><i class="fa-solid fa-code-branch"></i></div>
+        <div class="c360-rep-step-label">One Tap Routes It</div>
+        <div class="c360-rep-step-desc">Thumbs up goes to Google. Thumbs down comes to you privately, right away.</div>
+      </div>
+      <div class="c360-rep-step">
+        <div class="c360-rep-step-num"><i class="fa-solid fa-reply-all"></i></div>
+        <div class="c360-rep-step-label">Every Review Answered</div>
+        <div class="c360-rep-step-desc">Responses are written and posted for you, usually within a day of the review landing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 8 — SERVICE DETAIL CARDS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-rep-section c360-rep-services">
+  <div class="c360-rep-container">
+    <div class="c360-rep-section-header">
+      <span class="c360-rep-overline">What's Actually In It</span>
+      <h2>Six things running in the background.</h2>
+      <p>Not a dashboard you have to log into. A system that does the asking, the answering, and the catching for you.</p>
+    </div>
+    <div class="c360-rep-services-grid">
+
+      <div class="c360-rep-service-card">
+        <div class="c360-rep-svc-ico"><i class="fa-solid fa-reply"></i></div>
+        <div class="c360-rep-svc-title">Automatic Review Responses</div>
+        <div class="c360-rep-svc-desc">Every review gets a reply — written in your voice, specific to what the customer actually said, and posted usually within a day. Sensitive or negative reviews are flagged for your eyes before anything goes public.</div>
+      </div>
+
+      <div class="c360-rep-service-card">
+        <div class="c360-rep-svc-ico"><i class="fa-solid fa-shield-halved"></i></div>
+        <div class="c360-rep-svc-title">Thumbs Up / Thumbs Down</div>
+        <div class="c360-rep-svc-desc">Before anything is posted, the customer answers one question with one tap. Thumbs up goes to your Google review box. Thumbs down opens a private feedback form and alerts you immediately, so you can call them back while the problem is still fixable.</div>
+      </div>
+
+      <div class="c360-rep-service-card">
+        <div class="c360-rep-svc-ico"><i class="fa-solid fa-qrcode"></i></div>
+        <div class="c360-rep-svc-title">Branded QR Review Card</div>
+        <div class="c360-rep-svc-desc">A digital card with your name, colors, and a QR code that opens your review page on the customer's phone — no typing, no searching for your listing. Use it on a screen, in an email, or anywhere else it's useful.</div>
+      </div>
+
+      <div class="c360-rep-service-card">
+        <div class="c360-rep-svc-ico"><i class="fa-solid fa-user-pen"></i></div>
+        <div class="c360-rep-svc-title">One-Click Request Form</div>
+        <div class="c360-rep-svc-desc">Drop a customer's name and contact info into a simple form and the request sends itself. It follows up automatically if they don't respond, and stops the moment a review is left.</div>
+      </div>
+
+      <div class="c360-rep-service-card">
+        <div class="c360-rep-svc-ico"><i class="fa-solid fa-bell"></i></div>
+        <div class="c360-rep-svc-title">Monitoring &amp; Alerts</div>
+        <div class="c360-rep-svc-desc">We watch your profile continuously. New review, rating drop, or a complaint that needs a phone call — you hear about it by text and email the same hour, not at the end of the month.</div>
+      </div>
+
+      <div class="c360-rep-service-card">
+        <div class="c360-rep-svc-ico"><i class="fa-solid fa-chart-line"></i></div>
+        <div class="c360-rep-svc-title">Reviews On Your Website</div>
+        <div class="c360-rep-svc-desc">Your best reviews display on your own site through a widget that refreshes itself — so the proof lives where your customers are already deciding, not just on Google.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 9 — PRICING
+     Retail figures pulled from the CMP order form (green column).
+     ══════════════════════════════════════════════════════ -->
+<section id="c360-rep-pricing" class="c360-rep-section c360-rep-pricing">
+  <div class="c360-rep-container">
+    <div class="c360-rep-section-header">
+      <span class="c360-rep-overline">Pricing &amp; Plans</span>
+      <h2>Simple, transparent pricing.<br>No surprises.</h2>
+      <p>Every plan is the exact same service. The only thing that changes is the term: 10% off for a quarter, 20% for six months, 30% for a year.</p>
+    </div>
+    <div class="c360-rep-price-cards">
+
+      <!-- Monthly — $199 -->
+      <div class="c360-rep-price-card">
+        <div class="c360-rep-plan-name">Monthly</div>
+        <div class="c360-rep-plan-tagline">Month to month — 10 days notice to cancel</div>
+        <div class="c360-rep-price-row">
+          <span class="c360-rep-price-dollar">$</span>
+          <span class="c360-rep-price-num">199</span>
+          <span class="c360-rep-price-period">/mo</span>
+        </div>
+        <div class="c360-rep-price-effective invisible">—</div>
+        <span class="c360-rep-price-save invisible">—</span>
+        <div class="c360-rep-price-divider"></div>
+        <ul class="c360-rep-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Automatic review responses</li>
+          <li><i class="fa-solid fa-circle-check"></i> Thumbs up / thumbs down review flow</li>
+          <li><i class="fa-solid fa-circle-check"></i> Digital review card with QR code</li>
+          <li><i class="fa-solid fa-circle-check"></i> One-click review request form</li>
+          <li><i class="fa-solid fa-circle-check"></i> Text &amp; email review campaigns</li>
+          <li><i class="fa-solid fa-circle-check"></i> Monitoring &amp; instant alerts</li>
+          <li><i class="fa-solid fa-circle-check"></i> Website review widget</li>
+          <li><i class="fa-solid fa-circle-check"></i> Reputation dashboard</li>
+          <li><i class="fa-solid fa-circle-check"></i> Phone, chat &amp; email support</li>
+        </ul>
+        <div class="c360-rep-price-note">
+          <i class="fa-solid fa-circle-info"></i> Billed monthly
+        </div>
+        <a href="https://complete360.org/reputation-management-checkout" class="c360-rep-price-btn c360-rep-price-btn--outline c360-rep-modal-trigger">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Quarterly — $537 = 3 × $199 less 10% ($537.30 rounded to a clean $179/mo) -->
+      <div class="c360-rep-price-card">
+        <div class="c360-rep-plan-name">Quarterly</div>
+        <div class="c360-rep-plan-tagline">Commit for a quarter, pay less per month</div>
+        <div class="c360-rep-price-row">
+          <span class="c360-rep-price-dollar">$</span>
+          <span class="c360-rep-price-num">537</span>
+          <span class="c360-rep-price-period">/qtr</span>
+        </div>
+        <div class="c360-rep-price-effective">Just $179/mo — billed quarterly</div>
+        <span class="c360-rep-price-save">Save $60 · 10% off</span>
+        <div class="c360-rep-price-divider"></div>
+        <ul class="c360-rep-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Automatic review responses</li>
+          <li><i class="fa-solid fa-circle-check"></i> Thumbs up / thumbs down review flow</li>
+          <li><i class="fa-solid fa-circle-check"></i> Digital review card with QR code</li>
+          <li><i class="fa-solid fa-circle-check"></i> One-click review request form</li>
+          <li><i class="fa-solid fa-circle-check"></i> Text &amp; email review campaigns</li>
+          <li><i class="fa-solid fa-circle-check"></i> Monitoring &amp; instant alerts</li>
+          <li><i class="fa-solid fa-circle-check"></i> Website review widget</li>
+          <li><i class="fa-solid fa-circle-check"></i> Reputation dashboard</li>
+          <li><i class="fa-solid fa-circle-check"></i> Phone, chat &amp; email support</li>
+        </ul>
+        <div class="c360-rep-price-note">
+          <i class="fa-solid fa-circle-info"></i> Prepaid — 3 months, 10% off
+        </div>
+        <a href="https://complete360.org/reputation-management-checkout" class="c360-rep-price-btn c360-rep-price-btn--outline c360-rep-modal-trigger">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Semi-Annual — $954 = 6 × $199 less 20% ($955.20 rounded to a clean $159/mo) — POPULAR -->
+      <div class="c360-rep-price-card c360-rep-price-card--popular">
+        <div class="c360-rep-popular-badge"><i class="fa-solid fa-bolt"></i> Most Popular</div>
+        <div class="c360-rep-plan-name">Semi-Annual</div>
+        <div class="c360-rep-plan-tagline">Six-month term, deeper discount</div>
+        <div class="c360-rep-price-row">
+          <span class="c360-rep-price-dollar">$</span>
+          <span class="c360-rep-price-num">954</span>
+          <span class="c360-rep-price-period">/6mo</span>
+        </div>
+        <div class="c360-rep-price-effective">Just $159/mo — billed every 6 months</div>
+        <span class="c360-rep-price-save">Save $240 · 20% off</span>
+        <div class="c360-rep-price-divider"></div>
+        <ul class="c360-rep-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Automatic review responses</li>
+          <li><i class="fa-solid fa-circle-check"></i> Thumbs up / thumbs down review flow</li>
+          <li><i class="fa-solid fa-circle-check"></i> Digital review card with QR code</li>
+          <li><i class="fa-solid fa-circle-check"></i> One-click review request form</li>
+          <li><i class="fa-solid fa-circle-check"></i> Text &amp; email review campaigns</li>
+          <li><i class="fa-solid fa-circle-check"></i> Monitoring &amp; instant alerts</li>
+          <li><i class="fa-solid fa-circle-check"></i> Website review widget</li>
+          <li><i class="fa-solid fa-circle-check"></i> Reputation dashboard</li>
+          <li><i class="fa-solid fa-circle-check"></i> Phone, chat &amp; email support</li>
+        </ul>
+        <div class="c360-rep-price-note">
+          <i class="fa-solid fa-circle-info"></i> Prepaid — 6 months, 20% off
+        </div>
+        <a href="https://complete360.org/reputation-management-checkout" class="c360-rep-price-btn c360-rep-price-btn--green c360-rep-modal-trigger">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+      <!-- Annual — $1,668 = 12 × $199 less 30% ($1,671.60 rounded to a clean $139/mo) -->
+      <div class="c360-rep-price-card">
+        <div class="c360-rep-plan-name">Annual</div>
+        <div class="c360-rep-plan-tagline">Our lowest rate — over three months free</div>
+        <div class="c360-rep-price-row">
+          <span class="c360-rep-price-dollar">$</span>
+          <span class="c360-rep-price-num">1,668</span>
+          <span class="c360-rep-price-period">/yr</span>
+        </div>
+        <div class="c360-rep-price-effective">Just $139/mo — billed annually</div>
+        <span class="c360-rep-price-save">Save $720 · 30% off</span>
+        <div class="c360-rep-price-divider"></div>
+        <ul class="c360-rep-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Automatic review responses</li>
+          <li><i class="fa-solid fa-circle-check"></i> Thumbs up / thumbs down review flow</li>
+          <li><i class="fa-solid fa-circle-check"></i> Digital review card with QR code</li>
+          <li><i class="fa-solid fa-circle-check"></i> One-click review request form</li>
+          <li><i class="fa-solid fa-circle-check"></i> Text &amp; email review campaigns</li>
+          <li><i class="fa-solid fa-circle-check"></i> Monitoring &amp; instant alerts</li>
+          <li><i class="fa-solid fa-circle-check"></i> Website review widget</li>
+          <li><i class="fa-solid fa-circle-check"></i> Reputation dashboard</li>
+          <li><i class="fa-solid fa-circle-check"></i> Phone, chat &amp; email support</li>
+        </ul>
+        <div class="c360-rep-price-note">
+          <i class="fa-solid fa-circle-info"></i> Prepaid — 12 months, 30% off
+        </div>
+        <a href="https://complete360.org/reputation-management-checkout" class="c360-rep-price-btn c360-rep-price-btn--outline c360-rep-modal-trigger">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
+    </div>
+    <div class="c360-rep-pricing-foot">
+      <p>All four plans include the identical service — nothing is held back for the longer terms. Discounts are calculated off the $199 monthly rate. Prepaid terms can be paid in full or split; upgrade anytime. To cancel, let us know at least 10 days before your next billing date. &nbsp;|&nbsp; Questions? Call us Mon–Thu 7am–4pm &middot; Fri 7am–1pm MST.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 10 — REVIEWS WIDGET
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-rep-section c360-rep-reviews">
+  <div class="c360-rep-container">
+    <div class="c360-rep-section-header">
+      <span class="c360-rep-overline">What Our Clients Say</span>
+      <h2>We run this on ourselves, too.</h2>
+      <p>147+ Google reviews from local business owners just like you.</p>
+    </div>
+    <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
+    <iframe
+      class='lc_reviews_widget'
+      src='https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u'
+      frameborder='0' scrolling='no'
+      style='min-width:100%;width:100%;display:block;'>
+    </iframe>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 11 — FINAL CTA
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-rep-section c360-rep-cta">
+  <div class="c360-rep-container">
+    <div class="c360-rep-cta-inner">
+      <span class="c360-rep-overline" style="color:#2ecc52;">Ready When You Are</span>
+      <h2>Let's get you the reviews <span>you've already earned.</span></h2>
+      <p class="c360-rep-cta-desc">
+        Call for a free look at your current reviews — no pressure, no contract to have the conversation.<br>
+        <span style="font-size:14px;opacity:0.75;">Mon–Thu 7am–4pm &middot; Fri 7am–1pm MST &nbsp;·&nbsp; (866) 527-6205</span>
+      </p>
+      <div class="c360-rep-cta-actions">
+        <a href="tel:+18665276205" class="c360-rep-btn-primary" style="font-size:16px;padding:17px 32px;">
+          <i class="fa-solid fa-phone"></i> Call (866) 527-6205
+        </a>
+        <a href="https://complete360.org/reputation-management-checkout" class="c360-rep-btn-outline c360-rep-modal-trigger">
+          Get Started Online <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+      <div class="c360-rep-cta-trust">
+        <span><i class="fa-solid fa-circle-check"></i> Google Partner</span>
+        <span><i class="fa-solid fa-star"></i> 147+ Five-Star Reviews</span>
+        <span><i class="fa-solid fa-shield-halved"></i> Negative Feedback Capture</span>
+        <span><i class="fa-solid fa-map-pin"></i> Tucson-Based &amp; Nationwide</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 12 — FAQ
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-rep-section c360-rep-faq">
+  <div class="c360-rep-container">
+    <div class="c360-rep-section-header">
+      <span class="c360-rep-overline">Frequently Asked</span>
+      <h2>Questions about Reputation Management</h2>
+      <p>Get clear answers before you get started.</p>
+    </div>
+    <div class="c360-rep-faq-list">
+
+      <div class="c360-rep-faq-item">
+        <input type="checkbox" id="c360RepFaq1" class="c360-rep-faq-toggle">
+        <label for="c360RepFaq1" class="c360-rep-faq-q">
+          Are you hiding my bad reviews from Google?
+          <span class="c360-rep-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-rep-faq-a">
+          <p>No — and we wouldn't, because that violates Google's policies and can get a profile penalized. What we do is ask one question — thumbs up or thumbs down — before pointing anyone anywhere. A thumbs up gets a direct link to your Google review box. A thumbs down is offered a private feedback form first, so you hear about the problem and get a chance to fix it. If that customer still wants to post publicly, nothing stops them. Every customer gets asked, and no review that gets written gets blocked.</p>
+        </div>
+      </div>
+
+      <div class="c360-rep-faq-item">
+        <input type="checkbox" id="c360RepFaq10" class="c360-rep-faq-toggle">
+        <label for="c360RepFaq10" class="c360-rep-faq-q">
+          Why thumbs up and thumbs down instead of a star rating?
+          <span class="c360-rep-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-rep-faq-a">
+          <p>Because five stars asks the customer to make a judgment, and a judgment takes thought. Is this a four or a five? Was the delay bad enough to knock off a star? That pause is where people close the tab. Thumbs up or thumbs down is a gut reaction — it answers in a single tap, so more customers finish the flow at all. It also sorts cleanly: someone who taps thumbs down has already decided they're unhappy, which means you hear about it on a feedback form instead of reading about it on your profile.</p>
+        </div>
+      </div>
+
+      <div class="c360-rep-faq-item">
+        <input type="checkbox" id="c360RepFaq2" class="c360-rep-faq-toggle">
+        <label for="c360RepFaq2" class="c360-rep-faq-q">
+          Who writes the responses to my reviews?
+          <span class="c360-rep-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-rep-faq-a">
+          <p>Responses are drafted automatically based on what the customer actually wrote, then checked for tone and accuracy before they post — so they read like you, not like a template. During onboarding we learn how you talk about your business and what you never want said publicly. Negative or sensitive reviews are always flagged for you before anything goes up.</p>
+        </div>
+      </div>
+
+      <div class="c360-rep-faq-item">
+        <input type="checkbox" id="c360RepFaq3" class="c360-rep-faq-toggle">
+        <label for="c360RepFaq3" class="c360-rep-faq-q">
+          What exactly is the review card?
+          <span class="c360-rep-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-rep-faq-a">
+          <p>A digital card branded to your business with a QR code on it, delivered to you as image and PDF files. The customer points their phone camera at the code and your review flow opens — no searching for your listing, no typing. Pull it up on your phone, show it on a screen, or add the image to anything you already send. Scans run through the same flow as text requests, so the same feedback routing applies.</p>
+        </div>
+      </div>
+
+      <div class="c360-rep-faq-item">
+        <input type="checkbox" id="c360RepFaq4" class="c360-rep-faq-toggle">
+        <label for="c360RepFaq4" class="c360-rep-faq-q">
+          How do I request a review for a specific customer?
+          <span class="c360-rep-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-rep-faq-a">
+          <p>There's a short form — name, phone, email — that you or anyone on your team can fill out from a phone or laptop. Submit it and the system sends the request by text and email, follows up if there's no response, and stops as soon as a review is left. You can also send requests in batches if you have a list of past customers you'd like to ask.</p>
+        </div>
+      </div>
+
+      <div class="c360-rep-faq-item">
+        <input type="checkbox" id="c360RepFaq5" class="c360-rep-faq-toggle">
+        <label for="c360RepFaq5" class="c360-rep-faq-q">
+          How fast will my rating actually change?
+          <span class="c360-rep-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-rep-faq-a">
+          <p>New reviews usually start arriving within the first two weeks, since most businesses have a backlog of happy customers who were simply never asked. How fast your overall star average moves depends on how many reviews you already have — a profile with 20 reviews shifts quickly, one with 400 takes longer. What changes immediately either way is response rate and recency, which is what a prospect reading your profile actually notices.</p>
+        </div>
+      </div>
+
+      <div class="c360-rep-faq-item">
+        <input type="checkbox" id="c360RepFaq6" class="c360-rep-faq-toggle">
+        <label for="c360RepFaq6" class="c360-rep-faq-q">
+          Does this work with platforms other than Google?
+          <span class="c360-rep-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-rep-faq-a">
+          <p>Google is the default because that's where local buying decisions get made, and it's where we focus. Facebook and other major review platforms can be connected for monitoring and responses as well — tell us which ones matter in your industry and we'll set them up during onboarding.</p>
+        </div>
+      </div>
+
+      <div class="c360-rep-faq-item">
+        <input type="checkbox" id="c360RepFaq7" class="c360-rep-faq-toggle">
+        <label for="c360RepFaq7" class="c360-rep-faq-q">
+          What's the difference between the plans?
+          <span class="c360-rep-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-rep-faq-a">
+          <p>Only the length of the term and the price. The service itself is identical on all four plans — same review responses, same negative feedback capture, same review card, same request form, same support. Committing to a longer term is what brings the monthly rate down — 10% off for a quarter, 20% for six months, 30% for a year — so an annual client pays $139 a month for exactly what a month-to-month client pays $199 for. Nothing is held back for the bigger plans.</p>
+        </div>
+      </div>
+
+      <div class="c360-rep-faq-item">
+        <input type="checkbox" id="c360RepFaq9" class="c360-rep-faq-toggle">
+        <label for="c360RepFaq9" class="c360-rep-faq-q">
+          Can I cancel?
+          <span class="c360-rep-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-rep-faq-a">
+          <p>Yes. Just let us know at least 10 days before your next billing date and that renewal won't be charged — no long-term commitment on the monthly plan. The quarterly, semi-annual, and annual terms are prepaid and non-refundable once work begins, which is what earns the 10%, 20% and 30% discounts; the same 10-day notice applies to the renewal at the end of a prepaid term. We'll walk through all of it on the call before you decide.</p>
+        </div>
+      </div>
+
+      <div class="c360-rep-faq-item">
+        <input type="checkbox" id="c360RepFaq8" class="c360-rep-faq-toggle">
+        <label for="c360RepFaq8" class="c360-rep-faq-q">
+          Do I need Google Business Profile Management too?
+          <span class="c360-rep-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+        </label>
+        <div class="c360-rep-faq-a">
+          <p>Not required — Reputation Management stands on its own. That said, reviews are one of the strongest signals Google uses to rank local businesses, so the two work together: this program brings the reviews in, and GBP Management makes sure the profile they're landing on is complete, active, and showing up in the map pack.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     STICKY REPAIR — part 2 of 2 (JS)
+     Walks up from the pinned column and neutralises every ancestor that is
+     silently breaking position:sticky. Two things do it:
+       · overflow:hidden  — makes the ancestor a scroll container
+       · contain: paint / strict / content — same effect
+     GHL's page wrappers use both depending on the theme, and we can't target
+     them by class because the markup differs per template — hence walking the
+     real ancestor chain at runtime instead of guessing selectors.
+
+     Deliberately conservative: only 'hidden' is touched. An ancestor that
+     genuinely scrolls (overflow auto/scroll WITH overflowing content) is left
+     exactly as it is, because changing that would break the page's own
+     scrolling. Runs again after 600ms because some GHL themes re-render
+     sections after load, which would wipe the inline styles.
+     Self-removing if the element isn't on the page.
+     ══════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  var SEL = '.c360-rep-shield-visual';
+
+  function repair() {
+    var el = document.querySelector(SEL);
+    if (!el) return;
+
+    /* Bail out entirely if sticky was never applied — means an older version
+       of this block is live and there is nothing to repair. */
+    if (getComputedStyle(el).position !== 'sticky') return;
+
+    var p = el.parentElement;
+    while (p && p !== document.documentElement) {
+      var cs = getComputedStyle(p);
+
+      /* overflow:hidden -> clip. Same visual result, no scroll container.
+         Skip anything that actually scrolls. */
+      if (cs.overflowX === 'hidden') p.style.overflowX = 'clip';
+      if (cs.overflowY === 'hidden' && p.scrollHeight <= p.clientHeight + 1) {
+        p.style.overflowY = 'visible';
+      }
+
+      /* contain: paint/strict/content also creates a containing block that
+         traps sticky. */
+      if (/paint|strict|content/.test(cs.contain || '')) p.style.contain = 'none';
+
+      /* A fixed height on a wrapper leaves the sticky element no room to
+         travel. Only relax it if the content is taller than the box. */
+      if (cs.height !== 'auto' && p.scrollHeight > p.clientHeight + 1) {
+        p.style.height = 'auto';
+      }
+
+      p = p.parentElement;
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', repair);
+  } else {
+    repair();
+  }
+  /* GHL re-renders some sections after load; re-apply once. */
+  setTimeout(repair, 600);
+  /* And once more after fonts/images settle, in case a late reflow reintroduces
+     a wrapper. Cheap — the walk is a few dozen nodes. */
+  window.addEventListener('load', function () { setTimeout(repair, 200); });
+})();
+</script>
