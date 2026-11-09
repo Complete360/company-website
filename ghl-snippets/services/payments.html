@@ -1,6 +1,812 @@
-<!--
-  PLACEHOLDER: no code yet
-  GHL page: "Payments"
-  Next step: paste this page's custom code from GHL here,
-  or delete this file if the page has no custom code.
--->
+<!-- ============================================================
+     COMPLETE360 — MAKE A PAYMENT PAGE  v1.0
+     Paste into GHL Custom Code block on payment page.
+     Prefix: c360-pay-  |  Header/footer loaded globally.
+     Font Awesome & Poppins loaded via global header.
+     ============================================================ -->
+
+<style>
+/* ══════════════════════════════════════════════════════
+   Make a Payment  |  Prefix: c360-pay-
+   ══════════════════════════════════════════════════════ */
+:root {
+  --pay-navy:        #122078;
+  --pay-navy-dark:   #0d1654;
+  --pay-navy-deeper: #09103c;
+  --pay-green:       #127825;
+  --pay-green-hover: #0e5e1d;
+  --pay-green-light: #EAF3DE;
+  --pay-green-glow:  #2ecc52;
+  --pay-blue-light:  #E6F1FB;
+  --pay-grey:        #888780;
+  --pay-light-grey:  #F1EFE8;
+  --pay-border:      #e5e3dc;
+  --pay-text:        #0F1F5E;
+  --pay-text-muted:  #5F5E5A;
+  --pay-radius:      12px;
+  --pay-radius-lg:   20px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+
+.c360-pay-wrap {
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  width: 100%;
+}
+.c360-pay-wrap i.fa-solid,
+.c360-pay-wrap i.fa-brands {
+  font-family: "Font Awesome 6 Free" !important;
+  font-weight: 900 !important;
+}
+.c360-pay-wrap i.fa-brands {
+  font-family: "Font Awesome 6 Brands" !important;
+  font-weight: 400 !important;
+}
+.c360-pay-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════ */
+.c360-pay-hero {
+  background: linear-gradient(135deg, var(--pay-navy-deeper) 0%, var(--pay-navy) 60%, #0c1960 100%);
+  padding: 64px 0 56px;
+  position: relative; overflow: hidden;
+}
+.c360-pay-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(circle at 10% 70%, rgba(18,120,37,0.18) 0%, transparent 50%),
+    radial-gradient(circle at 88% 15%, rgba(255,255,255,0.04) 0%, transparent 40%);
+  pointer-events: none;
+}
+.c360-pay-hero::after {
+  content: '';
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 64px 64px;
+  pointer-events: none;
+}
+.c360-pay-hero-inner {
+  position: relative; z-index: 2;
+  text-align: center;
+}
+.c360-pay-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(18,120,37,0.2);
+  border: 1px solid rgba(18,120,37,0.38);
+  color: #7ddc80;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 6px 16px;
+  border-radius: 100px; margin-bottom: 18px;
+}
+.c360-pay-hero h1 {
+  font-size: clamp(30px, 4.5vw, 48px);
+  font-weight: 800; color: #fff;
+  margin: 0 0 14px; line-height: 1.1; letter-spacing: -0.025em;
+}
+.c360-pay-hero h1 span { color: var(--pay-green-glow); }
+.c360-pay-hero-sub {
+  font-size: 16px; color: rgba(255,255,255,0.65);
+  max-width: 520px; margin: 0 auto 30px; line-height: 1.65;
+}
+/* Security trust chips */
+.c360-pay-trust-chips {
+  display: flex; align-items: center; justify-content: center;
+  gap: 10px; flex-wrap: wrap;
+}
+.c360-pay-trust-chip {
+  display: inline-flex; align-items: center; gap: 7px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.13);
+  border-radius: 100px; padding: 7px 16px;
+  font-size: 12.5px; font-weight: 600;
+  color: rgba(255,255,255,0.75);
+}
+.c360-pay-trust-chip i { color: var(--pay-green-glow); font-size: 11px; }
+
+/* ══════════════════════════════════════════════════════
+   MAIN 2-COLUMN GRID
+   ══════════════════════════════════════════════════════ */
+.c360-pay-main {
+  background: var(--pay-light-grey);
+  padding: 56px 0 72px;
+}
+.c360-pay-grid {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+/* ── LEFT SIDEBAR ── */
+.c360-pay-sidebar { display: flex; flex-direction: column; gap: 16px; }
+
+.c360-pay-card {
+  background: #fff;
+  border: 1px solid var(--pay-border);
+  border-radius: var(--pay-radius);
+  padding: 24px 22px;
+}
+.c360-pay-card-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--pay-grey);
+  margin-bottom: 14px;
+}
+
+/* Security card */
+.c360-pay-secure-list { display: flex; flex-direction: column; gap: 12px; }
+.c360-pay-secure-item {
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.c360-pay-secure-icon {
+  width: 32px; height: 32px; flex-shrink: 0;
+  background: var(--pay-green-light); border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--pay-green); font-size: 13px; margin-top: 1px;
+}
+.c360-pay-secure-text { font-size: 13px; color: var(--pay-text-muted); line-height: 1.5; }
+.c360-pay-secure-text strong { display: block; font-size: 13px; font-weight: 600; color: var(--pay-text); margin-bottom: 1px; }
+
+/* Accepted cards card */
+.c360-pay-cards-row {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+}
+.c360-pay-card-badge {
+  display: flex; align-items: center; justify-content: center;
+  background: var(--pay-light-grey); border: 1px solid var(--pay-border);
+  border-radius: 6px; padding: 6px 12px;
+  font-size: 13px; color: var(--pay-text-muted);
+  font-weight: 600; gap: 6px;
+}
+.c360-pay-card-badge i { font-size: 16px; }
+.c360-pay-card-badge.visa    { color: #1a1f71; }
+.c360-pay-card-badge.mc      { color: #eb001b; }
+.c360-pay-card-badge.amex    { color: #007bc1; }
+.c360-pay-card-badge.disc    { color: #e65c00; }
+
+/* Need help card */
+.c360-pay-help-phone {
+  display: flex; align-items: center; gap: 10px;
+  text-decoration: none; margin-bottom: 4px;
+}
+.c360-pay-help-phone-icon {
+  width: 40px; height: 40px; flex-shrink: 0;
+  background: var(--pay-green-light); border-radius: 9px;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--pay-green); font-size: 16px;
+  transition: background 0.2s;
+}
+.c360-pay-help-phone:hover .c360-pay-help-phone-icon { background: var(--pay-green); }
+.c360-pay-help-phone:hover .c360-pay-help-phone-icon i { color: #fff; }
+.c360-pay-help-phone-num {
+  font-size: 18px; font-weight: 800; color: var(--pay-text);
+  transition: color 0.2s; line-height: 1;
+}
+.c360-pay-help-phone:hover .c360-pay-help-phone-num { color: var(--pay-green); }
+.c360-pay-help-hours {
+  font-size: 11.5px; color: var(--pay-text-muted);
+  margin: 5px 0 0 50px; line-height: 1.5;
+}
+
+/* Reassurance dark card */
+.c360-pay-reassure-card {
+  background: var(--pay-navy);
+  border-radius: var(--pay-radius);
+  padding: 24px 22px;
+  position: relative; overflow: hidden;
+}
+.c360-pay-reassure-card::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 85% 15%, rgba(18,120,37,0.22) 0%, transparent 55%);
+  pointer-events: none;
+}
+.c360-pay-reassure-label {
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: rgba(255,255,255,0.35);
+  margin-bottom: 10px; position: relative; z-index: 1;
+}
+.c360-pay-reassure-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 10px;
+  position: relative; z-index: 1;
+}
+.c360-pay-reassure-list li {
+  display: flex; align-items: flex-start; gap: 9px;
+  font-size: 13px; color: rgba(255,255,255,0.65); line-height: 1.45;
+}
+.c360-pay-reassure-list li i { color: var(--pay-green-glow); font-size: 11px; margin-top: 3px; flex-shrink: 0; }
+.c360-pay-reassure-list li strong { color: #fff; font-weight: 600; }
+
+/* ── RIGHT COLUMN — Payment Form ── */
+.c360-pay-form-card {
+  background: #fff;
+  border: 1px solid var(--pay-border);
+  border-radius: var(--pay-radius-lg);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(18,32,120,0.09);
+}
+.c360-pay-form-header {
+  background: linear-gradient(135deg, var(--pay-navy-deeper) 0%, var(--pay-navy) 100%);
+  padding: 26px 32px 22px;
+  position: relative; overflow: hidden;
+}
+.c360-pay-form-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(circle at 85% 25%, rgba(18,120,37,0.18) 0%, transparent 50%);
+  pointer-events: none;
+}
+.c360-pay-form-eyebrow {
+  display: inline-flex; align-items: center; gap: 6px;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--pay-green-glow);
+  background: rgba(46,204,82,0.12); border: 1px solid rgba(46,204,82,0.25);
+  padding: 4px 12px; border-radius: 100px;
+  margin-bottom: 12px; position: relative; z-index: 1;
+}
+.c360-pay-form-title {
+  font-size: 21px; font-weight: 800; color: #fff;
+  margin: 0 0 5px; line-height: 1.2; position: relative; z-index: 1;
+}
+.c360-pay-form-subtitle {
+  font-size: 13px; color: rgba(255,255,255,0.55);
+  margin: 0; line-height: 1.5; position: relative; z-index: 1;
+}
+/* SSL strip */
+.c360-pay-ssl-strip {
+  display: flex; align-items: center; gap: 20px;
+  padding: 11px 32px;
+  background: rgba(18,120,37,0.06);
+  border-bottom: 1px solid var(--pay-border);
+  flex-wrap: wrap;
+}
+.c360-pay-ssl-item {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 12px; color: var(--pay-text-muted); font-weight: 500;
+}
+.c360-pay-ssl-item i { color: var(--pay-green); font-size: 11px; }
+/* Form body */
+.c360-pay-form-body { padding: 0; }
+.c360-pay-form-body iframe {
+  width: 100% !important;
+  min-height: 800px;
+  display: block;
+  border: none;
+}
+.c360-pay-form-footer {
+  padding: 14px 32px 18px;
+  border-top: 1px solid var(--pay-border);
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 12px; flex-wrap: wrap;
+}
+.c360-pay-form-footer-left {
+  display: flex; align-items: center; gap: 6px;
+  font-size: 11.5px; color: var(--pay-text-muted);
+}
+.c360-pay-form-footer-left i { color: var(--pay-green); font-size: 11px; }
+.c360-pay-form-footer-right {
+  display: flex; align-items: center; gap: 8px;
+}
+.c360-pay-powered {
+  font-size: 11px; color: var(--pay-grey); display: flex; align-items: center; gap: 5px;
+}
+.c360-pay-powered i { color: #635bff; font-size: 13px; }
+
+/* Payment methods list */
+.c360-pay-methods-list { display: flex; flex-direction: column; gap: 0; }
+.c360-pay-method-row {
+  display: flex; align-items: center; gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--pay-border);
+}
+.c360-pay-method-icon {
+  width: 36px; height: 36px; flex-shrink: 0;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 16px;
+}
+.c360-pay-method-text { flex: 1; }
+.c360-pay-method-text strong {
+  display: block; font-size: 13px; font-weight: 600;
+  color: var(--pay-text); line-height: 1.2;
+}
+.c360-pay-method-text span {
+  font-size: 11.5px; color: var(--pay-text-muted); line-height: 1.3;
+}
+
+/* ══════════════════════════════════════════════════════
+   SATISFACTION GUARANTEE
+   ══════════════════════════════════════════════════════ */
+.c360-pay-guarantee {
+  background: var(--pay-light-grey);
+  border-top: 1px solid var(--pay-border);
+  border-bottom: 1px solid var(--pay-border);
+  padding: 52px 0;
+}
+.c360-pay-guarantee-inner {
+  display: flex; align-items: center; gap: 48px;
+  max-width: 860px; margin: 0 auto;
+}
+/* CSS-drawn satisfaction seal */
+.c360-pay-seal {
+  flex-shrink: 0;
+  width: 130px; height: 130px;
+  position: relative;
+  display: flex; align-items: center; justify-content: center;
+}
+.c360-pay-seal-ring {
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--pay-navy) 0deg,
+    #1a2e99 90deg,
+    var(--pay-navy) 180deg,
+    #0d1654 270deg,
+    var(--pay-navy) 360deg
+  );
+  box-shadow:
+    0 0 0 3px var(--pay-green),
+    0 6px 28px rgba(18,32,120,0.28);
+}
+/* Notched edge effect */
+.c360-pay-seal-ring::before {
+  content: '';
+  position: absolute; inset: 6px;
+  border-radius: 50%;
+  border: 2px dashed rgba(255,255,255,0.18);
+}
+.c360-pay-seal-inner {
+  position: relative; z-index: 2;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  text-align: center; gap: 0;
+}
+.c360-pay-seal-top {
+  font-size: 8px; font-weight: 800; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--pay-green-glow);
+  margin-bottom: 2px;
+}
+.c360-pay-seal-pct {
+  font-size: 30px; font-weight: 900; color: #fff;
+  line-height: 1; letter-spacing: -0.03em;
+}
+.c360-pay-seal-mid {
+  font-size: 7.5px; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(255,255,255,0.7);
+  line-height: 1.2;
+}
+.c360-pay-seal-bottom {
+  font-size: 7px; font-weight: 800; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--pay-green-glow);
+  margin-top: 3px;
+}
+/* Text side */
+.c360-pay-guarantee-text {}
+.c360-pay-guarantee-overline {
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--pay-green);
+  margin-bottom: 8px; display: block;
+}
+.c360-pay-guarantee-heading {
+  font-size: clamp(20px, 2.8vw, 26px); font-weight: 800;
+  color: var(--pay-text); margin: 0 0 10px;
+  line-height: 1.2; letter-spacing: -0.02em;
+}
+.c360-pay-guarantee-heading span { color: var(--pay-green); }
+.c360-pay-guarantee-body {
+  font-size: 14.5px; color: var(--pay-text-muted);
+  line-height: 1.7; margin: 0;
+  max-width: 580px;
+}
+
+/* ══════════════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════════════ */
+.c360-pay-faq {
+  background: #fff;
+  padding: 72px 0 80px;
+}
+.c360-pay-faq-header { text-align: center; margin-bottom: 46px; }
+.c360-pay-faq-overline {
+  display: inline-block;
+  font-size: 11px; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--pay-green); margin-bottom: 10px;
+}
+.c360-pay-faq-header h2 {
+  font-size: clamp(24px, 3.5vw, 34px); font-weight: 800;
+  color: var(--pay-text); margin: 0 0 12px;
+  letter-spacing: -0.02em; line-height: 1.2;
+}
+.c360-pay-faq-header p {
+  font-size: 15px; color: var(--pay-text-muted);
+  max-width: 480px; margin: 0 auto; line-height: 1.6;
+}
+.c360-pay-faq-list { max-width: 780px; margin: 0 auto; }
+.c360-pay-faq-toggle { display: none; }
+.c360-pay-faq-item { border-bottom: 1px solid var(--pay-border); }
+.c360-pay-faq-item:first-child { border-top: 1px solid var(--pay-border); }
+.c360-pay-faq-q {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 4px; cursor: pointer; gap: 16px;
+  font-size: 15px; font-weight: 600; color: var(--pay-text);
+  line-height: 1.4; transition: color 0.18s; user-select: none; list-style: none;
+}
+.c360-pay-faq-q:hover { color: var(--pay-navy); }
+.c360-pay-faq-icon {
+  width: 26px; height: 26px; flex-shrink: 0;
+  background: var(--pay-blue-light); border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  color: var(--pay-navy); font-size: 10px;
+  transition: transform 0.3s ease, background 0.2s;
+}
+.c360-pay-faq-a {
+  max-height: 0; overflow: hidden;
+  transition: max-height 0.4s ease; padding: 0 4px;
+}
+.c360-pay-faq-a p {
+  font-size: 14px; color: var(--pay-text-muted);
+  line-height: 1.7; margin: 0 0 20px; padding-top: 2px;
+}
+.c360-pay-faq-toggle:checked ~ .c360-pay-faq-q .c360-pay-faq-icon {
+  transform: rotate(180deg); background: var(--pay-navy); color: #fff;
+}
+.c360-pay-faq-toggle:checked ~ .c360-pay-faq-a { max-height: 400px; }
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 1024px) {
+  .c360-pay-grid { grid-template-columns: 310px 1fr; gap: 24px; }
+}
+@media (max-width: 860px) {
+  .c360-pay-grid { grid-template-columns: 1fr; }
+  .c360-pay-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .c360-pay-reassure-card { grid-column: span 2; }
+}
+@media (max-width: 640px) {
+  .c360-pay-hero { padding: 50px 0 44px; }
+  .c360-pay-trust-chips { gap: 8px; }
+  .c360-pay-sidebar { grid-template-columns: 1fr; }
+  .c360-pay-reassure-card { grid-column: span 1; }
+  .c360-pay-form-header { padding: 20px 20px 18px; }
+  .c360-pay-ssl-strip { padding: 10px 20px; gap: 12px; }
+  .c360-pay-form-footer { padding: 12px 20px 16px; flex-direction: column; align-items: flex-start; }
+  .c360-pay-main { padding: 44px 0 60px; }
+  .c360-pay-guarantee-inner { flex-direction: column; gap: 28px; text-align: center; }
+  .c360-pay-guarantee-body { margin: 0 auto; }
+  .c360-pay-faq { padding: 56px 0 64px; }
+}
+</style>
+
+
+<div class="c360-pay-wrap">
+
+  <!-- ══════════════════════════════════════════════════
+       HERO
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-pay-hero">
+    <div class="c360-pay-container">
+      <div class="c360-pay-hero-inner">
+        <div class="c360-pay-hero-eyebrow">
+          <i class="fa-solid fa-lock"></i>
+          Secure Payment Portal
+        </div>
+        <h1>Make a <span>Payment</span></h1>
+        <p class="c360-pay-hero-sub">
+          Enter your payment details below. Your transaction is encrypted and processed securely.
+          If you need any help, our team is one call away.
+        </p>
+        <div class="c360-pay-trust-chips">
+          <div class="c360-pay-trust-chip">
+            <i class="fa-solid fa-lock"></i> 256-bit SSL Encrypted
+          </div>
+          <div class="c360-pay-trust-chip">
+            <i class="fa-solid fa-shield-halved"></i> Secure Payment Processing
+          </div>
+          <div class="c360-pay-trust-chip">
+            <i class="fa-solid fa-receipt"></i> Receipt Sent Automatically
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       MAIN 2-COLUMN
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-pay-main">
+    <div class="c360-pay-container">
+      <div class="c360-pay-grid">
+
+        <!-- LEFT — Trust & Help Sidebar -->
+        <div class="c360-pay-sidebar">
+
+          <!-- Security card -->
+          <div class="c360-pay-card">
+            <div class="c360-pay-card-label">Your Payment is Protected</div>
+            <div class="c360-pay-secure-list">
+              <div class="c360-pay-secure-item">
+                <div class="c360-pay-secure-icon"><i class="fa-solid fa-lock"></i></div>
+                <div class="c360-pay-secure-text">
+                  <strong>SSL Encrypted</strong>
+                  Your card details are transmitted over a fully encrypted connection.
+                </div>
+              </div>
+              <div class="c360-pay-secure-item">
+                <div class="c360-pay-secure-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                <div class="c360-pay-secure-text">
+                  <strong>Secure Processing</strong>
+                  Payments are processed through our secure gateway — we never store your full card number.
+                </div>
+              </div>
+              <div class="c360-pay-secure-item">
+                <div class="c360-pay-secure-icon"><i class="fa-solid fa-envelope-open-text"></i></div>
+                <div class="c360-pay-secure-text">
+                  <strong>Confirmation Sent</strong>
+                  A receipt will be emailed to you automatically after your payment is processed.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Accepted payment methods -->
+          <div class="c360-pay-card">
+            <div class="c360-pay-card-label">Accepted Payment Methods</div>
+            <div class="c360-pay-methods-list">
+              <div class="c360-pay-method-row">
+                <div class="c360-pay-method-icon" style="background:#ffc439;color:#003087;">
+                  <i class="fa-brands fa-paypal"></i>
+                </div>
+                <div class="c360-pay-method-text">
+                  <strong>PayPal &amp; Pay Later</strong>
+                  <span>Pay now or split into installments</span>
+                </div>
+              </div>
+              <div class="c360-pay-method-row">
+                <div class="c360-pay-method-icon" style="background:#008cff;color:#fff;">
+                  <i class="fa-brands fa-venmo"></i>
+                </div>
+                <div class="c360-pay-method-text">
+                  <strong>Venmo</strong>
+                  <span>Pay directly from your Venmo balance</span>
+                </div>
+              </div>
+              <div class="c360-pay-method-row">
+                <div class="c360-pay-method-icon" style="background:#ffb3c7;color:#17120e;">
+                  <i class="fa-solid fa-k"></i>
+                </div>
+                <div class="c360-pay-method-text">
+                  <strong>Klarna</strong>
+                  <span>Buy now, pay later — 0% interest options</span>
+                </div>
+              </div>
+              <div class="c360-pay-method-row">
+                <div class="c360-pay-method-icon" style="background:#f90;color:#fff;">
+                  <i class="fa-brands fa-amazon"></i>
+                </div>
+                <div class="c360-pay-method-text">
+                  <strong>Amazon Pay</strong>
+                  <span>Use your Amazon wallet &amp; saved cards</span>
+                </div>
+              </div>
+              <div class="c360-pay-method-row" style="border-bottom:none;padding-bottom:0;">
+                <div class="c360-pay-method-icon" style="background:var(--pay-blue-light);color:var(--pay-navy);">
+                  <i class="fa-solid fa-credit-card"></i>
+                </div>
+                <div class="c360-pay-method-text">
+                  <strong>All Major Cards</strong>
+                  <span>Visa · Mastercard · Amex · Discover</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Need help -->
+          <div class="c360-pay-card">
+            <div class="c360-pay-card-label">Need Help?</div>
+            <a href="tel:+18665276205" class="c360-pay-help-phone">
+              <div class="c360-pay-help-phone-icon">
+                <i class="fa-solid fa-phone"></i>
+              </div>
+              <div class="c360-pay-help-phone-num">(866) 527-6205</div>
+            </a>
+            <p class="c360-pay-help-hours">
+              Mon–Thu &nbsp;7am – 4pm MST<br>
+              Friday &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;7am – 1pm MST
+            </p>
+          </div>
+
+          <!-- Reassurance -->
+          <div class="c360-pay-reassure-card">
+            <div class="c360-pay-reassure-label">What to Expect</div>
+            <ul class="c360-pay-reassure-list">
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Instant confirmation</strong> — your payment is applied to your account immediately.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Receipt by email</strong> — check your inbox (and spam folder) within minutes.</span></li>
+              <li><i class="fa-solid fa-circle-check"></i><span><strong>Questions?</strong> Call or text us and a real team member will help you right away.</span></li>
+            </ul>
+          </div>
+
+        </div><!-- /sidebar -->
+
+
+        <!-- RIGHT — Payment Form -->
+        <div>
+          <div class="c360-pay-form-card">
+
+            <div class="c360-pay-form-header">
+              <div class="c360-pay-form-eyebrow">
+                <i class="fa-solid fa-lock"></i> Secure Checkout
+              </div>
+              <div class="c360-pay-form-title">Enter Your Payment Details</div>
+              <p class="c360-pay-form-subtitle">All fields are required. Your card information is encrypted and never stored on our servers.</p>
+            </div>
+
+            <div class="c360-pay-ssl-strip">
+              <div class="c360-pay-ssl-item">
+                <i class="fa-solid fa-lock"></i> 256-bit SSL encryption
+              </div>
+              <div class="c360-pay-ssl-item">
+                <i class="fa-solid fa-circle-check"></i> PCI-compliant processing
+              </div>
+              <div class="c360-pay-ssl-item">
+                <i class="fa-solid fa-circle-check"></i> Receipt emailed on completion
+              </div>
+            </div>
+
+            <!-- GHL Payment Form Embed -->
+            <div class="c360-pay-form-body">
+              <iframe
+                src="https://link.complete360.org/widget/form/cAdQDo6L81kV8gSwx9W6"
+                style="width:100%;height:100%;border:none;"
+                id="inline-cAdQDo6L81kV8gSwx9W6"
+                data-layout="{'id':'INLINE'}"
+                data-trigger-type="alwaysShow"
+                data-trigger-value=""
+                data-activation-type="alwaysActivated"
+                data-activation-value=""
+                data-deactivation-type="neverDeactivate"
+                data-deactivation-value=""
+                data-form-name="Collect Payment"
+                data-height="800"
+                data-layout-iframe-id="inline-cAdQDo6L81kV8gSwx9W6"
+                data-form-id="cAdQDo6L81kV8gSwx9W6"
+                title="Collect Payment">
+              </iframe>
+            </div>
+
+            <div class="c360-pay-form-footer">
+              <div class="c360-pay-form-footer-left">
+                <i class="fa-solid fa-lock"></i>
+                Your payment information is encrypted and secure.
+              </div>
+              <div class="c360-pay-powered">
+                <i class="fa-brands fa-stripe"></i> Powered by Stripe
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /grid -->
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       SATISFACTION GUARANTEE
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-pay-guarantee">
+    <div class="c360-pay-container">
+      <div class="c360-pay-guarantee-inner">
+
+        <!-- CSS Seal -->
+        <div class="c360-pay-seal">
+          <div class="c360-pay-seal-ring"></div>
+          <div class="c360-pay-seal-inner">
+            <div class="c360-pay-seal-top">Satisfaction</div>
+            <div class="c360-pay-seal-pct">100%</div>
+            <div class="c360-pay-seal-mid">Money-Back<br>Guarantee</div>
+            <div class="c360-pay-seal-bottom">Guaranteed</div>
+          </div>
+        </div>
+
+        <!-- Text -->
+        <div class="c360-pay-guarantee-text">
+          <span class="c360-pay-guarantee-overline">Our Promise to You</span>
+          <h2 class="c360-pay-guarantee-heading">We stand behind our work <span>100%.</span></h2>
+          <p class="c360-pay-guarantee-body">
+            If you're not satisfied with the results of your Complete360 campaign at the end of your service period,
+            we'll extend your campaign duration at no additional charge — no questions asked.
+            We're invested in your success, not just your payment.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ══════════════════════════════════════════════════
+       FAQ  (sits directly above footer)
+       ══════════════════════════════════════════════════ -->
+  <section class="c360-pay-faq">
+    <div class="c360-pay-container">
+      <div class="c360-pay-faq-header">
+        <div class="c360-pay-faq-overline">Payment Questions</div>
+        <h2>Common questions about paying online</h2>
+        <p>Everything you need to know before entering your payment details.</p>
+      </div>
+
+      <div class="c360-pay-faq-list">
+
+        <div class="c360-pay-faq-item">
+          <input type="checkbox" id="pay-faq1" class="c360-pay-faq-toggle">
+          <label for="pay-faq1" class="c360-pay-faq-q">
+            Is my payment information safe?
+            <span class="c360-pay-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </label>
+          <div class="c360-pay-faq-a">
+            <p>Yes. All payments are processed over a 256-bit SSL encrypted connection. We use a PCI-compliant payment gateway and never store your full card number on our servers. Your card details go directly to the payment processor — not to us.</p>
+          </div>
+        </div>
+
+        <div class="c360-pay-faq-item">
+          <input type="checkbox" id="pay-faq2" class="c360-pay-faq-toggle">
+          <label for="pay-faq2" class="c360-pay-faq-q">
+            Will I receive a receipt after paying?
+            <span class="c360-pay-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </label>
+          <div class="c360-pay-faq-a">
+            <p>Yes — a receipt will be automatically emailed to the address you enter on the form. If you don't see it within a few minutes, check your spam or promotions folder. If you still can't find it, call us at (866) 527-6205 and we'll resend it.</p>
+          </div>
+        </div>
+
+        <div class="c360-pay-faq-item">
+          <input type="checkbox" id="pay-faq3" class="c360-pay-faq-toggle">
+          <label for="pay-faq3" class="c360-pay-faq-q">
+            What cards do you accept?
+            <span class="c360-pay-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </label>
+          <div class="c360-pay-faq-a">
+            <p>We accept all major credit and debit cards including Visa, Mastercard, American Express, and Discover. If you have a question about a specific card type, give us a call before submitting your payment.</p>
+          </div>
+        </div>
+
+        <div class="c360-pay-faq-item">
+          <input type="checkbox" id="pay-faq4" class="c360-pay-faq-toggle">
+          <label for="pay-faq4" class="c360-pay-faq-q">
+            How quickly is my payment applied to my account?
+            <span class="c360-pay-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </label>
+          <div class="c360-pay-faq-a">
+            <p>Payments are applied to your account instantly upon successful processing. Your account team will be notified automatically. If you have any questions about how a payment applies to your services, contact us at (866) 527-6205.</p>
+          </div>
+        </div>
+
+        <div class="c360-pay-faq-item">
+          <input type="checkbox" id="pay-faq5" class="c360-pay-faq-toggle">
+          <label for="pay-faq5" class="c360-pay-faq-q">
+            I ran into an issue with my payment. What should I do?
+            <span class="c360-pay-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
+          </label>
+          <div class="c360-pay-faq-a">
+            <p>If your payment didn't go through or you received an error, please call us directly at (866) 527-6205 during business hours (Mon–Thu 7am–4pm, Fri 7am–1pm MST). Do not re-submit the form multiple times — our team will verify your account and help you complete the payment safely.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</div><!-- /.c360-pay-wrap -->
+
+<!-- GHL form embed script -->
+<script src="https://link.complete360.org/js/form_embed.js"></script>
+
+<!-- ============================================================
+     END COMPLETE360 MAKE A PAYMENT v1.0
+     ============================================================ -->
