@@ -10,6 +10,7 @@ ready to copy.
 
 | File | Agent | Runs on | Last changed |
 |---|---|---|---|
+| `website-chat-text.md` | Live Chat Widget | Website chat widget (text, Conversation AI) — paste by hand | 2026-11-09 |
 | `dakota-website-chat.md` | Dakota | Website chat widget (voice) | 2026-11-09 |
 | `riley-ai-agents-page.md` | Riley (EN) | /ai-agents demo widget | 2026-11-09 |
 | `riley-ai-agents-page-es.md` | Riley (ES) | /ai-agents Spanish widget | 2026-11-09 |
@@ -18,16 +19,14 @@ ready to copy.
 | `sarah-voice-drop-callback.md` | Sarah | Voice-drop callbacks | — |
 
 ## Not in this folder
-- **Website text chat (Conversation AI):** the text replies in the website chat widget
-  come from Conversation AI, which the GHL API connection can't read. Paste its prompt
-  here as `website-chat-text.md` so it's tracked too.
+- **AI SMS Responder (Conversation AI, currently Off):** paste its prompt here before turning it on.
 - **Inactive agents:** "Gabriel AI Asst. (DO NOT USE)" and "Luis AI Asst. (DO NOT USE)".
   Consider deleting them in GHL — the Gabriel one has an action that tells callers
   their cancellation has been processed.
 
 ## Policy every agent must match
 Taken from the Terms of Service and Return Policy (v2.1). If the policy changes,
-update the agents that state it (Dakota, Riley EN/ES).
+update the agents that state it (Live Chat Widget, Dakota, Riley EN/ES).
 - Non-refundable from the time of purchase; exceptions case by case, by management only.
 - Recurring services: cancel at least 10 days before the next billing date, in writing.
 - Satisfaction guarantee: GBP Management and all ad campaigns — campaign extended at no charge if eligible.
