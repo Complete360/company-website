@@ -1,6 +1,1380 @@
-<!--
-  PLACEHOLDER: no code yet
-  GHL page: "Video Library"
-  Next step: paste this page's custom code from GHL here,
-  or delete this file if the page has no custom code.
--->
+<!-- ============================================================
+     COMPLETE360 AD CREATIVE LIBRARY — v4.1
+     Paste into a GHL Custom Code element on the page BODY (not Head).
+     All styles + scripts prefixed with c360vl- to avoid collisions.
+     Register in brand doc §2: c360vl- = Ad Creative Library.
+
+     v4.1 CHANGES — SEARCH BAR NO LONGER STICKY (reverts v3.2).
+     The search + count row scrolls away with the page again. Removed with
+     it: the opaque background and negative-margin bleed, the z-index, the
+     pinned-state shadow, and the scroll listener that drove it — all of that
+     existed only to make sticky look right, so none of it is left behind.
+     The RAIL IS STILL STICKY (v3.1) and is untouched; its offset went back
+     to +16px, the +14px in v3.2 having existed only to line the first rail
+     item up with the pinned search input.
+     Note the rail is still the fast way back to a filter without scrolling.
+     If you later want search reachable mid-page without pinning the bar, a
+     "/" or Cmd-K shortcut that scrolls up and focuses the input is the
+     lighter option — say the word.
+
+     v4.0 CHANGES — REAL VIDEO FILES. The library now plays.
+     Catalog rebuilt from the Import sheet: 62 clips, all type:'file' with
+     live assets.cdn.filesafe.space .mp4 URLs. Every card is playable — no
+     placeholders left. Home & Garden (2) and HVAC (1) moved out of pending;
+     6 categories still pending (Automotive, Cleaning, Contractor Services,
+     Plumbing, Senior Care, Spanish Videos).
+     Catalog deltas vs v3.2: +Don't Wait, +Home\, Auto Toys, +Lawn Care Done
+     Right, +One Stop Insurance, +Transform Your Outdoor Space, +Trusted
+     Source in HVAC; -Mortgage Beyond Ordinary, -Home\, Auto & Toys (the
+     latter renamed, ampersand dropped, per the sheet).
+
+     AUTO THUMBNAILS — the significant addition.
+     Self-hosted .mp4 has no thumbnail, and 62 identical navy gradient tiles
+     would defeat a page whose whole job is picking by look. Rather than ask
+     for 62 poster images, each card lazily loads its own first frame:
+     a muted <video preload="none"> gets its src set only when the card nears
+     the viewport, with a #t= fragment so the browser decodes one frame and
+     stops. No bandwidth is spent on cards nobody scrolls to, and nothing is
+     fetched at page load.
+     The navy gradient stays behind it as the fallback, so a clip that fails
+     to produce a frame degrades to exactly the v3.2 look rather than a black
+     hole. Set C360VL_AUTOTHUMB = false to switch the whole mechanism off.
+     Per-video  thumb: 'https://...jpg'  still wins over the auto frame — set
+     it on any clip whose opening frame is a dark fade or a blank title card.
+
+     INTERNAL NOTES ARE NOT PUBLISHED. The Notes sheet carries "Not in Canva"
+     (17) and "NEEDS to be redone" (3). Those are production-tracking notes,
+     not customer-facing, so they are deliberately NOT mapped to card chips.
+     Only NEW -> "New" (11) and re-created -> "Updated" (5) render publicly.
+
+     v3.2 CHANGES — STICKY SEARCH BAR.
+     The search + result count now pin under the global header alongside the
+     rail, so a client 40 cards deep can retype without scrolling back up.
+     Three things this needed beyond "position:sticky":
+     1. AN OPAQUE BACKGROUND WITH BLEED. A transparent sticky bar lets cards
+        scroll through it and looks broken. The bar is white, with symmetric
+        negative margins so it covers the full column width including the
+        gutter where card hover-shadows would otherwise peek out.
+     2. NO GAP ABOVE. It pins at exactly --c360vl-sticky-top (not +16px like
+        the rail) and carries its own top padding instead. Any gap between
+        the global header and the bar is a letterbox that scrolling cards
+        show through.
+     3. z-index 30. Cards get transform on hover, which creates a stacking
+        context; without an explicit z-index the hovered card can paint over
+        the bar.
+     Also: a shadow appears only once the bar is actually pinned, so it reads
+     flat in its resting position. The rail's offset moved 16px -> 14px so
+     the first rail item lines up with the search input when both are stuck.
+     Mobile: sticky here too — unlike the rail, the bar is one row tall, and
+     re-searching on a phone is exactly when scrolling back up hurts most.
+
+     v3.1 CHANGES — STICKY RAIL. The rail was already position:sticky in
+     v3.0; if it did not stick on the live page, the cause was almost
+     certainly an ANCESTOR, not this file. Three fixes:
+     1. ANCESTOR OVERFLOW. position:sticky silently dies inside any ancestor
+        that is a scroll container. GHL page wrappers commonly set
+        overflow-x:hidden — and per spec, overflow-x:hidden computes
+        overflow-y to auto, which makes that ancestor a scroll container and
+        kills sticky with NO error and NO visual clue. c360vlUnclip() walks
+        up from this section and rewrites those to overflow-x:clip +
+        overflow-y:visible, which clips horizontally WITHOUT creating a
+        scroll container. It only touches ancestors that are not actually
+        scrolling anything, so nothing else breaks.
+     2. REAL HEADER HEIGHT. --c360vl-sticky-top was a hardcoded 78px guess.
+        It is now measured from the live .c360-header / .c360-mobile-header
+        at load and on resize, and only applied when that header is actually
+        sticky or fixed. Change nothing if your header height moves.
+     3. SELECTION BAR CLEARANCE. When the bottom bar is up it covered the
+        end of a long rail. The rail's max-height now subtracts the bar.
+     Also: rail gets a slim scrollbar so internal scrolling reads as
+     deliberate rather than clipped.
+     Mobile (<1000px) rail stays STATIC on purpose — see the note there.
+
+     v3.0 CHANGES
+     - REAL CATALOG. The 58 titles from the line-of-business spreadsheet
+       replace v2.0's invented placeholders. Categories match the sheet.
+     - FORMAT FILTER REMOVED. Every clip is 1920x1080, so a format facet
+       filtered nothing. The rail is industries only now.
+     - Length labels removed — we don't have real durations. Set  len:
+       on a video and the chip comes back automatically.
+     - "New" and "Updated" flags drive off the sheet's NEW / re-created notes.
+     - PENDING CATEGORIES: the eight lines marked "New Library" (plus
+       Spanish) render in the rail with a "Soon" marker instead of a count.
+       They are clickable and show an in-production panel, so a roofer can
+       see we're building for HVAC and plumbing too. Set pending: false
+       once titles exist.
+
+     ADDING REAL VIDEO FILES — the only block you edit
+       Scroll to C360VL_VIDEOS in the script block below.
+         type  : 'youtube' | 'vimeo' | 'file'
+         src   : YouTube ID | Vimeo numeric ID | full .mp4 URL | null
+                 null = placeholder. Still browses, searches and SELECTS —
+                 it just can't play yet, so you can launch partial.
+         thumb : poster image URL. YouTube thumbs auto-derive from the ID.
+                 For self-hosted .mp4 SET THIS — a video with no poster
+                 shows a black tile.
+         desc  : optional one-liner. Blank for now; it also feeds search,
+                 so it's worth filling in when you have the copy.
+         len   : optional ('30s'). Renders a duration chip when present.
+
+     WIRING THE SUBMIT (still a stub)
+       #c360vl-selection is a hidden input holding the picks as a
+       comma-separated id list. Options: copy it into a GHL form field on
+       submit, POST to an inbound webhook, or leave it manual. Right now
+       "Review my picks" only shows the client their list on screen.
+
+     SINGLE-PICK VS MULTI-PICK
+       Currently MULTI. Set C360VL_MAX = 1 to force one.
+     ============================================================ -->
+
+<style>
+/* ---------- Brand tokens (mirrors header/footer) ---------- */
+.c360vl-wrap {
+  --c360vl-blue: #122078;
+  --c360vl-blue-hover: #0d1654;
+  --c360vl-blue-light: #E6F1FB;
+  --c360vl-green: #127825;
+  --c360vl-green-hover: #0e5e1d;
+  --c360vl-green-light: #EAF3DE;
+  --c360vl-grey: #888780;
+  --c360vl-grey-light: #F1EFE8;
+  --c360vl-border: rgba(0, 0, 0, 0.08);
+  --c360vl-text: #0F1F5E;
+  --c360vl-text-muted: #5F5E5A;
+  --c360vl-sticky-top: 78px;   /* fallback only — JS measures the real header */
+  --c360vl-bar-h: 0px;         /* set to the selection bar height while it is up */
+  --c360vl-rail: 250px;
+
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  color: var(--c360vl-text);
+  background: #fff;
+}
+.c360vl-wrap *, .c360vl-wrap *::before, .c360vl-wrap *::after { box-sizing: border-box; }
+.c360vl-inner { max-width: 1320px; margin: 0 auto; padding: 0 32px; }
+
+/* ---------- Intro ---------- */
+.c360vl-intro { padding: 52px 0 26px; max-width: 660px; }
+.c360vl-eyebrow {
+  font-size: 11px; text-transform: uppercase; letter-spacing: 0.8px;
+  font-weight: 500; color: var(--c360vl-green); margin: 0 0 10px;
+}
+.c360vl-title {
+  font-size: 36px; font-weight: 600; letter-spacing: -0.8px;
+  line-height: 1.15; margin: 0 0 12px; color: var(--c360vl-blue);
+}
+.c360vl-sub { font-size: 15px; line-height: 1.65; color: var(--c360vl-text-muted); margin: 0; }
+
+/* ---------- Two-column shell ---------- */
+.c360vl-shell {
+  display: grid; grid-template-columns: var(--c360vl-rail) 1fr;
+  gap: 40px; align-items: start; padding-bottom: 120px;
+}
+
+/* ---------- Left rail ---------- */
+/* Sticky rail.
+   align-self:start is REQUIRED, not cosmetic: a grid item stretches to the
+   full row height by default, leaving sticky no room to travel — it would
+   sit there looking static with no error. .c360vl-shell also sets
+   align-items:start; this is belt and braces in case that is overridden.
+   If it still does not stick, the culprit is an ancestor scroll container —
+   see c360vlUnclip() in the script. */
+.c360vl-rail {
+  position: -webkit-sticky;
+  position: sticky;
+  align-self: start;
+  top: calc(var(--c360vl-sticky-top) + 16px);
+  max-height: calc(100vh - var(--c360vl-sticky-top) - var(--c360vl-bar-h) - 32px);
+  overflow-y: auto;
+  overscroll-behavior: contain;   /* don't chain rail scroll to the page */
+  padding-right: 4px;
+}
+/* Slim scrollbar so a rail that scrolls internally looks intentional. */
+.c360vl-rail { scrollbar-width: thin; scrollbar-color: rgba(0,0,0,0.18) transparent; }
+.c360vl-rail::-webkit-scrollbar { width: 6px; }
+.c360vl-rail::-webkit-scrollbar-track { background: transparent; }
+.c360vl-rail::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.16); border-radius: 3px;
+}
+.c360vl-rail:hover::-webkit-scrollbar-thumb { background: rgba(0,0,0,0.28); }
+.c360vl-rail-label {
+  font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.7px;
+  color: var(--c360vl-grey); margin: 0 0 10px; padding-left: 12px;
+}
+.c360vl-rail-list { list-style: none; margin: 0; padding: 0; }
+
+.c360vl-rail-btn {
+  width: 100%; display: flex; align-items: center; gap: 10px;
+  font-family: inherit; font-size: 13.5px; font-weight: 400; text-align: left;
+  color: var(--c360vl-text-muted); background: transparent;
+  border: 0; border-radius: 8px; padding: 9px 12px; cursor: pointer;
+  transition: background 0.13s ease, color 0.13s ease;
+}
+.c360vl-rail-btn:hover { background: var(--c360vl-grey-light); color: var(--c360vl-text); }
+.c360vl-rail-btn[aria-pressed="true"] {
+  background: var(--c360vl-blue); color: #fff; font-weight: 500;
+}
+.c360vl-rail-btn[aria-pressed="true"] .c360vl-rail-n,
+.c360vl-rail-btn[aria-pressed="true"] .c360vl-rail-soon { color: rgba(255,255,255,0.7); }
+.c360vl-rail-txt { flex: 1; min-width: 0; }
+.c360vl-rail-n { font-size: 11.5px; color: var(--c360vl-grey); font-variant-numeric: tabular-nums; }
+.c360vl-rail-soon {
+  font-size: 9.5px; text-transform: uppercase; letter-spacing: 0.4px;
+  color: var(--c360vl-grey);
+}
+.c360vl-rail-btn.c360vl-rail-empty { opacity: 0.4; cursor: not-allowed; }
+.c360vl-rail-btn.c360vl-rail-empty:hover { background: transparent; color: var(--c360vl-text-muted); }
+
+/* ---------- Search + count ---------- */
+/* Search bar scrolls with the page (sticky reverted in v4.1 — the rail is
+   still sticky and carries the filtering on its own). */
+.c360vl-topbar { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; margin-bottom: 24px; }
+.c360vl-search { position: relative; flex: 1 1 320px; }
+.c360vl-search-ico {
+  position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+  color: var(--c360vl-grey); pointer-events: none;
+}
+.c360vl-search input {
+  width: 100%; font-family: inherit; font-size: 14px; color: var(--c360vl-text);
+  padding: 11px 38px 11px 40px; border: 1px solid var(--c360vl-border);
+  border-radius: 8px; background: var(--c360vl-grey-light);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+.c360vl-search input::placeholder { color: var(--c360vl-grey); }
+.c360vl-search input:focus {
+  outline: none; background: #fff; border-color: var(--c360vl-green);
+  box-shadow: 0 0 0 3px rgba(18, 120, 37, 0.12);
+}
+.c360vl-clear {
+  position: absolute; right: 8px; top: 50%; transform: translateY(-50%);
+  width: 26px; height: 26px; border: 0; border-radius: 50%; padding: 0;
+  background: transparent; color: var(--c360vl-grey); cursor: pointer;
+  display: none; align-items: center; justify-content: center;
+}
+.c360vl-clear:hover { background: rgba(0,0,0,0.06); color: var(--c360vl-text); }
+.c360vl-search.c360vl-has-value .c360vl-clear { display: flex; }
+.c360vl-count { font-size: 12.5px; color: var(--c360vl-text-muted); white-space: nowrap; }
+
+/* ---------- Grid ---------- */
+.c360vl-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(268px, 1fr)); gap: 26px 22px;
+}
+.c360vl-card {
+  border: 1px solid var(--c360vl-border); border-radius: 12px; background: #fff;
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+.c360vl-card:hover {
+  transform: translateY(-3px); box-shadow: 0 12px 28px rgba(18, 32, 120, 0.13);
+  border-color: rgba(18, 32, 120, 0.22);
+}
+.c360vl-card.c360vl-picked {
+  border-color: var(--c360vl-green); box-shadow: 0 0 0 2px var(--c360vl-green);
+}
+
+/* Thumb doubles as the play trigger. 16:9 — every clip is 1920x1080. */
+.c360vl-thumb {
+  position: relative; aspect-ratio: 16 / 9; width: 100%; display: block;
+  border: 0; padding: 0; cursor: pointer; background: var(--c360vl-blue); overflow: hidden;
+}
+.c360vl-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Auto-thumbnail: one decoded frame of the clip itself, layered OVER the
+   gradient placeholder. Fades in when a frame is ready; if the file never
+   decodes, opacity stays 0 and the gradient below is what you see — the
+   failure mode is the old design, not a black rectangle. */
+.c360vl-thumb-vid {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; display: block; z-index: 1;
+  opacity: 0; transition: opacity 0.35s ease;
+  background: transparent; pointer-events: none;
+}
+.c360vl-thumb-vid.c360vl-ready { opacity: 1; }
+.c360vl-thumb-ph {
+  position: absolute; inset: 0;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255,255,255,0.035) 0 12px, rgba(255,255,255,0) 12px 24px),
+    linear-gradient(145deg, var(--c360vl-blue) 0%, #1a2e99 100%);
+}
+.c360vl-thumb-ph::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(circle at 50% 45%, rgba(26,158,50,0.26), transparent 62%);
+}
+.c360vl-play {
+  position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%);
+  width: 48px; height: 48px; border-radius: 50%;
+  background: rgba(255,255,255,0.94); color: var(--c360vl-blue);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.25); z-index: 2;
+  transition: transform 0.16s ease, background 0.16s ease, color 0.16s ease;
+}
+.c360vl-thumb:hover .c360vl-play {
+  transform: translate(-50%, -50%) scale(1.09);
+  background: var(--c360vl-green); color: #fff;
+}
+.c360vl-play svg { margin-left: 3px; }
+
+.c360vl-tags { position: absolute; left: 8px; top: 8px; z-index: 2; display: flex; gap: 5px; flex-wrap: wrap; }
+.c360vl-tag {
+  font-size: 9.5px; font-weight: 500; letter-spacing: 0.3px; color: #fff;
+  background: rgba(0,0,0,0.6); padding: 3px 7px; border-radius: 7px;
+  border: 1px solid rgba(255,255,255,0.28);
+}
+.c360vl-tag-new { background: var(--c360vl-green); border-color: transparent; }
+.c360vl-len {
+  position: absolute; right: 8px; bottom: 8px; z-index: 2;
+  font-size: 11px; font-weight: 500; color: #fff;
+  background: rgba(0,0,0,0.72); padding: 3px 7px; border-radius: 4px;
+}
+
+.c360vl-body { padding: 14px 16px 16px; display: flex; flex-direction: column; flex: 1; }
+.c360vl-cat {
+  font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--c360vl-green); margin: 0 0 6px;
+}
+.c360vl-name {
+  font-size: 14.5px; font-weight: 500; line-height: 1.4;
+  color: var(--c360vl-text); margin: 0 0 6px;
+}
+.c360vl-name mark { background: rgba(18,120,37,0.18); color: inherit; padding: 0 1px; border-radius: 3px; }
+.c360vl-desc { font-size: 12.5px; line-height: 1.55; color: var(--c360vl-text-muted); margin: 0 0 14px; flex: 1; }
+
+.c360vl-pick {
+  width: 100%; font-family: inherit; font-size: 13px; font-weight: 500; cursor: pointer;
+  padding: 9px 14px; border-radius: 7px;
+  border: 1px solid var(--c360vl-green); background: #fff; color: var(--c360vl-green);
+  display: flex; align-items: center; justify-content: center; gap: 7px;
+  transition: background 0.14s ease, color 0.14s ease;
+}
+.c360vl-pick:hover { background: var(--c360vl-green-light); }
+.c360vl-card.c360vl-picked .c360vl-pick { background: var(--c360vl-green); color: #fff; }
+.c360vl-card.c360vl-picked .c360vl-pick:hover { background: var(--c360vl-green-hover); }
+.c360vl-pick-check { display: none; }
+.c360vl-card.c360vl-picked .c360vl-pick-check { display: block; }
+.c360vl-card.c360vl-picked .c360vl-pick-plus { display: none; }
+
+/* ---------- Empty / pending panels ---------- */
+.c360vl-panel { display: none; padding: 58px 24px 76px; text-align: center; }
+.c360vl-panel.c360vl-on { display: block; }
+.c360vl-panel svg { color: var(--c360vl-grey); margin-bottom: 14px; }
+.c360vl-panel h3 { font-size: 18px; font-weight: 500; margin: 0 0 8px; color: var(--c360vl-text); }
+.c360vl-panel p { font-size: 14px; line-height: 1.65; color: var(--c360vl-text-muted); margin: 0 auto 20px; max-width: 420px; }
+
+.c360vl-btn {
+  font-family: inherit; font-size: 14px; font-weight: 500; cursor: pointer;
+  padding: 11px 22px; border-radius: 8px; border: 0;
+  background: var(--c360vl-green); color: #fff; transition: background 0.15s ease;
+}
+.c360vl-btn:hover { background: var(--c360vl-green-hover); }
+.c360vl-btn-ghost {
+  background: transparent; color: rgba(255,255,255,0.75); border: 1px solid rgba(255,255,255,0.3);
+}
+.c360vl-btn-ghost:hover { background: rgba(255,255,255,0.1); color: #fff; }
+
+/* ---------- Selection bar ---------- */
+.c360vl-bar {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 900;
+  background: var(--c360vl-blue); color: #fff;
+  transform: translateY(100%); transition: transform 0.22s ease;
+  box-shadow: 0 -8px 30px rgba(0,0,0,0.22);
+}
+.c360vl-bar.c360vl-on { transform: translateY(0); }
+.c360vl-bar-inner {
+  max-width: 1320px; margin: 0 auto; padding: 16px 32px;
+  display: flex; align-items: center; gap: 18px; flex-wrap: wrap;
+}
+.c360vl-bar-n { font-size: 15px; font-weight: 500; margin: 0; }
+.c360vl-bar-sub { font-size: 12.5px; color: rgba(255,255,255,0.65); margin: 2px 0 0; }
+.c360vl-bar-actions { margin-left: auto; display: flex; gap: 10px; align-items: center; }
+
+/* ---------- Modal ---------- */
+.c360vl-modal {
+  position: fixed; inset: 0; z-index: 9999; display: none;
+  align-items: center; justify-content: center; padding: 24px;
+  background: rgba(10, 16, 50, 0.82);
+}
+.c360vl-modal.c360vl-on { display: flex; }
+.c360vl-dialog {
+  width: 100%; max-width: 900px; background: #fff; border-radius: 14px;
+  overflow: hidden; box-shadow: 0 30px 80px rgba(0,0,0,0.45);
+  max-height: 92vh; overflow-y: auto;
+}
+.c360vl-stage { position: relative; aspect-ratio: 16 / 9; background: #0a1032; }
+.c360vl-stage iframe, .c360vl-stage video {
+  position: absolute; inset: 0; width: 100%; height: 100%; border: 0; display: block;
+}
+.c360vl-soon {
+  position: absolute; inset: 0; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 12px; text-align: center;
+  padding: 24px; color: #fff;
+  background:
+    repeating-linear-gradient(135deg,
+      rgba(255,255,255,0.035) 0 12px, rgba(255,255,255,0) 12px 24px),
+    linear-gradient(145deg, var(--c360vl-blue) 0%, #1a2e99 100%);
+}
+.c360vl-soon strong { font-size: 16px; font-weight: 500; }
+.c360vl-soon span { font-size: 13px; color: rgba(255,255,255,0.7); max-width: 360px; line-height: 1.6; }
+.c360vl-dialog-meta { padding: 22px 26px 26px; }
+.c360vl-dialog-cat {
+  font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px;
+  color: var(--c360vl-green); margin: 0 0 7px;
+}
+.c360vl-dialog-title {
+  font-size: 20px; font-weight: 600; letter-spacing: -0.3px;
+  color: var(--c360vl-blue); margin: 0 0 10px; line-height: 1.3;
+}
+.c360vl-dialog-desc { font-size: 14px; line-height: 1.65; color: var(--c360vl-text-muted); margin: 0 0 18px; }
+.c360vl-close {
+  position: absolute; right: 12px; top: 12px; z-index: 3;
+  width: 38px; height: 38px; border-radius: 50%; border: 0; padding: 0; cursor: pointer;
+  background: rgba(0,0,0,0.55); color: #fff;
+  display: flex; align-items: center; justify-content: center; transition: background 0.15s ease;
+}
+.c360vl-close:hover { background: rgba(0,0,0,0.8); }
+
+.c360vl-confirm { display: none; padding: 30px 30px 32px; }
+.c360vl-confirm.c360vl-on { display: block; }
+.c360vl-confirm h2 { font-size: 21px; font-weight: 600; color: var(--c360vl-blue); margin: 0 0 8px; }
+.c360vl-confirm > p { font-size: 14px; line-height: 1.65; color: var(--c360vl-text-muted); margin: 0 0 20px; }
+.c360vl-picklist { list-style: none; margin: 0 0 22px; padding: 0; }
+.c360vl-picklist li {
+  display: flex; align-items: flex-start; gap: 10px; padding: 11px 0;
+  border-bottom: 1px solid var(--c360vl-border); font-size: 13.5px;
+}
+.c360vl-picklist li:last-child { border-bottom: 0; }
+.c360vl-picklist svg { color: var(--c360vl-green); flex-shrink: 0; margin-top: 2px; }
+.c360vl-picklist em { display: block; font-style: normal; font-size: 11.5px; color: var(--c360vl-text-muted); margin-top: 2px; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 1000px) {
+  .c360vl-shell { grid-template-columns: 1fr; gap: 26px; }
+  /* Deliberately NOT sticky here. As a wrapping chip cloud the rail is ~5
+     rows tall; pinning it would eat most of a phone screen and leave a
+     letterbox of results. It scrolls away with the page instead. */
+  .c360vl-rail {
+    position: static; max-height: none; overflow: visible;
+    border: 1px solid var(--c360vl-border); border-radius: 12px; padding: 18px;
+  }
+  .c360vl-rail-list { display: flex; flex-wrap: wrap; gap: 7px; }
+  .c360vl-rail-btn { width: auto; border: 1px solid var(--c360vl-border); border-radius: 20px; padding: 7px 14px; }
+  .c360vl-title { font-size: 30px; }
+}
+@media (max-width: 560px) {
+  .c360vl-inner { padding: 0 18px; }
+  .c360vl-bar-inner { padding: 14px 18px; }
+  .c360vl-intro { padding: 34px 0 20px; }
+  .c360vl-title { font-size: 25px; }
+  .c360vl-grid { grid-template-columns: 1fr; }
+  .c360vl-bar-actions { margin-left: 0; width: 100%; }
+  .c360vl-bar-actions .c360vl-btn { flex: 1; }
+  .c360vl-modal { padding: 0; }
+  .c360vl-dialog { border-radius: 0; max-height: 100vh; }
+}
+
+/* ---------- Accessibility ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .c360vl-wrap *, .c360vl-wrap *::before, .c360vl-wrap *::after,
+  .c360vl-bar { transition: none !important; animation: none !important; }
+  .c360vl-card:hover { transform: none; }
+  .c360vl-thumb:hover .c360vl-play { transform: translate(-50%, -50%); }
+  .c360vl-thumb-vid { transition: none !important; }
+}
+.c360vl-rail-btn:focus-visible, .c360vl-thumb:focus-visible, .c360vl-pick:focus-visible,
+.c360vl-btn:focus-visible, .c360vl-close:focus-visible, .c360vl-clear:focus-visible {
+  outline: 2px solid var(--c360vl-green); outline-offset: 2px;
+}
+.c360vl-sr {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+</style>
+
+
+<section class="c360vl-wrap">
+  <div class="c360vl-inner">
+    <header class="c360vl-intro">
+      <p class="c360vl-eyebrow">Ad Creative Library</p>
+      <h1 class="c360vl-title">Pick the videos we run for you</h1>
+      <p class="c360vl-sub">
+        Browse creative built for your line of business, preview anything before you
+        decide, and mark the ones you want in your campaigns. We brand each pick with
+        your name, offer and phone number — nothing to edit on your end.
+      </p>
+    </header>
+
+    <div class="c360vl-shell">
+
+      <!-- ---------- LEFT RAIL ---------- -->
+      <aside class="c360vl-rail" aria-label="Filter by industry">
+        <p class="c360vl-rail-label" id="c360vl-lbl-ind">Line of business</p>
+        <ul class="c360vl-rail-list" id="c360vl-cats" aria-labelledby="c360vl-lbl-ind"></ul>
+      </aside>
+
+      <!-- ---------- MAIN ---------- -->
+      <div>
+        <div class="c360vl-topbar">
+          <div class="c360vl-search" id="c360vl-search-box">
+            <span class="c360vl-search-ico" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2" stroke-linecap="round">
+                <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path>
+              </svg>
+            </span>
+            <label class="c360vl-sr" for="c360vl-search">Search videos by title</label>
+            <input type="search" id="c360vl-search" placeholder="Search by video name…" autocomplete="off">
+            <button type="button" class="c360vl-clear" id="c360vl-clear" aria-label="Clear search">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                   stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+            </button>
+          </div>
+          <p class="c360vl-count" id="c360vl-count" aria-live="polite"></p>
+        </div>
+
+        <div class="c360vl-grid" id="c360vl-grid"></div>
+
+        <!-- No search results -->
+        <div class="c360vl-panel" id="c360vl-empty">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.6" stroke-linecap="round">
+            <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path>
+          </svg>
+          <h3>Nothing matches that yet</h3>
+          <p>Try a shorter word, or clear the filter to see every video.</p>
+          <button type="button" class="c360vl-btn" id="c360vl-reset">Clear filters</button>
+        </div>
+
+        <!-- Category exists, videos not produced yet -->
+        <div class="c360vl-panel" id="c360vl-pending">
+          <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="1.6" stroke-linecap="round">
+            <circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path>
+          </svg>
+          <h3 id="c360vl-pending-title"></h3>
+          <p>
+            We're filming this library now. Tell your account manager you want it and
+            we'll send previews the moment the first clips land — or call
+            <a href="tel:+18665276205" style="color:var(--c360vl-green)">(866) 527-6205</a>.
+          </p>
+          <button type="button" class="c360vl-btn" id="c360vl-pending-back">See what's ready now</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Handoff value. See "WIRING THE SUBMIT" at the top of this file. -->
+  <input type="hidden" id="c360vl-selection" name="video_selection" value="">
+
+  <!-- ---------- SELECTION BAR ---------- -->
+  <div class="c360vl-bar" id="c360vl-bar">
+    <div class="c360vl-bar-inner">
+      <div>
+        <p class="c360vl-bar-n" id="c360vl-bar-n"></p>
+        <p class="c360vl-bar-sub">We'll brand each one with your name, offer and phone number.</p>
+      </div>
+      <div class="c360vl-bar-actions">
+        <button type="button" class="c360vl-btn c360vl-btn-ghost" id="c360vl-clear-picks">Clear</button>
+        <button type="button" class="c360vl-btn" id="c360vl-send">Review my picks</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ---------- MODAL (player + confirm) ---------- -->
+  <div class="c360vl-modal" id="c360vl-modal" role="dialog" aria-modal="true"
+       aria-labelledby="c360vl-dialog-title">
+    <div class="c360vl-dialog">
+      <div class="c360vl-stage" id="c360vl-stage">
+        <button type="button" class="c360vl-close" id="c360vl-close" aria-label="Close">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+               stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"></path></svg>
+        </button>
+      </div>
+      <div class="c360vl-dialog-meta" id="c360vl-dialog-meta">
+        <p class="c360vl-dialog-cat" id="c360vl-dialog-cat"></p>
+        <h2 class="c360vl-dialog-title" id="c360vl-dialog-title"></h2>
+        <p class="c360vl-dialog-desc" id="c360vl-dialog-desc"></p>
+        <button type="button" class="c360vl-btn" id="c360vl-dialog-pick"></button>
+      </div>
+      <div class="c360vl-confirm" id="c360vl-confirm">
+        <h2>Here's what you picked</h2>
+        <p>Send this list to your account manager and we'll build the campaign around it.</p>
+        <ul class="c360vl-picklist" id="c360vl-picklist"></ul>
+        <button type="button" class="c360vl-btn" id="c360vl-confirm-close">Back to the library</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+(function () {
+  'use strict';
+
+  /* Set to 1 to force a single pick. Any higher number caps multi-select. */
+  var C360VL_MAX = 99;
+
+  /* Lazily pull one frame from each .mp4 to use as its card thumbnail.
+     Set false to fall back to the plain navy gradient on every card. */
+  var C360VL_AUTOTHUMB = true;
+  /* Seconds into the clip to grab. Raise it if openers fade in from black. */
+  var C360VL_THUMB_AT = 1.2;
+
+  /* ============================================================
+     LINES OF BUSINESS — matches the catalog spreadsheet.
+     pending: true  = category shows in the rail with a "Soon" marker
+                      and an in-production panel. Flip to false (or drop
+                      the key) once its titles are added below.
+     ============================================================ */
+  var C360VL_CATEGORIES = [
+    { key: 'real-estate', label: 'Real Estate' },
+    { key: 'mortgage',    label: 'Mortgage & Loans' },
+    { key: 'insurance',   label: 'Insurance' },
+    { key: 'financial',   label: 'Financial Services' },
+    { key: 'home-garden', label: 'Home & Garden' },
+    { key: 'roofing',     label: 'Roofing' },
+    { key: 'hvac',        label: 'HVAC' },
+    { key: 'painting',    label: 'Painting Services' },
+    { key: 'patriotic',   label: 'Patriotic' },
+    { key: 'automotive',  label: 'Automotive',          pending: true },
+    { key: 'cleaning',    label: 'Cleaning',            pending: true },
+    { key: 'contractor',  label: 'Contractor Services', pending: true },
+    { key: 'plumbing',    label: 'Plumbing',            pending: true },
+    { key: 'senior-care', label: 'Senior Care',         pending: true },
+    { key: 'spanish',     label: 'Spanish Videos',      pending: true }
+  ];
+
+  /* ============================================================
+     VIDEOS — THIS IS THE ONLY BLOCK YOU EDIT.
+       All clips are 1920x1080 (16:9).
+       type  : 'youtube' | 'vimeo' | 'file'
+       src   : YouTube ID | Vimeo ID | .mp4 URL | null (= placeholder)
+       thumb : poster image URL. Optional now — see AUTO THUMBNAILS above.
+               Set it on any clip whose first second is dark or blank.
+       desc  : optional one-liner, also feeds search
+       len   : optional duration label, renders a chip when set
+       flag  : 'new' | 'updated' | null   (from the sheet's NEW / re-created)
+     ============================================================ */
+  var C360VL_VIDEOS = [
+    /* ---------- Real Estate ---------- */
+    { id: 're-we-stand-for-selling-your-home-you-served', cat: 'real-estate', flag: 'updated', type: 'file',
+      title: 'We stand for selling your home – You served us, let us serve you',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7ce1e85e8f9cd8f57da2f9.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-more-lux-life', cat: 'real-estate', flag: null, type: 'file',
+      title: 'More Lux Life',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7ce60f9115899f03fe52b4.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-agent-you-can-trust', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Agent You Can Trust',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7ce6df5e8f9cd8f584a5e5.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-beach-property', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Beach Property',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7ce6df5e8f9cd8f584a5e5.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-commercial-real-estate', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Commercial Real Estate',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7dfdca255b571c8eb3c04c.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-dancing-man', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Dancing Man',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7dfe79c0662ee5c458f594.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-don-t-miss-this-opportunity', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Don\'t Miss This Opportunity',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7dfe63d785fc176383002a.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-dreams-come-true', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Dreams Come True',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7dffbe99074f5ef6514d61.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-all-your-real-estate-needs', cat: 'real-estate', flag: null, type: 'file',
+      title: 'All Your Real Estate Needs',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e0009fe4291bd10415e5d.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-foreclosure', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Foreclosure',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e025b255b571c8ec37adf.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-historical-colonial', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Historical Colonial',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e02ccb59d098314b14542.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-home-inspection', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Home Inspection',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e225ec0662ee5c400c6ba.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-home-on-a-lake', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Home on a Lake',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e232cfe4291bd10c09395.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-home-is-a-feeling', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Home Is a Feeling',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e2398d785fc1763183554.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-prickly-southwest', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Prickly Southwest',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e2469a6a03cda06abe765.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-rural-life-is-real-life', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Rural Life Is Real Life',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e2568fe4291bd10c5dbf9.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-super-agent', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Super Agent',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e26fd5fc842636eeed967.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-sold-this-bought-that', cat: 'real-estate', flag: 'updated', type: 'file',
+      title: 'Sold This, Bought That',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e2765c00ec1b22616467d.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-vacation-homes', cat: 'real-estate', flag: null, type: 'file',
+      title: 'Vacation Homes',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e27cec0662ee5c40a7db6.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-we-do-all-the-work', cat: 'real-estate', flag: null, type: 'file',
+      title: 'We Do All the Work',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e284ec00ec1b22618197b.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-we-move-mountains', cat: 'real-estate', flag: null, type: 'file',
+      title: 'We Move Mountains',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e2a4ccf50f900f2d8bfbb.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-here-to-help', cat: 'real-estate', flag: 'new', type: 'file',
+      title: 'Here to Help',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e2d7d99074f5ef6ea62fe.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 're-buying-selling-relocation', cat: 'real-estate', flag: 'new', type: 'file',
+      title: 'Buying, Selling, Relocation',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e2d7dc0662ee5c4169055.mp4',
+      thumb: null, len: null, desc: '' },
+
+    /* ---------- Mortgage & Loans ---------- */
+    { id: 'mtg-a-better-home', cat: 'mortgage', flag: 'updated', type: 'file',
+      title: 'A Better Home',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7e32b5a6a03cda06c41169.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'mtg-cash-out-refinance', cat: 'mortgage', flag: null, type: 'file',
+      title: 'Cash-Out Refinance',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f4020e5c0201c6f5503f8.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'mtg-don-t-miss-out', cat: 'mortgage', flag: null, type: 'file',
+      title: 'Don\'t Miss Out',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f40d8dc6b0a15e5047de9.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'mtg-don-t-wait', cat: 'mortgage', flag: null, type: 'file',
+      title: 'Don\'t Wait',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f4238dc6b0a15e507fca5.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'mtg-passionate-about-home-buying', cat: 'mortgage', flag: null, type: 'file',
+      title: 'Passionate About Home Buying',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f40defe4291bd1054b46a.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'mtg-va-home-loan', cat: 'mortgage', flag: null, type: 'file',
+      title: 'VA Home Loan',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f4180f7627452225b0a3d.mp4',
+      thumb: null, len: null, desc: '' },
+
+    /* ---------- Insurance ---------- */
+    { id: 'ins-be-worry-free', cat: 'insurance', flag: null, type: 'file',
+      title: 'Be Worry Free',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f43032b48e84b4f7ce663.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'ins-enroll-today', cat: 'insurance', flag: null, type: 'file',
+      title: 'Enroll Today',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f437b2b48e84b4f7eb5f8.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'ins-family-health-enroll-today', cat: 'insurance', flag: null, type: 'file',
+      title: 'Family Health – Enroll Today',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f43d3f76274522261d2b7.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'ins-don-t-gamble', cat: 'insurance', flag: 'updated', type: 'file',
+      title: 'Don\'t Gamble',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f4510cf50f900f2579462.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'ins-health-vision-dental', cat: 'insurance', flag: null, type: 'file',
+      title: 'Health, Vision & Dental',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f44fafe4291bd10660c17.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'ins-home-auto-toys', cat: 'insurance', flag: null, type: 'file',
+      title: 'Home, Auto Toys',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f4f708921ecbd9ca85886.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'ins-senior-insurance-options', cat: 'insurance', flag: null, type: 'file',
+      title: 'Senior Insurance Options',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f4f9ef7627452229d3d58.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'ins-protect-your-legacy', cat: 'insurance', flag: null, type: 'file',
+      title: 'Protect Your Legacy',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f50091d64276f67ad727c.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'ins-your-plan-your-choice', cat: 'insurance', flag: null, type: 'file',
+      title: 'Your Plan, Your Choice',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f51632b48e84b4fad648c.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'ins-insurance-solutions', cat: 'insurance', flag: 'new', type: 'file',
+      title: 'Insurance Solutions',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f51a0fe4291bd109543ae.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'ins-medicare-options', cat: 'insurance', flag: 'new', type: 'file',
+      title: 'Medicare Options',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f51a0255b571c8e2e2496.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'ins-one-stop-insurance', cat: 'insurance', flag: 'new', type: 'file',
+      title: 'One Stop Insurance',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f4ceba6a03cda069260d5.mp4',
+      thumb: null, len: null, desc: '' },
+
+    /* ---------- Financial Services ---------- */
+    { id: 'fin-balance-money-balance-life', cat: 'financial', flag: null, type: 'file',
+      title: 'Balance Money, Balance Life',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f5d7dfe4291bd10c8a1a1.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'fin-don-t-do-it-alone', cat: 'financial', flag: null, type: 'file',
+      title: 'Don\'t Do It Alone',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f5da0a6a03cda06e1aec9.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'fin-plan-ahead', cat: 'financial', flag: null, type: 'file',
+      title: 'Plan Ahead',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f677afdd1159d4257b305.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'fin-tax-just-got-easier', cat: 'financial', flag: null, type: 'file',
+      title: 'Tax Just Got Easier',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6790f76274522201a55e.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'fin-tax-problems', cat: 'financial', flag: null, type: 'file',
+      title: 'Tax Problems',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6790f76274522201a55e.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'fin-taxes-bookkeeping', cat: 'financial', flag: null, type: 'file',
+      title: 'Taxes & Bookkeeping',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f67becf50f900f2de136e.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'fin-stress-less-live-more', cat: 'financial', flag: null, type: 'file',
+      title: 'Stress Less, Live More',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f67e0f762745222026182.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'fin-tax-season', cat: 'financial', flag: 'new', type: 'file',
+      title: 'Tax Season',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6817f76274522203daf6.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'fin-business-taxes', cat: 'financial', flag: 'new', type: 'file',
+      title: 'Business Taxes',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f68438921ecbd9c123ccf.mp4',
+      thumb: null, len: null, desc: '' },
+
+    /* ---------- Home & Garden ---------- */
+    { id: 'hg-transform-your-outdoor-space', cat: 'home-garden', flag: 'new', type: 'file',
+      title: 'Transform Your Outdoor Space',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6910f762745222083352.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'hg-lawn-care-done-right', cat: 'home-garden', flag: null, type: 'file',
+      title: 'Lawn Care Done Right',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6964dc6b0a15e59117ba.mp4',
+      thumb: null, len: null, desc: '' },
+
+    /* ---------- Roofing ---------- */
+    { id: 'roof-each-roof-is-proof', cat: 'roofing', flag: 'updated', type: 'file',
+      title: 'Each Roof is Proof',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f68bcfe4291bd10fe0c9f.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'roof-roofing-and-siding', cat: 'roofing', flag: 'new', type: 'file',
+      title: 'Roofing and Siding',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f68bc2b48e84b4f036ac5.mp4',
+      thumb: null, len: null, desc: '' },
+
+    /* ---------- HVAC ---------- */
+    { id: 'hvac-trusted-source-in-hvac', cat: 'hvac', flag: 'new', type: 'file',
+      title: 'Trusted Source in HVAC',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6c058921ecbd9c204d1a.mp4',
+      thumb: null, len: null, desc: '' },
+
+    /* ---------- Painting Services ---------- */
+    { id: 'paint-painting-and-remodeling', cat: 'painting', flag: 'new', type: 'file',
+      title: 'Painting and Remodeling',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6bfcfdd1159d42652f65.mp4',
+      thumb: null, len: null, desc: '' },
+
+    /* ---------- Patriotic ---------- */
+    { id: 'pat-we-stand-for-the-flag', cat: 'patriotic', flag: null, type: 'file',
+      title: 'We Stand for the Flag',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6df02b48e84b4f1ddf8a.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'pat-because-of-you', cat: 'patriotic', flag: null, type: 'file',
+      title: 'Because of You',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6df00baacc198ad33410.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'pat-harry-s-truman', cat: 'patriotic', flag: null, type: 'file',
+      title: 'Harry S. Truman',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6e16cf50f900f2f93d96.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'pat-never-forget', cat: 'patriotic', flag: null, type: 'file',
+      title: 'Never Forget',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6e3499074f5ef6581d9a.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'pat-our-turn-to-serve-you', cat: 'patriotic', flag: null, type: 'file',
+      title: 'Our Turn to Serve You',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6e5e99074f5ef6596c1f.mp4',
+      thumb: null, len: null, desc: '' },
+    { id: 'pat-we-salute-you', cat: 'patriotic', flag: null, type: 'file',
+      title: 'We Salute You',
+      src: 'https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a7f6e5efe4291bd101ad28d.mp4',
+      thumb: null, len: null, desc: '' }
+  ];
+
+  /* ============================================================
+     Machinery below — you should not need to edit it.
+     ============================================================ */
+
+  var $ = function (id) { return document.getElementById(id); };
+  var grid = $('c360vl-grid');
+  if (!grid) return;
+
+  var wrap = document.querySelector('.c360vl-wrap');
+  var railEl = document.querySelector('.c360vl-rail');
+
+  var catsEl = $('c360vl-cats');
+  var input = $('c360vl-search'), box = $('c360vl-search-box'), clearBt = $('c360vl-clear');
+  var countEl = $('c360vl-count');
+  var empty = $('c360vl-empty'), resetBt = $('c360vl-reset');
+  var pending = $('c360vl-pending'), pendingTitle = $('c360vl-pending-title'), pendingBack = $('c360vl-pending-back');
+  var bar = $('c360vl-bar'), barN = $('c360vl-bar-n');
+  var sendBt = $('c360vl-send'), clearPicks = $('c360vl-clear-picks');
+  var hidden = $('c360vl-selection');
+  var modal = $('c360vl-modal'), stage = $('c360vl-stage'), closeBt = $('c360vl-close');
+  var dMeta = $('c360vl-dialog-meta'), dCat = $('c360vl-dialog-cat');
+  var dTitle = $('c360vl-dialog-title'), dDesc = $('c360vl-dialog-desc'), dPick = $('c360vl-dialog-pick');
+  var confirmEl = $('c360vl-confirm'), pickList = $('c360vl-picklist'), confirmClose = $('c360vl-confirm-close');
+
+  var activeCat = 'all', query = '';
+  var picked = [];          /* ids, in the order chosen */
+  var openId = null, lastFocus = null;
+
+  var catLabel = {}, catPending = {};
+  C360VL_CATEGORIES.forEach(function (c) {
+    catLabel[c.key] = c.label;
+    catPending[c.key] = !!c.pending;
+  });
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function byId(id) { return C360VL_VIDEOS.filter(function (v) { return v.id === id; })[0]; }
+
+  function highlight(text, q) {
+    if (!q) return esc(text);
+    var i = text.toLowerCase().indexOf(q);
+    if (i === -1) return esc(text);
+    return esc(text.slice(0, i)) + '<mark>' + esc(text.slice(i, i + q.length)) + '</mark>' +
+           esc(text.slice(i + q.length));
+  }
+  /* Title first; description is the fallback once it's filled in. */
+  function matches(v, q) {
+    if (!q) return true;
+    if (v.title.toLowerCase().indexOf(q) !== -1) return true;
+    return !!v.desc && v.desc.toLowerCase().indexOf(q) !== -1;
+  }
+  function thumbFor(v) {
+    if (v.thumb) return v.thumb;
+    if (v.type === 'youtube' && v.src) return 'https://i.ytimg.com/vi/' + v.src + '/hqdefault.jpg';
+    return null;
+  }
+  function countCat(key) {
+    var q = query.trim().toLowerCase();
+    return C360VL_VIDEOS.filter(function (v) {
+      return (key === 'all' || v.cat === key) && matches(v, q);
+    }).length;
+  }
+
+  /* ---------- Rail ---------- */
+  function renderRail() {
+    var h = '';
+    function btn(key, label, active) {
+      var isPending = catPending[key];
+      var n = countCat(key);
+      var dead = !isPending && n === 0;
+      return '<li><button type="button" class="c360vl-rail-btn' + (dead ? ' c360vl-rail-empty' : '') +
+        '" data-key="' + esc(key) + '" aria-pressed="' + (active ? 'true' : 'false') + '"' +
+        (dead ? ' disabled' : '') + '>' +
+        '<span class="c360vl-rail-txt">' + esc(label) + '</span>' +
+        (isPending && n === 0
+          ? '<span class="c360vl-rail-soon">Soon</span>'
+          : '<span class="c360vl-rail-n">' + n + '</span>') +
+        '</button></li>';
+    }
+    h += btn('all', 'All videos', activeCat === 'all');
+    C360VL_CATEGORIES.forEach(function (c) { h += btn(c.key, c.label, activeCat === c.key); });
+    catsEl.innerHTML = h;
+  }
+
+  /* ---------- Grid ---------- */
+  function render() {
+    var q = query.trim().toLowerCase();
+    var list = C360VL_VIDEOS.filter(function (v) {
+      return (activeCat === 'all' || v.cat === activeCat) && matches(v, q);
+    });
+    if (q) {
+      list.sort(function (a, b) {
+        return (a.title.toLowerCase().indexOf(q) !== -1 ? 0 : 1) -
+               (b.title.toLowerCase().indexOf(q) !== -1 ? 0 : 1);
+      });
+    }
+
+    grid.innerHTML = list.map(function (v) {
+      var img = thumbFor(v);
+      var notReady = !v.src;
+      var on = picked.indexOf(v.id) !== -1;
+      var flag = v.flag === 'new'
+        ? '<span class="c360vl-tag c360vl-tag-new">New</span>'
+        : (v.flag === 'updated' ? '<span class="c360vl-tag">Updated</span>' : '');
+      return '' +
+      '<article class="c360vl-card' + (on ? ' c360vl-picked' : '') + '" data-id="' + esc(v.id) + '">' +
+        '<button type="button" class="c360vl-thumb" data-act="play" ' +
+                'aria-label="Preview ' + esc(v.title) + '">' +
+          '<span class="c360vl-thumb-ph"></span>' +
+          (img
+            ? '<img src="' + esc(img) + '" alt="" loading="lazy" ' +
+              'style="position:absolute;inset:0;z-index:1">'
+            : (C360VL_AUTOTHUMB && v.src && v.type === 'file'
+                ? '<video class="c360vl-thumb-vid" muted playsinline preload="none" ' +
+                  'tabindex="-1" aria-hidden="true" data-frame="' + esc(v.src) + '"></video>'
+                : '')) +
+          '<span class="c360vl-tags">' + flag +
+            (notReady ? '<span class="c360vl-tag">Preview soon</span>' : '') +
+          '</span>' +
+          '<span class="c360vl-play" aria-hidden="true">' +
+            '<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">' +
+            '<path d="M7 4.5v15l13-7.5z"></path></svg></span>' +
+          (v.len ? '<span class="c360vl-len">' + esc(v.len) + '</span>' : '') +
+        '</button>' +
+        '<div class="c360vl-body">' +
+          '<p class="c360vl-cat">' + esc(catLabel[v.cat] || '') + '</p>' +
+          '<h3 class="c360vl-name">' + highlight(v.title, q) + '</h3>' +
+          '<p class="c360vl-desc">' + esc(v.desc) + '</p>' +
+          '<button type="button" class="c360vl-pick" data-act="pick" aria-pressed="' + on + '">' +
+            '<svg class="c360vl-pick-plus" width="14" height="14" viewBox="0 0 24 24" fill="none" ' +
+              'stroke="currentColor" stroke-width="2.4" stroke-linecap="round">' +
+              '<path d="M12 5v14M5 12h14"></path></svg>' +
+            '<svg class="c360vl-pick-check" width="14" height="14" viewBox="0 0 24 24" fill="none" ' +
+              'stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">' +
+              '<path d="M4 12.5l5 5L20 6.5"></path></svg>' +
+            (on ? 'Selected' : 'Select this video') +
+          '</button>' +
+        '</div>' +
+      '</article>';
+    }).join('');
+
+    /* Three states: results, in-production category, or no match. */
+    var showPending = list.length === 0 && catPending[activeCat] && !q;
+    empty.classList.toggle('c360vl-on', list.length === 0 && !showPending);
+    pending.classList.toggle('c360vl-on', showPending);
+    if (showPending) pendingTitle.textContent = 'The ' + catLabel[activeCat] + ' library is in production';
+
+    countEl.textContent = list.length === C360VL_VIDEOS.length
+      ? C360VL_VIDEOS.length + ' videos'
+      : list.length + ' of ' + C360VL_VIDEOS.length + ' videos';
+    box.classList.toggle('c360vl-has-value', query.length > 0);
+    renderRail();
+    c360vlLoadThumbs();
+  }
+
+  /* ============================================================
+     AUTO THUMBNAILS
+     Self-hosted mp4 has no poster. Instead of commissioning 62 stills, each
+     card decodes a single frame of its own clip — but only once it is near
+     the viewport, so filtering to one category never touches the other 50
+     files, and a page load fetches nothing.
+     preload="none" until observed, then "metadata" plus a #t= fragment.
+     Most browsers honour the fragment; the ones that don't get an explicit
+     currentTime seek on loadedmetadata as a fallback. Either way the frame
+     is only revealed on 'seeked'/'loadeddata', so no half-painted tiles.
+     ============================================================ */
+  var c360vlThumbIO = null;
+  function c360vlLoadThumbs() {
+    if (!C360VL_AUTOTHUMB) return;
+    if (c360vlThumbIO) c360vlThumbIO.disconnect();   /* grid was re-rendered */
+
+    var pending = grid.querySelectorAll('video[data-frame]');
+    if (!pending.length) return;
+
+    function hydrate(v) {
+      var url = v.getAttribute('data-frame');
+      if (!url) return;
+      v.removeAttribute('data-frame');
+
+      var done = false;
+      function reveal() {
+        if (done) return;
+        done = true;
+        v.classList.add('c360vl-ready');
+      }
+      v.addEventListener('seeked', reveal, { once: true });
+      v.addEventListener('loadeddata', function () {
+        /* Fragment ignored: seek manually, then wait for 'seeked'. */
+        if (v.currentTime < 0.05 && v.duration && isFinite(v.duration)) {
+          try { v.currentTime = Math.min(C360VL_THUMB_AT, v.duration / 2); return; }
+          catch (e) { /* seeking unsupported — take frame zero */ }
+        }
+        reveal();
+      });
+      /* Any failure leaves opacity 0 and the gradient showing. */
+      v.addEventListener('error', function () { v.removeAttribute('src'); });
+
+      v.preload = 'metadata';
+      v.src = url + '#t=' + C360VL_THUMB_AT;
+    }
+
+    if (!('IntersectionObserver' in window)) {
+      Array.prototype.forEach.call(pending, hydrate);   /* old browser: just load */
+      return;
+    }
+    c360vlThumbIO = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        obs.unobserve(en.target);
+        hydrate(en.target);
+      });
+    }, { rootMargin: '400px 0px' });   /* start a screen early so it feels instant */
+    Array.prototype.forEach.call(pending, function (v) { c360vlThumbIO.observe(v); });
+  }
+
+  /* ---------- Selection ---------- */
+  function togglePick(id) {
+    var i = picked.indexOf(id);
+    if (i !== -1) picked.splice(i, 1);
+    else if (C360VL_MAX === 1) picked = [id];
+    else if (picked.length >= C360VL_MAX) return;
+    else picked.push(id);
+
+    hidden.value = picked.join(',');
+    syncBar();
+    render();
+    if (openId) syncDialogPick();
+  }
+  function syncBar() {
+    var n = picked.length;
+    bar.classList.toggle('c360vl-on', n > 0);
+    barN.textContent = n === 1 ? '1 video selected' : n + ' videos selected';
+    document.body.style.paddingBottom = n > 0 ? '96px' : '';
+    /* Tell the sticky rail how much room the bottom bar is taking, so a long
+       rail stops above it instead of running underneath. */
+    var h = n > 0 ? Math.round(bar.getBoundingClientRect().height) : 0;
+    wrap.style.setProperty('--c360vl-bar-h', h + 'px');
+  }
+  function syncDialogPick() {
+    var on = picked.indexOf(openId) !== -1;
+    dPick.textContent = on ? 'Remove from my picks' : 'Select this video';
+    dPick.style.background = on ? 'var(--c360vl-grey)' : '';
+  }
+
+  /* ---------- Modal ---------- */
+  function wipeStage() {
+    Array.prototype.slice.call(stage.children).forEach(function (n) {
+      if (n !== closeBt) stage.removeChild(n);
+    });
+  }
+  function openVideo(id) {
+    var v = byId(id);
+    if (!v) return;
+    openId = id;
+    lastFocus = document.activeElement;
+
+    confirmEl.classList.remove('c360vl-on');
+    dMeta.style.display = '';
+    stage.style.display = '';
+    dCat.textContent = catLabel[v.cat] || '';
+    dTitle.textContent = v.title;
+    dDesc.textContent = v.desc || '';
+    dDesc.style.display = v.desc ? '' : 'none';
+    syncDialogPick();
+    wipeStage();
+
+    var node;
+    if (!v.src) {
+      node = document.createElement('div');
+      node.className = 'c360vl-soon';
+      node.innerHTML =
+        '<svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+        'stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"></circle>' +
+        '<path d="M12 7v5l3 2"></path></svg>' +
+        '<strong>Preview coming shortly</strong>' +
+        '<span>You can still select it — we send every clip for your approval before ' +
+        'anything runs. Questions? Call ' +
+        '<a href="tel:+18665276205" style="color:#fff">(866) 527-6205</a>.</span>';
+    } else if (v.type === 'youtube') {
+      node = document.createElement('iframe');
+      node.src = 'https://www.youtube-nocookie.com/embed/' + v.src + '?autoplay=1&rel=0';
+      node.allow = 'accelerometer; autoplay; encrypted-media; picture-in-picture; fullscreen';
+      node.setAttribute('allowfullscreen', ''); node.title = v.title;
+    } else if (v.type === 'vimeo') {
+      node = document.createElement('iframe');
+      node.src = 'https://player.vimeo.com/video/' + v.src + '?autoplay=1';
+      node.allow = 'autoplay; fullscreen; picture-in-picture';
+      node.setAttribute('allowfullscreen', ''); node.title = v.title;
+    } else {
+      node = document.createElement('video');
+      node.src = v.src;
+      node.controls = true;
+      node.autoplay = true;
+      node.playsInline = true;
+      node.preload = 'auto';
+      if (v.thumb) node.poster = v.thumb;
+      /* Opening the modal is a user gesture, so sound normally survives. If a
+         policy blocks it anyway, retry muted rather than showing a dead frame
+         — controls are visible either way, so the client can unmute. */
+      node.addEventListener('loadedmetadata', function () {
+        var pr = node.play();
+        if (pr && pr.catch) pr.catch(function () {
+          node.muted = true;
+          var again = node.play();
+          if (again && again.catch) again.catch(function () {});
+        });
+      }, { once: true });
+    }
+    stage.appendChild(node);
+    modal.classList.add('c360vl-on');
+    document.body.style.overflow = 'hidden';
+    closeBt.focus();
+  }
+  function openConfirm() {
+    openId = null;
+    lastFocus = document.activeElement;
+    wipeStage();
+    stage.style.display = 'none';
+    dMeta.style.display = 'none';
+    confirmEl.classList.add('c360vl-on');
+    pickList.innerHTML = picked.map(function (id) {
+      var v = byId(id);
+      return '<li><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" ' +
+        'stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">' +
+        '<path d="M4 12.5l5 5L20 6.5"></path></svg><span>' + esc(v.title) +
+        '<em>' + esc(catLabel[v.cat]) + '</em></span></li>';
+    }).join('');
+    modal.classList.add('c360vl-on');
+    document.body.style.overflow = 'hidden';
+    confirmClose.focus();
+  }
+  function closeModal() {
+    modal.classList.remove('c360vl-on');
+    document.body.style.overflow = '';
+    wipeStage();
+    stage.style.display = '';
+    dMeta.style.display = '';
+    confirmEl.classList.remove('c360vl-on');
+    openId = null;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  /* ---------- Events (delegated) ---------- */
+  document.addEventListener('click', function (e) {
+    var rail = e.target.closest('.c360vl-rail-btn');
+    if (rail) { activeCat = rail.getAttribute('data-key'); render(); return; }
+
+    var card = e.target.closest('.c360vl-card');
+    if (card) {
+      var act = e.target.closest('[data-act]');
+      if (!act) return;
+      if (act.getAttribute('data-act') === 'play') openVideo(card.getAttribute('data-id'));
+      else togglePick(card.getAttribute('data-id'));
+    }
+  });
+
+  input.addEventListener('input', function () { query = input.value; render(); });
+  clearBt.addEventListener('click', function () { query = ''; input.value = ''; input.focus(); render(); });
+  resetBt.addEventListener('click', function () { query = ''; input.value = ''; activeCat = 'all'; render(); });
+  pendingBack.addEventListener('click', function () { activeCat = 'all'; render(); });
+
+  dPick.addEventListener('click', function () { if (openId) togglePick(openId); });
+  sendBt.addEventListener('click', openConfirm);
+  clearPicks.addEventListener('click', function () { picked = []; hidden.value = ''; syncBar(); render(); });
+
+  closeBt.addEventListener('click', closeModal);
+  confirmClose.addEventListener('click', closeModal);
+  modal.addEventListener('click', function (e) { if (e.target === modal) closeModal(); });
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && modal.classList.contains('c360vl-on')) closeModal();
+  });
+
+  /* ============================================================
+     STICKY RAIL SUPPORT
+     position:sticky has two silent failure modes. Neither logs an error;
+     the element just sits there behaving like position:static, which is why
+     "the sidebar isn't sticky" is so often blamed on the CSS that is in fact
+     already correct.
+     ============================================================ */
+
+  /* -- 1. Ancestor scroll containers --
+     Sticky is killed by ANY ancestor that is a scroll container. The usual
+     offender in a page builder is overflow-x:hidden on a wrapper, added to
+     stop horizontal scroll. Per CSS spec, when one axis is hidden and the
+     other is visible, the visible one COMPUTES to auto — so overflow-x:hidden
+     quietly turns that wrapper into a vertical scroll container.
+     overflow-x:clip does the same visual job WITHOUT creating a scroll
+     container, so sticky survives.
+     Guard: we only rewrite ancestors that are not actually scrolling
+     anything (scrollHeight fits clientHeight). If a wrapper genuinely has
+     its own scrollbar, we leave it alone and bail out rather than break it. */
+  function c360vlUnclip() {
+    if (!wrap || !window.CSS || !CSS.supports || !CSS.supports('overflow-x', 'clip')) return;
+    var n = wrap.parentElement;
+    var hops = 0;
+    while (n && n !== document.body && n !== document.documentElement && hops < 30) {
+      hops++;
+      var cs = getComputedStyle(n);
+      var scrolls = n.scrollHeight > n.clientHeight + 1;
+      if (!scrolls && cs.overflowX !== 'visible' && cs.overflowX !== 'clip' &&
+          cs.position !== 'fixed' && cs.position !== 'sticky') {
+        n.style.setProperty('overflow-x', 'clip', 'important');
+        n.style.setProperty('overflow-y', 'visible', 'important');
+      }
+      n = n.parentElement;
+    }
+  }
+
+  /* -- 2. The offset --
+     78px was a guess. Measure the header that is actually on screen, and
+     only offset for it if it is genuinely pinned — a static header scrolls
+     away and needs no allowance. */
+  function c360vlSyncOffset() {
+    if (!wrap) return;
+    var candidates = ['.c360-mobile-header', '.c360-header'];
+    var px = 0;
+    for (var i = 0; i < candidates.length; i++) {
+      var el = document.querySelector(candidates[i]);
+      if (!el || el.offsetParent === null) continue;   /* display:none at this breakpoint */
+      var pos = getComputedStyle(el).position;
+      if (pos !== 'sticky' && pos !== 'fixed') continue;
+      px = Math.round(el.getBoundingClientRect().height);
+      break;
+    }
+    wrap.style.setProperty('--c360vl-sticky-top', px + 'px');
+  }
+
+  function c360vlStickyInit() {
+    c360vlUnclip();
+    c360vlSyncOffset();
+  }
+
+  c360vlStickyInit();
+  /* Re-measure once fonts land — Poppins swapping in changes header height,
+     and a stale offset leaves the rail tucked under the header or floating
+     below it. */
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(c360vlSyncOffset).catch(function () {});
+  }
+  window.addEventListener('load', c360vlStickyInit);
+
+  var c360vlRz;
+  window.addEventListener('resize', function () {
+    clearTimeout(c360vlRz);
+    c360vlRz = setTimeout(c360vlSyncOffset, 120);
+  }, { passive: true });
+
+  render();
+  syncBar();
+})();
+</script>
+
+<!-- ============================================================
+     END COMPLETE360 AD CREATIVE LIBRARY — v4.1
+     ============================================================ -->
