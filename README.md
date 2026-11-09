@@ -6,6 +6,8 @@ into GHL Custom Code blocks — this repo is not a standalone
 deployable site.
 
 ## Structure
+`ai-agents/` holds the prompts for every GHL AI agent (see its README).
+
 All custom code blocks live in `ghl-snippets/`:
 
 - `global/` — site-wide pieces (header, footer, 404)
