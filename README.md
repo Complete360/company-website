@@ -24,7 +24,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-30 of 62 files have code. Files marked ⬜ contain only a
+31 of 63 files have code. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
 anything still to do on a page (🔁 = needs rebuild).
@@ -62,6 +62,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `services/ai-employee.html` | AI Employee Website | ✅ Code in repo | Up to date |
 | `services/local-display-network.html` | Local Display Network | ✅ Code in repo | Up to date |
 | `services/dispensary.html` | Dispensary | ✅ Code in repo | Up to date |
+| `services/seo-services.html` | SEO Services (new page — create in GHL) | ✅ Code in repo | v1.0 new build — confirm plan inclusions, then create /seo-services in GHL and paste; not in nav yet |
 | `services/payments.html` | Payments | ✅ Code in repo | Up to date |
 
 ### Pricing

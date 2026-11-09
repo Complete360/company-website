@@ -1,0 +1,901 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — SEO Services
+     c360-seo-services-v1.0.html
+     GHL: Paste into Custom Code block on /seo-services page (new page).
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-seo-  (new, unique)
+
+     Built on the same design system as Local SEO Booster v2.6 and
+     Reputation Management v1.7: same tokens, buttons, navy hero, trust bar,
+     dot field, navy pricing band, reviews widget, final CTA, FAQ pattern.
+
+     v1.0 (2026-11-09) — first build
+     - Positioning: SEO Services = the client's WEBSITE ranking in organic
+       Google results (and AI search). Kept clearly separate from
+       Google Business Profile (Maps listing) and Local SEO Booster
+       (directory listings) — a "where it fits" section says so for sales.
+     - Pricing: $599/mo or $5,990/yr (= 2 months free, saves $1,198).
+     - Terms copy matches ToS / Return Policy v2.1: no refunds from purchase,
+       10-day cancellation notice, annual not prorated. No ranking guarantee
+       (the satisfaction guarantee covers GBP Management + ad campaigns only).
+     - Hero visual is a pure HTML/CSS search-results mock (no image file).
+     - Get Started buttons go to /schedule-demo until an SEO checkout exists.
+
+     CONFIRM before going live:
+     - Plan inclusions (see "What's included" + pricing card lists): up to
+       10 pages optimized, 2 service-area pages/mo, 2 blog posts/mo, monthly
+       report + monthly strategy call. Adjust both lists together.
+     - Free audit section reuses the Local SEO Booster prospecting widget
+       (699344169ea04eda0c083b63). Swap the ID if you set up an SEO-specific one.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+/* ══════════════════════════════════════════════════════
+   Complete360 SEO Services v1.0  |  Prefix: c360-seo-
+   ══════════════════════════════════════════════════════ */
+:root {
+  --seo-navy:        #122078;
+  --seo-navy-dark:   #0d1654;
+  --seo-green:       #127825;
+  --seo-green-hover: #0e5e1d;
+  --seo-green-light: #EAF3DE;
+  --seo-blue-light:  #E6F1FB;
+  --seo-mist:        #F4F7FC;
+  --seo-line:        #E7EBF3;
+  --seo-text:        #0F1F5E;
+  --seo-text-muted:  #5F5E5A;
+  --seo-lime:        #2ecc52;
+  --seo-radius:      12px;
+  --seo-radius-lg:   20px;
+  --seo-shadow:      0 8px 32px rgba(18,32,120,0.13);
+  --seo-shadow-lg:   0 16px 56px rgba(18,32,120,0.18);
+  --seo-font:        'Poppins','Helvetica Neue',sans-serif;
+}
+.c360-seo-root, .c360-seo-root *, .c360-seo-root *::before, .c360-seo-root *::after {
+  box-sizing: border-box; margin: 0; padding: 0;
+}
+.c360-seo-root {
+  position: relative; z-index: 0; background: #fff; overflow: hidden;
+  font-family: var(--seo-font); color: var(--seo-text);
+}
+.c360-seo-dotfield {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(18,32,120,0.055) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.c360-seo-section   { width: 100%; position: relative; }
+.c360-seo-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
+
+/* Scroll reveal (one quiet entrance per block; off for reduced motion) */
+.c360-seo-js .c360-seo-reveal { opacity: 0; transform: translateY(18px); }
+.c360-seo-reveal {
+  transition: opacity 0.6s cubic-bezier(.22,.61,.36,1), transform 0.6s cubic-bezier(.22,.61,.36,1);
+  transition-delay: var(--rd, 0s);
+}
+.c360-seo-js .c360-seo-reveal.c360-seo-in { opacity: 1; transform: none; }
+
+/* ── BUTTONS ── */
+.c360-seo-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-family: var(--seo-font); font-size: 15px; font-weight: 700; line-height: 1;
+  padding: 15px 28px; border-radius: 8px; text-decoration: none; cursor: pointer;
+  white-space: nowrap; border: none;
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s, border-color 0.2s, color 0.2s;
+}
+.c360-seo-btn:focus-visible { outline: 3px solid var(--seo-lime); outline-offset: 3px; }
+.c360-seo-btn--green { background: var(--seo-green); color: #fff; box-shadow: 0 4px 20px rgba(18,120,37,0.35); }
+.c360-seo-btn--green:hover { background: var(--seo-green-hover); color: #fff; transform: translateY(-2px); box-shadow: 0 8px 28px rgba(18,120,37,0.45); text-decoration: none; }
+.c360-seo-btn--ghost { background: transparent; color: rgba(255,255,255,0.88); border: 1.5px solid rgba(255,255,255,0.3); padding: 14px 24px; }
+.c360-seo-btn--ghost:hover { border-color: rgba(255,255,255,0.7); color: #fff; background: rgba(255,255,255,0.08); text-decoration: none; }
+.c360-seo-btn--navy { background: var(--seo-navy); color: #fff; }
+.c360-seo-btn--navy:hover { background: var(--seo-navy-dark); color: #fff; transform: translateY(-2px); text-decoration: none; }
+
+/* ── SECTION HEADER ── */
+.c360-seo-head { text-align: center; margin: 0 auto 52px; max-width: 680px; }
+.c360-seo-kicker {
+  display: inline-block; font-size: 13px; font-weight: 700; color: var(--seo-green);
+  margin-bottom: 10px; letter-spacing: 0.01em;
+}
+.c360-seo-head h2, .c360-seo-h2 {
+  font-family: var(--seo-font); font-size: clamp(26px,3.6vw,40px); font-weight: 800;
+  color: var(--seo-text); line-height: 1.15; letter-spacing: -0.02em; margin: 0 0 14px;
+}
+.c360-seo-head p {
+  font-size: 17px; color: var(--seo-text-muted); line-height: 1.65; margin: 0 auto;
+}
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   ══════════════════════════════════════════════════════ */
+section.c360-seo-hero {
+  background-color: #0b1440;
+  background-image: linear-gradient(135deg, #09103c 0%, #122078 55%, #0c1960 100%);
+  padding: 92px 0 96px; overflow: hidden;
+}
+.c360-seo-hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background:
+    radial-gradient(circle at 12% 70%, rgba(18,120,37,0.18) 0%, transparent 45%),
+    radial-gradient(circle at 88% 10%, rgba(255,255,255,0.05) 0%, transparent 40%);
+}
+.c360-seo-hero::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.022) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(130% 100% at 30% 20%, #000 10%, transparent 75%);
+          mask-image: radial-gradient(130% 100% at 30% 20%, #000 10%, transparent 75%);
+}
+.c360-seo-hero-inner {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 0.95fr 1.05fr; gap: 56px; align-items: center;
+}
+.c360-seo-hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: rgba(18,120,37,0.18); border: 1px solid rgba(18,120,37,0.36);
+  color: #7ddc80; font-size: 13px; font-weight: 600;
+  padding: 6px 14px; border-radius: 100px; margin-bottom: 22px;
+}
+.c360-seo-hero h1 {
+  font-family: var(--seo-font); font-size: clamp(34px,4.6vw,56px); font-weight: 800;
+  line-height: 1.07; color: #fff; letter-spacing: -0.025em; margin: 0 0 20px;
+}
+.c360-seo-hero-sub {
+  font-size: 17px; color: rgba(255,255,255,0.74); line-height: 1.65;
+  margin: 0 0 32px; max-width: 520px;
+}
+.c360-seo-hero-actions { display: flex; gap: 14px; flex-wrap: wrap; margin-bottom: 34px; }
+.c360-seo-hero-facts { display: flex; gap: 22px; flex-wrap: wrap; list-style: none; }
+.c360-seo-hero-facts li {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.6);
+}
+.c360-seo-hero-facts i { color: var(--seo-lime); }
+
+/* The memorable element: a search results page with the client on top. */
+.c360-seo-serp {
+  position: relative; background: #fff; border-radius: 16px;
+  box-shadow: 0 30px 80px rgba(3,8,40,0.55); overflow: hidden;
+  transform: rotate(-1.2deg);
+}
+.c360-seo-serp-bar {
+  display: flex; align-items: center; gap: 12px;
+  padding: 16px 20px; border-bottom: 1px solid #ECEEF3;
+}
+.c360-seo-serp-logo { font-size: 20px; font-weight: 700; letter-spacing: -0.03em; color: var(--seo-navy); }
+.c360-seo-serp-query {
+  flex: 1; display: flex; align-items: center; gap: 10px;
+  border: 1px solid #DFE2EA; border-radius: 100px; padding: 9px 16px;
+  font-size: 14px; color: #202124; min-width: 0;
+}
+.c360-seo-serp-query span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.c360-seo-serp-query i { color: #8A8F9C; font-size: 13px; }
+.c360-seo-caret { display: inline-block; width: 1.5px; height: 15px; background: #202124; margin-left: 1px; vertical-align: -2px; animation: c360-seo-blink 1.1s steps(1) infinite; }
+@keyframes c360-seo-blink { 50% { opacity: 0; } }
+.c360-seo-serp-body { padding: 18px 22px 24px; }
+.c360-seo-serp-meta { font-size: 12px; color: #70757a; margin-bottom: 14px; }
+.c360-seo-result { padding: 14px 16px; border-radius: 12px; margin: 0 -16px 6px; }
+.c360-seo-result--you {
+  background: var(--seo-green-light); border: 1.5px solid rgba(18,120,37,0.35);
+  position: relative;
+}
+.c360-seo-result-flag {
+  position: absolute; top: -11px; right: 14px;
+  background: var(--seo-green); color: #fff; font-size: 11px; font-weight: 700;
+  padding: 4px 10px; border-radius: 100px;
+}
+.c360-seo-result-site { display: flex; align-items: center; gap: 9px; margin-bottom: 4px; }
+.c360-seo-fav {
+  width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--seo-navy); color: #fff; font-size: 11px; font-weight: 700;
+}
+.c360-seo-result-site b { display: block; font-size: 13px; color: #202124; font-weight: 600; line-height: 1.2; }
+.c360-seo-result-site small { display: block; font-size: 11.5px; color: #4d5156; }
+.c360-seo-result-title { font-size: 17px; color: #1a0dab; font-weight: 500; line-height: 1.3; margin: 2px 0 4px; }
+.c360-seo-result-text { font-size: 13px; color: #4d5156; line-height: 1.5; }
+.c360-seo-sitelinks { display: flex; flex-wrap: wrap; gap: 6px 16px; margin-top: 8px; }
+.c360-seo-sitelinks span { font-size: 13px; color: #1a0dab; }
+.c360-seo-ghost-result { padding: 12px 0; border-top: 1px solid #F0F1F5; }
+.c360-seo-ghost-line { height: 9px; border-radius: 5px; background: #ECEEF3; margin-bottom: 7px; }
+.c360-seo-ghost-line.t { height: 12px; background: #DCE0F0; width: 62%; }
+.c360-seo-serp-note {
+  position: absolute; left: 50%; bottom: -18px; transform: translateX(-50%) rotate(1.2deg);
+  background: rgba(14,20,70,0.94); border: 1px solid rgba(46,204,82,0.35);
+  color: rgba(255,255,255,0.88); font-size: 12px; font-weight: 600;
+  padding: 9px 18px; border-radius: 100px; white-space: nowrap;
+}
+.c360-seo-serp-wrap { position: relative; padding-bottom: 18px; }
+
+/* ══════════════════════════════════════════════════════
+   TRUST BAR
+   ══════════════════════════════════════════════════════ */
+.c360-seo-trust { background: #fff; border-bottom: 1px solid var(--seo-line); position: relative; z-index: 3; }
+.c360-seo-trust-inner { display: grid; grid-template-columns: repeat(4, 1fr); }
+.c360-seo-trust-item {
+  display: flex; align-items: center; gap: 12px;
+  padding: 18px 24px; border-right: 1px solid var(--seo-line);
+}
+.c360-seo-trust-item:last-child { border-right: none; }
+.c360-seo-trust-ico {
+  width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--seo-blue-light); color: var(--seo-navy); font-size: 16px;
+}
+.c360-seo-trust-ico.green { background: var(--seo-green-light); color: var(--seo-green); }
+.c360-seo-trust-ico.gold  { background: #FFF8E7; color: #d98b06; }
+.c360-seo-trust-item strong { display: block; font-size: 13px; font-weight: 700; color: var(--seo-text); line-height: 1.25; }
+.c360-seo-trust-item span { font-size: 12px; color: var(--seo-text-muted); }
+
+/* ══════════════════════════════════════════════════════
+   WHERE SEO FITS — three Google products, one job each
+   ══════════════════════════════════════════════════════ */
+.c360-seo-fit { padding: 96px 0 88px; }
+.c360-seo-fit-grid {
+  display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 20px; align-items: stretch;
+}
+.c360-seo-fit-card {
+  background: #fff; border: 1px solid var(--seo-line); border-radius: var(--seo-radius-lg);
+  padding: 30px 28px; display: flex; flex-direction: column;
+}
+.c360-seo-fit-card--this {
+  background: var(--seo-navy); border-color: var(--seo-navy); color: #fff;
+  box-shadow: var(--seo-shadow-lg); transform: translateY(-10px);
+}
+.c360-seo-fit-ico {
+  width: 46px; height: 46px; border-radius: 12px; margin-bottom: 18px;
+  display: flex; align-items: center; justify-content: center; font-size: 19px;
+  background: var(--seo-blue-light); color: var(--seo-navy);
+}
+.c360-seo-fit-card--this .c360-seo-fit-ico { background: rgba(46,204,82,0.16); color: var(--seo-lime); }
+.c360-seo-fit-card h3 { font-size: 19px; font-weight: 700; line-height: 1.25; margin-bottom: 6px; color: inherit; }
+.c360-seo-fit-what { font-size: 13px; font-weight: 600; color: var(--seo-green); margin-bottom: 12px; }
+.c360-seo-fit-card--this .c360-seo-fit-what { color: var(--seo-lime); }
+.c360-seo-fit-card p { font-size: 14.5px; line-height: 1.6; color: var(--seo-text-muted); flex: 1; }
+.c360-seo-fit-card--this p { color: rgba(255,255,255,0.75); }
+.c360-seo-fit-link {
+  margin-top: 18px; font-size: 14px; font-weight: 600; color: var(--seo-navy); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 6px;
+}
+.c360-seo-fit-link:hover { text-decoration: underline; }
+.c360-seo-fit-here {
+  margin-top: 18px; font-size: 13px; font-weight: 600; color: #fff;
+  display: inline-flex; align-items: center; gap: 7px;
+}
+.c360-seo-fit-here i { color: var(--seo-lime); }
+.c360-seo-fit-foot {
+  text-align: center; margin-top: 40px; font-size: 15px; color: var(--seo-text-muted); line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════
+   FREE AUDIT (prospecting widget) — blue tint band
+   ══════════════════════════════════════════════════════ */
+section.c360-seo-audit { background: var(--seo-blue-light); padding: 84px 0; }
+.c360-seo-audit-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+.c360-seo-audit p { font-size: 16px; color: var(--seo-text-muted); line-height: 1.65; margin-bottom: 22px; max-width: 480px; }
+.c360-seo-checks { list-style: none; display: flex; flex-direction: column; gap: 11px; }
+.c360-seo-checks li { display: flex; gap: 10px; font-size: 15px; font-weight: 500; color: var(--seo-text); line-height: 1.45; }
+.c360-seo-checks li i { color: var(--seo-green); margin-top: 3px; }
+.c360-seo-audit-widget {
+  background: #fff; border-radius: var(--seo-radius-lg); box-shadow: var(--seo-shadow);
+  padding: 12px; min-height: 360px;
+}
+
+/* ══════════════════════════════════════════════════════
+   WHAT'S INCLUDED
+   ══════════════════════════════════════════════════════ */
+.c360-seo-included { padding: 96px 0; }
+.c360-seo-inc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 56px; max-width: 980px; margin: 0 auto; }
+.c360-seo-inc {
+  display: grid; grid-template-columns: 48px 1fr; gap: 18px;
+  padding: 26px 0; border-top: 1px solid var(--seo-line);
+}
+.c360-seo-inc-ico {
+  width: 48px; height: 48px; border-radius: 12px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--seo-green-light); color: var(--seo-green); font-size: 18px;
+}
+.c360-seo-inc h3 { font-size: 17px; font-weight: 700; color: var(--seo-text); margin-bottom: 6px; line-height: 1.3; }
+.c360-seo-inc p  { font-size: 14.5px; color: var(--seo-text-muted); line-height: 1.6; }
+.c360-seo-inc-qty {
+  display: inline-block; margin-left: 6px; font-size: 12px; font-weight: 700;
+  color: var(--seo-navy); background: var(--seo-blue-light); padding: 2px 9px; border-radius: 100px;
+  vertical-align: 2px;
+}
+
+/* ══════════════════════════════════════════════════════
+   HOW IT WORKS — a real sequence, so numbered
+   ══════════════════════════════════════════════════════ */
+section.c360-seo-process { background: var(--seo-mist); padding: 96px 0; border-top: 1px solid var(--seo-line); border-bottom: 1px solid var(--seo-line); }
+.c360-seo-steps { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; counter-reset: c360seo; }
+.c360-seo-step { position: relative; padding-top: 58px; counter-increment: c360seo; }
+.c360-seo-step::before {
+  content: counter(c360seo); position: absolute; top: 0; left: 0;
+  width: 42px; height: 42px; border-radius: 50%;
+  background: var(--seo-navy); color: #fff; font-size: 16px; font-weight: 700;
+  display: flex; align-items: center; justify-content: center;
+}
+.c360-seo-step::after {
+  content: ''; position: absolute; top: 21px; left: 54px; right: -12px; height: 2px;
+  background: linear-gradient(90deg, rgba(18,32,120,0.25), rgba(18,32,120,0.05));
+}
+.c360-seo-step:last-child::after { display: none; }
+.c360-seo-step-when { font-size: 12.5px; font-weight: 700; color: var(--seo-green); margin-bottom: 6px; }
+.c360-seo-step h3 { font-size: 17px; font-weight: 700; color: var(--seo-text); margin-bottom: 8px; line-height: 1.3; }
+.c360-seo-step p  { font-size: 14.5px; color: var(--seo-text-muted); line-height: 1.6; }
+.c360-seo-timeline-note {
+  margin: 48px auto 0; max-width: 760px; text-align: center;
+  font-size: 15px; color: var(--seo-text-muted); line-height: 1.65;
+}
+.c360-seo-timeline-note strong { color: var(--seo-text); }
+
+/* ══════════════════════════════════════════════════════
+   PRICING — navy band
+   ══════════════════════════════════════════════════════ */
+section.c360-seo-pricing {
+  padding: 92px 0;
+  background-color: #0b1440;
+  background-image: linear-gradient(135deg, #09103c 0%, #122078 58%, #0c1960 100%);
+  overflow: hidden;
+}
+.c360-seo-pricing::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(18,120,37,0.22) 0%, transparent 55%);
+}
+.c360-seo-pricing .c360-seo-head h2 { color: #fff; }
+.c360-seo-pricing .c360-seo-head p  { color: rgba(255,255,255,0.65); }
+.c360-seo-pricing .c360-seo-kicker  { color: var(--seo-lime); }
+.c360-seo-price-cards { display: grid; grid-template-columns: repeat(2, 1fr); gap: 28px; max-width: 860px; margin: 0 auto; }
+.c360-seo-price-card {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.13);
+  border-radius: var(--seo-radius-lg); padding: 40px 36px; position: relative;
+  display: flex; flex-direction: column;
+}
+.c360-seo-price-card--best {
+  background: rgba(255,255,255,0.1); border: 2px solid rgba(46,204,82,0.55);
+  box-shadow: 0 0 0 4px rgba(46,204,82,0.08);
+}
+.c360-seo-price-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--seo-green); color: #fff; font-size: 12px; font-weight: 700;
+  padding: 5px 16px; border-radius: 100px; white-space: nowrap;
+}
+.c360-seo-plan { font-size: 15px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+.c360-seo-plan-sub { font-size: 13px; color: rgba(255,255,255,0.5); margin-bottom: 20px; }
+.c360-seo-price { display: flex; align-items: flex-end; gap: 4px; margin-bottom: 8px; }
+.c360-seo-price-cur { font-size: 20px; font-weight: 700; color: rgba(255,255,255,0.6); padding-bottom: 10px; }
+.c360-seo-price-num { font-size: 60px; font-weight: 800; color: #fff; line-height: 1; letter-spacing: -0.03em; }
+.c360-seo-price-per { font-size: 14px; color: rgba(255,255,255,0.5); padding-bottom: 10px; }
+.c360-seo-price-save {
+  display: inline-block; align-self: flex-start;
+  font-size: 12px; font-weight: 700; color: var(--seo-lime);
+  background: rgba(46,204,82,0.12); border: 1px solid rgba(46,204,82,0.28);
+  border-radius: 100px; padding: 3px 10px; margin-bottom: 22px;
+}
+.c360-seo-price-save--blank { visibility: hidden; }
+.c360-seo-price-rule { height: 1px; background: rgba(255,255,255,0.12); margin-bottom: 22px; }
+.c360-seo-price-list { list-style: none; display: flex; flex-direction: column; gap: 10px; margin-bottom: 28px; flex: 1; }
+.c360-seo-price-list li { display: flex; gap: 9px; font-size: 14px; font-weight: 500; color: rgba(255,255,255,0.78); line-height: 1.45; }
+.c360-seo-price-list li i { color: var(--seo-lime); font-size: 11px; margin-top: 4px; flex-shrink: 0; }
+.c360-seo-price-card .c360-seo-btn { width: 100%; }
+.c360-seo-price-card .c360-seo-btn--ghost { color: #fff; }
+.c360-seo-price-terms {
+  max-width: 760px; margin: 40px auto 0; text-align: center;
+  font-size: 13px; color: rgba(255,255,255,0.5); line-height: 1.7;
+}
+.c360-seo-price-terms a { color: rgba(255,255,255,0.75); }
+
+/* ══════════════════════════════════════════════════════
+   REVIEWS
+   ══════════════════════════════════════════════════════ */
+.c360-seo-reviews { padding: 92px 0; }
+
+/* ══════════════════════════════════════════════════════
+   FINAL CTA
+   ══════════════════════════════════════════════════════ */
+section.c360-seo-cta {
+  padding: 96px 0; text-align: center; overflow: hidden;
+  background-color: #0b1440;
+  background-image: linear-gradient(135deg, #09103c 0%, #122078 58%, #0c1960 100%);
+}
+.c360-seo-cta::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle at 50% 0%, rgba(18,120,37,0.22) 0%, transparent 55%);
+}
+.c360-seo-cta-inner { max-width: 680px; margin: 0 auto; position: relative; z-index: 2; }
+.c360-seo-cta h2 {
+  font-size: clamp(28px,4vw,46px); font-weight: 800; color: #fff;
+  line-height: 1.1; letter-spacing: -0.025em; margin-bottom: 18px;
+}
+.c360-seo-cta p { font-size: 16px; color: rgba(255,255,255,0.7); line-height: 1.65; margin-bottom: 36px; }
+.c360-seo-cta-actions { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+
+/* ══════════════════════════════════════════════════════
+   FAQ (checkbox accordion — works without JS)
+   ══════════════════════════════════════════════════════ */
+.c360-seo-faq { padding: 92px 0; }
+.c360-seo-faq-list { max-width: 800px; margin: 0 auto; }
+.c360-seo-faq-item { border-bottom: 1px solid var(--seo-line); }
+.c360-seo-faq-item:first-child { border-top: 1px solid var(--seo-line); }
+.c360-seo-faq-toggle { position: absolute; opacity: 0; pointer-events: none; }
+.c360-seo-faq-q {
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  padding: 22px 6px; cursor: pointer; user-select: none;
+  font-size: 15.5px; font-weight: 600; color: var(--seo-text); line-height: 1.4;
+}
+.c360-seo-faq-q:hover { color: var(--seo-navy); }
+.c360-seo-faq-icon {
+  width: 28px; height: 28px; flex-shrink: 0; border-radius: 50%;
+  background: var(--seo-blue-light); color: var(--seo-navy); font-size: 11px;
+  display: flex; align-items: center; justify-content: center;
+  transition: transform 0.3s ease, background 0.2s, color 0.2s;
+}
+.c360-seo-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; padding: 0 6px; }
+.c360-seo-faq-a p { font-size: 15px; color: var(--seo-text-muted); line-height: 1.7; padding: 2px 0 22px; }
+.c360-seo-faq-a a { color: var(--seo-navy); font-weight: 600; }
+.c360-seo-faq-toggle:checked ~ .c360-seo-faq-q .c360-seo-faq-icon { transform: rotate(180deg); background: var(--seo-navy); color: #fff; }
+.c360-seo-faq-toggle:checked ~ .c360-seo-faq-a { max-height: 600px; }
+.c360-seo-faq-toggle:focus-visible ~ .c360-seo-faq-q { outline: 2px solid var(--seo-green); outline-offset: 2px; }
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
+@media (max-width: 980px) {
+  .c360-seo-hero-inner, .c360-seo-audit-inner { grid-template-columns: 1fr; gap: 44px; }
+  .c360-seo-serp { transform: none; max-width: 560px; }
+  .c360-seo-serp-note { transform: translateX(-50%); }
+  .c360-seo-fit-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
+  .c360-seo-fit-card--this { transform: none; order: -1; }
+  .c360-seo-steps { grid-template-columns: repeat(2, 1fr); row-gap: 36px; }
+  .c360-seo-step::after { display: none; }
+  .c360-seo-price-cards { grid-template-columns: 1fr; max-width: 440px; row-gap: 36px; }
+}
+@media (max-width: 768px) {
+  section.c360-seo-hero, section.c360-seo-cta { padding: 68px 0 64px; }
+  .c360-seo-fit, .c360-seo-included, section.c360-seo-process, section.c360-seo-pricing,
+  .c360-seo-reviews, .c360-seo-faq, section.c360-seo-audit { padding: 64px 0; }
+  .c360-seo-head { margin-bottom: 38px; }
+  .c360-seo-inc-grid { grid-template-columns: 1fr; }
+  .c360-seo-trust-inner { grid-template-columns: repeat(2, 1fr); }
+  .c360-seo-trust-item { border-right: none; border-bottom: 1px solid var(--seo-line); }
+  .c360-seo-trust-item:nth-child(odd) { border-right: 1px solid var(--seo-line); }
+  .c360-seo-trust-item:nth-last-child(-n+2) { border-bottom: none; }
+  .c360-seo-dotfield { display: none; }
+}
+@media (max-width: 540px) {
+  .c360-seo-hero h1 { font-size: 32px; }
+  .c360-seo-hero-actions .c360-seo-btn, .c360-seo-cta-actions .c360-seo-btn { width: 100%; }
+  .c360-seo-steps { grid-template-columns: 1fr; }
+  .c360-seo-trust-inner { grid-template-columns: 1fr; }
+  .c360-seo-trust-item, .c360-seo-trust-item:nth-child(odd) { border-right: none; border-bottom: 1px solid var(--seo-line); }
+  .c360-seo-trust-item:last-child { border-bottom: none; }
+  .c360-seo-serp-body { padding: 16px 18px 22px; }
+  .c360-seo-result-title { font-size: 15.5px; }
+  .c360-seo-serp-note { font-size: 11px; padding: 8px 14px; }
+  .c360-seo-price-card { padding: 34px 26px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [class*="c360-seo-"], [class*="c360-seo-"]::before, [class*="c360-seo-"]::after { animation: none !important; transition: none !important; }
+  .c360-seo-js .c360-seo-reveal { opacity: 1 !important; transform: none !important; }
+}
+</style>
+
+<script>document.documentElement.classList.add('c360-seo-js');</script>
+
+<div class="c360-seo-root">
+<div class="c360-seo-dotfield"></div>
+
+<!-- ══════════════════════════════════════════════════════
+     1 — HERO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-seo-section c360-seo-hero">
+  <div class="c360-seo-container">
+    <div class="c360-seo-hero-inner">
+
+      <div>
+        <div class="c360-seo-hero-tag"><i class="fa-solid fa-magnifying-glass-chart"></i> SEO Services</div>
+        <h1>Be the first website customers find on Google.</h1>
+        <p class="c360-seo-hero-sub">
+          When someone searches for what you do in your area, the businesses on page one get the calls.
+          We optimize your website, build pages for every service and city you cover, and publish content
+          every month so Google has more reasons to rank you.
+        </p>
+        <div class="c360-seo-hero-actions">
+          <a href="/schedule-demo" class="c360-seo-btn c360-seo-btn--green"><i class="fa-solid fa-calendar-check"></i> Get a free SEO strategy call</a>
+          <a href="#c360-seo-pricing" class="c360-seo-btn c360-seo-btn--ghost">See pricing</a>
+        </div>
+        <ul class="c360-seo-hero-facts">
+          <li><i class="fa-solid fa-circle-check"></i> $599/mo, or save with annual</li>
+          <li><i class="fa-solid fa-circle-check"></i> Monthly ranking reports</li>
+          <li><i class="fa-solid fa-circle-check"></i> Built for local service businesses</li>
+        </ul>
+      </div>
+
+      <div class="c360-seo-serp-wrap" aria-hidden="true">
+        <div class="c360-seo-serp">
+          <div class="c360-seo-serp-bar">
+            <div class="c360-seo-serp-logo">Search</div>
+            <div class="c360-seo-serp-query"><i class="fa-solid fa-magnifying-glass"></i><span>roof repair near me<span class="c360-seo-caret"></span></span></div>
+          </div>
+          <div class="c360-seo-serp-body">
+            <div class="c360-seo-serp-meta">Results near you</div>
+            <div class="c360-seo-result c360-seo-result--you">
+              <div class="c360-seo-result-flag">Your website</div>
+              <div class="c360-seo-result-site">
+                <div class="c360-seo-fav">DR</div>
+                <div><b>Desert Ridge Roofing</b><small>desertridgeroofing.com › roof-repair</small></div>
+              </div>
+              <div class="c360-seo-result-title">Roof Repair in Mesa, AZ | Same-Week Service</div>
+              <div class="c360-seo-result-text">Leaks, storm damage, and tile repair across Mesa, Gilbert and Chandler. Licensed and insured. Free inspections.</div>
+              <div class="c360-seo-sitelinks"><span>Roof replacement</span><span>Free inspection</span><span>Service areas</span><span>Reviews</span></div>
+            </div>
+            <div class="c360-seo-ghost-result">
+              <div class="c360-seo-ghost-line t"></div>
+              <div class="c360-seo-ghost-line" style="width:92%"></div>
+              <div class="c360-seo-ghost-line" style="width:70%"></div>
+            </div>
+            <div class="c360-seo-ghost-result">
+              <div class="c360-seo-ghost-line t" style="width:54%"></div>
+              <div class="c360-seo-ghost-line" style="width:88%"></div>
+              <div class="c360-seo-ghost-line" style="width:60%"></div>
+            </div>
+          </div>
+        </div>
+        <div class="c360-seo-serp-note"><i class="fa-solid fa-location-dot" style="color:#2ecc52;margin-right:6px;"></i>Example: a service page built to rank locally</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     2 — TRUST BAR
+     ══════════════════════════════════════════════════════ -->
+<div class="c360-seo-trust">
+  <div class="c360-seo-container">
+    <div class="c360-seo-trust-inner">
+      <div class="c360-seo-trust-item">
+        <div class="c360-seo-trust-ico green"><i class="fa-brands fa-google"></i></div>
+        <div><strong>Certified Google Partner</strong><span>Google Product Expert on the team</span></div>
+      </div>
+      <div class="c360-seo-trust-item">
+        <div class="c360-seo-trust-ico gold"><i class="fa-solid fa-star"></i></div>
+        <div><strong>147 Five-Star Reviews</strong><span>5.0 on Google</span></div>
+      </div>
+      <div class="c360-seo-trust-item">
+        <div class="c360-seo-trust-ico"><i class="fa-solid fa-chart-line"></i></div>
+        <div><strong>Monthly Reporting</strong><span>Rankings, traffic and leads</span></div>
+      </div>
+      <div class="c360-seo-trust-item">
+        <div class="c360-seo-trust-ico green"><i class="fa-solid fa-location-dot"></i></div>
+        <div><strong>Since 2018</strong><span>Tucson-based, serving nationwide</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════
+     3 — WHERE SEO FITS (separates the three Google products)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-seo-section c360-seo-fit">
+  <div class="c360-seo-container">
+    <div class="c360-seo-head c360-seo-reveal">
+      <span class="c360-seo-kicker">How customers find you on Google</span>
+      <h2>Three places to show up. This page is about your website.</h2>
+      <p>Google pulls local results from your business profile, from directories across the web, and from your own website. Each one needs its own work.</p>
+    </div>
+    <div class="c360-seo-fit-grid">
+      <div class="c360-seo-fit-card c360-seo-reveal">
+        <div class="c360-seo-fit-ico"><i class="fa-solid fa-map-location-dot"></i></div>
+        <h3>Google Business Profile</h3>
+        <div class="c360-seo-fit-what">Your listing in Google Maps</div>
+        <p>Photos, posts, reviews and hours that help you show up in the map pack when people search nearby.</p>
+        <a class="c360-seo-fit-link" href="/gbp-management">Google Business Profile Management <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="c360-seo-fit-card c360-seo-fit-card--this c360-seo-reveal" style="--rd:0.08s;">
+        <div class="c360-seo-fit-ico"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <h3>SEO Services</h3>
+        <div class="c360-seo-fit-what">Your website in Google search results</div>
+        <p>Optimized pages, new service-area pages and monthly content so your own website ranks for the searches that bring in jobs.</p>
+        <span class="c360-seo-fit-here"><i class="fa-solid fa-circle-check"></i> You're here</span>
+      </div>
+      <div class="c360-seo-fit-card c360-seo-reveal" style="--rd:0.16s;">
+        <div class="c360-seo-fit-ico"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Local SEO Booster</h3>
+        <div class="c360-seo-fit-what">Your info across 70+ directories</div>
+        <p>Consistent name, address and phone number on the directories and apps Google and AI assistants check to trust you.</p>
+        <a class="c360-seo-fit-link" href="/local-seo-booster">Local SEO Booster <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <p class="c360-seo-fit-foot c360-seo-reveal">They work best together: each one makes the others more credible to Google. Ask about combining them on your strategy call.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     4 — FREE AUDIT (prospecting widget)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-seo-section c360-seo-audit">
+  <div class="c360-seo-container">
+    <div class="c360-seo-audit-inner">
+      <div class="c360-seo-reveal">
+        <span class="c360-seo-kicker">Free instant scan</span>
+        <h2 class="c360-seo-h2">See how your business shows up online today.</h2>
+        <p>Enter your business details for a free report in under a minute. It's the same starting point we use on a strategy call, so you'll know where you stand before we talk.</p>
+        <ul class="c360-seo-checks">
+          <li><i class="fa-solid fa-circle-check"></i> How visible your business is in local search</li>
+          <li><i class="fa-solid fa-circle-check"></i> Missing or inconsistent business information</li>
+          <li><i class="fa-solid fa-circle-check"></i> Your review rating compared with nearby competitors</li>
+        </ul>
+      </div>
+      <div class="c360-seo-audit-widget c360-seo-reveal" style="--rd:0.1s;">
+        <script src="https://services.leadconnectorhq.com/prospecting/client/widget-embed.js" data-widget-id="699344169ea04eda0c083b63"></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     5 — WHAT'S INCLUDED  (keep in sync with the pricing lists)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-seo-section c360-seo-included">
+  <div class="c360-seo-container">
+    <div class="c360-seo-head c360-seo-reveal">
+      <span class="c360-seo-kicker">What's included</span>
+      <h2>Everything your website needs to climb, done for you every month.</h2>
+      <p>One plan, no add-ons to figure out. We do the work; you get a report showing what changed and what it's doing for your rankings.</p>
+    </div>
+    <div class="c360-seo-inc-grid">
+      <div class="c360-seo-inc c360-seo-reveal">
+        <div class="c360-seo-inc-ico"><i class="fa-solid fa-bullseye"></i></div>
+        <div>
+          <h3>Keyword research and technical audit</h3>
+          <p>We find the searches your customers actually use, then fix what's holding your site back: speed, mobile issues, broken links and indexing problems.</p>
+        </div>
+      </div>
+      <div class="c360-seo-inc c360-seo-reveal" style="--rd:0.06s;">
+        <div class="c360-seo-inc-ico"><i class="fa-solid fa-file-pen"></i></div>
+        <div>
+          <h3>On-page optimization <span class="c360-seo-inc-qty">Up to 10 pages</span></h3>
+          <p>Titles, headings, page copy, internal links and schema markup tuned so Google understands what each page is about and where you work.</p>
+        </div>
+      </div>
+      <div class="c360-seo-inc c360-seo-reveal">
+        <div class="c360-seo-inc-ico"><i class="fa-solid fa-map-pin"></i></div>
+        <div>
+          <h3>New service-area pages <span class="c360-seo-inc-qty">2 per month</span></h3>
+          <p>Dedicated pages for the services and cities you want to win, like "water heater repair in Gilbert," written to rank and to turn visitors into calls.</p>
+        </div>
+      </div>
+      <div class="c360-seo-inc c360-seo-reveal" style="--rd:0.06s;">
+        <div class="c360-seo-inc-ico"><i class="fa-solid fa-pen-nib"></i></div>
+        <div>
+          <h3>Blog posts, written and published <span class="c360-seo-inc-qty">2 per month</span></h3>
+          <p>Helpful articles that answer the questions your customers search before they hire, building your site's authority month after month.</p>
+        </div>
+      </div>
+      <div class="c360-seo-inc c360-seo-reveal">
+        <div class="c360-seo-inc-ico"><i class="fa-solid fa-robot"></i></div>
+        <div>
+          <h3>Structured for AI search</h3>
+          <p>Clear answers and structured data make your pages easier for Google and AI assistants to read, summarize and recommend.</p>
+        </div>
+      </div>
+      <div class="c360-seo-inc c360-seo-reveal" style="--rd:0.06s;">
+        <div class="c360-seo-inc-ico"><i class="fa-solid fa-chart-column"></i></div>
+        <div>
+          <h3>Monthly report and strategy call</h3>
+          <p>Rankings, traffic and leads in plain English, plus a monthly call to review results and pick the next pages to build.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     6 — HOW IT WORKS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-seo-section c360-seo-process">
+  <div class="c360-seo-container">
+    <div class="c360-seo-head c360-seo-reveal">
+      <span class="c360-seo-kicker">How it works</span>
+      <h2>A steady plan, not a one-time fix.</h2>
+      <p>SEO compounds. Each month builds on the last, so the work never stops at a launch date.</p>
+    </div>
+    <ol class="c360-seo-steps">
+      <li class="c360-seo-step c360-seo-reveal">
+        <div class="c360-seo-step-when">To start</div>
+        <h3>Audit and keyword plan</h3>
+        <p>We review your site, your competitors and your service area, then agree on the searches to target first.</p>
+      </li>
+      <li class="c360-seo-step c360-seo-reveal" style="--rd:0.08s;">
+        <div class="c360-seo-step-when">Next</div>
+        <h3>Fix and optimize</h3>
+        <p>Technical issues get fixed and your most important pages get rewritten and structured to rank.</p>
+      </li>
+      <li class="c360-seo-step c360-seo-reveal" style="--rd:0.16s;">
+        <div class="c360-seo-step-when">Every month</div>
+        <h3>Build new pages and content</h3>
+        <p>Two new service-area pages and two blog posts go live, each aimed at searches that bring in jobs.</p>
+      </li>
+      <li class="c360-seo-step c360-seo-reveal" style="--rd:0.24s;">
+        <div class="c360-seo-step-when">Every month</div>
+        <h3>Report and adjust</h3>
+        <p>You get your report and a strategy call. We double down on what's climbing and adjust what isn't.</p>
+      </li>
+    </ol>
+    <p class="c360-seo-timeline-note c360-seo-reveal">
+      <strong>What to expect:</strong> most businesses start seeing ranking movement within 3 to 6 months, and results keep building from there.
+      Nobody can honestly guarantee a #1 spot on Google, so we don't. We show you the progress every month instead.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     7 — PRICING
+     ══════════════════════════════════════════════════════ -->
+<section id="c360-seo-pricing" class="c360-seo-section c360-seo-pricing">
+  <div class="c360-seo-container">
+    <div class="c360-seo-head c360-seo-reveal">
+      <span class="c360-seo-kicker">Pricing</span>
+      <h2>One plan. Pay monthly or save with annual.</h2>
+      <p>Both options include the full service. Annual gets you two months free.</p>
+    </div>
+    <div class="c360-seo-price-cards">
+      <div class="c360-seo-price-card c360-seo-reveal">
+        <div class="c360-seo-plan">Monthly</div>
+        <div class="c360-seo-plan-sub">Billed every month</div>
+        <div class="c360-seo-price">
+          <span class="c360-seo-price-cur">$</span><span class="c360-seo-price-num">599</span><span class="c360-seo-price-per">/month</span>
+        </div>
+        <span class="c360-seo-price-save c360-seo-price-save--blank">&nbsp;</span>
+        <div class="c360-seo-price-rule"></div>
+        <ul class="c360-seo-price-list">
+          <li><i class="fa-solid fa-check"></i> Keyword research and technical audit</li>
+          <li><i class="fa-solid fa-check"></i> On-page optimization, up to 10 pages</li>
+          <li><i class="fa-solid fa-check"></i> 2 new service-area pages per month</li>
+          <li><i class="fa-solid fa-check"></i> 2 blog posts per month, written and published</li>
+          <li><i class="fa-solid fa-check"></i> Structured data for Google and AI search</li>
+          <li><i class="fa-solid fa-check"></i> Monthly report and strategy call</li>
+        </ul>
+        <a href="/schedule-demo" class="c360-seo-btn c360-seo-btn--ghost">Get started monthly</a>
+      </div>
+      <div class="c360-seo-price-card c360-seo-price-card--best c360-seo-reveal" style="--rd:0.08s;">
+        <div class="c360-seo-price-badge">2 months free</div>
+        <div class="c360-seo-plan">Annual</div>
+        <div class="c360-seo-plan-sub">Billed once a year</div>
+        <div class="c360-seo-price">
+          <span class="c360-seo-price-cur">$</span><span class="c360-seo-price-num">5,990</span><span class="c360-seo-price-per">/year</span>
+        </div>
+        <span class="c360-seo-price-save">Save $1,198 vs. monthly</span>
+        <div class="c360-seo-price-rule"></div>
+        <ul class="c360-seo-price-list">
+          <li><i class="fa-solid fa-check"></i> Keyword research and technical audit</li>
+          <li><i class="fa-solid fa-check"></i> On-page optimization, up to 10 pages</li>
+          <li><i class="fa-solid fa-check"></i> 2 new service-area pages per month</li>
+          <li><i class="fa-solid fa-check"></i> 2 blog posts per month, written and published</li>
+          <li><i class="fa-solid fa-check"></i> Structured data for Google and AI search</li>
+          <li><i class="fa-solid fa-check"></i> Monthly report and strategy call</li>
+        </ul>
+        <a href="/schedule-demo" class="c360-seo-btn c360-seo-btn--green">Get started annual</a>
+      </div>
+    </div>
+    <p class="c360-seo-price-terms">
+      Monthly plans can be cancelled with at least 10 days' notice before your next billing date, confirmed in writing.
+      Annual plans are billed yearly and are not refunded or prorated; to stop a renewal, cancel at least 10 days before your renewal date.
+      All payments are non-refundable from the time of purchase. See our <a href="/return-policy">Return &amp; Refund Policy</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     8 — REVIEWS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-seo-section c360-seo-reviews">
+  <div class="c360-seo-container">
+    <div class="c360-seo-head c360-seo-reveal">
+      <span class="c360-seo-kicker">What our clients say</span>
+      <h2>Real results from real businesses</h2>
+      <p>147 Google reviews from local business owners across the country.</p>
+    </div>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     9 — FINAL CTA
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-seo-section c360-seo-cta">
+  <div class="c360-seo-container">
+    <div class="c360-seo-cta-inner c360-seo-reveal">
+      <h2>Find out what it would take to rank in your area.</h2>
+      <p>On a free 15-minute strategy call we'll look at your website, the searches that matter for your business, and who's ranking ahead of you today.</p>
+      <div class="c360-seo-cta-actions">
+        <a href="/schedule-demo" class="c360-seo-btn c360-seo-btn--green"><i class="fa-solid fa-calendar-check"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-seo-btn c360-seo-btn--ghost"><i class="fa-solid fa-phone"></i> Call (866) 527-6205</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     10 — FAQ
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-seo-section c360-seo-faq">
+  <div class="c360-seo-container">
+    <div class="c360-seo-head c360-seo-reveal">
+      <span class="c360-seo-kicker">Questions</span>
+      <h2>SEO questions, answered</h2>
+    </div>
+    <div class="c360-seo-faq-list">
+
+      <div class="c360-seo-faq-item">
+        <input type="checkbox" id="c360-seo-faq-1" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-1" class="c360-seo-faq-q">How is this different from Local SEO Booster?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>Local SEO Booster keeps your business information accurate across 70+ directories and apps. SEO Services works on your own website: its pages, content and structure, so the site itself ranks in Google search. They solve different problems and work well together.</p></div>
+      </div>
+
+      <div class="c360-seo-faq-item">
+        <input type="checkbox" id="c360-seo-faq-2" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-2" class="c360-seo-faq-q">What about my Google Business Profile?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>Your Google Business Profile is the listing that shows in Google Maps. It's managed separately through <a href="/gbp-management">Google Business Profile Management</a>. A strong website helps your profile rank too, which is why many clients run both.</p></div>
+      </div>
+
+      <div class="c360-seo-faq-item">
+        <input type="checkbox" id="c360-seo-faq-3" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-3" class="c360-seo-faq-q">How long until I see results?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>Most businesses start seeing ranking movement within 3 to 6 months. Competitive services and larger cities can take longer. Results build over time, and your monthly report shows exactly what's moving.</p></div>
+      </div>
+
+      <div class="c360-seo-faq-item">
+        <input type="checkbox" id="c360-seo-faq-4" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-4" class="c360-seo-faq-q">Do you guarantee first-page rankings?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>No. Google decides rankings, and no honest agency can guarantee a position. What we commit to is the work in your plan every month and full transparency on the results.</p></div>
+      </div>
+
+      <div class="c360-seo-faq-item">
+        <input type="checkbox" id="c360-seo-faq-5" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-5" class="c360-seo-faq-q">Does my website have to be built by Complete360?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>No. We can work on most websites as long as we have editing access. If your current site is outdated or hard to work with, we'll tell you on the strategy call and you can decide whether a <a href="/websites-home">new website</a> makes sense.</p></div>
+      </div>
+
+      <div class="c360-seo-faq-item">
+        <input type="checkbox" id="c360-seo-faq-6" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-6" class="c360-seo-faq-q">Do I have to write anything?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>No. We write and publish the service-area pages and blog posts. We'll ask for details only you know, like the services you offer, the areas you cover and a few photos, so the content sounds like your business.</p></div>
+      </div>
+
+      <div class="c360-seo-faq-item">
+        <input type="checkbox" id="c360-seo-faq-7" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-7" class="c360-seo-faq-q">How does cancelling work?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>Monthly plans can be cancelled with at least 10 days' notice before your next billing date, confirmed in writing. Annual plans are billed yearly and aren't refunded or prorated; to stop a renewal, cancel at least 10 days before your renewal date. To cancel, call our customer service team at <a href="tel:+18008632541">(800) 863-2541</a>.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+</div><!-- /.c360-seo-root -->
+
+<script>
+(function () {
+  var targets = document.querySelectorAll('.c360-seo-reveal');
+  if (!targets.length) return;
+  if (!('IntersectionObserver' in window)) {
+    Array.prototype.forEach.call(targets, function (el) { el.classList.add('c360-seo-in'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (!entry.isIntersecting) return;
+      entry.target.classList.add('c360-seo-in');
+      io.unobserve(entry.target);
+    });
+  }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+  Array.prototype.forEach.call(targets, function (el) { io.observe(el); });
+})();
+</script>
