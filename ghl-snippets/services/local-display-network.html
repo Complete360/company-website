@@ -1,6 +1,850 @@
-<!--
-  PLACEHOLDER: no code yet
-  GHL page: "Local Display Network"
-  Next step: paste this page's custom code from GHL here,
-  or delete this file if the page has no custom code.
--->
+<!-- ============================================================
+     COMPLETE360 – LOCAL SCREEN ADVERTISING PAGE (v2.2)
+     Paste into a GHL Custom Code / HTML element on a blank page.
+     Sits between the site's global header and footer.
+
+     Rebuilt 1:1 against the reference in-store screen advertising
+     layout (16 sections), whitelabeled, in Complete360 branding:
+     navy #122078 / #0d1654 / #09103c, green #127825, Poppins.
+     Everything is scoped to .c360-ls so it won't clash with GHL.
+     Sections alternate navy / white; FAQ is last, above the footer.
+
+     TO-DO BEFORE PUBLISH (search the file for "TODO"):
+       • Replace the placeholder testimonial in section 8.
+       • Confirm venue types (7 / 12) match what Complete360 sells.
+     ============================================================ -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+
+<style>
+.c360-ls {
+  --ls-bg0: #060b29;
+  --ls-bg1: #09103c;
+  --ls-bg2: #0d1654;
+  --ls-navy: #122078;
+  --ls-green: #127825;
+  --ls-green-hover: #0e5e1d;
+  --ls-green-text: #7ddc80;
+  --ls-glow: #2ecc52;
+  --ls-card: rgba(255,255,255,0.04);
+  --ls-card-border: rgba(255,255,255,0.09);
+  --ls-line: rgba(255,255,255,0.07);
+  --ls-text: #ffffff;
+  --ls-muted: #aab4dc;
+  --ls-dim: #7f8ab8;
+  --ls-red: #ff7b7b;
+  --ls-ghost: rgba(255,255,255,0.3);
+  --ls-ghost-hover: rgba(255,255,255,0.07);
+  --ls-featured: rgba(46,204,82,0.05);
+  --ls-radius: 14px;
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--ls-text);
+  background: var(--ls-bg1);
+  width: 100%;
+  overflow-x: hidden;
+  line-height: 1.6;
+  font-size: 16px;
+}
+.c360-ls *, .c360-ls *::before, .c360-ls *::after { box-sizing: border-box; }
+:where(.c360-ls) :is(h1, h2, h3, p, ul, li, figure) { margin: 0 !important; padding: 0 !important; }
+.c360-ls ul { list-style: none; }
+.c360-ls a { text-decoration: none; }
+.c360-ls i.fa-solid { font-family: "Font Awesome 6 Free" !important; font-weight: 900 !important; }
+.c360-ls img { max-width: 100%; display: block; }
+
+/* ── Layout ── */
+.c360-ls-wrap { max-width: 1120px; margin: 0 auto; padding: 0 24px; }
+.c360-ls-narrow { max-width: 880px; margin: 0 auto; padding: 0 24px; }
+.c360-ls-section { padding: 96px 0; position: relative; }
+.c360-ls-section.alt::before, .c360-ls-section.mid::before { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(18,120,37,0.14), transparent 70%); }
+.c360-ls-section > .c360-ls-wrap, .c360-ls-section > .c360-ls-narrow { position: relative; z-index: 1; }
+.c360-ls-section.alt { background: var(--ls-bg0); }
+.c360-ls-section.mid { background: var(--ls-bg2); }
+.c360-ls-center { text-align: center; }
+.c360-ls-head { max-width: 860px; margin: 0 auto 48px !important; text-align: center; }
+.c360-ls-eyebrow {
+  display: block; font-size: 11px; font-weight: 700; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ls-green-text); margin: 0 0 14px !important;
+}
+.c360-ls-h2 {
+  font-size: clamp(26px, 3.4vw, 36px); font-weight: 800; line-height: 1.2;
+  letter-spacing: -0.02em; color: var(--ls-text); margin: 0 0 18px !important;
+  text-wrap: balance; max-width: 860px; margin-left: auto !important; margin-right: auto !important;
+}
+.c360-ls-lead { font-size: 15px; color: var(--ls-muted); max-width: 640px; margin: 6px auto 0 !important; }
+.c360-ls-cta-row { margin-top: 48px !important; display: flex; flex-wrap: wrap; gap: 14px; justify-content: center; }
+.c360-ls-link { color: var(--ls-green-text); font-size: 13px; font-weight: 600; }
+.c360-ls-link:hover { color: var(--ls-text); }
+
+/* ── Buttons ── */
+.c360-ls-btn, .c360-ls-btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+  font-weight: 600; font-size: 14px; line-height: 1.2; padding: 14px 26px; border-radius: 8px;
+  cursor: pointer; transition: background .18s, border-color .18s, color .18s;
+}
+.c360-ls-btn { background: var(--ls-green); color: #fff; border: 2px solid var(--ls-green); box-shadow: 0 8px 24px rgba(18,120,37,0.32); }
+.c360-ls-btn:hover { background: var(--ls-green-hover); border-color: var(--ls-green-hover); color: #fff; }
+.c360-ls-btn-ghost { background: transparent; color: var(--ls-text); border: 2px solid var(--ls-ghost); }
+.c360-ls-btn-ghost:hover { background: var(--ls-ghost-hover); border-color: var(--ls-text); color: var(--ls-text); }
+.c360-ls-btn:focus-visible, .c360-ls-btn-ghost:focus-visible { outline: 3px solid var(--ls-glow); outline-offset: 3px; }
+
+/* ── Cards ── */
+.c360-ls-card {
+  background: var(--ls-card); border: 1px solid var(--ls-card-border);
+  border-radius: 10px; padding: 28px 24px; text-align: left;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.c360-ls-card h3 { font-size: 19px; font-weight: 700; line-height: 1.3; color: var(--ls-text); }
+.c360-ls-card p { font-size: 14px; color: var(--ls-muted); }
+.c360-ls-card > a.c360-ls-btn, .c360-ls-card > a.c360-ls-btn-ghost { margin-top: auto; align-self: flex-start; }
+.c360-ls-card > .c360-ls-link { margin-top: auto; }
+.c360-ls-icon {
+  width: 42px; height: 42px; border-radius: 10px; margin-bottom: 4px;
+  background: rgba(46,204,82,0.12); color: var(--ls-glow);
+  display: flex; align-items: center; justify-content: center; font-size: 18px;
+}
+.c360-ls-grid-3 { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 22px; }
+.c360-ls-grid-2 { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 24px; }
+.c360-ls-svc { display: flex; flex-wrap: wrap; justify-content: center; }
+.c360-ls-svc .c360-ls-card { flex: 0 1 calc((100% - 44px) / 3); }
+@media (max-width: 960px) { .c360-ls-svc .c360-ls-card { flex: 0 1 calc((100% - 22px) / 2); } }
+@media (max-width: 640px) { .c360-ls-svc .c360-ls-card { flex: 1 1 100%; } }
+
+/* ── Check lists ── */
+.c360-ls-checks li {
+  display: flex; gap: 10px; align-items: flex-start; font-size: 14px; color: var(--ls-muted);
+  padding: 9px 0 !important; line-height: 1.55; border-bottom: 1px solid var(--ls-line);
+}
+.c360-ls-checks li:last-child { border-bottom: 0; }
+.c360-ls-checks li i { color: var(--ls-glow); margin-top: 4px; font-size: 12px; flex-shrink: 0; }
+.c360-ls-checks.x li i { color: var(--ls-red); }
+.c360-ls-checks.plain li { border-bottom: 0; padding: 5px 0 !important; }
+
+/* ═══ 0. ANNOUNCEMENT BAR ═══ */
+.c360-ls-announce { background: var(--ls-green); color: #fff; text-align: center; font-size: 13px; font-weight: 500; padding: 10px 20px; }
+.c360-ls-announce a { color: #fff; font-weight: 700; text-decoration: underline !important; margin-left: 6px; }
+
+/* ═══ 1. HERO ═══ */
+.c360-ls-hero {
+  position: relative; padding: 104px 0 96px; overflow: hidden;
+  background: linear-gradient(135deg, var(--ls-bg0) 0%, var(--ls-bg1) 55%, var(--ls-bg2) 100%);
+}
+.c360-ls-hero::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(circle at 85% 20%, rgba(18,32,120,0.6) 0%, transparent 45%),
+    radial-gradient(circle at 10% 85%, rgba(18,120,37,0.16) 0%, transparent 45%);
+}
+.c360-ls-hero-grid {
+  position: relative; z-index: 1; display: grid;
+  grid-template-columns: minmax(0,1.2fr) minmax(0,1fr); gap: 64px; align-items: center;
+}
+.c360-ls-pill {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ls-green-text); background: rgba(18,120,37,0.18); border: 1px solid rgba(46,204,82,0.35);
+  padding: 7px 16px; border-radius: 100px; margin: 0 0 26px !important;
+}
+.c360-ls-hero h1 { font-size: clamp(38px, 5vw, 58px); font-weight: 800; line-height: 1.06; letter-spacing: -0.03em; margin: 0 0 24px !important; color: #fff; }
+.c360-ls-hero h1 span { color: var(--ls-glow); }
+.c360-ls-hero-sub { font-size: 16px; color: var(--ls-muted); max-width: 520px; margin: 0 0 36px !important; }
+.c360-ls-hero-btns { display: flex; flex-wrap: wrap; gap: 12px; margin: 0 0 18px !important; }
+.c360-ls-hero-btns .c360-ls-btn, .c360-ls-hero-btns .c360-ls-btn-ghost { padding: 14px 20px; }
+.c360-ls-hero-note { font-size: 12px; color: var(--ls-dim); margin: 0 !important; }
+.c360-ls-window {
+  background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 14px; padding: 28px 26px; backdrop-filter: blur(6px); box-shadow: 0 24px 60px rgba(0,0,0,0.35);
+}
+.c360-ls-window-head { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 15px; margin: 0 0 10px !important; }
+.c360-ls-live { width: 9px; height: 9px; border-radius: 50%; background: var(--ls-glow); box-shadow: 0 0 0 0 rgba(46,204,82,0.6); animation: c360lsPulse 2s infinite; }
+@keyframes c360lsPulse { 0% { box-shadow: 0 0 0 0 rgba(46,204,82,0.55); } 70% { box-shadow: 0 0 0 12px rgba(46,204,82,0); } 100% { box-shadow: 0 0 0 0 rgba(46,204,82,0); } }
+.c360-ls-window .c360-ls-checks li { font-size: 13px; }
+.c360-ls-window .c360-ls-btn { width: 100%; margin-top: 20px !important; }
+
+/* ═══ 2. TRUST STRIP ═══ */
+.c360-ls-strip { background: var(--ls-bg2); border-top: 1px solid var(--ls-line); border-bottom: 1px solid var(--ls-line); }
+.c360-ls-strip-grid { display: grid; grid-template-columns: repeat(4, minmax(0,1fr)); }
+.c360-ls-strip-item { display: flex; gap: 10px; align-items: flex-start; padding: 24px 22px; font-size: 13px; line-height: 1.5; color: var(--ls-muted); border-right: 1px solid var(--ls-line); }
+.c360-ls-strip-item:last-child { border-right: 0; }
+.c360-ls-strip-item i { color: var(--ls-glow); margin-top: 3px; font-size: 12px; }
+
+/* ═══ 3. TWO AUDIENCES ═══ */
+.c360-ls-aud { border-top: 3px solid var(--ls-glow); padding: 32px 30px; }
+.c360-ls-aud.brand { border-top-color: #5b74ff; }
+.c360-ls-aud-tag { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ls-green-text); }
+.c360-ls-aud.brand .c360-ls-aud-tag { color: #9fb0ff; }
+.c360-ls-aud h3 { font-size: 22px; }
+.c360-ls-aud p.c360-ls-aud-bold { color: var(--ls-text); font-weight: 600; margin-bottom: 8px !important; }
+
+/* ═══ 4. PROBLEM VS DIFFERENCE ═══ */
+.c360-ls-vs-bad { background: rgba(255,123,123,0.04); border-color: rgba(255,123,123,0.2); }
+.c360-ls-vs-good { background: rgba(46,204,82,0.05); border-color: rgba(46,204,82,0.28); }
+.c360-ls-vs-bad .c360-ls-icon { background: rgba(255,123,123,0.12); color: var(--ls-red); }
+
+/* ═══ 5. HOW IT WORKS ═══ */
+.c360-ls-steps { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 44px; }
+.c360-ls-step { position: relative; }
+.c360-ls-step + .c360-ls-step::before {
+  content: ''; position: absolute; top: 46px; left: -34px; width: 24px; height: 1px; background: rgba(255,255,255,0.22);
+}
+.c360-ls-num { display: block; font-size: 32px; font-weight: 800; line-height: 1; color: var(--ls-glow); opacity: .85; margin-bottom: 6px; }
+
+/* ═══ 7. VENUES ═══ */
+.c360-ls-venue h3 { font-size: 17px; }
+.c360-ls-venue p { font-size: 12.5px; color: var(--ls-dim); }
+.c360-ls-venue .c360-ls-icon { width: 36px; height: 36px; font-size: 15px; }
+
+/* ═══ 8. REAL WORLD EXAMPLES ═══ */
+.c360-ls-ex { padding: 0; gap: 0; overflow: hidden; }
+.c360-ls-ex-media { position: relative; aspect-ratio: 16/10; background: #05081f; overflow: hidden; }
+.c360-ls-ex-media img { width: 100%; height: 100%; object-fit: cover; }
+.c360-ls-ex-tag {
+  position: absolute; left: 16px; bottom: 16px; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ls-green-text); background: rgba(6,11,41,0.85); border: 1px solid rgba(46,204,82,0.3); padding: 4px 12px; border-radius: 100px;
+}
+.c360-ls-ex-body { padding: 18px 22px 22px; }
+.c360-ls-ex-body p { font-size: 13.5px; color: var(--ls-muted); }
+.c360-ls-ex-body p a { color: var(--ls-green-text); font-weight: 600; white-space: nowrap; }
+.c360-ls-quote { margin-top: 24px !important; padding: 26px 28px; display: flex; flex-direction: column; gap: 14px; }
+.c360-ls-quote blockquote { margin: 0; font-size: 15px; font-style: italic; color: var(--ls-text); display: flex; gap: 12px; }
+.c360-ls-quote blockquote i { color: var(--ls-glow); font-size: 14px; margin-top: 5px; }
+.c360-ls-quote-who { display: flex; align-items: center; gap: 12px; }
+.c360-ls-quote-av { width: 36px; height: 36px; border-radius: 6px; background: rgba(46,204,82,0.15); color: var(--ls-glow); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px; }
+.c360-ls-quote-who strong { display: block; font-size: 13px; color: var(--ls-text); }
+.c360-ls-quote-who span { font-size: 12px; color: var(--ls-dim); }
+
+/* ═══ 9. MULTI-MARKET ═══ */
+.c360-ls-mm { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 56px; align-items: start; }
+.c360-ls-mm-copy p { color: var(--ls-muted); font-size: 14.5px; margin: 0 0 18px !important; }
+.c360-ls-mm-copy .c360-ls-btn { margin-top: 6px; }
+.c360-ls-mm-small { font-size: 12.5px; color: var(--ls-dim) !important; margin: 14px 0 0 !important; }
+.c360-ls-photo { border-radius: 10px; overflow: hidden; border: 1px solid var(--ls-card-border); margin-top: 28px !important; }
+.c360-ls-photo img { width: 100%; height: 300px; object-fit: cover; }
+.c360-ls-photo-cap { font-size: 12px; color: var(--ls-dim); margin: 10px 0 0 !important; }
+.c360-ls-feat { display: flex; gap: 14px; margin: 0 0 24px !important; }
+.c360-ls-feat:last-child { margin-bottom: 0 !important; }
+.c360-ls-feat .c360-ls-icon { width: 34px; height: 34px; font-size: 14px; margin: 0; flex-shrink: 0; }
+.c360-ls-feat h3 { font-size: 14.5px; font-weight: 700; margin: 2px 0 4px !important; }
+.c360-ls-feat p { font-size: 13.5px; color: var(--ls-muted); }
+
+/* ═══ 10. LIMITED INVENTORY ═══ */
+.c360-ls-limit {
+  border-radius: 16px; padding: 56px 48px; text-align: center; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--ls-navy) 0%, var(--ls-bg2) 100%);
+  border: 1px solid rgba(255,255,255,0.12); box-shadow: 0 24px 60px rgba(0,0,0,0.3);
+}
+.c360-ls-limit .c360-ls-lead { margin-bottom: 26px !important; }
+.c360-ls-limit .c360-ls-checks { display: inline-block; text-align: left; }
+.c360-ls-limit .c360-ls-checks li { color: #dfe5ff; }
+.c360-ls-limit .c360-ls-cta-row { margin-top: 30px !important; }
+
+/* ═══ 11. WHY (4 across + 1) ═══ */
+.c360-ls-why { display: flex; flex-wrap: wrap; justify-content: center; gap: 22px; }
+.c360-ls-why .c360-ls-card { flex: 0 1 calc((100% - 44px) / 3); }
+.c360-ls-why .c360-ls-card { padding: 26px 20px; }
+.c360-ls-why h3 { font-size: 17px; }
+.c360-ls-why p { font-size: 13px; }
+
+/* ═══ 12. HOST A SCREEN ═══ */
+.c360-ls-host { display: grid; grid-template-columns: minmax(0,1.1fr) minmax(0,1fr); gap: 56px; align-items: center; }
+.c360-ls-host p { color: var(--ls-muted); font-size: 15px; margin: 0 0 28px !important; }
+.c360-ls-host-tiles { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 12px; }
+.c360-ls-tile { background: var(--ls-card); border: 1px solid var(--ls-card-border); border-radius: 10px; padding: 20px 8px; text-align: center; font-size: 12px; color: var(--ls-muted); }
+.c360-ls-tile i { display: block; font-size: 20px; color: var(--ls-glow); margin-bottom: 10px; }
+
+/* ═══ 13. PRICING ═══ */
+.c360-ls-tier { position: relative; padding: 32px 26px; }
+.c360-ls-tier.featured { border: 2px solid var(--ls-glow); background: var(--ls-featured); }
+.c360-ls-tier.featured::before {
+  content: 'Most Popular'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: var(--ls-green); color: #fff; font-size: 11px; font-weight: 700; padding: 5px 16px; border-radius: 100px; white-space: nowrap;
+}
+.c360-ls-tier h3 { font-size: 20px; margin-top: 4px !important; }
+.c360-ls-tier-price { color: var(--ls-green-text); font-weight: 700; font-size: 14px; }
+.c360-ls-tier .c360-ls-checks { margin-bottom: 14px !important; }
+.c360-ls-tier .c360-ls-btn, .c360-ls-tier .c360-ls-btn-ghost { align-self: stretch; }
+.c360-ls-fine { font-size: 12.5px; color: var(--ls-dim); text-align: center; margin: 32px auto 0 !important; max-width: 640px; }
+
+/* ═══ 14. FAQ ═══ */
+.c360-ls-faq { margin-top: 8px; }
+.c360-ls details { border-bottom: 1px solid var(--ls-line); margin: 0 !important; }
+.c360-ls summary {
+  list-style: none; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+  gap: 16px; padding: 18px 4px; font-size: 15px; font-weight: 600; color: var(--ls-text); transition: color .15s; margin: 0 !important;
+}
+.c360-ls summary::-webkit-details-marker { display: none; }
+.c360-ls summary::after { content: '+'; font-size: 22px; font-weight: 400; color: var(--ls-glow); flex-shrink: 0; line-height: 1; }
+.c360-ls details[open] summary { color: var(--ls-green-text); }
+.c360-ls details[open] summary::after { content: '–'; }
+.c360-ls summary:hover { color: var(--ls-green-text); }
+.c360-ls details p { color: var(--ls-muted); font-size: 14.5px; padding: 0 4px 20px !important; }
+
+/* ═══ 14. CONTACT ═══ */
+/* Form is a two-column GHL layout, so the form column is kept wide (≈840px) and the info column narrow. */
+.c360-ls-contact { display: grid; grid-template-columns: 280px minmax(0,1fr); gap: 28px; align-items: start; scroll-margin-top: 90px; }
+.c360-ls-contact-wide { max-width: 1240px; }
+.c360-ls-contact-info { background: var(--ls-card); border: 1px solid var(--ls-card-border); border-radius: 16px; padding: 28px 24px; }
+.c360-ls-contact-info h3 { font-size: 20px; font-weight: 700; margin: 0 0 8px !important; }
+.c360-ls-contact-info > p { color: var(--ls-muted); font-size: 13.5px; margin: 0 0 24px !important; }
+.c360-ls-ci { display: flex; gap: 12px; margin: 0 0 20px !important; }
+.c360-ls-ci i { width: 36px; height: 36px; border-radius: 10px; flex-shrink: 0; background: rgba(46,204,82,0.14); color: var(--ls-green-text); font-size: 14px; display: flex; align-items: center; justify-content: center; }
+.c360-ls-ci strong { display: block; font-size: 11.5px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ls-dim); margin-bottom: 2px; }
+.c360-ls-ci a { display: block; font-size: 15px; font-weight: 600; color: var(--ls-text); line-height: 1.4; }
+.c360-ls-ci a:hover { color: var(--ls-green-text); }
+.c360-ls-ci span { display: block; font-size: 12.5px; color: var(--ls-muted); margin-top: 2px; }
+.c360-ls-contact-checks { margin-top: 4px !important; padding-top: 16px !important; border-top: 1px solid var(--ls-line); }
+.c360-ls-contact-checks li { font-size: 13px; padding: 5px 0 !important; border-bottom: 0; }
+.c360-ls-form {
+  background: #ffffff; border-radius: 18px; overflow: hidden; width: 100%;
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08), 0 30px 70px rgba(0,0,0,0.45);
+}
+.c360-ls-form-head {
+  padding: 26px 28px 22px; color: #fff;
+  background: linear-gradient(135deg, var(--ls-navy) 0%, #0f5f22 100%);
+  position: relative; overflow: hidden;
+}
+.c360-ls-form-head::after {
+  content: ''; position: absolute; right: -40px; top: -60px; width: 220px; height: 220px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(46,204,82,0.35), transparent 65%); pointer-events: none;
+}
+.c360-ls-form-kicker { display: inline-flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ls-green-text); margin-bottom: 8px; }
+.c360-ls-form-head h3 { font-size: 22px; font-weight: 800; line-height: 1.2; letter-spacing: -0.01em; color: #fff; margin: 0 0 6px !important; }
+.c360-ls-form-head p { font-size: 13.5px; color: #c9d2f5; margin: 0 !important; }
+.c360-ls-form-body { padding: 18px 16px 4px; background: #fff; }
+.c360-ls-form iframe { width: 100% !important; min-height: 718px; border: 0; display: block; }
+.c360-ls-form-note { font-size: 12px; color: #6b7598; text-align: center; margin: 0 !important; padding: 12px 22px 18px; background: #f3f5fb; border-top: 1px solid rgba(13,22,84,0.08); }
+.c360-ls-form-note i { color: var(--ls-green); margin-right: 4px; font-size: 11px; }
+
+/* ═══ 16. MOBILE STICKY BAR ═══ */
+.c360-ls-sticky { display: none; }
+
+
+/* ═══ LIGHT SECTIONS (break up the navy) ═══ */
+.c360-ls-section.light { border-top: 4px solid var(--ls-green);
+  background: #f3f5fb;
+  background-image: radial-gradient(rgba(13,22,84,0.07) 1px, transparent 1px);
+  background-size: 22px 22px;
+  --ls-text: #0d1654;
+  --ls-muted: #4a5478;
+  --ls-dim: #6b7598;
+  --ls-card: #ffffff;
+  --ls-card-border: rgba(13,22,84,0.12);
+  --ls-line: rgba(13,22,84,0.08);
+  --ls-green-text: #127825;
+  --ls-glow: #127825;
+  --ls-ghost: rgba(13,22,84,0.3);
+  --ls-ghost-hover: rgba(13,22,84,0.05);
+  --ls-featured: #ffffff;
+  color: var(--ls-text);
+}
+.c360-ls-section.light .c360-ls-icon { background: rgba(18,120,37,0.1); }
+.c360-ls-section.light .c360-ls-card { box-shadow: 0 12px 32px rgba(13,22,84,0.08); }
+.c360-ls-section.light .c360-ls-tile { background: #fff; box-shadow: 0 8px 20px rgba(13,22,84,0.06); }
+.c360-ls-section.light .c360-ls-photo { background: #fff; }
+.c360-ls-section.light .c360-ls-tier.featured { background: #fff; }
+.c360-ls-section.light .c360-ls-faq details { background: #fff; border: 1px solid var(--ls-card-border); border-radius: 10px; margin: 0 0 10px !important; padding: 0 18px !important; box-shadow: 0 6px 18px rgba(13,22,84,0.05); }
+.c360-ls-section.light .c360-ls-tier.featured { box-shadow: 0 18px 44px rgba(18,120,37,0.14); }
+.c360-ls-section.light .c360-ls-aud.brand .c360-ls-aud-tag { color: #3a52d8; }
+.c360-ls-section.light .c360-ls-aud.brand { border-top-color: #3a52d8; }
+.c360-ls-section.light .c360-ls-num { opacity: 1; }
+.c360-ls-section.light .c360-ls-btn { box-shadow: 0 8px 22px rgba(18,120,37,0.22); }
+.c360-ls-section.light .c360-ls-quote-av { background: rgba(18,120,37,0.1); }
+.c360-ls-section.light .c360-ls-ex-tag { color: #fff; background: var(--ls-green); border-color: var(--ls-green); }
+.c360-ls-section.light .c360-ls-step + .c360-ls-step::before { background: rgba(13,22,84,0.2); }
+
+/* ═══ RESPONSIVE ═══ */
+@media (max-width: 1100px) {
+  .c360-ls-contact { grid-template-columns: minmax(0,1fr); }
+  .c360-ls-contact-info { display: grid; grid-template-columns: minmax(0,1.3fr) minmax(0,1fr) minmax(0,1fr); gap: 6px 28px; }
+  .c360-ls-contact-info > h3, .c360-ls-contact-info > p { grid-column: 1; }
+  .c360-ls-contact-info > .c360-ls-ci { margin: 0 !important; }
+  .c360-ls-contact-info > .c360-ls-ci:nth-of-type(1) { grid-column: 2; grid-row: 1 / span 2; }
+  .c360-ls-contact-info > .c360-ls-ci:nth-of-type(2) { grid-column: 3; grid-row: 1 / span 2; }
+  .c360-ls-contact-checks { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 6px 28px; margin-top: 14px !important; }
+}
+@media (max-width: 960px) {
+  .c360-ls-section { padding: 68px 0; }
+  .c360-ls-hero { padding: 72px 0 64px; }
+  .c360-ls-hero-grid, .c360-ls-mm, .c360-ls-host { grid-template-columns: minmax(0,1fr); gap: 40px; }
+  .c360-ls-grid-3, .c360-ls-steps { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .c360-ls-why .c360-ls-card { flex: 0 1 calc((100% - 22px) / 2); }
+  .c360-ls-steps { gap: 22px; }
+  .c360-ls-step + .c360-ls-step::before { display: none; }
+  .c360-ls-strip-grid { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .c360-ls-strip-item:nth-child(2) { border-right: 0; }
+  .c360-ls-strip-item:nth-child(-n+2) { border-bottom: 1px solid var(--ls-line); }
+}
+@media (max-width: 640px) {
+  .c360-ls { padding-bottom: 72px; }
+  .c360-ls-grid-3, .c360-ls-grid-2, .c360-ls-steps, .c360-ls-strip-grid { grid-template-columns: minmax(0,1fr); gap: 16px; }
+  .c360-ls-why { gap: 16px; }
+  .c360-ls-why .c360-ls-card { flex: 1 1 100%; }
+  .c360-ls-strip-item { border-right: 0 !important; border-bottom: 1px solid var(--ls-line); }
+  .c360-ls-strip-item:last-child { border-bottom: 0; }
+  .c360-ls-card { padding: 24px 20px; }
+  .c360-ls-ex { padding: 0; }
+  .c360-ls-hero-btns { flex-direction: column; }
+  .c360-ls-hero-btns a, .c360-ls-cta-row a { width: 100%; }
+  .c360-ls-limit { padding: 40px 22px; }
+  .c360-ls-host-tiles { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .c360-ls-form-body { padding: 14px 12px 4px; }
+  .c360-ls-form-head { padding: 22px 20px 18px; }
+  .c360-ls-contact-info { padding: 24px 20px; display: block; }
+  .c360-ls-contact-info > .c360-ls-ci { margin: 0 0 18px !important; }
+  .c360-ls-contact-checks { display: block; }
+  .c360-ls-announce { font-size: 12px; }
+  .c360-ls-sticky {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
+    position: fixed; left: 0; right: 0; bottom: 0; z-index: 999;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom, 0px));
+    background: rgba(6,11,41,0.96); border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .c360-ls-sticky a { padding: 12px 10px; font-size: 13px; box-shadow: none; }
+}
+@media (prefers-reduced-motion: reduce) { .c360-ls-live { animation: none; } }
+</style>
+
+<div class="c360-ls">
+
+  <!-- 0. ANNOUNCEMENT BAR -->
+  <div class="c360-ls-announce">
+    Now booking this month's local screen placements. Limited screen availability by market.
+    <a href="#c360-ls-contact">Check availability</a>
+  </div>
+
+  <!-- 1. HERO -->
+  <section class="c360-ls-hero">
+    <div class="c360-ls-wrap c360-ls-hero-grid">
+      <div>
+        <span class="c360-ls-pill">Hyperlocal digital signage &amp; in-store advertising</span>
+        <h1>Reach Local Buyers on <span>Screens They Actually Notice</span></h1>
+        <p class="c360-ls-hero-sub">
+          Complete360 helps local businesses advertise on digital screens inside restaurants,
+          salons, waiting rooms, shops and other high-traffic venues, so your brand gets seen
+          by real customers in your community.
+        </p>
+        <div class="c360-ls-hero-btns">
+          <a href="#c360-ls-contact" class="c360-ls-btn">Book My Free Campaign Plan</a>
+          <a href="#c360-ls-venues" class="c360-ls-btn-ghost">See Available Screen Locations</a>
+        </div>
+        <p class="c360-ls-hero-note">No long-term commitment required. Fast launch options available.</p>
+      </div>
+      <div class="c360-ls-window">
+        <div class="c360-ls-window-head"><span class="c360-ls-live"></span>This month's placement window is open</div>
+        <ul class="c360-ls-checks">
+          <li><i class="fa-solid fa-check"></i>Limited advertiser slots per market</li>
+          <li><i class="fa-solid fa-check"></i>Best placements assigned first</li>
+          <li><i class="fa-solid fa-check"></i>Free strategy reviews available now</li>
+        </ul>
+        <a href="#c360-ls-contact" class="c360-ls-btn">Reserve My Spot</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. TRUST STRIP -->
+  <div class="c360-ls-strip">
+    <div class="c360-ls-wrap c360-ls-strip-grid">
+      <div class="c360-ls-strip-item"><i class="fa-solid fa-check"></i>Screens inside real, named local businesses, not kiosk networks or billboards</div>
+      <div class="c360-ls-strip-item"><i class="fa-solid fa-check"></i>Active placements in Arizona, with nationwide availability on request</div>
+      <div class="c360-ls-strip-item"><i class="fa-solid fa-check"></i>Campaigns launch in days, from brief to live</div>
+      <div class="c360-ls-strip-item"><i class="fa-solid fa-check"></i>No programmatic middlemen. Direct placement in venues you can name</div>
+    </div>
+  </div>
+
+  <!-- 3. TWO AUDIENCES -->
+  <section class="c360-ls-section light">
+    <div class="c360-ls-wrap">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">Two audiences. One network.</span>
+        <h2 class="c360-ls-h2">Whether You're a Neighborhood Business or a Brand Entering New Markets</h2>
+      </div>
+      <div class="c360-ls-grid-2">
+        <div class="c360-ls-card c360-ls-aud">
+          <span class="c360-ls-aud-tag">For local businesses</span>
+          <h3>You want your neighborhood to know you exist.</h3>
+          <p>You run a business in a specific community and you need more local customers. Social ads scatter. Search auctions are expensive. Complete360 puts your name on a screen inside the restaurant where your neighbors eat lunch, the gym where they work out and the waiting room where they're sitting with nothing else to look at.</p>
+          <p class="c360-ls-aud-bold">One market. Real local attention. Priced for a local business budget.</p>
+          <a href="#c360-ls-contact" class="c360-ls-btn">Start a Local Campaign</a>
+        </div>
+        <div class="c360-ls-card c360-ls-aud brand">
+          <span class="c360-ls-aud-tag">For regional &amp; national brands</span>
+          <h3>You want physical presence in new markets before competitors dig in.</h3>
+          <p>You're a franchise, multi-location chain or national brand that wants more than digital impressions. You want your logo actually inside local communities. Complete360 builds market-by-market in-store screen campaigns using the same turnkey process whether you're activating in one city or fifty.</p>
+          <p class="c360-ls-aud-bold">No programmatic fees. Direct, verified placement in local venues.</p>
+          <a href="#c360-ls-contact" class="c360-ls-btn-ghost">Discuss Multi-Market Rollout</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. PROBLEM VS DIFFERENCE -->
+  <section class="c360-ls-section">
+    <div class="c360-ls-wrap">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">Why local businesses are moving beyond social-only ads</span>
+        <h2 class="c360-ls-h2">Your Customers Still Visit Local Businesses Every Day. We Help You Reach Them There.</h2>
+      </div>
+      <div class="c360-ls-grid-2">
+        <div class="c360-ls-card c360-ls-vs-bad">
+          <div class="c360-ls-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+          <h3>The problem with most local ads</h3>
+          <ul class="c360-ls-checks x">
+            <li><i class="fa-solid fa-xmark"></i>Social feeds move too fast. Your ad disappears in seconds</li>
+            <li><i class="fa-solid fa-xmark"></i>Search auctions are expensive and getting more crowded</li>
+            <li><i class="fa-solid fa-xmark"></i>Most digital ads are ignored before they're even seen</li>
+            <li><i class="fa-solid fa-xmark"></i>You're competing with national brands for the same eyeballs</li>
+          </ul>
+        </div>
+        <div class="c360-ls-card c360-ls-vs-good">
+          <div class="c360-ls-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <h3>The Complete360 difference</h3>
+          <ul class="c360-ls-checks">
+            <li><i class="fa-solid fa-check"></i>Your ad plays inside businesses where people are already waiting and paying attention</li>
+            <li><i class="fa-solid fa-check"></i>Screens are in your exact community, not some national network</li>
+            <li><i class="fa-solid fa-check"></i>Captive local audiences with no feed to scroll past</li>
+            <li><i class="fa-solid fa-check"></i>Affordable campaigns built for local business budgets</li>
+          </ul>
+        </div>
+      </div>
+      <div class="c360-ls-cta-row"><a href="#c360-ls-contact" class="c360-ls-btn">Get My Free Local Campaign Plan</a></div>
+    </div>
+  </section>
+
+  <!-- 5. HOW IT WORKS -->
+  <section class="c360-ls-section light" id="c360-ls-how">
+    <div class="c360-ls-wrap">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">How it works</span>
+        <h2 class="c360-ls-h2">Launch a Local Screen Campaign in 3 Simple Steps</h2>
+      </div>
+      <div class="c360-ls-steps">
+        <div class="c360-ls-card c360-ls-step">
+          <span class="c360-ls-num">01</span>
+          <h3>We identify the right local screens</h3>
+          <p>We help you choose placements based on your market, target audience and campaign goals: restaurants, salons, gyms, waiting rooms, shops and more.</p>
+        </div>
+        <div class="c360-ls-card c360-ls-step">
+          <span class="c360-ls-num">02</span>
+          <h3>We build or adapt your ad creative</h3>
+          <p>Already have an ad? Great. Need help? We can create a clean, effective screen-ready ad designed to get noticed and drive customers to your door.</p>
+        </div>
+        <div class="c360-ls-card c360-ls-step">
+          <span class="c360-ls-num">03</span>
+          <h3>Your campaign goes live locally</h3>
+          <p>Your business appears on digital screens inside local venues where customers are already present, paying attention and ready to act.</p>
+        </div>
+      </div>
+      <div class="c360-ls-cta-row"><a href="#c360-ls-contact" class="c360-ls-btn">See Available Screens Near Me</a></div>
+    </div>
+  </section>
+
+  <!-- 6. SERVICES -->
+  <section class="c360-ls-section alt">
+    <div class="c360-ls-wrap">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">What you can buy with Complete360</span>
+        <h2 class="c360-ls-h2">Flexible Hyperlocal Advertising Services for Growth-Focused Businesses</h2>
+      </div>
+      <div class="c360-ls-grid-3 c360-ls-svc">
+        <div class="c360-ls-card"><div class="c360-ls-icon"><i class="fa-solid fa-tv"></i></div><h3>Local screen advertising</h3><p>Place your business on in-store digital screens inside high-traffic local venues where real customers already spend their time.</p><a href="#c360-ls-contact" class="c360-ls-link">Learn more <i class="fa-solid fa-arrow-right"></i></a></div>
+        <div class="c360-ls-card"><div class="c360-ls-icon"><i class="fa-solid fa-map-location-dot"></i></div><h3>Market-based campaign planning</h3><p>Choose placements by city, neighborhood, audience type or business category. We help you target the exact community you want to reach.</p><a href="#c360-ls-contact" class="c360-ls-link">Learn more <i class="fa-solid fa-arrow-right"></i></a></div>
+        <div class="c360-ls-card"><div class="c360-ls-icon"><i class="fa-solid fa-palette"></i></div><h3>Creative setup &amp; ad assistance</h3><p>Launch with screen-ready creative that looks polished and grabs attention. We'll help you build an ad that actually works on digital signage.</p><a href="#c360-ls-contact" class="c360-ls-link">Learn more <i class="fa-solid fa-arrow-right"></i></a></div>
+        <div class="c360-ls-card"><div class="c360-ls-icon"><i class="fa-solid fa-location-crosshairs"></i></div><h3>Geo-focused local visibility</h3><p>Reach nearby buyers in the exact communities where you want more attention, with no wasted impressions on audiences outside your market.</p><a href="#c360-ls-contact" class="c360-ls-link">Learn more <i class="fa-solid fa-arrow-right"></i></a></div>
+        <div class="c360-ls-card"><div class="c360-ls-icon"><i class="fa-solid fa-tags"></i></div><h3>Affordable local packages</h3><p>Start with a right-sized campaign built for local business budgets. We offer flexible options so you can grow at your own pace.</p><a href="#c360-ls-contact" class="c360-ls-link">Learn more <i class="fa-solid fa-arrow-right"></i></a></div>
+      </div>
+      <div class="c360-ls-cta-row"><a href="#c360-ls-contact" class="c360-ls-btn">Request Pricing &amp; Availability</a></div>
+    </div>
+  </section>
+
+  <!-- 7. VENUES -->
+  <section class="c360-ls-section light" id="c360-ls-venues">
+    <div class="c360-ls-wrap">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">Where your ad appears</span>
+        <h2 class="c360-ls-h2">High-Dwell, High-Attention Venues Where Local Audiences Spend Real Time</h2>
+        <p class="c360-ls-lead">Every Complete360 screen is inside a named local business with strong dwell time, repeat visitation and in-market audiences. That's what separates in-store digital signage from every other ad channel.</p>
+      </div>
+      <div class="c360-ls-grid-3">
+        <div class="c360-ls-card c360-ls-venue"><div class="c360-ls-icon"><i class="fa-solid fa-utensils"></i></div><h3>Restaurants &amp; cafes</h3><p>15–45 min per visit. Weekly repeat visits. Community-embedded audiences.</p></div>
+        <div class="c360-ls-card c360-ls-venue"><div class="c360-ls-icon"><i class="fa-solid fa-scissors"></i></div><h3>Salons &amp; barbershops</h3><p>30–60 min captive chair time. High-trust community relationship. Loyal regulars.</p></div>
+        <div class="c360-ls-card c360-ls-venue"><div class="c360-ls-icon"><i class="fa-solid fa-dumbbell"></i></div><h3>Gyms &amp; fitness studios</h3><p>4–5 visits per week. Health and lifestyle mindset. Strong local identity.</p></div>
+        <div class="c360-ls-card c360-ls-venue"><div class="c360-ls-icon"><i class="fa-solid fa-stethoscope"></i></div><h3>Medical &amp; dental waiting rooms</h3><p>10–40 min dwell. Active research mindset. No competing feed or entertainment.</p></div>
+        <div class="c360-ls-card c360-ls-venue"><div class="c360-ls-icon"><i class="fa-solid fa-mug-hot"></i></div><h3>Coffee shops</h3><p>Daily commuters and remote workers. 20–40 min average visit. High-frequency foot traffic.</p></div>
+        <div class="c360-ls-card c360-ls-venue"><div class="c360-ls-icon"><i class="fa-solid fa-bag-shopping"></i></div><h3>Retail shops</h3><p>Active purchase mindset. Complementary category adjacency. High in-market intent.</p></div>
+      </div>
+      <div class="c360-ls-cta-row"><a href="#c360-ls-contact" class="c360-ls-btn">See Which Venues Are Available in My Market</a></div>
+    </div>
+  </section>
+
+  <!-- 8. REAL WORLD EXAMPLES -->
+  <section class="c360-ls-section">
+    <div class="c360-ls-wrap">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">Results &amp; examples</span>
+        <h2 class="c360-ls-h2">What Local Screen Visibility Looks Like in the Real World</h2>
+      </div>
+      <div class="c360-ls-grid-2">
+        <div class="c360-ls-card c360-ls-ex">
+          <div class="c360-ls-ex-media">
+            <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6aceb00abeb75e26e5bb8400.png" alt="Local real estate ad displayed on a Complete360 screen inside a neighborhood business" loading="lazy" />
+            <span class="c360-ls-ex-tag">Real estate</span>
+          </div>
+          <div class="c360-ls-ex-body"><p>A local realty team's ad displayed on a Complete360 screen inside a neighborhood business, reaching buyers and sellers already in the community. <a href="#c360-ls-contact">Read case study <i class="fa-solid fa-arrow-right"></i></a></p></div>
+        </div>
+        <div class="c360-ls-card c360-ls-ex">
+          <div class="c360-ls-ex-media">
+            <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6aceb00aa7201e602b62b21a.png" alt="Home services ad displayed on a Complete360 screen inside a local gym" loading="lazy" />
+            <span class="c360-ls-ex-tag">Home services</span>
+          </div>
+          <div class="c360-ls-ex-body"><p>A fence contractor reaching gym members on a Complete360 screen: captive audience, high recall, real local exposure. <a href="#c360-ls-contact">Read case study <i class="fa-solid fa-arrow-right"></i></a></p></div>
+        </div>
+        <div class="c360-ls-card c360-ls-ex">
+          <div class="c360-ls-ex-media">
+            <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6aceb00a011eef2fd177529a.png" alt="Electrician ad displayed on a Complete360 screen inside a local shop" loading="lazy" />
+            <span class="c360-ls-ex-tag">Electrical</span>
+          </div>
+          <div class="c360-ls-ex-body"><p>An electrician's ad running on the Complete360 screen at a local tattoo shop, generating calls the same day it launched.</p></div>
+        </div>
+        <div class="c360-ls-card c360-ls-ex">
+          <div class="c360-ls-ex-media">
+            <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6aceb00abeb75e26e5bb83f0.png" alt="Restaurant ad displayed on a Complete360 screen inside a local restaurant dining room" loading="lazy" />
+            <span class="c360-ls-ex-tag">Restaurant venue</span>
+          </div>
+          <div class="c360-ls-ex-body"><p>A Complete360 screen in the dining room of a local restaurant, reaching families and community members during every meal service.</p></div>
+        </div>
+      </div>
+      <!-- TODO: replace with a real client quote, name and business -->
+      <div class="c360-ls-card c360-ls-quote">
+        <blockquote><i class="fa-solid fa-quote-left"></i>I started getting calls the first day my ad went up.</blockquote>
+        <div class="c360-ls-quote-who">
+          <span class="c360-ls-quote-av">C</span>
+          <div><strong>Client name</strong><span>Owner · Business name, City, AZ</span></div>
+        </div>
+      </div>
+      <div class="c360-ls-cta-row"><a href="#c360-ls-contact" class="c360-ls-btn">Show Me Example Placements</a></div>
+    </div>
+  </section>
+
+  <!-- 9. MULTI-MARKET -->
+  <section class="c360-ls-section light">
+    <div class="c360-ls-wrap">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">National &amp; regional advertising</span>
+        <h2 class="c360-ls-h2">Building Local Presence in Multiple Markets? Complete360 Is Your Screen Partner.</h2>
+      </div>
+      <div class="c360-ls-mm">
+        <div class="c360-ls-mm-copy">
+          <p>Place-based digital signage inside local businesses is one of the most underleveraged channels in multi-market media planning. While competitors buy programmatic impressions or generic outdoor placements, you can put your brand on physical screens inside the restaurants, gyms and waiting rooms that define each market's community.</p>
+          <p>Complete360 handles the full deployment: venue sourcing, creative management and coordination, the same way in market number one as in market number thirty. You get one point of contact and a consistent process at any scale.</p>
+          <a href="#c360-ls-contact" class="c360-ls-btn">Start a Multi-Market Campaign Conversation</a>
+          <p class="c360-ls-mm-small">Franchise groups, regional chains and national advertisers: we support campaigns at any scale.</p>
+          <figure class="c360-ls-photo">
+            <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6aceb2f3883b04e61939dde2.png" alt="Complete360 screen mounted inside a local fitness venue" loading="lazy" />
+          </figure>
+          <p class="c360-ls-photo-cap">Complete360 screen live inside a local fitness venue. Active in Arizona and growing nationwide.</p>
+        </div>
+        <div>
+          <div class="c360-ls-feat"><div class="c360-ls-icon"><i class="fa-solid fa-map"></i></div><div><h3>Market-by-market activation</h3><p>We source and manage screens in each target city independently, so your brand feels local in every community, not just nationally distributed.</p></div></div>
+          <div class="c360-ls-feat"><div class="c360-ls-icon"><i class="fa-solid fa-palette"></i></div><div><h3>Market-specific creative if needed</h3><p>Run the same ad across all markets or customize by city, audience or venue type. We support both approaches.</p></div></div>
+          <div class="c360-ls-feat"><div class="c360-ls-icon"><i class="fa-solid fa-headset"></i></div><div><h3>Centralized coordination</h3><p>One point of contact for your entire rollout, regardless of how many cities you're activating in simultaneously.</p></div></div>
+          <div class="c360-ls-feat"><div class="c360-ls-icon"><i class="fa-solid fa-ban"></i></div><div><h3>No programmatic intermediaries</h3><p>Direct placement in named local businesses. You know exactly where you're advertising, because we tell you.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 10. LIMITED INVENTORY -->
+  <section class="c360-ls-section alt">
+    <div class="c360-ls-narrow">
+      <div class="c360-ls-limit">
+        <span class="c360-ls-eyebrow">Current availability</span>
+        <h2 class="c360-ls-h2">Screen Inventory Is Limited by Market</h2>
+        <p class="c360-ls-lead">We limit how many advertisers we onboard within each market and category so campaigns stay locally relevant and placements remain valuable. If you want the strongest screen options and fastest launch timeline, the best time to book is before this month's placement window fills.</p>
+        <ul class="c360-ls-checks plain">
+          <li><i class="fa-solid fa-check"></i>Free availability reviews are currently open</li>
+          <li><i class="fa-solid fa-check"></i>Best local placements are assigned first</li>
+          <li><i class="fa-solid fa-check"></i>Some categories may have limited openings by market</li>
+        </ul>
+        <div class="c360-ls-cta-row">
+          <a href="#c360-ls-contact" class="c360-ls-btn">Check Screen Availability</a>
+          <a href="#c360-ls-contact" class="c360-ls-btn-ghost">Book This Month's Free Review</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 11. WHY COMPLETE360 -->
+  <section class="c360-ls-section light">
+    <div class="c360-ls-wrap">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">Why Complete360</span>
+        <h2 class="c360-ls-h2">Why Local Businesses Choose Complete360 Over More Forgettable Ad Channels</h2>
+      </div>
+      <div class="c360-ls-why">
+        <div class="c360-ls-card"><span class="c360-ls-num">01</span><h3>Real local attention</h3><p>Your ad plays inside businesses where people are already present and paying attention, not competing with a thousand other posts in a crowded social feed.</p></div>
+        <div class="c360-ls-card"><span class="c360-ls-num">02</span><h3>Hyperlocal reach</h3><p>We only place screens in your community. Your message reaches the exact people who live, work and shop near you: the customers you actually want.</p></div>
+        <div class="c360-ls-card"><span class="c360-ls-num">03</span><h3>Simple process</h3><p>We handle screen placement, content management and scheduling. You provide your ad (or we help create one) and your campaign goes live quickly.</p></div>
+        <div class="c360-ls-card"><span class="c360-ls-num">04</span><h3>Built for local budgets</h3><p>Designed with small business budgets in mind. Get the kind of visual exposure that used to require a TV budget, at a price that makes sense locally.</p></div>
+        <div class="c360-ls-card"><span class="c360-ls-num">05</span><h3>True full-screen ads</h3><p>Every Complete360 ad plays full screen on 55–65" commercial TVs. No split screens, no banners, no shared placements. Your ad owns the entire screen, every rotation.</p></div>
+      </div>
+      <div class="c360-ls-cta-row"><a href="#c360-ls-contact" class="c360-ls-btn">Talk to a Campaign Strategist</a></div>
+    </div>
+  </section>
+
+  <!-- 12. HOST A SCREEN -->
+  <section class="c360-ls-section mid">
+    <div class="c360-ls-wrap">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">For host businesses</span>
+        <h2 class="c360-ls-h2">Own a Local Business? Host a Screen at No Cost.</h2>
+      </div>
+      <div class="c360-ls-host">
+      <div>
+        <p>We partner with local businesses, from restaurants and salons to gyms, waiting rooms and shops, and install our advertising TVs in their locations at no charge. You get a modern digital display with fresh rotating content, and we handle all the setup and maintenance.</p>
+        <a href="#c360-ls-contact" class="c360-ls-btn-ghost">Apply to Host a Screen <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="c360-ls-host-tiles">
+        <div class="c360-ls-tile"><i class="fa-solid fa-utensils"></i>Restaurants</div>
+        <div class="c360-ls-tile"><i class="fa-solid fa-scissors"></i>Salons</div>
+        <div class="c360-ls-tile"><i class="fa-solid fa-dumbbell"></i>Gyms</div>
+        <div class="c360-ls-tile"><i class="fa-solid fa-stethoscope"></i>Waiting rooms</div>
+        <div class="c360-ls-tile"><i class="fa-solid fa-bag-shopping"></i>Retail</div>
+        <div class="c360-ls-tile"><i class="fa-solid fa-mug-hot"></i>Coffee shops</div>
+      </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 13. PRICING -->
+  <section class="c360-ls-section light" id="c360-ls-pricing">
+    <div class="c360-ls-wrap">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">Pricing</span>
+        <h2 class="c360-ls-h2">Local Campaign Options Designed for Real Business Budgets</h2>
+        <p class="c360-ls-lead">Every campaign depends on market, screen mix, timing and creative needs, but we keep planning simple and transparent. We'll review your market and recommend the best-fit package during your free strategy call.</p>
+      </div>
+      <div class="c360-ls-grid-3">
+        <div class="c360-ls-card c360-ls-tier">
+          <h3>Starter Visibility</h3>
+          <div class="c360-ls-tier-price">Custom pricing</div>
+          <p>Perfect for businesses that want to test local screen advertising in a single venue or market area.</p>
+          <ul class="c360-ls-checks plain">
+            <li><i class="fa-solid fa-check"></i>Single screen placement</li>
+            <li><i class="fa-solid fa-check"></i>1 ad creative slot</li>
+            <li><i class="fa-solid fa-check"></i>Local market targeting</li>
+            <li><i class="fa-solid fa-check"></i>Creative assistance available</li>
+          </ul>
+          <a href="#c360-ls-contact" class="c360-ls-btn-ghost">Request Pricing</a>
+        </div>
+        <div class="c360-ls-card c360-ls-tier featured">
+          <h3>Growth Campaign</h3>
+          <div class="c360-ls-tier-price">Custom pricing</div>
+          <p>Ideal for local businesses that want consistent exposure across multiple high-traffic locations in their market.</p>
+          <ul class="c360-ls-checks plain">
+            <li><i class="fa-solid fa-check"></i>Multiple screen placements</li>
+            <li><i class="fa-solid fa-check"></i>Multiple ad creative slots</li>
+            <li><i class="fa-solid fa-check"></i>Neighborhood targeting</li>
+            <li><i class="fa-solid fa-check"></i>Creative setup included</li>
+            <li><i class="fa-solid fa-check"></i>Performance review</li>
+          </ul>
+          <a href="#c360-ls-contact" class="c360-ls-btn">Request Pricing</a>
+        </div>
+        <div class="c360-ls-card c360-ls-tier">
+          <h3>Multi-Location Reach</h3>
+          <div class="c360-ls-tier-price">Custom pricing</div>
+          <p>Built for businesses that want maximum local saturation across an entire city or multiple market areas.</p>
+          <ul class="c360-ls-checks plain">
+            <li><i class="fa-solid fa-check"></i>City-wide screen network</li>
+            <li><i class="fa-solid fa-check"></i>Multiple ad variations</li>
+            <li><i class="fa-solid fa-check"></i>Full market coverage</li>
+            <li><i class="fa-solid fa-check"></i>Priority screen placement</li>
+            <li><i class="fa-solid fa-check"></i>Dedicated campaign review</li>
+          </ul>
+          <a href="#c360-ls-contact" class="c360-ls-btn-ghost">Request Pricing</a>
+        </div>
+      </div>
+      <p class="c360-ls-fine">All pricing is based on market availability, screen mix and campaign duration. Contact us for a free market review and custom quote.</p>
+    </div>
+  </section>
+
+  <!-- 14. CONTACT + GHL FORM -->
+  <section class="c360-ls-section mid" id="c360-ls-contact">
+    <div class="c360-ls-wrap c360-ls-contact-wide">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">Let's talk</span>
+        <h2 class="c360-ls-h2">Ready to Get Your Brand Seen Locally?</h2>
+        <p class="c360-ls-lead">Book a free campaign planning call and we'll help you identify the best screen opportunities for your market, audience and budget. We'll review your options and help you choose the best next step, with no pressure and no obligation.</p>
+      </div>
+      <div class="c360-ls-contact">
+        <div class="c360-ls-contact-info">
+          <h3>Contact Complete360</h3>
+          <p>We'll review your market, explain your options and help you choose the best next step.</p>
+          <div class="c360-ls-ci"><i class="fa-solid fa-phone"></i><div><strong>Call us</strong><a href="tel:+18665276205">(866) 527-6205</a><span>Mon–Thu 7am–4pm · Fri 7am–1pm MST</span></div></div>
+          <div class="c360-ls-ci"><i class="fa-solid fa-globe"></i><div><strong>Website</strong><a href="https://complete360.org">www.complete360.org</a></div></div>
+          <ul class="c360-ls-checks c360-ls-contact-checks">
+            <li><i class="fa-solid fa-check"></i>Free availability check for your area</li>
+            <li><i class="fa-solid fa-check"></i>Ad design and unlimited revisions included</li>
+            <li><i class="fa-solid fa-check"></i>No long-term commitment required</li>
+          </ul>
+        </div>
+        <div class="c360-ls-form">
+          <div class="c360-ls-form-head">
+            <span class="c360-ls-form-kicker"><span class="c360-ls-live"></span>Placement window is open</span>
+            <h3>Get your free campaign plan</h3>
+            <p>Tell us about your business. We'll reply within one business day with what's open near you.</p>
+          </div>
+          <div class="c360-ls-form-body">
+            <iframe
+              src="https://link.complete360.org/widget/form/zCdVDWWFY9V4hfNL1kTU"
+              style="width:100%;height:100%;border:none;border-radius:3px"
+              id="inline-zCdVDWWFY9V4hfNL1kTU"
+              data-layout="{'id':'INLINE'}"
+              data-trigger-type="alwaysShow"
+              data-trigger-value=""
+              data-activation-type="alwaysActivated"
+              data-activation-value=""
+              data-deactivation-type="neverDeactivate"
+              data-deactivation-value=""
+              data-form-name="Local Screen Advertising"
+              data-height="718"
+              data-layout-iframe-id="inline-zCdVDWWFY9V4hfNL1kTU"
+              data-form-id="zCdVDWWFY9V4hfNL1kTU"
+              data-cookie-consent="true"
+              data-cookie-consent-provider="auto"
+              title="Local Screen Advertising"
+            ></iframe>
+            <script src="https://link.complete360.org/js/form_embed.js"></script>
+          </div>
+          <p class="c360-ls-form-note"><i class="fa-solid fa-lock"></i> No spam. No long-term commitment. Just an honest look at what's open in your market.</p>
+        </div>
+      </div>
+  </section>
+
+  <!-- 15. FAQ (sits directly above the global footer) -->
+  <section class="c360-ls-section light">
+    <div class="c360-ls-narrow">
+      <div class="c360-ls-head">
+        <span class="c360-ls-eyebrow">Frequently asked questions</span>
+        <h2 class="c360-ls-h2">Everything You Need to Know Before Getting Started</h2>
+      </div>
+      <div class="c360-ls-faq">
+        <details><summary>How does local screen advertising work?</summary><p>We place digital screens inside busy local businesses. Your ad joins a short rotation with a handful of other advertisers and plays full screen throughout the hours the venue is open.</p></details>
+        <details><summary>Where will my ads appear?</summary><p>On screens inside named local businesses near you: restaurants, salons, gyms, waiting rooms and shops. We'll tell you exactly which venues are available in your market before you commit.</p></details>
+        <details><summary>What kinds of businesses can advertise with Complete360?</summary><p>Most local businesses do well: home services, real estate, restaurants, health and wellness, auto, retail and more. We limit how many similar businesses share a screen.</p></details>
+        <details><summary>Do you help create the ad?</summary><p>Yes. Our team designs a screen-ready ad for you, or adapts artwork you already have. You review and approve it before anything goes live.</p></details>
+        <details><summary>How quickly can a campaign launch?</summary><p>Most campaigns go live within days. Once your ad is approved and your screen is confirmed, we schedule it to start right away.</p></details>
+        <details><summary>How much does it cost?</summary><p>It depends on your market, the number of screens and how long you run. Fill out the form and we'll send options that fit your budget.</p></details>
+        <details><summary>What markets do you serve?</summary><p>We have active placements across Arizona and can source screens in other markets on request. Tell us where you want to reach and we'll check availability.</p></details>
+        <details><summary>How do I check availability?</summary><p>Fill out the form below or give us a call. We'll check which screens and categories near you have open spots, free of charge.</p></details>
+        <details><summary>Can I run seasonal or short-term promotions?</summary><p>Yes. Short-term campaigns and ad refreshes for seasonal deals or new services are welcome. Send us the update and we'll swap your creative.</p></details>
+        <details><summary>How do I get started?</summary><p>Fill out the form below. We'll review your market, walk you through options on a quick call and help you pick the right next step, with no pressure and no obligation.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- 16. MOBILE STICKY BAR -->
+  <div class="c360-ls-sticky">
+    <a href="tel:+18665276205" class="c360-ls-btn-ghost"><i class="fa-solid fa-phone"></i> Call Now</a>
+    <a href="#c360-ls-contact" class="c360-ls-btn">Book Free Call</a>
+  </div>
+
+</div><!-- /.c360-ls -->
