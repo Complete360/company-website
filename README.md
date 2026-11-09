@@ -11,8 +11,9 @@ All custom code blocks live in `ghl-snippets/`:
 - `global/` — site-wide pieces (header, footer, 404)
 - `home.html` — home page
 - `services/` — one page per service
+- `pricing/` — pricing pages
 - `checkout/` — checkout pages
-- `crm-platform/` — CRM platform home, feature pages, and pricing
+- `crm-platform/` — CRM platform home and feature pages
 - `company/` — demo, contact, FAQ, thank-you pages, training and resources
 - `legal/` — terms of service, privacy policy, return policy
 - `partners/` — partner landing pages
@@ -53,11 +54,17 @@ anything still to do on a page (🔁 = needs rebuild).
 | `services/reputation-management.html` | Reputation Management | ✅ Code in repo | Up to date |
 | `services/procard.html` | Pro Card | ✅ Code in repo | Up to date |
 | `services/websites-home.html` | Website Home | ✅ Code in repo | Up to date |
-| `services/website-pricing.html` | Website Pricing | ✅ Code in repo | Up to date |
 | `services/ai-employee.html` | AI Employee Website | ✅ Code in repo | Up to date |
 | `services/local-display-network.html` | Local Display Network | ✅ Code in repo | Up to date |
 | `services/dispensary.html` | Dispensary | ✅ Code in repo | Up to date |
 | `services/payments.html` | Payments | ✅ Code in repo | Up to date |
+
+### Pricing
+
+| File | GHL page | Status | Notes |
+|---|---|---|---|
+| `pricing/website-pricing.html` | Website Pricing | ✅ Code in repo | Up to date |
+| `pricing/saas-pricing.html` | SaaS Pricing | ⬜ Placeholder |  |
 
 ### Checkout
 
@@ -95,7 +102,6 @@ anything still to do on a page (🔁 = needs rebuild).
 | `crm-platform/calendar.html` | Calendar Feature Page | ⬜ Placeholder |  |
 | `crm-platform/chat-widget.html` | Chat Widget Feature Page | ⬜ Placeholder |  |
 | `crm-platform/forms.html` | — | ⬜ Placeholder |  |
-| `crm-platform/pricing.html` | SaaS Pricing | ⬜ Placeholder |  |
 
 ### Company
 
