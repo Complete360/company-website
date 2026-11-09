@@ -1,6 +1,751 @@
-<!--
-  PLACEHOLDER: no code yet
-  GHL page: "Dispensary"
-  Next step: paste this page's custom code from GHL here,
-  or delete this file if the page has no custom code.
--->
+<!-- ============================================================
+     COMPLETE360 — CANNABIS / DISPENSARY GEO-FENCING PAGE v2
+     Slug: /cannabis
+     Sales rep: Emily Ross (form placeholder — swap iframe src when ready)
+     ============================================================ -->
+
+<style>
+:root {
+  --navy:        #122078;
+  --navy-dark:   #0d1654;
+  --green:       #127825;
+  --green-dark:  #0e5e1d;
+  --green-mid:   #1a9e32;
+  --green-glow:  rgba(18,120,37,0.14);
+  --green-light: #EAF3DE;
+  --green-mist:  #f0f8ec;
+  --sage:        #5a8a3c;
+  --cream:       #faf8f3;
+  --off-white:   #F1EFE8;
+  --white:       #ffffff;
+  --border:      rgba(18,120,37,0.14);
+  --body-text:   #1a2e1a;
+  --muted-text:  #4a6a4a;
+  --gray-text:   #6b7a5d;
+  --gold:        #c9952a;
+  --font-head:   var(--headlinefont,'Poppins'),sans-serif;
+  --font-body:   var(--contentfont,'Poppins'),sans-serif;
+  --radius:      14px;
+  --radius-lg:   22px;
+  --shadow:      0 8px 32px rgba(18,100,18,0.10);
+  --shadow-lg:   0 20px 60px rgba(18,100,18,0.16);
+  --t:           all 0.3s cubic-bezier(0.4,0,0.2,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{margin:0!important;padding:0!important;width:100%}
+html{scroll-behavior:smooth}
+body{font-family:var(--font-body);color:var(--body-text);background:var(--white);line-height:1.65;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{text-decoration:none;color:inherit}
+h1,h2,h3,h4{font-family:var(--font-head);line-height:1.2;color:var(--navy)}
+h1{font-size:clamp(2rem,4.5vw,3.2rem);font-weight:800}
+h2{font-size:clamp(1.6rem,3.2vw,2.25rem);font-weight:700}
+h3{font-size:clamp(1rem,1.8vw,1.22rem);font-weight:700}
+h4{font-size:.97rem;font-weight:600}
+p{font-size:1rem;font-weight:400;color:var(--muted-text)}
+.label{font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--green-mid)}
+.container{max-width:1160px;margin:0 auto;padding:0 24px}
+section{padding:88px 0}
+.section-header{text-align:center;max-width:680px;margin:0 auto 52px}
+.section-header .label{margin-bottom:12px}
+.section-header h2{margin-bottom:14px}
+.section-header p{font-size:1.02rem}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 30px;border-radius:50px;font-family:var(--font-body);font-size:.93rem;font-weight:600;cursor:pointer;border:2px solid transparent;transition:var(--t);text-decoration:none}
+.btn-primary{background:var(--green);color:#fff}
+.btn-primary:hover{background:var(--green-dark);transform:translateY(-2px);box-shadow:0 8px 24px rgba(18,120,37,.35)}
+.btn-outline{background:transparent;border-color:rgba(61,216,112,.4);color:#3dd870}
+.btn-outline:hover{background:rgba(61,216,112,.1);transform:translateY(-2px)}
+.btn-navy{background:var(--navy);color:#fff}
+.btn-navy:hover{background:var(--navy-dark);transform:translateY(-2px)}
+.btn-gold{background:var(--gold);color:#fff}
+.btn-gold:hover{background:#a87820;transform:translateY(-2px)}
+#hero{background:linear-gradient(135deg,#0a1f0a 0%,#0e3018 50%,#122078 100%);padding:80px 0 72px;overflow:hidden;position:relative;}
+#hero::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(18,120,37,.18) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 20% 80%,rgba(18,32,120,.2) 0%,transparent 60%);pointer-events:none;}
+#hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:52px 52px;pointer-events:none;}
+.hero-inner{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:56px;position:relative;z-index:1;}
+.hero-pill{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18);padding:7px 18px;border-radius:50px;margin-bottom:20px;}
+.hero-pill .dot{width:7px;height:7px;background:#3dd870;border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(1.4)}}
+.hero-pill span{font-size:.76rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.9)}
+#hero h1{color:#fff;margin-bottom:16px}
+#hero h1 em{color:#3dd870;font-style:normal}
+.hero-sub{color:rgba(255,255,255,.7);font-size:1.05rem;margin-bottom:32px;max-width:480px;line-height:1.7}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:36px}
+.hero-stats{display:flex;gap:14px;padding-top:22px;border-top:1px solid rgba(255,255,255,.12);align-items:center;flex-wrap:nowrap}
+.hero-stat{display:flex;align-items:center;gap:7px;flex-shrink:0;min-width:0}
+.stat-num{font-family:var(--font-head);font-size:1.22rem;font-weight:800;color:#3dd870;line-height:1;flex-shrink:0;letter-spacing:-.5px}
+.stat-lbl{font-size:.66rem;color:rgba(255,255,255,.55);line-height:1.25;white-space:nowrap}
+.stat-divider{width:1px;height:22px;background:rgba(255,255,255,.14);flex-shrink:0}
+@media(max-width:560px){.hero-stats{flex-wrap:wrap;gap:18px}.stat-divider{display:none}}
+.hero-partner{margin-top:22px;padding-top:20px;border-top:1px solid rgba(255,255,255,.1);display:inline-flex;align-items:center;gap:16px;text-decoration:none;color:inherit;transition:var(--t);width:fit-content;}
+.hero-partner:hover{transform:translateY(-2px)}
+.hero-partner-label{display:flex;flex-direction:column;gap:2px}
+.hpl-eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);line-height:1.2;}
+.hpl-sub{font-size:.7rem;color:rgba(255,255,255,.48);line-height:1.3;max-width:140px;}
+.hero-partner:hover .hpl-sub{color:rgba(255,255,255,.65)}
+.hero-partner-badge{background:linear-gradient(180deg,#faf3e2 0%,#f0e4c8 100%);border:1px solid rgba(201,149,42,.4);border-radius:10px;padding:7px 14px;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.3), inset 0 1px 0 rgba(255,255,255,.5);transition:var(--t);}
+.hero-partner:hover .hero-partner-badge{box-shadow:0 6px 20px rgba(0,0,0,.35), 0 0 0 2px rgba(201,149,42,.35), inset 0 1px 0 rgba(255,255,255,.5);}
+.hero-partner-badge img{height:34px;width:auto;display:block}
+.ad-rotator-wrap{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;gap:14px;}
+.ad-rot-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.35);text-align:center;min-height:16px;}
+.ad-rot-stage{position:relative;width:100%;height:480px;perspective:900px;}
+.ad-slide{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);border-radius:14px;overflow:hidden;transition:all .55s cubic-bezier(.4,0,.2,1);opacity:0;pointer-events:none;width:290px;}
+.ad-slide.rot-active{opacity:1;pointer-events:auto;z-index:3;transform:translate(-50%,-50%) scale(1);box-shadow:0 24px 64px rgba(0,0,0,.6),0 0 0 2px rgba(61,216,112,.45);}
+.ad-slide.rot-prev{opacity:.38;z-index:1;transform:translate(calc(-50% - 100px),-50%) scale(.82) rotateY(22deg);box-shadow:0 12px 32px rgba(0,0,0,.4);}
+.ad-slide.rot-next{opacity:.38;z-index:1;transform:translate(calc(-50% + 100px),-50%) scale(.82) rotateY(-22deg);box-shadow:0 12px 32px rgba(0,0,0,.4);}
+.ad-slide img{width:100%;display:block}
+.ad-slide-cap{background:rgba(10,26,10,.92);backdrop-filter:blur(8px);padding:9px 14px;display:flex;align-items:center;gap:8px;}
+.cap-icon{font-size:1.05rem;flex-shrink:0}
+.cap-title{font-family:var(--font-head);font-size:.78rem;font-weight:700;color:#fff;line-height:1.3}
+.cap-sub{font-size:.66rem;color:rgba(255,255,255,.42);margin-top:2px}
+.ad-phone{background:#0a0a14;border-radius:14px 14px 0 0;overflow:hidden;display:flex;flex-direction:column;}
+.ad-phone-status{background:#000;padding:5px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
+.ad-phone-status .time{font-size:9px;color:rgba(255,255,255,.75);font-family:sans-serif;font-weight:600}
+.ad-phone-status .icons{display:flex;gap:4px;align-items:center}
+.ad-phone-status .icons svg{fill:rgba(255,255,255,.6)}
+.ad-weather-header{background:#003087;padding:7px 12px;display:flex;align-items:center;flex-shrink:0;}
+.ad-weather-header .wh-logo{font-size:9px;font-weight:800;color:#fff;font-family:sans-serif;letter-spacing:-.15px}
+.ad-weather-header .wh-loc{margin-left:auto;font-size:7.5px;background:rgba(255,255,255,.15);color:#fff;padding:2px 6px;border-radius:3px;font-family:sans-serif}
+.ad-weather-body{flex:1;background:linear-gradient(180deg,#003087 0%,#0a1a6b 50%,#0f0f2e 100%);padding:8px 12px;display:flex;flex-direction:column;gap:6px;}
+.ad-weather-row1{display:flex;align-items:center;gap:8px}
+.ad-weather-row1 .temp-icon{font-size:32px;line-height:1}
+.ad-weather-row1 .temp-big{font-size:30px;font-weight:800;color:#fff;font-family:sans-serif;line-height:1}
+.ad-weather-row1 .temp-feel{font-size:7.5px;color:rgba(255,255,255,.5);font-family:sans-serif;margin-top:2px}
+.ad-weather-row1 .temp-hl{margin-left:auto;text-align:right}
+.ad-weather-row1 .temp-hl div{font-size:7.5px;color:rgba(255,255,255,.45);font-family:sans-serif;line-height:1.3}
+.ad-weather-forecast{display:flex;gap:3px}
+.ad-wf-day{flex:1;background:rgba(255,255,255,.07);border-radius:4px;padding:4px 2px;text-align:center}
+.ad-wf-day .d-lbl{font-size:6.5px;color:rgba(255,255,255,.45);font-family:sans-serif}
+.ad-wf-day .d-icon{font-size:10px;margin:2px 0}
+.ad-wf-day .d-temp{font-size:7.5px;color:#fff;font-family:sans-serif;font-weight:700}
+.ad-phone-adslot{position:relative;flex-shrink:0;border-top:1px solid rgba(255,255,255,.08);}
+.ad-phone-adslot::before{content:'AD';position:absolute;top:-7px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:rgba(255,255,255,.65);font-size:6px;font-family:sans-serif;padding:1.5px 7px;border-radius:2px;letter-spacing:.08em;z-index:2;}
+.ad-phone-adslot img{width:100%;display:block}
+.ad-stream{background:#000;border-radius:14px 14px 0 0;overflow:hidden;display:flex;flex-direction:column}
+.ad-stream-bar{background:#000;padding:8px 14px;display:flex;align-items:center;justify-content:space-between;flex-shrink:0;border-bottom:1px solid rgba(255,255,255,.06);}
+.ad-stream-logo{font-size:14px;font-weight:900;color:#1ce783;font-family:sans-serif;letter-spacing:-.5px}
+.ad-stream-divider{width:1px;height:12px;background:rgba(255,255,255,.15);margin:0 8px}
+.ad-stream-sub{font-size:8px;color:rgba(255,255,255,.4);font-family:sans-serif}
+.ad-stream-tag{margin-left:auto;font-size:8px;color:rgba(255,255,255,.5);background:rgba(255,255,255,.08);padding:3px 7px;border-radius:3px;letter-spacing:.05em;}
+.ad-stream-screen{position:relative;width:100%;aspect-ratio:16/9;background:#0a0a0a;overflow:hidden;}
+.ad-stream-screen img{width:100%;height:100%;object-fit:cover;display:block}
+.ad-stream-overlay-tl{position:absolute;top:8px;left:8px;background:rgba(0,0,0,.7);color:rgba(255,255,255,.7);font-size:7px;font-family:sans-serif;padding:2px 6px;border-radius:2px;letter-spacing:.05em;}
+.ad-stream-overlay-br{position:absolute;bottom:8px;right:8px;background:rgba(0,0,0,.8);color:#fff;font-size:7.5px;font-family:sans-serif;font-weight:700;padding:3px 8px;border-radius:3px;letter-spacing:.04em;}
+.ad-stream-progress{background:#111;padding:6px 14px 5px;flex-shrink:0;}
+.ad-stream-track{height:2px;background:rgba(255,255,255,.12);border-radius:1px;position:relative;}
+.ad-stream-track-fill{position:absolute;left:0;top:0;height:100%;width:42%;background:#1ce783;border-radius:1px;}
+.ad-stream-time{display:flex;justify-content:space-between;margin-top:3px;}
+.ad-stream-time span{font-size:7px;color:rgba(255,255,255,.35);font-family:sans-serif}
+.rot-controls{display:flex;align-items:center;gap:14px}
+.rot-dots{display:flex;gap:8px;align-items:center}
+.rot-dot{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.2);border:none;cursor:pointer;padding:0;transition:all .3s}
+.rot-dot.active{background:#3dd870;width:22px;border-radius:4px}
+.rot-arrow{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);color:#fff;font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:var(--t)}
+.rot-arrow:hover{background:var(--green);border-color:var(--green)}
+.trust-bar{background:var(--green-mist);border-top:1px solid rgba(18,120,37,.12);border-bottom:1px solid rgba(18,120,37,.12)}
+.trust-bar-inner{display:flex;align-items:stretch;justify-content:center;flex-wrap:wrap}
+.trust-pill{display:flex;align-items:center;gap:12px;padding:17px 22px;border-right:1px solid rgba(18,120,37,.12);flex:1 1 0;min-width:200px;transition:background .18s}
+.trust-pill:last-child{border-right:none}
+.trust-pill:hover{background:rgba(18,120,37,.06)}
+.trust-pill-icon{width:36px;height:36px;background:var(--green-light);border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:15px;flex-shrink:0}
+.trust-pill-text{min-width:0;flex:1}
+.trust-pill-text strong{display:block;font-size:12.5px;font-weight:700;color:var(--body-text);line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.trust-pill-text span{display:block;font-size:11px;color:var(--muted-text);line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+#why-geo{background:var(--cream)}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.why-text .label{margin-bottom:12px}
+.why-text h2{margin-bottom:14px}
+.why-text p{font-size:1.02rem;line-height:1.7}
+.why-check-list{list-style:none;margin:18px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
+.why-check-list li{display:flex;align-items:flex-start;gap:10px;font-size:.89rem;color:var(--body-text);line-height:1.5}
+.why-check-list li::before{content:'✓';width:20px;height:20px;min-width:20px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.64rem;font-weight:800;color:var(--green);margin-top:1px}
+.compliance-badge{display:flex;align-items:flex-start;gap:12px;background:var(--white);border:1px solid var(--border);border-left:4px solid var(--green);border-radius:var(--radius);padding:17px 20px;margin-top:22px}
+.compliance-badge-icon{font-size:1.4rem;flex-shrink:0;margin-top:2px}
+.compliance-badge-text strong{display:block;font-size:.87rem;font-weight:700;color:var(--green-dark);margin-bottom:4px}
+.compliance-badge-text p{font-size:.82rem;color:var(--muted-text);margin:0}
+.why-visual{display:flex;flex-direction:column;gap:14px}
+.why-stat-cards{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.why-stat-card{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:22px 16px;text-align:center;box-shadow:var(--shadow);transition:var(--t)}
+.why-stat-card:hover{transform:translateY(-3px);border-color:var(--green);box-shadow:var(--shadow-lg)}
+.why-stat-card .big{font-family:var(--font-head);font-size:2rem;font-weight:800;color:var(--green);line-height:1}
+.why-stat-card .lbl{font-size:.73rem;color:var(--muted-text);margin-top:5px;line-height:1.35}
+.why-platform-note{background:linear-gradient(135deg,var(--green) 0%,var(--green-dark) 100%);border-radius:var(--radius-lg);padding:18px 20px;display:flex;align-items:flex-start;gap:13px}
+.why-platform-note .pn-icon{font-size:1.5rem;flex-shrink:0}
+.why-platform-note h4{color:#fff;margin-bottom:4px;font-size:.93rem}
+.why-platform-note p{color:rgba(255,255,255,.7);font-size:.81rem;margin:0}
+.why-extra-note{background:var(--white);border:1px solid var(--border);border-radius:var(--radius);padding:15px 18px;display:flex;align-items:flex-start;gap:12px}
+.why-extra-note .en-icon{font-size:1.25rem;flex-shrink:0}
+.why-extra-note h4{color:var(--body-text);font-size:.87rem;margin-bottom:3px}
+.why-extra-note p{font-size:.79rem;color:var(--muted-text);margin:0}
+#how-it-works{background:var(--white)}
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;position:relative}
+.steps-grid::before{content:'';position:absolute;top:49px;left:calc(12.5% + 16px);right:calc(12.5% + 16px);height:2px;background:linear-gradient(90deg,var(--green),var(--sage));z-index:0}
+.step-card{background:var(--cream);border-radius:var(--radius-lg);padding:28px 20px;text-align:center;box-shadow:var(--shadow);position:relative;z-index:1;transition:var(--t);border:1px solid var(--border)}
+.step-card:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:var(--green)}
+.step-num{width:50px;height:50px;background:linear-gradient(135deg,var(--green),var(--green-dark));color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--font-head);font-size:1.25rem;font-weight:800;margin:0 auto 18px;box-shadow:0 4px 16px rgba(18,120,37,.35)}
+.step-card h3{font-size:.97rem;margin-bottom:9px;color:var(--body-text)}
+.step-card p{font-size:.85rem}
+#channels{background:#0a1a0a;padding:52px 0}
+.channels-inner{display:flex;flex-direction:column;align-items:center;gap:18px}
+.channels-label{font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.28)}
+.channels-badges{display:flex;gap:7px;flex-wrap:wrap;justify-content:center}
+.ch{display:inline-flex;align-items:center;justify-content:center;gap:5px;padding:8px 13px;border-radius:8px;font-family:var(--font-head);font-size:12px;font-weight:800;letter-spacing:-.2px;white-space:nowrap;line-height:1;border:1px solid rgba(255,255,255,.1);background:rgba(255,255,255,.05);color:#fff;transition:all .2s;cursor:default}
+.ch:hover{background:rgba(255,255,255,.1);transform:translateY(-1px)}
+.ch-cnn{border-color:rgba(204,0,0,.5);color:#cc0000;background:rgba(204,0,0,.08);font-size:14px}
+.ch-espn{border-color:rgba(204,0,0,.4);color:#fff;background:rgba(0,0,0,.4);font-size:13px;font-style:italic}
+.ch-hulu{color:#1ce783;border-color:rgba(28,231,131,.35);background:rgba(20,15,15,.6)}
+.ch-weather{color:#4db6e8;border-color:rgba(77,182,232,.35);background:rgba(0,48,135,.3);font-size:9px;min-width:70px;text-align:center}
+.ch-fox{color:#fff;background:rgba(0,50,120,.4);border-color:rgba(0,80,200,.4);font-size:11px}
+.ch-abc{color:#fff;background:rgba(0,0,0,.5)}
+.ch-spotify{color:#1DB954;border-color:rgba(29,185,84,.35);background:rgba(20,15,15,.6);font-size:11px}
+.ch-roku{color:#8b5cf6;border-color:rgba(139,92,246,.35);background:rgba(15,5,30,.5)}
+.ch-more{color:rgba(255,255,255,.6);font-size:10px;text-align:center;line-height:1.3;border-style:dashed;border-color:rgba(255,255,255,.18)}
+.channels-sub{font-size:13px;color:rgba(255,255,255,.36);text-align:center;max-width:700px;line-height:1.6}
+.channels-sub strong{color:rgba(255,255,255,.72);font-weight:700}
+#pricing{background:var(--green-mist)}
+.pricing-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px;align-items:stretch}
+.price-card{background:var(--white);border:2px solid var(--border);border-radius:var(--radius-lg);padding:28px 20px;text-align:center;transition:var(--t);position:relative;display:flex;flex-direction:column;}
+.price-card:hover{border-color:var(--green);box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+.price-card.featured{background:linear-gradient(160deg,#0e3018 0%,#0d1654 100%);border-color:var(--green);box-shadow:0 24px 60px rgba(18,100,18,.22);}
+.price-card.featured h3{color:#fff}
+.price-card.featured > p{color:rgba(255,255,255,.58)}
+.price-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 16px;border-radius:50px;white-space:nowrap}
+.price-badge.gold{background:var(--gold)}
+.price-tagline{display:inline-flex;align-items:center;gap:5px;background:var(--green-glow);border:1px solid rgba(18,120,37,.22);color:var(--green);font-size:.67rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 10px;border-radius:50px;margin-bottom:12px}
+.price-card.featured .price-tagline{color:#3dd870;background:rgba(18,120,37,.22);border-color:rgba(18,120,37,.4)}
+.price-card h3{margin-bottom:6px;font-size:1.02rem}
+.price-card > p{font-size:.8rem;margin-bottom:12px}
+.price-main-row{display:flex;align-items:flex-end;gap:2px;justify-content:center;margin-bottom:3px}
+.price-currency{font-family:var(--font-head);font-size:1.1rem;font-weight:700;color:var(--navy);padding-bottom:7px}
+.price-card.featured .price-currency{color:rgba(255,255,255,.68)}
+.price-amount{font-family:var(--font-head);font-size:2.1rem;font-weight:800;color:var(--navy);line-height:1}
+.price-card.featured .price-amount{color:#fff}
+.price-period{font-size:.73rem;color:var(--muted-text);margin-bottom:16px}
+.price-card.featured .price-period{color:rgba(255,255,255,.4)}
+.price-divider{height:1px;background:var(--border);margin-bottom:16px;flex-shrink:0}
+.price-card.featured .price-divider{background:rgba(255,255,255,.14)}
+.price-features{list-style:none;text-align:left;margin-bottom:20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.price-features li{display:flex;align-items:center;gap:7px;font-size:.79rem;color:var(--body-text)}
+.price-features li::before{content:'✓';width:17px;height:17px;min-width:17px;background:var(--green-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.6rem;font-weight:800;color:var(--green)}
+.price-card.featured .price-features li{color:rgba(255,255,255,.87)}
+.price-card.featured .price-features li::before{background:rgba(18,120,37,.3);color:#3dd870}
+.price-card .btn{margin-top:auto;width:100%;justify-content:center}
+.price-note{text-align:center;margin-top:32px;font-size:.85rem;color:var(--muted-text)}
+#pitch-angle{background:var(--cream)}
+.pitch-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
+.pitch-blocks{display:flex;flex-direction:column;gap:14px}
+.pitch-block{background:var(--white);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px 22px;transition:var(--t)}
+.pitch-block:hover{border-color:var(--green);box-shadow:var(--shadow)}
+.pitch-block-header{display:flex;align-items:center;gap:11px;margin-bottom:7px}
+.pitch-block-icon{width:38px;height:38px;border-radius:9px;background:var(--green-light);display:flex;align-items:center;justify-content:center;font-size:1.15rem;flex-shrink:0}
+.pitch-block h4{color:var(--body-text);font-size:.9rem}
+.pitch-block p{font-size:.82rem;color:var(--muted-text);line-height:1.6}
+.emily-card{background:linear-gradient(160deg,var(--green-dark) 0%,var(--navy) 100%);border-radius:var(--radius-lg);padding:28px 24px;display:flex;flex-direction:column;gap:13px}
+.emily-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);padding:5px 14px;border-radius:50px;width:fit-content;font-size:.69rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.8)}
+.emily-card h3{color:#fff;font-size:1.18rem}
+.emily-card p{color:rgba(255,255,255,.6);font-size:.84rem;line-height:1.6;margin:0}
+.emily-divider{height:1px;background:rgba(255,255,255,.1)}
+.emily-check-list{list-style:none;display:flex;flex-direction:column;gap:8px;padding:0;margin:0}
+.emily-check-list li{display:flex;align-items:center;gap:9px;font-size:.81rem;color:rgba(255,255,255,.62)}
+.emily-check-list li .check{color:#3dd870;font-weight:800;flex-shrink:0}
+.emily-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.emily-stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:13px;text-align:center}
+.emily-stat .es-num{font-family:var(--font-head);font-size:1.45rem;font-weight:800;color:#3dd870;line-height:1}
+.emily-stat .es-lbl{font-size:.69rem;color:rgba(255,255,255,.4);margin-top:3px}
+#veteran{background:linear-gradient(180deg,#1c1008 0%,#2a1a08 40%,#1a0e08 70%,#120a18 100%);position:relative;overflow:hidden;padding:96px 0;}
+#veteran::before{content:'';position:absolute;inset:0;background-image:radial-gradient(ellipse 60% 50% at 30% 50%,rgba(201,149,42,.07) 0%,transparent 60%),radial-gradient(ellipse 40% 40% at 80% 20%,rgba(139,28,28,.1) 0%,transparent 55%);pointer-events:none;}
+#veteran::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.018) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.018) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.veteran-inner{position:relative;z-index:1}
+.veteran-header{text-align:center;margin-bottom:52px}
+.veteran-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(201,149,42,.1);border:1px solid rgba(201,149,42,.28);padding:6px 18px;border-radius:50px;margin-bottom:16px}
+.veteran-eyebrow span{font-size:.73rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold)}
+.veteran-header h2{color:#fff;margin-bottom:12px}
+.veteran-header p{color:rgba(255,255,255,.58);font-size:1.01rem;max-width:660px;margin:0 auto}
+.veteran-layout{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.veteran-left{display:flex;flex-direction:column;gap:13px}
+.veteran-card{background:rgba(255,255,255,.04);border:1px solid rgba(201,149,42,.15);border-radius:var(--radius-lg);padding:18px 20px;display:flex;align-items:flex-start;gap:14px;transition:var(--t)}
+.veteran-card:hover{background:rgba(201,149,42,.06);border-color:rgba(201,149,42,.3);transform:translateX(4px)}
+.veteran-card-icon{width:40px;height:40px;min-width:40px;background:rgba(201,149,42,.12);border:1px solid rgba(201,149,42,.22);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.15rem}
+.veteran-card h4{color:#fff;font-size:.9rem;margin-bottom:3px}
+.veteran-card p{color:rgba(255,255,255,.5);font-size:.79rem;line-height:1.55;margin:0}
+.veteran-right{display:flex;flex-direction:column;gap:18px}
+.hth-logo-wrap{background:linear-gradient(180deg,#faf3e2 0%,#f0e4c8 100%);border:1px solid rgba(201,149,42,.45);border-radius:var(--radius-lg);padding:30px 32px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;box-shadow:0 12px 36px rgba(0,0,0,.45), 0 0 0 3px rgba(201,149,42,.12), inset 0 1px 0 rgba(255,255,255,.5);position:relative;}
+.hth-logo-wrap::before{content:'';position:absolute;top:8px;left:8px;right:8px;bottom:8px;border:1px dashed rgba(201,149,42,.25);border-radius:14px;pointer-events:none;}
+.hth-logo-wrap img{max-width:240px;width:100%;position:relative;z-index:1}
+.hth-logo-desc{color:#5a3a14;font-size:.79rem;line-height:1.6;text-align:center;max-width:260px;position:relative;z-index:1;font-weight:500}
+.veteran-cta-card{background:linear-gradient(135deg,#a87820 0%,#c9952a 100%);border-radius:var(--radius-lg);padding:22px 24px;text-align:center}
+.veteran-cta-card h4{color:#2a1600;font-size:1.01rem;margin-bottom:6px}
+.veteran-cta-card p{color:rgba(42,22,0,.68);font-size:.81rem;margin-bottom:14px}
+#testimonials{background:var(--cream);position:relative}
+#testimonials::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--gold) 0%,var(--green) 50%,var(--navy) 100%);opacity:.6;}
+.reviews-wrapper{width:100%;max-width:1100px;margin:0 auto}
+#contact{background:linear-gradient(180deg,#0a1f0a 0%,#0e3018 50%,#122078 100%);padding:88px 0;position:relative;}
+#contact::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);background-size:48px 48px;pointer-events:none;}
+.contact-inner{display:grid;grid-template-columns:0.85fr 1.15fr;gap:44px;align-items:start;position:relative;z-index:1}
+.contact-left{position:sticky;top:90px;align-self:start}
+.contact-left h2{color:#fff;margin-bottom:14px}
+.contact-left p{color:rgba(255,255,255,.6);font-size:1rem;margin-bottom:24px}
+.contact-trust-list{list-style:none;display:flex;flex-direction:column;gap:9px;padding:0}
+.contact-trust-list li{display:flex;align-items:center;gap:9px;font-size:.85rem;color:rgba(255,255,255,.48);font-weight:500}
+.contact-trust-list li .check{color:#3dd870;font-weight:800}
+.form-box{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);border-radius:var(--radius-lg);padding:20px;backdrop-filter:blur(8px)}
+.form-intro{margin-bottom:18px;text-align:center;padding-bottom:18px;border-bottom:1px solid rgba(255,255,255,.08)}
+.form-eyebrow{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#3dd870;background:rgba(61,216,112,.12);border:1px solid rgba(61,216,112,.25);padding:4px 12px;border-radius:50px;margin-bottom:12px}
+.form-heading{color:#fff;font-size:1.25rem;font-weight:700;margin-bottom:6px;line-height:1.3}
+.form-sub{color:rgba(255,255,255,.55);font-size:.84rem;line-height:1.55;margin:0}
+.form-foot{margin-top:14px;padding-top:14px;border-top:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;gap:7px;font-size:.74rem;color:rgba(255,255,255,.4)}
+.form-foot svg{color:#3dd870}
+#faq{background:var(--white)}
+.faq-grid{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:9px}
+.faq-item{border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;transition:var(--t)}
+.faq-item.open{border-color:var(--green);box-shadow:0 4px 20px rgba(18,120,37,.1)}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:18px 22px;cursor:pointer;font-family:var(--font-head);font-size:.93rem;font-weight:600;color:var(--body-text);user-select:none;transition:var(--t)}
+.faq-q:hover{background:var(--cream)}
+.faq-item.open .faq-q{background:var(--green-light)}
+.faq-icon{width:26px;height:26px;min-width:26px;background:var(--off-white);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.05rem;color:var(--green);transition:transform .3s;line-height:1}
+.faq-item.open .faq-icon{transform:rotate(45deg);background:var(--green);color:#fff}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 22px}
+.faq-item.open .faq-a{max-height:300px;padding:0 22px 18px}
+.faq-a p{font-size:.88rem;line-height:1.72}
+.fade-up{opacity:0;transform:translateY(24px);transition:opacity .6s ease,transform .6s ease}
+.fade-up.visible{opacity:1;transform:translateY(0)}
+@media(max-width:1100px){.pricing-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr;gap:36px}.why-grid,.veteran-layout,.pitch-grid,.contact-inner{grid-template-columns:1fr}.steps-grid{grid-template-columns:1fr 1fr}.steps-grid::before{display:none}.pitch-grid{align-items:start}.contact-left{position:static}}
+@media(max-width:640px){section{padding:60px 0}.pricing-grid,.steps-grid{grid-template-columns:1fr}.hero-btns{flex-direction:column}.btn{justify-content:center}.why-stat-cards{grid-template-columns:1fr 1fr}.ad-rot-stage{height:400px}.ad-slide{width:250px}.ad-slide.rot-prev,.ad-slide.rot-next{opacity:0}.emily-stat-row{grid-template-columns:1fr 1fr}.trust-bar-inner{display:grid;grid-template-columns:1fr 1fr;gap:0}.trust-pill{min-width:0;flex:none;padding:14px 16px;gap:10px;border-right:1px solid rgba(18,120,37,.12);border-bottom:1px solid rgba(18,120,37,.12)}.trust-pill:nth-child(2n){border-right:none}.trust-pill:nth-last-child(-n+2){border-bottom:none}.trust-pill:last-child{border-right:none}.trust-pill-icon{width:32px;height:32px;font-size:14px;border-radius:8px}.trust-pill-text strong{font-size:11.5px}.trust-pill-text span{font-size:10.5px}}
+@media(max-width:430px){.trust-bar-inner{grid-template-columns:1fr}.trust-pill{border-right:none!important;border-bottom:1px solid rgba(18,120,37,.12)!important;padding:13px 18px}.trust-pill:last-child{border-bottom:none!important}}
+</style>
+
+
+<section id="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <div class="hero-copy">
+        <div class="hero-pill"><span class="dot"></span><span>Cannabis Industry Geo-Fencing</span></div>
+        <h1>Reach Cannabis Buyers <em>Where Google &amp; Meta Can't.</em></h1>
+        <p class="hero-sub">We specialize in mobile and CTV geo-fencing for dispensaries and CBD shops — putting your brand in front of local, age-appropriate audiences across up to 8,000+ apps and streaming platforms, without Big Tech policy headaches.</p>
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-primary">Get a Free Campaign Quote</a>
+          <a href="#how-it-works" class="btn btn-outline">See How It Works</a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="stat-num">21+</div><div class="stat-lbl">Age-verified audience</div></div>
+          <div class="stat-divider"></div>
+          <div class="hero-stat"><div class="stat-num">8,000+</div><div class="stat-lbl">Potential app reach</div></div>
+          <div class="stat-divider"></div>
+          <div class="hero-stat"><div class="stat-num">5–7</div><div class="stat-lbl">Days to launch</div></div>
+        </div>
+        <a href="#veteran" class="hero-partner">
+          <div class="hero-partner-label">
+            <span class="hpl-eyebrow">⭐ Proud Partner</span>
+            <span class="hpl-sub">Supporting veterans through advertising</span>
+          </div>
+          <div class="hero-partner-badge">
+            <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a09613ddbe569a25d92958d.png" alt="Home Town Hero Partners" />
+          </div>
+        </a>
+      </div>
+      <div class="ad-rotator-wrap">
+        <div class="ad-rot-label" id="rotLabel">📱 Mobile In-App Ad — Weather Channel · 21+ Targeted</div>
+        <div class="ad-rot-stage" id="rotStage">
+          <div class="ad-slide rot-active" data-index="0">
+            <div class="ad-phone">
+              <div class="ad-phone-status">
+                <span class="time">9:41</span>
+                <div class="icons">
+                  <svg viewBox="0 0 24 24" style="width:10px;height:10px"><path d="M1 9l2 2c4.97-4.97 13.03-4.97 18 0l2-2C16.93 2.93 7.08 2.93 1 9zm8 8l3 3 3-3a4.237 4.237 0 00-6 0zm-4-4l2 2a7.074 7.074 0 0110 0l2-2C15.14 9.14 8.87 9.14 5 13z"/></svg>
+                  <svg viewBox="0 0 24 24" style="width:11px;height:11px"><path d="M15.67 4H14V2h-4v2H8.33C7.6 4 7 4.6 7 5.33v15.33C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V5.33C17 4.6 16.4 4 15.67 4z"/></svg>
+                </div>
+              </div>
+              <div class="ad-weather-header"><div class="wh-logo">THE WEATHER CHANNEL</div><div class="wh-loc">Tucson, AZ</div></div>
+              <div class="ad-weather-body">
+                <div class="ad-weather-row1"><div class="temp-icon">☀️</div><div><div class="temp-big">94°</div><div class="temp-feel">Feels like 101° · Clear</div></div><div class="temp-hl"><div>H: 98°</div><div>L: 76°</div></div></div>
+                <div class="ad-weather-forecast">
+                  <div class="ad-wf-day"><div class="d-lbl">Now</div><div class="d-icon">☀️</div><div class="d-temp">94°</div></div>
+                  <div class="ad-wf-day"><div class="d-lbl">2PM</div><div class="d-icon">☀️</div><div class="d-temp">97°</div></div>
+                  <div class="ad-wf-day"><div class="d-lbl">4PM</div><div class="d-icon">☀️</div><div class="d-temp">96°</div></div>
+                  <div class="ad-wf-day"><div class="d-lbl">6PM</div><div class="d-icon">☀️</div><div class="d-temp">91°</div></div>
+                  <div class="ad-wf-day"><div class="d-lbl">8PM</div><div class="d-icon">🌙</div><div class="d-temp">84°</div></div>
+                </div>
+              </div>
+              <div class="ad-phone-adslot"><img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a09613d19e1ac5f52734774.png" alt="Cannabis mobile banner ad" /></div>
+            </div>
+            <div class="ad-slide-cap"><span class="cap-icon">📱</span><div><div class="cap-title">Mobile In-App Ad</div><div class="cap-sub">Weather Channel · 21+ targeted</div></div></div>
+          </div>
+          <div class="ad-slide" data-index="1">
+            <div class="ad-stream">
+              <div class="ad-stream-bar"><div class="ad-stream-logo">hulu</div><div class="ad-stream-divider"></div><div class="ad-stream-sub">Live TV</div><div class="ad-stream-tag">Non-Skippable Ad</div></div>
+              <div class="ad-stream-screen"><img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a09613dea36308bcf84a6b9.png" alt="Streaming CTV cannabis ad" /><div class="ad-stream-overlay-tl">AD</div><div class="ad-stream-overlay-br">NON-SKIPPABLE</div></div>
+              <div class="ad-stream-progress"><div class="ad-stream-track"><div class="ad-stream-track-fill"></div></div><div class="ad-stream-time"><span>0:13</span><span>0:30</span></div></div>
+            </div>
+            <div class="ad-slide-cap"><span class="cap-icon">📺</span><div><div class="cap-title">Streaming TV Ad</div><div class="cap-sub">Hulu, Roku &amp; CTV — at-home prime time</div></div></div>
+          </div>
+        </div>
+        <div class="rot-controls">
+          <button class="rot-arrow" onclick="rotPrev()" aria-label="Previous">&#8592;</button>
+          <div class="rot-dots"><button class="rot-dot active" onclick="rotGo(0)"></button><button class="rot-dot" onclick="rotGo(1)"></button></div>
+          <button class="rot-arrow" onclick="rotNext()" aria-label="Next">&#8594;</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-pill"><div class="trust-pill-icon">🚫</div><div class="trust-pill-text"><strong>No Google/Meta Restrictions</strong><span>Compliant ad channels</span></div></div>
+      <div class="trust-pill"><div class="trust-pill-icon">🎯</div><div class="trust-pill-text"><strong>Hyper-Local Targeting</strong><span>Parcel-level precision</span></div></div>
+      <div class="trust-pill"><div class="trust-pill-icon">📱</div><div class="trust-pill-text"><strong>Mobile + Streaming TV</strong><span>Phones &amp; connected TV</span></div></div>
+      <div class="trust-pill"><div class="trust-pill-icon">⭐</div><div class="trust-pill-text"><strong>144+ Five-Star Reviews</strong><span>Google Partner agency</span></div></div>
+    </div>
+  </div>
+</div>
+
+<section id="why-geo">
+  <div class="container">
+    <div class="why-grid">
+      <div class="why-text fade-up">
+        <p class="label">Why Geo-Fencing</p>
+        <h2>The Ad Platform Cannabis Businesses Actually Need</h2>
+        <p>Google and Meta restrict cannabis advertising heavily — leaving dispensaries with limited, unreliable options. Geo-fencing bypasses those restrictions by running through premium app networks and streaming platforms where cannabis advertising is fully compliant.</p>
+        <ul class="why-check-list">
+          <li>No account bans, policy violations, or sudden ad takedowns</li>
+          <li>Target competitors' customers walking into rival dispensaries</li>
+          <li>Non-skippable CTV video on Hulu, Roku &amp; streaming platforms</li>
+          <li>Reach 21+ audiences based on where they physically go</li>
+          <li>Full creative production included — logo, copy, design, launch</li>
+          <li>Monthly performance report — impressions, clicks &amp; CTR %</li>
+        </ul>
+        <div class="compliance-badge">
+          <div class="compliance-badge-icon">🛡️</div>
+          <div class="compliance-badge-text">
+            <strong>Age-Appropriate by Design</strong>
+            <p>We target locations where 21+ attendance is guaranteed — American Legion posts, VFW halls, dispensary proximity zones. Age is established by physical location, not browsing data. Compliant, precise, and legally sound.</p>
+          </div>
+        </div>
+      </div>
+      <div class="why-visual fade-up">
+        <div class="why-stat-cards">
+          <div class="why-stat-card"><div class="big">5×</div><div class="lbl">Higher CTR vs standard display ads</div></div>
+          <div class="why-stat-card"><div class="big">98%</div><div class="lbl">US adults reached through our network monthly</div></div>
+          <div class="why-stat-card"><div class="big">$0</div><div class="lbl">Wasted spend on out-of-market audiences</div></div>
+          <div class="why-stat-card"><div class="big">10M+</div><div class="lbl">Locations blueprinted with exact-parcel accuracy</div></div>
+        </div>
+        <div class="why-platform-note"><div class="pn-icon">🗺️</div><div><h4>Blueprint Technology</h4><p>We don't guess with radius circles. Every geo-fence maps down to the exact parking lot or storefront — enterprise-grade location intelligence trusted by Fortune 500 brands.</p></div></div>
+        <div class="why-extra-note"><div class="en-icon">📺</div><div><h4>Mobile + Streaming TV Reach</h4><p>Ads reach your audience on their mobile devices throughout the day and on connected TVs during prime evening viewing hours — a true multi-screen presence across phones and the living room.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how-it-works">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="label">The Process</p>
+      <h2>From Setup to Live in 5–7 Business Days</h2>
+      <p>We've run this process dozens of times for cannabis businesses. You hand us the assets — we handle every step from strategy to launch.</p>
+    </div>
+    <div class="steps-grid">
+      <div class="step-card fade-up"><div class="step-num">1</div><h3>Strategy Call</h3><p>We learn your target area, competitive landscape, and campaign goals. You get a custom zone map before any payment is processed.</p></div>
+      <div class="step-card fade-up"><div class="step-num">2</div><h3>Build Your Zones</h3><p>We blueprint competitor locations, dispensary proximity zones, and special venues — VFW posts, events, high-traffic corridors.</p></div>
+      <div class="step-card fade-up"><div class="step-num">3</div><h3>Create Your Ads</h3><p>Our in-house art team designs mobile banners and CTV video creative. Clean, compliant, built to your brand. You approve before anything goes live.</p></div>
+      <div class="step-card fade-up"><div class="step-num">4</div><h3>Launch &amp; Report</h3><p>Campaign goes live across up to 8,000+ apps, networks, and streaming platforms. You receive a detailed monthly report covering impressions, clicks, and CTR % — clear numbers, plainly explained.</p></div>
+    </div>
+  </div>
+</section>
+
+<div id="channels">
+  <div class="container">
+    <div class="channels-inner">
+      <div class="channels-label">Your ads could appear across these networks &amp; thousands more</div>
+      <div class="channels-badges">
+        <div class="ch ch-cnn">CNN</div>
+        <div class="ch ch-espn">ESPN</div>
+        <div class="ch ch-hulu" style="display:inline-flex;align-items:center;gap:5px"><svg viewBox="0 0 20 20" fill="#1ce783" style="width:13px;height:13px"><circle cx="10" cy="10" r="10"/><text x="4" y="14" font-size="10" fill="#000" font-weight="900" font-family="sans-serif">h</text></svg>hulu</div>
+        <div class="ch ch-weather" style="font-size:9px;line-height:1.1;text-align:center">The Weather<br>Channel</div>
+        <div class="ch ch-fox">FOX <span style="color:#ffd700">NEWS</span></div>
+        <div class="ch ch-abc"><span style="font-family:serif;font-style:italic;font-size:15px">abc</span></div>
+        <div class="ch ch-spotify" style="display:inline-flex;align-items:center;gap:5px"><svg viewBox="0 0 24 24" style="width:12px;height:12px;flex-shrink:0"><circle cx="12" cy="12" r="12" fill="#191414"/><path d="M17.9 10.9C14.7 9 9.35 8.8 6.3 9.75c-.5.15-1-.15-1.15-.6-.15-.5.15-1 .6-1.15 3.55-1.05 9.4-.85 13.1 1.35.45.25.6.85.35 1.3-.25.35-.85.5-1.3.25zm-.1 2.8c-.25.35-.7.5-1.05.25-2.7-1.65-6.8-2.15-9.95-1.15-.4.1-.85-.1-.95-.5-.1-.4.1-.85.5-.95 3.65-1.1 8.15-.55 11.25 1.35.3.15.45.65.2 1zm-1.2 2.75c-.2.3-.55.4-.85.2-2.35-1.45-5.3-1.75-8.8-.95-.35.1-.65-.15-.75-.45-.1-.35.15-.65.45-.75 3.8-.85 7.1-.5 9.7 1.1.35.15.4.55.25.85z" fill="#1DB954"/></svg>Spotify</div>
+        <div class="ch ch-roku">&#9654; ROKU</div>
+        <div class="ch ch-more" style="font-size:10px;text-align:center;line-height:1.3">+5,000<br>More Networks</div>
+      </div>
+      <div class="channels-sub">We deliver <strong>1000's of targeted impressions per month</strong> — reaching your geo-fenced audience wherever they go online, day or night.</div>
+    </div>
+  </div>
+</div>
+
+<section id="pricing">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="label">Packages &amp; Pricing</p>
+      <h2>Simple, Transparent Pricing for Cannabis Businesses</h2>
+      <p>Every package includes full campaign setup, ad creative production, geo-fence zone management, and a detailed monthly performance report. No hidden fees.</p>
+    </div>
+    <div class="pricing-grid">
+
+      <div class="price-card fade-up">
+        <span class="price-tagline">⭐ Veteran Outreach</span>
+        <h3>VFW / Legion Starter</h3>
+        <p>Target the 5 closest American Legion &amp; VFW posts. 21+ verified, cannabis-compliant veteran audience.</p>
+        <div class="price-main-row"><span class="price-currency">$</span><span class="price-amount">1,399</span></div>
+        <div class="price-period">per year · 1,000 impressions/mo</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>5 closest VFW / Legion posts fenced</li>
+          <li>1,000 impressions/mo</li>
+          <li>Mobile banner creative included</li>
+          <li>Campaign setup &amp; zone management</li>
+          <li>Impressions, clicks &amp; CTR reporting</li>
+          <li>Home Town Hero Partners program</li>
+          <li>Annual performance report</li>
+        </ul>
+        <a href="https://complete360.org/dispensary-checkout" class="btn btn-outline" style="color:var(--green);border-color:var(--border)">Get Started</a>
+      </div>
+
+      <div class="price-card featured fade-up">
+        <span class="price-badge">Most Popular</span>
+        <span class="price-tagline">📱 Local Market Growth</span>
+        <h3>200k Impressions</h3>
+        <p>Maximum monthly reach for a single-location shop ready to dominate their local market and out-advertise competitors.</p>
+        <div class="price-main-row"><span class="price-currency">$</span><span class="price-amount">5,000</span></div>
+        <div class="price-period">annually · or $416.66/mo month-to-month</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>200,000 impressions </li>
+          <li>Mobile banner ads</li>
+          <li>Competitor geo-fencing zones</li>
+          <li>Full creative production included</li>
+          <li>Cannabis-compliant networks only</li>
+          <li>Impressions, clicks &amp; CTR reporting</li>
+          <li>Monthly performance report</li>
+        </ul>
+        <a href="https://complete360.org/dispensary-checkout" class="btn btn-primary">Get Started</a>
+      </div>
+
+      <div class="price-card fade-up">
+        <span class="price-tagline">📱 Multi-Location</span>
+        <h3>400k Impressions</h3>
+        <p>Ideal for dispensaries with 2–3 locations or a larger single-location market needing broader coverage and multi-format reach.</p>
+        <div class="price-main-row"><span class="price-currency">$</span><span class="price-amount">10,000</span></div>
+        <div class="price-period">annually · or $833.33/mo month-to-month</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>400,000 impressions</li>
+          <li>Mobile banner ads</li>
+          <li>Multi-location geo-fence zones</li>
+          <li>Full creative production included</li>
+          <li>Competitor &amp; event targeting</li>
+          <li>Impressions, clicks &amp; CTR reporting</li>
+          <li>Monthly performance report</li>
+          <li>Dedicated account support</li>
+        </ul>
+        <a href="https://complete360.org/dispensary-checkout" class="btn btn-navy">Get Started</a>
+      </div>
+
+      <div class="price-card fade-up">
+        <span class="price-badge gold">Best Value</span>
+        <span class="price-tagline">🏆 Market Domination</span>
+        <h3>600k Impressions</h3>
+        <p>For chains and high-volume dispensaries that want to own their entire regional market across every screen and platform.</p>
+        <div class="price-main-row"><span class="price-currency">$</span><span class="price-amount">15,000</span></div>
+        <div class="price-period">annually · or $1,250/mo month-to-month</div>
+        <div class="price-divider"></div>
+        <ul class="price-features">
+          <li>600,000 impressions</li>
+          <li>Mobile banner ads</li>
+          <li>Unlimited geo-fence zones</li>
+          <li>Full creative production &amp; refresh</li>
+          <li>Competitor &amp; weather targeting</li>
+          <li>Impressions, clicks &amp; CTR reporting</li>
+          <li>Monthly performance report</li>
+          <li>Priority support &amp; strategy calls</li>
+        </ul>
+        <a href="https://complete360.org/dispensary-checkout" class="btn btn-navy">Get Started</a>
+      </div>
+
+    </div>
+    <p class="price-note">Not sure which package fits? <a href="#contact" style="color:var(--green);font-weight:600">Schedule a free strategy call</a> — Emily will build a custom recommendation based on your market and goals.</p>
+  </div>
+</section>
+
+<section id="pitch-angle">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="label">Our Approach</p>
+      <h2>We've Run This Playbook Before</h2>
+      <p>Emily and the Complete360 team have a battle-tested process for launching cannabis geo-fencing campaigns — from signed agreement to live ads in less than a week.</p>
+    </div>
+    <div class="pitch-grid">
+      <div class="pitch-blocks fade-up">
+        <div class="pitch-block"><div class="pitch-block-header"><div class="pitch-block-icon">🚫</div><h4>No Google. No Meta. No Headaches.</h4></div><p>Our platform runs through thousands of premium app networks and CTV publishers — none of which carry the cannabis restrictions that make Google and Meta unreliable. Your ads don't disappear overnight.</p></div>
+        <div class="pitch-block"><div class="pitch-block-header"><div class="pitch-block-icon">🎨</div><h4>We Handle All Creative Production</h4></div><p>Send us your logo, brand colors, and a brief. Our in-house design team builds every mobile banner, display ad, and CTV video creative to spec — and nothing goes live without your approval. No extra fees.</p></div>
+        <div class="pitch-block"><div class="pitch-block-header"><div class="pitch-block-icon">📍</div><h4>Target Competitors, Events &amp; High-Traffic Zones</h4></div><p>We can draw a geo-fence around a competitor's parking lot and serve your ads to everyone who walks in. Events, concerts, dispensary expos — you pick the zones, we execute.</p></div>
+        <div class="pitch-block"><div class="pitch-block-header"><div class="pitch-block-icon">📊</div><h4>Clear Monthly Reporting You'll Actually Understand</h4></div><p>Every campaign includes a detailed monthly report showing impressions, clicks, and click-through rate. You'll know exactly what your spend is doing — clear numbers, plainly explained, every month.</p></div>
+      </div>
+      <div class="emily-card fade-up">
+        <div class="emily-badge">🌿 Your Cannabis Campaign Specialist</div>
+        <h3>Emily Ross</h3>
+        <p>Emily leads all cannabis and dispensary campaigns at Complete360. She works directly with dispensary owners to build geo-fencing strategy, manage creative approvals, and ensure every campaign launches clean and compliant.</p>
+        <div class="emily-divider"></div>
+        <ul class="emily-check-list">
+          <li><span class="check">✓</span> Responds within 1 business day</li>
+          <li><span class="check">✓</span> Custom zone map provided before payment</li>
+          <li><span class="check">✓</span> Full creative production managed end-to-end</li>
+          <li><span class="check">✓</span> Veteran outreach campaigns are her specialty</li>
+          <li><span class="check">✓</span> Works with single locations and multi-location chains</li>
+        </ul>
+        <div class="emily-divider"></div>
+        <p>When you fill out the form on this page, your inquiry goes directly to Emily.</p>
+        <div class="emily-stat-row">
+          <div class="emily-stat"><div class="es-num">5–7</div><div class="es-lbl">Days from signup to live campaign</div></div>
+          <div class="emily-stat"><div class="es-num">8k+</div><div class="es-lbl">Potential placements</div></div>
+        </div>
+        <a href="#contact" class="btn btn-primary" style="margin-top:4px">Talk to Emily →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="veteran">
+  <div class="container">
+    <div class="veteran-inner">
+      <div class="veteran-header fade-up">
+        <div class="veteran-eyebrow"><span>🤝 Community Support Program</span></div>
+        <h2>Partner With the Veteran Community</h2>
+        <p>When you run a VFW &amp; American Legion targeting campaign, your advertising also supports a cause. Through our sister initiative <strong style="color:var(--gold)">Home Town Hero Partners</strong>, a portion of campaign proceeds directly funds veteran resources at the very posts your ads target.</p>
+      </div>
+      <div class="veteran-layout">
+        <div class="veteran-left fade-up">
+          <div class="veteran-card"><div class="veteran-card-icon">🏛️</div><div><h4>American Legion &amp; VFW Post Targeting</h4><p>We geo-fence actual post locations. Everyone who enters must be 21+ — making every impression naturally age-appropriate and cannabis-compliant with no extra verification needed.</p></div></div>
+          <div class="veteran-card"><div class="veteran-card-icon">🌿</div><div><h4>Veterans &amp; Cannabis — A Growing Conversation</h4><p>Many veterans are exploring cannabis as a healthy alternative to opioids for PTSD and chronic pain. This campaign connects your shop with an audience that has genuine, health-driven interest.</p></div></div>
+          <div class="veteran-card"><div class="veteran-card-icon">❤️</div><div><h4>Your Ad Supports Veteran Resources</h4><p>Proceeds help fund mobility vans, the Heroes Helpline, suicide prevention services, and PTSD treatment programs at partner posts across the country — giving your ad spend a second purpose.</p></div></div>
+          <div class="veteran-card"><div class="veteran-card-icon">🛡️</div><div><h4>Become a Veteran-Approved Dispensary</h4><p>Being featured in this program positions your shop as a community partner, not just an advertiser. Participating dispensaries can reference the Home Town Hero Partners relationship in their own marketing.</p></div></div>
+        </div>
+        <div class="veteran-right fade-up">
+          <div class="hth-logo-wrap">
+            <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a09613ddbe569a25d92958d.png" alt="Home Town Hero Partners" />
+            <div class="hth-logo-desc">Home Town Hero Partners is an initiative dedicated to bringing education, awareness, and resources to American veterans — at the posts where they already gather.</div>
+          </div>
+          <div class="veteran-cta-card">
+            <h4>Become a Veteran-Approved Dispensary</h4>
+            <p>Ask Emily about the Veteran Outreach Starter — $1,399 for a full year, targeting the 5 closest veteran posts to your location.</p>
+            <a href="#contact" class="btn btn-navy" style="width:100%;justify-content:center;border-radius:50px">Get My Veteran Quote →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="testimonials">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="label">Client Reviews</p>
+      <h2>What Local Business Owners Say About Us</h2>
+      <p>Real reviews from real clients. We've earned 144+ five-star reviews on Google by treating every campaign — cannabis or otherwise — with the same care, transparency, and results focus.</p>
+    </div>
+    <div class="reviews-wrapper fade-up">
+      <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
+      <iframe class='lc_reviews_widget' src='https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u' frameborder='0' scrolling='no' style='min-width:100%;width:100%;'></iframe>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-inner">
+      <div class="contact-left fade-up">
+        <p class="label" style="color:#3dd870">Get Started</p>
+        <h2 style="color:#fff">Ready to Fill Your Store With <em style="color:#3dd870">New Customers?</em></h2>
+        <p>Fill out the form and Emily will reach out within 1 business day to learn about your shop, your market, and build a custom geo-fencing recommendation — no obligation, no pressure.</p>
+        <ul class="contact-trust-list">
+          <li><span class="check">✓</span> No Google or Meta account required</li>
+          <li><span class="check">✓</span> Cannabis-compliant ad channels only</li>
+          <li><span class="check">✓</span> Full creative production included</li>
+          <li><span class="check">✓</span> Live in 5–7 business days</li>
+          <li><span class="check">✓</span> Google Partner Agency · 144+ Five-Star Reviews</li>
+          <li><span class="check">✓</span> Mon–Thu 7am–4pm · Fri 7am–1pm MST</li>
+        </ul>
+      </div>
+      <div class="form-box fade-up">
+        <div class="form-intro">
+          <span class="form-eyebrow">🌿 Talk to Emily</span>
+          <h3 class="form-heading">Get Your Custom Campaign Quote</h3>
+          <p class="form-sub">Tell us about your shop — we'll respond within 1 business day with a personalized strategy.</p>
+        </div>
+        <iframe
+          src="https://link.complete360.org/widget/form/TflcSuFkQG0WCIwftZA7"
+          style="width:100%;min-height:560px;border:none;border-radius:8px;display:block"
+          id="inline-TflcSuFkQG0WCIwftZA7"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Complete360 <> Dispensary Page (Emily Ross)"
+          data-height="479"
+          data-layout-iframe-id="inline-TflcSuFkQG0WCIwftZA7"
+          data-form-id="TflcSuFkQG0WCIwftZA7"
+          title="Complete360 <> Dispensary Page (Emily Ross)">
+        </iframe>
+        <div class="form-foot">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:13px;height:13px;flex-shrink:0"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          <span>Your info stays private. We never share or sell data.</span>
+        </div>
+        <script src="https://link.complete360.org/js/form_embed.js"></script>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <div class="section-header fade-up">
+      <p class="label">FAQ</p>
+      <h2>Frequently Asked Questions</h2>
+      <p>Common questions from dispensary owners before launching a geo-fencing campaign.</p>
+    </div>
+    <div class="faq-grid">
+      <div class="faq-item"><div class="faq-q" onclick="cFaq(this)">Is geo-fencing advertising legal for cannabis businesses?<span class="faq-icon">+</span></div><div class="faq-a"><p>Yes. Geo-fencing runs through app networks and CTV publishers that allow cannabis advertising — unlike Google and Meta which have platform-level bans. All campaigns are designed to align with applicable state advertising regulations. We recommend verifying your state's rules before launch, and our team can help guide that conversation.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="cFaq(this)">How does geo-fencing reach a 21+ audience without cookies or age verification?<span class="faq-icon">+</span></div><div class="faq-a"><p>By targeting real-world locations where 21+ attendance is guaranteed — American Legion and VFW posts, dispensary proximity zones, and licensed event venues. Age is inferred by physical location, which is a legally accepted method in the geo-fencing industry and avoids data privacy issues tied to behavioral targeting.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="cFaq(this)">What creative is included in my package?<span class="faq-icon">+</span></div><div class="faq-a"><p>Our in-house design team builds all ad formats: mobile banners (300×250, 320×50, 728×90), CTV video creatives (15s or 30s), and desktop display. We work from your logo, brand colors, photos, and a quick brief. Nothing goes live without your explicit approval — no extra design fees.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="cFaq(this)">Can I target a competitor's dispensary?<span class="faq-icon">+</span></div><div class="faq-a"><p>Absolutely — this is one of the most powerful geo-fencing strategies. We draw a precise boundary around a competitor's location and serve your ads to anyone who walks in there. Completely legal, highly targeted, and one of the highest-ROI tactics available for local dispensary marketing.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="cFaq(this)">What is the Veteran Outreach Starter package?<span class="faq-icon">+</span></div><div class="faq-a"><p>The $1,399/year Veteran Outreach Starter targets the 5 closest American Legion and VFW posts to your shop at 1,000 impressions/mo. A portion of proceeds funds veteran resources through our Home Town Hero Partners initiative. It can be run standalone or stacked with a broader impressions package.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="cFaq(this)">Can I run mobile and CTV in the same campaign?<span class="faq-icon">+</span></div><div class="faq-a"><p>Yes. Our 200k+ packages include both mobile banner and CTV video placements. Mobile reaches your audience on their phones throughout the day. CTV hits them on the big screen during prime evening hours. Together they create a multi-touch presence that dramatically improves brand recall and conversion.</p></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="cFaq(this)">How long does it take to launch?<span class="faq-icon">+</span></div><div class="faq-a"><p>Most campaigns go live within 5–7 business days of onboarding. That includes geo-fence setup, creative production, your approval review, and campaign activation. Emily manages the entire process — no need to coordinate with multiple vendors or platforms.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+  const LABELS = [
+    '📱 Mobile In-App Ad — Weather Channel · 21+ Targeted',
+    '📺 Streaming TV — Hulu, Roku &amp; CTV at Home'
+  ];
+  const slides = document.querySelectorAll('.ad-slide');
+  const dots   = document.querySelectorAll('.rot-dot');
+  const lbl    = document.getElementById('rotLabel');
+  let cur = 0, autoT = null;
+  function rotUpdate() {
+    const n = slides.length;
+    slides.forEach((s, i) => { s.classList.remove('rot-active','rot-prev','rot-next'); if (i === cur) s.classList.add('rot-active'); else if (n > 2 && i === (cur - 1 + n) % n) s.classList.add('rot-prev'); else if (n > 2 && i === (cur + 1) % n) s.classList.add('rot-next'); });
+    dots.forEach((d, i) => d.classList.toggle('active', i === cur));
+    if (lbl) lbl.innerHTML = LABELS[cur];
+  }
+  window.rotGo   = i => { cur = i; rotUpdate(); reset(); };
+  window.rotNext = () => { cur = (cur + 1) % slides.length; rotUpdate(); reset(); };
+  window.rotPrev = () => { cur = (cur - 1 + slides.length) % slides.length; rotUpdate(); reset(); };
+  function reset() { clearInterval(autoT); autoT = setInterval(rotNext, 4200); }
+  rotUpdate();
+  autoT = setInterval(rotNext, 4200);
+  const stage = document.getElementById('rotStage');
+  if (stage) { let sx = 0; stage.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, { passive: true }); stage.addEventListener('touchend', e => { const dx = e.changedTouches[0].clientX - sx; if (Math.abs(dx) > 40) dx < 0 ? rotNext() : rotPrev(); }); }
+  const io = new IntersectionObserver(entries => { entries.forEach(entry => { if (!entry.isIntersecting) return; const el = entry.target; const idx = Array.from(el.parentElement.children).indexOf(el); setTimeout(() => el.classList.add('visible'), 80 * idx); io.unobserve(el); }); }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => io.observe(el));
+  window.cFaq = el => { const item = el.parentElement; const was = item.classList.contains('open'); document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open')); if (!was) item.classList.add('open'); };
+})();
+</script>
+<!-- END CANNABIS GEO-FENCING PAGE v2 -->
