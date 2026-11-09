@@ -1,0 +1,678 @@
+<!-- ============================================================
+     COMPLETE360 FOOTER — v1.6
+     Paste in GHL global FOOTER code field (not header).
+     All styles prefixed with c360f- to avoid collisions.
+
+     v1.5 — PERFORMANCE ONLY. No content, no links, no copy, no layout
+     changed. Pairs with Header v2.0.
+     ─────────────────────────────────────────────────────────────
+     1. SOCIAL / APP ICONS ARE NOW INLINE SVG, AND THAT DROPS A WHOLE FONT.
+        This footer held the only six fa-brands icons on the site outside the
+        homepage mockups: facebook-f, instagram, x-twitter, google, apple,
+        google-play. Six small icons were pulling fa-brands-400.woff2 — a
+        separate ~100KB webfont, on top of fa-solid — on EVERY page, because
+        the footer is site-wide. They are now inline SVG using currentColor,
+        so every existing hover state still works and the font request is
+        gone from every page except the homepage.
+        ** FOLLOW-UP: the homepage mockups still use fa-brands (google,
+           facebook-f, instagram) as source labels inside the lead-feed and
+           CRM cards. Inline those six and fa-brands leaves the site entirely.
+     2. Partner badge img gets loading="lazy" + decoding="async". It sits at
+        the bottom of a site-wide footer, so it is below the fold on
+        essentially every page. Sizing is untouched — still height + width:auto
+        in CSS, never both, per the badge rules.
+     3. No other change. This footer was already clean: no stylesheets, no
+        iframes, no third-party scripts, no animations, one 4-line script that
+        writes the copyright year.
+
+     ⚠️ COMPLIANCE UNTOUCHED: the official gstatic snippet, the link to
+     profile id=9636024453, the badge height/clear-space pair (88px/44px) and
+     the SEO disclaimer beneath it are all exactly as they were in v1.4.
+     ⚠️ Eyeball the six icons after pasting — they are hand-traced SVG paths,
+     so a wrong glyph would be visible immediately.
+
+     v1.4:
+     - Google PPC & Meta Ads: "Soon" pills removed (pages are live).
+     - Google Partner badge switched back to the OFFICIAL Google snippet
+       (gstatic SVG) — the SAME asset as the hero, and the only form Google
+       allows on a website. This REVERSES the v1.3 marketing-.jpg deviation;
+       the site is compliant again. The .jpg is preserved (commented) to revert.
+     - Badge no longer clipped by border-radius/overflow (the official badge
+       has its own card); drop-shadow added to lift it off the navy, matching
+       the hero treatment.
+
+     v1.3.2: badge 76px -> 88px. Clear space now tracks the height via
+     --c360f-badge-clear. Also removed a -28px negative margin on the SEO note
+     that was pulling it into the badge's required clear space.
+
+     v1.3.1: defensive border/outline resets on the badge (GHL injects a
+     global img border + link outline on some themes). If a border still
+     shows, it's part of Google's badge artwork, not our CSS.
+
+     v1.3: Google Partner badge switched to the marketing .jpg asset on
+     visual-quality grounds. REVERTED in v1.4 (see above) — kept in history
+     so the tradeoff stays documented.
+
+     v1.2.1: badge sizing fix — removed the redundant white chip (the badge
+     ships with its own background, so v1.2 double-framed it) and raised it
+     42px -> 76px, where the text inside the badge is actually legible.
+
+     Changes from v1.1:
+     - Google Partner badge: hand-built imitation REPLACED with Google's
+       official HTML snippet. See the compliance note in the CSS — the
+       previous version breached the Partners badge guidelines, and the
+       downloadable .jpg asset must not be used on the site either.
+     - SEO disclaimer added under the badge (required because we advertise
+       Local SEO Booster and this footer is site-wide).
+     - Marketing Services column: AI Agents added (New)
+
+     Changes from v1.0:
+     - Marketing Services column: ProCard added (below Website Pricing)
+     - CRM Platform column: CRM Home link added at top of list
+     ============================================================ -->
+ 
+     <style>
+      /* ---------- Footer brand tokens ---------- */
+      .c360f-footer {
+        --c360f-blue: #122078;
+        --c360f-blue-mid: #1a2e99;
+        --c360f-blue-light: #1e3ab8;
+        --c360f-green: #127825;
+        --c360f-green-light: #1a9e32;
+        --c360f-green-faint: rgba(18, 120, 37, 0.15);
+        --c360f-white: #ffffff;
+        --c360f-white-70: rgba(255,255,255,0.7);
+        --c360f-white-40: rgba(255,255,255,0.4);
+        --c360f-white-10: rgba(255,255,255,0.08);
+        --c360f-border: rgba(255,255,255,0.1);
+        font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+      }
+      
+      /* ---------- Outer wrapper ---------- */
+      .c360f-footer {
+        background: var(--c360f-blue);
+        color: var(--c360f-white-70);
+        width: 100%;
+      }
+      
+      /* ---------- Main columns area ---------- */
+      .c360f-main {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 64px 32px 48px;
+        display: grid;
+        grid-template-columns: 280px 1fr 1fr 1fr 220px;
+        gap: 48px;
+      }
+      
+      /* ---------- Column 1 — Brand ---------- */
+      .c360f-brand {}
+      
+      .c360f-logo {
+        font-size: 24px;
+        font-weight: 700;
+        text-decoration: none;
+        letter-spacing: -0.3px;
+        display: inline-block;
+        margin-bottom: 14px;
+      }
+      .c360f-logo-complete { color: var(--c360f-white); }
+      .c360f-logo-360 { color: var(--c360f-green-light); }
+      
+      .c360f-tagline {
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--c360f-white-70);
+        margin: 0 0 20px;
+        max-width: 220px;
+      }
+      
+      /* Google reviews trust badge */
+      .c360f-reviews {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--c360f-white-10);
+        border: 1px solid var(--c360f-border);
+        border-radius: 8px;
+        padding: 10px 14px;
+        text-decoration: none;
+        margin-bottom: 20px;
+        transition: background 0.2s ease;
+      }
+      .c360f-reviews:hover { background: rgba(255,255,255,0.12); }
+      
+      .c360f-reviews-stars {
+        color: #FBBC04;
+        font-size: 13px;
+        letter-spacing: 1px;
+      }
+      .c360f-reviews-text {
+        font-size: 11px;
+        color: var(--c360f-white-70);
+        line-height: 1.3;
+      }
+      .c360f-reviews-text strong {
+        display: block;
+        color: var(--c360f-white);
+        font-size: 12px;
+        font-weight: 600;
+      }
+      
+      /* ---------- Google Partner badge ----------
+         Uses Google's OFFICIAL badge snippet (gstatic SVG) — the SAME asset
+         as the hero, and the ONLY form Google allows on a website. (v1.4
+         reverted the v1.3 marketing-.jpg deviation; we're compliant again.
+         The .jpg is preserved, commented, in the markup to revert — but the
+         .jpg is sanctioned for emails/decks/resumes only, never the site.)
+
+         Guidelines: support.google.com/google-ads/answer/9028798
+         What we honour:
+         - Links to our Partners profile (id=9636024453). Required for any
+           badge in online materials — do not strip this.
+         - Aspect ratio preserved (height set, width:auto — never both).
+         - Clear space >= 1/2 badge height (88px -> 44px). Tracks via
+           --c360f-badge-clear; if you resize, change both together:
+             76px -> 38px | 88px -> 44px | 100px -> 50px | 122px -> 61px
+         - Not recoloured, distorted, stretched, translated, or the most
+           prominent element (stays below the Complete360 logo).
+         - NOT clipped: the badge has its own bordered card, so there is no
+           border-radius/overflow here — that would crop Google's artwork.
+         - SEO disclaimer below (we sell Local SEO Booster; badge is site-wide).
+
+         REVERT-TO-.jpg NOTE: assets.cdn.filesafe.space rejects requests with
+         no referrer. Never add referrerpolicy="no-referrer" to that img.
+      */
+      .c360f-partner {
+        /* Clear space must be >= 1/2 this value on every side (Google rule).
+           If you change the height, change the margins to match. */
+        --c360f-badge-h: 88px;
+        --c360f-badge-clear: 44px;
+        display: inline-block;
+        line-height: 0;
+        margin: 6px 0 var(--c360f-badge-clear);
+        transition: transform 0.15s ease;
+      }
+      .c360f-partner:hover {
+        transform: translateY(-2px);
+      }
+      .c360f-partner img {
+        display: block;
+        height: var(--c360f-badge-h);
+        width: auto;              /* never set both — preserves aspect ratio */
+        /* Lift the badge off the navy — drop-shadow follows the badge's own
+           card shape (matches the hero treatment). */
+        filter: drop-shadow(0 10px 22px rgba(0, 0, 0, 0.30));
+        /* Defensive resets: GHL themes commonly ship a global img border and
+           a link outline. These strip anything the CMS injects. They do NOT
+           touch the badge artwork itself — if a border still shows after this,
+           it's drawn into Google's badge (it's a bordered card with a ↗ mark)
+           and can't be removed without altering it, which is prohibited. */
+        border: 0;
+        outline: none;
+        box-shadow: none;
+        max-width: none;          /* GHL sets img{max-width:100%} — that can
+                                     squash the badge and break aspect ratio */
+      }
+      .c360f-partner,
+      .c360f-partner:focus,
+      .c360f-partner:active {
+        border: 0;
+        outline: none;
+        text-decoration: none;
+        box-shadow: none;
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* Required because we advertise SEO (Local SEO Booster) and the badge is
+         site-wide via this footer. Google: the badge can't appear on materials
+         advertising SEO services "without a prominent notice saying such SEO
+         services aren't verified or endorsed by Google." */
+      .c360f-seo-note {
+        font-size: 10px;
+        line-height: 1.4;
+        color: var(--c360f-white-40);
+        /* No negative margin here. v1.3 pulled this up by -28px, which dragged
+           it inside the badge's required clear space (>= 1/2 badge height).
+           The badge's own margin-bottom provides the gap — leave it alone. */
+        margin: 0 0 22px;
+        max-width: 230px;
+      }
+      .c360f-new-pill {
+        font-size: 9px;
+        padding: 1px 6px;
+        border-radius: 6px;
+        background: var(--c360f-green);
+        color: #fff;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.2px;
+      }
+      
+      /* Social icons */
+      .c360f-socials {
+        display: flex;
+        gap: 10px;
+      }
+      .c360f-social {
+        width: 36px;
+        height: 36px;
+        border-radius: 8px;
+        background: var(--c360f-white-10);
+        border: 1px solid var(--c360f-border);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--c360f-white-70);
+        text-decoration: none;
+        font-size: 14px;
+        transition: background 0.15s ease, color 0.15s ease;
+      }
+      .c360f-social:hover {
+        background: var(--c360f-green-faint);
+        border-color: var(--c360f-green);
+        color: var(--c360f-white);
+      }
+      
+      /* ---------- Link columns (2-4) ---------- */
+      .c360f-col-title {
+        font-size: 12px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        color: var(--c360f-white);
+        margin: 0 0 18px;
+      }
+      
+      .c360f-links {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+      
+      .c360f-links a {
+        font-size: 13px;
+        color: var(--c360f-white-70);
+        text-decoration: none;
+        padding: 5px 0;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: color 0.15s ease;
+      }
+      .c360f-links a:hover { color: var(--c360f-white); }
+      .c360f-links a i {
+        font-size: 11px;
+        color: var(--c360f-white-40);
+        width: 14px;
+        text-align: center;
+        transition: color 0.15s ease;
+      }
+      .c360f-links a:hover i { color: var(--c360f-green-light); }
+      
+      .c360f-soon-pill {
+        font-size: 9px;
+        padding: 1px 6px;
+        border-radius: 6px;
+        background: rgba(136, 135, 128, 0.3);
+        color: rgba(255,255,255,0.5);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.2px;
+      }
+      
+      /* ---------- Column 5 — Contact & Apps ---------- */
+      .c360f-contact {}
+      
+      .c360f-phone {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--c360f-white);
+        font-size: 16px;
+        font-weight: 600;
+        text-decoration: none;
+        margin-bottom: 6px;
+        transition: color 0.15s ease;
+      }
+      .c360f-phone:hover { color: var(--c360f-green-light); }
+      .c360f-phone i { color: var(--c360f-green-light); font-size: 14px; }
+      
+      .c360f-phone-label {
+        font-size: 11px;
+        color: var(--c360f-white-40);
+        margin: 0 0 20px;
+      }
+      
+      .c360f-address {
+        font-size: 12px;
+        color: var(--c360f-white-70);
+        line-height: 1.6;
+        margin: 0 0 22px;
+      }
+      .c360f-address i {
+        color: var(--c360f-green-light);
+        font-size: 11px;
+        margin-right: 6px;
+      }
+      
+      .c360f-app-label {
+        font-size: 11px;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        color: var(--c360f-white-40);
+        margin: 0 0 10px;
+      }
+      
+      .c360f-app-buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .c360f-app-btn {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        background: var(--c360f-white-10);
+        border: 1px solid var(--c360f-border);
+        border-radius: 8px;
+        padding: 9px 14px;
+        text-decoration: none;
+        transition: background 0.15s ease, border-color 0.15s ease;
+      }
+      .c360f-app-btn:hover {
+        background: rgba(255,255,255,0.12);
+        border-color: rgba(255,255,255,0.2);
+      }
+      .c360f-app-btn i {
+        font-size: 18px;
+        color: var(--c360f-white);
+        flex-shrink: 0;
+      }
+      .c360f-app-btn-text {
+        display: flex;
+        flex-direction: column;
+      }
+      .c360f-app-btn-small {
+        font-size: 9px;
+        color: var(--c360f-white-40);
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        font-weight: 500;
+      }
+      .c360f-app-btn-name {
+        font-size: 13px;
+        color: var(--c360f-white);
+        font-weight: 600;
+        line-height: 1.2;
+      }
+      
+      /* ---------- Divider ---------- */
+      .c360f-divider {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 0 32px;
+        border: none;
+        border-top: 1px solid var(--c360f-border);
+      }
+      
+      /* ---------- Bottom bar ---------- */
+      .c360f-bottom {
+        max-width: 1320px;
+        margin: 0 auto;
+        padding: 22px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+      
+      .c360f-copyright {
+        font-size: 12px;
+        color: var(--c360f-white-40);
+      }
+      .c360f-copyright a {
+        color: var(--c360f-white-40);
+        text-decoration: none;
+      }
+      .c360f-copyright a:hover { color: var(--c360f-white-70); }
+      
+      .c360f-legal {
+        display: flex;
+        gap: 24px;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+      .c360f-legal a {
+        font-size: 12px;
+        color: var(--c360f-white-40);
+        text-decoration: none;
+        transition: color 0.15s ease;
+      }
+      .c360f-legal a:hover { color: var(--c360f-white-70); }
+      
+      /* ---------- Responsive ---------- */
+      @media (max-width: 1100px) {
+        .c360f-main {
+          grid-template-columns: 1fr 1fr 1fr;
+          gap: 40px;
+        }
+        .c360f-contact { grid-column: span 3; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+        .c360f-app-label, .c360f-app-buttons { grid-column: span 1; }
+      }
+      
+      @media (max-width: 768px) {
+        .c360f-main {
+          grid-template-columns: 1fr 1fr;
+          padding: 48px 20px 36px;
+          gap: 32px;
+        }
+        .c360f-brand { grid-column: span 2; }
+        .c360f-contact { grid-column: span 2; display: block; }
+        .c360f-app-buttons { flex-direction: row; }
+        .c360f-divider { padding: 0 20px; }
+        .c360f-bottom {
+          padding: 18px 20px;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 12px;
+        }
+        .c360f-legal { flex-wrap: wrap; gap: 16px; }
+      }
+      
+      @media (max-width: 480px) {
+        .c360f-main { grid-template-columns: 1fr; }
+        .c360f-brand { grid-column: span 1; }
+        .c360f-contact { grid-column: span 1; }
+        .c360f-app-buttons { flex-direction: column; }
+      }
+      
+      /* Force FA icons in footer */
+      .c360f-footer i.fa-solid {
+        font-family: "Font Awesome 6 Free" !important;
+        font-weight: 900 !important;
+      }
+      /* v1.5 — the fa-brands force rules are gone with the icons they styled.
+         See the SOCIAL / APP ICONS note at the top of this block. */
+
+      /* v1.5 — inline brand icons. currentColor means they inherit the link's
+         colour and every existing hover state with no extra rules. */
+      .c360f-ico { display: block; flex-shrink: 0; }
+      .c360f-app-btn .c360f-ico { color: var(--c360f-white); }
+      </style>
+      
+      <footer class="c360f-footer">
+        <div class="c360f-main">
+      
+          <!-- ===== COLUMN 1 — Brand ===== -->
+          <div class="c360f-brand">
+            <a href="/" class="c360f-logo">
+              <span class="c360f-logo-complete">Complete</span><span class="c360f-logo-360">360</span>
+            </a>
+            <p class="c360f-tagline">Tucson-based digital marketing agency helping local businesses grow with Google, paid ads, websites, and an all-in-one CRM.</p>
+      
+            <a href="https://maps.app.goo.gl/3zNANtaqrr1FJC1z6" target="_blank" rel="noopener" class="c360f-reviews">
+              <div>
+                <div class="c360f-reviews-stars">★★★★★</div>
+                <div style="font-size:10px; color:rgba(255,255,255,0.5); margin-top:1px;">Google Reviews</div>
+              </div>
+              <div class="c360f-reviews-text">
+                <strong>147 Reviews</strong>
+                5.0 rating on Google
+              </div>
+            </a>
+      
+            <!-- ACTIVE: Google's official badge snippet — SAME asset as the hero,
+                 and the only website-compliant form (§1). Resolves the earlier
+                 marketing-.jpg deviation. -->
+            <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360f-partner">
+              <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner" loading="lazy" decoding="async">
+            </a>
+
+            <!-- ALTERNATIVE (NOT website-compliant) — the marketing .jpg asset.
+                 Sanctioned for emails/decks/resumes only, never the site. Kept
+                 to revert if ever needed; swapping back re-introduces the
+                 Google Partners guideline breach.
+            <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360f-partner">
+              <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a5865c0524a3ec4c6ff76e5.jpg" alt="Google Partner">
+            </a>
+            -->
+            <p class="c360f-seo-note">SEO services are not verified or endorsed by Google.</p>
+      
+            <div class="c360f-socials">
+              <a href="https://www.facebook.com/complete360marketing" target="_blank" rel="noopener" class="c360f-social" aria-label="Facebook">
+                <svg class="c360f-ico" viewBox="0 0 320 512" width="15" height="15" aria-hidden="true" fill="currentColor"><path d="M80 299.3V512H196V299.3h86.5l18-97.8H196v-34.6c0-51.7 20.3-71.5 72.7-71.5c16.3 0 29.4 .4 37 1.2V9.9C283.3 6.3 251.9 0 210.9 0C127 0 80 47.4 80 145.7v55.8H14v97.8H80z"/></svg>
+              </a>
+              <a href="https://www.instagram.com/Complete360marketing/" target="_blank" rel="noopener" class="c360f-social" aria-label="Instagram">
+                <svg class="c360f-ico" viewBox="0 0 448 512" width="15" height="15" aria-hidden="true" fill="currentColor"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+              </a>
+              <a href="https://twitter.com/Complete360mktg" target="_blank" rel="noopener" class="c360f-social" aria-label="X (Twitter)">
+                <svg class="c360f-ico" viewBox="0 0 512 512" width="15" height="15" aria-hidden="true" fill="currentColor"><path d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"/></svg>
+              </a>
+              <a href="https://maps.app.goo.gl/3zNANtaqrr1FJC1z6" target="_blank" rel="noopener" class="c360f-social" aria-label="Google Business">
+                <svg class="c360f-ico" viewBox="0 0 488 512" width="15" height="15" aria-hidden="true" fill="currentColor"><path d="M488 261.8C488 403.3 391.1 504 248 504 110.8 504 0 393.2 0 256S110.8 8 248 8c66.8 0 123 24.5 166.3 64.9l-67.5 64.9C258.5 52.6 94.3 116.6 94.3 256c0 86.5 69.1 156.6 153.7 156.6 98.2 0 135-70.4 140.8-106.9H248v-85.3h236.1c2.3 12.7 3.9 24.9 3.9 41.4z"/></svg>
+              </a>
+            </div>
+          </div>
+      
+          <!-- ===== COLUMN 2 — Marketing Services ===== -->
+          <!-- v1.1: ProCard added after Website Pricing -->
+          <!-- v1.4: "Soon" removed from Google PPC & Meta Ads (pages are live) -->
+          <div>
+            <h4 class="c360f-col-title">Marketing Services</h4>
+            <ul class="c360f-links">
+              <li><a href="/gbp-management"><i class="fa-solid fa-location-dot"></i>GBP Management</a></li>
+              <li><a href="https://complete360.org/google-business-profile" target="_blank" rel="noopener"><i class="fa-solid fa-rocket"></i>GBP Setup</a></li>
+              <li><a href="/local-seo-booster"><i class="fa-solid fa-chart-line"></i>Local SEO Booster</a></li>
+              <li><a href="/reputation-management"><i class="fa-solid fa-star"></i>Reputation Management <span class="c360f-new-pill">New</span></a></li>
+              <li><a href="/local-service-ads"><i class="fa-solid fa-shield-halved"></i>Local Service Ads</a></li>
+              <li><a href="/geo-fencing"><i class="fa-solid fa-location-crosshairs"></i>Geo-Fencing Ads</a></li>
+              <li><a href="/google-ppc"><i class="fa-solid fa-bullseye"></i>Google PPC</a></li>
+              <li><a href="/meta-ads"><i class="fa-solid fa-bullhorn"></i>Meta Ads</a></li>
+              <li><a href="/websites-home"><i class="fa-solid fa-desktop"></i>Website Design</a></li>
+              <li><a href="/website-pricing"><i class="fa-solid fa-tag"></i>Website Pricing</a></li>
+              <li><a href="/procard"><i class="fa-solid fa-address-card"></i>ProCard</a></li>
+              <li><a href="/ai-agents"><i class="fa-solid fa-robot"></i>AI Agents <span class="c360f-new-pill">New</span></a></li>
+            </ul>
+          </div>
+      
+          <!-- ===== COLUMN 3 — CRM Platform ===== -->
+          <!-- v1.1: CRM Home link added at top -->
+          <div>
+            <h4 class="c360f-col-title">CRM Platform</h4>
+            <ul class="c360f-links">
+              <li><a href="/crm-home"><i class="fa-solid fa-grid-2"></i>Platform Overview</a></li>
+              <li><a href="{{ custom_values.sub_domain_url }}/capture"><i class="fa-solid fa-filter"></i>Capture</a></li>
+              <li><a href="{{ custom_values.sub_domain_url }}/capture#section--jUucpMd-O"><i class="fa-solid fa-hashtag"></i>Social Media Management</a></li>
+              <li><a href="{{ custom_values.sub_domain_url }}/chat-widget-feature-page"><i class="fa-solid fa-comments"></i>Website Chat Widget</a></li>
+              <li><a href="{{ custom_values.sub_domain_url }}/calendar-feature"><i class="fa-solid fa-calendar-check"></i>Online Booking</a></li>
+              <li><a href="{{ custom_values.sub_domain_url }}/nurture"><i class="fa-solid fa-seedling"></i>Nurture</a></li>
+              <li><a href="{{ custom_values.sub_domain_url }}/all-in-one-inbox-feature-page"><i class="fa-solid fa-inbox"></i>All In One Inbox</a></li>
+              <li><a href="{{ custom_values.sub_domain_url }}/close"><i class="fa-solid fa-handshake"></i>Close</a></li>
+              <li><a href="{{ custom_values.sub_domain_url }}/review-reputation-management-features-page"><i class="fa-solid fa-star"></i>Review & Reputation</a></li>
+              <li><a href="/pricing"><i class="fa-solid fa-layer-group"></i>CRM Pricing</a></li>
+            </ul>
+          </div>
+      
+          <!-- ===== COLUMN 4 — Company ===== -->
+          <div>
+            <h4 class="c360f-col-title">Company</h4>
+            <ul class="c360f-links">
+              <li><a href="/contact-us"><i class="fa-solid fa-envelope"></i>Contact Us</a></li>
+              <li><a href="/schedule-demo"><i class="fa-solid fa-calendar"></i>Schedule a Demo</a></li>
+              <li><a href="/faq"><i class="fa-solid fa-circle-question"></i>FAQ</a></li>
+              <li><a href="/farmers-insurance"><i class="fa-solid fa-shield"></i>Farmers Insurance Partners</a></li>
+              <li><a href="https://app.complete360.org" target="_blank" rel="noopener"><i class="fa-solid fa-right-to-bracket"></i>CRM Login</a></li>
+              <li><a href="https://portal.cmpusa.org/" target="_blank" rel="noopener"><i class="fa-solid fa-satellite-dish"></i>Geo Portal Login</a></li>
+              <li><a href="https://complete360.org/payments" target="_blank" rel="noopener"><i class="fa-solid fa-credit-card"></i>Payments</a></li>
+              <li><a href="/blog"><i class="fa-solid fa-newspaper"></i>Blog <span class="c360f-soon-pill">Soon</span></a></li>
+              <li><a href="/about"><i class="fa-solid fa-building"></i>About Us <span class="c360f-soon-pill">Soon</span></a></li>
+            </ul>
+          </div>
+      
+          <!-- ===== COLUMN 5 — Contact & Apps ===== -->
+          <div class="c360f-contact">
+            <a href="tel:+18665276205" class="c360f-phone">
+              <i class="fa-solid fa-phone"></i>
+              (866) 527-6205
+            </a>
+            <p class="c360f-phone-label">Mon–Thu 7am–4pm · Fri 7am–1pm MST</p>
+      
+            <address class="c360f-address" style="font-style:normal;">
+              <i class="fa-solid fa-location-dot"></i>
+              3444 N Country Club Rd. Ste 105<br>
+              &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Tucson, AZ 85716
+            </address>
+      
+            <p class="c360f-app-label">Manage on the go</p>
+            <div class="c360f-app-buttons">
+              <a href="https://apps.apple.com/us/app/lead-connector/id1564302502" target="_blank" rel="noopener" class="c360f-app-btn">
+                <svg class="c360f-ico" viewBox="0 0 384 512" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+                <div class="c360f-app-btn-text">
+                  <span class="c360f-app-btn-small">Download on the</span>
+                  <span class="c360f-app-btn-name">App Store</span>
+                </div>
+              </a>
+              <a href="https://play.google.com/store/apps/details?id=com.LeadConnector&hl=en_US&gl=US" target="_blank" rel="noopener" class="c360f-app-btn">
+                <svg class="c360f-ico" viewBox="0 0 512 512" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M325.3 234.3L104.6 13l280.8 161.2-60.1 60.1zM47 0C34 6.8 25.3 19.2 25.3 35.3v441.3c0 16.1 8.7 28.5 21.7 35.3l256.6-256L47 0zm425.2 225.6l-58.9-34.1-65.7 64.5 65.7 64.5 60.1-34.1c18-14.3 18-46.5-1.2-60.8zM104.6 499l280.8-161.2-60.1-60.1L104.6 499z"/></svg>
+                <div class="c360f-app-btn-text">
+                  <span class="c360f-app-btn-small">Get it on</span>
+                  <span class="c360f-app-btn-name">Google Play</span>
+                </div>
+              </a>
+            </div>
+          </div>
+      
+        </div>
+      
+        <hr class="c360f-divider">
+      
+        <div class="c360f-bottom">
+          <p class="c360f-copyright">
+            &copy; <span id="c360f-year"></span> Complete360. All rights reserved.
+            Tucson, Arizona.
+          </p>
+          <ul class="c360f-legal">
+            <li><a href="https://complete360.org/privacy-policy" target="_blank" rel="noopener">Privacy Policy</a></li>
+            <li><a href="https://complete360.org/tos" target="_blank" rel="noopener">Terms of Service</a></li>
+            <li><a href="https://complete360.org/return-policy">Return Policy</a></li>
+          </ul>
+        </div>
+      </footer>
+      
+      <script>
+        (function() {
+          var el = document.getElementById('c360f-year');
+          if (el) el.textContent = new Date().getFullYear();
+        })();
+      </script>
+      <!-- ============================================================
+           END COMPLETE360 FOOTER v1.5
+           ============================================================ -->
