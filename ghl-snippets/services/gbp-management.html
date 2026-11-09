@@ -1,9 +1,84 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Google Business Profile Management
-     c360-gbp-management-v1.0.html
+     c360-gbp-management-v1.3.2.html
      GHL: Paste into Custom Code block on /gbp-management page.
      Poppins + Font Awesome 6.5.1 loaded via global header.
+
+     v1.3.2 (rev. Jul 18 2026):
+     - HERO 3-pack: replaced the plain icon tiles with real-looking inline-SVG
+       brand marks — a green home-services emblem (#1 you), a steel "M"
+       lettermark (Midtown Comfort Co.), and an amber sun (Desert Air Systems).
+       All fictional placeholders.
+
+     v1.3.1 (rev. Jul 18 2026):
+     - HERO listing motion changed: the shine/shimmer sweep and the #1 glow are
+       replaced with an auto-hover — each of the three cards lifts + slides to
+       the side in turn (green-tinted for #1), cycling on a loop as if a cursor
+       were moving down the list. Panel no longer clips so the lift shadow shows.
+
+     v1.3 (rev. Jul 18 2026):
+     - HERO visual rebuilt as an animated local 3-pack (SERP): a map with three
+       ranked pins that drop in + a sonar pulse from #1, and three real-looking
+       GBP listing cards (you at #1, two competitors). Taller than the old
+       single-listing card, so the right column now matches the left. Stylized —
+       no Google wordmark or exact search chrome. Motion is disabled under
+       prefers-reduced-motion (falls back to a clean static 3-pack).
+       (Old .c360-gbp-listing-* / .c360-gbp-map-pin CSS is now unused but harmless.)
+     - REPORTING cadence changed monthly -> quarterly everywhere it's a deliverable
+       (included list, How-It-Works step, service card, pricing feature, FAQ) —
+       monthly is too short a window to show real ranking movement. Monthly
+       *management* (weekly posts etc.) is unchanged.
+
+     v1.2.2 (rev. Jul 18 2026):
+     - PRICING: replaced the GBP Setup add-on card with a Semi-Annual plan
+       ($1,915 / 6mo = $319/mo, save $479), placed in term order between
+       Quarterly and Annual. Clean ladder now $399 -> $359 -> $319 -> $279.
+       Setup ($399, free w/ Annual) moved back to the footnote + FAQ.
+       (The .c360-gbp-price-card--addon CSS is now unused but harmless.)
+
+     v1.2.1 (rev. Jul 18 2026):
+     - HERO badge enlarged 80px -> 104px; clear space -> 52px each side. The 4
+       credentials are now a single column spread over the badge's height so the
+       spacing between them fills it and the block lines up with the badge.
+
+     v1.2 (rev. Jul 18 2026):
+     - HERO badge enlarged 48px -> 80px; clear space + divider re-tuned to match;
+       4 credentials height-matched & vertically centred so they line up with it.
+       (Note: at 80px the badge exceeds the ~22px header wordmark — §1f prominence
+       is held by placement, below the CTAs, not the hero's focal point.)
+     - INTRO section flipped (checklist left / copy right on desktop) so it no
+       longer mirrors the audit widget above; copy still leads on mobile.
+     - COLOR: sand (#F1EFE8) pulled out of Process, Reviews, service cards &
+       the "included" grid; replaced with cool brand-blue washes / white so it
+       matches the rest of the site. Sand token retained for minor accents only.
+     - DEPTH: soft radial glows + vertical washes added to Intro, Process,
+       Services, Reviews and Audit sections.
+     - PRICING: now 4 cards — added GBP Setup ($399 one-time) as a dashed
+       add-on card. Annual price -> $3,352 (save $1,436). Grid 4->2->1 responsive.
+
+     v1.1 (rev. Jul 18 2026):
+     - HERO: added the OFFICIAL Google Partner badge (gstatic SVG) inside a
+       §5 credentials cluster. Dark-bg treatment per §1d — badge keeps its own
+       white card, drop-shadow to lift it, NO extra chip, height set + width:auto,
+       clear space >= 1/2 badge height. SEO disclaimer added beneath (page
+       advertises Local SEO Booster + now carries the badge -> §1g).
+     - BADGE COMPLIANCE: removed 3 imitations (Google-G icon next to the words
+       "Google Partner") in the hero micro-row, trust bar, and final CTA — these
+       breached §1c. Replaced with the real badge (hero) / neutral text claims.
+     - DATA FIX: review count 144 -> 147 (matches footer + §5). Six places.
+     - DATA FIX: hours "Mon–Fri 9am–5pm MST" -> "Mon–Thu 7am–4pm · Fri 7am–1pm
+       MST" (matches live footer v1.4).
+     - PRICING: monthly $349 -> $399; quarterly $949 -> $1,077; annual held at
+       $3,350 (30% off $399 ~= $279/mo). ** CONFIRM quarterly/annual figures. **
+     - A11y/polish: :focus-visible rings, prefers-reduced-motion respected,
+       minor hero + pricing refinements.
      ══════════════════════════════════════════════════════════════ -->
+
+<!-- These two lines let the block render standalone. The global header already
+     loads them, so they're a harmless no-op in GHL — remove if you prefer. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
 /* ══════════════════════════════════════════════════════
@@ -19,7 +94,11 @@
   --gbp-green-light: #EAF3DE;
   --gbp-blue-light:  #E6F1FB;
   --gbp-grey:        #888780;
-  --gbp-light-grey:  #F1EFE8;
+  --gbp-light-grey:  #F1EFE8;   /* sand — kept for small accents only now */
+  --gbp-tint:        #eef4fb;   /* soft brand-blue wash (replaces sand as section bg) */
+  --gbp-tint-soft:   #f6f9fd;   /* near-white cool tint */
+  --gbp-card:        #f7faff;   /* card surface on light sections */
+  --gbp-card-border: #e4eaf4;
   --gbp-text:        #0F1F5E;
   --gbp-text-muted:  #5F5E5A;
   --gbp-radius:      12px;
@@ -31,6 +110,24 @@
 
 .c360-gbp-section   { width: 100%; position: relative; }
 .c360-gbp-container { max-width: 1160px; margin: 0 auto; padding: 0 24px; }
+
+/* Accessibility floor — visible keyboard focus + reduced motion */
+.c360-gbp-section a:focus-visible,
+.c360-gbp-section button:focus-visible,
+.c360-gbp-section label:focus-visible,
+.c360-gbp-partner-badge:focus-visible {
+  outline: 2px solid #2ecc52;
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
 
 /* ── BUTTONS ── */
 .c360-gbp-btn-primary {
@@ -148,10 +245,11 @@
 }
 .c360-gbp-hero-actions {
   display: flex; align-items: center; gap: 14px;
-  flex-wrap: wrap; margin-bottom: 36px;
+  flex-wrap: wrap; margin-bottom: 30px;
 }
 .c360-gbp-hero-micro {
   display: flex; align-items: center; gap: 22px; flex-wrap: wrap;
+  margin-bottom: 30px;
 }
 .c360-gbp-micro-item {
   display: flex; align-items: center; gap: 7px;
@@ -159,6 +257,62 @@
   font-size: 13px; color: rgba(255,255,255,0.55); font-weight: 500;
 }
 .c360-gbp-micro-item i { color: #2ecc52; }
+
+/* ── Hero credentials cluster (official Google Partner badge + credentials) ──
+   §5 pattern: the badge is anchored to a column of text credentials so it
+   reads as ONE credential, not a lone box. §1d dark-bg rules apply below. */
+.c360-gbp-hero-creds {
+  display: flex; align-items: center; gap: 4px;
+  flex-wrap: wrap;
+  padding: 20px 0 0;
+  border-top: 1px solid rgba(255,255,255,0.1);
+}
+/* §1: official snippet only. Its clear space must be >= 1/2 badge height
+   (48px -> 24px). That gap is provided by the divider margin below — do not
+   pack anything into it. No border-radius/overflow wrapper (would clip the
+   badge's own card). No white chip (it ships its own white card). */
+.c360-gbp-partner-badge {
+  display: inline-block; line-height: 0; flex-shrink: 0;
+  margin: 0; padding: 0;
+  transition: transform 0.15s ease;
+  border: 0; outline: none; box-shadow: none; text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.c360-gbp-partner-badge:hover { transform: translateY(-2px); }
+.c360-gbp-partner-badge img {
+  display: block;
+  height: 104px;         /* set height only... (v1.2.1: 80 -> 104, per request) */
+  width: auto;           /* ...never both — preserves aspect ratio */
+  max-width: none;       /* guard against a global img{max-width:100%} */
+  /* Lift the badge off the navy. drop-shadow follows the badge's own card
+     shape — matches the footer/hero treatment, no second frame. */
+  filter: drop-shadow(0 14px 30px rgba(0,0,0,0.42));
+  border: 0; outline: none; box-shadow: none;
+}
+.c360-gbp-cred-divider {
+  width: 1px; align-self: stretch; min-height: 104px;   /* matches badge height */
+  background: rgba(255,255,255,0.14);
+  flex-shrink: 0;
+  margin: 0 52px;        /* >= 1/2 badge height (104 -> 52) of clear space each side */
+}
+/* Single column of 4, spread over the badge's height so the spacing between
+   items fills it and the block lines up with the badge. */
+.c360-gbp-cred-list {
+  display: flex; flex-direction: column; justify-content: space-between;
+  min-height: 104px; gap: 10px;
+}
+.c360-gbp-cred-item {
+  display: flex; align-items: center; gap: 10px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 14px; color: rgba(255,255,255,0.72); font-weight: 500;
+  line-height: 1.3; white-space: nowrap;
+}
+.c360-gbp-cred-item i { color: #2ecc52; font-size: 12px; width: 14px; text-align: center; flex-shrink: 0; }
+.c360-gbp-seo-note {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10.5px; color: rgba(255,255,255,0.4);
+  line-height: 1.4; margin: 14px 0 0; max-width: 360px;
+}
 
 /* Hero right — visual panel */
 .c360-gbp-hero-visual {
@@ -249,6 +403,144 @@
   font-size: 10px; color: rgba(255,255,255,0.45); font-weight: 500;
 }
 
+/* ══ Hero SERP — animated Google-style local 3-pack ══
+   Stylized representation (no Google wordmark/exact chrome). Motion is a
+   single orchestrated loop: pins drop -> sonar pulse from #1 -> each listing
+   shimmers in sequence while the #1 card breathes a green glow. */
+.c360-gbp-serp {
+  background: #fff; border-radius: 14px;
+  box-shadow: 0 22px 54px rgba(0,0,0,0.44);
+  border: 1px solid rgba(255,255,255,0.5);
+}
+.c360-gbp-serp-bar {
+  display: flex; align-items: center; gap: 10px;
+  padding: 11px 13px; background: #fff; border-bottom: 1px solid #eef0f4;
+  border-radius: 14px 14px 0 0;
+}
+.c360-gbp-serp-search {
+  flex: 1; display: flex; align-items: center; gap: 8px;
+  background: #f1f3f7; border-radius: 100px; padding: 8px 14px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif; font-size: 12px; color: #5f6b7a; font-weight: 500;
+}
+.c360-gbp-serp-search i { color: #9aa4b2; font-size: 12px; }
+.c360-gbp-serp-live {
+  display: flex; align-items: center; gap: 6px; flex-shrink: 0;
+  font-family: 'Poppins','Helvetica Neue',sans-serif; font-size: 10px; font-weight: 700;
+  letter-spacing: 0.06em; text-transform: uppercase; color: #127825;
+}
+.c360-gbp-serp-live::before {
+  content: ''; width: 7px; height: 7px; border-radius: 50%;
+  background: #1a9e32; animation: c360livedot 1.4s ease-in-out infinite;
+}
+.c360-gbp-serp-map {
+  position: relative; height: 128px; overflow: hidden;
+  background: linear-gradient(135deg, #e9efe6 0%, #dce7da 52%, #e3ece7 100%);
+}
+.c360-gbp-serp-map .road {
+  position: absolute; background: rgba(255,255,255,0.72); border-radius: 4px;
+}
+.c360-gbp-serp-map .road.r1 { top: 42%; left: -10%; width: 120%; height: 7px; transform: rotate(-8deg); }
+.c360-gbp-serp-map .road.r2 { top: -10%; left: 60%; width: 6px;  height: 120%; transform: rotate(11deg); }
+.c360-gbp-serp-map .road.r3 { top: 74%; left: -10%; width: 120%; height: 4px; transform: rotate(5deg); background: rgba(255,255,255,0.55); }
+.c360-gbp-serp-pin {
+  position: absolute; transform-origin: center bottom;
+  animation: c360pinDrop 0.7s cubic-bezier(.2,1.15,.3,1) both;
+}
+.c360-gbp-serp-pin b {
+  display: flex; align-items: center; justify-content: center;
+  width: 24px; height: 24px; border-radius: 50% 50% 50% 0; transform: rotate(-45deg);
+  color: #fff; box-shadow: 0 3px 9px rgba(0,0,0,0.32);
+}
+.c360-gbp-serp-pin b span {
+  transform: rotate(45deg);
+  font-family: 'Poppins','Helvetica Neue',sans-serif; font-size: 11px; font-weight: 700;
+}
+.c360-gbp-serp-pin.p1 { left: 45%; top: 26%; z-index: 3; }
+.c360-gbp-serp-pin.p1 b { width: 32px; height: 32px; background: #127825; }
+.c360-gbp-serp-pin.p1 b span { font-size: 13px; }
+.c360-gbp-serp-pin.p2 { left: 23%; top: 50%; animation-delay: 0.14s; }
+.c360-gbp-serp-pin.p2 b { background: #8b95a4; }
+.c360-gbp-serp-pin.p3 { left: 69%; top: 56%; animation-delay: 0.28s; }
+.c360-gbp-serp-pin.p3 b { background: #8b95a4; }
+.c360-gbp-serp-sonar {
+  position: absolute; left: 45%; top: 26%; width: 32px; height: 32px;
+  border-radius: 50%; border: 2px solid rgba(18,120,37,0.55);
+  animation: c360sonar 2.6s ease-out infinite;
+}
+.c360-gbp-serp-list { padding: 10px; display: flex; flex-direction: column; gap: 8px; background: #fff; border-radius: 0 0 14px 14px; }
+.c360-gbp-serp-card {
+  position: relative;
+  display: flex; align-items: center; gap: 11px;
+  padding: 10px 12px; border-radius: 10px;
+  border: 1px solid #eceef2; background: #fff;
+  /* auto-hover: each card lifts + slides to the side in turn, on a loop,
+     as if a cursor were moving down the list highlighting each one. */
+  animation: c360autohover 4.2s ease-in-out infinite;
+  will-change: transform;
+}
+.c360-gbp-serp-card:nth-child(2) { animation-delay: 1.4s; }
+.c360-gbp-serp-card:nth-child(3) { animation-delay: 2.8s; }
+.c360-gbp-serp-card--top {
+  border-color: rgba(18,120,37,0.4);
+  background: linear-gradient(90deg, rgba(18,120,37,0.07), rgba(18,120,37,0.02));
+  animation-name: c360autohoverTop;   /* green-tinted lift; keeps delay 0 */
+}
+.c360-gbp-serp-thumb {
+  width: 40px; height: 40px; border-radius: 9px; flex-shrink: 0;
+  overflow: hidden; box-shadow: 0 2px 6px rgba(0,0,0,0.14);
+}
+.c360-gbp-serp-thumb svg { width: 40px; height: 40px; display: block; }
+.c360-gbp-serp-info { flex: 1; min-width: 0; }
+.c360-gbp-serp-name {
+  display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+  font-family: 'Poppins','Helvetica Neue',sans-serif; font-size: 13px; font-weight: 700; color: #1a2233; margin-bottom: 3px;
+}
+.c360-gbp-serp-rankbadge {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 9px; font-weight: 700; color: #127825; background: var(--gbp-green-light);
+  border-radius: 5px; padding: 1px 6px; letter-spacing: 0.04em;
+}
+.c360-gbp-serp-stars { display: flex; align-items: center; gap: 4px; margin-bottom: 3px; }
+.c360-gbp-serp-stars i { font-size: 10px; color: #f5a623; }
+.c360-gbp-serp-stars i.dim { color: #ccd1d9; }
+.c360-gbp-serp-card--top .c360-gbp-serp-stars i:not(.dim) { animation: c360twinkle 2.4s ease-in-out infinite; }
+.c360-gbp-serp-card--top .c360-gbp-serp-stars i:nth-child(2) { animation-delay: .15s; }
+.c360-gbp-serp-card--top .c360-gbp-serp-stars i:nth-child(3) { animation-delay: .3s; }
+.c360-gbp-serp-card--top .c360-gbp-serp-stars i:nth-child(4) { animation-delay: .45s; }
+.c360-gbp-serp-card--top .c360-gbp-serp-stars i:nth-child(5) { animation-delay: .6s; }
+.c360-gbp-serp-stars span {
+  font-family: 'Poppins','Helvetica Neue',sans-serif; font-size: 11px; color: #5f6b7a; font-weight: 600; margin-left: 2px;
+}
+.c360-gbp-serp-meta { font-family: 'Poppins','Helvetica Neue',sans-serif; font-size: 10.5px; color: #8a94a3; }
+.c360-gbp-serp-meta .open { color: #127825; font-weight: 600; }
+.c360-gbp-serp-chips { display: flex; gap: 5px; margin-top: 6px; }
+.c360-gbp-serp-chip {
+  display: flex; align-items: center; gap: 4px;
+  font-family: 'Poppins','Helvetica Neue',sans-serif; font-size: 9.5px; font-weight: 600; color: #3a4658;
+  border: 1px solid #e2e6ec; border-radius: 6px; padding: 3px 7px; white-space: nowrap;
+}
+.c360-gbp-serp-chip i { font-size: 9px; color: #127825; }
+
+@keyframes c360pinDrop {
+  0%   { transform: translateY(-26px) scale(0.5); opacity: 0; }
+  65%  { transform: translateY(2px)   scale(1);   opacity: 1; }
+  100% { transform: translateY(0)     scale(1);   opacity: 1; }
+}
+@keyframes c360sonar {
+  0%   { transform: scale(0.5); opacity: 0.55; }
+  100% { transform: scale(2.7); opacity: 0; }
+}
+@keyframes c360autohover {
+  0%, 28%, 100% { transform: translateX(0) translateY(0);    box-shadow: 0 2px 6px rgba(18,32,120,0.05); }
+  6%, 20%       { transform: translateX(8px) translateY(-3px); box-shadow: 0 11px 24px rgba(18,32,120,0.18); }
+}
+@keyframes c360autohoverTop {
+  0%, 28%, 100% { transform: translateX(0) translateY(0);    box-shadow: 0 2px 6px rgba(18,120,37,0.08); }
+  6%, 20%       { transform: translateX(8px) translateY(-3px); box-shadow: 0 13px 28px rgba(18,120,37,0.32); }
+}
+@keyframes c360twinkle { 0%,100% { opacity: 1; } 50% { opacity: 0.45; } }
+@keyframes c360livedot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.72); } }
+
 /* ══════════════════════════════════════════════════════
    TRUST BAR
    ══════════════════════════════════════════════════════ */
@@ -282,11 +574,20 @@
 /* ══════════════════════════════════════════════════════
    INTRO / WHAT WE DO
    ══════════════════════════════════════════════════════ */
-.c360-gbp-intro { padding: 88px 0; background: #fff; }
+.c360-gbp-intro {
+  padding: 88px 0;
+  /* depth: soft green glow top-right on a clean white base */
+  background:
+    radial-gradient(circle at 92% 4%, rgba(18,120,37,0.06) 0%, transparent 42%),
+    #ffffff;
+}
 .c360-gbp-intro-inner {
   display: grid; grid-template-columns: 1fr 1fr;
   gap: 72px; align-items: start;
 }
+/* v1.2: flip so the checklist sits LEFT and copy RIGHT on desktop — breaks the
+   mirror with the audit widget above. Reset on mobile so copy leads for reading. */
+.c360-gbp-intro-inner .c360-gbp-intro-copy { order: 2; }
 .c360-gbp-intro-copy h2 {
   font-family: 'Poppins','Helvetica Neue',sans-serif;
   font-size: clamp(24px,3.4vw,38px); font-weight: 800;
@@ -317,9 +618,10 @@
 /* What's included grid */
 .c360-gbp-included-grid {
   display: flex; flex-direction: column; gap: 0;
-  background: var(--gbp-light-grey);
-  border: 1.5px solid #dddbd4; border-radius: var(--gbp-radius);
+  background: var(--gbp-card);
+  border: 1.5px solid var(--gbp-card-border); border-radius: var(--gbp-radius);
   overflow: hidden;
+  box-shadow: var(--gbp-shadow);
 }
 .c360-gbp-included-header {
   background: var(--gbp-navy); padding: 14px 20px;
@@ -333,7 +635,7 @@
 .c360-gbp-included-header i { color: #2ecc52; }
 .c360-gbp-included-item {
   display: flex; align-items: flex-start; gap: 12px;
-  padding: 13px 20px; border-bottom: 1px solid #dddbd4;
+  padding: 13px 20px; border-bottom: 1px solid var(--gbp-card-border);
 }
 .c360-gbp-included-item:last-child { border-bottom: none; }
 .c360-gbp-included-item i {
@@ -517,7 +819,13 @@
 /* ══════════════════════════════════════════════════════
    HOW IT WORKS
    ══════════════════════════════════════════════════════ */
-.c360-gbp-process { padding: 88px 0; background: var(--gbp-light-grey); }
+.c360-gbp-process {
+  padding: 88px 0;
+  /* depth: navy glow bottom-left over a soft white -> blue vertical wash */
+  background:
+    radial-gradient(circle at 12% 88%, rgba(18,32,120,0.06) 0%, transparent 46%),
+    linear-gradient(180deg, var(--gbp-tint-soft) 0%, var(--gbp-tint) 100%);
+}
 .c360-gbp-process-steps {
   display: grid; grid-template-columns: repeat(5, 1fr);
   gap: 0; position: relative;
@@ -555,14 +863,19 @@
 /* ══════════════════════════════════════════════════════
    SERVICES DETAIL CARDS
    ══════════════════════════════════════════════════════ */
-.c360-gbp-services { padding: 88px 0; background: #fff; }
+.c360-gbp-services {
+  padding: 88px 0;
+  background:
+    radial-gradient(circle at 85% 12%, rgba(18,120,37,0.05) 0%, transparent 40%),
+    #ffffff;
+}
 .c360-gbp-services-grid {
   display: grid; grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 .c360-gbp-service-card {
-  background: var(--gbp-light-grey);
-  border: 1.5px solid #e5e3dc; border-radius: var(--gbp-radius-lg);
+  background: var(--gbp-card);
+  border: 1.5px solid var(--gbp-card-border); border-radius: var(--gbp-radius-lg);
   padding: 28px 24px;
   transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
@@ -604,31 +917,49 @@
 .c360-gbp-pricing .c360-gbp-section-header p  { color: rgba(255,255,255,0.6); }
 .c360-gbp-pricing .c360-gbp-overline           { color: #2ecc52; }
 .c360-gbp-price-cards {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 22px; position: relative; z-index: 2;
+  display: grid; grid-template-columns: repeat(4, 1fr);
+  gap: 18px; position: relative; z-index: 2;
+  align-items: stretch;
 }
 .c360-gbp-price-card {
   background: rgba(255,255,255,0.06);
   border: 1px solid rgba(255,255,255,0.12);
-  border-radius: var(--gbp-radius-lg); padding: 34px 28px;
-  position: relative; transition: background 0.22s, border-color 0.22s;
+  border-radius: var(--gbp-radius-lg); padding: 30px 24px;
+  position: relative; transition: background 0.22s, border-color 0.22s, transform 0.22s;
   display: flex; flex-direction: column;
+}
+/* One-time add-on card (GBP Setup) — visually set apart from the recurring
+   plans so it doesn't read as a competing subscription. */
+.c360-gbp-price-card--addon {
+  background: rgba(255,255,255,0.035);
+  border-style: dashed;
+  border-color: rgba(255,255,255,0.2);
+}
+.c360-gbp-addon-badge {
+  position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+  background: rgba(255,255,255,0.16); color: #fff;
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.08em;
+  text-transform: uppercase; padding: 5px 14px; border-radius: 100px;
+  white-space: nowrap; border: 1px solid rgba(255,255,255,0.22);
 }
 .c360-gbp-price-card:hover {
   background: rgba(255,255,255,0.1); border-color: rgba(255,255,255,0.22);
+  transform: translateY(-3px);
 }
 .c360-gbp-price-card--popular {
   background: rgba(255,255,255,0.1);
   border: 2px solid rgba(46,204,82,0.55);
   box-shadow: 0 0 0 4px rgba(46,204,82,0.08);
 }
+.c360-gbp-price-card--popular:hover { transform: translateY(-5px); }
 .c360-gbp-popular-badge {
   position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
   background: var(--gbp-green); color: #fff;
   font-family: 'Poppins','Helvetica Neue',sans-serif;
   font-size: 11px; font-weight: 700; letter-spacing: 0.07em;
   text-transform: uppercase; padding: 5px 16px; border-radius: 100px;
-  white-space: nowrap;
+  white-space: nowrap; display: inline-flex; align-items: center; gap: 6px;
 }
 .c360-gbp-plan-name {
   font-family: 'Poppins','Helvetica Neue',sans-serif;
@@ -638,7 +969,7 @@
 .c360-gbp-plan-tagline {
   font-family: 'Poppins','Helvetica Neue',sans-serif;
   font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 20px;
-  line-height: 1.4;
+  line-height: 1.4; min-height: 36px;
 }
 .c360-gbp-price-row {
   display: flex; align-items: flex-end; gap: 4px; margin-bottom: 6px;
@@ -650,13 +981,20 @@
 }
 .c360-gbp-price-num {
   font-family: 'Poppins','Helvetica Neue',sans-serif;
-  font-size: 52px; font-weight: 800; color: #fff; line-height: 1;
+  font-size: 46px; font-weight: 800; color: #fff; line-height: 1;
   letter-spacing: -0.03em;
 }
 .c360-gbp-price-period {
   font-family: 'Poppins','Helvetica Neue',sans-serif;
   font-size: 14px; color: rgba(255,255,255,0.4); padding-bottom: 10px;
 }
+/* Small "effective per-month" line under the headline price */
+.c360-gbp-price-effective {
+  font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 500;
+  margin-bottom: 10px;
+}
+.c360-gbp-price-effective.invisible { visibility: hidden; }
 .c360-gbp-price-save {
   display: inline-block;
   font-family: 'Poppins','Helvetica Neue',sans-serif;
@@ -722,7 +1060,10 @@
 /* ══════════════════════════════════════════════════════
    REVIEWS
    ══════════════════════════════════════════════════════ */
-.c360-gbp-reviews { padding: 88px 0; background: var(--gbp-light-grey); }
+.c360-gbp-reviews {
+  padding: 88px 0;
+  background: linear-gradient(180deg, var(--gbp-tint) 0%, #ffffff 100%);
+}
 
 /* ══════════════════════════════════════════════════════
    FAQ
@@ -808,7 +1149,9 @@
    ══════════════════════════════════════════════════════ */
 .c360-gbp-audit {
   padding: 80px 0;
-  background: var(--gbp-blue-light);
+  background:
+    radial-gradient(circle at 88% 90%, rgba(18,120,37,0.06) 0%, transparent 42%),
+    linear-gradient(180deg, #eaf3fc 0%, var(--gbp-blue-light) 100%);
   border-bottom: 1px solid #d0e6f7;
 }
 .c360-gbp-audit-inner {
@@ -852,7 +1195,7 @@
   .c360-gbp-ai-inner,
   .c360-gbp-audit-inner  { grid-template-columns: 1fr; gap: 40px; }
   .c360-gbp-hero-visual { display: none; }
-  .c360-gbp-price-cards { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+  .c360-gbp-price-cards { grid-template-columns: repeat(2, 1fr); max-width: 640px; margin: 0 auto; gap: 20px; }
   .c360-gbp-services-grid { grid-template-columns: repeat(2, 1fr); }
   .c360-gbp-process-steps { grid-template-columns: repeat(3, 1fr); }
   .c360-gbp-process-steps::before { display: none; }
@@ -871,6 +1214,14 @@
   .c360-gbp-trust-pill:last-child { border-bottom: none; }
   .c360-gbp-trust-pill:nth-last-child(2):nth-child(odd) { border-bottom: none; }
   .c360-gbp-section-header { margin-bottom: 40px; }
+  /* Credentials cluster stacks so the badge keeps its clear space */
+  .c360-gbp-hero-creds { flex-direction: column; align-items: flex-start; gap: 22px; }
+  .c360-gbp-cred-divider { display: none; }
+  .c360-gbp-cred-list { min-height: 0; justify-content: flex-start; gap: 12px; }
+  .c360-gbp-cred-item { white-space: normal; }
+  .c360-gbp-price-cards { grid-template-columns: 1fr; max-width: 420px; }
+  /* copy leads on mobile for readability (undo the desktop flip) */
+  .c360-gbp-intro-inner .c360-gbp-intro-copy { order: 0; }
 }
 @media (max-width: 540px) {
   .c360-gbp-hero h1      { font-size: 32px; }
@@ -915,44 +1266,152 @@
         </div>
         <div class="c360-gbp-hero-micro">
           <div class="c360-gbp-micro-item">
-            <i class="fa-brands fa-google"></i> Google Partner
-          </div>
-          <div class="c360-gbp-micro-item">
-            <i class="fa-solid fa-star"></i> 144+ Five-Star Reviews
+            <i class="fa-solid fa-star"></i> 147 Five-Star Reviews
           </div>
           <div class="c360-gbp-micro-item">
             <i class="fa-solid fa-robot"></i> AI Search Visibility Included
           </div>
+          <div class="c360-gbp-micro-item">
+            <i class="fa-solid fa-map-pin"></i> Tucson-Based &amp; Nationwide
+          </div>
         </div>
+
+        <!-- ===== Credentials cluster (§5) — official Google Partner badge =====
+             Badge = §1 official gstatic snippet, dark-bg treatment (§1d). It
+             sits among text credentials so it reads as ONE credential, not a
+             lone box. Do NOT wrap in a white chip or a border-radius/overflow
+             container (would double-frame / clip the badge's own card). SEO
+             disclaimer beneath because this page advertises Local SEO Booster
+             and now carries the badge (§1g). -->
+        <div class="c360-gbp-hero-creds">
+          <a href="https://www.google.com/partners/agency?id=9636024453"
+             target="_blank" rel="noopener"
+             class="c360-gbp-partner-badge"
+             aria-label="Google Partner — view our Google Partners profile">
+            <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg"
+                 alt="Google Partner">
+          </a>
+          <div class="c360-gbp-cred-divider"></div>
+          <div class="c360-gbp-cred-list">
+            <div class="c360-gbp-cred-item"><i class="fa-solid fa-user-check"></i> Google Product Expert</div>
+            <div class="c360-gbp-cred-item"><i class="fa-solid fa-star"></i> 147 five-star reviews</div>
+            <div class="c360-gbp-cred-item"><i class="fa-solid fa-calendar-check"></i> In business since 2018</div>
+            <div class="c360-gbp-cred-item"><i class="fa-solid fa-location-dot"></i> Tucson-based · nationwide</div>
+          </div>
+        </div>
+        <p class="c360-gbp-seo-note">SEO services are not verified or endorsed by Google.</p>
       </div>
 
-      <!-- RIGHT — GBP listing visual -->
+      <!-- RIGHT — animated local 3-pack (SERP) visual -->
       <div>
         <div class="c360-gbp-hero-visual">
-          <div class="c360-gbp-hero-visual-title">Your Profile — Optimized &amp; Managed</div>
-          <div class="c360-gbp-listing-card">
-            <div class="c360-gbp-listing-map">
-              <div class="c360-gbp-map-pin"></div>
+          <div class="c360-gbp-hero-visual-title">Live Local Results — Your Business at #1</div>
+
+          <div class="c360-gbp-serp">
+            <!-- results header -->
+            <div class="c360-gbp-serp-bar">
+              <div class="c360-gbp-serp-search"><i class="fa-solid fa-magnifying-glass"></i> hvac contractor near me</div>
+              <div class="c360-gbp-serp-live">Live</div>
             </div>
-            <div class="c360-gbp-listing-body">
-              <div class="c360-gbp-listing-name">Your Business Name</div>
-              <div class="c360-gbp-listing-stars">
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
-                <i class="fa-solid fa-star"></i>
-                <span>5.0 · 144 reviews</span>
+
+            <!-- map with the 3 ranked pins -->
+            <div class="c360-gbp-serp-map">
+              <span class="road r1"></span><span class="road r2"></span><span class="road r3"></span>
+              <div class="c360-gbp-serp-sonar"></div>
+              <div class="c360-gbp-serp-pin p2"><b><span>2</span></b></div>
+              <div class="c360-gbp-serp-pin p3"><b><span>3</span></b></div>
+              <div class="c360-gbp-serp-pin p1"><b><span>1</span></b></div>
+            </div>
+
+            <!-- the local 3-pack -->
+            <div class="c360-gbp-serp-list">
+
+              <!-- #1 — you -->
+              <div class="c360-gbp-serp-card c360-gbp-serp-card--top">
+                <div class="c360-gbp-serp-thumb">
+                  <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Your Business logo">
+                    <rect width="40" height="40" rx="9" fill="url(#c360lg1)"/>
+                    <polygon points="20,10 31.5,19 8.5,19" fill="#fff"/>
+                    <rect x="12.5" y="18" width="15" height="11.5" rx="1.2" fill="#fff"/>
+                    <rect x="17.8" y="22.5" width="4.4" height="7" rx="0.5" fill="#0e6b20"/>
+                    <defs><linearGradient id="c360lg1" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#1aa53a"/><stop offset="1" stop-color="#0d5e1c"/>
+                    </linearGradient></defs>
+                  </svg>
+                </div>
+                <div class="c360-gbp-serp-info">
+                  <div class="c360-gbp-serp-name">Your Business Name <span class="c360-gbp-serp-rankbadge">#1</span></div>
+                  <div class="c360-gbp-serp-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    <span>5.0 (147)</span>
+                  </div>
+                  <div class="c360-gbp-serp-meta">HVAC Contractor · <span class="open">Open now</span> · 0.4 mi</div>
+                  <div class="c360-gbp-serp-chips">
+                    <span class="c360-gbp-serp-chip"><i class="fa-solid fa-phone"></i>Call</span>
+                    <span class="c360-gbp-serp-chip"><i class="fa-solid fa-diamond-turn-right"></i>Directions</span>
+                    <span class="c360-gbp-serp-chip"><i class="fa-solid fa-globe"></i>Website</span>
+                  </div>
+                </div>
               </div>
-              <div class="c360-gbp-listing-tags">
-                <span class="c360-gbp-listing-tag">
-                  <i class="fa-solid fa-shield-halved" style="font-size:10px;"></i> Google Verified
-                </span>
-                <span class="c360-gbp-listing-tag blue">
-                  <i class="fa-solid fa-medal" style="font-size:10px;"></i> Top Local Business
-                </span>
+
+              <!-- #2 — competitor -->
+              <div class="c360-gbp-serp-card">
+                <div class="c360-gbp-serp-thumb">
+                  <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Midtown Comfort Co. logo">
+                    <rect width="40" height="40" rx="9" fill="url(#c360lg2)"/>
+                    <text x="19.5" y="27.5" text-anchor="middle" font-family="Poppins, Arial, sans-serif" font-size="20" font-weight="800" fill="#fff">M</text>
+                    <circle cx="29.5" cy="11.5" r="3.1" fill="#8ec7ff"/>
+                    <defs><linearGradient id="c360lg2" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#54627a"/><stop offset="1" stop-color="#2d3a52"/>
+                    </linearGradient></defs>
+                  </svg>
+                </div>
+                <div class="c360-gbp-serp-info">
+                  <div class="c360-gbp-serp-name" style="color:#5a6473;">Midtown Comfort Co.</div>
+                  <div class="c360-gbp-serp-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star dim"></i>
+                    <span>4.3 (62)</span>
+                  </div>
+                  <div class="c360-gbp-serp-meta">HVAC Contractor · <span class="open">Open now</span> · 1.2 mi</div>
+                </div>
               </div>
+
+              <!-- #3 — competitor -->
+              <div class="c360-gbp-serp-card">
+                <div class="c360-gbp-serp-thumb">
+                  <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Desert Air Systems logo">
+                    <rect width="40" height="40" rx="9" fill="url(#c360lg3)"/>
+                    <circle cx="20" cy="20" r="5.6" fill="#fff"/>
+                    <g stroke="#fff" stroke-width="2.1" stroke-linecap="round">
+                      <line x1="20" y1="7.5" x2="20" y2="10.8"/>
+                      <line x1="20" y1="29.2" x2="20" y2="32.5"/>
+                      <line x1="7.5" y1="20" x2="10.8" y2="20"/>
+                      <line x1="29.2" y1="20" x2="32.5" y2="20"/>
+                      <line x1="11.2" y1="11.2" x2="13.6" y2="13.6"/>
+                      <line x1="26.4" y1="26.4" x2="28.8" y2="28.8"/>
+                      <line x1="28.8" y1="11.2" x2="26.4" y2="13.6"/>
+                      <line x1="13.6" y1="26.4" x2="11.2" y2="28.8"/>
+                    </g>
+                    <defs><linearGradient id="c360lg3" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0" stop-color="#f0a23b"/><stop offset="1" stop-color="#d97722"/>
+                    </linearGradient></defs>
+                  </svg>
+                </div>
+                <div class="c360-gbp-serp-info">
+                  <div class="c360-gbp-serp-name" style="color:#5a6473;">Desert Air Systems</div>
+                  <div class="c360-gbp-serp-stars">
+                    <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star dim"></i><i class="fa-solid fa-star dim"></i>
+                    <span>3.9 (28)</span>
+                  </div>
+                  <div class="c360-gbp-serp-meta">HVAC Contractor · Closes 5 PM · 2.0 mi</div>
+                </div>
+              </div>
+
             </div>
           </div>
-          <div class="c360-gbp-stat-row">
+
+          <!-- live metrics strip -->
+          <div class="c360-gbp-stat-row" style="margin-top:16px;">
             <div class="c360-gbp-stat-pill">
               <span class="c360-gbp-stat-val">+340%</span>
               <span class="c360-gbp-stat-lbl">Map Views</span>
@@ -980,15 +1439,17 @@
 <div class="c360-gbp-trust-bar">
   <div class="c360-gbp-container">
     <div class="c360-gbp-trust-bar-inner">
+      <!-- Neutral check icon (not a Google-G / seal) so this stays a text
+           claim, not a badge imitation. The real badge lives in the hero. -->
       <div class="c360-gbp-trust-pill">
-        <div class="c360-gbp-trust-ico"><i class="fa-brands fa-google"></i></div>
+        <div class="c360-gbp-trust-ico"><i class="fa-solid fa-circle-check"></i></div>
         <div class="c360-gbp-trust-text">
           <strong>Google Partner Agency</strong>
           <span>Certified &amp; trained by Google</span>
         </div>
       </div>
       <div class="c360-gbp-trust-pill">
-        <div class="c360-gbp-trust-ico gold"><i class="fa-solid fa-medal"></i></div>
+        <div class="c360-gbp-trust-ico gold"><i class="fa-solid fa-user-tie"></i></div>
         <div class="c360-gbp-trust-text">
           <strong>Google Product Expert</strong>
           <span>On our team — not an outside vendor</span>
@@ -997,7 +1458,7 @@
       <div class="c360-gbp-trust-pill">
         <div class="c360-gbp-trust-ico green"><i class="fa-solid fa-star"></i></div>
         <div class="c360-gbp-trust-text">
-          <strong>144+ Five-Star Reviews</strong>
+          <strong>147+ Five-Star Reviews</strong>
           <span>Real results from real businesses</span>
         </div>
       </div>
@@ -1096,7 +1557,7 @@
           </div>
           <div class="c360-gbp-included-item">
             <i class="fa-solid fa-circle-check"></i>
-            <span>GBP Rank &amp; Local Recon Report<em>Monthly visibility tracking with real data</em></span>
+            <span>GBP Rank &amp; Local Recon Report<em>Quarterly visibility tracking with real data</em></span>
           </div>
           <div class="c360-gbp-included-item">
             <i class="fa-solid fa-circle-check"></i>
@@ -1127,7 +1588,7 @@
 
 
 <!-- ══════════════════════════════════════════════════════
-     SECTION 4 — AI SEARCH / LOCAL SEO BOOSTER
+     SECTION 5 — AI SEARCH / LOCAL SEO BOOSTER
      ══════════════════════════════════════════════════════ -->
 <section class="c360-gbp-section c360-gbp-ai-search">
   <div class="c360-gbp-container">
@@ -1217,7 +1678,7 @@
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                 <i class="fa-solid fa-star"></i>
-                <span>Your Business Name — 5.0 · 144 Reviews · Tucson, AZ</span>
+                <span>Your Business Name — 5.0 · 147 Reviews · Tucson, AZ</span>
               </div>
             </div>
           </div>
@@ -1267,7 +1728,7 @@
 
 
 <!-- ══════════════════════════════════════════════════════
-     SECTION 5 — HOW IT WORKS
+     SECTION 6 — HOW IT WORKS
      ══════════════════════════════════════════════════════ -->
 <section class="c360-gbp-section c360-gbp-process">
   <div class="c360-gbp-container">
@@ -1299,8 +1760,8 @@
       </div>
       <div class="c360-gbp-step">
         <div class="c360-gbp-step-num"><i class="fa-solid fa-chart-line"></i></div>
-        <div class="c360-gbp-step-label">Monthly Reporting</div>
-        <div class="c360-gbp-step-desc">See exactly how your profile is performing with a real report, every month.</div>
+        <div class="c360-gbp-step-label">Quarterly Reporting</div>
+        <div class="c360-gbp-step-desc">See exactly how your profile is performing with a real report every quarter — a long enough window to show true ranking movement.</div>
       </div>
     </div>
   </div>
@@ -1308,7 +1769,7 @@
 
 
 <!-- ══════════════════════════════════════════════════════
-     SECTION 6 — SERVICE DETAIL CARDS
+     SECTION 7 — SERVICE DETAIL CARDS
      ══════════════════════════════════════════════════════ -->
 <section class="c360-gbp-section c360-gbp-services">
   <div class="c360-gbp-container">
@@ -1334,7 +1795,7 @@
       <div class="c360-gbp-service-card">
         <div class="c360-gbp-svc-ico"><i class="fa-solid fa-chart-bar"></i></div>
         <div class="c360-gbp-svc-title">Local Recon &amp; Rank Reporting</div>
-        <div class="c360-gbp-svc-desc">Each month you receive a full GBP Rank Report that shows exactly where you stand in local search, what's improving, and what we're working on next. No guesswork, just clear data.</div>
+        <div class="c360-gbp-svc-desc">Each quarter you receive a full GBP Rank Report that shows exactly where you stand in local search, what's improving, and what we're working on next — a long enough window to reflect real ranking movement rather than week-to-week noise.</div>
       </div>
 
       <div class="c360-gbp-service-card">
@@ -1361,14 +1822,14 @@
 
 
 <!-- ══════════════════════════════════════════════════════
-     SECTION 7 — PRICING
+     SECTION 8 — PRICING
      ══════════════════════════════════════════════════════ -->
 <section id="c360-gbp-pricing" class="c360-gbp-section c360-gbp-pricing">
   <div class="c360-gbp-container">
     <div class="c360-gbp-section-header">
       <span class="c360-gbp-overline">Pricing &amp; Plans</span>
       <h2>Simple, transparent pricing.<br>No surprises.</h2>
-      <p>Choose the plan that fits your growth stage. Every plan includes full monthly management — upgrade or cancel anytime.</p>
+      <p>Choose the plan that fits your growth stage. Every plan includes full monthly management — the longer you commit, the more you save.</p>
     </div>
     <div class="c360-gbp-price-cards">
 
@@ -1378,9 +1839,10 @@
         <div class="c360-gbp-plan-tagline">Hassle-free, month-to-month flexibility</div>
         <div class="c360-gbp-price-row">
           <span class="c360-gbp-price-dollar">$</span>
-          <span class="c360-gbp-price-num">349</span>
+          <span class="c360-gbp-price-num">399</span>
           <span class="c360-gbp-price-period">/mo</span>
         </div>
+        <div class="c360-gbp-price-effective invisible">—</div>
         <span class="c360-gbp-price-save invisible">—</span>
         <div class="c360-gbp-price-divider"></div>
         <ul class="c360-gbp-price-features">
@@ -1390,7 +1852,7 @@
           <li><i class="fa-solid fa-circle-check"></i> Photo &amp; video uploads</li>
           <li><i class="fa-solid fa-circle-check"></i> Chat &amp; email support</li>
           <li><i class="fa-solid fa-circle-check"></i> Citation management</li>
-          <li><i class="fa-solid fa-circle-check"></i> Monthly rank report</li>
+          <li><i class="fa-solid fa-circle-check"></i> Quarterly rank report</li>
         </ul>
         <div class="c360-gbp-price-note">
           <i class="fa-solid fa-circle-info"></i> GBP Setup not included
@@ -1404,13 +1866,14 @@
       <div class="c360-gbp-price-card c360-gbp-price-card--popular">
         <div class="c360-gbp-popular-badge"><i class="fa-solid fa-bolt"></i> Most Popular</div>
         <div class="c360-gbp-plan-name">Quarterly</div>
-        <div class="c360-gbp-plan-tagline">3 months of service, best value per month</div>
+        <div class="c360-gbp-plan-tagline">Commit for a quarter — save every month</div>
         <div class="c360-gbp-price-row">
           <span class="c360-gbp-price-dollar">$</span>
-          <span class="c360-gbp-price-num">949</span>
+          <span class="c360-gbp-price-num">1,077</span>
           <span class="c360-gbp-price-period">/qtr</span>
         </div>
-        <span class="c360-gbp-price-save">Save $98 Annually</span>
+        <div class="c360-gbp-price-effective">Just $359/mo — billed quarterly</div>
+        <span class="c360-gbp-price-save">Save $120 per quarter</span>
         <div class="c360-gbp-price-divider"></div>
         <ul class="c360-gbp-price-features">
           <li><i class="fa-solid fa-circle-check"></i> Everything in Monthly</li>
@@ -1428,16 +1891,44 @@
         </a>
       </div>
 
+      <!-- Semi-Annual -->
+      <div class="c360-gbp-price-card">
+        <div class="c360-gbp-plan-name">Semi-Annual</div>
+        <div class="c360-gbp-plan-tagline">Six months of momentum, lower monthly rate</div>
+        <div class="c360-gbp-price-row">
+          <span class="c360-gbp-price-dollar">$</span>
+          <span class="c360-gbp-price-num">1,915</span>
+          <span class="c360-gbp-price-period">/6mo</span>
+        </div>
+        <div class="c360-gbp-price-effective">Just $319/mo — billed every 6 months</div>
+        <span class="c360-gbp-price-save">Save $479</span>
+        <div class="c360-gbp-price-divider"></div>
+        <ul class="c360-gbp-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Everything in Quarterly</li>
+          <li><i class="fa-solid fa-circle-check"></i> Phone, chat &amp; email support</li>
+          <li><i class="fa-solid fa-circle-check"></i> 6-month growth roadmap</li>
+          <li><i class="fa-solid fa-circle-check"></i> Bi-annual strategy session</li>
+          <li><i class="fa-solid fa-circle-check"></i> Priority response SLA</li>
+        </ul>
+        <div class="c360-gbp-price-note">
+          <i class="fa-solid fa-circle-info"></i> GBP Setup not included
+        </div>
+        <a href="https://complete360.org/gbp-management-checkout" class="c360-gbp-price-btn c360-gbp-price-btn--outline c360-gbp-modal-trigger">
+          Get Started <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+
       <!-- Annual -->
       <div class="c360-gbp-price-card">
         <div class="c360-gbp-plan-name">Annual</div>
-        <div class="c360-gbp-plan-tagline">Best long-term ROI — 2+ months free</div>
+        <div class="c360-gbp-plan-tagline">Best long-term ROI — 3+ months free</div>
         <div class="c360-gbp-price-row">
           <span class="c360-gbp-price-dollar">$</span>
-          <span class="c360-gbp-price-num">3,350</span>
+          <span class="c360-gbp-price-num">3,352</span>
           <span class="c360-gbp-price-period">/yr</span>
         </div>
-        <span class="c360-gbp-price-save">Save $538 · 2+ Months FREE</span>
+        <div class="c360-gbp-price-effective">Just $279/mo — billed annually</div>
+        <span class="c360-gbp-price-save">Save $1,436 · 3+ Months FREE</span>
         <div class="c360-gbp-price-divider"></div>
         <ul class="c360-gbp-price-features">
           <li><i class="fa-solid fa-circle-check"></i> Everything in Quarterly</li>
@@ -1453,23 +1944,25 @@
         </a>
       </div>
 
+      <!-- GBP Setup fee is referenced in the footnote/FAQ, not shown as a card -->
+
     </div>
     <div class="c360-gbp-pricing-foot">
-      <p>Need a GBP setup first? One-time GBP Setup is $399 when purchased separately. Included free with Annual plan. &nbsp;|&nbsp; Questions? Call us Mon–Fri 9am–5pm MST.</p>
+      <p>All plans include full monthly management. Quarterly, Semi-Annual &amp; Annual are prepaid; upgrade or cancel anytime. One-time GBP Setup is $399 (included free with the Annual plan). &nbsp;|&nbsp; Questions? Call us Mon–Thu 7am–4pm &middot; Fri 7am–1pm MST.</p>
     </div>
   </div>
 </section>
 
 
 <!-- ══════════════════════════════════════════════════════
-     SECTION 8 — REVIEWS WIDGET
+     SECTION 9 — REVIEWS WIDGET
      ══════════════════════════════════════════════════════ -->
 <section class="c360-gbp-section c360-gbp-reviews">
   <div class="c360-gbp-container">
     <div class="c360-gbp-section-header">
       <span class="c360-gbp-overline">What Our Clients Say</span>
       <h2>Real results from real Arizona businesses</h2>
-      <p>144+ Google reviews from local business owners just like you.</p>
+      <p>147+ Google reviews from local business owners just like you.</p>
     </div>
     <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
     <iframe
@@ -1483,7 +1976,7 @@
 
 
 <!-- ══════════════════════════════════════════════════════
-     SECTION 9 — FINAL CTA
+     SECTION 10 — FINAL CTA
      ══════════════════════════════════════════════════════ -->
 <section class="c360-gbp-section c360-gbp-cta">
   <div class="c360-gbp-container">
@@ -1492,7 +1985,7 @@
       <h2>Let's put your business at the <span>top of Google.</span></h2>
       <p class="c360-gbp-cta-desc">
         Call us for a free audit and strategy conversation — no pressure, no contracts required to chat.<br>
-        <span style="font-size:14px;opacity:0.75;">Mon–Fri 9am–5pm MST &nbsp;·&nbsp; (866) 527-6205</span>
+        <span style="font-size:14px;opacity:0.75;">Mon–Thu 7am–4pm &middot; Fri 7am–1pm MST &nbsp;·&nbsp; (866) 527-6205</span>
       </p>
       <div class="c360-gbp-cta-actions">
         <a href="tel:+18665276205" class="c360-gbp-btn-primary" style="font-size:16px;padding:17px 32px;">
@@ -1503,8 +1996,8 @@
         </a>
       </div>
       <div class="c360-gbp-cta-trust">
-        <span><i class="fa-brands fa-google"></i> Google Partner</span>
-        <span><i class="fa-solid fa-star"></i> 144+ Five-Star Reviews</span>
+        <span><i class="fa-solid fa-circle-check"></i> Google Partner</span>
+        <span><i class="fa-solid fa-star"></i> 147+ Five-Star Reviews</span>
         <span><i class="fa-solid fa-robot"></i> AI Search Visibility</span>
         <span><i class="fa-solid fa-map-pin"></i> Tucson-Based &amp; Nationwide</span>
       </div>
@@ -1514,7 +2007,7 @@
 
 
 <!-- ══════════════════════════════════════════════════════
-     SECTION 10 — FAQ
+     SECTION 11 — FAQ
      ══════════════════════════════════════════════════════ -->
 <section class="c360-gbp-section c360-gbp-faq">
   <div class="c360-gbp-container">
@@ -1532,7 +2025,7 @@
           <span class="c360-gbp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
         </label>
         <div class="c360-gbp-faq-a">
-          <p>Yes, but if you don't have one yet — that's fine. Our Quarterly and Monthly plans don't include the initial profile creation, but we offer a one-time GBP Setup for $399. The Annual plan includes GBP Setup at no additional cost. Either way, we'll make sure your profile is verified, complete, and ready before management begins.</p>
+          <p>Yes, but if you don't have one yet — that's fine. Our Monthly, Quarterly, and Semi-Annual plans don't include the initial profile creation, but we offer a one-time GBP Setup for $399. The Annual plan includes GBP Setup at no additional cost. Either way, we'll make sure your profile is verified, complete, and ready before management begins.</p>
         </div>
       </div>
 
@@ -1543,7 +2036,7 @@
           <span class="c360-gbp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
         </label>
         <div class="c360-gbp-faq-a">
-          <p>Most clients begin seeing measurable increases in profile views and direction requests within 30–60 days. Ranking improvements in competitive local markets typically show significant movement in 60–90 days. We track everything and send you a report every month so you can see exactly what's happening. GBP management compounds over time — the longer you're active, the stronger your ranking gets.</p>
+          <p>Most clients begin seeing measurable increases in profile views and direction requests within 30–60 days. Ranking improvements in competitive local markets typically show significant movement in 60–90 days. We monitor everything continuously and send you a full report every quarter — a long enough window to show real ranking movement rather than week-to-week noise. GBP management compounds over time — the longer you're active, the stronger your ranking gets.</p>
         </div>
       </div>
 
@@ -1576,7 +2069,7 @@
           <span class="c360-gbp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
         </label>
         <div class="c360-gbp-faq-a">
-          <p>Monthly plans can be cancelled with 30 days notice — no long-term commitments. Quarterly and Annual plans are prepaid and non-refundable after work begins, but they offer significant savings for businesses committed to consistent growth. We'll be upfront about everything on our strategy call before you decide.</p>
+          <p>Monthly plans can be cancelled with 30 days notice — no long-term commitments. Quarterly, Semi-Annual, and Annual plans are prepaid and non-refundable after work begins, but they offer significant savings for businesses committed to consistent growth. We'll be upfront about everything on our strategy call before you decide.</p>
         </div>
       </div>
 
@@ -1597,6 +2090,5 @@
 
 
 <!-- ══════════════════════════════════════════════════════
-     SCRIPT — Modal trigger
+     SCRIPT — Modal trigger (wire to global Get Started modal if desired)
      ══════════════════════════════════════════════════════ -->
-
