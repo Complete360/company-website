@@ -44,7 +44,7 @@ anything still to do on a page (🔁 = needs rebuild).
 |---|---|---|---|
 | `services/local-service-ads.html` | Local Service Ads | ✅ Code in repo | Up to date |
 | `services/gbp-management.html` | Google Business Management | ✅ Code in repo | Up to date |
-| `services/gbp-setup.html` | Google Business Profile Setup | ✅ Code in repo |  |
+| `services/gbp-setup.html` | Google Business Profile Setup | ✅ Code in repo | Up to date |
 | `services/local-seo-booster.html` | SEO Booster | ✅ Code in repo | Up to date |
 | `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo | Up to date (header note added) |
 | `services/google-ads.html` | Google Ads | ✅ Code in repo | Up to date |
