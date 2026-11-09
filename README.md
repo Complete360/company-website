@@ -110,7 +110,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | File | GHL page | Status | Notes |
 |---|---|---|---|
 | `company/contact-us.html` | Contact Us Form | ✅ Code in repo | Up to date |
-| `company/faq.html` | FAQS | ✅ Code in repo | Up to date |
+| `company/faq.html` | FAQS | ✅ Code in repo | v2.4: billing answers revised Nov 9, 2026 — paste into GHL |
 | `company/request-demo.html` | Request A Demo | ⬜ Placeholder | 🔁 Rebuild as custom HTML (current GHL page OK for now) |
 | `company/schedule-demo.html` | Schedule A Demo | ⬜ Placeholder | Valid; may need future updates |
 | `company/thank-you-after-schedule.html` | Thank You Page After Schedule | ⬜ Placeholder | 🔁 Rebuild needed (current GHL page OK for now) |
