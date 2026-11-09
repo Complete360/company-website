@@ -121,9 +121,9 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `legal/tos.html` | Terms of Service | ✅ Code in repo |  |
+| `legal/tos.html` | Terms of Service | ✅ Code in repo | v2.1: refund policy revised Nov 9, 2026 — paste into GHL |
 | `legal/privacy-policy.html` | Privacy Policy | ✅ Code in repo |  |
-| `legal/return-policy.html` | Refund/Return Policy | ✅ Code in repo |  |
+| `legal/return-policy.html` | Refund/Return Policy | ✅ Code in repo | v2.1: refund policy revised Nov 9, 2026 — paste into GHL |
 
 ### Partners
 
