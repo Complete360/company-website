@@ -1,6 +1,1373 @@
-<!--
-  PLACEHOLDER: no code yet
-  GHL page: "CRM Home Page"
-  Next step: paste this page's custom code from GHL here,
-  or delete this file if the page has no custom code.
--->
+<!-- ============================================================
+     Complete360 — CRM Platform Overview  (/crm-home)
+     v2.9.2  —  footnote fills the caption band
+     Prefix: c360crm-   (Brand Doc §2 CSS prefix registry)
+
+     CHANGES IN v2.9.2
+     -----------------
+     max-width removed from the footnote so it fills the caption band.
+     At 72ch the text was ~450px inside a 1092px band, leaving ~321px of
+     empty tint on EACH side - the band read as half-empty rather than as
+     a caption. Full width puts the copy on two balanced lines with no
+     dead space. Centred + balance keeps the two lines close in length.
+     If this copy is ever shortened enough to fit one line, reconsider the
+     tint band - a single short centred line in a full-width strip will
+     look stranded again.
+
+     CHANGES IN v2.9.1
+     -----------------
+     Comparison footnote centred (client call). Measure narrowed 86ch ->
+     72ch at the same time: centred text only reads as a deliberate block
+     if the lines are close in length, and at 86ch this ran to a wide,
+     ragged shape filling ~60% of the card. Narrower gives a tighter,
+     more even stack. text-wrap:balance evens the line lengths further.
+     If the copy is ever edited, keep it to two or three lines - centred
+     fine print gets hard to scan past that, since every line starts in a
+     different place.
+
+     CHANGES IN v2.9
+     ---------------
+     A. COMPARISON FOOTNOTE moved INSIDE .c360crm-cmp-shell as a caption
+        band, instead of floating under the card.
+        Why it still looked wrong in v2.6-v2.8: left-aligning it was only
+        half the fix. It sat OUTSIDE the card, so it started at the card's
+        outer edge - 20px left of every other line of text on the page,
+        because every table cell carries 20px horizontal padding. And the
+        block stacked three different alignments: full-width card,
+        left-aligned note, centred button. Nothing agreed with anything.
+        Now the note is part of the card, uses the SAME 20px cell padding
+        (14px at the mobile breakpoint, matching the cells there), and sits
+        on a tint band under the navy tfoot so it reads as the table's
+        caption. The CTA is then the only thing below the card, so centring
+        it is unambiguous rather than a third competing alignment.
+
+     B. BADGE HOVER LIFT RESTORED - translateY(-2px), matching LSA v1.4.
+        Dropped in v2.8 out of caution over 1c's "do not translate it".
+        In context that clause sits with recolour / distort / stretch /
+        rotate and refers to Google's prohibition on translating the badge
+        TEXT into another language, not a CSS transform of the element. The
+        artwork is unaltered; the whole element moves 2px. LSA already ships
+        this, so matching it keeps the pages consistent.
+
+     CHANGES IN v2.8
+     ---------------
+     CREDENTIALS CLUSTER now follows the established house pattern from
+     LSA v1.4.3 / homepage / footer, instead of the one-off built here.
+
+     WHAT WAS WRONG. v2.4-v2.7 used a 100px badge with a 52px halo and laid
+     the four credentials out HORIZONTALLY across the full page width. That
+     is the exact failure LSA already diagnosed and fixed:
+       "Badge 110px -> 88px. At 110px the mandatory 55px halo made the four
+        credentials look detached from the badge. 88px brings the gap to
+        44px and the cluster reads as one unit again."
+     A bigger badge forces a bigger mandatory halo (1e), which pushes the
+     credentials away until the badge reads as a lone floating box. Running
+     the list horizontally across ~1130px made the separation worse, not
+     better. SIZE IS THE ONLY LEVER ON THE GAP - never the margin.
+
+     NOW:
+       - badge 88px / clear 44px, matching LSA and the footer
+       - credentials are a VERTICAL stack of four lines beside the badge,
+         not a horizontal row
+       - cluster lives inside the hero's left column, under the CTAs, so it
+         stays subordinate to the wordmark (1f)
+       - measured: left column ~551px, badge+clear 132px, leaves ~419px for
+         text - matches the ~420px the LSA file documents at 88px
+       - all four lines are 43-48 chars, under the ~55 char wrap threshold
+       - column height ~100px against an 88px badge, so the two read as a
+         matched pair (LSA v1.4.3 target was ~96/88)
+
+     THE BADGE LADDER - both vars ALWAYS move together (1e):
+       44/22 . 64/32 . 88/44 . 100/50 . 110/55 . 122/61
+     If you ever see those out of ratio it is a compliance bug, not taste.
+     NO DIVIDER between badge and list: a rule line is "another graphic"
+     and cannot sit inside the clear space.
+     NO drop-shadow here - 1d applies that on DARK surfaces (LSA hero is
+     navy). This hero is white; the badge's own card is enough.
+
+     CHANGES IN v2.7
+     ---------------
+     HERO NESTING REPAIRED. In v2.5 the trust zone was cut out of the hero's
+     left column, and the slice took the </div> that closed that column with
+     it. Result: .c360crm-hero-media ended up nested INSIDE the text column,
+     and .c360crm-trust became the grid's SECOND column. So the hero rendered
+     as [text + image stacked] | [credentials squeezed into a narrow column]
+     instead of [text] | [image] with credentials full-width beneath.
+     Tag COUNTS stayed balanced throughout, which is why validation passed —
+     balanced tags, wrong tree. Structure is now explicit:
+
+       .c360crm-hero-grid
+         > .c360crm-hero-copy     (pill, h1, sub, buttons)
+         > .c360crm-hero-media    (dashboard image)
+       .c360crm-trust             (sibling of the grid, full width)
+
+     The text column now carries a real class instead of being an anonymous
+     <div>, so this specific mistake is visible if it recurs.
+
+     CHANGES IN v2.6
+     ---------------
+     A. SPECIFICITY BUG FIXED — this is the important one.
+        The base rule `.c360crm p { margin: 0 0 16px }` is specificity
+        (0,1,1) because it qualifies an ELEMENT. Every component class
+        (.c360crm-final-sub, .c360crm-final-fine, .c360crm-stack-note,
+        .c360crm-fineprint, .c360crm-tier-desc, .c360crm-faq-foot) is
+        (0,1,0). The base rule therefore outranked all of them and their
+        margins were silently discarded — no error, just wrong layout:
+          - margin-inline:auto killed  -> the CTA paragraph was NOT
+            centred, it sat flush-left in a 34em box with its text
+            centre-aligned inside, which is why it looked off-axis
+          - margin-top killed -> fine print sat hard against the buttons
+        Base element rules are now wrapped in :where(), which carries ZERO
+        specificity. Base styling can no longer outrank a component class.
+        RULE FOR THIS FILE: any bare-element rule goes inside :where().
+
+     B. COMPARISON-TABLE FOOTNOTE re-aligned. It was centred, narrower
+        than the table above it, and floating between a left-aligned table
+        and a centred button — anchored to nothing. Now left-aligned and
+        flush with the table's left edge, which is also how a
+        substantiation note should read. More clearance above and below.
+
+     CHANGES IN v2.5
+     ---------------
+     A. H1 REWRITTEN. The old line ("Everything you're duct-taping
+        together, in one login") led with the problem and never said the
+        word CRM — a real miss on the page whose whole job is ranking for
+        it. The H1 is the strongest on-page signal after the title tag.
+        New line carries "all-in-one CRM" and states the differentiator.
+        Alternatives are listed in the comment above the <h1> if the voice
+        needs adjusting — it is a one-line swap.
+     B. TRUST ZONE MOVED OUT OF THE LEFT COLUMN, now full-width beneath
+        the hero grid. Cause of the ragged alignment: the badge plus its
+        52px §1e halo consumed ~152px of a ~570px column, leaving ~187px
+        per credential column, which is too narrow for "30-day money-back
+        guarantee" — so half the items wrapped to two lines and the rows
+        went uneven. Full width gives the list ~980px, so four items sit
+        on one line at ~224px each. Drops to 2x2 at 1100px, before it
+        gets tight, and to a single column at 560px.
+
+     CHANGES IN v2.4
+     ---------------
+     HERO TRUST ZONE. Was a flex-wrap row of four items of unequal length,
+     so the second line never aligned with the first — items landed
+     wherever the wrap put them. Now a real 2-column grid: four items,
+     equal columns, left edges aligned, consistent row rhythm.
+
+     GOOGLE PARTNER BADGE added at 100px. Brand Doc constraints observed:
+       §1a  official snippet verbatim, link to our Partners profile intact
+       §1c  height set, width:auto — never both. No white chip, no
+            border-radius+overflow container, no crop, no recolour.
+       §1e  100px badge requires >=50px clear space on EVERY side. This is
+            why the badge cannot sit inline in the strip. Delivered as:
+            52px above (container padding-top, clearing the hairline),
+            52px to its right (grid column-gap), and the hero's 88px
+            bottom section padding below. Nothing may be placed into that
+            gap later — no divider rule, no icon, no text.
+       §1f  PROMINENCE — READ THIS. The badge must not be larger or more
+            prominent than the Complete360 logo on the same page. The
+            header wordmark is ~22-24px, so at 100px this is the largest
+            brand mark in the hero. §1f's remedy is placement: it sits
+            below the headline and CTAs, in a quiet zone, never dominant.
+            If this ever reads as too loud, the fix is to drop it to
+            ~64px, not to crop or reposition it.
+       §1g  no SEO disclaimer — this page does not advertise SEO services.
+     The redundant "Certified Google Partner" TEXT item was removed from
+     the strip; the badge now makes that claim. It was replaced with
+     "In business since 2018" (Brand Doc §5, confirmed credential).
+     On mobile the badge steps down to 72px, which keeps it above the
+     ~44px legibility floor while shrinking its required halo to 36px.
+
+     CHANGES IN v2.3.1
+     -----------------
+     Hero <img> now points at the re-mastered, edge-feathered file on the
+     CDN (6a95dca2...). The original 81099ef2... file is superseded and
+     should not be reused on this page.
+
+     CHANGES IN v2.3
+     ---------------
+     A. CREDENTIALS SECTION REMOVED. It repeated the four items already in
+        the hero trust strip, two screens later, with a 64px badge sitting
+        in an auto-width column that left a large dead gap. The Google
+        Partner badge remains site-wide in footer v1.4, so the Brand Doc
+        §1h placement is unaffected. Its CSS is deleted too, not orphaned.
+     B. TYPOGRAPHIC PASS. See the TYPE RHYTHM block in the CSS. Headlines
+        were breaking across hyphens ("duct-" / "taping", "follow-" /
+        "up."), leaving one-word orphan lines. Fixed with non-breaking
+        hyphens in the two compound words plus text-wrap:balance on
+        headings and text-wrap:pretty on body copy.
+     C. Fine print under the final CTA was set at 60% white on navy, which
+        is under the contrast floor at 13px. Raised to 72% and given more
+        clearance from the button row.
+
+     CHANGES IN v2.2
+     ---------------
+     A. HERO IMAGE. The old PNG had its soft glow baked in AND clipped at
+        the right canvas edge (alpha was still ~13 on the final column),
+        which is the hard boundary that was visible on the live page.
+        Re-mastered: canvas padded 60px, smoothstep alpha feather applied,
+        all four borders now alpha 0. New file must be uploaded to the CDN
+        and the URL swapped in — see REPLACE: in the hero below.
+     B. HERO drop-shadow REMOVED. ~26% of that PNG is very low-alpha glow
+        reaching almost to the corners, so filter:drop-shadow() traced the
+        glow's near-rectangular outline, not the cards. That was the boxy
+        halo. The PNG supplies its own glow; CSS no longer double-stacks it.
+     C. STACK SECTION rebuilt as a real comparison table (feature / what it
+        replaces / separate cost / included), replacing the vague ranges.
+        Native HTML, not an image: responsive, indexable, and editable when
+        a competitor changes price.
+
+     CHANGES FROM v2.0
+     -----------------
+     1. SECTION ORDER FIXED. v2.0 ended on a navy CTA sitting directly
+        against the navy footer — two blues touching with no seam. New
+        order alternates all the way down and ends WHITE before the footer:
+
+          hero (white) -> stack (tint) -> flow (white) -> app (navy)
+          -> pricing (tint) -> credentials (white) -> CTA (navy)
+          -> FAQ (WHITE) -> global footer (navy)
+
+     2. FAQ ADDED, above the footer, white background.
+        SCHEMA NOTE: /pricing already owns a FAQPage node with 9 questions
+        (trial, guarantee, usage fees, upgrade/downgrade, setup time,
+        annual billing, mobile app, pre-sales). NONE of those are repeated
+        here — this set is fit + migration only. Because the question sets
+        are disjoint, this page CAN carry its own FAQPage node:
+            @id: https://complete360.org/crm-home#faq
+        If anyone later copies a question across from /pricing, the two
+        nodes start competing and one of them has to go.
+
+     3. DEPTH PASS. Dot fields + soft brand glows, all pure CSS gradients.
+        PERFORMANCE CONSTRAINTS DELIBERATELY OBSERVED:
+          - zero extra HTTP requests, zero JS, no SVG/PNG textures
+          - NO filter:blur() on large boxes (forces costly repaints on
+            scroll); soft edges come from wide gradient falloff instead
+          - NO background-attachment:fixed (destroys mobile scroll perf)
+          - dot layers are pointer-events:none and sit in ::before, so
+            they never affect layout or hit-testing
+          - dot fields drop out entirely under 560px (invisible at that
+            size anyway, and it saves the paint)
+
+     4. HERO IMAGE BACKDROP REBUILT. The old page had a separate CSS blob
+        layer behind this PNG; without it the dashboard floated unanchored
+        on flat white. Replaced with a masked dot field + two wide brand
+        glows + a drop-shadow on the image itself.
+
+     PASTE TARGET
+     ------------
+     GHL page > Custom Code / HTML element (body), full-width row,
+     row padding 0 top and bottom.
+
+     Search "REVIEW:" and "CONFIRM:" for open items before publishing.
+     ============================================================ -->
+
+<div class="c360crm">
+
+<style>
+/* ============================================================
+   TOKENS — mirrored from header v2.1 / footer v1.4
+   ============================================================ */
+.c360crm {
+  --c360crm-blue:        #122078;
+  --c360crm-blue-mid:    #1a2e99;
+  --c360crm-green:       #127825;
+  --c360crm-green-lt:    #1a9e32;
+  --c360crm-green-hover: #0e5e1d;
+  --c360crm-green-faint: #EAF5EC;
+  --c360crm-blue-faint:  #EEF3FB;
+  --c360crm-text:        #0F1F5E;
+  --c360crm-muted:       #5F5E5A;
+  --c360crm-border:      rgba(15, 31, 94, 0.10);
+  --c360crm-tint:        #F4F7FC;
+
+  --c360crm-shadow-sm: 0 1px 2px rgba(15,31,94,.05), 0 4px 14px rgba(15,31,94,.05);
+  --c360crm-shadow-md: 0 2px 4px rgba(15,31,94,.04), 0 14px 36px rgba(15,31,94,.08);
+  --c360crm-shadow-lg: 0 4px 8px rgba(15,31,94,.05), 0 28px 64px rgba(15,31,94,.12);
+
+  --c360crm-maxw: 1180px;
+  --c360crm-radius: 14px;
+
+  font-family: 'Poppins', 'Helvetica Neue', Arial, sans-serif;
+  color: var(--c360crm-text);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.c360crm *, .c360crm *::before, .c360crm *::after { box-sizing: border-box; }
+.c360crm img { max-width: 100%; height: auto; display: block; }
+
+/* ---------- TYPE RHYTHM ----------
+   Headings: balance evens the line lengths so a heading never ends on a
+   single orphaned word. Line-height opens up as type gets smaller —
+   1.15 on display sizes would be too tight at 20px and too loose at 52px
+   if left at one value.
+   Body: pretty prevents orphans and bad last-line breaks.
+   Both degrade silently to normal wrapping in older browsers.       */
+/* Base element rules are wrapped in :where() so they carry ZERO
+   specificity. Without it, `.c360crm p` is (0,1,1) and outranks every
+   (0,1,0) component class — which silently discarded margin-inline:auto
+   and margin-top on six paragraphs in v2.5. Keep every bare-element rule
+   in this file inside :where(). */
+.c360crm :where(h1, h2, h3) {
+  margin: 0 0 16px;
+  font-weight: 700;
+  line-height: 1.16;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+.c360crm :where(h3) { line-height: 1.22; }
+.c360crm :where(p) {
+  margin: 0 0 16px;
+  text-wrap: pretty;
+}
+.c360crm :where(p:last-child) { margin-bottom: 0; }
+
+/* Global sticky header offset for anchors.
+   CONFIRM: assumes ~78px desktop header. Re-check if header version bumps. */
+.c360crm [id] { scroll-margin-top: 96px; }
+
+/* ---------- layout ---------- */
+.c360crm-wrap { max-width: var(--c360crm-maxw); margin: 0 auto; padding: 0 24px; }
+.c360crm-sec { padding: 88px 0; position: relative; }
+.c360crm-sec--tint { background: var(--c360crm-tint); }
+.c360crm-sec--navy {
+  background: linear-gradient(135deg, var(--c360crm-blue) 0%, var(--c360crm-blue-mid) 100%);
+  color: #fff;
+}
+.c360crm-sec--navy h2, .c360crm-sec--navy h3 { color: #fff; }
+.c360crm-sec--navy p { color: rgba(255,255,255,0.78); }
+
+/* ============================================================
+   DOT FIELD — the depth device.
+   One repeating radial-gradient. Masked top and bottom so it fades
+   rather than stopping at a hard section edge. Costs one paint, no
+   requests, no script.
+   ============================================================ */
+.c360crm-sec--dots::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, rgba(18,32,120,0.12) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 80%, transparent 100%);
+          mask-image: linear-gradient(to bottom, transparent 0%, #000 20%, #000 80%, transparent 100%);
+}
+/* On navy, the same field in white */
+.c360crm-sec--navy.c360crm-sec--dots::before {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.16) 1.2px, transparent 1.2px);
+}
+/* Keep real content above the field */
+.c360crm-sec--dots > .c360crm-wrap { position: relative; z-index: 1; }
+
+/* ---------- buttons ---------- */
+.c360crm-btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 14px 28px; border-radius: 8px;
+  font-size: 15px; font-weight: 600; font-family: inherit;
+  text-decoration: none; border: 2px solid transparent; cursor: pointer;
+  transition: background-color .18s ease, color .18s ease, border-color .18s ease;
+}
+.c360crm-btn--primary { background: var(--c360crm-green); color: #fff; box-shadow: var(--c360crm-shadow-sm); }
+.c360crm-btn--primary:hover { background: var(--c360crm-green-hover); color: #fff; }
+.c360crm-btn--ghost { background: #fff; color: var(--c360crm-blue); border-color: var(--c360crm-border); }
+.c360crm-btn--ghost:hover { border-color: var(--c360crm-blue); }
+.c360crm-btn--onnavy { background: #fff; color: var(--c360crm-blue); }
+.c360crm-btn--onnavy:hover { background: #eef3ff; color: var(--c360crm-blue); }
+.c360crm-btn--outline-navy { background: transparent; color: #fff; border-color: rgba(255,255,255,0.45); }
+.c360crm-btn--outline-navy:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+.c360crm-btns { display: flex; flex-wrap: wrap; gap: 14px; }
+
+.c360crm a:focus-visible,
+.c360crm summary:focus-visible {
+  outline: 3px solid var(--c360crm-green-lt); outline-offset: 3px; border-radius: 4px;
+}
+
+/* ---------- section headings ---------- */
+.c360crm-head { max-width: 700px; margin: 0 auto 56px; text-align: center; }
+.c360crm-head h2 { font-size: clamp(28px, 3.6vw, 40px); margin-bottom: 18px; }
+.c360crm-head p { font-size: 16.5px; line-height: 1.62; color: var(--c360crm-muted); margin: 0; }
+.c360crm-sec--navy .c360crm-head p { color: rgba(255,255,255,0.75); }
+
+/* ============================================================
+   1 — HERO
+   ============================================================ */
+.c360crm-hero { padding: 72px 0 88px; background: #fff; position: relative; overflow: hidden; }
+.c360crm-hero-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 56px; align-items: center; }
+.c360crm-hero-copy { min-width: 0; }
+
+.c360crm-pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--c360crm-green-faint); color: var(--c360crm-green);
+  font-size: 13px; font-weight: 600;
+  padding: 7px 16px; border-radius: 999px; margin-bottom: 22px;
+}
+.c360crm-hero h1 {
+  font-size: clamp(33px, 4.4vw, 50px);
+  letter-spacing: -0.028em;
+  line-height: 1.12;
+  color: var(--c360crm-blue);
+  margin-bottom: 20px;
+}
+.c360crm-hero-sub {
+  font-size: 17.5px; line-height: 1.62;
+  color: var(--c360crm-muted); max-width: 33em; margin-bottom: 32px;
+}
+
+/* --- hero image backdrop: glow + dots + shadow (replaces old blob) --- */
+/* The hero PNG carries its own soft glow, so CSS adds NO second glow and
+   NO drop-shadow here — stacking either one on top of a large low-alpha
+   region is what produced the rectangular halo in v2.1. Dots only, pushed
+   well outside the artwork so they read as background, not as a frame. */
+.c360crm-hero-media { position: relative; }
+.c360crm-hero-media::before {
+  content: ''; position: absolute; z-index: 0;
+  inset: -18%;
+  background-image: radial-gradient(circle, rgba(18,32,120,0.14) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+  -webkit-mask-image: radial-gradient(closest-side circle at 50% 50%, #000 15%, transparent 88%);
+          mask-image: radial-gradient(closest-side circle at 50% 50%, #000 15%, transparent 88%);
+}
+.c360crm-hero-media img { position: relative; z-index: 2; }
+
+/* --- hero credentials cluster -------------------------------------
+   Mirrors LSA v1.4.3 / homepage / footer. Read before touching:
+
+   Google Partner badge, OFFICIAL gstatic snippet - the only
+   website-compliant form. The marketing .jpg is emails/decks/resumes ONLY.
+   Guidelines: support.google.com/google-ads/answer/9028798
+     - links to our Partners profile (id=9636024453); never strip the link
+     - height set, width auto - NEVER both, or the aspect ratio breaks
+     - clear space >= 1/2 badge height on all four sides, as margin.
+       Resizing means changing BOTH vars:
+         44/22 . 64/32 . 88/44 . 100/50 . 110/55 . 122/61
+     - no white chip: the badge ships with its own card, border, padding
+       and the external-link mark. A second card double-frames it.
+     - no border-radius / overflow:hidden on any wrapper - that clips the
+       badge's own corners
+     - not recoloured, distorted, stretched, cropped or rotated
+     - no drop-shadow on this page: 1d is for lifting it off DARK
+       surfaces. This hero is white.
+     - prominence (1f): 88px, sitting BELOW the h1 and CTAs, so the
+       Complete360 wordmark stays the dominant brand mark in view.
+   IF THE CLUSTER LOOKS TOO SPREAD OUT, the answer is a SMALLER BADGE,
+   never a smaller margin. That is what --badge-h is for.
+   No SEO disclaimer here: this page does not advertise SEO (1g). */
+.c360crm-trust {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 30px;
+  border-top: 1px solid var(--c360crm-border);
+}
+.c360crm-trust-badge {
+  --badge-h: 88px;
+  --badge-clear: 44px;
+  display: inline-block; line-height: 0;
+  margin: var(--badge-clear); margin-left: 0;
+  transition: transform .18s ease;
+}
+/* 2px lift on hover, same as LSA v1.4. The badge ARTWORK is untouched -
+   1c's "do not translate" refers to translating its text into another
+   language, alongside recolour / distort / stretch / rotate. */
+.c360crm-trust-badge:hover { transform: translateY(-2px); }
+.c360crm-trust-badge img {
+  display: block; height: var(--badge-h); width: auto;
+  /* Defensive resets - GHL themes ship a global img border and link
+     outline. These strip what the CMS injects; they do not touch
+     Google's artwork. If a border still shows, it is drawn into the SVG. */
+  border: 0; outline: none; box-shadow: none; max-width: none;
+}
+.c360crm-trust-badge,
+.c360crm-trust-badge:focus,
+.c360crm-trust-badge:active {
+  border: 0; outline: none; text-decoration: none; box-shadow: none;
+  -webkit-tap-highlight-color: transparent;
+}
+/* Vertical stack, tight internal gap. The badge gap is fixed by 1e, but a
+   denser text block makes the halo read as framing rather than as drift.
+   Column lands ~100px against the 88px badge, so they read as a pair.
+   Lines must stay under ~55 chars at ~419px or they wrap; current lines
+   are 48 / 43 / 44 / 47. */
+.c360crm-trust-list {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 8px;
+  flex: 1; min-width: 240px;
+}
+.c360crm-trust-list li {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 13.5px; font-weight: 500; line-height: 1.4;
+  color: var(--c360crm-muted);
+}
+.c360crm-trust-list li svg { flex-shrink: 0; margin-top: 3px; }
+.c360crm-stars { color: #F5A623; letter-spacing: 1px; font-size: 11px; font-style: normal; margin-right: 2px; }
+
+/* ============================================================
+   2 — THE STACK IT REPLACES  (comparison table)
+   Real <table>, not an image. Indexable, responsive, and a price
+   edit is a text edit rather than a trip to a design tool.
+   ============================================================ */
+.c360crm-cmp-shell {
+  background: #fff; border-radius: var(--c360crm-radius);
+  box-shadow: var(--c360crm-shadow-md); overflow: hidden;
+}
+.c360crm-cmp-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.c360crm-cmp { width: 100%; border-collapse: collapse; min-width: 720px; }
+.c360crm-cmp thead th {
+  background: var(--c360crm-blue); color: #fff;
+  font-size: 12.5px; font-weight: 600; letter-spacing: .03em;
+  text-align: left; padding: 16px 20px; white-space: nowrap;
+}
+.c360crm-cmp thead th:nth-child(3),
+.c360crm-cmp thead th:nth-child(4) { text-align: right; }
+.c360crm-cmp thead th:last-child { color: #7dd894; }
+.c360crm-cmp tbody tr:nth-child(even) { background: #FAFBFE; }
+.c360crm-cmp tbody td {
+  padding: 15px 20px; font-size: 14.5px;
+  border-bottom: 1px solid var(--c360crm-border); vertical-align: middle;
+}
+.c360crm-cmp-feat { font-weight: 600; color: var(--c360crm-text); }
+.c360crm-cmp-repl { color: var(--c360crm-muted); font-size: 13.5px; }
+.c360crm-cmp-cost {
+  text-align: right; white-space: nowrap; color: var(--c360crm-muted);
+  text-decoration: line-through; text-decoration-color: rgba(15,31,94,.35);
+}
+.c360crm-cmp-inc { text-align: right; white-space: nowrap; }
+.c360crm-cmp-inc span {
+  display: inline-flex; align-items: center; gap: 6px;
+  background: var(--c360crm-green-faint); color: var(--c360crm-green);
+  font-size: 12.5px; font-weight: 600; padding: 5px 12px; border-radius: 999px;
+}
+.c360crm-cmp tfoot td {
+  background: var(--c360crm-blue); color: #fff;
+  padding: 22px 20px; font-size: 15px; font-weight: 600; border: none;
+}
+.c360crm-cmp-total { text-align: right; white-space: nowrap; font-size: 17px; }
+.c360crm-cmp-total s { opacity: .55; font-weight: 500; }
+.c360crm-cmp-win {
+  text-align: right; white-space: nowrap;
+  font-size: 22px; font-weight: 700; letter-spacing: -.02em; color: #7dd894;
+}
+.c360crm-cmp-win small { display: block; font-size: 12px; font-weight: 500; opacity: .8; color: #fff; }
+.c360crm-cmp-hint {
+  display: none; font-size: 12.5px; color: var(--c360crm-muted);
+  padding: 10px 20px 0; margin: 0;
+}
+/* Substantiation note, rendered as the table's caption band INSIDE the
+   card. Horizontal padding stays equal to the cell padding (20px, 14px at
+   the mobile breakpoint) so the band lines up with the table above it.
+   NO max-width: the copy fills the band. A narrow centred measure left
+   ~320px of empty tint on each side, which made the band look half-empty
+   instead of like a caption. balance keeps the two lines close in length
+   so the centring reads as deliberate. */
+.c360crm-stack-note {
+  background: #FAFBFE;
+  border-top: 1px solid var(--c360crm-border);
+  margin: 0; padding: 18px 20px;
+  font-size: 12.5px; line-height: 1.6; color: var(--c360crm-muted);
+  text-align: center; text-wrap: balance;
+}
+.c360crm-stack-cta { text-align: center; margin-top: 40px; }
+.c360crm-sr {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
+}
+
+/* ============================================================
+   3 — CAPTURE / NURTURE / CLOSE
+   ============================================================ */
+.c360crm-flow { display: flex; flex-direction: column; gap: 96px; }
+.c360crm-row { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+.c360crm-row--flip .c360crm-row-media { order: -1; }
+
+.c360crm-step { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+.c360crm-step-num {
+  width: 34px; height: 34px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; font-weight: 700; flex-shrink: 0;
+}
+.c360crm-step-num--blue  { background: var(--c360crm-blue-faint);  color: var(--c360crm-blue); }
+.c360crm-step-num--green { background: var(--c360crm-green-faint); color: var(--c360crm-green); }
+.c360crm-step-label { font-size: 14px; font-weight: 600; color: var(--c360crm-muted); }
+.c360crm-row h3 { font-size: clamp(25px, 2.9vw, 33px); color: var(--c360crm-blue); margin-bottom: 18px; }
+.c360crm-row p { font-size: 16.5px; line-height: 1.65; color: var(--c360crm-muted); max-width: 33em; }
+
+.c360crm-chips { display: flex; flex-wrap: wrap; gap: 9px; margin: 24px 0 0; padding: 0; list-style: none; }
+.c360crm-chips a {
+  display: inline-block; padding: 8px 15px; border-radius: 7px;
+  background: #fff; border: 1px solid var(--c360crm-border);
+  font-size: 13.5px; color: var(--c360crm-text); text-decoration: none;
+  box-shadow: var(--c360crm-shadow-sm);
+  transition: border-color .16s ease, color .16s ease;
+}
+.c360crm-chips a:hover { border-color: var(--c360crm-green); color: var(--c360crm-green); }
+
+/* Media panels get the same glow+dot treatment as the hero, at lower
+   intensity, so the three flow images sit on a plane instead of floating. */
+.c360crm-row-media { position: relative; }
+.c360crm-row-media::before {
+  content: ''; position: absolute; z-index: 0; inset: -10%;
+  background: radial-gradient(46% 46% at 50% 45%, rgba(26,62,184,0.11), rgba(26,62,184,0) 74%);
+}
+.c360crm-row-media::after {
+  content: ''; position: absolute; z-index: 1; inset: -6%;
+  background-image: radial-gradient(circle, rgba(18,32,120,0.13) 1.1px, transparent 1.1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(closest-side circle at 50% 50%, #000 20%, transparent 92%);
+          mask-image: radial-gradient(closest-side circle at 50% 50%, #000 20%, transparent 92%);
+}
+.c360crm-row-media img {
+  position: relative; z-index: 2;
+  border-radius: var(--c360crm-radius);
+  filter: drop-shadow(0 16px 36px rgba(15,31,94,0.14));
+}
+
+/* ============================================================
+   4 — MOBILE APP
+   ============================================================ */
+.c360crm-app-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: center; }
+.c360crm-app-title { font-size: clamp(27px, 3.3vw, 37px); margin-bottom: 24px; max-width: 12em; }
+.c360crm-app-list { list-style: none; margin: 0 0 28px; padding: 0; }
+.c360crm-app-list li {
+  display: flex; gap: 12px; align-items: flex-start;
+  font-size: 15.5px; line-height: 1.55; padding: 10px 0; color: rgba(255,255,255,0.85);
+}
+.c360crm-app-list svg { flex-shrink: 0; margin-top: 4px; }
+.c360crm-store { display: flex; flex-wrap: wrap; gap: 14px; }
+.c360crm-store a {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #fff; color: var(--c360crm-blue);
+  padding: 11px 20px; border-radius: 8px;
+  text-decoration: none; font-size: 14px; font-weight: 600;
+  transition: background-color .16s ease;
+}
+.c360crm-store a:hover { background: #eef3ff; }
+.c360crm-store small { display: block; font-size: 10.5px; font-weight: 400; opacity: .7; line-height: 1.2; }
+.c360crm-app-media img { filter: drop-shadow(0 24px 48px rgba(0,0,0,0.30)); }
+
+/* ============================================================
+   5 — PRICING TEASER
+   ============================================================ */
+.c360crm-tiers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-bottom: 40px; }
+.c360crm-tier {
+  background: #fff; border: 1px solid var(--c360crm-border);
+  border-radius: var(--c360crm-radius); padding: 32px 28px;
+  display: flex; flex-direction: column; box-shadow: var(--c360crm-shadow-sm);
+}
+.c360crm-tier--featured {
+  border-color: var(--c360crm-green); border-width: 2px;
+  position: relative; box-shadow: var(--c360crm-shadow-md);
+}
+.c360crm-tier-flag {
+  position: absolute; top: -12px; left: 28px;
+  background: var(--c360crm-green); color: #fff;
+  font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  padding: 5px 13px; border-radius: 999px;
+}
+.c360crm-tier-name { font-size: 14px; font-weight: 600; color: var(--c360crm-muted); margin-bottom: 10px; }
+.c360crm-tier-price { font-size: 38px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; color: var(--c360crm-blue); }
+.c360crm-tier-price sup { font-size: 20px; top: -12px; position: relative; }
+.c360crm-tier-price span { font-size: 15px; font-weight: 500; color: var(--c360crm-muted); }
+.c360crm-tier-desc { font-size: 14.5px; line-height: 1.6; color: var(--c360crm-muted); margin: 16px 0 0; }
+.c360crm-tier-foot {
+  font-size: 13px; color: var(--c360crm-muted);
+  margin-top: auto; padding-top: 20px;
+  border-top: 1px solid var(--c360crm-border);
+}
+.c360crm-tier--featured .c360crm-tier-foot { margin-top: 22px; }
+.c360crm-price-cta { text-align: center; }
+.c360crm-price-cta .c360crm-btns { justify-content: center; }
+.c360crm-fineprint { font-size: 13px; color: var(--c360crm-muted); margin: 18px 0 0; }
+
+/* ============================================================
+   6 — FINAL CTA
+   ============================================================ */
+.c360crm-final { text-align: center; }
+.c360crm-final h2 {
+  font-size: clamp(29px, 3.8vw, 42px);
+  letter-spacing: -0.026em; line-height: 1.14;
+  max-width: 20em; margin-inline: auto; margin-bottom: 20px;
+}
+.c360crm-final-sub { font-size: 16.5px; line-height: 1.62; max-width: 34em; margin-inline: auto; }
+.c360crm-final .c360crm-btns { justify-content: center; margin-top: 34px; }
+.c360crm-final-fine { font-size: 13px; line-height: 1.5; color: rgba(255,255,255,0.72); margin: 28px 0 0; }
+
+/* ============================================================
+   7 — FAQ  (white, sits between the navy CTA and the navy footer)
+   Native <details>/<summary>: no JS, keyboard accessible for free,
+   and findable by in-page browser search when closed.
+   ============================================================ */
+.c360crm-inline-link { color: var(--c360crm-green); font-weight: 600; }
+.c360crm-faq-list { max-width: 860px; margin: 0 auto; }
+.c360crm-faq-item {
+  border: 1px solid var(--c360crm-border);
+  border-radius: 10px; background: #fff;
+  margin-bottom: 12px; overflow: hidden;
+  transition: border-color .16s ease, box-shadow .16s ease;
+}
+.c360crm-faq-item[open] { border-color: rgba(18,120,37,0.35); box-shadow: var(--c360crm-shadow-sm); }
+.c360crm-faq-item summary {
+  list-style: none; cursor: pointer;
+  display: flex; align-items: center; justify-content: space-between; gap: 20px;
+  padding: 20px 24px;
+  font-size: 16.5px; font-weight: 600; line-height: 1.4;
+  color: var(--c360crm-blue); text-wrap: balance;
+}
+.c360crm-faq-item summary::-webkit-details-marker { display: none; }
+.c360crm-faq-sign {
+  flex-shrink: 0; width: 24px; height: 24px; position: relative;
+  transition: transform .2s ease;
+}
+.c360crm-faq-sign::before,
+.c360crm-faq-sign::after {
+  content: ''; position: absolute; background: var(--c360crm-green);
+  border-radius: 2px; top: 50%; left: 50%;
+}
+.c360crm-faq-sign::before { width: 14px; height: 2px; transform: translate(-50%, -50%); }
+.c360crm-faq-sign::after  { width: 2px; height: 14px; transform: translate(-50%, -50%); transition: opacity .2s ease; }
+.c360crm-faq-item[open] .c360crm-faq-sign::after { opacity: 0; }
+.c360crm-faq-body { padding: 0 24px 22px; }
+.c360crm-faq-body p { font-size: 15.5px; line-height: 1.65; color: var(--c360crm-muted); margin: 0 0 14px; max-width: 60em; }
+.c360crm-faq-body p:last-child { margin-bottom: 0; }
+.c360crm-faq-body a { color: var(--c360crm-green); font-weight: 500; }
+.c360crm-faq-foot { text-align: center; margin: 40px 0 0; font-size: 15px; color: var(--c360crm-muted); }
+.c360crm-faq-foot a { color: var(--c360crm-green); font-weight: 600; text-decoration: none; }
+.c360crm-faq-foot a:hover { text-decoration: underline; }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 991px) {
+  .c360crm-sec { padding: 64px 0; }
+  .c360crm-hero { padding: 48px 0 60px; }
+  .c360crm-hero-grid,
+  .c360crm-app-grid,
+  .c360crm-row { grid-template-columns: 1fr; gap: 40px; }
+  .c360crm-trust { align-items: center; }
+  .c360crm-row--flip .c360crm-row-media { order: 0; }
+  .c360crm-flow { gap: 64px; }
+    .c360crm-tiers { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .c360crm-wrap { padding: 0 18px; }
+  .c360crm-btn { width: 100%; }
+  .c360crm-btns { flex-direction: column; }
+  .c360crm-store a { width: 100%; }
+  .c360crm-cmp-hint { display: block; }
+  /* Badge stacks above the list. Keep the right-side clear space so the
+     required halo survives the reflow. 64/32 is the rung below 88/44 and
+     the smallest that still reads on a narrow screen - 1c puts the
+     legibility floor at ~44px, so 64px sits comfortably above it. */
+  .c360crm-trust { flex-direction: column; align-items: flex-start; }
+  .c360crm-trust-badge { --badge-h: 64px; --badge-clear: 32px; margin-right: var(--badge-clear); }
+  /* Cell padding and the caption band's padding must move together, or
+     the note hangs off the table's text column. */
+  .c360crm-cmp thead th, .c360crm-cmp tbody td { padding-left: 14px; padding-right: 14px; }
+  .c360crm-stack-note { padding-left: 14px; padding-right: 14px; }
+  .c360crm-faq-item summary { padding: 17px 18px; font-size: 15.5px; }
+  .c360crm-faq-body { padding: 0 18px 18px; }
+  /* Drop every dot layer on small screens — invisible at this size and
+     it saves the paint on the devices that can least afford it. */
+  .c360crm-sec--dots::before,
+  .c360crm-hero-media::before,
+  .c360crm-row-media::after,
+  }
+
+@media (prefers-reduced-motion: reduce) {
+  .c360crm *, .c360crm *::before, .c360crm *::after {
+    transition-duration: .01ms !important; animation-duration: .01ms !important;
+  }
+}
+</style>
+
+
+<!-- ============================================================
+     1 — HERO  (white)
+     ============================================================ -->
+<section class="c360crm-hero">
+  <div class="c360crm-wrap">
+    <div class="c360crm-hero-grid">
+
+      <div class="c360crm-hero-copy">
+        <span class="c360crm-pill">All-in-one CRM platform</span>
+
+        <!-- H1 options, if the voice needs adjusting. All carry the
+             category keyword, which the previous line did not:
+               "The all-in-one CRM that follows up so you don't have to."   <- in use
+               "One CRM for your leads, your calendar and your follow-up."
+               "The all-in-one CRM that replaces your other six subscriptions."
+               "An all-in-one CRM built for local businesses that hate admin."
+             Keep the non-breaking hyphens in all&#8209;in&#8209;one or the
+             headline will split across lines at the hyphens. -->
+        <h1>The all&#8209;in&#8209;one CRM that follows up so you don&#8217;t have to.</h1>
+
+        <p class="c360crm-hero-sub">
+          Your CRM, calendar, texting, email, review requests and invoicing stop being
+          six subscriptions that don&#8217;t talk to each other &mdash; and every lead that
+          comes in gets chased whether or not anyone remembers to.
+        </p>
+
+        <div class="c360crm-btns">
+          <a href="/pricing" class="c360crm-btn c360crm-btn--primary">See plans and pricing</a>
+          <a href="/schedule-demo" class="c360crm-btn c360crm-btn--ghost">Book a free demo</a>
+        </div>
+
+        <!-- CREDENTIALS CLUSTER - the ONLY place on this page where trust
+             credentials live. Same pattern as LSA v1.4.3, the homepage and
+             /google-ppc. Read the CSS block above before touching the badge.
+
+             BADGE SIZE: 88px, clear space 44px. Never change --badge-h
+             without --badge-clear (1e: clear space >= 1/2 badge height on
+             every side). The ladder, and the gap you get beside the text:
+               64px  -> 32px gap  (mobile; tightest that stays readable)
+               88px  -> 44px gap  (current; matches LSA and the footer)
+              100px  -> 50px gap
+              110px  -> 55px gap  (cluster starts to read as two things -
+                                   this page tried it and came back down)
+              122px  -> 61px gap  (/google-ppc, which anchors a wider column)
+
+             NO DIVIDER between the badge and the list. A rule line is
+             "another graphic" and cannot sit inside the clear space.
+             DO NOT wrap the badge in a card/chip, round or clip its
+             container, crop its built-in padding, or put a Google-G icon
+             anywhere in this list (1c - that reads as an imitation badge).
+             The generic check marks below are list bullets, used
+             identically on all four rows, not badge imitation.
+
+             REVIEW: review count. Footer says 147, /pricing says 144+.
+             Reconcile before publishing. Recommended fix is a GHL custom
+             value so every location reads from one source:
+               {{ custom_values.review_count }} -->
+        <div class="c360crm-trust">
+
+          <a href="https://www.google.com/partners/agency?id=9636024453"
+             target="_blank" rel="noopener" class="c360crm-trust-badge">
+            <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+          </a>
+
+          <ul class="c360crm-trust-list">
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#127825" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Certified Google Partner &middot; Google Product Expert</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#127825" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> <span class="c360crm-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 147 five-star reviews &middot; 5.0 on Google</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#127825" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> Tucson-based &middot; serving nationwide since 2018</li>
+            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#127825" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg> 14-day free trial &middot; 30-day money-back guarantee</li>
+          </ul>
+
+        </div>
+      </div>
+
+      <div class="c360crm-hero-media">
+        <!-- Edge-feathered master, uploaded Aug 2026. Superseded the original
+             81099ef2-... file, whose baked-in glow was clipped at the right
+             canvas edge. Do NOT add filter:drop-shadow() to this image - about
+             26% of it is low-alpha glow reaching near the corners, so a shadow
+             traces that rectangle instead of the cards.
+             width/height are the intrinsic 838x860 and reserve the box to
+             prevent layout shift. -->
+        <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a95dca202832ae8617d74e0.png"
+             alt="Complete360 dashboard showing pipeline value, conversion rate, and funnel performance"
+             width="838" height="860" fetchpriority="high">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     2 — THE STACK IT REPLACES  (tint + dots)
+
+     CONFIRM BEFORE PUBLISHING — every price in the third column.
+     These are entry-tier list prices and vendors change them constantly.
+     Comparative pricing claims are yours to substantiate once they are on
+     your site, so they need to be accurate on the day you publish and
+     re-checked on a schedule. The dated footnote below is what makes the
+     claim defensible; keep it and keep the date current.
+
+     Tool names are plain text, deliberately. Reproducing competitors'
+     logos is a separate and much larger trademark question than naming
+     them for comparison. If you want the row to be less pointed, delete
+     the second column entirely — the argument still works without it.
+
+     If you edit any price, update the $838 total in <tfoot> to match.
+     ============================================================ -->
+<section class="c360crm-sec c360crm-sec--tint c360crm-sec--dots">
+  <div class="c360crm-wrap">
+    <div class="c360crm-head">
+      <h2>Count the logins you pay for right now.</h2>
+      <p>
+        Most local businesses we onboard are running six or more tools that each solve
+        one piece of the problem and none of which share a contact record.
+      </p>
+    </div>
+
+    <div class="c360crm-cmp-shell">
+      <p class="c360crm-cmp-hint">Scroll the table sideways to see every column &rarr;</p>
+      <div class="c360crm-cmp-scroll">
+        <table class="c360crm-cmp">
+          <caption class="c360crm-sr">Cost of separate tools compared with the Complete360 CRM Platform</caption>
+          <thead>
+            <tr>
+              <th scope="col">What you need</th>
+              <th scope="col">Commonly bought as</th>
+              <th scope="col">Separately</th>
+              <th scope="col">Complete360</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td class="c360crm-cmp-feat">CRM &amp; pipeline management</td>
+            <td class="c360crm-cmp-repl">HubSpot, ActiveCampaign</td>
+            <td class="c360crm-cmp-cost">$99/mo</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          <tr>
+            <td class="c360crm-cmp-feat">Website &amp; funnel builder</td>
+            <td class="c360crm-cmp-repl">ClickFunnels, Leadpages</td>
+            <td class="c360crm-cmp-cost">$97/mo</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          <tr>
+            <td class="c360crm-cmp-feat">Forms &amp; surveys</td>
+            <td class="c360crm-cmp-repl">Jotform, Typeform</td>
+            <td class="c360crm-cmp-cost">$29/mo</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          <tr>
+            <td class="c360crm-cmp-feat">Email marketing</td>
+            <td class="c360crm-cmp-repl">Mailchimp, Constant Contact</td>
+            <td class="c360crm-cmp-cost">$50/mo</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          <tr>
+            <td class="c360crm-cmp-feat">2-way SMS marketing</td>
+            <td class="c360crm-cmp-repl">Podium, Skipio</td>
+            <td class="c360crm-cmp-cost">$79/mo</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          <tr>
+            <td class="c360crm-cmp-feat">Booking &amp; appointments</td>
+            <td class="c360crm-cmp-repl">Calendly, Acuity</td>
+            <td class="c360crm-cmp-cost">$29/mo</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          <tr>
+            <td class="c360crm-cmp-feat">Workflow automations</td>
+            <td class="c360crm-cmp-repl">Keap, ActiveCampaign</td>
+            <td class="c360crm-cmp-cost">$99/mo</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          <tr>
+            <td class="c360crm-cmp-feat">Reputation &amp; reviews</td>
+            <td class="c360crm-cmp-repl">Birdeye, Podium</td>
+            <td class="c360crm-cmp-cost">$159/mo</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          <tr>
+            <td class="c360crm-cmp-feat">Call tracking &amp; recording</td>
+            <td class="c360crm-cmp-repl">CallRail</td>
+            <td class="c360crm-cmp-cost">$49/mo</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          <tr>
+            <td class="c360crm-cmp-feat">Courses &amp; memberships</td>
+            <td class="c360crm-cmp-repl">Kajabi, Teachable</td>
+            <td class="c360crm-cmp-cost">$99/mo</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          <tr>
+            <td class="c360crm-cmp-feat">Reporting &amp; analytics</td>
+            <td class="c360crm-cmp-repl">AgencyAnalytics</td>
+            <td class="c360crm-cmp-cost">$49/mo</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          <tr>
+            <td class="c360crm-cmp-feat">Branded mobile app</td>
+            <td class="c360crm-cmp-repl">No direct equivalent</td>
+            <td class="c360crm-cmp-cost">—</td>
+            <td class="c360crm-cmp-inc"><span>Included</span></td>
+          </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <td colspan="2">All of it, one login</td>
+              <td class="c360crm-cmp-total"><s>$838/mo</s></td>
+              <td class="c360crm-cmp-win">$299/mo<small>Unlimited plan</small></td>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+
+      <p class="c360crm-stack-note">
+        Third column shows advertised entry-tier pricing for commonly used alternatives,
+        checked <!-- CONFIRM: set to the date you verify these -->August 2026. Prices change and your
+        own stack will differ. The real cost is rarely the subscriptions anyway — it's the
+        lead that got a booking confirmation from one tool and never got a follow-up from another.
+      </p>
+    </div>
+
+    <div class="c360crm-stack-cta">
+      <a href="/pricing" class="c360crm-btn c360crm-btn--primary">Compare the three plans</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     3 — CAPTURE / NURTURE / CLOSE  (white)
+     Anchors preserved from the old page so existing inbound links,
+     mega-menu deep links and email links still land.
+     CONFIRM: sub-domain slugs copied verbatim from footer v1.4 /
+     header v2.1, including the {{ custom_values.sub_domain_url }} token.
+     ============================================================ -->
+<section class="c360crm-sec">
+  <div class="c360crm-wrap">
+    <div class="c360crm-head">
+      <h2>How a lead actually moves through it</h2>
+      <p>Three stages. Every one of them running whether or not someone is at a desk.</p>
+    </div>
+
+    <div class="c360crm-flow">
+
+      <div class="c360crm-row" id="capture">
+        <div>
+          <span class="c360crm-step">
+            <span class="c360crm-step-num c360crm-step-num--blue">1</span>
+            <span class="c360crm-step-label">Capture</span>
+          </span>
+          <h3>Catch the lead while they still care.</h3>
+          <p>
+            Someone fills in a form at 9pm, messages your Google listing on a Saturday,
+            or calls while you're on a roof. All of it lands in one inbox with a contact
+            record attached, and the missed call gets a text back before they've finished
+            dialling your competitor.
+          </p>
+          <ul class="c360crm-chips">
+            <li><a href="{{ custom_values.sub_domain_url }}/chat-widget-feature-page">Website chat widget</a></li>
+            <li><a href="{{ custom_values.sub_domain_url }}/forms-feature-page">Forms and surveys</a></li>
+            <li><a href="{{ custom_values.sub_domain_url }}/calendar-feature">Online booking</a></li>
+            <li><a href="{{ custom_values.sub_domain_url }}/capture#section--jUucpMd-O">Social media management</a></li>
+            <li><a href="{{ custom_values.sub_domain_url }}/capture">See all capture tools</a></li>
+          </ul>
+        </div>
+        <div class="c360crm-row-media">
+          <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/945fcff2-1d26-4c81-836d-9e30f5ae1c05.png"
+               alt="Text conversation and calendar view showing an appointment being booked from a chat" loading="lazy">
+        </div>
+      </div>
+
+      <div class="c360crm-row c360crm-row--flip" id="nurture">
+        <div>
+          <span class="c360crm-step">
+            <span class="c360crm-step-num c360crm-step-num--green">2</span>
+            <span class="c360crm-step-label">Nurture</span>
+          </span>
+          <h3>Follow up more times than you'd ever remember to.</h3>
+          <p>
+            Most deals are lost to silence, not to a competitor. Build the sequence once —
+            text, email, voicemail, a nudge on day four and day eleven — and it runs on
+            every new lead identically, in under five minutes, forever.
+          </p>
+          <ul class="c360crm-chips">
+            <li><a href="{{ custom_values.sub_domain_url }}/nurture">Automated sequences</a></li>
+            <li><a href="{{ custom_values.sub_domain_url }}/nurture#section-rzT06fEwVX">Email and SMS marketing</a></li>
+            <li><a href="{{ custom_values.sub_domain_url }}/nurture#section-npaJ_SciNU">Phone system and autodialer</a></li>
+            <li><a href="{{ custom_values.sub_domain_url }}/all-in-one-inbox-feature-page">All-in-one inbox</a></li>
+          </ul>
+        </div>
+        <div class="c360crm-row-media">
+          <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/afb8d8fd-3b01-4e46-baa4-4489793ffa1f.png"
+               alt="Automated follow-up workflow sending email and SMS steps after a lead visits the website" loading="lazy">
+        </div>
+      </div>
+
+      <div class="c360crm-row" id="close">
+        <div>
+          <span class="c360crm-step">
+            <span class="c360crm-step-num c360crm-step-num--blue">3</span>
+            <span class="c360crm-step-label">Close</span>
+          </span>
+          <h3>Know who's ready, and get paid without chasing.</h3>
+          <p>
+            Every contact sits at a visible stage in the pipeline, so you spend the day on
+            the four people close to signing instead of the forty who aren't. Send the
+            invoice, take the card, and let the review request go out on its own afterwards.
+          </p>
+          <ul class="c360crm-chips">
+            <li><a href="{{ custom_values.sub_domain_url }}/close#section-lvLmGmzqf8">CRM and sales pipeline</a></li>
+            <li><a href="{{ custom_values.sub_domain_url }}/close#section-2vrc2jEfxR">Invoicing and payments</a></li>
+            <li><a href="{{ custom_values.sub_domain_url }}/review-reputation-management-features-page">Review and reputation</a></li>
+            <li><a href="{{ custom_values.sub_domain_url }}/close#section-99aPORIMTz">Reporting and analytics</a></li>
+          </ul>
+        </div>
+        <div class="c360crm-row-media">
+          <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/851dcbff-4c68-49f6-aa8a-414f9ffc5ade.png"
+               alt="Invoice being sent and marked paid, with a proposal accepted notification" loading="lazy">
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     4 — MOBILE APP  (navy + dots)
+     ============================================================ -->
+<section class="c360crm-sec c360crm-sec--navy c360crm-sec--dots">
+  <div class="c360crm-wrap">
+    <div class="c360crm-app-grid">
+      <div>
+        <h2 class="c360crm-app-title">The whole thing fits in your pocket.</h2>
+        <ul class="c360crm-app-list">
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Get a notification the second a lead comes in
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Reply by text or call from your business number, not your personal one
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Move a deal down the pipeline between jobs
+          </li>
+          <li>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+            Included on every plan, no extra seat charge
+          </li>
+        </ul>
+
+        <!-- CONFIRM: store URLs still placeholders. The old page's badges
+             were not linked to real listings. Swap in the real app links. -->
+        <div class="c360crm-store">
+          <a href="#" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.05 12.54c-.02-2.3 1.88-3.4 1.96-3.46-1.07-1.56-2.73-1.78-3.32-1.8-1.41-.14-2.76.83-3.48.83-.72 0-1.83-.81-3-.79-1.55.02-2.97.9-3.76 2.28-1.6 2.78-.41 6.9 1.15 9.16.76 1.1 1.67 2.34 2.86 2.3 1.15-.05 1.58-.74 2.97-.74 1.39 0 1.78.74 3 .72 1.24-.02 2.02-1.12 2.78-2.23.87-1.28 1.23-2.52 1.25-2.58-.03-.01-2.4-.92-2.41-3.69zM14.9 5.5c.63-.77 1.06-1.83.94-2.9-.91.04-2.02.61-2.67 1.37-.58.68-1.09 1.77-.95 2.81 1.02.08 2.05-.52 2.68-1.28z"/></svg>
+            <span>Download on the<small>App Store</small></span>
+          </a>
+          <a href="#" target="_blank" rel="noopener">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.6 2.4c-.25.26-.4.67-.4 1.2v16.8c0 .53.15.94.4 1.2l.09.08L13 12.1v-.2L3.69 2.32l-.09.08zM16.2 15.3l-3.1-3.1v-.2l3.1-3.1.07.04 3.68 2.09c1.05.6 1.05 1.57 0 2.17l-3.68 2.09-.07.01zM15.5 16.1L12.3 12.9 3 22.2c.35.37.92.41 1.57.05l10.93-6.15zM15.5 7.9L4.57 1.75C3.92 1.39 3.35 1.43 3 1.8l9.3 9.3 3.2-3.2z"/></svg>
+            <span>Get it on<small>Google Play</small></span>
+          </a>
+        </div>
+      </div>
+
+      <div class="c360crm-app-media">
+        <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/b5772d9f-4338-4788-a751-8d602d2dcc9e.png"
+             alt="Complete360 mobile app showing notifications, conversations and recent activity" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     5 — PRICING TEASER  (tint + dots)
+     Anchors only. /pricing owns the real cards, feature matrix and
+     usage table. If these three prices ever drift from the sheet,
+     delete them rather than guess.
+     ============================================================ -->
+<section class="c360crm-sec c360crm-sec--tint c360crm-sec--dots" id="pricing">
+  <div class="c360crm-wrap">
+    <div class="c360crm-head">
+      <h2>Three plans. Start on the small one.</h2>
+      <p>Every plan includes a 14-day free trial and a 30-day money-back guarantee.</p>
+    </div>
+
+    <div class="c360crm-tiers">
+      <div class="c360crm-tier">
+        <div class="c360crm-tier-name">Starter</div>
+        <div class="c360crm-tier-price"><sup>$</sup>199<span> /mo</span></div>
+        <p class="c360crm-tier-desc">
+          For solo operators replacing a spreadsheet and a phone's text app with a real system.
+        </p>
+        <div class="c360crm-tier-foot">2 users · 1,000 contacts</div>
+      </div>
+
+      <div class="c360crm-tier c360crm-tier--featured">
+        <span class="c360crm-tier-flag">Most popular</span>
+        <div class="c360crm-tier-name">Unlimited</div>
+        <div class="c360crm-tier-price"><sup>$</sup>299<span> /mo</span></div>
+        <p class="c360crm-tier-desc">
+          For a growing team running campaigns, automations and a reputation engine.
+        </p>
+        <div class="c360crm-tier-foot">5 users · unlimited contacts</div>
+      </div>
+
+      <div class="c360crm-tier">
+        <div class="c360crm-tier-name">Enterprise</div>
+        <div class="c360crm-tier-price"><sup>$</sup>499<span> /mo</span></div>
+        <p class="c360crm-tier-desc">
+          For multi-location businesses and agencies needing unlimited seats and priority support.
+        </p>
+        <div class="c360crm-tier-foot">Unlimited users · unlimited locations</div>
+      </div>
+    </div>
+
+    <div class="c360crm-price-cta">
+      <div class="c360crm-btns">
+        <a href="/pricing" class="c360crm-btn c360crm-btn--primary">See what's in each plan</a>
+        <a href="tel:+18665276205" class="c360crm-btn c360crm-btn--ghost">Call (866) 527-6205</a>
+      </div>
+      <!-- Trial terms: CARD REQUIRED (confirmed Aug 2026). The "no credit
+           card" line in the /pricing final CTA is the outlier and needs
+           removing there. Do not reintroduce it here. -->
+      <p class="c360crm-fineprint">
+        14-day free trial · credit card required to start · cancel anytime, no hassle
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     6 — FINAL CTA  (navy + dots)
+     Now sandwiched between two white sections. Does not touch the footer.
+     ============================================================ -->
+<section class="c360crm-sec c360crm-sec--navy c360crm-sec--dots">
+  <div class="c360crm-wrap c360crm-final">
+    <h2>Your leads deserve better follow&#8209;up.</h2>
+    <p class="c360crm-final-sub">
+      Start the trial and we'll walk you through setting up your first pipeline and
+      follow&#8209;up sequence. Or call and talk to someone in Tucson about whether it fits.
+    </p>
+    <div class="c360crm-btns">
+      <a href="/pricing" class="c360crm-btn c360crm-btn--onnavy">Start your 14-day free trial</a>
+      <a href="tel:+18665276205" class="c360crm-btn c360crm-btn--outline-navy">(866) 527-6205</a>
+      <a href="/schedule-demo" class="c360crm-btn c360crm-btn--outline-navy">Book a demo</a>
+    </div>
+    <p class="c360crm-final-fine">
+      14-day free trial · 30-day money-back guarantee · credit card required · cancel anytime
+    </p>
+  </div>
+</section>
+
+
+<!-- ============================================================
+     7 — FAQ  (WHITE — this is the section that meets the footer)
+     Questions are fit + migration only. Zero overlap with the nine on
+     /pricing, so both pages can carry their own FAQPage node.
+     CONFIRM the three answers marked below before publishing — they
+     make operational promises I inferred rather than sourced.
+     ============================================================ -->
+<section class="c360crm-sec" id="faq">
+  <div class="c360crm-wrap">
+    <div class="c360crm-head">
+      <h2>Questions before you switch</h2>
+      <p>Pricing, trial and billing questions are answered over on the <a href="/pricing" class="c360crm-inline-link">pricing page</a>.</p>
+    </div>
+
+    <div class="c360crm-faq-list">
+
+      <details class="c360crm-faq-item">
+        <summary>What does this actually replace?<span class="c360crm-faq-sign" aria-hidden="true"></span></summary>
+        <div class="c360crm-faq-body">
+          <p>
+            For most of our clients: their CRM, their booking tool, their email marketing
+            platform, their business texting app, their review-request software, and their
+            invoicing. Some keep one specialist tool — accounting, or field-service dispatch —
+            and connect it.
+          </p>
+          <p>
+            The goal isn't to replace everything you own. It's to stop leads falling into the
+            gaps between the things you own.
+          </p>
+        </div>
+      </details>
+
+      <details class="c360crm-faq-item">
+        <summary>Will it work for my industry?<span class="c360crm-faq-sign" aria-hidden="true"></span></summary>
+        <div class="c360crm-faq-body">
+          <p>
+            It's in daily use across home services, trades, insurance and financial agents,
+            real estate, medical and dental practices, and legal firms. The platform is the
+            same underneath; what changes is how the pipeline stages, intake forms and
+            follow-up sequences are configured for how your business actually sells.
+          </p>
+          <p>That configuration happens during onboarding, with you, not after you're handed a login.</p>
+        </div>
+      </details>
+
+      <details class="c360crm-faq-item">
+        <summary>Can I keep my current business phone number?<span class="c360crm-faq-sign" aria-hidden="true"></span></summary>
+        <div class="c360crm-faq-body">
+          <!-- CONFIRM: porting availability and typical timeline. -->
+          <p>
+            In most cases yes — existing business numbers can be ported in so calls and texts
+            route through the platform without your customers noticing a change.
+          </p>
+          <p>
+            If you'd rather not move your main line, you can run a new number alongside it and
+            keep the old one exactly as it is. Plenty of clients start that way and port later.
+          </p>
+        </div>
+      </details>
+
+      <details class="c360crm-faq-item">
+        <summary>What happens to the contacts I already have?<span class="c360crm-faq-sign" aria-hidden="true"></span></summary>
+        <div class="c360crm-faq-body">
+          <!-- CONFIRM: what the standard import covers (tags? notes? history?). -->
+          <p>
+            They come with you. Export from your current tool as a CSV and we import them
+            during onboarding, mapping tags and fields across where the source data supports it.
+          </p>
+          <p>
+            A messy export is normal and not a problem — cleaning it up is part of the setup work.
+          </p>
+        </div>
+      </details>
+
+      <details class="c360crm-faq-item">
+        <summary>Do I own my data?<span class="c360crm-faq-sign" aria-hidden="true"></span></summary>
+        <div class="c360crm-faq-body">
+          <!-- CONFIRM this against the Terms of Service before publishing. -->
+          <p>
+            Yes. Your contacts and conversation history belong to you and can be exported at
+            any time, including if you decide to leave.
+          </p>
+        </div>
+      </details>
+
+      <details class="c360crm-faq-item">
+        <summary>Do I need to be technical to run it?<span class="c360crm-faq-sign" aria-hidden="true"></span></summary>
+        <div class="c360crm-faq-body">
+          <p>
+            No. The parts most owners touch daily are the mobile app and the pipeline board,
+            and both are drag-and-tap. The heavier machinery — automations, workflows, campaign
+            builds — we set up with you and you edit later if you want to.
+          </p>
+        </div>
+      </details>
+
+      <details class="c360crm-faq-item">
+        <summary>Can my whole team use it?<span class="c360crm-faq-sign" aria-hidden="true"></span></summary>
+        <div class="c360crm-faq-body">
+          <p>
+            Every plan includes seats — two on Starter, five on Unlimited, unlimited on
+            Enterprise — with per-user permissions, so a technician sees their jobs without
+            seeing your revenue reporting.
+          </p>
+        </div>
+      </details>
+
+      <details class="c360crm-faq-item">
+        <summary>How is this different from hiring you to run our ads?<span class="c360crm-faq-sign" aria-hidden="true"></span></summary>
+        <div class="c360crm-faq-body">
+          <p>
+            Advertising creates leads. The CRM catches and converts them. They're separate
+            purchases and either one works on its own — but ad spend goes a lot further when
+            the leads it generates get followed up automatically instead of sitting in an inbox.
+          </p>
+        </div>
+      </details>
+
+    </div>
+
+    <p class="c360crm-faq-foot">
+      Still deciding? <a href="/schedule-demo">Book a free demo</a> or call
+      <a href="tel:+18665276205">(866) 527-6205</a> and talk it through with someone in Tucson.
+    </p>
+  </div>
+</section>
+
+</div>
+<!-- ============================================================
+     END — Complete360 CRM Platform Overview v2.1
+     ============================================================ -->
