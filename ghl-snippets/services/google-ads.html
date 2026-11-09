@@ -1,6 +1,1377 @@
-<!--
-  PLACEHOLDER: no code yet
-  GHL page: "Google Ads"
-  Next step: paste this page's custom code from GHL here,
-  or delete this file if the page has no custom code.
--->
+<!-- ============================================================
+     COMPLETE360 — GOOGLE ADS (PPC) PAGE — v2.4
+     Paste into the GHL Custom Code element for /google-ppc.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     All styles/scripts prefixed c360ga- to avoid collisions.
+     NEW PREFIX REGISTERED: c360ga- (Google Ads / PPC page). Sits alongside
+     c360ma- (Meta Ads) and c360ai- (AI Agents). Add to brand doc §prefixes.
+
+     Structure mirrors the Meta Ads page (c360ma-) deliberately, so the two
+     paid-ads pages read as siblings. Key intentional differences:
+       - HERO SIGNATURE is a 2-FORMAT ROTATOR (v1.1): a Search text ad
+         and a Maps promoted listing, auto-advancing. No display ads by
+         decision — different intent from search/maps. Single-clock design.
+       - Positioning is INTENT-CAPTURE (people searching now), not the
+         interruption/demand-gen framing the Meta page uses.
+
+     Changes from v2.3 (setup fee resolved):
+     - SETUP FEE decided: one-time $499. [SETUP FEE — TBC] blocker CLEARED.
+       Shown on all 3 pricing cards ("+ $499 one-time setup") and answered in
+       the FAQ. It's a WAIVABLE anchor — public checkout must CHARGE it; agents
+       waive via a discounted link/coupon (same mechanic as $399 -> $299).
+     - The $319/$279 effective rates are management-fee per-month; the $499 is
+       a separate one-time charge on top (does not change the effective math).
+
+     Changes from v2.2 (pricing bump):
+     - LIST pricing raised: Monthly $299 -> $399. 6-month & 12-month rescaled
+       at the SAME 20% / 30% discounts:
+         6-Month  $1,435 -> $1,915  ($239 -> $319/mo, save $359 -> $479)
+         12-Month $2,512 -> $3,352  ($209 -> $279/mo, save $1,076 -> $1,436)
+     - $399 is the LIST/anchor price; sales agents can discount to $299. So
+       $299 is a negotiated floor, not the public price.
+     - Guarantee recapture rate and management-fee references updated to $399.
+     - ⚠️ The pricing SHEET and the /google-checkout link still reflect $299 —
+       reconcile: the public checkout should charge the $399 list price, with
+       $299 applied as an agent discount (or the page and checkout will mismatch).
+     - Same change is needed on the Meta Ads page + nav "From $X/mo" hints.
+
+     Changes from v2.1:
+     - Badge 100px -> 122px to match the height of the 4-item column beside
+       it (4 rows x ~23px + 3 gaps x 10px ~= 122px). If the number of items or
+       the row spacing changes, retune this height to match.
+
+     Changes from v2.0:
+     - The 2x2 grid was too wide for the hero column, so it wrapped BENEATH
+       the badge. Switched to a single vertical column of all 4 items beside
+       the badge + flex-nowrap, so they stay in line with the badge instead
+       of dropping below it. Mobile still wraps/stacks.
+
+     Changes from v1.9:
+     - Merged the trust row INTO the credentials block: badge (bigger, 72px
+       -> 100px) + a 2x2 grid of all four signals (147 reviews, Tucson-based,
+       Google Product Expert on team, In business since 2018) as one cluster.
+       Removed the separate trust row for consistency.
+     - Note: at 100px the badge sits a bit inside §1's 1/2-height clear-space
+       guide relative to the 40px gap. Grouped look chosen deliberately.
+
+     Changes from v1.8:
+     - Filled the founding year: "In business since 2018" (was 20XX).
+
+     Changes from v1.7:
+     - Badge is no longer a lone floating box. It's now the anchor of a
+       CREDENTIALS LOCKUP alongside two real creds (Google Product Expert on
+       team + years in business). Fixes the "out of place" look.
+     - Badge 100px -> 72px. Reason: §1 requires clear space >= 1/2 the badge
+       height on every side. At 100px that forced ~50px of mandatory empty
+       space around it — which is exactly what made the solo badge look
+       isolated. 72px lets the group sit tight (40px gaps) and stay compliant.
+     - ⚠️ "In business since 20XX" — REPLACE 20XX with the real founding year.
+
+     Changes from v1.6:
+     - Removed my white plate around the badge. The official badge ALREADY
+       includes its own white card + border + padding (+ the external-link
+       arrow), so my plate was double-framing it. Now just the badge on its
+       own card, with a drop-shadow (which follows the badge's real shape)
+       for depth. The remaining padding/border is INSIDE Google's SVG and
+       can't be cropped/restyled — altering the badge is forbidden (§1).
+
+     Changes from v1.5:
+     - Badge -> 100px height (width:auto — never both; aspect ratio kept).
+     - Plate corners 8px -> 3px so they no longer over-round past the badge's
+       squarer edges (fixes the corner-mismatch). Clear-space margin bumped
+       to suit the larger badge (§1).
+     - NOTE: at 100px the badge is a large element. Kept in the quiet corner,
+       but this is near the ceiling of §1's "not more prominent than your own
+       logo." If you want it this big long-term, add a Complete360 logo to
+       the hero so the badge isn't the biggest brand mark on the section.
+
+     Changes from v1.4:
+     - Chip padding removed -> badge is EDGE TO EDGE (the white plate is now
+       exactly the badge's bounding box, not a box with an image floating
+       inside). overflow:hidden + small radius for clean corners; margin-top
+       preserves the required clear space above (badge wraps below the trust
+       row). Any whitespace still visible is baked into Google's own SVG and
+       can't be cropped — doing so would ALTER the badge (forbidden, §1).
+
+     Changes from v1.3:
+     - Partner badge 44px -> 64px, chip padding tightened (14/18 -> 10/12)
+       so the stacked "Google Partner" text is actually readable. The badge
+       is a stacked mark, so legibility needs real size. Kept subordinate to
+       the headline by PLACEMENT (quiet hero-footer corner), which is how we
+       stay within §1's "not the most prominent element" — not by shrinking
+       it into illegibility. Still official snippet, white chip, profile link.
+
+     Changes from v1.2:
+     - Partner badge enlarged 28px -> 44px and the chip re-proportioned so
+       the badge is actually legible and reads as an intentional credential,
+       not a cramped tile. Still on a white chip (REQUIRED on the dark hero —
+       the badge can't be recoloured, §1); still the official snippet linking
+       to the Partners profile.
+
+     Changes from v1.1:
+     - Added the OFFICIAL Google Partner badge to the hero trust row
+       (compliant snippet, white chip). Removed the plain-text "Google
+       Partner Agency" item — the badge carries that claim now. See §1.
+
+     Changes from v1.0:
+     - Static single search-ad hero REPLACED with a 2-format rotator:
+       Search text ad + Maps promoted listing. Display intentionally left
+       out (client call: different intent from search/maps).
+     - Rotator reuses the Meta page's single-clock design — the dot fill
+       animation's animationend drives the advance, so bar and slide can't
+       desync. Duration = --ga-rot-dur (4s). Pause on hover/focus/hidden
+       tab; keyboard-accessible dots; honors reduced-motion.
+     - Removed the static "organic result" skeleton motif — the position
+       story now lives inside each card (search sits above results; the
+       Maps pin is the promoted one among competitors).
+     - Maps card is an ABSTRACT map (CSS roads + generic pins). NOT real
+       Google Maps chrome, and deliberately NOT the green Google-Guaranteed
+       / LSA box — LSA is a separate product; don't let this imply it.
+
+     ⚠️ NO GOOGLE LOGO / GOOGLE-G / SEARCH-BAR CHROME anywhere on this page.
+        The ad card is a GENERIC representation — favicon is a neutral dot,
+        not Google's mark. Reproducing Google's search UI on a page where we
+        also claim Partner status is the same imitation risk that pulled the
+        hand-built footer badge (brand doc §1). Do not add Google marks.
+     ⚠️ HERO TRUST ROW: shows the OFFICIAL Google Partner badge (v1.2) —
+        Google's HTML snippet on a white chip (hero is dark; NEVER recolour
+        the badge). Do NOT hand-build or add a seal/Google-G "Google Partner"
+        text imitation (§1). Height is set + width:auto (never both) to keep
+        aspect ratio; chip padding provides the required >= 1/2-height clear
+        space; the link to our Partners profile must stay. Partner ID
+        9636024453. This is a PPC page, so §1's SEO-services disclaimer is
+        NOT triggered here (it's required only where SEO is advertised).
+
+     ============================================================
+     OPEN ITEMS BEFORE PUBLISH:
+
+     1) SETUP FEE — RESOLVED (v2.4): one-time $499, shown on the cards + FAQ.
+        WAIVABLE by sales agents, so the public checkout must CHARGE it (agents
+        waive via a discounted link/coupon). The $319/$279 effective rates are
+        management-fee per-month; the $499 is separate. (Nav already flipped
+        live — header v1.9.4 + footer v1.4. Meta Ads page needs the same $499
+        + $399 pricing treatment.)
+
+     2) CHECKOUT SLUG ASSUMED = /google-checkout (mirrors /meta-checkout).
+        All 4 "Get Started" CTAs point there. CONFIRM the real slug and
+        find-replace if different. If checkout can preselect a plan, append
+        the param per card (e.g. /google-checkout?plan=12mo) — one edit each,
+        marked with a v1.0 comment. Compare /meta-checkout + /ai-checkout,
+        which share the same three-tier-to-one-URL shape.
+
+     3) AD-BUDGET MINIMUM SHOWN = $1,000/mo. Real number that sets client
+        expectations; Google search CPCs run higher than Meta's ($600 floor
+        there), so this is deliberately higher. CONFIRM against what we
+        actually recommend before publish. Appears in the clarity callout
+        AND the FAQ — change BOTH if it moves.
+     ============================================================
+
+     Pricing carried from the sheet (identical to Meta Ads):
+       Monthly $399/mo · 6-Month $1,915 ($319/mo) · 12-Month $3,352 ($279/mo)
+       Savings: 6mo = 399*6-1915 = $479 · 12mo = 399*12-3352 = $1,436
+     90-day satisfaction guarantee on both prepay cards (credit at standard
+       $399/mo recapture rate toward any Complete360 service; never expires).
+     ============================================================ -->
+
+<style>
+/* ---------- Poppins (defensive load; GHL theme usually provides it) ---------- */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ---------- Scoped brand tokens (brand-locked — do not restyle) ---------- */
+.c360ga {
+  --ga-blue: #122078;
+  --ga-blue-hover: #0d1654;
+  --ga-green: #127825;
+  --ga-green-hover: #0e5e1d;
+  --ga-green-light: #EAF3DE;
+  --ga-blue-light: #E6F1FB;
+  --ga-grey: #888780;
+  --ga-sand: #F1EFE8;
+  --ga-tint: #F4F8FC;
+  --ga-text: #0F1F5E;
+  --ga-text-muted: #5F5E5A;
+  --ga-border: rgba(15, 31, 94, 0.10);
+  --ga-white: #ffffff;
+  --ga-sh-sm: 0 1px 2px rgba(15,31,94,0.04), 0 4px 12px rgba(15,31,94,0.06);
+  --ga-sh-md: 0 2px 4px rgba(15,31,94,0.05), 0 14px 30px rgba(15,31,94,0.09);
+  --ga-sh-lg: 0 4px 8px rgba(15,31,94,0.06), 0 26px 58px rgba(15,31,94,0.13);
+  --ga-rings: repeating-radial-gradient(circle at 50% 50%,
+                transparent 0 62px, rgba(18,32,120,0.055) 62px 63px);
+  --ga-rings-light: repeating-radial-gradient(circle at 50% 50%,
+                transparent 0 62px, rgba(124,227,143,0.10) 62px 63px);
+  font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  color: var(--ga-text);
+  line-height: 1.6;
+}
+.c360ga * { box-sizing: border-box; }
+.c360ga i.fa-solid, .c360ga i.fa-brands {
+  font-family: "Font Awesome 6 Free", "Font Awesome 6 Brands" !important;
+  font-weight: 900 !important;
+}
+.c360ga i.fa-brands { font-family: "Font Awesome 6 Brands" !important; font-weight: 400 !important; }
+
+/* Quality floor: visible keyboard focus everywhere */
+.c360ga a:focus-visible,
+.c360ga button:focus-visible {
+  outline: 3px solid var(--ga-green);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+.c360ga-hero a:focus-visible,
+.c360ga-hero button:focus-visible,
+.c360ga-bg-navy a:focus-visible,
+.c360ga-bg-navy button:focus-visible { outline-color: #7CE38F; }
+
+/* ---------- Section shells ---------- */
+.c360ga-section { padding: 88px 24px; position: relative; }
+.c360ga-section--clip { overflow: hidden; }
+.c360ga-inner { max-width: 1160px; margin: 0 auto; position: relative; z-index: 2; }
+.c360ga-narrow { max-width: 820px; margin: 0 auto; position: relative; z-index: 2; }
+
+.c360ga-bg-white { background: var(--ga-white); }
+.c360ga-bg-sand  {
+  background: linear-gradient(180deg,
+    #fff 0%, var(--ga-sand) 13%, var(--ga-sand) 87%, #fff 100%);
+}
+.c360ga-bg-tint  {
+  background: linear-gradient(180deg,
+    #fff 0%, var(--ga-tint) 13%, var(--ga-tint) 87%, #fff 100%);
+}
+.c360ga-bg-navy  {
+  background: linear-gradient(160deg, #122078 0%, #0d1654 100%);
+  color: var(--ga-white);
+}
+
+/* Ring motif layer — sits behind content, bleeds past section edges. */
+.c360ga-rings {
+  position: absolute;
+  width: 1180px;
+  height: 1180px;
+  background: var(--ga-rings);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 42%, transparent 72%);
+          mask-image: radial-gradient(circle at 50% 50%, #000 42%, transparent 72%);
+}
+.c360ga-rings--r  { top: -300px;  right: -420px; }
+.c360ga-rings--l  { bottom: -380px; left: -460px; }
+.c360ga-rings--tr { top: -520px;  right: -300px; }
+.c360ga-bg-navy .c360ga-rings { background: var(--ga-rings-light); }
+
+.c360ga-glow {
+  position: absolute;
+  width: 620px; height: 620px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(18,120,37,0.10) 0%, rgba(18,120,37,0) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.c360ga-eyebrow {
+  display: inline-block;
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--ga-green);
+  background: var(--ga-green-light);
+  padding: 6px 14px;
+  border-radius: 20px;
+  margin-bottom: 20px;
+}
+.c360ga-bg-navy .c360ga-eyebrow { color: #B7F0C2; background: rgba(255,255,255,0.10); }
+
+.c360ga-h2 {
+  font-size: clamp(29px, 4vw, 41px);
+  font-weight: 700;
+  line-height: 1.12;
+  letter-spacing: -0.9px;
+  margin: 0 0 16px;
+}
+.c360ga-sub {
+  font-size: 17px;
+  font-weight: 400;
+  color: var(--ga-text-muted);
+  max-width: 620px;
+}
+.c360ga-bg-navy .c360ga-sub { color: rgba(255,255,255,0.75); }
+.c360ga-center { text-align: center; }
+.c360ga-center .c360ga-sub { margin-left: auto; margin-right: auto; }
+
+/* ---------- Buttons ---------- */
+.c360ga-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  padding: 15px 30px;
+  border-radius: 8px;
+  text-decoration: none;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: background 0.2s ease, transform 0.1s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.c360ga-btn-green { background: var(--ga-green); color: #fff !important; }
+.c360ga-btn-green:hover { background: var(--ga-green-hover); }
+.c360ga-btn-green:active { transform: scale(0.98); }
+.c360ga-btn-ghost { background: transparent; color: var(--ga-text) !important; border-color: var(--ga-border); }
+.c360ga-btn-ghost:hover { border-color: var(--ga-green); color: var(--ga-green) !important; }
+.c360ga-hero .c360ga-btn-ghost,
+.c360ga-bg-navy .c360ga-btn-ghost { color: #fff !important; border-color: rgba(255,255,255,0.35); }
+.c360ga-hero .c360ga-btn-ghost:hover,
+.c360ga-bg-navy .c360ga-btn-ghost:hover { border-color: #fff; background: rgba(255,255,255,0.08); }
+
+/* ============================================================
+   HERO — 2 col: copy left, static search-ad mockup right
+   ============================================================ */
+.c360ga-hero {
+  background: linear-gradient(160deg, #122078 0%, #0d1654 100%);
+  color: #fff;
+  padding: 84px 24px 88px;
+  position: relative;
+  overflow: hidden;
+}
+.c360ga-hero::after {
+  content: '';
+  position: absolute;
+  top: -160px; right: -140px;
+  width: 520px; height: 520px;
+  background: radial-gradient(circle, rgba(18,120,37,0.32) 0%, rgba(18,120,37,0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+.c360ga-hero::before {
+  content: '';
+  position: absolute;
+  top: 50%; right: -240px;
+  width: 1000px; height: 1000px;
+  transform: translateY(-50%);
+  background: repeating-radial-gradient(circle at 50% 50%,
+    transparent 0 54px, rgba(255,255,255,0.055) 54px 55px);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 0;
+  -webkit-mask-image: radial-gradient(circle at 50% 50%, #000 40%, transparent 70%);
+          mask-image: radial-gradient(circle at 50% 50%, #000 40%, transparent 70%);
+}
+.c360ga-hero-inner {
+  max-width: 1160px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1.05fr 0.95fr;
+  gap: 56px;
+  align-items: center;
+}
+.c360ga-hero h1 {
+  font-size: clamp(33px, 4.4vw, 52px);
+  font-weight: 700;
+  line-height: 1.07;
+  letter-spacing: -1.4px;
+  margin: 0 0 20px;
+}
+.c360ga-hero h1 .accent { color: #7CE38F; }
+.c360ga-hero-sub {
+  font-size: 18px;
+  font-weight: 400;
+  color: rgba(255,255,255,0.82);
+  max-width: 540px;
+  margin: 0 0 30px;
+}
+.c360ga-hero-cta { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 32px; }
+.c360ga-hero-trust {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 26px;
+  align-items: center;
+  padding-top: 26px;
+  border-top: 1px solid rgba(255,255,255,0.14);
+}
+.c360ga-trust-item { display: flex; align-items: center; gap: 9px; font-size: 13.5px; color: rgba(255,255,255,0.85); }
+.c360ga-trust-item .stars { color: #FBBC04; letter-spacing: 1px; font-size: 13px; }
+.c360ga-trust-item i { color: #7CE38F; font-size: 14px; }
+
+/* Official Google Partner badge — white chip (hero is dark; do not
+   recolour). height set + width:auto = aspect ratio preserved. Chip
+   padding (>= 1/2 badge height) supplies the required clear space. */
+.c360ga-partner {
+  display: inline-flex;
+  line-height: 0;
+  flex-shrink: 0;
+}
+/* NO plate/background/radius — the official badge already IS a white card.
+   A drop-shadow (follows the badge's own alpha shape) lifts it off the navy
+   without adding a second frame. height only + width:auto preserves aspect
+   ratio. The card + border + padding is INSIDE Google's SVG; don't crop it. */
+.c360ga-partner img {
+  height: 122px;
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 14px 28px rgba(0,0,0,0.32));
+}
+
+/* Unified credentials block — badge + all four trust signals in a 2x2 grid
+   beside it, as one consistent cluster. (At 100px the badge sits a little
+   inside §1's 1/2-height clear-space guide vs the 40px gap — grouped look
+   chosen deliberately.) Border-top replaces the old trust-row divider. */
+.c360ga-creds {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  margin-top: 30px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(255,255,255,0.14);
+  flex-wrap: nowrap;          /* keep the list in line with the badge */
+}
+.c360ga-creds-grid {
+  display: grid;
+  grid-template-columns: 1fr; /* single column: 4 items stacked beside badge */
+  gap: 10px;
+}
+.c360ga-cred {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 14.5px; font-weight: 500; color: rgba(255,255,255,0.9);
+  white-space: nowrap;
+}
+.c360ga-cred i { color: #7CE38F; font-size: 14px; width: 16px; text-align: center; flex-shrink: 0; }
+.c360ga-cred .stars { color: #FBBC04; letter-spacing: 1px; font-size: 13px; flex-shrink: 0; }
+
+/* ---------- SIGNATURE: 2-format ad rotator ----------
+   Rotates a Search text ad and a Maps promoted listing. Single-clock:
+   the dot fill animation IS the timer; its animationend advances the
+   rotator, so bar and slide can't drift apart. Duration = --ga-rot-dur.
+   GENERIC by design: no Google logo/G, no real SERP/Maps chrome. */
+.c360ga-rotator { position: relative; --ga-rot-dur: 4s; }
+
+.c360ga-rot-label {
+  display: flex; align-items: center; gap: 9px;
+  font-size: 11px; font-weight: 600; letter-spacing: 1.2px;
+  text-transform: uppercase; color: rgba(255,255,255,0.55);
+  margin-bottom: 14px;
+}
+.c360ga-rot-label::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.16); }
+
+.c360ga-rot-stage { position: relative; min-height: 486px; }
+/* Ghost cards behind the live card — reads as a deck. */
+.c360ga-rot-stage::before,
+.c360ga-rot-stage::after {
+  content: ''; position: absolute; inset: 0;
+  border-radius: 14px; pointer-events: none;
+}
+.c360ga-rot-stage::before {
+  transform: translate(19px, 17px) scale(0.962);
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  z-index: 0;
+}
+.c360ga-rot-stage::after {
+  transform: translate(9px, 8px) scale(0.982);
+  background: rgba(255,255,255,0.09);
+  border: 1px solid rgba(255,255,255,0.11);
+  z-index: 1;
+}
+
+.c360ga-ad {
+  position: absolute; inset: 0;
+  background: #fff; border-radius: 14px; overflow: hidden;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.16), 0 30px 70px rgba(0,0,0,0.38);
+  z-index: 2; opacity: 0;
+  transform: translateY(14px) scale(0.985);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+  pointer-events: none;
+}
+.c360ga-ad.is-live { opacity: 1; transform: none; pointer-events: auto; position: relative; }
+
+/* ----- Card 1: Search text ad ----- */
+.c360ga-ad-search { padding: 18px 20px 20px; }
+.c360ga-ad-tag { font-size: 12px; font-weight: 700; color: #202124; margin-bottom: 11px; }
+.c360ga-ad-idrow { display: flex; align-items: center; gap: 10px; margin-bottom: 3px; }
+.c360ga-ad-fav {
+  width: 28px; height: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, #1a6fb8, #0d4a80);
+  display: flex; align-items: center; justify-content: center;
+  color: #fff; font-size: 12px; flex-shrink: 0;
+}
+.c360ga-ad-biz { font-size: 13px; color: #202124; font-weight: 500; line-height: 1.25; }
+.c360ga-ad-disp { font-size: 12.5px; color: #4d5156; line-height: 1.2; }
+.c360ga-ad-title {
+  font-size: 20px; line-height: 1.3; font-weight: 500;
+  color: #1a0dab; margin: 8px 0 5px; letter-spacing: -0.2px;
+}
+.c360ga-ad-rating { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: #4d5156; margin-bottom: 7px; }
+.c360ga-ad-rating .stars { color: #FBBC04; letter-spacing: 1px; font-size: 12px; }
+.c360ga-ad-body { font-size: 13.5px; color: #4d5156; line-height: 1.5; margin: 0 0 13px; }
+.c360ga-ad-sitelinks { display: grid; grid-template-columns: 1fr 1fr; gap: 7px 22px; margin-bottom: 15px; }
+.c360ga-ad-sitelinks a { font-size: 13.5px; color: #1a0dab; text-decoration: none; line-height: 1.3; }
+.c360ga-ad-sitelinks a:hover { text-decoration: underline; }
+.c360ga-ad-call {
+  display: inline-flex; align-items: center; gap: 9px;
+  border: 1px solid #dadce0; border-radius: 22px;
+  padding: 9px 18px; font-size: 13.5px; font-weight: 500; color: #1a73e8;
+}
+.c360ga-ad-call i { font-size: 12px; }
+
+/* ----- Card 2: Maps promoted listing ----- */
+.c360ga-ad-maps .c360ga-ad-tag { padding: 15px 16px 0; margin-bottom: 11px; }
+.c360ga-map {
+  position: relative; height: 244px; overflow: hidden;
+  background: #e9edf0;
+  background-image:
+    linear-gradient(90deg, transparent 0 45%, rgba(176,186,196,0.55) 45% 46%, transparent 46%),
+    linear-gradient(0deg,  transparent 0 61%, rgba(176,186,196,0.55) 61% 62%, transparent 62%),
+    linear-gradient(57deg, transparent 0 27%, rgba(176,186,196,0.42) 27% 28%, transparent 28%);
+}
+.c360ga-map::before {
+  content: ''; position: absolute; right: -34px; top: -22px;
+  width: 156px; height: 132px; border-radius: 50%;
+  background: rgba(140,196,120,0.32);
+}
+.c360ga-map-pin {
+  position: absolute; transform: translate(-50%, -100%);
+  font-size: 20px; color: #9aa4ad;
+  filter: drop-shadow(0 2px 3px rgba(0,0,0,0.25));
+}
+.c360ga-map-pin.is-you { font-size: 34px; color: var(--ga-green); z-index: 3; }
+.c360ga-map-pin.is-you::after {
+  content: ''; position: absolute; left: 50%; bottom: -5px;
+  width: 34px; height: 34px; transform: translate(-50%, 0);
+  border-radius: 50%; background: rgba(18,120,37,0.22); z-index: -1;
+  animation: c360ga-pulse 2.4s ease-out infinite;
+}
+@keyframes c360ga-pulse {
+  0%   { transform: translate(-50%,0) scale(0.5); opacity: 0.85; }
+  100% { transform: translate(-50%,0) scale(2.4); opacity: 0; }
+}
+.c360ga-map-youtag {
+  position: absolute; z-index: 4;
+  transform: translate(-50%, -100%);
+  background: var(--ga-green); color: #fff;
+  font-size: 10px; font-weight: 600; letter-spacing: 0.4px;
+  padding: 3px 9px; border-radius: 20px; white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+.c360ga-map-info { padding: 14px 16px 16px; }
+.c360ga-map-name { font-size: 15px; font-weight: 600; color: #202124; margin: 0 0 4px; }
+.c360ga-map-rating { display: flex; align-items: center; gap: 7px; font-size: 12.5px; color: #4d5156; margin-bottom: 4px; }
+.c360ga-map-rating .stars { color: #FBBC04; letter-spacing: 1px; font-size: 12px; }
+.c360ga-map-cat { font-size: 12.5px; color: #4d5156; margin: 0 0 14px; }
+.c360ga-map-cat .open { color: var(--ga-green); font-weight: 600; }
+.c360ga-map-actions { display: flex; gap: 10px; }
+.c360ga-map-btn {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 13px; font-weight: 500; padding: 8px 16px; border-radius: 22px;
+}
+.c360ga-map-btn.primary { background: #1a73e8; color: #fff; }
+.c360ga-map-btn.ghost { border: 1px solid #dadce0; color: #1a73e8; }
+.c360ga-map-btn i { font-size: 12px; }
+
+/* Rotator dot controls */
+.c360ga-rot-nav { display: flex; align-items: center; gap: 8px; margin-top: 18px; }
+.c360ga-rot-dot {
+  flex: 1; height: 3px; border: none; padding: 0; border-radius: 3px;
+  background: rgba(255,255,255,0.20); cursor: pointer;
+  transition: background 0.25s ease; position: relative; overflow: hidden;
+}
+.c360ga-rot-dot:hover { background: rgba(255,255,255,0.36); }
+.c360ga-rot-dot.is-live { background: rgba(255,255,255,0.28); }
+.c360ga-rot-dot.is-live::after {
+  content: ''; position: absolute; inset: 0;
+  background: #7CE38F; transform-origin: left; transform: scaleX(0);
+  animation: c360ga-fill var(--ga-rot-dur, 4s) linear forwards;
+}
+.c360ga-rot-dot.is-live.is-held::after { animation-play-state: paused; }
+@keyframes c360ga-fill { to { transform: scaleX(1); } }
+
+.c360ga-rot-caption { font-size: 12.5px; color: rgba(255,255,255,0.5); margin: 12px 0 0; text-align: center; }
+
+/* ============================================================
+   WHY GOOGLE (three-up — intent framing)
+   ============================================================ */
+.c360ga-why { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; }
+.c360ga-why-item { display: flex; gap: 15px; align-items: flex-start; }
+.c360ga-why-item i {
+  color: var(--ga-green);
+  font-size: 17px;
+  margin-top: 3px;
+  flex-shrink: 0;
+}
+.c360ga-why-item h3 { font-size: 15.5px; font-weight: 600; margin: 0 0 4px; letter-spacing: -0.2px; }
+.c360ga-why-item p { font-size: 13.5px; color: var(--ga-text-muted); margin: 0; line-height: 1.55; }
+
+/* ---------- PROBLEM / CONTRAST ---------- */
+.c360ga-contrast { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 44px; }
+.c360ga-contrast-card { border-radius: 14px; padding: 32px; border: 1px solid var(--ga-border); }
+.c360ga-contrast-card.bad { background: #fff; opacity: 0.82; }
+.c360ga-contrast-card.good {
+  background: linear-gradient(165deg, #F2F9EC 0%, var(--ga-green-light) 100%);
+  border-color: rgba(18,120,37,0.3);
+  box-shadow: 0 2px 4px rgba(18,120,37,0.05), 0 18px 44px rgba(18,120,37,0.13);
+}
+.c360ga-contrast-card h3 { font-size: 16.5px; font-weight: 600; margin: 0 0 18px; display: flex; align-items: center; gap: 10px; letter-spacing: -0.2px; }
+.c360ga-contrast-card.bad h3 { color: var(--ga-grey); }
+.c360ga-contrast-card.good h3 { color: var(--ga-green); }
+.c360ga-contrast-card ul { list-style: none; margin: 0; padding: 0; }
+.c360ga-contrast-card li { font-size: 14.5px; padding: 8px 0 8px 28px; position: relative; color: var(--ga-text-muted); }
+.c360ga-contrast-card li::before { position: absolute; left: 0; top: 8px; font-family: "Font Awesome 6 Free"; font-weight: 900; font-size: 13px; }
+.c360ga-contrast-card.bad li::before { content: '\f00d'; color: #c0392b; }
+.c360ga-contrast-card.good li::before { content: '\f00c'; color: var(--ga-green); }
+.c360ga-contrast-card.good li { color: #1c3a1f; }
+
+/* ---------- STEPS ---------- */
+.c360ga-steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 50px; position: relative; }
+.c360ga-step {
+  background: linear-gradient(180deg, #fff 0%, #fcfdff 100%);
+  border: 1px solid var(--ga-border);
+  border-radius: 14px;
+  padding: 26px 22px 28px;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--ga-sh-sm);
+  transition: transform 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.c360ga-step:hover { transform: translateY(-3px); border-color: var(--ga-green); box-shadow: var(--ga-sh-md); }
+.c360ga-step-num {
+  font-size: 58px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -3px;
+  color: var(--ga-blue);
+  opacity: 0.13;
+  margin-bottom: 6px;
+  font-variant-numeric: tabular-nums;
+}
+.c360ga-step h3 { font-size: 16px; font-weight: 600; margin: 0 0 8px; letter-spacing: -0.2px; }
+.c360ga-step p { font-size: 13.5px; color: var(--ga-text-muted); margin: 0; line-height: 1.55; }
+
+/* ---------- INCLUDED — clustered by lifecycle ---------- */
+.c360ga-clusters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 50px; }
+.c360ga-cluster-head {
+  font-size: 11.5px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--ga-green);
+  padding-bottom: 12px;
+  margin-bottom: 6px;
+  border-bottom: 2px solid rgba(18,120,37,0.22);
+}
+.c360ga-cluster-list { list-style: none; margin: 0; padding: 0; }
+.c360ga-cluster-list li { padding: 16px 0; border-bottom: 1px solid var(--ga-border); }
+.c360ga-cluster-list li:last-child { border-bottom: none; }
+.c360ga-cluster-list h3 {
+  font-size: 15px;
+  font-weight: 600;
+  margin: 0 0 4px;
+  letter-spacing: -0.2px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.c360ga-cluster-list h3 i { color: var(--ga-blue); font-size: 13px; width: 16px; text-align: center; flex-shrink: 0; }
+.c360ga-cluster-list p { font-size: 13px; color: var(--ga-text-muted); margin: 0; line-height: 1.5; padding-left: 26px; }
+
+/* ---------- PRICING ---------- */
+.c360ga-price-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 22px;
+  margin-top: 52px;
+  align-items: center;
+}
+.c360ga-price-card {
+  background: #fff;
+  border: 1px solid var(--ga-border);
+  border-radius: 16px;
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-self: stretch;
+  box-shadow: var(--ga-sh-sm);
+}
+.c360ga-price-card.featured {
+  background: linear-gradient(172deg, #ffffff 0%, #F5FBF3 100%);
+  border: 2px solid var(--ga-green);
+  box-shadow: 0 4px 10px rgba(18,120,37,0.08), 0 30px 64px rgba(18,120,37,0.19);
+  padding: 40px 28px;
+  z-index: 2;
+}
+.c360ga-price-badge {
+  position: absolute;
+  top: -13px; left: 50%; transform: translateX(-50%);
+  background: var(--ga-green);
+  color: #fff;
+  font-size: 11px; font-weight: 600;
+  letter-spacing: 0.5px; text-transform: uppercase;
+  padding: 5px 16px; border-radius: 20px;
+  white-space: nowrap;
+}
+.c360ga-price-term { font-size: 14px; font-weight: 600; color: var(--ga-text-muted); margin: 0 0 8px; }
+.c360ga-price-amt { display: flex; align-items: baseline; gap: 5px; margin-bottom: 5px; }
+.c360ga-price-amt .num {
+  font-size: 43px;
+  font-weight: 700;
+  color: var(--ga-blue);
+  line-height: 1;
+  letter-spacing: -1.8px;
+  font-variant-numeric: tabular-nums;
+}
+.c360ga-price-amt .per { font-size: 14.5px; color: var(--ga-text-muted); font-weight: 500; }
+.c360ga-price-billed { font-size: 13px; color: var(--ga-text-muted); margin: 0 0 4px; min-height: 18px; }
+.c360ga-price-setup { font-size: 13px; font-weight: 500; color: var(--ga-text-muted); margin: 0 0 4px; min-height: 18px; }
+.c360ga-price-save { font-size: 13px; font-weight: 600; color: var(--ga-green); margin: 0 0 22px; min-height: 18px; }
+.c360ga-price-list { list-style: none; margin: 0 0 26px; padding: 0; flex: 1; }
+.c360ga-price-list li { font-size: 13.5px; color: var(--ga-text-muted); padding: 7px 0 7px 26px; position: relative; line-height: 1.5; }
+.c360ga-price-list li::before {
+  content: '\f00c'; font-family: "Font Awesome 6 Free"; font-weight: 900;
+  color: var(--ga-green); position: absolute; left: 0; top: 8px; font-size: 12px;
+}
+.c360ga-price-card .c360ga-btn { width: 100%; }
+
+/* ---------- Ad-spend clarity callout ---------- */
+.c360ga-clarity {
+  margin-top: 36px;
+  background: linear-gradient(165deg, #EFF6FD 0%, var(--ga-blue-light) 100%);
+  box-shadow: var(--ga-sh-sm);
+  border: 1px solid rgba(18,32,120,0.15);
+  border-radius: 14px;
+  padding: 32px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+}
+.c360ga-clarity-head { grid-column: 1 / -1; font-size: 17px; font-weight: 600; color: var(--ga-blue); margin: 0; display: flex; align-items: center; gap: 10px; letter-spacing: -0.2px; }
+.c360ga-clarity-item { display: flex; gap: 14px; }
+.c360ga-clarity-item .n {
+  width: 30px; height: 30px; border-radius: 8px; flex-shrink: 0;
+  background: var(--ga-blue); color: #fff; font-weight: 700; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.c360ga-clarity-item h4 { font-size: 14.5px; font-weight: 600; margin: 0 0 4px; }
+.c360ga-clarity-item p { font-size: 13px; color: var(--ga-text-muted); margin: 0; line-height: 1.55; }
+.c360ga-clarity-note { grid-column: 1 / -1; font-size: 12.5px; color: var(--ga-text-muted); margin: 4px 0 0; padding-top: 16px; border-top: 1px solid rgba(18,32,120,0.12); }
+.c360ga-clarity-note i { color: var(--ga-green); margin-right: 6px; }
+
+/* ---------- REVIEWS ----------
+   Same LC/GHL widget + auto-height pattern as the Meta page: the iframe
+   ships with no height and scrolling='no', so it collapses to ~150px unless
+   its script posts a height back. min-height is the floor; the postMessage
+   listener below only grows it. */
+.c360ga-reviews-wrap { margin-top: 40px; }
+.c360ga-reviews-wrap iframe {
+  display: block;
+  width: 100%;
+  min-width: 100%;
+  min-height: 520px;
+  border: 0;
+}
+@media (max-width: 680px) {
+  .c360ga-reviews-wrap iframe { min-height: 640px; }
+}
+
+/* ---------- CTA BAND ---------- */
+.c360ga-cta-band { text-align: center; }
+.c360ga-cta-band h2 { font-size: clamp(29px, 4vw, 41px); font-weight: 700; margin: 0 0 14px; letter-spacing: -0.9px; line-height: 1.12; }
+.c360ga-cta-band p { font-size: 18px; color: rgba(255,255,255,0.78); max-width: 560px; margin: 0 auto 32px; }
+.c360ga-cta-band .c360ga-hero-cta { justify-content: center; margin-bottom: 0; }
+
+/* ---------- FAQ ---------- */
+.c360ga-faq-list { margin-top: 44px; }
+.c360ga-faq-item { border-bottom: 1px solid var(--ga-border); }
+.c360ga-faq-q {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+  padding: 22px 44px 22px 4px;
+  font-size: 16.5px;
+  font-weight: 600;
+  letter-spacing: -0.2px;
+  color: var(--ga-text);
+  position: relative;
+  display: flex;
+  transition: color 0.15s ease;
+}
+.c360ga-faq-q:hover { color: var(--ga-green); }
+.c360ga-faq-q i {
+  position: absolute; right: 6px; top: 24px;
+  color: var(--ga-green); font-size: 15px;
+  transition: transform 0.25s ease;
+}
+.c360ga-faq-item.open .c360ga-faq-q i { transform: rotate(45deg); }
+.c360ga-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+.c360ga-faq-a p { font-size: 15px; color: var(--ga-text-muted); margin: 0 0 22px; padding-right: 30px; line-height: 1.65; }
+.c360ga-faq-item.open .c360ga-faq-a { max-height: 600px; }
+
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 1000px) {
+  .c360ga-hero-inner { grid-template-columns: 1fr; gap: 44px; }
+  .c360ga-rotator { max-width: 440px; width: 100%; margin: 0 auto; }
+  .c360ga-hero-sub { max-width: none; }
+}
+@media (max-width: 900px) {
+  .c360ga-steps { grid-template-columns: 1fr 1fr; }
+  .c360ga-why { grid-template-columns: 1fr; gap: 26px; }
+  .c360ga-clusters { grid-template-columns: 1fr; gap: 34px; }
+  .c360ga-price-grid { grid-template-columns: 1fr; max-width: 430px; margin-left: auto; margin-right: auto; }
+  .c360ga-price-card.featured { order: -1; padding: 32px 28px; }
+}
+@media (max-width: 680px) {
+  .c360ga-section { padding: 62px 20px; }
+  .c360ga-hero { padding: 56px 20px 62px; }
+  .c360ga-contrast { grid-template-columns: 1fr; }
+  .c360ga-steps { grid-template-columns: 1fr; }
+  .c360ga-clarity { grid-template-columns: 1fr; padding: 26px; }
+  .c360ga-hero-cta .c360ga-btn { width: 100%; }
+  .c360ga-ad-sitelinks { grid-template-columns: 1fr; }
+  .c360ga-creds { gap: 24px; flex-wrap: wrap; }
+  .c360ga-creds-grid { grid-template-columns: 1fr; gap: 12px; }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .c360ga *, .c360ga *::before, .c360ga *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .c360ga-ad { transform: none; }
+  .c360ga-rot-dot.is-live::after { transform: scaleX(1); }
+}
+</style>
+
+<div class="c360ga">
+
+  <!-- ============ HERO ============ -->
+  <section class="c360ga-hero">
+    <div class="c360ga-hero-inner">
+
+      <div class="c360ga-hero-copy">
+        <span class="c360ga-eyebrow">Google Ads Management</span>
+        <h1>Show up the moment customers <span class="accent">search for what you do.</span></h1>
+        <p class="c360ga-hero-sub">We build, launch, and manage Google Search campaigns that put your business at the top of the results for the exact services you offer — so you capture high-intent local customers who are already looking to buy, not just browsing.</p>
+        <div class="c360ga-hero-cta">
+          <!-- v1.0: checkout slug assumed /google-checkout — CONFIRM -->
+          <a href="/google-checkout" class="c360ga-btn c360ga-btn-green">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+          <a href="/schedule-demo" class="c360ga-btn c360ga-btn-ghost">Free Strategy Call</a>
+        </div>
+        <!-- Unified credentials block: official Google Partner badge (the ONLY
+             compliant on-site form, §1 — do not restyle/crop it) + all four
+             trust signals in a 2x2 grid beside it, as one consistent cluster.
+             §1 SEO disclaimer not triggered on this PPC page. -->
+        <div class="c360ga-creds">
+          <a class="c360ga-partner" href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" aria-label="Google Partner — view our Partners profile">
+            <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+          </a>
+          <div class="c360ga-creds-grid">
+            <div class="c360ga-cred"><span class="stars">★★★★★</span> 147 five-star reviews</div>
+            <div class="c360ga-cred"><i class="fa-solid fa-user-check"></i> Google Product Expert on team</div>
+            <div class="c360ga-cred"><i class="fa-solid fa-location-dot"></i> Tucson-based, serving nationwide</div>
+            <div class="c360ga-cred"><i class="fa-solid fa-calendar-check"></i> In business since 2018</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ===== SIGNATURE: 2-FORMAT AD ROTATOR =====
+           Card 1 = Search text ad (HVAC, calls). Card 2 = Maps promoted
+           listing (auto shop, directions/calls). No display by decision.
+           Fictional businesses; "Desert Air" reused from the Meta page.
+           GENERIC — no Google logo/G, no real SERP/Maps chrome. The Maps
+           card is an abstract map, NOT the green LSA / Google-Guaranteed
+           box (that's a separate product). -->
+      <div class="c360ga-rotator">
+        <div class="c360ga-rot-label">Where your business shows up on Google</div>
+
+        <div class="c360ga-rot-stage" id="c360gaStage">
+
+          <!-- Card 1 — Search text ad -->
+          <article class="c360ga-ad is-live" data-ad="0" aria-label="Example Google search ad">
+            <div class="c360ga-ad-search">
+              <div class="c360ga-ad-tag">Sponsored</div>
+              <div class="c360ga-ad-idrow">
+                <div class="c360ga-ad-fav"><i class="fa-solid fa-fan"></i></div>
+                <div>
+                  <div class="c360ga-ad-biz">Desert Air Heating &amp; Cooling</div>
+                  <div class="c360ga-ad-disp">desertair-tucson.com/ac-repair</div>
+                </div>
+              </div>
+              <div class="c360ga-ad-title">Same-Day AC Repair in Tucson | Open Now, No Overtime Fee</div>
+              <div class="c360ga-ad-rating"><span class="stars">★★★★★</span> 5.0 · Licensed &amp; insured</div>
+              <p class="c360ga-ad-body">AC out in the heat? A tech can be at your door today across Tucson &amp; Oro Valley. Upfront pricing, no after-hours surcharge.</p>
+              <div class="c360ga-ad-sitelinks">
+                <a href="#">Emergency AC Repair</a>
+                <a href="#">Free Estimates</a>
+                <a href="#">Financing Available</a>
+                <a href="#">Tune-Up Specials</a>
+              </div>
+              <span class="c360ga-ad-call"><i class="fa-solid fa-phone"></i> Call (520) 555-0134</span>
+            </div>
+          </article>
+
+          <!-- Card 2 — Maps promoted listing -->
+          <article class="c360ga-ad" data-ad="1" aria-label="Example Google Maps promoted listing">
+            <div class="c360ga-ad-maps">
+              <div class="c360ga-ad-tag">Sponsored</div>
+              <div class="c360ga-map" aria-hidden="true">
+                <!-- competitor pins (grey) -->
+                <i class="fa-solid fa-location-dot c360ga-map-pin" style="left:23%; top:39%;"></i>
+                <i class="fa-solid fa-location-dot c360ga-map-pin" style="left:75%; top:64%;"></i>
+                <i class="fa-solid fa-location-dot c360ga-map-pin" style="left:62%; top:25%;"></i>
+                <!-- your promoted pin (green, pulsing) + label -->
+                <span class="c360ga-map-youtag" style="left:44%; top:44%;">Your business</span>
+                <i class="fa-solid fa-location-dot c360ga-map-pin is-you" style="left:44%; top:62%;"></i>
+              </div>
+              <div class="c360ga-map-info">
+                <p class="c360ga-map-name">Tucson Auto Werks</p>
+                <div class="c360ga-map-rating"><span class="stars">★★★★★</span> 5.0 (212) · Auto repair shop</div>
+                <p class="c360ga-map-cat"><span class="open">Open now</span> · Closes 6 PM · 1.2 mi away</p>
+                <div class="c360ga-map-actions">
+                  <span class="c360ga-map-btn primary"><i class="fa-solid fa-diamond-turn-right"></i> Directions</span>
+                  <span class="c360ga-map-btn ghost"><i class="fa-solid fa-phone"></i> Call</span>
+                </div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+
+        <div class="c360ga-rot-nav" id="c360gaNav">
+          <button type="button" class="c360ga-rot-dot is-live" data-go="0" aria-label="Show search ad example"></button>
+          <button type="button" class="c360ga-rot-dot" data-go="1" aria-label="Show Maps listing example"></button>
+        </div>
+        <p class="c360ga-rot-caption">Illustrative examples. Your ads are built around your offer.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============ WHY GOOGLE ============ -->
+  <section class="c360ga-section c360ga-section--clip c360ga-bg-white" style="padding-top:66px; padding-bottom:66px;">
+    <div class="c360ga-rings c360ga-rings--l" aria-hidden="true"></div>
+    <div class="c360ga-inner">
+      <div class="c360ga-why">
+        <div class="c360ga-why-item">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <div>
+            <h3>They're already searching for you</h3>
+            <p>Google Ads reach people at the exact moment they type in your service — high intent, ready to act, not just scrolling.</p>
+          </div>
+        </div>
+        <div class="c360ga-why-item">
+          <i class="fa-solid fa-ranking-star"></i>
+          <div>
+            <h3>Show up above the competition</h3>
+            <p>Your ad appears at the very top of the results — above the free listings and ahead of businesses relying on SEO alone.</p>
+          </div>
+        </div>
+        <div class="c360ga-why-item">
+          <i class="fa-solid fa-location-crosshairs"></i>
+          <div>
+            <h3>Only pay for clicks, only in your area</h3>
+            <p>You pay when someone actually clicks, and targeting is drawn to your real service area — no budget wasted on the wrong towns.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PROBLEM / CONTRAST ============ -->
+  <section class="c360ga-section c360ga-section--clip c360ga-bg-sand">
+    <div class="c360ga-rings c360ga-rings--r" aria-hidden="true"></div>
+    <div class="c360ga-inner c360ga-center">
+      <span class="c360ga-eyebrow">Why it matters</span>
+      <h2 class="c360ga-h2">Running your own Google Ads is expensive tuition</h2>
+      <p class="c360ga-sub">Most local businesses set up a campaign, bid on the wrong keywords, and watch the budget vanish on clicks that never call. Managed search is a different game entirely.</p>
+      <div class="c360ga-contrast" style="text-align:left;">
+        <div class="c360ga-contrast-card bad">
+          <h3><i class="fa-solid fa-triangle-exclamation"></i> Setting up ads yourself</h3>
+          <ul>
+            <li>Bidding on broad keywords that drain budget</li>
+            <li>No negative keywords — paying for junk clicks</li>
+            <li>Clicks land on a slow homepage, not a built-to-convert page</li>
+            <li>No conversion tracking — you're flying blind</li>
+            <li>Leads come in and slip through the cracks</li>
+          </ul>
+        </div>
+        <div class="c360ga-contrast-card good">
+          <h3><i class="fa-solid fa-bullseye"></i> Managed Google PPC with Complete360</h3>
+          <ul>
+            <li>Tightly researched keywords with real buying intent</li>
+            <li>Negative keyword lists that stop wasted spend</li>
+            <li>Clicks land on conversion-focused pages &amp; call tracking</li>
+            <li>Full conversion tracking on every call &amp; form</li>
+            <li>Every lead flows into your CRM and gets followed up</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ HOW IT WORKS ============ -->
+  <section class="c360ga-section c360ga-bg-white">
+    <div class="c360ga-inner c360ga-center">
+      <span class="c360ga-eyebrow">How it works</span>
+      <h2 class="c360ga-h2">From strategy to steady leads in 4 steps</h2>
+      <p class="c360ga-sub">We handle the heavy lifting end-to-end. You approve the direction and watch the leads roll in.</p>
+      <div class="c360ga-steps" style="text-align:left;">
+        <div class="c360ga-step">
+          <div class="c360ga-step-num">1</div>
+          <h3>Keyword &amp; Competitor Audit</h3>
+          <p>We find the exact searches that convert in your area — and the wasteful ones to avoid — then map a plan around your budget.</p>
+        </div>
+        <div class="c360ga-step">
+          <div class="c360ga-step-num">2</div>
+          <h3>Ad &amp; Conversion Build</h3>
+          <p>Our team writes the ads and extensions, and sets up call and form tracking so every lead is measured.</p>
+        </div>
+        <div class="c360ga-step">
+          <div class="c360ga-step-num">3</div>
+          <h3>Launch &amp; Bid</h3>
+          <p>Campaigns go live above the competition, with smart bidding aimed at the people most likely to call.</p>
+        </div>
+        <div class="c360ga-step">
+          <div class="c360ga-step-num">4</div>
+          <h3>Optimize &amp; Report</h3>
+          <p>We prune wasted spend, double down on winners, and send clear monthly reports — so your cost per lead keeps dropping.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHAT'S INCLUDED ============ -->
+  <section class="c360ga-section c360ga-section--clip c360ga-bg-tint">
+    <div class="c360ga-rings c360ga-rings--l" aria-hidden="true"></div>
+    <div class="c360ga-inner c360ga-center">
+      <span class="c360ga-eyebrow">What's included</span>
+      <h2 class="c360ga-h2">Everything you need to turn searches into customers</h2>
+      <p class="c360ga-sub">One flat monthly fee covers the full service — keyword strategy, ad creation, management, and reporting.</p>
+      <div class="c360ga-clusters" style="text-align:left;">
+
+        <div>
+          <div class="c360ga-cluster-head">Before launch</div>
+          <ul class="c360ga-cluster-list">
+            <li>
+              <h3><i class="fa-solid fa-magnifying-glass-chart"></i>Keyword &amp; Competitor Research</h3>
+              <p>We find the searches that convert in your market — and study who you're bidding against.</p>
+            </li>
+            <li>
+              <h3><i class="fa-solid fa-pen-fancy"></i>Ad Copywriting &amp; Extensions</h3>
+              <p>Compelling ad text plus call, sitelink, and location extensions that earn the click.</p>
+            </li>
+            <li>
+              <h3><i class="fa-solid fa-crosshairs"></i>Conversion &amp; Call Tracking</h3>
+              <p>Tracking on every call and form so we know exactly what's producing leads.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="c360ga-cluster-head">At launch</div>
+          <ul class="c360ga-cluster-list">
+            <li>
+              <h3><i class="fa-solid fa-location-dot"></i>Precise Local Targeting</h3>
+              <p>By service area, device, and time of day — so budget only reaches people you can serve.</p>
+            </li>
+            <li>
+              <h3><i class="fa-solid fa-ban"></i>Negative Keyword Protection</h3>
+              <p>Block the searches that waste spend before a single junk click gets charged.</p>
+            </li>
+            <li>
+              <h3><i class="fa-solid fa-shield-halved"></i>You Own Your Account</h3>
+              <p>Full ownership and transparency of your Google Ads account, always.</p>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="c360ga-cluster-head">Every month after</div>
+          <ul class="c360ga-cluster-list">
+            <li>
+              <h3><i class="fa-solid fa-sliders"></i>Bid &amp; Budget Optimization</h3>
+              <p>We refine bids and shift budget toward the keywords actually producing calls.</p>
+            </li>
+            <li>
+              <h3><i class="fa-solid fa-chart-line"></i>Monthly Reporting</h3>
+              <p>Clear, jargon-free reports showing clicks, leads, and cost per result.</p>
+            </li>
+            <li>
+              <h3><i class="fa-solid fa-user-tie"></i>Dedicated Manager</h3>
+              <p>A real person on your account — call, text, or email anytime.</p>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PRICING ============ -->
+  <section class="c360ga-section c360ga-section--clip c360ga-bg-white" id="pricing">
+    <div class="c360ga-glow" style="top:-180px; left:50%; transform:translateX(-50%);" aria-hidden="true"></div>
+    <div class="c360ga-inner c360ga-center">
+      <span class="c360ga-eyebrow">Pricing</span>
+      <h2 class="c360ga-h2">Simple, flat management pricing</h2>
+      <p class="c360ga-sub">One flat monthly fee for the full service. Prepay and save — the longer the term, the lower your rate.</p>
+
+      <div class="c360ga-price-grid" style="text-align:left;">
+
+        <!-- Monthly -->
+        <div class="c360ga-price-card">
+          <p class="c360ga-price-term">Monthly</p>
+          <div class="c360ga-price-amt"><span class="num">$399</span><span class="per">/mo</span></div>
+          <p class="c360ga-price-billed">Billed monthly</p>
+          <p class="c360ga-price-setup">+ $499 one-time setup</p>
+          <p class="c360ga-price-save">Flexible — cancel anytime</p>
+          <ul class="c360ga-price-list">
+            <li>Full campaign management</li>
+            <li>Keyword research, ads &amp; extensions</li>
+            <li>Conversion tracking &amp; reporting</li>
+            <li>Dedicated account manager</li>
+          </ul>
+          <!-- v1.0: checkout slug assumed /google-checkout — CONFIRM.
+               If checkout can preselect a plan, append e.g. ?plan=monthly. -->
+          <a href="/google-checkout" class="c360ga-btn c360ga-btn-ghost">Get Started</a>
+        </div>
+
+        <!-- 6-Month -->
+        <div class="c360ga-price-card">
+          <p class="c360ga-price-term">6-Month Plan</p>
+          <div class="c360ga-price-amt"><span class="num">$1,915</span><span class="per">one payment</span></div>
+          <p class="c360ga-price-billed">Works out to $319/mo</p>
+          <p class="c360ga-price-setup">+ $499 one-time setup</p>
+          <p class="c360ga-price-save">Save $479 over 6 months</p>
+          <ul class="c360ga-price-list">
+            <li>Everything in Monthly</li>
+            <li>Lower effective monthly rate</li>
+            <li>Priority optimization cadence</li>
+            <li>One simple upfront payment</li>
+            <li>90-day satisfaction guarantee — credit toward any service</li>
+          </ul>
+          <!-- v1.0: see note on the Monthly card re: plan preselection -->
+          <a href="/google-checkout" class="c360ga-btn c360ga-btn-ghost">Get Started</a>
+        </div>
+
+        <!-- 12-Month (featured) -->
+        <div class="c360ga-price-card featured">
+          <span class="c360ga-price-badge">Most Popular</span>
+          <p class="c360ga-price-term">12-Month Plan</p>
+          <div class="c360ga-price-amt"><span class="num">$3,352</span><span class="per">one payment</span></div>
+          <p class="c360ga-price-billed">Works out to $279/mo</p>
+          <p class="c360ga-price-setup">+ $499 one-time setup</p>
+          <p class="c360ga-price-save">Save $1,436 over the year</p>
+          <ul class="c360ga-price-list">
+            <li>Everything in Monthly</li>
+            <li>Our lowest monthly rate</li>
+            <li>Best for long-term lead flow</li>
+            <li>One simple upfront payment</li>
+            <li>90-day satisfaction guarantee — credit toward any service</li>
+          </ul>
+          <!-- v1.0: see note on the Monthly card re: plan preselection -->
+          <a href="/google-checkout" class="c360ga-btn c360ga-btn-green">Get Started</a>
+        </div>
+
+      </div>
+
+      <!-- Ad-spend clarity -->
+      <div class="c360ga-clarity" style="text-align:left;">
+        <p class="c360ga-clarity-head"><i class="fa-solid fa-circle-info"></i> Two simple, separate costs</p>
+        <div class="c360ga-clarity-item">
+          <div class="n">1</div>
+          <div>
+            <h4>Your management fee</h4>
+            <p>Starts at $399/mo, paid to Complete360. This covers keyword strategy, ad creation, campaign management, and reporting.</p>
+          </div>
+        </div>
+        <div class="c360ga-clarity-item">
+          <div class="n">2</div>
+          <div>
+            <h4>Your ad budget</h4>
+            <!-- v1.0: $1,000/mo minimum is a CONFIRM item — Google search
+                 CPCs run higher than Meta. Also appears in the FAQ. -->
+            <p>Paid directly to Google. We recommend a minimum of <strong>$1,000/mo</strong> for effective local search campaigns.</p>
+          </div>
+        </div>
+        <p class="c360ga-clarity-note"><i class="fa-solid fa-check"></i> You keep full ownership and control of your Google Ads account and budget — always transparent, never marked up.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ REVIEWS ============ -->
+  <section class="c360ga-section c360ga-bg-sand">
+    <div class="c360ga-inner c360ga-center">
+      <span class="c360ga-eyebrow">Proof</span>
+      <h2 class="c360ga-h2">Trusted by local businesses like yours</h2>
+      <p class="c360ga-sub">147 five-star reviews and counting from businesses we help grow every day.</p>
+      <div class="c360ga-reviews-wrap">
+        <iframe id="c360gaReviews" class="lc_reviews_widget" src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u" frameborder="0" scrolling="no" title="Complete360 customer reviews"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CTA BAND ============ -->
+  <section class="c360ga-section c360ga-section--clip c360ga-bg-navy c360ga-cta-band">
+    <div class="c360ga-rings c360ga-rings--tr" aria-hidden="true"></div>
+    <div class="c360ga-narrow">
+      <h2>Ready to show up when customers search for you?</h2>
+      <p>Book a free strategy call and we'll show you exactly how Google Ads can grow your business — no pressure, no jargon.</p>
+      <div class="c360ga-hero-cta">
+        <a href="/google-checkout" class="c360ga-btn c360ga-btn-green">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="/schedule-demo" class="c360ga-btn c360ga-btn-ghost">Schedule a Free Call</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FAQ ============ -->
+  <section class="c360ga-section c360ga-bg-white">
+    <div class="c360ga-narrow">
+      <div class="c360ga-center">
+        <span class="c360ga-eyebrow">FAQ</span>
+        <h2 class="c360ga-h2">Google Ads questions, answered</h2>
+      </div>
+      <div class="c360ga-faq-list">
+        <div class="c360ga-faq-item">
+          <button type="button" class="c360ga-faq-q">What's the difference between the management fee and my ad budget? <i class="fa-solid fa-plus"></i></button>
+          <div class="c360ga-faq-a"><p>They're two separate costs. Your management fee (starting at $399/mo) is paid to Complete360 for building and running your campaigns. Your ad budget is paid directly to Google and funds the actual clicks — we recommend a minimum of $1,000/mo for effective local search. You always own and control your Google Ads account.</p></div>
+        </div>
+        <div class="c360ga-faq-item">
+          <button type="button" class="c360ga-faq-q">How much should I budget for ads? <i class="fa-solid fa-plus"></i></button>
+          <div class="c360ga-faq-a"><p>For local search, we recommend starting at a minimum of $1,000/mo in ad spend. Google clicks cost more than social because the intent is higher — people are searching for your service right now. The right number depends on your market and how competitive your keywords are; we'll recommend a specific budget on your strategy call.</p></div>
+        </div>
+        <div class="c360ga-faq-item">
+          <button type="button" class="c360ga-faq-q">How soon will I see leads? <i class="fa-solid fa-plus"></i></button>
+          <div class="c360ga-faq-a"><p>Faster than most channels. Because Google captures people already searching for what you offer, campaigns can start producing calls within days of going live. From there we optimize continuously, so your cost per lead keeps improving over the first several weeks.</p></div>
+        </div>
+        <div class="c360ga-faq-item">
+          <button type="button" class="c360ga-faq-q">Do you create the ads, or do I? <i class="fa-solid fa-plus"></i></button>
+          <div class="c360ga-faq-a"><p>We handle it all — keyword research, ad copy, extensions, and conversion tracking. You'll review and approve the direction, but you won't be stuck writing ads or wrangling the Google Ads dashboard. If you have brand assets or offers you'd like featured, we'll work them in.</p></div>
+        </div>
+        <div class="c360ga-faq-item">
+          <button type="button" class="c360ga-faq-q">Where do my leads go? <i class="fa-solid fa-plus"></i></button>
+          <div class="c360ga-faq-a"><p>Straight into your Complete360 CRM, so you can follow up instantly by text, email, or call. Fast follow-up is one of the biggest factors in turning a search lead into a paying customer, and the platform makes it automatic.</p></div>
+        </div>
+
+        <!-- ============================================================
+             SETUP FEE RESOLVED (v2.4): one-time $499 (waivable anchor).
+             Public checkout should CHARGE it; agents waive via discount link.
+             $319/$279 effective = management-fee per-month; $499 is separate.
+             ============================================================ -->
+        <div class="c360ga-faq-item">
+          <button type="button" class="c360ga-faq-q">Is there a setup fee or long-term contract? <i class="fa-solid fa-plus"></i></button>
+          <div class="c360ga-faq-a"><p>A one-time $499 setup fee covers your campaign build, conversion and call tracking, and launch. There's no long-term contract — the monthly plan can be cancelled anytime. Our 6- and 12-month plans are paid upfront to lock in a lower rate, and they're backed by a 90-day satisfaction guarantee: if the campaigns aren't working in your first three months, we won't hold you to the term. We'll credit what you've paid — minus the months you've used at our standard $399/mo rate — toward any other Complete360 service. The credit never expires.</p></div>
+        </div>
+
+        <div class="c360ga-faq-item">
+          <button type="button" class="c360ga-faq-q">Can I run Google Ads alongside my other marketing? <i class="fa-solid fa-plus"></i></button>
+          <div class="c360ga-faq-a"><p>Absolutely — and we recommend it. Google Ads pairs well with Google Business Profile management, Local Service Ads, and Meta Ads. Search captures the people ready to buy now; the others build awareness and fill the top of your funnel. Ask us about bundling multiple services for a coordinated strategy and better overall pricing.</p></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<script>
+(function() {
+
+  /* ============ FAQ accordion ============ */
+  var faqItems = document.querySelectorAll('.c360ga .c360ga-faq-item');
+  faqItems.forEach(function(item) {
+    var q = item.querySelector('.c360ga-faq-q');
+    q.addEventListener('click', function() {
+      var isOpen = item.classList.contains('open');
+      faqItems.forEach(function(i) { i.classList.remove('open'); });
+      if (!isOpen) item.classList.add('open');
+    });
+  });
+
+  /* ============ REVIEWS IFRAME AUTO-HEIGHT ============
+     Same as the Meta page: the widget posts its rendered height. Message
+     shape varies across GHL versions, so accept the common ones. Origin-
+     checked, and it only ever grows past the CSS floor. */
+  var reviews = document.getElementById('c360gaReviews');
+  if (reviews) {
+    window.addEventListener('message', function(e) {
+      if (!/(^|\.)(reputationhub\.site|leadconnectorhq\.com|msgsndr\.com)$/.test(
+            (function(){ try { return new URL(e.origin).hostname; } catch (err) { return ''; } })()
+          )) return;
+      var d = e.data, h = null;
+      if (typeof d === 'number') h = d;
+      else if (typeof d === 'string' && /^\d+$/.test(d)) h = parseInt(d, 10);
+      else if (d && typeof d === 'object') {
+        h = d.height || d.h || (d.payload && d.payload.height) || null;
+      }
+      h = parseInt(h, 10);
+      if (!isNaN(h) && h > 200 && h < 6000) reviews.style.height = h + 'px';
+    });
+  }
+
+  /* ============ HERO AD ROTATOR (single-clock) ============
+     Same design as the Meta page: the active dot's fill animation IS the
+     timer; its animationend advances the rotator. Pause = pausing that
+     animation. One source of truth, so the bar and the slide can't desync. */
+  var stage = document.getElementById('c360gaStage');
+  var nav   = document.getElementById('c360gaNav');
+  if (!stage || !nav) return;
+
+  var ads  = [].slice.call(stage.querySelectorAll('.c360ga-ad'));
+  var dots = [].slice.call(nav.querySelectorAll('.c360ga-rot-dot'));
+  if (ads.length < 2) return;
+
+  var rotator = stage.closest('.c360ga-rotator');
+  var current = 0, held = false;
+  var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function armBar(i) {
+    dots.forEach(function(d, j) { d.classList.toggle('is-live', j === i); d.classList.remove('is-held'); });
+    if (reduced) return;
+    var d = dots[i];
+    d.classList.remove('is-live'); void d.offsetWidth; d.classList.add('is-live');
+    if (held) d.classList.add('is-held');
+  }
+
+  function show(next) {
+    next = ((next % ads.length) + ads.length) % ads.length;
+    ads[current].classList.remove('is-live');
+    current = next;
+    ads[current].classList.add('is-live');
+    armBar(current);
+  }
+
+  nav.addEventListener('animationend', function(e) {
+    if (e.animationName !== 'c360ga-fill') return;
+    if (held || reduced) return;
+    if (!e.target.classList.contains('is-live')) return;
+    show(current + 1);
+  });
+
+  function hold(on) {
+    if (held === on) return;
+    held = on;
+    if (dots[current]) dots[current].classList.toggle('is-held', on);
+  }
+
+  dots.forEach(function(dot) {
+    dot.addEventListener('click', function() { show(parseInt(dot.getAttribute('data-go'), 10)); });
+  });
+
+  rotator.addEventListener('mouseenter', function() { hold(true); });
+  rotator.addEventListener('mouseleave', function() { hold(false); });
+  rotator.addEventListener('focusin',    function() { hold(true); });
+  rotator.addEventListener('focusout',   function() { hold(false); });
+  document.addEventListener('visibilitychange', function() { hold(document.hidden ? true : false); });
+
+  armBar(0);
+
+})();
+</script>
+<!-- ============================================================
+     END COMPLETE360 GOOGLE ADS (PPC) PAGE v2.4
+     ============================================================ -->
