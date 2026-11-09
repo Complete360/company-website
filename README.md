@@ -18,7 +18,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-23 of 62 files have code. Files marked ⬜ contain only a
+30 of 62 files have code. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
 anything still to do on a page (🔁 = needs rebuild).
@@ -41,23 +41,23 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `services/local-service-ads.html` | Local Service Ads | ✅ Code in repo |  |
-| `services/gbp-management.html` | Google Business Management | ✅ Code in repo |  |
+| `services/local-service-ads.html` | Local Service Ads | ✅ Code in repo | Up to date |
+| `services/gbp-management.html` | Google Business Management | ✅ Code in repo | Up to date |
 | `services/gbp-setup.html` | Google Business Profile Setup | ✅ Code in repo |  |
-| `services/local-seo-booster.html` | SEO Booster | ✅ Code in repo |  |
-| `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo |  |
-| `services/google-ads.html` | Google Ads | ⬜ Placeholder |  |
-| `services/meta-ads.html` | Meta Ads | ⬜ Placeholder |  |
-| `services/google-social-posting.html` | Google Social Posting | ✅ Code in repo |  |
-| `services/meta-social-posting.html` | Meta Social Posting | ✅ Code in repo |  |
-| `services/reputation-management.html` | Reputation Management | ⬜ Placeholder |  |
-| `services/procard.html` | Pro Card | ✅ Code in repo |  |
-| `services/websites-home.html` | Website Home | ✅ Code in repo |  |
-| `services/website-pricing.html` | Website Pricing | ⬜ Placeholder |  |
-| `services/ai-employee.html` | AI Employee Website | ✅ Code in repo |  |
-| `services/local-display-network.html` | Local Display Network | ⬜ Placeholder |  |
-| `services/dispensary.html` | Dispensary | ⬜ Placeholder |  |
-| `services/payments.html` | Payments | ⬜ Placeholder |  |
+| `services/local-seo-booster.html` | SEO Booster | ✅ Code in repo | Up to date |
+| `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo | Up to date (header note added) |
+| `services/google-ads.html` | Google Ads | ✅ Code in repo | Up to date |
+| `services/meta-ads.html` | Meta Ads | ✅ Code in repo | Up to date |
+| `services/google-social-posting.html` | Google Social Posting | ✅ Code in repo | Up to date |
+| `services/meta-social-posting.html` | Meta Social Posting | ✅ Code in repo | Up to date |
+| `services/reputation-management.html` | Reputation Management | ✅ Code in repo | Up to date |
+| `services/procard.html` | Pro Card | ✅ Code in repo | Up to date |
+| `services/websites-home.html` | Website Home | ✅ Code in repo | Up to date |
+| `services/website-pricing.html` | Website Pricing | ✅ Code in repo | Up to date |
+| `services/ai-employee.html` | AI Employee Website | ✅ Code in repo | Up to date |
+| `services/local-display-network.html` | Local Display Network | ✅ Code in repo | Up to date |
+| `services/dispensary.html` | Dispensary | ✅ Code in repo | Up to date |
+| `services/payments.html` | Payments | ✅ Code in repo | Up to date |
 
 ### Checkout
 
