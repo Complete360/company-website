@@ -1,8 +1,40 @@
 <!-- ============================================================
-     COMPLETE360 — FAQ PAGE  v2.0
+     COMPLETE360 — FAQ PAGE  v2.3
      Paste into GHL Custom Code block on /faq page.
      Prefix: c360-faq-  |  Header/footer loaded globally.
      Font Awesome & Poppins loaded via global header.
+
+     v2.3 changelog:
+       • Sticky filter bar gap fixed. The offset now tracks the header's
+         real on-screen bottom edge (updated on scroll), instead of trusting
+         its computed position. GHL's header reports sticky but scrolls away
+         with its wrapper, which left a header-height gap above the bar.
+
+     v2.2 changelog:
+       • AI Agents section: every [REPLACE]/[CONFIRM] placeholder filled,
+         using only claims already made on /ai-agents so the two pages match.
+       • AI channels trimmed to what /ai-agents claims: phone, website chat,
+         SMS. Add Facebook/Instagram back only if the chat agent covers them.
+       • AI "Will customers know it's AI" question reworded to cover control
+         only — disclosure policy not yet decided.
+       • New AI question: current phone number + setup time (from /ai-agents FAQ).
+       • AI pricing answer: $399 Voice / $599 Assistant, $2,000 setup,
+         annual = 2 months free, Custom Agents quoted.
+       • Google Business Messages removed from CRM channels (Google shut it
+         down in 2024).
+       • Review count 144+ → 147 to match /ai-agents trustbar.
+       • AI Agents added to the "cancel anytime" monthly services list.
+         ⚠ Annual AI plan cancellation/refund policy still unresolved —
+         /ai-agents says "Cancel anytime"; this page says annual services
+         get no prorated refund. Pick one and align both pages.
+
+     v2.1 changelog:
+       • Filter bar now wraps + centers on desktop (no more CRM/Billing
+         tab cutoff). Mobile keeps single-row swipeable scroll.
+       • Sticky filter bar only offsets by the global header height when
+         that header is actually pinned (sticky/fixed) — fixes the
+         floating-gap issue. Falls back to top:0 otherwise.
+       • Recompute header offset on window 'load' for GHL's late-injected header.
      ============================================================ -->
 
 <style>
@@ -122,8 +154,9 @@
   box-shadow: 0 2px 12px rgba(18,32,120,0.06);
 }
 .c360-faq-filter-inner {
-  display: flex; align-items: center; gap: 8px;
-  padding: 14px 0; overflow-x: auto;
+  display: flex; align-items: center; justify-content: center;
+  flex-wrap: wrap; gap: 8px;
+  padding: 14px 0;
   scrollbar-width: none;
 }
 .c360-faq-filter-inner::-webkit-scrollbar { display: none; }
@@ -339,7 +372,7 @@
 @media (max-width: 640px) {
   .c360-faq-hero { padding: 50px 0 44px; }
   .c360-faq-body { padding: 36px 0 64px; }
-  .c360-faq-filter-inner { padding: 12px 0; gap: 6px; }
+  .c360-faq-filter-inner { padding: 12px 0; gap: 6px; flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; }
   .c360-faq-q { padding: 16px; font-size: 13.5px; }
   .c360-faq-item.c360-faq-open .c360-faq-a { padding: 0 16px 16px; }
   .c360-faq-cta { padding: 52px 0; }
@@ -396,6 +429,9 @@
         <button class="c360-faq-filter-btn" data-filter="crm">
           <i class="fa-solid fa-layer-group"></i> CRM Platform <span class="c360-faq-filter-count" id="cnt-crm"></span>
         </button>
+        <button class="c360-faq-filter-btn" data-filter="ai">
+          <i class="fa-solid fa-robot"></i> AI Agents <span class="c360-faq-filter-count" id="cnt-ai"></span>
+        </button>
         <button class="c360-faq-filter-btn" data-filter="billing">
           <i class="fa-solid fa-receipt"></i> Billing &amp; Refunds <span class="c360-faq-filter-count" id="cnt-billing"></span>
         </button>
@@ -448,7 +484,7 @@
               <p>Most agencies specialize in one channel — SEO, ads, or websites. We combine all of it under one roof alongside our own all-in-one CRM platform, so your marketing and your lead management actually work together. A few other things that set us apart:</p>
               <ul>
                 <li><i class="fa-solid fa-circle-check"></i>We're a Google Partner with a Google Product Expert on our team.</li>
-                <li><i class="fa-solid fa-circle-check"></i>144+ verified five-star Google reviews from real local service businesses.</li>
+                <li><i class="fa-solid fa-circle-check"></i>147 verified five-star Google reviews from real local service businesses.</li>
                 <li><i class="fa-solid fa-circle-check"></i>You get a dedicated team — not a ticket queue. We respond in hours, not days.</li>
                 <li><i class="fa-solid fa-circle-check"></i>We don't lock you into long-term contracts on most services.</li>
               </ul>
@@ -745,7 +781,7 @@
               <ul>
                 <li><i class="fa-solid fa-circle-check"></i>Lead capture (forms, chat widget, booking calendar, social media management)</li>
                 <li><i class="fa-solid fa-circle-check"></i>Automated follow-up via email, SMS, and phone</li>
-                <li><i class="fa-solid fa-circle-check"></i>All-in-one inbox (SMS, email, Facebook, Instagram, Google — one dashboard)</li>
+                <li><i class="fa-solid fa-circle-check"></i>All-in-one inbox (SMS, email, Facebook, Instagram — one dashboard)</li>
                 <li><i class="fa-solid fa-circle-check"></i>Sales pipeline and CRM contact management</li>
                 <li><i class="fa-solid fa-circle-check"></i>Invoicing and payment processing</li>
                 <li><i class="fa-solid fa-circle-check"></i>Review request automation and reputation management</li>
@@ -832,9 +868,129 @@
                 <li><i class="fa-solid fa-circle-check"></i>Phone calls and voicemail drops</li>
                 <li><i class="fa-solid fa-circle-check"></i>Facebook Messenger</li>
                 <li><i class="fa-solid fa-circle-check"></i>Instagram DMs</li>
-                <li><i class="fa-solid fa-circle-check"></i>Google Business Messages</li>
                 <li><i class="fa-solid fa-circle-check"></i>Website chat widget</li>
               </ul>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+
+      <!-- ════════ AI AGENTS ════════ -->
+      <div class="c360-faq-group" data-group="ai">
+        <div class="c360-faq-group-header">
+          <div class="c360-faq-group-icon"><i class="fa-solid fa-robot"></i></div>
+          <div class="c360-faq-group-title">AI Agents</div>
+          <div class="c360-faq-group-line"></div>
+        </div>
+        <div class="c360-faq-list">
+
+          <div class="c360-faq-item" data-category="ai" data-question="what are ai agents what do they do automated assistant voice chat booking reviews receptionist">
+            <button class="c360-faq-q">
+              What are Complete360 AI Agents and what do they do?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Complete360 AI Agents are your always-on front desk — they answer the phone, reply to website chats and texts, book appointments, and ask happy customers for reviews, 24/7. Instead of a lead sitting unanswered until someone on your team is free, the AI responds instantly and handles the back-and-forth. Depending on your setup, they can:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i>Answer every call on the first ring and capture the caller's details</li>
+                <li><i class="fa-solid fa-circle-check"></i>Reply instantly to website chat and SMS, answering common questions in your business's own voice</li>
+                <li><i class="fa-solid fa-circle-check"></i>Book qualified leads into your live calendar and send confirmations and reminders</li>
+                <li><i class="fa-solid fa-circle-check"></i>Request reviews after each job and draft on-brand replies to them</li>
+              </ul>
+              <p>For businesses with their own process, we also build <a href="/ai-agents#custom-agents">Custom Agents</a> that run multi-step workflows across the tools you already use. The goal is simple: every lead gets a fast, on-brand response so nothing slips through the cracks. See everything on our <a href="/ai-agents">AI Agents page</a>.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ai" data-question="how is ai agent different from chatbot natural language robot sound">
+            <button class="c360-faq-q">
+              How is an AI Agent different from a regular chatbot?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>A traditional chatbot follows a rigid script — it only understands the exact buttons or keywords it was programmed for, and it stalls the moment someone phrases things differently. Our AI Agents understand natural language, so they respond conversationally to whatever a customer actually asks or says, the way a knowledgeable team member would. On the phone, the voice agent sounds natural, not robotic.</p>
+              <p>They're trained on your business specifics — your services, pricing, hours, and how you like to talk to customers — so answers are accurate to <em>you</em>, not generic.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ai" data-question="which channels do ai agents work on chat sms text voice phone calls">
+            <button class="c360-faq-q">
+              Which channels do the AI Agents work on?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Phone calls</strong> — the AI Voice Agent answers inbound calls 24/7</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Website chat widget</strong></li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>Two-way SMS / text messaging</strong></li>
+              </ul>
+              <p>Phone is covered on every plan; website chat and SMS are included in the AI Assistant plan. Every conversation flows into the same All-in-One Inbox as the rest of your CRM, so nothing lives in a separate silo.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ai" data-question="can ai agents book appointments qualify leads automatically calendar handoff urgent">
+            <button class="c360-faq-q">
+              Can the AI Agents book appointments and qualify leads on their own?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Yes. The agents ask your qualifying questions, capture the lead's details, and book appointments against your live calendar in real time — then send automatic confirmations and reminders so customers show up. They can also reschedule and help fill cancellations.</p>
+              <p>When something needs a person — an urgent call, a question outside the agent's scope, or a customer who asks for a human — the agent routes the conversation to your team or takes a detailed message, so nothing falls through the cracks.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ai" data-question="control what ai says approve human handoff review conversations tone">
+            <button class="c360-faq-q">
+              How much control do I have over what the AI says?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>You stay in control. During setup we train the agent on your services, pricing, hours, and tone of voice, and set clear rules for what it can share and when it hands off to your team. You can review every conversation in your inbox and ask us to adjust how the agent behaves at any time.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ai" data-question="do ai agents replace my team staff human">
+            <button class="c360-faq-q">
+              Do AI Agents replace my team?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>No — they take the repetitive, time-sensitive work off your team's plate so your people can focus on the conversations that actually need a human. The AI handles instant first responses, common questions, booking, and after-hours coverage; your team steps in for the high-value moments. Think of it as the front-desk employee that never clocks out.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ai" data-question="current phone number existing line after hours overflow setup how long">
+            <button class="c360-faq-q">
+              Will it work with my current phone number, and how long does setup take?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>Yes. We set it up to answer on your existing number — as your main line, an after-hours backup, or an overflow catch when your team is busy.</p>
+              <p>Most businesses are live within a few days. We handle the training and setup for you — you just tell us about your business and connect your phone, chat, and calendar.</p>
+            </div>
+          </div>
+
+          <div class="c360-faq-item" data-category="ai" data-question="how much do ai agents cost pricing price setup fee per minute annual">
+            <button class="c360-faq-q">
+              What do AI Agents cost?
+              <span class="c360-faq-q-icon"><i class="fa-solid fa-chevron-down"></i></span>
+            </button>
+            <div class="c360-faq-a">
+              <div class="c360-faq-a-divider"></div>
+              <p>AI Agents have simple flat monthly pricing — no per-minute fees:</p>
+              <ul>
+                <li><i class="fa-solid fa-circle-check"></i><strong>AI Voice Agent — $399/mo:</strong> 24/7 phone receptionist that answers, books, and captures every caller's details.</li>
+                <li><i class="fa-solid fa-circle-check"></i><strong>AI Assistant — $599/mo:</strong> The full front desk — voice, website chat, SMS, and review management working together.</li>
+              </ul>
+              <p>Both plans include a $2,000 one-time done-for-you setup. Annual billing gets you 2 months free. Custom Agents are quoted based on your workflow. See full details on our <a href="/ai-agents#pricing">AI Agents pricing</a>, <a href="/schedule-demo">schedule a call</a>, or call <a href="tel:+18665276205">(866) 527-6205</a>.</p>
             </div>
           </div>
 
@@ -858,7 +1014,7 @@
             </button>
             <div class="c360-faq-a">
               <div class="c360-faq-a-divider"></div>
-              <p>No long-term contracts on most services. Monthly services (GBP Management, CRM, website hosting) can be cancelled anytime — just let us know before your next billing date and you won't be charged again. Annual services (Local SEO Booster) are billed yearly and are not eligible for a prorated refund, but you can cancel to avoid renewal.</p>
+              <p>No long-term contracts on most services. Monthly services (GBP Management, CRM, AI Agents, website hosting) can be cancelled anytime — just let us know before your next billing date and you won't be charged again. Annual services (Local SEO Booster) are billed yearly and are not eligible for a prorated refund, but you can cancel to avoid renewal.</p>
               <p>We earn your business month to month. That said, services like SEO and GBP management take time to compound — clients who stick with a consistent strategy for 90+ days see the best results.</p>
             </div>
           </div>
@@ -975,34 +1131,56 @@
   var current    = 'all';
   var query      = '';
 
-  /* ── Dynamic header height → CSS variable ── */
+  /* ── Header offset → CSS variable (v2.3) ──
+     Measures where the header's bottom edge ACTUALLY is on screen, instead
+     of trusting its computed `position`. In GHL the header sits inside its
+     own section wrapper, so it can report position:sticky and still scroll
+     away once that wrapper leaves the viewport — which left the filter bar
+     stuck a full header-height below the top of the page.
+       header pinned      → bottom = its height → bar sits under it
+       header scrolled off → bottom ≤ 0          → bar sits at top:0 */
+  function findHeader() {
+    var candidates = [
+      document.getElementById('c360MobileHeader'),
+      document.getElementById('c360Header'),
+      document.querySelector('.c360-mobile-header'),
+      document.querySelector('.c360-header'),
+      document.querySelector('header')
+    ];
+    for (var i = 0; i < candidates.length; i++) {
+      var el = candidates[i];
+      if (el && el.offsetHeight > 0 && getComputedStyle(el).display !== 'none') return el;
+    }
+    return null;
+  }
+
+  var lastH = -1;
   function setHeaderHeight() {
-    /* Try to find the global sticky header by common GHL/c360 selectors */
-    var header =
-      document.getElementById('c360Header') ||
-      document.querySelector('.c360-header') ||
-      document.querySelector('.c360-mobile-header') ||
-      document.querySelector('header') ||
-      null;
-
+    var header = findHeader();
     var h = 0;
-    if (header && getComputedStyle(header).position === 'sticky') {
-      h = header.offsetHeight;
-    } else if (header) {
-      h = header.offsetHeight;
+    if (header) {
+      var rect = header.getBoundingClientRect();
+      h = Math.max(0, Math.round(rect.bottom));
     }
-
-    /* On mobile the desktop header is hidden — check mobile header instead */
-    var mobileHeader = document.getElementById('c360MobileHeader');
-    if (mobileHeader && getComputedStyle(mobileHeader).display !== 'none') {
-      h = mobileHeader.offsetHeight;
+    if (h !== lastH) {
+      document.documentElement.style.setProperty('--faq-header-h', h + 'px');
+      lastH = h;
     }
+  }
 
-    document.documentElement.style.setProperty('--faq-header-h', h + 'px');
+  var ticking = false;
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(function() { setHeaderHeight(); ticking = false; });
   }
 
   setHeaderHeight();
-  window.addEventListener('resize', setHeaderHeight);
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll);
+  /* GHL injects the global header slightly after first paint — recompute
+     once the page (and header) have finished loading so the offset is right. */
+  window.addEventListener('load', setHeaderHeight);
 
   /* ── Scroll to FAQ body (just below filter bar) ── */
   function scrollToFaq() {
@@ -1015,7 +1193,7 @@
   }
 
   /* ── Count badges ── */
-  var counts = { all: 0, general: 0, google: 0, ads: 0, websites: 0, crm: 0, billing: 0 };
+  var counts = { all: 0, general: 0, google: 0, ads: 0, websites: 0, crm: 0, ai: 0, billing: 0 };
   items.forEach(function(item) {
     var cat = item.getAttribute('data-category');
     if (counts[cat] !== undefined) counts[cat]++;
@@ -1099,5 +1277,5 @@
 </script>
 
 <!-- ============================================================
-     END COMPLETE360 FAQ v2.0
+     END COMPLETE360 FAQ v2.3
      ============================================================ -->
