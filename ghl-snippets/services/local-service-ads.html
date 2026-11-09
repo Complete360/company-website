@@ -1,23 +1,302 @@
-<!-- ============================================================
-     COMPLETE360 — LOCAL SERVICE ADS PAGE  v1.3
-     GHL: Paste into Custom Code block on /local-service-ads page.
-     Poppins + Font Awesome 6.5.1 loaded via global header.
+<!-- ══════════════════════════════════════════════════════════════
+     COMPLETE360 — LOCAL SERVICE ADS PAGE  |  c360-lsa-v1.5.html
+     GHL: Paste into Custom Code block on /local-service-ads page only.
+     Poppins + Font Awesome 6.5.1 loaded via global header (v1.9.4).
+     Pairs with: Header v1.9.4 · Footer v1.4 · Homepage v3.8
      Prefix: c360-lsa-
-     v1.3: Checkout buttons fixed with target+onclick for GHL
-     ============================================================ -->
+
+     v1.5 CHANGELOG (from v1.4.4)
+     ─────────────────────────────────────────────────────────────
+     1. GOOGLE GUARANTEED / GOOGLE SCREENED RETIRED. Google replaced both
+        with a single "Google Verified" blue checkmark on 2025-10-20 and
+        ended the money-back guarantee. Every reference on this page now
+        says Google Verified. "Backed by Google" is gone from the trust
+        bar — with no guarantee behind it, that claim no longer holds.
+        The verification card's three badge tiles now show the three
+        CHECKS the one badge certifies (license / insurance / background)
+        instead of three badges that no longer exist.
+     2. ESTIMATOR MAXIMUMS raised against Feb–Jun 2026 benchmarks
+        (SearchLight, 99 Calls). Minimums unchanged.
+          Roofing        94 -> 130   (2026 avg ~$107)
+          Water Damage  180 -> 260   (2026 avg ~$215)
+          House Cleaning 35 -> 50    (2026 avg ~$33)
+     3. Estimator placeholder dim rule is option[value=""], not
+        option:first-child — the latter greys the first option of every
+        optgroup. Don't put it back.
+     Lawyers deliberately left out of the estimator and industries — we
+     don't run legal campaigns.
+
+     v1.4.4 CHANGELOG (from v1.4.3)
+     ─────────────────────────────────────────────────────────────
+     1. INSURANCE GATED TO CA + FL. LSA for insurance is only available
+        in California and Florida ZIPs. "Insurance Agency" in the
+        estimator now carries data-states="CA,FL"; any other ZIP gets an
+        "not available in your market" panel instead of a price range.
+        ZIP -> state is by 3-digit prefix: 900–961 = CA, 320–349 = FL.
+        To open another state, add it to data-states AND to zipState().
+     2. Industries tile sub-line for Insurance Agents now says CA & FL.
+
+     v1.4.3 CHANGELOG (from v1.4.2)
+     ─────────────────────────────────────────────────────────────
+     1. Badge 110px -> 88px. At 110px the mandatory 55px halo made the four
+        credentials look detached from the badge. 88px brings the gap to
+        44px and the cluster reads as one unit again. Also back in line
+        with the footer.
+     2. Credential list internal gap 10px -> 8px. The badge gap is fixed by
+        §1e, but a denser text block makes the halo read as framing rather
+        than as drift. Column height is now ~96px against the badge's 88px.
+     3. NO DIVIDER, ever, between the badge and the credential column.
+        A rule line is "another graphic" under §1e and cannot sit inside
+        the clear space — it would have to start beyond 44px, pushing the
+        text FURTHER out. Same class of mistake as the -28px margin the
+        footer carried in v1.3 and had to undo in v1.3.2. If someone asks
+        again: the gap is not styling, and size is the only lever.
+
+     v1.4.2 CHANGELOG (from v1.4.1)
+     ─────────────────────────────────────────────────────────────
+     1. Partner badge 88px -> 110px (client call). --badge-clear moved
+        44 -> 55 in the same edit, because §1e requires clear space of at
+        least half the badge height on every side. If you ever see those
+        two numbers out of that ratio, it's a compliance bug, not a taste
+        call. The full ladder: 44/22 · 64/32 · 88/44 · 100/50 · 110/55 ·
+        122/61.
+     2. Credential-line width note updated — the badge plus its bigger halo
+        leaves ~390px for the text column, down from ~420px. Current lines
+        are 47 / 37 / 44 / 33 characters, so all four still hold one line.
+
+     v1.4.1 CHANGELOG (from v1.4)
+     ─────────────────────────────────────────────────────────────
+     1. ORB PLACEMENT DE-DUPLICATED. v1.4 gave every light section the same
+        recipe — one orb off the LEFT edge near the top, one off the RIGHT
+        edge near the bottom, all of them 480–560px. Two of those in a row
+        read as the SAME circle repeating rather than as depth, which is a
+        tell for a templated page. Every orb has been re-placed.
+
+        THE RULE, so this doesn't come back:
+          · Vary SIZE hard. Sizes now run 240px → 780px. If two adjacent
+            sections both use ~500px orbs, it reads as a repeat no matter
+            where you put them.
+          · Vary COUNT. Sections now carry 1, 2 or 3 — not always 2.
+          · Do not pin everything to the ±10% edge. Several orbs are now
+            INSET (left:57%, right:21%, left:33%) so they read as light
+            behind the content instead of a decoration bolted to the frame.
+          · Adjacent sections must not share an edge. If a section ends
+            with something on the right, the next one leaves its right side
+            empty. This is what fixed the explainer → carousel seam.
+          · Desync the drift with a negative animation-delay. Without it,
+            every .c360-lsa-orb--d1 on the page moves in lockstep, which
+            reinforces the "same thing again" read even when placement
+            differs.
+        Each section's markup now carries its own orb-plan comment.
+
+     2. ORBS SOFTENED. The two-stop gradient ramped alpha to 0 at 68%, which
+        terminates hard enough to render a visible circular edge — on white
+        they looked like pale grey discs sitting on the page. Now a
+        four-stop falloff with a long tail (0 at 80%), plus a 0.72 opacity
+        damper on light sections via .c360-lsa-depth .c360-lsa-orb. Navy
+        hides an orb; white shows every bit of it.
+
+     3. Fourth drift variant (--d4, 44s) added so the motion isn't three
+        keyframes shared across ~16 elements.
+
+     v1.4 CHANGELOG (from v1.3)
+     ─────────────────────────────────────────────────────────────
+     1. HERO CREDENTIALS CLUSTER (§1 + §5). The three loose trust items are
+        replaced with the same cluster the homepage and /google-ppc use:
+        official Google Partner badge (gstatic SVG) anchored to a column of
+        text credentials, so the badge reads as ONE credential rather than a
+        lone floating box.
+          · Badge sized to match the other hero clusters. Clear space
+            always tracks at >= 1/2 the height — both vars change
+            together, always (§1e). See v1.4.2 for the current value.
+          · No white chip, no border-radius, no overflow:hidden on any
+            wrapper. The badge ships with its own card, border, padding
+            and ↗ mark.
+          · drop-shadow on the <img> lifts it off the navy (§1d).
+          · Sits below the H1 and CTAs so it stays visually subordinate to
+            the Complete360 wordmark (§1f).
+        NO SEO disclaimer on this page — this page advertises LSA, not SEO,
+        so §1g is not triggered. The site-wide footer carries the notice.
+
+     2. §1c VIOLATIONS REMOVED. Three places put a Google-G brand icon
+        directly beside the words "Google Partner" / a Google claim, which
+        reads as a hand-built imitation of the badge:
+          · hero trust row      — replaced by the real badge
+          · final CTA trust row — icon dropped, plain-text claim kept
+          · requirements list   — fa-brands fa-google on "Google Advertiser
+            Verification" swapped for fa-user-shield
+        Platform icons on this page are now only inside the vs-table and
+        industry tiles, never next to a credential.
+
+     3. BACKGROUND DEPTH SYSTEM ported from homepage v3.8. Four stackable
+        layers, all inert (pointer-events:none, z-index 0), all off under
+        reduced motion:
+          · .c360-lsa-depth  — radial washes + dot grid on light sections
+          · .c360-lsa-orb    — large soft colour orbs, slow drift
+          · .c360-lsa-grain  — fine SVG noise, ~3.5% opacity
+          · .c360-lsa-mesh   — diagonal hairline weave for navy sections
+        Dot grid uses a white radial painted OVER it instead of mask-image
+        — same look, one layer, no extra compositing pass. Do not
+        reintroduce mask-image here (see homepage v3.9c).
+
+     4. SAND BACKGROUNDS GONE. --lsa-light-grey (#F1EFE8) and the warm
+        border greys (#e5e3dc, #dddbd4, #f0ede6) are retired:
+          · #F1EFE8 -> #F4F7FC  (--lsa-mist)
+          · borders -> #E7EBF3  (--lsa-line)
+        The old token names are kept as aliases pointing at the new values,
+        so anything I missed still renders cool-toned rather than sand.
+        Light sections now alternate depth / depth--alt + hairline so two
+        identical whites never sit next to each other.
+
+     5. STALE FACTS CORRECTED.
+          · 144+ reviews -> 147 (final CTA row, reviews section heading)
+          · vs-table "Managed by Complete360 · Google PPC: Coming soon"
+            -> now live, links to /google-ppc
+          · hero setup line reworded: "waived if you have LSA" overstated
+            it. FAQ2 says existing LSA accounts are case-by-case; the
+            guaranteed waiver is the Platinum Package. Copy now matches.
+
+     6. MOTION HYGIENE, all carried over from homepage v3.9:
+          · scroll reveal (transition-based, fires once, never replays)
+          · second observer pauses animation in off-screen sections
+          · mobile paint budget — orbs, grain, mesh, dot grid and every
+            backdrop-filter are desktop-only
+          · prefers-reduced-motion block, scoped to this page
+
+     ⚠️ STILL OPEN
+        · Reviews count is hard-coded in three places on this page. When it
+          moves off 147, grep the file — the widget updates itself, the
+          copy does not.
+        · Carousel autoplay stops permanently on first mouseenter (v1.3
+          behaviour, left as-is). Add a mouseleave restart if that bothers
+          anyone.
+        · LSA pricing ($349 / $599) is this product's own list and is NOT
+          the paid-ads matched pair ($399 + $499). The $499 setup fee here
+          is the LSA setup fee — same amount as the Google/Meta Ads setup
+          fee, different product. Don't let anyone "reconcile" them.
+        · Pricing sheet + /lsa-checkout still need a look — confirm they
+          charge $349 + $499 and $599 setup-free.
+        · Google is migrating LSA into Google Ads (select US accounts
+          first, remaining categories 2027). The LSA-vs-PPC comparison
+          card will need rethinking when that lands.
+
+     ⚠️ HOMEPAGE — same issue, one-line fix, wrong file to do it in:
+        homepage v3.8 .c360-hp-partner sets --badge-h:110px but leaves
+        --badge-clear:44px. 110px requires 55px, so the live homepage badge
+        is ~11px short on all four sides of Google's minimum clear space.
+        Two valid fixes: raise clear to 55px (compliant, but the cluster
+        will spread out — that's exactly what this page hit at 110px and
+        why it came back down), or drop the height to 88px to match here.
+        88px is the recommendation: compliant, tighter, and consistent
+        across homepage / LSA / footer. The comment above it in that file
+        still says 88/44, which is what made the mismatch easy to miss.
+     ══════════════════════════════════════════════════════════════ -->
+
 <style>
-:root {
+/* ══════════════════════════════════════════════════════
+   TOKENS
+   ══════════════════════════════════════════════════════ */
+:root{
   --lsa-navy:#122078;--lsa-navy-dark:#0d1654;--lsa-navy-deeper:#0a1040;
   --lsa-green:#127825;--lsa-green-hover:#0e5e1d;--lsa-green-light:#EAF3DE;
-  --lsa-blue-light:#E6F1FB;--lsa-grey:#888780;--lsa-light-grey:#F1EFE8;
+  --lsa-blue-light:#E6F1FB;--lsa-grey:#888780;
+  /* v1.4 — sand retired. Old names kept as aliases so any missed usage
+     still lands on the cool palette instead of #F1EFE8. */
+  --lsa-mist:#F4F7FC;
+  --lsa-line:#E7EBF3;
+  --lsa-light-grey:#F4F7FC;
   --lsa-text:#0F1F5E;--lsa-text-muted:#5F5E5A;--lsa-radius:12px;
-  --lsa-radius-lg:20px;--lsa-border:rgba(0,0,0,0.08);
+  --lsa-radius-lg:20px;--lsa-border:#E7EBF3;
   --lsa-google-blue:#4285F4;--lsa-google-red:#EA4335;
   --lsa-google-yellow:#FBBC04;--lsa-google-green:#34A853;
 }
 *,*::before,*::after{box-sizing:border-box}
 .c360-lsa-section{width:100%;position:relative}
-.c360-lsa-wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+.c360-lsa-wrap{max-width:1160px;margin:0 auto;padding:0 24px;position:relative;z-index:2}
+
+/* ══════════════════════════════════════════════════════
+   SCROLL REVEAL
+   Transitions, not animations — so the off-screen pause rule below can
+   never freeze an element mid-entrance.
+   ══════════════════════════════════════════════════════ */
+.c360-lsa-js .c360-lsa-reveal{opacity:0;transform:translateY(20px)}
+.c360-lsa-reveal{transition:opacity .65s cubic-bezier(.22,.61,.36,1),transform .65s cubic-bezier(.22,.61,.36,1);transition-delay:var(--rd,0s)}
+.c360-lsa-js .c360-lsa-reveal.c360-lsa-in{opacity:1;transform:none}
+
+/* ══════════════════════════════════════════════════════
+   BACKGROUND DEPTH SYSTEM (v1.4 — ported from homepage v3.8)
+   ══════════════════════════════════════════════════════ */
+
+/* 1 — washes + dot grid on light sections */
+.c360-lsa-depth{background:#fff;position:relative;overflow:hidden}
+.c360-lsa-depth::before,
+.c360-lsa-depth::after{content:'';position:absolute;inset:0;pointer-events:none;z-index:0}
+.c360-lsa-depth::before{
+  background:
+    radial-gradient(880px 520px at 86% 4%,rgba(18,32,120,0.070),transparent 62%),
+    radial-gradient(760px 480px at 4% 46%,rgba(18,120,37,0.055),transparent 62%),
+    radial-gradient(820px 500px at 72% 98%,rgba(18,32,120,0.045),transparent 62%);
+}
+/* Edge fade is a white radial painted OVER the dots in the same background
+   stack — one layer, no mask-image, no separate compositing pass. */
+.c360-lsa-depth::after{
+  background-image:
+    radial-gradient(120% 90% at 50% 40%,rgba(255,255,255,0) 20%,#fff 78%),
+    radial-gradient(rgba(18,32,120,0.085) 1px,transparent 1px);
+  background-size:100% 100%,26px 26px;
+}
+.c360-lsa-depth--alt::before{
+  background:
+    radial-gradient(820px 480px at 10% 6%,rgba(18,120,37,0.060),transparent 62%),
+    radial-gradient(900px 520px at 92% 62%,rgba(18,32,120,0.060),transparent 62%);
+}
+.c360-lsa-hairline{border-top:1px solid var(--lsa-line)}
+
+/* 2 — drifting orbs. No will-change: a 26–38s transform loop doesn't need
+   a permanent compositor layer. */
+.c360-lsa-orbs{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+.c360-lsa-orb{position:absolute;border-radius:50%;pointer-events:none}
+/* v1.4.1 — four-stop falloff instead of two. A straight alpha ramp to 0 at
+   68% terminates hard enough to read as a disc with a visible edge, which
+   on white looked like a pale grey circle sitting on the page rather than
+   light behind it. The long tail (0 at 80%) removes the edge entirely.
+   Off-centre highlight is 42%/38% so the orbs aren't radially symmetrical. */
+.c360-lsa-orb--green{background:radial-gradient(circle at 42% 38%,rgba(18,120,37,0.20) 0%,rgba(18,120,37,0.11) 34%,rgba(18,120,37,0.04) 58%,rgba(18,120,37,0) 80%)}
+.c360-lsa-orb--navy{background:radial-gradient(circle at 42% 38%,rgba(18,32,120,0.18) 0%,rgba(18,32,120,0.10) 34%,rgba(18,32,120,0.035) 58%,rgba(18,32,120,0) 80%)}
+.c360-lsa-orb--lime{background:radial-gradient(circle at 42% 38%,rgba(46,204,82,0.16) 0%,rgba(46,204,82,0.09) 34%,rgba(46,204,82,0.03) 58%,rgba(46,204,82,0) 80%)}
+.c360-lsa-orb--white{background:radial-gradient(circle at 42% 38%,rgba(255,255,255,0.10) 0%,rgba(255,255,255,0.055) 34%,rgba(255,255,255,0.02) 58%,rgba(255,255,255,0) 80%)}
+.c360-lsa-orb--soft{background:radial-gradient(circle at 42% 38%,rgba(18,32,120,0.075) 0%,rgba(18,32,120,0.042) 34%,rgba(18,32,120,0.015) 58%,rgba(18,32,120,0) 82%)}
+/* Extra damping on white. Navy hides an orb; white shows every bit of it. */
+.c360-lsa-depth .c360-lsa-orb{opacity:0.72}
+@keyframes c360LsaDrift1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(38px,-26px) scale(1.06)}}
+@keyframes c360LsaDrift2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-32px,30px) scale(1.08)}}
+@keyframes c360LsaDrift3{0%,100%{transform:translate(0,0) scale(1.04)}50%{transform:translate(24px,34px) scale(0.98)}}
+@keyframes c360LsaDrift4{0%,100%{transform:translate(0,0) scale(1.02)}50%{transform:translate(-26px,-32px) scale(0.96)}}
+.c360-lsa-orb--d1{animation:c360LsaDrift1 26s ease-in-out infinite}
+.c360-lsa-orb--d2{animation:c360LsaDrift2 32s ease-in-out infinite}
+.c360-lsa-orb--d3{animation:c360LsaDrift3 38s ease-in-out infinite}
+.c360-lsa-orb--d4{animation:c360LsaDrift4 44s ease-in-out infinite}
+
+/* 3 — film grain */
+.c360-lsa-grain{position:relative}
+.c360-lsa-grain>.c360-lsa-grain-layer{
+  position:absolute;inset:0;pointer-events:none;z-index:1;opacity:0.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='170'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='170' height='170' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* 4 — diagonal weave for navy sections */
+.c360-lsa-mesh{
+  position:absolute;inset:0;pointer-events:none;z-index:0;opacity:0.5;
+  background-image:
+    repeating-linear-gradient(45deg,rgba(255,255,255,0.028) 0 1px,transparent 1px 46px),
+    repeating-linear-gradient(-45deg,rgba(255,255,255,0.022) 0 1px,transparent 1px 46px);
+  -webkit-mask-image:radial-gradient(120% 100% at 50% 30%,#000 15%,transparent 80%);
+          mask-image:radial-gradient(120% 100% at 50% 30%,#000 15%,transparent 80%);
+}
+
+/* ══════════════════════════════════════════════════════
+   BUTTONS + SECTION HEADERS
+   ══════════════════════════════════════════════════════ */
 .c360-lsa-btn-primary{display:inline-flex;align-items:center;gap:10px;background:var(--lsa-green);color:#fff;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;border:none;cursor:pointer;line-height:1;white-space:nowrap;box-shadow:0 4px 20px rgba(18,120,37,0.38);transition:background .2s,transform .15s,box-shadow .2s}
 .c360-lsa-btn-primary:hover{background:var(--lsa-green-hover);transform:translateY(-2px);box-shadow:0 8px 28px rgba(18,120,37,0.48);color:#fff;text-decoration:none}
 .c360-lsa-btn-outline{display:inline-flex;align-items:center;gap:8px;background:transparent;color:rgba(255,255,255,0.85);font-family:'Poppins','Helvetica Neue',sans-serif;font-size:15px;font-weight:600;padding:15px 24px;border-radius:8px;text-decoration:none;line-height:1;border:1.5px solid rgba(255,255,255,0.3);transition:border-color .2s,color .2s,background .2s}
@@ -28,56 +307,150 @@
 .c360-lsa-overline{display:inline-block;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:12px;font-weight:700;letter-spacing:0.14em;text-transform:uppercase;color:var(--lsa-green);margin-bottom:12px}
 .c360-lsa-section-header h2{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:clamp(28px,4vw,42px);font-weight:800;color:var(--lsa-text);margin:0 0 16px;line-height:1.15;letter-spacing:-0.02em}
 .c360-lsa-section-header p{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:17px;color:var(--lsa-text-muted);max-width:600px;margin:0 auto;line-height:1.65}
-.c360-lsa-hero{background:linear-gradient(135deg,#09103c 0%,#122078 55%,#0c1960 100%);position:relative;overflow:hidden;padding:100px 0 88px}
-.c360-lsa-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 15% 60%,rgba(18,120,37,0.2) 0%,transparent 45%),radial-gradient(circle at 85% 20%,rgba(255,255,255,0.04) 0%,transparent 40%);pointer-events:none}
-.c360-lsa-hero::after{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:64px 64px;pointer-events:none}
+
+/* ══════════════════════════════════════════════════════
+   HERO
+   Element-qualified selector + explicit background-color under the
+   gradient, so a GHL section background can't show through and a stray
+   .class rule can't win. (Same hardening as homepage v3.2.)
+   ══════════════════════════════════════════════════════ */
+section.c360-lsa-hero{
+  background-color:#0b1440;
+  background-image:linear-gradient(135deg,#09103c 0%,#122078 55%,#0c1960 100%);
+  position:relative;overflow:hidden;padding:92px 0 72px;
+}
+.c360-lsa-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 15% 60%,rgba(18,120,37,0.2) 0%,transparent 45%),radial-gradient(circle at 85% 20%,rgba(255,255,255,0.045) 0%,transparent 42%);pointer-events:none;z-index:0}
+.c360-lsa-hero::after{
+  content:'';position:absolute;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(130% 100% at 30% 20%,#000 10%,transparent 75%);
+          mask-image:radial-gradient(130% 100% at 30% 20%,#000 10%,transparent 75%);
+}
 .c360-lsa-hero-inner{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr 0.9fr;gap:60px;align-items:center}
 .c360-lsa-hero-badge{display:inline-flex;align-items:center;gap:7px;background:rgba(18,120,37,0.2);border:1px solid rgba(18,120,37,0.38);color:#7ddc80;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:12px;font-weight:600;letter-spacing:0.07em;text-transform:uppercase;padding:6px 14px;border-radius:100px;margin-bottom:22px}
 .c360-lsa-hero h1{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:clamp(36px,5vw,60px);font-weight:800;line-height:1.06;color:#fff;margin:0 0 22px;letter-spacing:-0.025em}
 .c360-lsa-hero h1 .c360-lsa-highlight{color:#2ecc52}
-.c360-lsa-hero-sub{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:18px;color:rgba(255,255,255,0.72);line-height:1.65;margin:0 0 36px;max-width:520px}
-.c360-lsa-hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:36px}
-.c360-lsa-hero-trust{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.c360-lsa-trust-item{display:flex;align-items:center;gap:7px;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:13px;color:rgba(255,255,255,0.55);font-weight:500}
-.c360-lsa-trust-item i{color:#2ecc52;font-size:13px}
+.c360-lsa-hero-sub{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:18px;color:rgba(255,255,255,0.72);line-height:1.65;margin:0 0 32px;max-width:520px}
+.c360-lsa-hero-actions{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.c360-lsa-hero-note{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:12.5px;color:rgba(255,255,255,0.5);margin:0;display:flex;align-items:center;gap:7px}
+.c360-lsa-hero-note i{color:#2ecc52;font-size:11px}
+
+/* ══════════════════════════════════════════════════════
+   HERO — CREDENTIALS CLUSTER  (v1.4; mirrors homepage + /google-ppc, §1 + §5)
+   ══════════════════════════════════════════════════════ */
+/* ---------- Google Partner badge ----------
+   Google's OFFICIAL snippet (gstatic SVG) — the only website-compliant
+   form. The marketing .jpg is for emails / decks / resumes ONLY.
+   Guidelines: support.google.com/google-ads/answer/9028798
+   - Links to our Partners profile (id=9636024453). Never strip the link.
+   - height set, width auto — NEVER both, or the aspect ratio breaks.
+   - Clear space >= 1/2 badge height, as margin on all four sides.
+     Resizing means changing BOTH vars:
+       44/22 · 64/32 · 88/44 · 100/50 · 122/61
+   - No white chip: the badge ships with its own card, border, padding
+     and ↗ mark. A second card double-frames it.
+   - No border-radius / overflow:hidden on any wrapper — that clips the
+     badge's own corners.
+   - Not recoloured, distorted, stretched, cropped or rotated.
+   - Prominence (§1f): 88px, and it sits BELOW the H1 and the CTAs, so
+     the Complete360 wordmark stays the dominant brand mark in view.
+     SIZE IS THE ONLY LEVER ON THE GAP. The space between the badge and
+     the credential column is --badge-clear, which is locked at >= 1/2
+     --badge-h by §1e. If the cluster ever "looks too spread out", the
+     answer is a smaller badge, never a smaller margin.
+   - No SEO disclaimer here: this page advertises LSA, not SEO, so §1g
+     isn't triggered. The site-wide footer carries the notice.
+*/
+.c360-lsa-creds{position:relative;z-index:2;margin-top:14px;display:flex;align-items:center;flex-wrap:wrap}
+.c360-lsa-partner{
+  /* v1.4.3 — 110px -> 88px. At 110px the mandatory 55px halo read as the
+     credentials being unrelated to the badge; 88px brings that to 44px and
+     the cluster groups. Matches the footer. Both vars move together —
+     NEVER edit one alone. */
+  --badge-h:88px;
+  --badge-clear:44px;
+  display:inline-block;line-height:0;
+  margin:var(--badge-clear);margin-left:0;
+  transition:transform .18s ease;
+}
+.c360-lsa-partner:hover{transform:translateY(-2px)}
+.c360-lsa-partner img{
+  display:block;height:var(--badge-h);width:auto;
+  filter:drop-shadow(0 10px 24px rgba(0,0,0,0.32));
+  /* Defensive resets — GHL themes ship a global img border and link
+     outline. These strip what the CMS injects; they do not touch Google's
+     artwork. If a border still shows, it's drawn into the badge. */
+  border:0;outline:none;box-shadow:none;max-width:none;
+}
+.c360-lsa-partner,
+.c360-lsa-partner:focus,
+.c360-lsa-partner:active{border:0;outline:none;text-decoration:none;box-shadow:none;-webkit-tap-highlight-color:transparent}
+/* v1.4.3 — internal gap 10px -> 8px. Can't close the badge gap (§1e), but
+   tightening the list itself makes it read as one solid block sitting
+   beside the badge instead of four loose lines drifting away from it.
+   Column height lands ~96px against the badge's 88px, so the two now
+   read as a matched pair. */
+.c360-lsa-creds-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+/* Credential lines beside an 88px badge get ~420px at desktop. Anything
+   much past ~55 characters wraps — keep future edits under that.
+   The four current lines are 47 / 37 / 44 / 33. */
+.c360-lsa-creds-list li{display:flex;align-items:flex-start;gap:10px;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.72);line-height:1.4}
+.c360-lsa-creds-list li i{color:#2ecc52;font-size:12px;margin-top:3px;flex-shrink:0}
+.c360-lsa-creds-stars{color:#f59e0b;letter-spacing:1px;font-size:11px;margin-right:2px}
+
 .c360-lsa-gg-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:var(--lsa-radius-lg);padding:32px 28px;backdrop-filter:blur(12px);position:relative;overflow:hidden}
 .c360-lsa-gg-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 0%,rgba(66,133,244,0.12) 0%,transparent 55%);pointer-events:none}
-.c360-lsa-trust-bar{background:#fff;border-bottom:1px solid #e5e3dc}
+
+/* ══════════════════════════════════════════════════════
+   TRUST BAR
+   ══════════════════════════════════════════════════════ */
+.c360-lsa-trust-bar{background:#fff;border-bottom:1px solid var(--lsa-line);position:relative;z-index:3}
 .c360-lsa-trust-bar-inner{display:flex;align-items:stretch;justify-content:center;flex-wrap:wrap}
-.c360-lsa-trust-pill{display:flex;align-items:center;gap:12px;padding:18px 32px;border-right:1px solid #e5e3dc;transition:background .18s;flex:1;min-width:200px}
+.c360-lsa-trust-pill{display:flex;align-items:center;gap:12px;padding:18px 32px;border-right:1px solid var(--lsa-line);transition:background .18s;flex:1;min-width:200px}
 .c360-lsa-trust-pill:last-child{border-right:none}
 .c360-lsa-trust-pill:hover{background:var(--lsa-blue-light)}
 .c360-lsa-trust-pill-icon{width:38px;height:38px;background:var(--lsa-blue-light);border-radius:9px;display:flex;align-items:center;justify-content:center;color:var(--lsa-navy);font-size:16px;flex-shrink:0}
 .c360-lsa-trust-pill-text strong{display:block;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:13.5px;font-weight:700;color:var(--lsa-text);line-height:1.2}
 .c360-lsa-trust-pill-text span{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:12px;color:var(--lsa-text-muted)}
-.c360-lsa-explainer{padding:96px 0;background:var(--lsa-light-grey)}
+
+/* ══════════════════════════════════════════════════════
+   EXPLAINER
+   ══════════════════════════════════════════════════════ */
+.c360-lsa-explainer{padding:96px 0}
 .c360-lsa-explainer-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .c360-lsa-explainer-copy h3{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:clamp(24px,3vw,36px);font-weight:800;color:var(--lsa-text);margin:0 0 16px;line-height:1.2;letter-spacing:-0.02em}
 .c360-lsa-explainer-copy p{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:16px;color:var(--lsa-text-muted);line-height:1.7;margin:0 0 28px}
 .c360-lsa-diff-list{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
-.c360-lsa-diff-item{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid #e5e3dc;border-radius:10px;padding:16px 18px}
+.c360-lsa-diff-item{display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--lsa-line);border-radius:10px;padding:16px 18px;box-shadow:0 2px 10px rgba(10,16,64,0.04)}
 .c360-lsa-diff-icon{width:40px;height:40px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .c360-lsa-diff-icon--green{background:var(--lsa-green-light);color:var(--lsa-green)}
 .c360-lsa-diff-icon--blue{background:var(--lsa-blue-light);color:var(--lsa-navy)}
 .c360-lsa-diff-text strong{display:block;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:14px;font-weight:700;color:var(--lsa-text);margin-bottom:3px}
 .c360-lsa-diff-text span{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:13px;color:var(--lsa-text-muted);line-height:1.45}
-.c360-lsa-vs-card{background:#fff;border-radius:var(--lsa-radius-lg);overflow:hidden;box-shadow:0 8px 32px rgba(18,32,120,0.1)}
+.c360-lsa-vs-card{background:#fff;border-radius:var(--lsa-radius-lg);overflow:hidden;box-shadow:0 24px 60px rgba(10,16,64,0.12);border:1px solid var(--lsa-line)}
 .c360-lsa-vs-header{background:var(--lsa-navy);padding:16px 24px;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:13px;font-weight:700;color:rgba(255,255,255,0.7);letter-spacing:0.06em;text-transform:uppercase;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;text-align:center}
 .c360-lsa-vs-header span:first-child{text-align:left}
-.c360-lsa-vs-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:14px 24px;border-bottom:1px solid #f0ede6;align-items:center}
+.c360-lsa-vs-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:14px 24px;border-bottom:1px solid var(--lsa-line);align-items:center}
 .c360-lsa-vs-row:last-child{border-bottom:none}
-.c360-lsa-vs-row:hover{background:#fafaf8}
+.c360-lsa-vs-row:hover{background:var(--lsa-mist)}
 .c360-lsa-vs-label{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:13px;font-weight:600;color:var(--lsa-text)}
 .c360-lsa-vs-cell{text-align:center;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:12.5px;font-weight:500;color:var(--lsa-text-muted)}
+.c360-lsa-vs-cell a{color:var(--lsa-navy);font-weight:700;text-decoration:none;border-bottom:1px solid rgba(18,32,120,0.25)}
+.c360-lsa-vs-cell a:hover{color:var(--lsa-green);border-bottom-color:rgba(18,120,37,0.4);text-decoration:none}
 .c360-lsa-vs-cell i.fa-circle-check{color:var(--lsa-green);font-size:15px}
 .c360-lsa-vs-cell i.fa-circle-xmark{color:#dc3545;font-size:15px}
 .c360-lsa-vs-cell i.fa-circle-minus{color:#aaa;font-size:15px}
 .c360-lsa-vs-col-lsa{color:var(--lsa-navy);font-weight:700!important}
-.c360-lsa-carousel-section{padding:80px 0;background:#fff;border-top:1px solid #e5e3dc}
+
+/* ══════════════════════════════════════════════════════
+   CLIENT CAROUSEL
+   ══════════════════════════════════════════════════════ */
+.c360-lsa-carousel-section{padding:88px 0}
 .c360-lsa-carousel-track-wrap{overflow:hidden;position:relative;margin:0 -24px}
 .c360-lsa-carousel-track{display:flex;gap:20px;transition:transform .45s cubic-bezier(0.22,1,0.36,1);padding:0 24px}
-.c360-lsa-client-card{flex:0 0 320px;border-radius:var(--lsa-radius-lg);overflow:hidden;position:relative;box-shadow:0 8px 32px rgba(18,32,120,0.12)}
-.c360-lsa-client-img{width:100%;height:260px;background:var(--lsa-light-grey);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.c360-lsa-client-card{flex:0 0 320px;border-radius:var(--lsa-radius-lg);overflow:hidden;position:relative;box-shadow:0 18px 44px rgba(10,16,64,0.16)}
+.c360-lsa-client-img{width:100%;height:260px;background:var(--lsa-mist);position:relative;overflow:hidden;display:flex;align-items:center;justify-content:center}
 .c360-lsa-client-img img{width:100%;height:100%;object-fit:cover}
 .c360-lsa-client-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(9,16,60,0.92));padding:32px 20px 18px}
 .c360-lsa-client-name{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:16px;font-weight:700;color:#fff;margin-bottom:2px}
@@ -88,32 +461,42 @@
 .c360-lsa-carousel-btn{width:44px;height:44px;border-radius:50%;background:var(--lsa-navy);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;font-size:14px;transition:background .2s,transform .15s}
 .c360-lsa-carousel-btn:hover{background:var(--lsa-navy-dark);transform:scale(1.05)}
 .c360-lsa-carousel-dots{display:flex;gap:6px}
-.c360-lsa-dot{width:8px;height:8px;border-radius:50%;background:#dddbd4;border:none;cursor:pointer;padding:0;transition:background .2s,transform .2s}
+.c360-lsa-dot{width:8px;height:8px;border-radius:50%;background:#cfd6e6;border:none;cursor:pointer;padding:0;transition:background .2s,transform .2s}
 .c360-lsa-dot.c360-lsa-dot-active{background:var(--lsa-navy);transform:scale(1.3)}
-.c360-lsa-services{padding:96px 0;background:linear-gradient(135deg,#09103c 0%,#122078 55%,#0c1960 100%);position:relative;overflow:hidden}
-.c360-lsa-services::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 90% 10%,rgba(18,120,37,0.14) 0%,transparent 45%),radial-gradient(circle at 5% 90%,rgba(255,255,255,0.03) 0%,transparent 40%);pointer-events:none}
+
+/* ══════════════════════════════════════════════════════
+   SERVICES (navy)
+   ══════════════════════════════════════════════════════ */
+section.c360-lsa-services{padding:96px 0;background-color:#0b1440;background-image:linear-gradient(135deg,#09103c 0%,#122078 55%,#0c1960 100%);position:relative;overflow:hidden}
+.c360-lsa-services::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 90% 10%,rgba(18,120,37,0.14) 0%,transparent 45%),radial-gradient(circle at 5% 90%,rgba(255,255,255,0.03) 0%,transparent 40%);pointer-events:none;z-index:0}
 .c360-lsa-services .c360-lsa-section-header h2{color:#fff}
 .c360-lsa-services .c360-lsa-section-header p{color:rgba(255,255,255,0.62)}
 .c360-lsa-services .c360-lsa-overline{color:#2ecc52}
 .c360-lsa-steps{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;position:relative;z-index:2;counter-reset:lsa-steps}
-.c360-lsa-step{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:var(--lsa-radius-lg);padding:28px 22px;transition:background .22s,border-color .22s;position:relative;counter-increment:lsa-steps}
-.c360-lsa-step:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.22)}
-.c360-lsa-step-num{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.3);margin-bottom:16px;display:flex;align-items:center;gap:6px}
+.c360-lsa-step{background:rgba(255,255,255,0.055);border:1px solid rgba(255,255,255,0.1);border-radius:var(--lsa-radius-lg);padding:28px 22px;transition:background .22s,border-color .22s,transform .22s;position:relative;counter-increment:lsa-steps}
+.c360-lsa-step:hover{background:rgba(255,255,255,0.1);border-color:rgba(255,255,255,0.22);transform:translateY(-3px)}
+.c360-lsa-step-num{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.32);margin-bottom:16px;display:flex;align-items:center;gap:6px}
 .c360-lsa-step-num::after{content:counter(lsa-steps,decimal-leading-zero)}
-.c360-lsa-step-icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;margin-bottom:16px;background:rgba(18,120,37,0.25);border:1px solid rgba(46,204,82,0.3)}
+.c360-lsa-step-icon{width:46px;height:46px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:18px;color:#2ecc52;margin-bottom:16px;background:rgba(18,120,37,0.25);border:1px solid rgba(46,204,82,0.3)}
 .c360-lsa-step-title{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:14px;font-weight:700;color:#fff;margin-bottom:8px;line-height:1.3}
 .c360-lsa-step-desc{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:12.5px;color:rgba(255,255,255,0.58);line-height:1.55}
-.c360-lsa-requirements{padding:96px 0;background:var(--lsa-light-grey)}
+
+/* ══════════════════════════════════════════════════════
+   REQUIREMENTS
+   ══════════════════════════════════════════════════════ */
+.c360-lsa-requirements{padding:96px 0}
 .c360-lsa-req-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
 .c360-lsa-req-copy h3{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:clamp(22px,3vw,34px);font-weight:800;color:var(--lsa-text);margin:0 0 14px;line-height:1.2;letter-spacing:-0.02em}
 .c360-lsa-req-copy p{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:15.5px;color:var(--lsa-text-muted);line-height:1.7;margin:0 0 32px}
 .c360-lsa-req-list{display:flex;flex-direction:column;gap:14px}
-.c360-lsa-req-item{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid #e5e3dc;border-radius:10px;padding:16px 18px}
+.c360-lsa-req-item{display:flex;align-items:center;gap:14px;background:#fff;border:1px solid var(--lsa-line);border-radius:10px;padding:16px 18px;box-shadow:0 2px 10px rgba(10,16,64,0.04)}
 .c360-lsa-req-item-icon{width:40px;height:40px;border-radius:9px;background:var(--lsa-green-light);color:var(--lsa-green);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0}
 .c360-lsa-req-item-text{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:14px;font-weight:600;color:var(--lsa-text)}
 .c360-lsa-req-item-sub{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:12px;color:var(--lsa-text-muted);margin-top:2px}
 .c360-lsa-free-badge{margin-left:auto;flex-shrink:0;background:var(--lsa-green-light);color:var(--lsa-green);font-family:'Poppins','Helvetica Neue',sans-serif;font-size:10px;font-weight:700;padding:3px 9px;border-radius:100px;text-transform:uppercase;letter-spacing:0.04em}
-.c360-lsa-verif-card{background:var(--lsa-navy);border-radius:var(--lsa-radius-lg);padding:32px 28px;box-shadow:0 12px 48px rgba(18,32,120,0.22)}
+.c360-lsa-verif-card{background:var(--lsa-navy);border-radius:var(--lsa-radius-lg);padding:32px 28px;box-shadow:0 26px 64px rgba(18,32,120,0.24);position:relative;overflow:hidden}
+.c360-lsa-verif-card::before{content:'';position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 85% 0%,rgba(46,204,82,0.14) 0%,transparent 55%)}
+.c360-lsa-verif-card>*{position:relative;z-index:2}
 .c360-lsa-verif-eyebrow{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.4);margin-bottom:20px}
 .c360-lsa-verif-badge-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-bottom:24px}
 .c360-lsa-verif-badge{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.12);border-radius:10px;padding:16px 12px;text-align:center}
@@ -126,16 +509,24 @@
 .c360-lsa-verif-step-dot i{font-size:11px;color:#2ecc52}
 .c360-lsa-verif-step-text{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:13px;font-weight:600;color:rgba(255,255,255,0.85);line-height:1.4}
 .c360-lsa-verif-step-sub{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:11.5px;color:rgba(255,255,255,0.4);margin-top:2px;line-height:1.4}
-.c360-lsa-industries{padding:96px 0;background:#fff}
+
+/* ══════════════════════════════════════════════════════
+   INDUSTRIES
+   ══════════════════════════════════════════════════════ */
+.c360-lsa-industries{padding:96px 0}
 .c360-lsa-ind-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.c360-lsa-ind-tile{background:var(--lsa-light-grey);border:1.5px solid #e5e3dc;border-radius:var(--lsa-radius);padding:22px 18px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:background .2s,border-color .2s,transform .2s}
+.c360-lsa-ind-tile{background:var(--lsa-mist);border:1.5px solid var(--lsa-line);border-radius:var(--lsa-radius);padding:22px 18px;display:flex;align-items:center;gap:14px;text-decoration:none;transition:background .2s,border-color .2s,transform .2s}
 .c360-lsa-ind-tile:hover{background:var(--lsa-green-light);border-color:rgba(18,120,37,0.25);transform:translateY(-2px);text-decoration:none}
 .c360-lsa-ind-ico{width:44px;height:44px;background:var(--lsa-navy);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:18px;flex-shrink:0;transition:background .2s}
 .c360-lsa-ind-tile:hover .c360-lsa-ind-ico{background:var(--lsa-green)}
 .c360-lsa-ind-name{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:14px;font-weight:600;color:var(--lsa-text);line-height:1.3}
 .c360-lsa-ind-sub{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:11.5px;color:var(--lsa-text-muted);margin-top:2px}
-.c360-lsa-pricing{padding:96px 0;background:linear-gradient(135deg,#09103c 0%,#122078 55%,#0c1960 100%);position:relative;overflow:hidden}
-.c360-lsa-pricing::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(18,120,37,0.18) 0%,transparent 55%);pointer-events:none}
+
+/* ══════════════════════════════════════════════════════
+   PRICING (navy)
+   ══════════════════════════════════════════════════════ */
+section.c360-lsa-pricing{padding:96px 0;background-color:#0b1440;background-image:linear-gradient(135deg,#09103c 0%,#122078 55%,#0c1960 100%);position:relative;overflow:hidden}
+.c360-lsa-pricing::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(18,120,37,0.18) 0%,transparent 55%);pointer-events:none;z-index:0}
 .c360-lsa-pricing .c360-lsa-section-header h2{color:#fff}
 .c360-lsa-pricing .c360-lsa-section-header p{color:rgba(255,255,255,0.62)}
 .c360-lsa-pricing .c360-lsa-overline{color:#2ecc52}
@@ -182,20 +573,29 @@
 .c360-lsa-setup-note{background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:12px 16px;margin-bottom:20px;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:12px;color:rgba(255,255,255,0.55);line-height:1.5;min-height:76px}
 .c360-lsa-setup-note strong{color:rgba(255,255,255,0.8);display:block;margin-bottom:2px;font-size:12.5px}
 .c360-lsa-pricing-note{text-align:center;margin-top:40px;position:relative;z-index:2;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:13px;color:rgba(255,255,255,0.4);max-width:700px;margin-left:auto;margin-right:auto}
-.c360-lsa-faq{padding:96px 0;background:var(--lsa-light-grey)}
+
+/* ══════════════════════════════════════════════════════
+   FAQ
+   ══════════════════════════════════════════════════════ */
+.c360-lsa-faq{padding:96px 0}
 .c360-lsa-faq-list{max-width:820px;margin:0 auto;display:flex;flex-direction:column}
 .c360-lsa-faq-toggle{display:none}
-.c360-lsa-faq-item{border-bottom:1px solid #dddbd4}
-.c360-lsa-faq-item:first-child{border-top:1px solid #dddbd4}
+.c360-lsa-faq-item{border-bottom:1px solid var(--lsa-line)}
+.c360-lsa-faq-item:first-child{border-top:1px solid var(--lsa-line)}
 .c360-lsa-faq-q{display:flex;align-items:center;justify-content:space-between;padding:22px 6px;cursor:pointer;gap:16px;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:16px;font-weight:600;color:var(--lsa-text);line-height:1.4;transition:color .18s;user-select:none;list-style:none}
 .c360-lsa-faq-q:hover{color:var(--lsa-navy)}
 .c360-lsa-faq-icon{width:28px;height:28px;flex-shrink:0;background:var(--lsa-blue-light);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--lsa-navy);font-size:11px;transition:transform .3s,background .2s}
 .c360-lsa-faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s;padding:0 6px}
 .c360-lsa-faq-a p{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:15px;color:var(--lsa-text-muted);line-height:1.7;margin:0 0 22px;padding-top:4px}
 .c360-lsa-faq-toggle:checked ~ .c360-lsa-faq-q .c360-lsa-faq-icon{transform:rotate(180deg);background:var(--lsa-navy);color:#fff}
-.c360-lsa-faq-toggle:checked ~ .c360-lsa-faq-a{max-height:400px}
-.c360-lsa-final-cta{padding:104px 0;background:linear-gradient(135deg,#09103c 0%,#122078 58%,#0c1960 100%);position:relative;overflow:hidden;text-align:center}
-.c360-lsa-final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(18,120,37,0.22) 0%,transparent 55%);pointer-events:none}
+.c360-lsa-faq-toggle:checked ~ .c360-lsa-faq-a{max-height:460px}
+.c360-lsa-faq-toggle:focus-visible ~ .c360-lsa-faq-q{outline:2px solid var(--lsa-green);outline-offset:2px}
+
+/* ══════════════════════════════════════════════════════
+   FINAL CTA (navy)
+   ══════════════════════════════════════════════════════ */
+section.c360-lsa-final-cta{padding:104px 0;background-color:#0b1440;background-image:linear-gradient(135deg,#09103c 0%,#122078 58%,#0c1960 100%);position:relative;overflow:hidden;text-align:center}
+.c360-lsa-final-cta::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(18,120,37,0.22) 0%,transparent 55%);pointer-events:none;z-index:0}
 .c360-lsa-final-inner{position:relative;z-index:2;max-width:720px;margin:0 auto}
 .c360-lsa-final-cta h2{font-family:'Poppins','Helvetica Neue',sans-serif;font-size:clamp(28px,4vw,50px);font-weight:800;color:#fff;margin:16px 0 18px;line-height:1.08;letter-spacing:-0.025em}
 .c360-lsa-final-cta h2 .c360-lsa-green{color:#2ecc52}
@@ -204,9 +604,12 @@
 .c360-lsa-final-trust-row{display:flex;align-items:center;justify-content:center;gap:28px;margin-top:40px;flex-wrap:wrap}
 .c360-lsa-final-trust-row span{display:flex;align-items:center;gap:6px;font-family:'Poppins','Helvetica Neue',sans-serif;font-size:12.5px;color:rgba(255,255,255,0.45);font-weight:500}
 .c360-lsa-final-trust-row span i{color:#2ecc52;font-size:12px}
-/* CALC WIDGET */
-.c360-lsa-calc-card{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.14);border-radius:20px;padding:30px 28px 28px;backdrop-filter:blur(12px);position:relative;overflow:hidden;font-family:'Poppins','Helvetica Neue',sans-serif}
-.c360-lsa-calc-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 80% 0%,rgba(46,204,82,0.1) 0%,transparent 55%);pointer-events:none}
+
+/* ══════════════════════════════════════════════════════
+   COST-PER-LEAD CALCULATOR
+   ══════════════════════════════════════════════════════ */
+.c360-lsa-calc-card{background:linear-gradient(165deg,rgba(255,255,255,0.10),rgba(255,255,255,0.045));border:1px solid rgba(255,255,255,0.16);border-radius:20px;padding:30px 28px 28px;backdrop-filter:blur(10px);position:relative;overflow:hidden;font-family:'Poppins','Helvetica Neue',sans-serif;box-shadow:0 26px 64px rgba(4,8,32,0.42)}
+.c360-lsa-calc-card::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle at 40% 40%,rgba(46,204,82,0.28),transparent 68%);pointer-events:none}
 .c360-lsa-calc-card>*{position:relative;z-index:2}
 .c360-lsa-calc-header{display:flex;align-items:center;gap:12px;margin-bottom:24px;padding-bottom:20px;border-bottom:1px solid rgba(255,255,255,0.08)}
 .c360-lsa-calc-header-icon{width:44px;height:44px;border-radius:10px;background:rgba(18,120,37,0.25);border:1px solid rgba(46,204,82,0.35);display:flex;align-items:center;justify-content:center;color:#2ecc52;font-size:17px;flex-shrink:0}
@@ -225,14 +628,16 @@
 .c360-lsa-calc-input:focus,.c360-lsa-calc-select:focus{outline:none;border-color:#2ecc52;background:rgba(255,255,255,0.12)}
 .c360-lsa-calc-input.c360-lsa-calc-error,.c360-lsa-calc-select.c360-lsa-calc-error{border-color:rgba(234,67,53,0.7);background:rgba(234,67,53,0.08)}
 .c360-lsa-calc-select option,.c360-lsa-calc-select optgroup{background:#122078;color:#fff}
-.c360-lsa-calc-select option:first-child{color:rgba(255,255,255,0.5)}
+/* v1.5 — was option:first-child, which also dimmed the first option of
+   every optgroup. Target the placeholder by its empty value instead. */
+.c360-lsa-calc-select option[value=""]{color:rgba(255,255,255,0.5)}
 .c360-lsa-calc-submit{width:100%;background:#127825;color:#fff;font-family:inherit;font-size:15px;font-weight:700;padding:15px 20px;border-radius:10px;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:9px;margin-top:6px;box-shadow:0 4px 18px rgba(18,120,37,0.45);transition:background .2s,transform .15s,box-shadow .2s}
 .c360-lsa-calc-submit:hover{background:#0e5e1d;transform:translateY(-1px);box-shadow:0 8px 24px rgba(18,120,37,0.55)}
 .c360-lsa-calc-disclaimer{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:14px;font-size:11px;color:rgba(255,255,255,0.4);text-align:center;line-height:1.4}
 .c360-lsa-calc-result{display:none}
 .c360-lsa-calc-card.c360-lsa-calc-show-result .c360-lsa-calc-form{display:none}
-.c360-lsa-calc-card.c360-lsa-calc-show-result .c360-lsa-calc-result{display:block;animation:c360CalcFadeIn .35s ease}
-@keyframes c360CalcFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.c360-lsa-calc-card.c360-lsa-calc-show-result .c360-lsa-calc-result{display:block;animation:c360LsaCalcFadeIn .35s ease}
+@keyframes c360LsaCalcFadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .c360-lsa-calc-result-eyebrow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.12em;color:#2ecc52;margin-bottom:10px;display:flex;align-items:center;gap:8px}
 .c360-lsa-calc-result-eyebrow::before,.c360-lsa-calc-result-eyebrow::after{content:'';flex:1;height:1px;background:rgba(46,204,82,0.25)}
 .c360-lsa-calc-result-amount{font-size:48px;font-weight:800;color:#fff;line-height:1;letter-spacing:-0.025em;text-align:center;margin:12px 0 8px}
@@ -246,164 +651,333 @@
 .c360-lsa-calc-reset{display:block;width:100%;background:transparent;border:none;color:rgba(255,255,255,0.55);font-family:inherit;font-size:12.5px;font-weight:500;padding:8px;cursor:pointer;transition:color .18s;text-align:center}
 .c360-lsa-calc-reset:hover{color:#fff}
 .c360-lsa-calc-reset i{margin-right:5px;font-size:11px}
-/* RESPONSIVE */
+/* v1.4.4 — "not available in your market" state for gated categories */
+.c360-lsa-calc-unavail{display:none}
+.c360-lsa-calc-card.c360-lsa-calc-show-unavail .c360-lsa-calc-form{display:none}
+.c360-lsa-calc-card.c360-lsa-calc-show-unavail .c360-lsa-calc-unavail{display:block;animation:c360LsaCalcFadeIn .35s ease}
+.c360-lsa-calc-unavail-title{font-size:22px;font-weight:700;color:#fff;line-height:1.3;letter-spacing:-0.01em;text-align:center;margin:12px 0 16px}
+.c360-lsa-calc-unavail-title strong{color:#2ecc52;font-weight:700}
+.c360-lsa-calc-unavail .c360-lsa-calc-result-eyebrow{color:#f59e0b}
+.c360-lsa-calc-unavail .c360-lsa-calc-result-eyebrow::before,
+.c360-lsa-calc-unavail .c360-lsa-calc-result-eyebrow::after{background:rgba(245,158,11,0.3)}
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE
+   ══════════════════════════════════════════════════════ */
 @media(max-width:1020px){.c360-lsa-steps{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:760px){.c360-lsa-pricing-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}.c360-lsa-billing-toggle{flex-wrap:wrap;border-radius:14px;justify-content:center}}
-@media(max-width:900px){.c360-lsa-hero-inner{grid-template-columns:1fr;gap:48px}.c360-lsa-gg-card{display:none}.c360-lsa-explainer-grid,.c360-lsa-req-grid{grid-template-columns:1fr;gap:44px}.c360-lsa-ind-grid{grid-template-columns:1fr 1fr}}
-@media(max-width:768px){.c360-lsa-hero,.c360-lsa-final-cta{padding:72px 0 60px}.c360-lsa-explainer,.c360-lsa-services,.c360-lsa-requirements,.c360-lsa-industries,.c360-lsa-pricing,.c360-lsa-faq{padding:64px 0}.c360-lsa-steps{grid-template-columns:1fr 1fr}.c360-lsa-trust-pill{border-right:none;border-bottom:1px solid #e5e3dc;min-width:100%}.c360-lsa-trust-pill:last-child{border-bottom:none}.c360-lsa-section-header{margin-bottom:40px}.c360-lsa-client-card{flex:0 0 280px}}
-@media(max-width:540px){.c360-lsa-hero h1{font-size:32px}.c360-lsa-hero-actions{flex-direction:column;align-items:flex-start}.c360-lsa-btn-primary,.c360-lsa-btn-outline{width:100%;justify-content:center}.c360-lsa-ind-grid{grid-template-columns:1fr 1fr}.c360-lsa-steps{grid-template-columns:1fr}.c360-lsa-final-actions{flex-direction:column}.c360-lsa-verif-badge-row{grid-template-columns:1fr}}
+@media(max-width:900px){
+  .c360-lsa-hero-inner{grid-template-columns:1fr;gap:48px}
+  .c360-lsa-gg-card{display:none}
+  .c360-lsa-explainer-grid,.c360-lsa-req-grid{grid-template-columns:1fr;gap:44px}
+  .c360-lsa-ind-grid{grid-template-columns:1fr 1fr}
+  .c360-lsa-creds{align-items:center}
+}
+@media(max-width:768px){
+  section.c360-lsa-hero{padding:68px 0 56px}
+  section.c360-lsa-final-cta{padding:72px 0 60px}
+  .c360-lsa-explainer,section.c360-lsa-services,.c360-lsa-requirements,
+  .c360-lsa-industries,section.c360-lsa-pricing,.c360-lsa-faq,
+  .c360-lsa-carousel-section{padding:64px 0}
+  .c360-lsa-steps{grid-template-columns:1fr 1fr}
+  .c360-lsa-trust-pill{border-right:none;border-bottom:1px solid var(--lsa-line);min-width:100%}
+  .c360-lsa-trust-pill:last-child{border-bottom:none}
+  .c360-lsa-section-header{margin-bottom:40px}
+  .c360-lsa-client-card{flex:0 0 280px}
+}
+@media(max-width:760px){
+  .c360-lsa-pricing-grid{grid-template-columns:1fr;max-width:460px;margin:0 auto}
+  .c360-lsa-billing-toggle{flex-wrap:wrap;border-radius:14px;justify-content:center}
+}
+@media(max-width:540px){
+  .c360-lsa-hero h1{font-size:32px}
+  .c360-lsa-hero-actions{flex-direction:column;align-items:stretch}
+  .c360-lsa-btn-primary,.c360-lsa-btn-outline{width:100%;justify-content:center}
+  .c360-lsa-ind-grid{grid-template-columns:1fr 1fr}
+  .c360-lsa-steps{grid-template-columns:1fr}
+  .c360-lsa-final-actions{flex-direction:column}
+  .c360-lsa-verif-badge-row{grid-template-columns:1fr}
+  .c360-lsa-faq-q{font-size:14px}
+  /* Badge stacks above the credential list; keep the right-side clear
+     space so the required halo survives the reflow. */
+  .c360-lsa-creds{flex-direction:column;align-items:flex-start}
+  .c360-lsa-partner{margin-right:var(--badge-clear)}
+}
+
+/* ══════════════════════════════════════════════════════
+   OFF-SCREEN ANIMATION PAUSE
+   Reveal classes are added once and never removed, so orb drift would
+   otherwise keep running for every section below the fold. This pauses
+   them without touching entrance behaviour — reveals are transitions,
+   which animation-play-state doesn't affect.
+   ══════════════════════════════════════════════════════ */
+.c360-lsa-paused,
+.c360-lsa-paused *,
+.c360-lsa-paused *::before,
+.c360-lsa-paused *::after{animation-play-state:paused!important}
+
+/* ══════════════════════════════════════════════════════
+   MOBILE PAINT BUDGET
+   Decorative layers are desktop-only. On phones they cost compositor
+   layers and continuous main-thread work for effects nobody notices at
+   390px. backdrop-filter is the most expensive of the set.
+   ══════════════════════════════════════════════════════ */
+@media(max-width:768px){
+  .c360-lsa-orbs,
+  .c360-lsa-grain>.c360-lsa-grain-layer,
+  .c360-lsa-mesh,
+  .c360-lsa-depth::after{display:none!important}
+
+  .c360-lsa-calc-card,
+  .c360-lsa-gg-card{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
+  .c360-lsa-calc-card{background:rgba(255,255,255,0.09)}
+}
+
+/* ══════════════════════════════════════════════════════
+   REDUCED MOTION — scoped to this page
+   ══════════════════════════════════════════════════════ */
+@media(prefers-reduced-motion:reduce){
+  [class*="c360-lsa-"],[class*="c360-lsa-"]::before,[class*="c360-lsa-"]::after{
+    animation:none!important;transition:none!important;
+  }
+  .c360-lsa-js .c360-lsa-reveal{opacity:1!important;transform:none!important}
+}
 </style>
 
-<!-- HERO -->
-<section class="c360-lsa-section c360-lsa-hero">
-<div class="c360-lsa-wrap"><div class="c360-lsa-hero-inner">
-<div>
-  <div class="c360-lsa-hero-badge"><i class="fa-solid fa-shield-halved"></i> Google Guaranteed · Pay Only Per Lead</div>
-  <h1>Make Your<br>Phone Ring —<br>Or You <span class="c360-lsa-highlight">Don't Pay.</span></h1>
-  <p class="c360-lsa-hero-sub">Local Service Ads put your business at the very top of Google with a trusted Google Guaranteed badge. You pay only when a real customer calls — not for clicks, impressions, or wasted budget.</p>
-  <div class="c360-lsa-hero-actions">
-    <button type="button" class="c360-lsa-btn-primary c360-popup-trigger"><i class="fa-solid fa-phone"></i> Get Your Free Strategy Call</button>
-    <a href="#lsa-pricing" class="c360-lsa-btn-outline">View Pricing <i class="fa-solid fa-arrow-down"></i></a>
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 1 — HERO
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsa-section c360-lsa-hero c360-lsa-grain">
+  <div class="c360-lsa-grain-layer"></div>
+  <div class="c360-lsa-mesh"></div>
+  <div class="c360-lsa-orbs">
+    <div class="c360-lsa-orb c360-lsa-orb--lime  c360-lsa-orb--d1" style="width:520px;height:520px;left:-10%;top:18%;"></div>
+    <div class="c360-lsa-orb c360-lsa-orb--white c360-lsa-orb--d2" style="width:420px;height:420px;right:-6%;top:-12%;"></div>
+    <div class="c360-lsa-orb c360-lsa-orb--green c360-lsa-orb--d3" style="width:600px;height:600px;right:12%;bottom:-30%;"></div>
   </div>
-  <div class="c360-lsa-hero-trust">
-    <div class="c360-lsa-trust-item"><i class="fa-solid fa-circle-check"></i> Setup from $499 (waived if you have LSA)</div>
-    <div class="c360-lsa-trust-item"><i class="fa-brands fa-google"></i> Google Partner Agency</div>
-    <div class="c360-lsa-trust-item"><i class="fa-solid fa-star"></i> 144+ Five-Star Reviews</div>
-  </div>
-</div>
-<!-- CALCULATOR -->
-<div class="c360-lsa-calc-card" id="c360LsaCalc">
-  <div class="c360-lsa-calc-header">
-    <div class="c360-lsa-calc-header-icon"><i class="fa-solid fa-calculator"></i></div>
-    <div class="c360-lsa-calc-header-text"><strong>Cost Per Lead Estimator</strong><span>Based on 2026 LSA industry data</span></div>
-  </div>
-  <div class="c360-lsa-calc-form">
-    <div class="c360-lsa-calc-stage-head">
-      <h3>How much will an LSA lead cost in your market?</h3>
-      <p>Pick your line of business and ZIP — we'll show you the typical range.</p>
+
+  <div class="c360-lsa-wrap"><div class="c360-lsa-hero-inner">
+    <div>
+      <!-- v1.5 — Google Guaranteed retired 2025-10-20; single Google Verified badge now. -->
+      <div class="c360-lsa-hero-badge"><i class="fa-solid fa-circle-check"></i> Google Verified · Pay Only Per Lead</div>
+      <h1>Make Your<br>Phone Ring —<br>Or You <span class="c360-lsa-highlight">Don't Pay.</span></h1>
+      <p class="c360-lsa-hero-sub">Local Service Ads put your business at the very top of Google with the Google Verified checkmark. You pay only when a real customer calls — not for clicks, impressions, or wasted budget.</p>
+
+      <div class="c360-lsa-hero-actions">
+        <button type="button" class="c360-lsa-btn-primary c360-popup-trigger"><i class="fa-solid fa-phone"></i> Get Your Free Strategy Call</button>
+        <a href="#lsa-pricing" class="c360-lsa-btn-outline">View Pricing <i class="fa-solid fa-arrow-down"></i></a>
+      </div>
+
+      <!-- v1.4 — reworded. The old line said the setup fee is "waived if you
+           have LSA", which overstates it: FAQ2 reviews existing accounts
+           case-by-case. The guaranteed waiver is the Platinum Package. -->
+      <p class="c360-lsa-hero-note">
+        <i class="fa-solid fa-circle-info"></i>
+        $349/mo + $499 one-time setup · setup included free on the Platinum Package
+      </p>
+
+      <!-- ══════════════════════════════════════════════
+           CREDENTIALS CLUSTER (v1.4) — the ONLY place on this page where
+           trust credentials live. Same pattern as the homepage hero and
+           /google-ppc. Read the CSS block above before touching the badge.
+
+           BADGE SIZE: 88px, clear space 44px. Never change --badge-h
+           without --badge-clear (§1e: clear space >= 1/2 badge height on
+           every side). The ladder, and the gap you get beside the text:
+             64px -> 32px gap  (tightest sensible; text starts to dominate)
+             88px -> 44px gap  (current; matches the footer)
+            100px -> 50px gap
+            110px -> 55px gap  (cluster starts to read as two things)
+            122px -> 61px gap  (what /google-ppc uses — but that badge
+                                anchors a wider column and more items)
+           NO DIVIDER between the badge and the list. A rule line is
+           "another graphic" and cannot sit inside the clear space.
+
+           DO NOT: wrap the badge in a card/chip, round or clip its
+           container, crop its built-in padding, or place a Google-G icon
+           anywhere in this list (§1c — that reads as an imitation badge).
+           ══════════════════════════════════════════════ -->
+      <div class="c360-lsa-creds c360-lsa-reveal">
+
+        <a href="https://www.google.com/partners/agency?id=9636024453"
+           target="_blank" rel="noopener" class="c360-lsa-partner">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+
+        <!-- NOT WEBSITE-COMPLIANT — marketing .jpg, documented only.
+             Emails / decks / resumes only. assets.cdn.filesafe.space
+             rejects no-referrer requests; never add referrerpolicy.
+        <a href="https://www.google.com/partners/agency?id=9636024453"
+           target="_blank" rel="noopener" class="c360-lsa-partner">
+          <img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a5865c0524a3ec4c6ff76e5.jpg" alt="Google Partner">
+        </a>
+        -->
+
+        <ul class="c360-lsa-creds-list">
+          <li><i class="fa-solid fa-check"></i> Certified Google Partner · Google Product Expert</li>
+          <li><i class="fa-solid fa-check"></i> <span class="c360-lsa-creds-stars">★★★★★</span> 147 five-star reviews · 5.0 on Google</li>
+          <li><i class="fa-solid fa-check"></i> Tucson-based · serving nationwide since 2018</li>
+          <li><i class="fa-solid fa-clock" style="color:#2ecc52;"></i> Mon–Thu 7am–4pm · Fri 7am–1pm MST</li>
+        </ul>
+      </div>
+
+      <!-- NO SEO NOTICE HERE. §1g is triggered by the badge appearing on
+           material that advertises SEO services — this page advertises
+           Local Service Ads. The site-wide footer carries the notice.
+           If this page ever starts selling Local SEO Booster, uncomment:
+      <p style="font-family:'Poppins',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);margin:0;max-width:560px;">SEO services are not verified or endorsed by Google.</p>
+      -->
     </div>
-    <div class="c360-lsa-calc-field">
-      <label for="c360CalcCategory">Line of business</label>
-      <div class="c360-lsa-calc-select-wrap">
-        <select id="c360CalcCategory" class="c360-lsa-calc-select">
-          <option value="">Select your business…</option>
-          <optgroup label="Home Services &amp; Trades Category">
-            <option data-min="25" data-max="60">Appliance Repair</option>
-            <option data-min="50" data-max="120">Bathroom Remodeling</option>
-            <option data-min="35" data-max="75">Carpentry</option>
-            <option data-min="20" data-max="45">Carpet Cleaning</option>
-            <option data-min="40" data-max="90">Countertop Services</option>
-            <option data-min="40" data-max="75">Drain Expert</option>
-            <option data-min="35" data-max="70">Electrical</option>
-            <option data-min="50" data-max="90">Fencing</option>
-            <option data-min="44" data-max="91">Flooring</option>
-            <option data-min="60" data-max="120">Foundations</option>
-            <option data-min="30" data-max="70">Garage Door</option>
-            <option data-min="32" data-max="114">General Contracting</option>
-            <option data-min="25" data-max="50">Handyman</option>
-            <option data-min="30" data-max="60">Home Inspection</option>
-            <option data-min="40" data-max="90">Home Insulation</option>
-            <option data-min="40" data-max="80">Home Security Services</option>
-            <option data-min="35" data-max="80">Home Theater Services</option>
-            <option data-min="15" data-max="35">House Cleaning</option>
-            <option data-min="27" data-max="82">HVAC</option>
-            <option data-min="40" data-max="100">Interior Design</option>
-            <option data-min="25" data-max="50">Junk Removal</option>
-            <option data-min="60" data-max="140">Kitchen Remodeling</option>
-            <option data-min="20" data-max="58">Landscaping</option>
-            <option data-min="20" data-max="46">Lawn Care</option>
-            <option data-min="25" data-max="50">Locksmith</option>
-            <option data-min="30" data-max="70">Moving</option>
-            <option data-min="20" data-max="48">Painting</option>
-            <option data-min="25" data-max="60">Pest Control</option>
-            <option data-min="40" data-max="76">Plumbing</option>
-            <option data-min="25" data-max="55">Pool Cleaning</option>
-            <option data-min="50" data-max="120">Pool Contractor</option>
-            <option data-min="35" data-max="94">Roofing</option>
-            <option data-min="50" data-max="110">Sewage System Services</option>
-            <option data-min="50" data-max="110">Siding</option>
-            <option data-min="20" data-max="45">Snow Removal Services</option>
-            <option data-min="40" data-max="180">Solar Energy Contractor</option>
-            <option data-min="25" data-max="60">Storage</option>
-            <option data-min="35" data-max="65">Tree Services</option>
-            <option data-min="80" data-max="180">Water Damage Services</option>
-            <option data-min="20" data-max="45">Window Cleaning</option>
-            <option data-min="50" data-max="100">Window Services</option>
-          </optgroup>
-          <optgroup label="Automotive Category">
-            <option data-min="30" data-max="70">Auto Body Shop</option>
-            <option data-min="18" data-max="62">Auto Repair Shop</option>
-            <option data-min="15" data-max="35">Car Washing &amp; Detailing</option>
-            <option data-min="20" data-max="45">Tire Shop</option>
-            <option data-min="25" data-max="55">Towing</option>
-          </optgroup>
-          <optgroup label="Healthcare &amp; Medical Category">
-            <option data-min="30" data-max="70">Chiropractic Services</option>
-            <option data-min="50" data-max="130">Dentistry</option>
-            <option data-min="60" data-max="140">Dermatology</option>
-            <option data-min="30" data-max="70">Dietitian</option>
-            <option data-min="20" data-max="50">Massage Therapist</option>
-          </optgroup>
-          <optgroup label="Personal Care &amp; Beauty Category">
-            <option data-min="10" data-max="25">Barber Shop</option>
-            <option data-min="30" data-max="80">Beauty School</option>
-            <option data-min="15" data-max="30">Hair Salon</option>
-            <option data-min="30" data-max="80">Massage School</option>
-            <option data-min="10" data-max="25">Nail Salon</option>
-            <option data-min="15" data-max="40">Piercing Studio</option>
-            <option data-min="15" data-max="40">Tattoo Studio</option>
-            <option data-min="15" data-max="40">Yoga</option>
-          </optgroup>
-          <optgroup label="Professional Services Category">
-            <option data-min="60" data-max="150">Architecture</option>
-            <option data-min="40" data-max="100">Financial Planning</option>
-            <option data-min="40" data-max="100">Funeral Services</option>
-            <option data-min="20" data-max="60">Insurance Agency</option>
-            <option data-min="20" data-max="40">Real Estate</option>
-            <option data-min="50" data-max="110">Tax Services</option>
-          </optgroup>
-          <optgroup label="Pet Services Category">
-            <option data-min="15" data-max="40">Animal Rescue Services</option>
-            <option data-min="15" data-max="40">Pet Adoption Services</option>
-            <option data-min="20" data-max="50">Pet Boarding</option>
-            <option data-min="20" data-max="50">Pet Grooming</option>
-            <option data-min="25" data-max="50">Pet Training</option>
-            <option data-min="30" data-max="70">Veterinary Services</option>
-          </optgroup>
-        </select>
+
+    <!-- CALCULATOR -->
+    <div class="c360-lsa-calc-card" id="c360LsaCalc">
+      <div class="c360-lsa-calc-header">
+        <div class="c360-lsa-calc-header-icon"><i class="fa-solid fa-calculator"></i></div>
+        <div class="c360-lsa-calc-header-text"><strong>Cost Per Lead Estimator</strong><span>Based on 2026 LSA industry data</span></div>
+      </div>
+      <div class="c360-lsa-calc-form">
+        <div class="c360-lsa-calc-stage-head">
+          <h3>How much will an LSA lead cost in your market?</h3>
+          <p>Pick your line of business and ZIP — we'll show you the typical range.</p>
+        </div>
+        <div class="c360-lsa-calc-field">
+          <label for="c360CalcCategory">Line of business</label>
+          <div class="c360-lsa-calc-select-wrap">
+            <!-- v1.5 — maximums for Roofing / Water Damage / House Cleaning
+                 raised to 2026 benchmarks. Minimums unchanged. Lawyers are
+                 intentionally absent: we don't run legal campaigns. -->
+            <select id="c360CalcCategory" class="c360-lsa-calc-select">
+              <option value="">Select your business…</option>
+              <optgroup label="Home Services &amp; Trades Category">
+                <option data-min="25" data-max="60">Appliance Repair</option>
+                <option data-min="50" data-max="120">Bathroom Remodeling</option>
+                <option data-min="35" data-max="75">Carpentry</option>
+                <option data-min="20" data-max="45">Carpet Cleaning</option>
+                <option data-min="40" data-max="90">Countertop Services</option>
+                <option data-min="40" data-max="75">Drain Expert</option>
+                <option data-min="35" data-max="70">Electrical</option>
+                <option data-min="50" data-max="90">Fencing</option>
+                <option data-min="44" data-max="91">Flooring</option>
+                <option data-min="60" data-max="120">Foundations</option>
+                <option data-min="30" data-max="70">Garage Door</option>
+                <option data-min="32" data-max="114">General Contracting</option>
+                <option data-min="25" data-max="50">Handyman</option>
+                <option data-min="30" data-max="60">Home Inspection</option>
+                <option data-min="40" data-max="90">Home Insulation</option>
+                <option data-min="40" data-max="80">Home Security Services</option>
+                <option data-min="35" data-max="80">Home Theater Services</option>
+                <option data-min="15" data-max="50">House Cleaning</option>
+                <option data-min="27" data-max="82">HVAC</option>
+                <option data-min="40" data-max="100">Interior Design</option>
+                <option data-min="25" data-max="50">Junk Removal</option>
+                <option data-min="60" data-max="140">Kitchen Remodeling</option>
+                <option data-min="20" data-max="58">Landscaping</option>
+                <option data-min="20" data-max="46">Lawn Care</option>
+                <option data-min="25" data-max="50">Locksmith</option>
+                <option data-min="30" data-max="70">Moving</option>
+                <option data-min="20" data-max="48">Painting</option>
+                <option data-min="25" data-max="60">Pest Control</option>
+                <option data-min="40" data-max="76">Plumbing</option>
+                <option data-min="25" data-max="55">Pool Cleaning</option>
+                <option data-min="50" data-max="120">Pool Contractor</option>
+                <option data-min="35" data-max="130">Roofing</option>
+                <option data-min="50" data-max="110">Sewage System Services</option>
+                <option data-min="50" data-max="110">Siding</option>
+                <option data-min="20" data-max="45">Snow Removal Services</option>
+                <option data-min="40" data-max="180">Solar Energy Contractor</option>
+                <option data-min="25" data-max="60">Storage</option>
+                <option data-min="35" data-max="65">Tree Services</option>
+                <option data-min="80" data-max="260">Water Damage Services</option>
+                <option data-min="20" data-max="45">Window Cleaning</option>
+                <option data-min="50" data-max="100">Window Services</option>
+              </optgroup>
+              <optgroup label="Automotive Category">
+                <option data-min="30" data-max="70">Auto Body Shop</option>
+                <option data-min="18" data-max="62">Auto Repair Shop</option>
+                <option data-min="15" data-max="35">Car Washing &amp; Detailing</option>
+                <option data-min="20" data-max="45">Tire Shop</option>
+                <option data-min="25" data-max="55">Towing</option>
+              </optgroup>
+              <optgroup label="Healthcare &amp; Medical Category">
+                <option data-min="30" data-max="70">Chiropractic Services</option>
+                <option data-min="50" data-max="130">Dentistry</option>
+                <option data-min="60" data-max="140">Dermatology</option>
+                <option data-min="30" data-max="70">Dietitian</option>
+                <option data-min="20" data-max="50">Massage Therapist</option>
+              </optgroup>
+              <optgroup label="Personal Care &amp; Beauty Category">
+                <option data-min="10" data-max="25">Barber Shop</option>
+                <option data-min="30" data-max="80">Beauty School</option>
+                <option data-min="15" data-max="30">Hair Salon</option>
+                <option data-min="30" data-max="80">Massage School</option>
+                <option data-min="10" data-max="25">Nail Salon</option>
+                <option data-min="15" data-max="40">Piercing Studio</option>
+                <option data-min="15" data-max="40">Tattoo Studio</option>
+                <option data-min="15" data-max="40">Yoga</option>
+              </optgroup>
+              <optgroup label="Professional Services Category">
+                <option data-min="60" data-max="150">Architecture</option>
+                <option data-min="40" data-max="100">Financial Planning</option>
+                <option data-min="40" data-max="100">Funeral Services</option>
+                <option data-min="20" data-max="60" data-states="CA,FL">Insurance Agency</option>
+                <option data-min="20" data-max="40">Real Estate</option>
+                <option data-min="50" data-max="110">Tax Services</option>
+              </optgroup>
+              <optgroup label="Pet Services Category">
+                <option data-min="15" data-max="40">Animal Rescue Services</option>
+                <option data-min="15" data-max="40">Pet Adoption Services</option>
+                <option data-min="20" data-max="50">Pet Boarding</option>
+                <option data-min="20" data-max="50">Pet Grooming</option>
+                <option data-min="25" data-max="50">Pet Training</option>
+                <option data-min="30" data-max="70">Veterinary Services</option>
+              </optgroup>
+            </select>
+          </div>
+        </div>
+        <div class="c360-lsa-calc-field">
+          <label for="c360CalcZip">ZIP code</label>
+          <input type="text" id="c360CalcZip" class="c360-lsa-calc-input" placeholder="e.g. 85704" maxlength="5" inputmode="numeric" autocomplete="postal-code">
+        </div>
+        <button type="button" class="c360-lsa-calc-submit" id="c360CalcSubmit"><i class="fa-solid fa-calculator"></i> Estimate My Cost Per Lead</button>
+        <div class="c360-lsa-calc-disclaimer"><i class="fa-solid fa-lock"></i> Estimate based on 2026 national LSA averages.</div>
+      </div>
+      <div class="c360-lsa-calc-result">
+        <div class="c360-lsa-calc-result-eyebrow"><span>Your Estimated Range</span></div>
+        <div class="c360-lsa-calc-result-amount"><span>$<span id="c360CalcResultMin">--</span></span><span class="c360-lsa-calc-dash">–</span><span>$<span id="c360CalcResultMax">--</span></span></div>
+        <div class="c360-lsa-calc-result-meta">per lead for <strong id="c360CalcResultCat">your business</strong><span id="c360CalcResultZipWrap"> in <strong id="c360CalcResultZip">—</strong></span></div>
+        <div class="c360-lsa-calc-result-note"><i class="fa-solid fa-circle-info"></i><span>National average. Your actual cost varies by local competition, ratings, response time, and bid strategy. We'll give you a market-specific estimate on your strategy call.</span></div>
+        <a href="https://complete360.org/schedule-demo" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank');return false;" class="c360-lsa-calc-result-cta">Speak to an Agent <i class="fa-solid fa-arrow-right"></i></a>
+        <button type="button" class="c360-lsa-calc-reset"><i class="fa-solid fa-rotate-left"></i>Try another category</button>
+      </div>
+      <!-- v1.4.4 — shown when a gated category (data-states) is paired with
+           a ZIP outside its allowed states. -->
+      <div class="c360-lsa-calc-unavail">
+        <div class="c360-lsa-calc-result-eyebrow"><span>Not Available in Your Market</span></div>
+        <div class="c360-lsa-calc-unavail-title">LSA for <strong id="c360CalcUnavailCat">this category</strong> isn't open in <strong id="c360CalcUnavailZip">—</strong> yet</div>
+        <div class="c360-lsa-calc-result-note"><i class="fa-solid fa-circle-info"></i><span>Google currently offers Local Service Ads for insurance agents in California and Florida only. If you serve either state, we can get you set up — and we'll let you know the moment Google opens your market.</span></div>
+        <a href="https://complete360.org/schedule-demo" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank');return false;" class="c360-lsa-calc-result-cta">Talk to an Agent <i class="fa-solid fa-arrow-right"></i></a>
+        <button type="button" class="c360-lsa-calc-reset"><i class="fa-solid fa-rotate-left"></i>Try another category</button>
       </div>
     </div>
-    <div class="c360-lsa-calc-field">
-      <label for="c360CalcZip">ZIP code</label>
-      <input type="text" id="c360CalcZip" class="c360-lsa-calc-input" placeholder="e.g. 85704" maxlength="5" inputmode="numeric" autocomplete="postal-code">
-    </div>
-    <button type="button" class="c360-lsa-calc-submit" id="c360CalcSubmit"><i class="fa-solid fa-calculator"></i> Estimate My Cost Per Lead</button>
-    <div class="c360-lsa-calc-disclaimer"><i class="fa-solid fa-lock"></i> Estimate based on 2026 national LSA averages.</div>
-  </div>
-  <div class="c360-lsa-calc-result">
-    <div class="c360-lsa-calc-result-eyebrow"><span>Your Estimated Range</span></div>
-    <div class="c360-lsa-calc-result-amount"><span>$<span id="c360CalcResultMin">--</span></span><span class="c360-lsa-calc-dash">–</span><span>$<span id="c360CalcResultMax">--</span></span></div>
-    <div class="c360-lsa-calc-result-meta">per lead for <strong id="c360CalcResultCat">your business</strong><span id="c360CalcResultZipWrap"> in <strong id="c360CalcResultZip">—</strong></span></div>
-    <div class="c360-lsa-calc-result-note"><i class="fa-solid fa-circle-info"></i><span>National average. Your actual cost varies by local competition, ratings, response time, and bid strategy. We'll give you a market-specific estimate on your strategy call.</span></div>
-    <!-- FIX #1: target+onclick added -->
-    <a href="https://complete360.org/schedule-demo" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank');return false;" class="c360-lsa-calc-result-cta">Speak to an Agent <i class="fa-solid fa-arrow-right"></i></a>
-    <button type="button" class="c360-lsa-calc-reset" id="c360CalcReset"><i class="fa-solid fa-rotate-left"></i>Try another category</button>
-  </div>
-</div>
-</div></div>
+  </div></div>
 </section>
+
 <script>
 (function(){
   var card=document.getElementById('c360LsaCalc');if(!card)return;
   var catSel=document.getElementById('c360CalcCategory');
   var zipInp=document.getElementById('c360CalcZip');
   var submit=document.getElementById('c360CalcSubmit');
-  var reset=document.getElementById('c360CalcReset');
+  var resets=card.querySelectorAll('.c360-lsa-calc-reset');
   var minEl=document.getElementById('c360CalcResultMin');
   var maxEl=document.getElementById('c360CalcResultMax');
   var catEl=document.getElementById('c360CalcResultCat');
   var zipEl=document.getElementById('c360CalcResultZip');
   var zipWrap=document.getElementById('c360CalcResultZipWrap');
+  var unavailCat=document.getElementById('c360CalcUnavailCat');
+  var unavailZip=document.getElementById('c360CalcUnavailZip');
+  /* v1.4.4 — 3-digit ZIP prefix -> state, only for the states we gate on. */
+  function zipState(z){var n=parseInt(z.slice(0,3),10);if(n>=900&&n<=961)return 'CA';if(n>=320&&n<=349)return 'FL';return null}
   function clearError(el){el.classList.remove('c360-lsa-calc-error')}
   function setError(el){el.classList.add('c360-lsa-calc-error')}
   zipInp.addEventListener('input',function(){this.value=this.value.replace(/\D/g,'').slice(0,5);clearError(this)});
@@ -414,6 +988,16 @@
     if(zipInp.value.length!==5){setError(zipInp);hasError=true}
     if(hasError)return;
     var opt=catSel.options[catSel.selectedIndex];
+    var allowed=opt.getAttribute('data-states');
+    if(allowed){
+      var st=zipState(zipInp.value);
+      if(!st||allowed.split(',').indexOf(st)===-1){
+        unavailCat.textContent=opt.textContent.trim().toLowerCase();
+        unavailZip.textContent=zipInp.value;
+        card.classList.add('c360-lsa-calc-show-unavail');
+        return;
+      }
+    }
     minEl.textContent=opt.getAttribute('data-min');
     maxEl.textContent=opt.getAttribute('data-max');
     catEl.textContent=opt.textContent.trim();
@@ -422,47 +1006,78 @@
     card.classList.add('c360-lsa-calc-show-result');
   }
   submit.addEventListener('click',calculate);
-  reset.addEventListener('click',function(){card.classList.remove('c360-lsa-calc-show-result')});
+  Array.prototype.forEach.call(resets,function(b){b.addEventListener('click',function(){card.classList.remove('c360-lsa-calc-show-result','c360-lsa-calc-show-unavail')})});
   zipInp.addEventListener('keydown',function(e){if(e.key==='Enter'){e.preventDefault();calculate()}});
 })();
 </script>
 
-<!-- TRUST BAR -->
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 2 — TRUST BAR
+     v1.5 — "Google Guaranteed · backed by Google" retired with the
+     money-back guarantee. Google Verified now; claim is the checks.
+     ══════════════════════════════════════════════════════ -->
 <div class="c360-lsa-trust-bar"><div class="c360-lsa-wrap"><div class="c360-lsa-trust-bar-inner">
-  <div class="c360-lsa-trust-pill"><div class="c360-lsa-trust-pill-icon"><i class="fa-solid fa-shield-halved"></i></div><div class="c360-lsa-trust-pill-text"><strong>Google Guaranteed</strong><span>Your business is backed by Google</span></div></div>
-  <div class="c360-lsa-trust-pill"><div class="c360-lsa-trust-pill-icon" style="background:#EAF3DE;color:#127825;"><i class="fa-solid fa-phone-arrow-down-left"></i></div><div class="c360-lsa-trust-pill-text"><strong>Pay Per Lead Only</strong><span>Zero wasted ad spend on clicks</span></div></div>
+  <div class="c360-lsa-trust-pill"><div class="c360-lsa-trust-pill-icon"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-trust-pill-text"><strong>Google Verified</strong><span>Licensed, insured &amp; background-checked</span></div></div>
+  <div class="c360-lsa-trust-pill"><div class="c360-lsa-trust-pill-icon" style="background:#EAF3DE;color:#127825;"><i class="fa-solid fa-phone-volume"></i></div><div class="c360-lsa-trust-pill-text"><strong>Pay Per Lead Only</strong><span>Zero wasted ad spend on clicks</span></div></div>
   <div class="c360-lsa-trust-pill"><div class="c360-lsa-trust-pill-icon" style="background:#FFF8E7;color:#f59e0b;"><i class="fa-solid fa-trophy"></i></div><div class="c360-lsa-trust-pill-text"><strong>Position #1 on Google</strong><span>Above PPC, above organic results</span></div></div>
   <div class="c360-lsa-trust-pill"><div class="c360-lsa-trust-pill-icon"><i class="fa-solid fa-ban"></i></div><div class="c360-lsa-trust-pill-text"><strong>Spam Call Disputes</strong><span>We dispute bad leads to protect your budget</span></div></div>
 </div></div></div>
 
-<!-- EXPLAINER -->
-<section class="c360-lsa-section c360-lsa-explainer"><div class="c360-lsa-wrap"><div class="c360-lsa-explainer-grid">
-  <div class="c360-lsa-explainer-copy">
-    <span class="c360-lsa-overline">What Are Local Service Ads?</span>
-    <h3>The most trusted lead source on Google — and you only pay when someone calls.</h3>
-    <p>Local Service Ads (LSAs) are Google's pay-per-lead program for local businesses. Unlike PPC where you pay for every click, LSAs charge you only when a verified customer contacts you directly through Google. Your business earns a <strong style="color:var(--lsa-text);">Google Screened or Google Guaranteed badge</strong> — the most powerful trust signal Google offers.</p>
-    <div class="c360-lsa-diff-list">
-      <div class="c360-lsa-diff-item"><div class="c360-lsa-diff-icon c360-lsa-diff-icon--green"><i class="fa-solid fa-shield-halved"></i></div><div class="c360-lsa-diff-text"><strong>Google Screened / Google Guaranteed Badge</strong><span>A visual trust signal that your business has passed Google's verification — background checks, licensing, and insurance.</span></div></div>
-      <div class="c360-lsa-diff-item"><div class="c360-lsa-diff-icon c360-lsa-diff-icon--blue"><i class="fa-solid fa-phone-volume"></i></div><div class="c360-lsa-diff-text"><strong>High-Intent Inbound Calls Only</strong><span>LSA customers searched for your service, saw your badge, and chose to call you — not a cold prospect, an active buyer.</span></div></div>
-      <div class="c360-lsa-diff-item"><div class="c360-lsa-diff-icon c360-lsa-diff-icon--green"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="c360-lsa-diff-text"><strong>Budget That Goes to Leads — Not Clicks</strong><span>Every dollar is accountable. Spam calls and job-type mismatches are disputable through Google's process.</span></div></div>
-    </div>
-  </div>
-  <div><div class="c360-lsa-vs-card">
-    <div class="c360-lsa-vs-header"><span>Feature</span><span class="c360-lsa-vs-col-lsa" style="color:#2ecc52;">LSA</span><span>Google PPC</span></div>
-    <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Pay per call</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-xmark"></i></div></div>
-    <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Google trust badge</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-xmark"></i></div></div>
-    <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Above PPC results</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-xmark"></i></div></div>
-    <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Dispute bad leads</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-xmark"></i></div></div>
-    <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Instant setup possible</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-minus"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div></div>
-    <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Keyword targeting</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-minus"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div></div>
-    <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Reviews displayed in ad</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-minus"></i></div></div>
-    <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Managed by Complete360</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell" style="font-size:11px;color:rgba(100,100,100,0.7);">Coming soon</div></div>
-  </div></div>
-</div></div></section>
 
-<!-- CAROUSEL -->
-<section class="c360-lsa-section c360-lsa-carousel-section">
-  <div class="c360-lsa-wrap"><div class="c360-lsa-section-header"><span class="c360-lsa-overline">Businesses Like Yours</span><h2>Real local businesses.<br>Real results from LSA.</h2><p>From HVAC contractors to cleaning companies, LSA puts the phone-ringing businesses at the top of Google.</p></div></div>
+<!-- ══════════════════════════════════════════════════════
+     SECTION 3 — EXPLAINER
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsa-section c360-lsa-explainer c360-lsa-depth c360-lsa-grain">
+  <div class="c360-lsa-grain-layer"></div>
+  <!-- Orb plan: 2 — one very large, mostly off-canvas at left-middle; one
+       small and INSET from the right edge, high. Nothing on the right edge. -->
+  <div class="c360-lsa-orbs">
+    <div class="c360-lsa-orb c360-lsa-orb--soft  c360-lsa-orb--d1" style="width:780px;height:780px;left:-24%;top:30%;"></div>
+    <div class="c360-lsa-orb c360-lsa-orb--green c360-lsa-orb--d4" style="width:300px;height:300px;left:57%;top:-7%;animation-delay:-11s;"></div>
+  </div>
+
+  <div class="c360-lsa-wrap"><div class="c360-lsa-explainer-grid">
+    <div class="c360-lsa-explainer-copy c360-lsa-reveal">
+      <span class="c360-lsa-overline">What Are Local Service Ads?</span>
+      <h3>The most trusted lead source on Google — and you only pay when someone calls.</h3>
+      <p>Local Service Ads (LSAs) are Google's pay-per-lead program for local businesses. Unlike PPC where you pay for every click, LSAs charge you only when a verified customer contacts you directly through Google. Your business earns the <strong style="color:var(--lsa-text);">Google Verified badge</strong> — the blue checkmark that is the strongest trust signal Google offers in local search.</p>
+      <div class="c360-lsa-diff-list">
+        <div class="c360-lsa-diff-item"><div class="c360-lsa-diff-icon c360-lsa-diff-icon--green"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-diff-text"><strong>Google Verified Badge</strong><span>The blue checkmark that shows your business has passed Google's verification — background checks, licensing, and insurance.</span></div></div>
+        <div class="c360-lsa-diff-item"><div class="c360-lsa-diff-icon c360-lsa-diff-icon--blue"><i class="fa-solid fa-phone-volume"></i></div><div class="c360-lsa-diff-text"><strong>High-Intent Inbound Calls Only</strong><span>LSA customers searched for your service, saw your badge, and chose to call you — not a cold prospect, an active buyer.</span></div></div>
+        <div class="c360-lsa-diff-item"><div class="c360-lsa-diff-icon c360-lsa-diff-icon--green"><i class="fa-solid fa-hand-holding-dollar"></i></div><div class="c360-lsa-diff-text"><strong>Budget That Goes to Leads — Not Clicks</strong><span>Every dollar is accountable. Spam calls and job-type mismatches are disputable through Google's process.</span></div></div>
+      </div>
+    </div>
+    <div class="c360-lsa-reveal" style="--rd:0.1s;"><div class="c360-lsa-vs-card">
+      <div class="c360-lsa-vs-header"><span>Feature</span><span class="c360-lsa-vs-col-lsa" style="color:#2ecc52;">LSA</span><span>Google PPC</span></div>
+      <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Pay per call</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-xmark"></i></div></div>
+      <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Google trust badge</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-xmark"></i></div></div>
+      <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Above PPC results</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-xmark"></i></div></div>
+      <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Dispute bad leads</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-xmark"></i></div></div>
+      <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Instant setup possible</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-minus"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div></div>
+      <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Keyword targeting</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-minus"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div></div>
+      <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Reviews displayed in ad</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-minus"></i></div></div>
+      <!-- v1.4 — /google-ppc went live (page v2.4). "Coming soon" was stale. -->
+      <div class="c360-lsa-vs-row"><div class="c360-lsa-vs-label">Managed by Complete360</div><div class="c360-lsa-vs-cell"><i class="fa-solid fa-circle-check"></i></div><div class="c360-lsa-vs-cell"><a href="/google-ppc">See Google Ads</a></div></div>
+    </div></div>
+  </div></div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 4 — CLIENT CAROUSEL
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsa-section c360-lsa-carousel-section c360-lsa-depth c360-lsa-depth--alt c360-lsa-hairline c360-lsa-grain">
+  <div class="c360-lsa-grain-layer"></div>
+  <!-- Orb plan: 1, low and left. The section above ends with a small orb
+       high on the right; putting anything on this section's right edge is
+       what made the two read as the same circle repeating. Keep this side
+       empty. -->
+  <div class="c360-lsa-orbs">
+    <div class="c360-lsa-orb c360-lsa-orb--navy c360-lsa-orb--d3" style="width:420px;height:420px;left:6%;bottom:-26%;animation-delay:-17s;"></div>
+  </div>
+
+  <div class="c360-lsa-wrap"><div class="c360-lsa-section-header c360-lsa-reveal"><span class="c360-lsa-overline">Businesses Like Yours</span><h2>Real local businesses.<br>Real results from LSA.</h2><p>From HVAC contractors to cleaning companies, LSA puts the phone-ringing businesses at the top of Google.</p></div></div>
   <div class="c360-lsa-wrap" style="position:relative;">
     <div class="c360-lsa-carousel-track-wrap" id="lsaCarouselWrap">
       <div class="c360-lsa-carousel-track" id="lsaCarouselTrack">
@@ -474,198 +1089,339 @@
         <div class="c360-lsa-client-card"><div class="c360-lsa-client-img"><a href="https://maps.app.goo.gl/HZK8bXrjvoyfrnry8" target="_blank" rel="noopener"><img src="https://assets.cdn.filesafe.space/1pBjHBEIsKGbwvAUTY9u/media/6a0731c883e19ea25cefef30.jpeg" alt="Flow Right Plumbing" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;"></a></div><div class="c360-lsa-client-overlay"><div class="c360-lsa-client-name">Flow Right Plumbing</div><div class="c360-lsa-client-biz"><i class="fa-solid fa-location-dot"></i> Plumbing · Emmett, ID</div><div class="c360-lsa-client-result"><i class="fa-solid fa-trophy"></i> 4.9★ · 76 reviews · 50 connected calls</div></div></div>
       </div>
       <div class="c360-lsa-carousel-controls">
-        <button class="c360-lsa-carousel-btn" id="lsaCarouselPrev"><i class="fa-solid fa-chevron-left"></i></button>
+        <button class="c360-lsa-carousel-btn" id="lsaCarouselPrev" aria-label="Previous"><i class="fa-solid fa-chevron-left"></i></button>
         <div class="c360-lsa-carousel-dots" id="lsaCarouselDots"></div>
-        <button class="c360-lsa-carousel-btn" id="lsaCarouselNext"><i class="fa-solid fa-chevron-right"></i></button>
+        <button class="c360-lsa-carousel-btn" id="lsaCarouselNext" aria-label="Next"><i class="fa-solid fa-chevron-right"></i></button>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SERVICES -->
-<section class="c360-lsa-section c360-lsa-services"><div class="c360-lsa-wrap">
-  <div class="c360-lsa-section-header"><span class="c360-lsa-overline">What We Do For You</span><h2>We handle everything — you just answer the phone.</h2><p>From account setup to ongoing optimization and dispute management, our team takes the full LSA workload off your plate.</p></div>
-  <div class="c360-lsa-steps">
-    <div class="c360-lsa-step"><div class="c360-lsa-step-num">Step </div><div class="c360-lsa-step-icon"><i class="fa-solid fa-store"></i></div><div class="c360-lsa-step-title">Setup Your Google LSA Account</div><div class="c360-lsa-step-desc">We create and configure your Google Local Service Ads account from scratch, properly structured for your service type and coverage area.</div></div>
-    <div class="c360-lsa-step"><div class="c360-lsa-step-num">Step </div><div class="c360-lsa-step-icon"><i class="fa-solid fa-id-badge"></i></div><div class="c360-lsa-step-title">Complete Google Verification</div><div class="c360-lsa-step-desc">We guide you through the Google Screened/Guaranteed process — background checks, license verification, and insurance confirmation. We provide the background check for free.</div></div>
-    <div class="c360-lsa-step"><div class="c360-lsa-step-num">Step </div><div class="c360-lsa-step-icon"><i class="fa-solid fa-sliders"></i></div><div class="c360-lsa-step-title">Optimize Your Profile &amp; Bid Strategy</div><div class="c360-lsa-step-desc">We configure your service areas, job types, and bidding to maximize call volume while keeping your cost-per-lead competitive in your market.</div></div>
-    <div class="c360-lsa-step"><div class="c360-lsa-step-num">Step </div><div class="c360-lsa-step-icon"><i class="fa-solid fa-chart-line"></i></div><div class="c360-lsa-step-title">Monitor &amp; Manage Ongoing Performance</div><div class="c360-lsa-step-desc">Our team reviews your account regularly — adjusting budgets, service areas, and ratings performance so your cost-per-lead stays low as Google's algorithm updates.</div></div>
-    <div class="c360-lsa-step"><div class="c360-lsa-step-num">Step </div><div class="c360-lsa-step-icon"><i class="fa-solid fa-shield-check"></i></div><div class="c360-lsa-step-title">Dispute Spam Calls &amp; Bad Leads</div><div class="c360-lsa-step-desc">We actively review your lead history and dispute spam calls, wrong job types, and duplicate contacts — protecting your budget so you only pay for the leads that count.</div></div>
-  </div>
-</div></section>
 
-<!-- REQUIREMENTS -->
-<section class="c360-lsa-section c360-lsa-requirements"><div class="c360-lsa-wrap"><div class="c360-lsa-req-grid">
-  <div class="c360-lsa-req-copy">
-    <span class="c360-lsa-overline">What You Need to Get Started</span>
-    <h3>Google has a short verification checklist — we walk you through every step.</h3>
-    <p>Before Google issues your Guaranteed or Screened badge, your business needs to pass their verification process. Most businesses qualify. If yours doesn't, we'll tell you on our first call so you don't waste time. We handle the paperwork — you just provide the documents.</p>
-    <div class="c360-lsa-req-list">
-      <div class="c360-lsa-req-item"><div class="c360-lsa-req-item-icon"><i class="fa-solid fa-location-dot"></i></div><div><div class="c360-lsa-req-item-text">Active Google Business Profile</div><div class="c360-lsa-req-item-sub">Must be claimed, verified, and in good standing</div></div></div>
-      <div class="c360-lsa-req-item"><div class="c360-lsa-req-item-icon"><i class="fa-solid fa-id-card"></i></div><div><div class="c360-lsa-req-item-text">Professional License</div><div class="c360-lsa-req-item-sub">Only required for licensed trades (HVAC, plumbing, electrical, etc.)</div></div></div>
-      <div class="c360-lsa-req-item"><div class="c360-lsa-req-item-icon"><i class="fa-solid fa-file-shield"></i></div><div><div class="c360-lsa-req-item-text">Proof of Business Insurance</div><div class="c360-lsa-req-item-sub">Certificate of insurance submitted to Google for review</div></div></div>
-      <div class="c360-lsa-req-item"><div class="c360-lsa-req-item-icon"><i class="fa-solid fa-user-check"></i></div><div><div class="c360-lsa-req-item-text">Owner Background Check</div><div class="c360-lsa-req-item-sub">Run through Google's authorized provider</div></div><div class="c360-lsa-free-badge">We cover this</div></div>
-      <div class="c360-lsa-req-item"><div class="c360-lsa-req-item-icon"><i class="fa-brands fa-google"></i></div><div><div class="c360-lsa-req-item-text">Google Advertiser Verification</div><div class="c360-lsa-req-item-sub">A quick Google identity verification to activate your account</div></div></div>
-    </div>
+<!-- ══════════════════════════════════════════════════════
+     SECTION 5 — SERVICES (navy)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsa-section c360-lsa-services c360-lsa-grain">
+  <div class="c360-lsa-grain-layer"></div>
+  <div class="c360-lsa-mesh"></div>
+  <div class="c360-lsa-orbs">
+    <div class="c360-lsa-orb c360-lsa-orb--green c360-lsa-orb--d2" style="width:640px;height:640px;right:-20%;top:24%;"></div>
+    <div class="c360-lsa-orb c360-lsa-orb--white c360-lsa-orb--d1" style="width:340px;height:340px;left:43%;bottom:-22%;animation-delay:-8s;"></div>
   </div>
-  <div class="c360-lsa-verif-card">
-    <div class="c360-lsa-verif-eyebrow">Google Verification Badges</div>
-    <div class="c360-lsa-verif-badge-row">
-      <div class="c360-lsa-verif-badge"><i class="fa-solid fa-shield-halved"></i><div class="c360-lsa-verif-badge-name">Google Guaranteed</div></div>
-      <div class="c360-lsa-verif-badge"><i class="fa-solid fa-user-shield"></i><div class="c360-lsa-verif-badge-name">Google Screened</div></div>
-      <div class="c360-lsa-verif-badge"><i class="fa-solid fa-circle-check"></i><div class="c360-lsa-verif-badge-name">Google Verified</div></div>
-    </div>
-    <div style="font-family:'Poppins','Helvetica Neue',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:18px;line-height:1.5;">Most home service businesses qualify for Google Guaranteed. Professional services (real estate, lawyers) typically receive Google Screened. We'll confirm which badge applies on your strategy call.</div>
-    <div class="c360-lsa-verif-eyebrow" style="margin-top:8px;">Our setup process</div>
-    <div class="c360-lsa-verif-steps">
-      <div class="c360-lsa-verif-step"><div class="c360-lsa-verif-step-dot"><i class="fa-solid fa-check"></i></div><div><div class="c360-lsa-verif-step-text">Strategy call &amp; eligibility review</div><div class="c360-lsa-verif-step-sub">We confirm your business type qualifies before any payment</div></div></div>
-      <div class="c360-lsa-verif-step"><div class="c360-lsa-verif-step-dot"><i class="fa-solid fa-check"></i></div><div><div class="c360-lsa-verif-step-text">Document collection &amp; account creation</div><div class="c360-lsa-verif-step-sub">We build and configure your full LSA profile</div></div></div>
-      <div class="c360-lsa-verif-step"><div class="c360-lsa-verif-step-dot"><i class="fa-solid fa-check"></i></div><div><div class="c360-lsa-verif-step-text">Google verification submitted</div><div class="c360-lsa-verif-step-sub">Background check, insurance, and license sent to Google</div></div></div>
-      <div class="c360-lsa-verif-step"><div class="c360-lsa-verif-step-dot"><i class="fa-solid fa-phone"></i></div><div><div class="c360-lsa-verif-step-text">Ads live — phone starts ringing</div><div class="c360-lsa-verif-step-sub">Typically 1–3 weeks from kickoff to live ads</div></div></div>
-    </div>
-  </div>
-</div></div></section>
 
-<!-- INDUSTRIES -->
-<section class="c360-lsa-section c360-lsa-industries"><div class="c360-lsa-wrap">
-  <div class="c360-lsa-section-header"><span class="c360-lsa-overline">Industries We Serve</span><h2>LSA is built for local service businesses</h2><p>Google's Local Service Ads program covers a wide range of service categories. If your business runs on booked appointments and phone calls, you almost certainly qualify.</p></div>
-  <div class="c360-lsa-ind-grid">
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-fan"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">HVAC</div><div class="c360-lsa-ind-sub">Heating, cooling &amp; air quality</div></div></div>
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-wrench"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Plumbing</div><div class="c360-lsa-ind-sub">Residential &amp; commercial</div></div></div>
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-bolt"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Electrical</div><div class="c360-lsa-ind-sub">Licensed electricians</div></div></div>
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-house-chimney"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Roofing</div><div class="c360-lsa-ind-sub">Repair, replace &amp; inspect</div></div></div>
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-broom"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Cleaning Services</div><div class="c360-lsa-ind-sub">Residential &amp; commercial</div></div></div>
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-leaf"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Lawn Care</div><div class="c360-lsa-ind-sub">Landscaping &amp; maintenance</div></div></div>
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-paint-roller"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Painting</div><div class="c360-lsa-ind-sub">Interior &amp; exterior</div></div></div>
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-bug"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Pest Control</div><div class="c360-lsa-ind-sub">Extermination &amp; prevention</div></div></div>
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-building"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Real Estate</div><div class="c360-lsa-ind-sub">Agents &amp; brokers (Google Screened)</div></div></div>
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-shield-halved"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Insurance Agents</div><div class="c360-lsa-ind-sub">Health, life &amp; P&amp;C agents</div></div></div>
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-helmet-safety"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">General Contractor</div><div class="c360-lsa-ind-sub">Remodels &amp; new builds</div></div></div>
-    <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-water"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Pool Service</div><div class="c360-lsa-ind-sub">Maintenance &amp; repair</div></div></div>
-  </div>
-</div></section>
-
-<!-- PRICING -->
-<section id="lsa-pricing" class="c360-lsa-section c360-lsa-pricing"><div class="c360-lsa-wrap">
-  <div class="c360-lsa-section-header"><span class="c360-lsa-overline">Simple, Transparent Pricing</span><h2>Pick the plan that fits. No surprises.</h2><p>Commit longer, pay in full, and save more. 3-, 6-, and 12-month packages are priced as a one-time upfront payment. Setup fee waived on the Platinum Package.</p></div>
-  <div style="text-align:center;position:relative;z-index:2;">
-    <div class="c360-lsa-billing-toggle" id="lsaBillingToggle">
-      <button class="c360-lsa-billing-btn c360-lsa-billing-active" data-period="monthly" data-lsa-display="349" data-lsa-period="/mo" data-lsa-eff="" data-plat-display="599" data-plat-period="/mo" data-plat-eff="">Monthly</button>
-      <button class="c360-lsa-billing-btn" data-period="3mo" data-lsa-display="945" data-lsa-period="paid in full" data-lsa-eff="$315/mo effective · save $102" data-plat-display="1,620" data-plat-period="paid in full" data-plat-eff="$540/mo effective · save $177">3 Months <span class="c360-lsa-billing-save">−10%</span></button>
-      <button class="c360-lsa-billing-btn" data-period="6mo" data-lsa-display="1,680" data-lsa-period="paid in full" data-lsa-eff="$280/mo effective · save $414" data-plat-display="2,880" data-plat-period="paid in full" data-plat-eff="$480/mo effective · save $714">6 Months <span class="c360-lsa-billing-save">−20%</span></button>
-      <button class="c360-lsa-billing-btn" data-period="12mo" data-lsa-display="2,940" data-lsa-period="paid in full" data-lsa-eff="$245/mo effective · save $1,248" data-plat-display="5,040" data-plat-period="paid in full" data-plat-eff="$420/mo effective · save $2,148">12 Months <span class="c360-lsa-billing-save">−30%</span></button>
-    </div>
-  </div>
-  <div class="c360-lsa-savings-banner" id="lsaSavingsBanner"><i class="fa-solid fa-tag"></i><span id="lsaSavingsText">You're saving on both plans with this commitment period.</span></div>
-  <div class="c360-lsa-pricing-grid">
-    <!-- LSA Management card -->
-    <div class="c360-lsa-price-card">
-      <div class="c360-lsa-price-tier">Local Service Ads</div>
-      <div class="c360-lsa-price-name">LSA Management</div>
-      <div class="c360-lsa-price-tagline">Full done-for-you setup, optimization, and spam dispute management. You just answer the calls.</div>
-      <div class="c360-lsa-price-original" id="lsaOriginalPrice">&nbsp;</div>
-      <div class="c360-lsa-price-amount"><span class="c360-lsa-price-currency">$</span><span class="c360-lsa-price-number" id="lsaPriceNum">349</span><span class="c360-lsa-price-period" id="lsaPricePeriod">/mo</span></div>
-      <div class="c360-lsa-price-effective" id="lsaPriceEff">&nbsp;</div>
-      <div class="c360-lsa-price-waiver" style="color:rgba(255,255,255,0.55);"><i class="fa-solid fa-circle-info" style="color:rgba(255,255,255,0.4);"></i> $499 one-time setup fee applies</div>
-      <div class="c360-lsa-setup-note"><strong>Due at onboarding: $499 setup + first month ($349)</strong>We collect setup and your first month's management fee together when we kick off. Already have an active LSA account? Ask us about a setup fee waiver on your strategy call.</div>
-      <div class="c360-lsa-includes-spacer"></div>
-      <hr class="c360-lsa-price-divider">
-      <ul class="c360-lsa-price-features">
-        <li><i class="fa-solid fa-circle-check"></i> Google LSA account creation &amp; full configuration</li>
-        <li><i class="fa-solid fa-circle-check"></i> Google verification walkthrough (background check on us)</li>
-        <li><i class="fa-solid fa-circle-check"></i> License &amp; insurance submission to Google</li>
-        <li><i class="fa-solid fa-circle-check"></i> Service area &amp; job type optimization</li>
-        <li><i class="fa-solid fa-circle-check"></i> Monthly bid strategy adjustments</li>
-        <li><i class="fa-solid fa-circle-check"></i> Active spam call &amp; bad lead disputes</li>
-        <li><i class="fa-solid fa-circle-check"></i> Monthly performance report</li>
-        <li><i class="fa-solid fa-circle-check"></i> Review strategy guidance</li>
-        <li><i class="fa-solid fa-circle-check"></i> Dedicated account contact</li>
-      </ul>
-      <div class="c360-lsa-price-cta-wrap">
-        <!-- FIX #2 -->
-        <a href="https://complete360.org/lsa-checkout" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank');return false;" class="c360-lsa-price-cta c360-lsa-price-cta--outline">Get Started <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-    </div>
-    <!-- Platinum card -->
-    <div class="c360-lsa-price-card c360-lsa-price-card--featured">
-      <div class="c360-lsa-popular-badge">⭐ Best Value — Platinum Package</div>
-      <div class="c360-lsa-price-tier">Complete Google Bundle</div>
-      <div class="c360-lsa-price-name">Google Platinum Package</div>
-      <div class="c360-lsa-price-tagline">LSA + Google Business Profile Management + Reputation Management. Your entire Google presence, handled under one roof.</div>
-      <div class="c360-lsa-price-original" id="platOriginalPrice">&nbsp;</div>
-      <div class="c360-lsa-price-amount"><span class="c360-lsa-price-currency">$</span><span class="c360-lsa-price-number" id="platPriceNum">599</span><span class="c360-lsa-price-period" id="platPricePeriod">/mo</span></div>
-      <div class="c360-lsa-price-effective" id="platPriceEff">&nbsp;</div>
-      <div class="c360-lsa-price-waiver"><i class="fa-solid fa-circle-check"></i> Setup included free — save $499 vs. LSA-only</div>
-      <div class="c360-lsa-setup-note"><strong>Due at onboarding: first month only ($599)</strong>No setup fee on the Platinum Package. We waive the $499 setup when you bundle — just your first month to get started.</div>
-      <div class="c360-lsa-includes-row">
-        <span class="c360-lsa-inc-badge"><i class="fa-solid fa-circle-check"></i> LSA Management</span>
-        <span class="c360-lsa-inc-badge"><i class="fa-solid fa-circle-check"></i> GBP Management</span>
-        <span class="c360-lsa-inc-badge"><i class="fa-solid fa-circle-check"></i> Reputation Mgmt</span>
-      </div>
-      <hr class="c360-lsa-price-divider">
-      <ul class="c360-lsa-price-features">
-        <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Everything in LSA Management (above)</li>
-        <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Monthly Google Business Profile optimization</li>
-        <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> GBP post creation &amp; scheduling</li>
-        <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Review response management</li>
-        <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Review generation strategy &amp; platform sync</li>
-        <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Photo &amp; Q&amp;A profile management</li>
-        <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Combined Google performance dashboard &amp; reporting</li>
-        <li><i class="fa-solid fa-circle-check"></i> Priority support &amp; dedicated account manager</li>
-        <li><i class="fa-solid fa-star" style="color:#f59e0b;"></i> GBP reviews boost your LSA ranking — both channels compound</li>
-      </ul>
-      <div class="c360-lsa-price-cta-wrap">
-        <!-- FIX #3 -->
-        <a href="https://complete360.org/google-platinum-checkout" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank');return false;" class="c360-lsa-price-cta">Get the Platinum Package <i class="fa-solid fa-star"></i></a>
-      </div>
-    </div>
-  </div>
-  <p class="c360-lsa-pricing-note">All plans require a separate Google ad spend budget billed directly by Google — not through Complete360. We only charge for setup and management. Typical starting budgets range from $500–$1,500/mo depending on your market and category. We'll give you a specific estimate on your strategy call.</p>
-</div></section>
-
-<!-- REVIEWS -->
-<section class="c360-lsa-section" style="padding:96px 0;background:var(--lsa-light-grey);border-top:1px solid #dddbd4;">
   <div class="c360-lsa-wrap">
-    <div class="c360-lsa-section-header"><span class="c360-lsa-overline">What Our Clients Say</span><h2>144+ reasons Arizona businesses trust Complete360</h2><p>Real results from real local service businesses across Arizona and the US.</p></div>
-    <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
-    <iframe class='lc_reviews_widget' src='https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u' frameborder='0' scrolling='no' style='min-width:100%;width:100%;display:block;'></iframe>
+    <div class="c360-lsa-section-header c360-lsa-reveal"><span class="c360-lsa-overline">What We Do For You</span><h2>We handle everything — you just answer the phone.</h2><p>From account setup to ongoing optimization and dispute management, our team takes the full LSA workload off your plate.</p></div>
+    <div class="c360-lsa-steps">
+      <div class="c360-lsa-step c360-lsa-reveal"><div class="c360-lsa-step-num">Step </div><div class="c360-lsa-step-icon"><i class="fa-solid fa-store"></i></div><div class="c360-lsa-step-title">Setup Your Google LSA Account</div><div class="c360-lsa-step-desc">We create and configure your Google Local Service Ads account from scratch, properly structured for your service type and coverage area.</div></div>
+      <div class="c360-lsa-step c360-lsa-reveal" style="--rd:0.08s;"><div class="c360-lsa-step-num">Step </div><div class="c360-lsa-step-icon"><i class="fa-solid fa-id-badge"></i></div><div class="c360-lsa-step-title">Complete Google Verification</div><div class="c360-lsa-step-desc">We guide you through the Google Verified process — background checks, license verification, and insurance confirmation. We provide the background check for free.</div></div>
+      <div class="c360-lsa-step c360-lsa-reveal" style="--rd:0.16s;"><div class="c360-lsa-step-num">Step </div><div class="c360-lsa-step-icon"><i class="fa-solid fa-sliders"></i></div><div class="c360-lsa-step-title">Optimize Your Profile &amp; Bid Strategy</div><div class="c360-lsa-step-desc">We configure your service areas, job types, and bidding to maximize call volume while keeping your cost-per-lead competitive in your market.</div></div>
+      <div class="c360-lsa-step c360-lsa-reveal" style="--rd:0.24s;"><div class="c360-lsa-step-num">Step </div><div class="c360-lsa-step-icon"><i class="fa-solid fa-chart-line"></i></div><div class="c360-lsa-step-title">Monitor &amp; Manage Ongoing Performance</div><div class="c360-lsa-step-desc">Our team reviews your account regularly — adjusting budgets, service areas, and ratings performance so your cost-per-lead stays low as Google's algorithm updates.</div></div>
+      <div class="c360-lsa-step c360-lsa-reveal" style="--rd:0.32s;"><div class="c360-lsa-step-num">Step </div><div class="c360-lsa-step-icon"><i class="fa-solid fa-shield-halved"></i></div><div class="c360-lsa-step-title">Dispute Spam Calls &amp; Bad Leads</div><div class="c360-lsa-step-desc">We actively review your lead history and dispute spam calls, wrong job types, and duplicate contacts — protecting your budget so you only pay for the leads that count.</div></div>
+    </div>
   </div>
 </section>
 
-<!-- FINAL CTA -->
-<section class="c360-lsa-section c360-lsa-final-cta"><div class="c360-lsa-wrap"><div class="c360-lsa-final-inner">
-  <span class="c360-lsa-overline" style="color:#2ecc52;">Ready to Fill Your Pipeline?</span>
-  <h2>Let's put your business<br>at the <span class="c360-lsa-green">top of Google</span> — today.</h2>
-  <p class="c360-lsa-final-desc">Book a free strategy call. We'll review your business, confirm you qualify for the Google Guaranteed badge, and give you a realistic cost-per-lead estimate for your market.<br><span style="font-size:14px;opacity:0.75;">Mon–Thu 7am–4pm · Fri 7am–1pm MST &nbsp;·&nbsp; No pressure. No obligation.</span></p>
-  <div class="c360-lsa-final-actions">
-    <a href="tel:+18665276205" class="c360-lsa-btn-primary" style="font-size:17px;padding:18px 34px;"><i class="fa-solid fa-phone"></i> Call (866) 527-6205</a>
-    <!-- FIX #4 -->
-    <a href="https://complete360.org/lsa-checkout" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank');return false;" class="c360-lsa-btn-outline">Get Started Online <i class="fa-solid fa-arrow-right"></i></a>
-  </div>
-  <div class="c360-lsa-final-trust-row">
-    <span><i class="fa-brands fa-google"></i> Google Partner Agency</span>
-    <span><i class="fa-solid fa-star"></i> 144+ Five-Star Reviews</span>
-    <span><i class="fa-solid fa-circle-check"></i> Setup Fee Waived for Existing LSA Accounts</span>
-    <span><i class="fa-solid fa-map-pin"></i> Tucson-Based · Serving Nationwide</span>
-  </div>
-</div></div></section>
 
-<!-- FAQ -->
-<section class="c360-lsa-section c360-lsa-faq"><div class="c360-lsa-wrap">
-  <div class="c360-lsa-section-header"><span class="c360-lsa-overline">Frequently Asked Questions</span><h2>Everything you need to know about Google Local Service Ads</h2><p>Still have questions? Call us at <a href="tel:+18665276205" style="color:var(--lsa-green);font-weight:600;">(866) 527-6205</a> — we're glad to walk through it.</p></div>
-  <div class="c360-lsa-faq-list">
-    <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq1" class="c360-lsa-faq-toggle"><label for="lsaFaq1" class="c360-lsa-faq-q">Why choose Google Local Service Ads over regular Google PPC?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>With Google PPC you pay every time someone clicks your ad — even if they never call you. With LSA you only pay when a customer actually contacts you through Google. LSA ads also appear above PPC results, carry a Google Guaranteed or Screened badge, and display your star rating right in the ad. For most service businesses, LSA delivers a significantly lower cost-per-lead than PPC.</p></div></div>
-    <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq2" class="c360-lsa-faq-toggle"><label for="lsaFaq2" class="c360-lsa-faq-q">How is the $499 setup fee waived?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>The $499 setup fee applies to the LSA Management plan and is collected at onboarding alongside your first month's payment — so your total day-one charge is $848. The setup fee is waived entirely on the Platinum Package. If you already have an active, verified LSA account in good standing, ask us on your strategy call — we review those on a case-by-case basis.</p></div></div>
-    <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq3" class="c360-lsa-faq-toggle"><label for="lsaFaq3" class="c360-lsa-faq-q">How long does it take to go live?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>From kickoff call to live ads is typically 1–3 weeks. The main variable is Google's verification timeline — background checks and license reviews can take a few business days. We initiate everything in parallel so nothing waits on something else. Once verified, ads can go live within 24 hours of us activating the account.</p></div></div>
-    <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq4" class="c360-lsa-faq-toggle"><label for="lsaFaq4" class="c360-lsa-faq-q">How much will I spend on ad budget each month?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>Ad spend is set by you and billed directly by Google — completely separate from our management fee. Most clients start with a $500–$1,500/mo ad budget depending on their market and industry. We'll give you a specific recommendation on your strategy call. You control your budget and can adjust it anytime.</p></div></div>
-    <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq5" class="c360-lsa-faq-toggle"><label for="lsaFaq5" class="c360-lsa-faq-q">What if I get spam calls or wrong-number leads?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>Google allows you to dispute leads that don't match your advertised services — spam calls, solicitations, wrong job types, repeat contacts, etc. On both plans, we actively review your lead history and submit disputes on your behalf. Approved disputes are refunded as credits to your Google account. Left unmanaged, a typical LSA account loses 15–25% of budget to undisputed bad leads.</p></div></div>
-    <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq6" class="c360-lsa-faq-toggle"><label for="lsaFaq6" class="c360-lsa-faq-q">What's included in the Google Platinum Package and is it worth it?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>The Platinum Package bundles LSA Management ($349/mo), Google Business Profile Management (normally $349/mo), and Reputation Management — all for $599/mo. More importantly, your LSA ads and your GBP work together: a well-optimized GBP with strong reviews directly improves your LSA ranking because Google's algorithm weighs your ratings and review volume when deciding who to show first.</p></div></div>
-    <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq7" class="c360-lsa-faq-toggle"><label for="lsaFaq7" class="c360-lsa-faq-q">Do the commitment discounts require a contract?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>Yes — the 3-, 6-, and 12-month tiers are paid in full upfront in exchange for the discount. There are no contracts or penalties beyond that — you simply pay the full period amount at the start. Unused months are non-refundable, but there's no additional fee or obligation. Month-to-month plans can cancel with 30 days' notice.</p></div></div>
+<!-- ══════════════════════════════════════════════════════
+     SECTION 6 — REQUIREMENTS
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsa-section c360-lsa-requirements c360-lsa-depth c360-lsa-grain">
+  <div class="c360-lsa-grain-layer"></div>
+  <!-- Orb plan: 3 at deliberately mixed scales (240 / 380 / 700) so the eye
+       doesn't read "another two 500px circles". -->
+  <div class="c360-lsa-orbs">
+    <div class="c360-lsa-orb c360-lsa-orb--navy  c360-lsa-orb--d4" style="width:240px;height:240px;left:11%;top:7%;animation-delay:-23s;"></div>
+    <div class="c360-lsa-orb c360-lsa-orb--green c360-lsa-orb--d1" style="width:700px;height:700px;right:-28%;bottom:-32%;"></div>
+    <div class="c360-lsa-orb c360-lsa-orb--soft  c360-lsa-orb--d2" style="width:380px;height:380px;left:-14%;top:54%;animation-delay:-14s;"></div>
   </div>
-</div></section>
 
-<!-- SCRIPTS -->
+  <div class="c360-lsa-wrap"><div class="c360-lsa-req-grid">
+    <div class="c360-lsa-req-copy c360-lsa-reveal">
+      <span class="c360-lsa-overline">What You Need to Get Started</span>
+      <h3>Google has a short verification checklist — we walk you through every step.</h3>
+      <p>Before Google issues your Google Verified badge, your business needs to pass their verification process. Most businesses qualify. If yours doesn't, we'll tell you on our first call so you don't waste time. We handle the paperwork — you just provide the documents.</p>
+      <div class="c360-lsa-req-list">
+        <div class="c360-lsa-req-item"><div class="c360-lsa-req-item-icon"><i class="fa-solid fa-location-dot"></i></div><div><div class="c360-lsa-req-item-text">Active Google Business Profile</div><div class="c360-lsa-req-item-sub">Must be claimed, verified, and in good standing</div></div></div>
+        <div class="c360-lsa-req-item"><div class="c360-lsa-req-item-icon"><i class="fa-solid fa-id-card"></i></div><div><div class="c360-lsa-req-item-text">Professional License</div><div class="c360-lsa-req-item-sub">Only required for licensed trades (HVAC, plumbing, electrical, etc.)</div></div></div>
+        <div class="c360-lsa-req-item"><div class="c360-lsa-req-item-icon"><i class="fa-solid fa-file-shield"></i></div><div><div class="c360-lsa-req-item-text">Proof of Business Insurance</div><div class="c360-lsa-req-item-sub">Certificate of insurance submitted to Google for review</div></div></div>
+        <div class="c360-lsa-req-item"><div class="c360-lsa-req-item-icon"><i class="fa-solid fa-user-check"></i></div><div><div class="c360-lsa-req-item-text">Owner Background Check</div><div class="c360-lsa-req-item-sub">Run through Google's authorized provider</div></div><div class="c360-lsa-free-badge">We cover this</div></div>
+        <!-- v1.4 — was fa-brands fa-google. A Google-G icon sitting on a
+             Google claim in a checklist reads as badge imitation (§1c).
+             Generic shield icon instead. -->
+        <div class="c360-lsa-req-item"><div class="c360-lsa-req-item-icon"><i class="fa-solid fa-user-shield"></i></div><div><div class="c360-lsa-req-item-text">Google Advertiser Verification</div><div class="c360-lsa-req-item-sub">A quick Google identity verification to activate your account</div></div></div>
+      </div>
+    </div>
+    <div class="c360-lsa-verif-card c360-lsa-reveal" style="--rd:0.1s;">
+      <!-- v1.5 — was three badges (Guaranteed / Screened / Verified). Only
+           Verified exists now, so the tiles show the three CHECKS it
+           certifies instead. -->
+      <div class="c360-lsa-verif-eyebrow">What Google Verified certifies</div>
+      <div class="c360-lsa-verif-badge-row">
+        <div class="c360-lsa-verif-badge"><i class="fa-solid fa-id-card"></i><div class="c360-lsa-verif-badge-name">License Verified</div></div>
+        <div class="c360-lsa-verif-badge"><i class="fa-solid fa-file-shield"></i><div class="c360-lsa-verif-badge-name">Insurance Verified</div></div>
+        <div class="c360-lsa-verif-badge"><i class="fa-solid fa-user-check"></i><div class="c360-lsa-verif-badge-name">Background Checked</div></div>
+      </div>
+      <div style="font-family:'Poppins','Helvetica Neue',sans-serif;font-size:12px;color:rgba(255,255,255,0.45);margin-bottom:18px;line-height:1.5;">Every verified LSA advertiser carries the same blue Google Verified checkmark. Which checks Google runs depends on your category — we'll confirm what applies to you on your strategy call.</div>
+      <div class="c360-lsa-verif-eyebrow" style="margin-top:8px;">Our setup process</div>
+      <div class="c360-lsa-verif-steps">
+        <div class="c360-lsa-verif-step"><div class="c360-lsa-verif-step-dot"><i class="fa-solid fa-check"></i></div><div><div class="c360-lsa-verif-step-text">Strategy call &amp; eligibility review</div><div class="c360-lsa-verif-step-sub">We confirm your business type qualifies before any payment</div></div></div>
+        <div class="c360-lsa-verif-step"><div class="c360-lsa-verif-step-dot"><i class="fa-solid fa-check"></i></div><div><div class="c360-lsa-verif-step-text">Document collection &amp; account creation</div><div class="c360-lsa-verif-step-sub">We build and configure your full LSA profile</div></div></div>
+        <div class="c360-lsa-verif-step"><div class="c360-lsa-verif-step-dot"><i class="fa-solid fa-check"></i></div><div><div class="c360-lsa-verif-step-text">Google verification submitted</div><div class="c360-lsa-verif-step-sub">Background check, insurance, and license sent to Google</div></div></div>
+        <div class="c360-lsa-verif-step"><div class="c360-lsa-verif-step-dot"><i class="fa-solid fa-phone"></i></div><div><div class="c360-lsa-verif-step-text">Ads live — phone starts ringing</div><div class="c360-lsa-verif-step-sub">Typically 1–3 weeks from kickoff to live ads</div></div></div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 7 — INDUSTRIES
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsa-section c360-lsa-industries c360-lsa-depth c360-lsa-depth--alt c360-lsa-hairline c360-lsa-grain">
+  <div class="c360-lsa-grain-layer"></div>
+  <!-- Orb plan: 2, deliberately mirrored against Requirements above — the
+       big mass moves from bottom-RIGHT to bottom-LEFT, and the small one is
+       inset from the right edge rather than hanging off it. -->
+  <div class="c360-lsa-orbs">
+    <div class="c360-lsa-orb c360-lsa-orb--green c360-lsa-orb--d3" style="width:300px;height:300px;right:21%;top:-11%;animation-delay:-6s;"></div>
+    <div class="c360-lsa-orb c360-lsa-orb--navy  c360-lsa-orb--d2" style="width:740px;height:740px;left:-30%;bottom:-36%;"></div>
+  </div>
+
+  <div class="c360-lsa-wrap">
+    <div class="c360-lsa-section-header c360-lsa-reveal"><span class="c360-lsa-overline">Industries We Serve</span><h2>LSA is built for local service businesses</h2><p>Google's Local Service Ads program covers a wide range of service categories. If your business runs on booked appointments and phone calls, you almost certainly qualify.</p></div>
+    <div class="c360-lsa-ind-grid">
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-fan"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">HVAC</div><div class="c360-lsa-ind-sub">Heating, cooling &amp; air quality</div></div></div>
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-wrench"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Plumbing</div><div class="c360-lsa-ind-sub">Residential &amp; commercial</div></div></div>
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-bolt"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Electrical</div><div class="c360-lsa-ind-sub">Licensed electricians</div></div></div>
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-house-chimney"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Roofing</div><div class="c360-lsa-ind-sub">Repair, replace &amp; inspect</div></div></div>
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-broom"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Cleaning Services</div><div class="c360-lsa-ind-sub">Residential &amp; commercial</div></div></div>
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-leaf"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Lawn Care</div><div class="c360-lsa-ind-sub">Landscaping &amp; maintenance</div></div></div>
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-paint-roller"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Painting</div><div class="c360-lsa-ind-sub">Interior &amp; exterior</div></div></div>
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-bug"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Pest Control</div><div class="c360-lsa-ind-sub">Extermination &amp; prevention</div></div></div>
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-building"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Real Estate</div><div class="c360-lsa-ind-sub">Agents &amp; brokers</div></div></div>
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-shield-halved"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Insurance Agents</div><div class="c360-lsa-ind-sub">Health, life &amp; P&amp;C · CA &amp; FL only</div></div></div>
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-helmet-safety"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">General Contractor</div><div class="c360-lsa-ind-sub">Remodels &amp; new builds</div></div></div>
+      <div class="c360-lsa-ind-tile"><div class="c360-lsa-ind-ico"><i class="fa-solid fa-water"></i></div><div class="c360-lsa-ind-info"><div class="c360-lsa-ind-name">Pool Service</div><div class="c360-lsa-ind-sub">Maintenance &amp; repair</div></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 8 — PRICING (navy)
+     LSA's OWN price list. Not the Google Ads / Meta Ads matched pair.
+     The $499 setup here is the LSA setup fee — same amount as the paid-ads
+     setup fee, different product. Do not merge them.
+     ══════════════════════════════════════════════════════ -->
+<section id="lsa-pricing" class="c360-lsa-section c360-lsa-pricing c360-lsa-grain">
+  <div class="c360-lsa-grain-layer"></div>
+  <div class="c360-lsa-mesh"></div>
+  <div class="c360-lsa-orbs">
+    <div class="c360-lsa-orb c360-lsa-orb--green c360-lsa-orb--d1" style="width:720px;height:720px;left:19%;top:-40%;"></div>
+    <div class="c360-lsa-orb c360-lsa-orb--white c360-lsa-orb--d4" style="width:380px;height:380px;right:-13%;bottom:9%;animation-delay:-27s;"></div>
+  </div>
+
+  <div class="c360-lsa-wrap">
+    <div class="c360-lsa-section-header c360-lsa-reveal"><span class="c360-lsa-overline">Simple, Transparent Pricing</span><h2>Pick the plan that fits. No surprises.</h2><p>Commit longer, pay in full, and save more. 3-, 6-, and 12-month packages are priced as a one-time upfront payment. Setup fee waived on the Platinum Package.</p></div>
+    <div style="text-align:center;position:relative;z-index:2;">
+      <div class="c360-lsa-billing-toggle" id="lsaBillingToggle">
+        <button class="c360-lsa-billing-btn c360-lsa-billing-active" data-period="monthly" data-lsa-display="349" data-lsa-period="/mo" data-lsa-eff="" data-plat-display="599" data-plat-period="/mo" data-plat-eff="">Monthly</button>
+        <button class="c360-lsa-billing-btn" data-period="3mo" data-lsa-display="945" data-lsa-period="paid in full" data-lsa-eff="$315/mo effective · save $102" data-plat-display="1,620" data-plat-period="paid in full" data-plat-eff="$540/mo effective · save $177">3 Months <span class="c360-lsa-billing-save">−10%</span></button>
+        <button class="c360-lsa-billing-btn" data-period="6mo" data-lsa-display="1,680" data-lsa-period="paid in full" data-lsa-eff="$280/mo effective · save $414" data-plat-display="2,880" data-plat-period="paid in full" data-plat-eff="$480/mo effective · save $714">6 Months <span class="c360-lsa-billing-save">−20%</span></button>
+        <button class="c360-lsa-billing-btn" data-period="12mo" data-lsa-display="2,940" data-lsa-period="paid in full" data-lsa-eff="$245/mo effective · save $1,248" data-plat-display="5,040" data-plat-period="paid in full" data-plat-eff="$420/mo effective · save $2,148">12 Months <span class="c360-lsa-billing-save">−30%</span></button>
+      </div>
+    </div>
+    <div class="c360-lsa-savings-banner" id="lsaSavingsBanner"><i class="fa-solid fa-tag"></i><span id="lsaSavingsText">You're saving on both plans with this commitment period.</span></div>
+    <div class="c360-lsa-pricing-grid">
+      <!-- LSA Management card -->
+      <div class="c360-lsa-price-card">
+        <div class="c360-lsa-price-tier">Local Service Ads</div>
+        <div class="c360-lsa-price-name">LSA Management</div>
+        <div class="c360-lsa-price-tagline">Full done-for-you setup, optimization, and spam dispute management. You just answer the calls.</div>
+        <div class="c360-lsa-price-original" id="lsaOriginalPrice">&nbsp;</div>
+        <div class="c360-lsa-price-amount"><span class="c360-lsa-price-currency">$</span><span class="c360-lsa-price-number" id="lsaPriceNum">349</span><span class="c360-lsa-price-period" id="lsaPricePeriod">/mo</span></div>
+        <div class="c360-lsa-price-effective" id="lsaPriceEff">&nbsp;</div>
+        <div class="c360-lsa-price-waiver" style="color:rgba(255,255,255,0.55);"><i class="fa-solid fa-circle-info" style="color:rgba(255,255,255,0.4);"></i> $499 one-time setup fee applies</div>
+        <div class="c360-lsa-setup-note"><strong>Due at onboarding: $499 setup + first month ($349)</strong>We collect setup and your first month's management fee together when we kick off. Already have an active LSA account? Ask us about a setup fee waiver on your strategy call.</div>
+        <div class="c360-lsa-includes-spacer"></div>
+        <hr class="c360-lsa-price-divider">
+        <ul class="c360-lsa-price-features">
+          <li><i class="fa-solid fa-circle-check"></i> Google LSA account creation &amp; full configuration</li>
+          <li><i class="fa-solid fa-circle-check"></i> Google verification walkthrough (background check on us)</li>
+          <li><i class="fa-solid fa-circle-check"></i> License &amp; insurance submission to Google</li>
+          <li><i class="fa-solid fa-circle-check"></i> Service area &amp; job type optimization</li>
+          <li><i class="fa-solid fa-circle-check"></i> Monthly bid strategy adjustments</li>
+          <li><i class="fa-solid fa-circle-check"></i> Active spam call &amp; bad lead disputes</li>
+          <li><i class="fa-solid fa-circle-check"></i> Monthly performance report</li>
+          <li><i class="fa-solid fa-circle-check"></i> Review strategy guidance</li>
+          <li><i class="fa-solid fa-circle-check"></i> Dedicated account contact</li>
+        </ul>
+        <div class="c360-lsa-price-cta-wrap">
+          <a href="https://complete360.org/lsa-checkout" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank');return false;" class="c360-lsa-price-cta c360-lsa-price-cta--outline">Get Started <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <!-- Platinum card -->
+      <div class="c360-lsa-price-card c360-lsa-price-card--featured">
+        <div class="c360-lsa-popular-badge">⭐ Best Value — Platinum Package</div>
+        <div class="c360-lsa-price-tier">Complete Google Bundle</div>
+        <div class="c360-lsa-price-name">Google Platinum Package</div>
+        <div class="c360-lsa-price-tagline">LSA + Google Business Profile Management + Reputation Management. Your entire Google presence, handled under one roof.</div>
+        <div class="c360-lsa-price-original" id="platOriginalPrice">&nbsp;</div>
+        <div class="c360-lsa-price-amount"><span class="c360-lsa-price-currency">$</span><span class="c360-lsa-price-number" id="platPriceNum">599</span><span class="c360-lsa-price-period" id="platPricePeriod">/mo</span></div>
+        <div class="c360-lsa-price-effective" id="platPriceEff">&nbsp;</div>
+        <div class="c360-lsa-price-waiver"><i class="fa-solid fa-circle-check"></i> Setup included free — save $499 vs. LSA-only</div>
+        <div class="c360-lsa-setup-note"><strong>Due at onboarding: first month only ($599)</strong>No setup fee on the Platinum Package. We waive the $499 setup when you bundle — just your first month to get started.</div>
+        <div class="c360-lsa-includes-row">
+          <span class="c360-lsa-inc-badge"><i class="fa-solid fa-circle-check"></i> LSA Management</span>
+          <span class="c360-lsa-inc-badge"><i class="fa-solid fa-circle-check"></i> GBP Management</span>
+          <span class="c360-lsa-inc-badge"><i class="fa-solid fa-circle-check"></i> Reputation Mgmt</span>
+        </div>
+        <hr class="c360-lsa-price-divider">
+        <ul class="c360-lsa-price-features">
+          <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Everything in LSA Management (above)</li>
+          <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Monthly Google Business Profile optimization</li>
+          <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Google Business Profile post creation &amp; scheduling</li>
+          <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Review response management</li>
+          <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Review generation strategy &amp; platform sync</li>
+          <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Photo &amp; Q&amp;A profile management</li>
+          <li class="c360-lsa-feat-highlight"><i class="fa-solid fa-circle-check"></i> Combined Google performance dashboard &amp; reporting</li>
+          <li><i class="fa-solid fa-circle-check"></i> Priority support &amp; dedicated account manager</li>
+          <li><i class="fa-solid fa-star" style="color:#f59e0b;"></i> Profile reviews boost your LSA ranking — both channels compound</li>
+        </ul>
+        <div class="c360-lsa-price-cta-wrap">
+          <a href="https://complete360.org/google-platinum-checkout" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank');return false;" class="c360-lsa-price-cta">Get the Platinum Package <i class="fa-solid fa-star"></i></a>
+        </div>
+      </div>
+    </div>
+    <p class="c360-lsa-pricing-note">All plans require a separate Google ad spend budget billed directly by Google — not through Complete360. We only charge for setup and management. Typical starting budgets range from $500–$1,500/mo depending on your market and category. We'll give you a specific estimate on your strategy call.</p>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 9 — REVIEWS WIDGET
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsa-section c360-lsa-depth c360-lsa-grain" style="padding:96px 0;">
+  <div class="c360-lsa-grain-layer"></div>
+  <!-- Orb plan: 1, high and roughly centred. This section sits between two
+       heavy navy blocks and the review widget brings its own visual weight —
+       a second orb here is what starts the "everything looks the same"
+       effect. Both edges stay empty on purpose. -->
+  <div class="c360-lsa-orbs">
+    <div class="c360-lsa-orb c360-lsa-orb--soft c360-lsa-orb--d3" style="width:460px;height:460px;left:33%;top:-20%;animation-delay:-31s;"></div>
+  </div>
+
+  <div class="c360-lsa-wrap">
+    <!-- v1.4 — was "144+". Live count is 147 (footer + homepage agree). -->
+    <div class="c360-lsa-section-header c360-lsa-reveal"><span class="c360-lsa-overline">What Our Clients Say</span><h2>147 reasons Arizona businesses trust Complete360</h2><p>Real results from real local service businesses across Arizona and the US.</p></div>
+    <script type='text/javascript' defer src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
+    <iframe class='lc_reviews_widget' loading='lazy' src='https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u' frameborder='0' scrolling='no' style='min-width:100%;width:100%;min-height:420px;display:block;'></iframe>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 10 — FINAL CTA (navy)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsa-section c360-lsa-final-cta c360-lsa-grain">
+  <div class="c360-lsa-grain-layer"></div>
+  <div class="c360-lsa-mesh"></div>
+  <div class="c360-lsa-orbs">
+    <div class="c360-lsa-orb c360-lsa-orb--green c360-lsa-orb--d2" style="width:580px;height:580px;left:-18%;bottom:-28%;"></div>
+    <div class="c360-lsa-orb c360-lsa-orb--white c360-lsa-orb--d3" style="width:340px;height:340px;right:15%;top:5%;animation-delay:-19s;"></div>
+  </div>
+
+  <div class="c360-lsa-wrap"><div class="c360-lsa-final-inner">
+    <span class="c360-lsa-overline" style="color:#2ecc52;">Ready to Fill Your Pipeline?</span>
+    <h2>Let's put your business<br>at the <span class="c360-lsa-green">top of Google</span> — today.</h2>
+    <p class="c360-lsa-final-desc">Book a free strategy call. We'll review your business, confirm you qualify for the Google Verified badge, and give you a realistic cost-per-lead estimate for your market.<br><span style="font-size:14px;opacity:0.75;">Mon–Thu 7am–4pm · Fri 7am–1pm MST &nbsp;·&nbsp; No pressure. No obligation.</span></p>
+    <div class="c360-lsa-final-actions">
+      <a href="tel:+18665276205" class="c360-lsa-btn-primary" style="font-size:17px;padding:18px 34px;"><i class="fa-solid fa-phone"></i> Call (866) 527-6205</a>
+      <a href="https://complete360.org/lsa-checkout" target="_blank" rel="noopener noreferrer" onclick="window.open(this.href,'_blank');return false;" class="c360-lsa-btn-outline">Get Started Online <i class="fa-solid fa-arrow-right"></i></a>
+    </div>
+    <!-- v1.4 — no Google mark in this row; text claim only (§1c). The real
+         badge lives in the hero and in the site-wide footer. -->
+    <div class="c360-lsa-final-trust-row">
+      <span>Google Partner Agency</span>
+      <span><i class="fa-solid fa-star"></i> 147 Five-Star Reviews</span>
+      <span><i class="fa-solid fa-circle-check"></i> Setup Included on the Platinum Package</span>
+      <span><i class="fa-solid fa-map-pin"></i> Tucson-Based · Serving Nationwide</span>
+    </div>
+  </div></div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SECTION 11 — FAQ  (last section: keeps white between the navy CTA
+     and the navy global footer)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-lsa-section c360-lsa-faq c360-lsa-depth c360-lsa-depth--alt c360-lsa-hairline c360-lsa-grain">
+  <div class="c360-lsa-grain-layer"></div>
+  <!-- Orb plan: 2, inverse of the CTA above (which has its mass bottom-left
+       and a small orb high-right). -->
+  <div class="c360-lsa-orbs">
+    <div class="c360-lsa-orb c360-lsa-orb--green c360-lsa-orb--d4" style="width:560px;height:560px;left:-26%;top:-10%;"></div>
+    <div class="c360-lsa-orb c360-lsa-orb--navy  c360-lsa-orb--d1" style="width:300px;height:300px;right:17%;bottom:5%;animation-delay:-13s;"></div>
+  </div>
+
+  <div class="c360-lsa-wrap">
+    <div class="c360-lsa-section-header c360-lsa-reveal"><span class="c360-lsa-overline">Frequently Asked Questions</span><h2>Everything you need to know about Google Local Service Ads</h2><p>Still have questions? Call us at <a href="tel:+18665276205" style="color:var(--lsa-green);font-weight:600;">(866) 527-6205</a> — we're glad to walk through it.</p></div>
+    <div class="c360-lsa-faq-list">
+      <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq1" class="c360-lsa-faq-toggle"><label for="lsaFaq1" class="c360-lsa-faq-q">Why choose Google Local Service Ads over regular Google Ads?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>With Google Ads you pay every time someone clicks your ad — even if they never call you. With LSA you only pay when a customer actually contacts you through Google. LSA ads also appear above paid search results, carry the Google Verified badge, and display your star rating right in the ad. For most service businesses, LSA delivers a significantly lower cost-per-lead. Plenty of clients run both — <a href="/google-ppc" style="color:var(--lsa-green);font-weight:600;">see our Google Ads management</a>.</p></div></div>
+      <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq2" class="c360-lsa-faq-toggle"><label for="lsaFaq2" class="c360-lsa-faq-q">How is the $499 setup fee waived?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>The $499 setup fee applies to the LSA Management plan and is collected at onboarding alongside your first month's payment — so your total day-one charge is $848. The setup fee is waived entirely on the Platinum Package. If you already have an active, verified LSA account in good standing, ask us on your strategy call — we review those on a case-by-case basis.</p></div></div>
+      <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq3" class="c360-lsa-faq-toggle"><label for="lsaFaq3" class="c360-lsa-faq-q">How long does it take to go live?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>From kickoff call to live ads is typically 1–3 weeks. The main variable is Google's verification timeline — background checks and license reviews can take a few business days. We initiate everything in parallel so nothing waits on something else. Once verified, ads can go live within 24 hours of us activating the account.</p></div></div>
+      <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq4" class="c360-lsa-faq-toggle"><label for="lsaFaq4" class="c360-lsa-faq-q">How much will I spend on ad budget each month?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>Ad spend is set by you and billed directly by Google — completely separate from our management fee. Most clients start with a $500–$1,500/mo ad budget depending on their market and industry. We'll give you a specific recommendation on your strategy call. You control your budget and can adjust it anytime.</p></div></div>
+      <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq5" class="c360-lsa-faq-toggle"><label for="lsaFaq5" class="c360-lsa-faq-q">What if I get spam calls or wrong-number leads?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>Google allows you to dispute leads that don't match your advertised services — spam calls, solicitations, wrong job types, repeat contacts, etc. On both plans, we actively review your lead history and submit disputes on your behalf. Approved disputes are refunded as credits to your Google account. Left unmanaged, a typical LSA account loses 15–25% of budget to undisputed bad leads.</p></div></div>
+      <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq6" class="c360-lsa-faq-toggle"><label for="lsaFaq6" class="c360-lsa-faq-q">What's included in the Google Platinum Package and is it worth it?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>The Platinum Package bundles LSA Management ($349/mo), Google Business Profile Management (normally $349/mo), and Reputation Management — all for $599/mo. More importantly, your LSA ads and your Google Business Profile work together: a well-optimized profile with strong reviews directly improves your LSA ranking, because Google's algorithm weighs your ratings and review volume when deciding who to show first.</p></div></div>
+      <div class="c360-lsa-faq-item"><input type="checkbox" id="lsaFaq7" class="c360-lsa-faq-toggle"><label for="lsaFaq7" class="c360-lsa-faq-q">Do the commitment discounts require a contract?<span class="c360-lsa-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label><div class="c360-lsa-faq-a"><p>The 3-, 6-, and 12-month tiers are paid in full upfront in exchange for the discount. There are no contracts or penalties beyond that — you simply pay the full period amount at the start. Unused months are non-refundable, but there's no additional fee or obligation. Month-to-month plans can cancel with 30 days' notice.</p></div></div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════════════════
+     SCRIPTS
+     ══════════════════════════════════════════════════════ -->
 <script>
+/* JS guard — reveal elements only start hidden if this runs. */
+document.documentElement.classList.add('c360-lsa-js');
+
+/* Scroll reveal + off-screen animation pause. */
+(function(){
+  var targets=document.querySelectorAll('.c360-lsa-reveal');
+
+  if(!('IntersectionObserver' in window)){
+    Array.prototype.forEach.call(targets,function(el){el.classList.add('c360-lsa-in')});
+    return;
+  }
+
+  if(targets.length){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(entry){
+        if(!entry.isIntersecting)return;
+        entry.target.classList.add('c360-lsa-in');
+        io.unobserve(entry.target);
+      });
+    },{threshold:0.18,rootMargin:'0px 0px -8% 0px'});
+    Array.prototype.forEach.call(targets,function(el){io.observe(el)});
+  }
+
+  /* Second, independent observer: pauses animation in off-screen sections.
+     Deliberately separate from the reveal observer above, which fires once
+     and unobserves — .c360-lsa-in is never removed, so entrance behaviour is
+     untouched and nothing replays on scroll-back. Generous rootMargin so
+     nothing is caught mid-pause at the viewport edge. */
+  var sections=document.querySelectorAll('.c360-lsa-section');
+  if(!sections.length)return;
+  var pauseIo=new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      entry.target.classList.toggle('c360-lsa-paused',!entry.isIntersecting);
+    });
+  },{rootMargin:'200px 0px 200px 0px'});
+  Array.prototype.forEach.call(sections,function(el){pauseIo.observe(el)});
+})();
+
+/* Client carousel. */
 (function(){
   var track=document.getElementById('lsaCarouselTrack');
   var prevBtn=document.getElementById('lsaCarouselPrev');
@@ -687,6 +1443,7 @@
   window.addEventListener('resize',function(){visibleCount=Math.floor(track.parentElement.offsetWidth/cardWidth)||1;totalSlides=Math.max(0,cards.length-visibleCount);goTo(Math.min(current,totalSlides))});
 })();
 
+/* Pricing billing toggle. */
 (function(){
   var toggle=document.getElementById('lsaBillingToggle');
   var banner=document.getElementById('lsaSavingsBanner');
@@ -725,4 +1482,4 @@
   });
 })();
 </script>
-<!-- END COMPLETE360 LSA PAGE v1.3 -->
+<!-- END COMPLETE360 LSA PAGE v1.5 -->
