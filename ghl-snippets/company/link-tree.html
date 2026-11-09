@@ -1,6 +1,418 @@
-<!--
-  PLACEHOLDER: no code yet
-  GHL page: "Link Tree"
-  Next step: paste this page's custom code from GHL here,
-  or delete this file if the page has no custom code.
--->
+<!-- ============================================================
+     COMPLETE360 LINKS PAGE — v1.0  (/links)
+     Digital business-card / link-in-bio page.
+     Paste as a GHL Custom Code element on the /links page.
+     For the clean "link tree" look, deploy on a funnel step
+     WITHOUT the global header/footer. On a normal page it will
+     simply sit below the mega menu.
+     All styles/scripts prefixed c360l- to avoid collisions
+     with the header (c360-) and footer (c360f-).
+     ============================================================ -->
+
+<!-- Font Awesome (header already loads this globally; included so the
+     page also renders correctly if deployed on a header-less funnel step) -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  /* Stops any white showing behind the page on scroll or mobile overscroll bounce.
+     Safe on a dedicated /links funnel step. If you ever drop this on a normal page
+     that keeps the white global header, delete just this html,body rule. */
+  html, body { background-color: #0c1450; margin: 0; }
+
+  .c360l-page {
+    --c360l-navy: #122078;
+    --c360l-navy-deep: #0c1450;
+    --c360l-green: #127825;
+    --c360l-green-light: #1a9e32;
+    --c360l-green-bright: #21b53d;
+    --c360l-white: #ffffff;
+    --c360l-white-72: rgba(255,255,255,0.72);
+    --c360l-white-50: rgba(255,255,255,0.50);
+    --c360l-white-10: rgba(255,255,255,0.08);
+    --c360l-white-14: rgba(255,255,255,0.14);
+    --c360l-border: rgba(255,255,255,0.12);
+    --c360l-gold: #FBBC04;
+
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    min-height: 100vh;
+    width: 100%;
+    box-sizing: border-box;
+    color: var(--c360l-white-72);
+    background-color: var(--c360l-navy-deep);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 56px 20px 48px;
+  }
+  .c360l-page * { box-sizing: border-box; }
+
+  /* Fixed navy layer pinned to the viewport. Covers the whole screen at every
+     scroll position, so GHL's white section padding below the element can't show. */
+  .c360l-bg {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(120% 80% at 50% -10%, #1c2e9e 0%, rgba(28,46,158,0) 60%),
+      linear-gradient(180deg, var(--c360l-navy) 0%, var(--c360l-navy-deep) 100%);
+  }
+
+  .c360l-card {
+    width: 100%;
+    max-width: 460px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    animation: c360l-rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  @keyframes c360l-rise {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ---------- Brand header ---------- */
+  .c360l-brand { text-align: center; margin-bottom: 26px; }
+
+  .c360l-logo {
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    text-decoration: none;
+    display: inline-block;
+    margin-bottom: 12px;
+  }
+  .c360l-logo-complete { color: var(--c360l-white); }
+  .c360l-logo-360 { color: var(--c360l-green-light); }
+
+  .c360l-tagline {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--c360l-white-72);
+    margin: 0 auto 18px;
+    max-width: 320px;
+  }
+
+  .c360l-trust {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--c360l-white-10);
+    border: 1px solid var(--c360l-border);
+    border-radius: 100px;
+    padding: 7px 16px 7px 14px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  .c360l-trust:hover { background: var(--c360l-white-14); }
+  .c360l-trust-stars { color: var(--c360l-gold); font-size: 13px; letter-spacing: 1px; }
+  .c360l-trust-text {
+    font-size: 12px;
+    color: var(--c360l-white-72);
+    line-height: 1;
+    white-space: nowrap;
+  }
+  .c360l-trust-text strong { color: var(--c360l-white); font-weight: 600; }
+
+  /* ---------- Section label ---------- */
+  .c360l-label {
+    font-size: 10.5px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--c360l-white-50);
+    text-align: center;
+    margin: 22px 0 12px;
+  }
+
+  /* ---------- Buttons ---------- */
+  .c360l-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    width: 100%;
+    padding: 15px 18px;
+    border-radius: 13px;
+    text-decoration: none;
+    border: 1px solid var(--c360l-border);
+    background: var(--c360l-white-10);
+    color: var(--c360l-white);
+    font-size: 14.5px;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: inherit;
+    text-align: left;
+    margin-bottom: 11px;
+    transition: transform 0.12s ease, background 0.18s ease, border-color 0.18s ease;
+  }
+  .c360l-btn:hover { background: var(--c360l-white-14); transform: translateY(-2px); }
+  .c360l-btn:active { transform: translateY(0); }
+  .c360l-btn i {
+    font-size: 16px;
+    color: var(--c360l-green-light);
+    width: 22px;
+    text-align: center;
+    flex-shrink: 0;
+  }
+  .c360l-btn .c360l-btn-sub {
+    display: block;
+    font-size: 11px;
+    font-weight: 400;
+    color: var(--c360l-white-50);
+    margin-top: 1px;
+  }
+  .c360l-btn-arrow {
+    margin-left: auto;
+    font-size: 12px !important;
+    color: var(--c360l-white-50) !important;
+    width: auto !important;
+  }
+
+  /* Primary — Get Started */
+  .c360l-btn-primary {
+    background: var(--c360l-green);
+    border-color: var(--c360l-green-light);
+    font-weight: 600;
+    font-size: 15.5px;
+    justify-content: center;
+    padding: 17px 18px;
+    box-shadow: 0 6px 20px rgba(18, 120, 37, 0.35);
+  }
+  .c360l-btn-primary:hover { background: var(--c360l-green-bright); border-color: var(--c360l-green-bright); }
+  .c360l-btn-primary i,
+  .c360l-btn-primary .c360l-btn-arrow { color: var(--c360l-white) !important; }
+  .c360l-btn-primary .c360l-btn-sub { color: rgba(255,255,255,0.78); }
+
+  /* Save contact — outlined green (the digital-card signature) */
+  .c360l-btn-save {
+    background: transparent;
+    border: 1.5px solid var(--c360l-green-light);
+  }
+  .c360l-btn-save:hover { background: rgba(26, 158, 50, 0.12); }
+
+  /* Review — gold accent */
+  .c360l-btn-review i { color: var(--c360l-gold); }
+
+  /* ---------- Socials ---------- */
+  .c360l-socials {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 0 0 22px;
+  }
+  .c360l-social {
+    width: 46px;
+    height: 46px;
+    border-radius: 12px;
+    background: var(--c360l-white-10);
+    border: 1px solid var(--c360l-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--c360l-white-72);
+    text-decoration: none;
+    font-size: 17px;
+    transition: transform 0.12s ease, background 0.18s ease, color 0.18s ease, border-color 0.18s ease;
+  }
+  .c360l-social:hover {
+    background: rgba(26, 158, 50, 0.18);
+    border-color: var(--c360l-green-light);
+    color: var(--c360l-white);
+    transform: translateY(-2px);
+  }
+
+  /* ---------- App + login footer ---------- */
+  .c360l-foot {
+    margin-top: 24px;
+    padding-top: 22px;
+    border-top: 1px solid var(--c360l-border);
+  }
+  .c360l-apps {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+  .c360l-app {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 10px;
+    border-radius: 10px;
+    background: var(--c360l-white-10);
+    border: 1px solid var(--c360l-border);
+    text-decoration: none;
+    color: var(--c360l-white);
+    font-size: 12px;
+    font-weight: 500;
+    transition: background 0.18s ease;
+  }
+  .c360l-app:hover { background: var(--c360l-white-14); }
+  .c360l-app i { font-size: 16px; }
+
+  .c360l-login {
+    display: block;
+    text-align: center;
+    font-size: 12.5px;
+    color: var(--c360l-white-50);
+    text-decoration: none;
+    padding: 6px;
+    transition: color 0.18s ease;
+  }
+  .c360l-login:hover { color: var(--c360l-white); }
+  .c360l-login i { color: var(--c360l-green-light); margin-right: 6px; }
+
+  .c360l-copy {
+    text-align: center;
+    font-size: 11px;
+    color: var(--c360l-white-50);
+    margin: 16px 0 0;
+    line-height: 1.5;
+  }
+
+  /* ---------- Force FA glyphs ---------- */
+  .c360l-page i.fa-solid { font-family: "Font Awesome 6 Free" !important; font-weight: 900 !important; }
+  .c360l-page i.fa-brands { font-family: "Font Awesome 6 Brands" !important; font-weight: 400 !important; }
+
+  @media (max-width: 420px) {
+    .c360l-page { padding: 36px 16px 36px; }
+    .c360l-logo { font-size: 27px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .c360l-card { animation: none; }
+    .c360l-btn:hover, .c360l-social:hover { transform: none; }
+  }
+</style>
+
+<div class="c360l-page">
+  <div class="c360l-bg"></div>
+  <div class="c360l-card">
+
+    <!-- Brand header -->
+    <div class="c360l-brand">
+      <a href="/" class="c360l-logo">
+        <span class="c360l-logo-complete">Complete</span><span class="c360l-logo-360">360</span>
+      </a>
+      <p class="c360l-tagline">More calls. More customers. Tucson's local marketing experts &mdash; Google, ads, websites &amp; an all-in-one CRM.</p>
+      <a href="https://maps.app.goo.gl/3zNANtaqrr1FJC1z6" target="_blank" rel="noopener" class="c360l-trust">
+        <span class="c360l-trust-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
+        <span class="c360l-trust-text"><strong>5.0</strong> &middot; 147 Google reviews</span>
+      </a>
+    </div>
+
+    <!-- Socials -->
+    <div class="c360l-socials">
+      <a href="https://complete360.org" target="_blank" rel="noopener" class="c360l-social" aria-label="Website"><i class="fa-solid fa-globe"></i></a>
+      <a href="https://www.facebook.com/complete360marketing" target="_blank" rel="noopener" class="c360l-social" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.instagram.com/Complete360marketing/" target="_blank" rel="noopener" class="c360l-social" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://twitter.com/Complete360mktg" target="_blank" rel="noopener" class="c360l-social" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+      <a href="https://maps.app.goo.gl/3zNANtaqrr1FJC1z6" target="_blank" rel="noopener" class="c360l-social" aria-label="Google"><i class="fa-brands fa-google"></i></a>
+    </div>
+
+    <!-- Primary actions -->
+    <a href="tel:+18665276205" class="c360l-btn c360l-btn-primary">
+      <i class="fa-solid fa-phone"></i>
+      <span>Call us
+        <span class="c360l-btn-sub">(866) 527-6205 &middot; Mon&ndash;Fri MST</span>
+      </span>
+    </a>
+
+    <a href="/schedule-demo" class="c360l-btn">
+      <i class="fa-solid fa-calendar-check"></i>
+      <span>Schedule a free strategy call
+        <span class="c360l-btn-sub">15 minutes, no pressure</span>
+      </span>
+      <i class="fa-solid fa-arrow-right c360l-btn-arrow"></i>
+    </a>
+
+    <button type="button" class="c360l-btn c360l-btn-save" id="c360l-save">
+      <i class="fa-solid fa-address-card"></i>
+      Save our contact
+      <i class="fa-solid fa-download c360l-btn-arrow"></i>
+    </button>
+
+    <!-- Explore -->
+    <div class="c360l-label">What we do</div>
+
+    <a href="/gbp-management" class="c360l-btn">
+      <i class="fa-solid fa-location-dot"></i>
+      Google Business Profile management
+      <i class="fa-solid fa-arrow-right c360l-btn-arrow"></i>
+    </a>
+
+    <a href="/local-service-ads" class="c360l-btn">
+      <i class="fa-solid fa-shield-halved"></i>
+      Local Service Ads
+      <i class="fa-solid fa-arrow-right c360l-btn-arrow"></i>
+    </a>
+
+    <a href="/websites-home" class="c360l-btn">
+      <i class="fa-solid fa-desktop"></i>
+      Websites &amp; digital business cards
+      <i class="fa-solid fa-arrow-right c360l-btn-arrow"></i>
+    </a>
+
+    <a href="https://g.page/r/CXWQx04Zo14CEAE/review" target="_blank" rel="noopener" class="c360l-btn c360l-btn-review">
+      <i class="fa-solid fa-star"></i>
+      Leave us a 5-star review
+      <i class="fa-solid fa-arrow-up-right-from-square c360l-btn-arrow"></i>
+    </a>
+
+    <!-- App + login footer -->
+    <div class="c360l-foot">
+      <div class="c360l-apps">
+        <a href="https://apps.apple.com/us/app/lead-connector/id1564302502" target="_blank" rel="noopener" class="c360l-app">
+          <i class="fa-brands fa-apple"></i> App Store
+        </a>
+        <a href="https://play.google.com/store/apps/details?id=com.LeadConnector&hl=en_US&gl=US" target="_blank" rel="noopener" class="c360l-app">
+          <i class="fa-brands fa-google-play"></i> Google Play
+        </a>
+      </div>
+      <a href="https://app.complete360.org" target="_blank" rel="noopener" class="c360l-login">
+        <i class="fa-solid fa-right-to-bracket"></i>CRM Login
+      </a>
+      <p class="c360l-copy">&copy; <span id="c360l-year"></span> Complete360 &middot; Tucson, Arizona</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  (function() {
+    var y = document.getElementById('c360l-year');
+    if (y) y.textContent = new Date().getFullYear();
+
+    // Save-our-contact → generates a vCard download (no hosting needed)
+    var saveBtn = document.getElementById('c360l-save');
+    if (saveBtn) {
+      saveBtn.addEventListener('click', function() {
+        var vcard = [
+          'BEGIN:VCARD',
+          'VERSION:3.0',
+          'ORG:Complete360',
+          'TITLE:Local Marketing Agency',
+          'TEL;TYPE=WORK,VOICE:+18665276205',
+          'URL:https://complete360.org',
+          'URL;TYPE=Facebook:https://www.facebook.com/complete360marketing',
+          'URL;TYPE=Instagram:https://www.instagram.com/Complete360marketing/',
+          'END:VCARD'
+        ].join('\r\n');
+        var blob = new Blob([vcard], { type: 'text/vcard' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'Complete360.vcf';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+      });
+    }
+  })();
+</script>
+<!-- ============================================================
+     END COMPLETE360 LINKS PAGE v1.0
+     ============================================================ -->
