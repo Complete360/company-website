@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — SEO Services
-     c360-seo-services-v1.0.html
+     c360-seo-services-v1.1.html
      GHL: Paste into Custom Code block on /seo-services page (new page).
      Poppins + Font Awesome 6.5.1 loaded via global header.
      Header + footer are GLOBAL sections — do NOT include them here.
@@ -9,6 +9,16 @@
      Built on the same design system as Local SEO Booster v2.6 and
      Reputation Management v1.7: same tokens, buttons, navy hero, trust bar,
      dot field, navy pricing band, reviews widget, final CTA, FAQ pattern.
+
+     v1.1 (2026-11-09) — simpler package + AI search emphasis
+     - Package cut to 4 items so a new sales team can explain it in one
+       sentence: Website SEO setup · main pages optimized (up to 5) for
+       Google AND AI search · 2 new pages every month · monthly report.
+       Monthly strategy call removed (calls on request, not promised).
+     - AI search (LLMs: ChatGPT, Gemini, Perplexity, Google AI Overviews)
+       now a headline benefit: hero copy, an AI-answer card on the hero
+       visual, a new "Why SEO matters more now" section, an FAQ entry.
+       No claims that we control what AI tools say, and no invented stats.
 
      v1.0 (2026-11-09) — first build
      - Positioning: SEO Services = the client's WEBSITE ranking in organic
@@ -23,9 +33,7 @@
      - Get Started buttons go to /schedule-demo until an SEO checkout exists.
 
      CONFIRM before going live:
-     - Plan inclusions (see "What's included" + pricing card lists): up to
-       10 pages optimized, 2 service-area pages/mo, 2 blog posts/mo, monthly
-       report + monthly strategy call. Adjust both lists together.
+     - Package contents (What's included + both pricing lists — keep in sync).
      - Free audit section reuses the Local SEO Booster prospecting widget
        (699344169ea04eda0c083b63). Swap the ID if you set up an SEO-specific one.
      ══════════════════════════════════════════════════════════════ -->
@@ -207,7 +215,59 @@ section.c360-seo-hero {
   color: rgba(255,255,255,0.88); font-size: 12px; font-weight: 600;
   padding: 9px 18px; border-radius: 100px; white-space: nowrap;
 }
-.c360-seo-serp-wrap { position: relative; padding-bottom: 18px; }
+.c360-seo-serp-wrap { position: relative; padding-bottom: 34px; }
+
+/* AI answer card overlapping the search mock (hero) */
+.c360-seo-ai-card {
+  position: absolute; left: -28px; bottom: -34px; width: min(330px, 78%);
+  background: #0e1446; border: 1px solid rgba(46,204,82,0.4); border-radius: 16px;
+  padding: 16px 18px; box-shadow: 0 20px 50px rgba(3,8,40,0.6); z-index: 3;
+}
+.c360-seo-ai-card-top { display: flex; align-items: center; gap: 9px; margin-bottom: 9px; }
+.c360-seo-ai-dot {
+  width: 26px; height: 26px; border-radius: 8px; flex-shrink: 0;
+  background: linear-gradient(135deg, #2ecc52, #127825);
+  display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12px;
+}
+.c360-seo-ai-card-top b { font-size: 12.5px; color: #fff; font-weight: 700; }
+.c360-seo-ai-q { font-size: 12px; color: rgba(255,255,255,0.55); margin-bottom: 7px; }
+.c360-seo-ai-a { font-size: 13px; color: rgba(255,255,255,0.88); line-height: 1.5; }
+.c360-seo-ai-a strong { color: #7ddc80; font-weight: 700; }
+
+/* ══════════════════════════════════════════════════════
+   WHY IT MATTERS NOW — AI search section (navy)
+   ══════════════════════════════════════════════════════ */
+section.c360-seo-ai {
+  padding: 96px 0; overflow: hidden;
+  background-color: #0b1440;
+  background-image: linear-gradient(160deg, #09103c 0%, #122078 70%);
+}
+.c360-seo-ai::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+  background: radial-gradient(circle at 85% 30%, rgba(46,204,82,0.14) 0%, transparent 45%);
+}
+.c360-seo-ai-inner { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 64px; align-items: center; }
+.c360-seo-ai .c360-seo-kicker { color: var(--seo-lime); }
+.c360-seo-ai .c360-seo-h2 { color: #fff; }
+.c360-seo-ai-copy p { font-size: 16.5px; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 16px; max-width: 540px; }
+.c360-seo-ai-copy p strong { color: #fff; }
+.c360-seo-ai-sources { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 0; list-style: none; }
+.c360-seo-ai-sources li {
+  font-size: 13px; font-weight: 600; color: #fff;
+  background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.16);
+  padding: 7px 14px; border-radius: 100px;
+}
+.c360-seo-ai-how {
+  background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.14);
+  border-radius: var(--seo-radius-lg); padding: 32px 30px;
+}
+.c360-seo-ai-how h3 { font-size: 18px; font-weight: 700; color: #fff; margin-bottom: 18px; }
+.c360-seo-ai-how ul { list-style: none; display: flex; flex-direction: column; gap: 16px; }
+.c360-seo-ai-how li { display: grid; grid-template-columns: 22px 1fr; gap: 12px; }
+.c360-seo-ai-how li i { color: var(--seo-lime); margin-top: 4px; }
+.c360-seo-ai-how li b { display: block; font-size: 15px; color: #fff; font-weight: 600; margin-bottom: 2px; }
+.c360-seo-ai-how li span { font-size: 14px; color: rgba(255,255,255,0.65); line-height: 1.55; }
+.c360-seo-ai-honest { margin-top: 20px; padding-top: 18px; border-top: 1px solid rgba(255,255,255,0.12); font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.6; }
 
 /* ══════════════════════════════════════════════════════
    TRUST BAR
@@ -443,7 +503,8 @@ section.c360-seo-cta {
    RESPONSIVE
    ══════════════════════════════════════════════════════ */
 @media (max-width: 980px) {
-  .c360-seo-hero-inner, .c360-seo-audit-inner { grid-template-columns: 1fr; gap: 44px; }
+  .c360-seo-hero-inner, .c360-seo-audit-inner, .c360-seo-ai-inner { grid-template-columns: 1fr; gap: 44px; }
+  .c360-seo-ai-card { left: 12px; }
   .c360-seo-serp { transform: none; max-width: 560px; }
   .c360-seo-serp-note { transform: translateX(-50%); }
   .c360-seo-fit-grid { grid-template-columns: 1fr; max-width: 520px; margin: 0 auto; }
@@ -455,7 +516,7 @@ section.c360-seo-cta {
 @media (max-width: 768px) {
   section.c360-seo-hero, section.c360-seo-cta { padding: 68px 0 64px; }
   .c360-seo-fit, .c360-seo-included, section.c360-seo-process, section.c360-seo-pricing,
-  .c360-seo-reviews, .c360-seo-faq, section.c360-seo-audit { padding: 64px 0; }
+  .c360-seo-reviews, .c360-seo-faq, section.c360-seo-audit, section.c360-seo-ai { padding: 64px 0; }
   .c360-seo-head { margin-bottom: 38px; }
   .c360-seo-inc-grid { grid-template-columns: 1fr; }
   .c360-seo-trust-inner { grid-template-columns: repeat(2, 1fr); }
@@ -473,7 +534,8 @@ section.c360-seo-cta {
   .c360-seo-trust-item:last-child { border-bottom: none; }
   .c360-seo-serp-body { padding: 16px 18px 22px; }
   .c360-seo-result-title { font-size: 15.5px; }
-  .c360-seo-serp-note { font-size: 11px; padding: 8px 14px; }
+  .c360-seo-ai-card { position: relative; left: auto; bottom: auto; width: auto; margin: -24px 12px 0; }
+  .c360-seo-serp-wrap { padding-bottom: 0; }
   .c360-seo-price-card { padding: 34px 26px; }
 }
 @media (prefers-reduced-motion: reduce) {
@@ -496,20 +558,20 @@ section.c360-seo-cta {
 
       <div>
         <div class="c360-seo-hero-tag"><i class="fa-solid fa-magnifying-glass-chart"></i> SEO Services</div>
-        <h1>Be the first website customers find on Google.</h1>
+        <h1>Get found on Google and in AI search.</h1>
         <p class="c360-seo-hero-sub">
-          When someone searches for what you do in your area, the businesses on page one get the calls.
-          We optimize your website, build pages for every service and city you cover, and publish content
-          every month so Google has more reasons to rank you.
+          Your customers search Google, and more of them now ask AI tools like ChatGPT who to call.
+          Both pull their answers from websites. We optimize yours so Google ranks it and AI tools
+          can understand it, then add new pages every month aimed at the searches that bring in jobs.
         </p>
         <div class="c360-seo-hero-actions">
           <a href="/schedule-demo" class="c360-seo-btn c360-seo-btn--green"><i class="fa-solid fa-calendar-check"></i> Get a free SEO strategy call</a>
           <a href="#c360-seo-pricing" class="c360-seo-btn c360-seo-btn--ghost">See pricing</a>
         </div>
         <ul class="c360-seo-hero-facts">
+          <li><i class="fa-solid fa-circle-check"></i> Optimized for Google and AI search</li>
+          <li><i class="fa-solid fa-circle-check"></i> 2 new pages every month</li>
           <li><i class="fa-solid fa-circle-check"></i> $599/mo, or save with annual</li>
-          <li><i class="fa-solid fa-circle-check"></i> Monthly ranking reports</li>
-          <li><i class="fa-solid fa-circle-check"></i> Built for local service businesses</li>
         </ul>
       </div>
 
@@ -522,7 +584,7 @@ section.c360-seo-cta {
           <div class="c360-seo-serp-body">
             <div class="c360-seo-serp-meta">Results near you</div>
             <div class="c360-seo-result c360-seo-result--you">
-              <div class="c360-seo-result-flag">Your website</div>
+              <div class="c360-seo-result-flag">Example: your website</div>
               <div class="c360-seo-result-site">
                 <div class="c360-seo-fav">DR</div>
                 <div><b>Desert Ridge Roofing</b><small>desertridgeroofing.com › roof-repair</small></div>
@@ -543,7 +605,11 @@ section.c360-seo-cta {
             </div>
           </div>
         </div>
-        <div class="c360-seo-serp-note"><i class="fa-solid fa-location-dot" style="color:#2ecc52;margin-right:6px;"></i>Example: a service page built to rank locally</div>
+        <div class="c360-seo-ai-card">
+          <div class="c360-seo-ai-card-top"><div class="c360-seo-ai-dot"><i class="fa-solid fa-wand-magic-sparkles"></i></div><b>AI assistant</b></div>
+          <div class="c360-seo-ai-q">"Who's good for roof repair in Mesa?"</div>
+          <div class="c360-seo-ai-a"><strong>Desert Ridge Roofing</strong> offers same-week roof repair across Mesa, Gilbert and Chandler, with free inspections.</div>
+        </div>
       </div>
 
     </div>
@@ -597,8 +663,8 @@ section.c360-seo-cta {
       <div class="c360-seo-fit-card c360-seo-fit-card--this c360-seo-reveal" style="--rd:0.08s;">
         <div class="c360-seo-fit-ico"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
         <h3>SEO Services</h3>
-        <div class="c360-seo-fit-what">Your website in Google search results</div>
-        <p>Optimized pages, new service-area pages and monthly content so your own website ranks for the searches that bring in jobs.</p>
+        <div class="c360-seo-fit-what">Your website in Google and AI search</div>
+        <p>Optimized pages and 2 new pages every month, so your own website ranks on Google and is easy for AI tools to recommend.</p>
         <span class="c360-seo-fit-here"><i class="fa-solid fa-circle-check"></i> You're here</span>
       </div>
       <div class="c360-seo-fit-card c360-seo-reveal" style="--rd:0.16s;">
@@ -610,6 +676,34 @@ section.c360-seo-cta {
       </div>
     </div>
     <p class="c360-seo-fit-foot c360-seo-reveal">They work best together: each one makes the others more credible to Google. Ask about combining them on your strategy call.</p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     3b — WHY SEO MATTERS MORE NOW (AI search / LLMs)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-seo-section c360-seo-ai">
+  <div class="c360-seo-container">
+    <div class="c360-seo-ai-inner">
+      <div class="c360-seo-ai-copy c360-seo-reveal">
+        <span class="c360-seo-kicker">Why SEO matters more now</span>
+        <h2 class="c360-seo-h2">Customers are asking AI who to hire. It answers from websites.</h2>
+        <p>People don't only scroll through search results anymore. They ask AI assistants for a recommendation, and Google often shows an AI summary before the first link.</p>
+        <p><strong>Those answers are built from websites.</strong> A site that clearly explains what you do, where you do it and why customers trust you is the kind of source AI tools pick up. A thin or outdated site gets skipped, and so does your business.</p>
+        <ul class="c360-seo-ai-sources" aria-label="Where customers search">
+          <li>Google</li><li>Google AI Overviews</li><li>ChatGPT</li><li>Gemini</li><li>Perplexity</li>
+        </ul>
+      </div>
+      <div class="c360-seo-ai-how c360-seo-reveal" style="--rd:0.1s;">
+        <h3>How we optimize your site for AI search</h3>
+        <ul>
+          <li><i class="fa-solid fa-circle-check"></i><div><b>Clear, direct answers</b><span>Each page answers the questions customers actually ask, in plain language AI tools can quote.</span></div></li>
+          <li><i class="fa-solid fa-circle-check"></i><div><b>Structured data</b><span>Behind-the-scenes code that tells Google and AI tools your services, areas and business details.</span></div></li>
+          <li><i class="fa-solid fa-circle-check"></i><div><b>A page for every service and area</b><span>Two new pages each month give AI tools more reasons to match you to the right search.</span></div></li>
+        </ul>
+        <p class="c360-seo-ai-honest">No one controls what an AI tool says. What we can do is make your website the clearest, most trustworthy source for your services in your area.</p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -643,50 +737,36 @@ section.c360-seo-cta {
   <div class="c360-seo-container">
     <div class="c360-seo-head c360-seo-reveal">
       <span class="c360-seo-kicker">What's included</span>
-      <h2>Everything your website needs to climb, done for you every month.</h2>
-      <p>One plan, no add-ons to figure out. We do the work; you get a report showing what changed and what it's doing for your rankings.</p>
+      <h2>Four things, done for you.</h2>
+      <p>One simple plan. We do the work every month, and you get a report showing what changed and how your rankings are moving.</p>
     </div>
     <div class="c360-seo-inc-grid">
       <div class="c360-seo-inc c360-seo-reveal">
-        <div class="c360-seo-inc-ico"><i class="fa-solid fa-bullseye"></i></div>
+        <div class="c360-seo-inc-ico"><i class="fa-solid fa-screwdriver-wrench"></i></div>
         <div>
-          <h3>Keyword research and technical audit</h3>
-          <p>We find the searches your customers actually use, then fix what's holding your site back: speed, mobile issues, broken links and indexing problems.</p>
+          <h3>Website SEO setup</h3>
+          <p>We check your site, fix the problems holding it back (speed, mobile issues, broken links, pages Google can't read) and pick the searches to go after.</p>
         </div>
       </div>
       <div class="c360-seo-inc c360-seo-reveal" style="--rd:0.06s;">
-        <div class="c360-seo-inc-ico"><i class="fa-solid fa-file-pen"></i></div>
-        <div>
-          <h3>On-page optimization <span class="c360-seo-inc-qty">Up to 10 pages</span></h3>
-          <p>Titles, headings, page copy, internal links and schema markup tuned so Google understands what each page is about and where you work.</p>
-        </div>
-      </div>
-      <div class="c360-seo-inc c360-seo-reveal">
-        <div class="c360-seo-inc-ico"><i class="fa-solid fa-map-pin"></i></div>
-        <div>
-          <h3>New service-area pages <span class="c360-seo-inc-qty">2 per month</span></h3>
-          <p>Dedicated pages for the services and cities you want to win, like "water heater repair in Gilbert," written to rank and to turn visitors into calls.</p>
-        </div>
-      </div>
-      <div class="c360-seo-inc c360-seo-reveal" style="--rd:0.06s;">
-        <div class="c360-seo-inc-ico"><i class="fa-solid fa-pen-nib"></i></div>
-        <div>
-          <h3>Blog posts, written and published <span class="c360-seo-inc-qty">2 per month</span></h3>
-          <p>Helpful articles that answer the questions your customers search before they hire, building your site's authority month after month.</p>
-        </div>
-      </div>
-      <div class="c360-seo-inc c360-seo-reveal">
         <div class="c360-seo-inc-ico"><i class="fa-solid fa-robot"></i></div>
         <div>
-          <h3>Structured for AI search</h3>
-          <p>Clear answers and structured data make your pages easier for Google and AI assistants to read, summarize and recommend.</p>
+          <h3>Main pages optimized for Google and AI <span class="c360-seo-inc-qty">Up to 5 pages</span></h3>
+          <p>Your most important pages rewritten and structured so Google ranks them and AI tools like ChatGPT can understand and recommend you.</p>
+        </div>
+      </div>
+      <div class="c360-seo-inc c360-seo-reveal">
+        <div class="c360-seo-inc-ico"><i class="fa-solid fa-file-circle-plus"></i></div>
+        <div>
+          <h3>2 new pages every month</h3>
+          <p>A page for a service and city you want to win, like "water heater repair in Gilbert," or a helpful article. We pick whichever will help you most that month.</p>
         </div>
       </div>
       <div class="c360-seo-inc c360-seo-reveal" style="--rd:0.06s;">
         <div class="c360-seo-inc-ico"><i class="fa-solid fa-chart-column"></i></div>
         <div>
-          <h3>Monthly report and strategy call</h3>
-          <p>Rankings, traffic and leads in plain English, plus a monthly call to review results and pick the next pages to build.</p>
+          <h3>Monthly report</h3>
+          <p>Your rankings, website traffic and leads in plain English, so you can see the progress.</p>
         </div>
       </div>
     </div>
@@ -712,17 +792,17 @@ section.c360-seo-cta {
       <li class="c360-seo-step c360-seo-reveal" style="--rd:0.08s;">
         <div class="c360-seo-step-when">Next</div>
         <h3>Fix and optimize</h3>
-        <p>Technical issues get fixed and your most important pages get rewritten and structured to rank.</p>
+        <p>Technical issues get fixed and your main pages get rewritten and structured for Google and AI search.</p>
       </li>
       <li class="c360-seo-step c360-seo-reveal" style="--rd:0.16s;">
         <div class="c360-seo-step-when">Every month</div>
-        <h3>Build new pages and content</h3>
-        <p>Two new service-area pages and two blog posts go live, each aimed at searches that bring in jobs.</p>
+        <h3>Add 2 new pages</h3>
+        <p>Two new pages go live, each aimed at a search that brings in jobs.</p>
       </li>
       <li class="c360-seo-step c360-seo-reveal" style="--rd:0.24s;">
         <div class="c360-seo-step-when">Every month</div>
-        <h3>Report and adjust</h3>
-        <p>You get your report and a strategy call. We double down on what's climbing and adjust what isn't.</p>
+        <h3>Report your progress</h3>
+        <p>You get your monthly report, and we use the results to choose next month's pages.</p>
       </li>
     </ol>
     <p class="c360-seo-timeline-note c360-seo-reveal">
@@ -752,12 +832,10 @@ section.c360-seo-cta {
         <span class="c360-seo-price-save c360-seo-price-save--blank">&nbsp;</span>
         <div class="c360-seo-price-rule"></div>
         <ul class="c360-seo-price-list">
-          <li><i class="fa-solid fa-check"></i> Keyword research and technical audit</li>
-          <li><i class="fa-solid fa-check"></i> On-page optimization, up to 10 pages</li>
-          <li><i class="fa-solid fa-check"></i> 2 new service-area pages per month</li>
-          <li><i class="fa-solid fa-check"></i> 2 blog posts per month, written and published</li>
-          <li><i class="fa-solid fa-check"></i> Structured data for Google and AI search</li>
-          <li><i class="fa-solid fa-check"></i> Monthly report and strategy call</li>
+          <li><i class="fa-solid fa-check"></i> Website SEO setup</li>
+          <li><i class="fa-solid fa-check"></i> Up to 5 main pages optimized for Google and AI search</li>
+          <li><i class="fa-solid fa-check"></i> 2 new pages every month</li>
+          <li><i class="fa-solid fa-check"></i> Monthly report</li>
         </ul>
         <a href="/schedule-demo" class="c360-seo-btn c360-seo-btn--ghost">Get started monthly</a>
       </div>
@@ -771,12 +849,10 @@ section.c360-seo-cta {
         <span class="c360-seo-price-save">Save $1,198 vs. monthly</span>
         <div class="c360-seo-price-rule"></div>
         <ul class="c360-seo-price-list">
-          <li><i class="fa-solid fa-check"></i> Keyword research and technical audit</li>
-          <li><i class="fa-solid fa-check"></i> On-page optimization, up to 10 pages</li>
-          <li><i class="fa-solid fa-check"></i> 2 new service-area pages per month</li>
-          <li><i class="fa-solid fa-check"></i> 2 blog posts per month, written and published</li>
-          <li><i class="fa-solid fa-check"></i> Structured data for Google and AI search</li>
-          <li><i class="fa-solid fa-check"></i> Monthly report and strategy call</li>
+          <li><i class="fa-solid fa-check"></i> Website SEO setup</li>
+          <li><i class="fa-solid fa-check"></i> Up to 5 main pages optimized for Google and AI search</li>
+          <li><i class="fa-solid fa-check"></i> 2 new pages every month</li>
+          <li><i class="fa-solid fa-check"></i> Monthly report</li>
         </ul>
         <a href="/schedule-demo" class="c360-seo-btn c360-seo-btn--green">Get started annual</a>
       </div>
@@ -812,8 +888,8 @@ section.c360-seo-cta {
 <section class="c360-seo-section c360-seo-cta">
   <div class="c360-seo-container">
     <div class="c360-seo-cta-inner c360-seo-reveal">
-      <h2>Find out what it would take to rank in your area.</h2>
-      <p>On a free 15-minute strategy call we'll look at your website, the searches that matter for your business, and who's ranking ahead of you today.</p>
+      <h2>Find out what it would take to get found in your area.</h2>
+      <p>On a free 15-minute strategy call we'll look at your website, the searches that matter for your business, and who Google and AI tools are recommending instead of you today.</p>
       <div class="c360-seo-cta-actions">
         <a href="/schedule-demo" class="c360-seo-btn c360-seo-btn--green"><i class="fa-solid fa-calendar-check"></i> Book a free strategy call</a>
         <a href="tel:+18665276205" class="c360-seo-btn c360-seo-btn--ghost"><i class="fa-solid fa-phone"></i> Call (866) 527-6205</a>
@@ -834,9 +910,15 @@ section.c360-seo-cta {
     <div class="c360-seo-faq-list">
 
       <div class="c360-seo-faq-item">
+        <input type="checkbox" id="c360-seo-faq-0" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-0" class="c360-seo-faq-q">What does "optimized for AI search" mean?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>AI tools like ChatGPT, Gemini, Perplexity and Google's AI Overviews build their answers from websites. We write your pages to answer customers' questions clearly and add structured data that spells out your services and service areas, so these tools can understand your business and match it to the right questions. You may hear this called AEO or GEO; it's part of every plan.</p></div>
+      </div>
+
+      <div class="c360-seo-faq-item">
         <input type="checkbox" id="c360-seo-faq-1" class="c360-seo-faq-toggle">
         <label for="c360-seo-faq-1" class="c360-seo-faq-q">How is this different from Local SEO Booster?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
-        <div class="c360-seo-faq-a"><p>Local SEO Booster keeps your business information accurate across 70+ directories and apps. SEO Services works on your own website: its pages, content and structure, so the site itself ranks in Google search. They solve different problems and work well together.</p></div>
+        <div class="c360-seo-faq-a"><p>Local SEO Booster keeps your business information accurate across 70+ directories and apps. SEO Services works on your own website: its pages, content and structure, so the site itself ranks in Google and is easy for AI tools to recommend. They solve different problems and work well together.</p></div>
       </div>
 
       <div class="c360-seo-faq-item">
@@ -853,8 +935,8 @@ section.c360-seo-cta {
 
       <div class="c360-seo-faq-item">
         <input type="checkbox" id="c360-seo-faq-4" class="c360-seo-faq-toggle">
-        <label for="c360-seo-faq-4" class="c360-seo-faq-q">Do you guarantee first-page rankings?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
-        <div class="c360-seo-faq-a"><p>No. Google decides rankings, and no honest agency can guarantee a position. What we commit to is the work in your plan every month and full transparency on the results.</p></div>
+        <label for="c360-seo-faq-4" class="c360-seo-faq-q">Do you guarantee first-page rankings or AI recommendations?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>No. Google decides rankings and AI tools decide what they recommend, so no honest agency can guarantee either. What we commit to is the work in your plan every month and full transparency on the results.</p></div>
       </div>
 
       <div class="c360-seo-faq-item">
@@ -866,7 +948,7 @@ section.c360-seo-cta {
       <div class="c360-seo-faq-item">
         <input type="checkbox" id="c360-seo-faq-6" class="c360-seo-faq-toggle">
         <label for="c360-seo-faq-6" class="c360-seo-faq-q">Do I have to write anything?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
-        <div class="c360-seo-faq-a"><p>No. We write and publish the service-area pages and blog posts. We'll ask for details only you know, like the services you offer, the areas you cover and a few photos, so the content sounds like your business.</p></div>
+        <div class="c360-seo-faq-a"><p>No. We write and publish your new pages each month. We'll ask for details only you know, like the services you offer, the areas you cover and a few photos, so the pages sound like your business.</p></div>
       </div>
 
       <div class="c360-seo-faq-item">
