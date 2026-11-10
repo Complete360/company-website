@@ -24,10 +24,12 @@
 ### Phone lines — use the right one
 | Line | Number | Use for |
 |---|---|---|
-| **Customer service / finance** | **(800) 863-2541** | Existing clients: billing, refunds, cancellations, failed payments, receipts, account support, guarantee eligibility |
+| **Customer service / finance** (group ring line) | **(800) 863-2541** | The public number for existing clients: billing, refunds, cancellations, failed payments, receipts, account support, guarantee eligibility |
 | **Main / sales** | **(866) 527-6205** | Prospects, new business, general questions, pre-purchase questions |
-| Onboarding line (AI: Jessica) | (520) 492-0951 | Clients in setup/deployment |
-| Backup / after-hours line (AI: Jessica) | (520) 556-7400 | Missed and after-hours calls |
+| Luis — direct line | (520) 556-7400 | Luis's direct customer service line for Complete360 customers. Missed calls are answered by the AI agent Jessica ("Luis's Answering Service"). |
+| Gabriel — onboarding line | (520) 492-0951 | Gabriel's line for clients in onboarding/setup. Missed calls are answered by the AI agent Jessica ("Gabriel's Answering Service"). |
+
+AI agents never read out team members' direct lines; they take a message or route to the right person.
 
 ### Team roles
 | Person | Role | Handles |

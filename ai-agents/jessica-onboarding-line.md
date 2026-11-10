@@ -1,9 +1,9 @@
-# Jessica — Onboarding & Setup line
+# Jessica — Gabriel's answering service (onboarding)
 
 | | |
 |---|---|
 | **GHL agent** | Gabriel's <> Answering Service & FAQ's · `68d43e225a5ddf279d1f02e3` |
-| **Where it runs** | Inbound phone (520) 492-0951 |
+| **Where it runs** | Gabriel's onboarding line (520) 492-0951 — answers calls he misses |
 | **Knowledge base** | `9xrTMivBdEHfIIRhf0GM` |
 | **Actions** | Extract email · Capture caller question 1 & 2 · Extract first name · Transfer "Angry Customer" (+1 520-288-8623) · Appointment booking · Transfer to Luis (+1 520-556-7400) · Knowledge base · Create Callback Task workflow |
 | **Last updated** | 2026-09-21 — v2.1 (unchanged since; saved to repo 2026-11-09) |

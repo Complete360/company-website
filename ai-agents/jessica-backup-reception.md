@@ -1,9 +1,9 @@
-# Jessica — Backup / After-Hours Reception
+# Jessica — Luis's answering service (customer service)
 
 | | |
 |---|---|
 | **GHL agent** | Luis's <> Answering Service & FAQ's · `68d4db1445b84b4e48a9fcd0` |
-| **Where it runs** | Inbound phone (520) 556-7400 |
+| **Where it runs** | Luis's direct customer service line (520) 556-7400 — answers calls he misses |
 | **Knowledge base** | `9xrTMivBdEHfIIRhf0GM` |
 | **Actions** | Capture caller question 1 & 2 · Extract first name · Transfer "Angry Customer" (+1 520-288-8623) · Appointment booking · Transfer to Dominic · Transfer to Mark · Knowledge base · Create Callback Task workflow |
 | **Last updated** | 2026-09-21 — v2.1 (unchanged since; saved to repo 2026-11-09) |
