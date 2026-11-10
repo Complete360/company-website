@@ -11,6 +11,8 @@ AI agents and new contributors: read `PROJECT.md` first.
 ## Structure
 `ai-agents/` holds the prompts for every GHL AI agent (see its README).
 
+`schema/` holds paste-ready structured data (JSON-LD) for every page, generated from the snippets (see its README).
+
 All custom code blocks live in `ghl-snippets/`:
 
 - `global/` — site-wide pieces (header, footer, 404)
