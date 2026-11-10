@@ -56,8 +56,8 @@ anything still to do on a page (🔁 = needs rebuild).
 | `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo | Up to date (header note added) |
 | `services/google-ads.html` | Google Ads | ✅ Code in repo | v2.5: 10-day cancellation policy — paste into GHL. Open: 90-day credit guarantee vs legal guarantee |
 | `services/meta-ads.html` | Meta Ads | ✅ Code in repo | v2.2: 10-day cancellation policy — paste into GHL. Open: 90-day credit guarantee vs legal guarantee |
-| `services/google-social-posting.html` | Google Social Posting | ✅ Code in repo | v1.1: 10-day cancellation policy — paste into GHL |
-| `services/meta-social-posting.html` | Meta Social Posting | ✅ Code in repo | v1.1: 10-day cancellation policy — paste into GHL |
+| `services/google-social-posting.html` | Google Social Posting | ✅ Code in repo | v1.2: 10-day cancellation, hours, review count — paste into GHL |
+| `services/meta-social-posting.html` | Meta Social Posting | ✅ Code in repo | v1.2: 10-day cancellation, hours, review count, Meta Ads link — paste into GHL |
 | `services/reputation-management.html` | Reputation Management | ✅ Code in repo | Up to date |
 | `services/procard.html` | Pro Card | ✅ Code in repo | Up to date |
 | `services/websites-home.html` | Website Home | ✅ Code in repo | Up to date |
