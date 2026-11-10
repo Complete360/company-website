@@ -5,11 +5,23 @@ One paste-ready file per page on complete360.org, in `schema/pages/` (same folde
 Google and AI tools what the page is: the company, the service, its FAQs, and so on.
 
 ## How to add one to a page in GHL
-1. Open the page in the GHL site editor → **Settings** (gear) → **Tracking Code** → **Header**.
-2. Paste the whole contents of that page's file and save. Publish the page.
-3. Check it at https://search.google.com/test/rich-results (paste the live URL).
-4. In **Sites → SEO & AI search**, don't save the auto-generated schema for that page, or it
-   will carry two different descriptions of the same page.
+Schema goes in GHL's own schema editor, not Tracking Code and not the page snippet.
+1. **Sites → Websites → Complete360 site → Edit** the page.
+2. Left panel: **SEO & AI search optimization → Schema Markup** → open the editor → **JSON view**.
+3. Select all and delete (this also clears old or auto-generated schema), then paste the JSON
+   from the page's file: everything between the `<script>` tags, from the first `{` to the last `}`.
+4. **Validate & Save**, then **Save and Publish** the page.
+5. Check the live URL at https://validator.schema.org (Google's Rich Results Test only lists
+   the business item).
+
+What GHL accepts:
+- Paste one complete block per page in JSON view. Don't use **+ Add schema** or Form view
+  (Form view drops fields).
+- Every item needs a single `@type`. A list like `["Organization", "ProfessionalService"]`
+  makes GHL silently discard the save, so the company item is `ProfessionalService`.
+- `@id` links between items (WebPage → WebSite → organization) work.
+- The GHL reviews widget adds its own Organization/LocalBusiness items with the live rating.
+  They're valid; leave them.
 
 ## Keeping it current
 - FAQs and descriptions are pulled word for word from the snippets in `ghl-snippets/`.
