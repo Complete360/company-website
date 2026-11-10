@@ -203,11 +203,14 @@ PROJECT.md       this file
 
 ## 7. Known issues and open decisions
 
-- **CRM Home promises a "30-day money-back guarantee"** — contradicts the refund policy.
-  Confirm whether the offer is real; if not, remove it.
-- **"Cancel anytime" / 30 days' notice fixed on all service pages (Nov 10)** — in the repo, not yet
-  pasted into GHL. Still wrong: CRM home ("cancel anytime" + "30-day money-back guarantee") and the
-  internal training page (sales scripts teach 30 days' notice and "cancel anytime" throughout).
+- **14-day CRM free trial vs the 10-day cancellation rule:** the Terms don't mention trials. Decide how
+  cancelling during a trial works and add it to the Terms (CRM Home v2.10 and Training v1.1 no longer
+  promise "cancel anytime before day 14").
+- **Header:** other pages reference a live header v1.9.4 that isn't in the repo; the repo header is now
+  v1.9.5. Compare with GHL before pasting it.
+- **"Cancel anytime" / 30 days' notice / money-back wording removed from every page (Nov 10)**, including
+  CRM Home, Payments, the header menu and the internal Training scripts. In the repo; each page still
+  needs pasting into GHL (see README notes).
 - **Google Ads and Meta Ads pages describe a 90-day guarantee that credits unused months**
   on prepaid plans — differs from the legal guarantee (campaign extension). Decide which is real.
 - **/reputation-management-checkout** is linked 5× but doesn't exist in GHL — broken buttons.

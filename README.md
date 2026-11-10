@@ -35,7 +35,7 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `global/header.html` | Header (on every page) | ✅ Code in repo |  |
+| `global/header.html` | Header (on every page) | ✅ Code in repo | v1.9.5: AI menu says "no per-minute AI fees" — compare with live header (v1.9.4 not in repo) before pasting |
 | `global/footer.html` | Footer (on every page) | ✅ Code in repo |  |
 | `global/404.html` | 404 | ⬜ Placeholder |  |
 
@@ -65,7 +65,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `services/local-display-network.html` | Local Display Network | ✅ Code in repo | Up to date |
 | `services/dispensary.html` | Dispensary | ✅ Code in repo | Up to date |
 | `services/seo-services.html` | SEO Services (new page — create in GHL) | ✅ Code in repo | v1.4 — create /seo-services in GHL and paste; not in nav yet. Confirm rank tracking, site health scan and AI visibility check have an owner before launch |
-| `services/payments.html` | Payments | ✅ Code in repo | Up to date |
+| `services/payments.html` | Payments | ✅ Code in repo | v1.1: guarantee seal/copy matched to Terms — paste into GHL |
 
 ### Pricing
 
@@ -102,7 +102,7 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `crm-platform/crm-home.html` | CRM Home Page | ✅ Code in repo |  |
+| `crm-platform/crm-home.html` | CRM Home Page | ✅ Code in repo | v2.10: money-back guarantee + "cancel anytime" removed — paste into GHL. Open: trial vs 10-day rule |
 | `crm-platform/capture.html` | Step 1 - Capture Leads | ⬜ Placeholder |  |
 | `crm-platform/nurture.html` | Step 2 - Nurture Leads | ⬜ Placeholder |  |
 | `crm-platform/close.html` | Step 3 - Close Sales | ⬜ Placeholder |  |
@@ -121,7 +121,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `company/schedule-demo.html` | Schedule A Demo | ⬜ Placeholder | Valid; may need future updates |
 | `company/thank-you-after-schedule.html` | Thank You Page After Schedule | ⬜ Placeholder | 🔁 Rebuild needed (current GHL page OK for now) |
 | `company/thank-you-after-form-fill.html` | Thank You Page After Form Fill | ⬜ Placeholder | 🔁 Rebuild needed (current GHL page OK for now) |
-| `company/training.html` | Training | ✅ Code in repo | Up to date |
+| `company/training.html` | Training | ✅ Code in repo | v1.1: all sales scripts on 10-day notice, no money-back — paste into GHL |
 | `company/video-library.html` | Video Library | ✅ Code in repo |  |
 | `company/link-tree.html` | Link Tree | ✅ Code in repo |  |
 
