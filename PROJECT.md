@@ -2,7 +2,7 @@
 
 > Read this first. It is the shared context for any AI agent (Claude Code, Claude
 > Projects, Cowork, or other assistants) working on Complete360's website, AI agents,
-> or customer-facing copy. Last updated: 2026-11-09.
+> or customer-facing copy. Last updated: 2026-11-10.
 >
 > If something here conflicts with an older page, prompt, or knowledge base, **this
 > document and the legal pages (ToS / Return Policy v2.1) win.** If you change a fact
@@ -34,7 +34,8 @@ AI agents never read out team members' direct lines; they take a message or rout
 ### Team roles
 | Person | Role | Handles |
 |---|---|---|
-| **Jared** | Lead Supervisor | Escalations, complaints, contracts, cancellations, anything others can't resolve. Repo owner. |
+| **Jared** | Runs Complete360 overall | Manages the whole company as a project: direction, website, AI agents, products and policies. Repo owner. |
+| **Liz** | Supervisor (reports to Jared) | Day-to-day supervision of the team. New to the role as of Nov 2026; also takes website tasks such as adding schema to GHL pages. |
 | **Luis** | Customer Service | Billing, pricing, plan changes, account questions; primary contact for active campaigns (LSA, Google PPC, Meta, GBP, listings) |
 | **Gabriel** | Deliverables & Deployment | Setup, builds, ad account setup, technical backend. Not offered to callers as a contact unless they ask for him. |
 
