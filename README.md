@@ -54,8 +54,8 @@ anything still to do on a page (🔁 = needs rebuild).
 | `services/gbp-setup.html` | Google Business Profile Setup | ✅ Code in repo | Up to date |
 | `services/local-seo-booster.html` | SEO Booster | ✅ Code in repo | v2.7: 10-day cancellation, non-refundable from purchase — paste into GHL |
 | `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo | v1.1: 10-day cancellation — paste into GHL |
-| `services/google-ads.html` | Google Ads | ✅ Code in repo | v2.5: 10-day cancellation policy — paste into GHL. Open: 90-day credit guarantee vs legal guarantee |
-| `services/meta-ads.html` | Meta Ads | ✅ Code in repo | v2.2: 10-day cancellation policy — paste into GHL. Open: 90-day credit guarantee vs legal guarantee |
+| `services/google-ads.html` | Google Ads | ✅ Code in repo | v2.6: 10-day cancellation, satisfaction guarantee removed — paste into GHL |
+| `services/meta-ads.html` | Meta Ads | ✅ Code in repo | v2.3: 10-day cancellation, satisfaction guarantee removed — paste into GHL |
 | `services/google-social-posting.html` | Google Social Posting | ✅ Code in repo | v1.2: 10-day cancellation, hours, review count — paste into GHL |
 | `services/meta-social-posting.html` | Meta Social Posting | ✅ Code in repo | v1.2: 10-day cancellation, hours, review count, Meta Ads link — paste into GHL |
 | `services/reputation-management.html` | Reputation Management | ✅ Code in repo | v1.8: non-refundable from purchase — paste into GHL |
@@ -121,7 +121,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `company/schedule-demo.html` | Schedule A Demo | ⬜ Placeholder | Valid; may need future updates |
 | `company/thank-you-after-schedule.html` | Thank You Page After Schedule | ⬜ Placeholder | 🔁 Rebuild needed (current GHL page OK for now) |
 | `company/thank-you-after-form-fill.html` | Thank You Page After Form Fill | ⬜ Placeholder | 🔁 Rebuild needed (current GHL page OK for now) |
-| `company/training.html` | Training | ✅ Code in repo | v1.1: all sales scripts on 10-day notice, no money-back — paste into GHL |
+| `company/training.html` | Training | ✅ Code in repo | v1.2: sales scripts on 10-day notice, no money-back, no ads guarantee — paste into GHL |
 | `company/video-library.html` | Video Library | ✅ Code in repo |  |
 | `company/link-tree.html` | Link Tree | ✅ Code in repo |  |
 

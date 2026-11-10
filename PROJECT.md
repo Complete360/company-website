@@ -211,8 +211,8 @@ PROJECT.md       this file
 - **"Cancel anytime" / 30 days' notice / money-back wording removed from every page (Nov 10)**, including
   CRM Home, Payments, the header menu and the internal Training scripts. In the repo; each page still
   needs pasting into GHL (see README notes).
-- **Google Ads and Meta Ads pages describe a 90-day guarantee that credits unused months**
-  on prepaid plans — differs from the legal guarantee (campaign extension). Decide which is real.
+- **Google Ads / Meta Ads 90-day guarantee:** removed from both pages and the training scripts (Nov 10).
+  The Terms' guarantee (campaign extension) still applies to all ad campaigns.
 - **/reputation-management-checkout** is linked 5× but doesn't exist in GHL — broken buttons.
 - **Local Display Network** page isn't linked from header, footer, or home.
 - **SEO Services** page built (v1.4) but not yet created in GHL; no checkout yet (buttons go to /schedule-demo); add to header/footer after launch.
