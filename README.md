@@ -54,14 +54,14 @@ anything still to do on a page (🔁 = needs rebuild).
 | `services/gbp-setup.html` | Google Business Profile Setup | ✅ Code in repo | Up to date |
 | `services/local-seo-booster.html` | SEO Booster | ✅ Code in repo | Up to date |
 | `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo | Up to date (header note added) |
-| `services/google-ads.html` | Google Ads | ✅ Code in repo | Up to date |
-| `services/meta-ads.html` | Meta Ads | ✅ Code in repo | Up to date |
-| `services/google-social-posting.html` | Google Social Posting | ✅ Code in repo | Up to date |
-| `services/meta-social-posting.html` | Meta Social Posting | ✅ Code in repo | Up to date |
+| `services/google-ads.html` | Google Ads | ✅ Code in repo | v2.5: 10-day cancellation policy — paste into GHL. Open: 90-day credit guarantee vs legal guarantee |
+| `services/meta-ads.html` | Meta Ads | ✅ Code in repo | v2.2: 10-day cancellation policy — paste into GHL. Open: 90-day credit guarantee vs legal guarantee |
+| `services/google-social-posting.html` | Google Social Posting | ✅ Code in repo | v1.1: 10-day cancellation policy — paste into GHL |
+| `services/meta-social-posting.html` | Meta Social Posting | ✅ Code in repo | v1.1: 10-day cancellation policy — paste into GHL |
 | `services/reputation-management.html` | Reputation Management | ✅ Code in repo | Up to date |
 | `services/procard.html` | Pro Card | ✅ Code in repo | Up to date |
 | `services/websites-home.html` | Website Home | ✅ Code in repo | Up to date |
-| `services/ai-employee.html` | AI Employee Website | ✅ Code in repo | Up to date |
+| `services/ai-employee.html` | AI Employee Website | ✅ Code in repo | v1.14: 10-day cancellation policy — paste into GHL |
 | `services/local-display-network.html` | Local Display Network | ✅ Code in repo | Up to date |
 | `services/dispensary.html` | Dispensary | ✅ Code in repo | Up to date |
 | `services/seo-services.html` | SEO Services (new page — create in GHL) | ✅ Code in repo | v1.4 — create /seo-services in GHL and paste; not in nav yet. Confirm rank tracking, site health scan and AI visibility check have an owner before launch |
