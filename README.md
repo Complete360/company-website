@@ -49,16 +49,16 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `services/local-service-ads.html` | Local Service Ads | ✅ Code in repo | Up to date |
-| `services/gbp-management.html` | Google Business Management | ✅ Code in repo | Up to date |
+| `services/local-service-ads.html` | Local Service Ads | ✅ Code in repo | v1.6: 10-day cancellation — paste into GHL |
+| `services/gbp-management.html` | Google Business Management | ✅ Code in repo | v1.3.3: 10-day cancellation, non-refundable from purchase — paste into GHL |
 | `services/gbp-setup.html` | Google Business Profile Setup | ✅ Code in repo | Up to date |
-| `services/local-seo-booster.html` | SEO Booster | ✅ Code in repo | Up to date |
-| `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo | Up to date (header note added) |
+| `services/local-seo-booster.html` | SEO Booster | ✅ Code in repo | v2.7: 10-day cancellation, non-refundable from purchase — paste into GHL |
+| `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo | v1.1: 10-day cancellation — paste into GHL |
 | `services/google-ads.html` | Google Ads | ✅ Code in repo | v2.5: 10-day cancellation policy — paste into GHL. Open: 90-day credit guarantee vs legal guarantee |
 | `services/meta-ads.html` | Meta Ads | ✅ Code in repo | v2.2: 10-day cancellation policy — paste into GHL. Open: 90-day credit guarantee vs legal guarantee |
 | `services/google-social-posting.html` | Google Social Posting | ✅ Code in repo | v1.2: 10-day cancellation, hours, review count — paste into GHL |
 | `services/meta-social-posting.html` | Meta Social Posting | ✅ Code in repo | v1.2: 10-day cancellation, hours, review count, Meta Ads link — paste into GHL |
-| `services/reputation-management.html` | Reputation Management | ✅ Code in repo | Up to date |
+| `services/reputation-management.html` | Reputation Management | ✅ Code in repo | v1.8: non-refundable from purchase — paste into GHL |
 | `services/procard.html` | Pro Card | ✅ Code in repo | Up to date |
 | `services/websites-home.html` | Website Home | ✅ Code in repo | Up to date |
 | `services/ai-employee.html` | AI Employee Website | ✅ Code in repo | v1.14: 10-day cancellation policy — paste into GHL |
@@ -71,7 +71,7 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `pricing/website-pricing.html` | Website Pricing | ✅ Code in repo | Up to date |
+| `pricing/website-pricing.html` | Website Pricing | ✅ Code in repo | 10-day cancellation FAQ (Nov 10) — paste into GHL |
 | `pricing/saas-pricing.html` | SaaS Pricing | ⬜ Placeholder |  |
 
 ### Checkout

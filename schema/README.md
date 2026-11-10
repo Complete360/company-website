@@ -43,7 +43,10 @@ What GHL accepts:
 
 ## Pages
 
-| Page | URL | Schema file | Types | FAQs | Page code in repo |
+Pages marked **⚠ HOLD** repeat outdated refund or cancellation wording from the page itself.
+Don't paste them until the page is fixed and this script is re-run.
+
+| Page | URL | Schema file | Types | FAQs | Status |
 |---|---|---|---|---|---|
 | Complete360: Digital Marketing for Local Businesses | `/` | `schema/pages/home.html` | WebPage, WebSite, FAQPage | 6 | ✅ |
 | Local Service Ads | `/local-service-ads` | `schema/pages/services/local-service-ads.html` | WebPage, Service, FAQPage | 7 | ✅ |

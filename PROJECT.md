@@ -180,6 +180,8 @@ PROJECT.md       this file
   from the snippets (checkout folders are read as one page); company facts are in
   `ORGANIZATION` at the top of the script. Re-run after changing a page's FAQ or hero copy,
   commit, and re-paste that page's schema.
+- The builder holds back (⚠ HOLD) any page whose copy still conflicts with the refund/cancellation
+  policy; fix the page, re-run, then paste.
 - Thank-you pages, /training and /404 get no schema; set them to noindex.
 
 ## 6. GoHighLevel
@@ -203,9 +205,9 @@ PROJECT.md       this file
 
 - **CRM Home promises a "30-day money-back guarantee"** — contradicts the refund policy.
   Confirm whether the offer is real; if not, remove it.
-- **Service pages still say "30 days' notice" or "cancel anytime"** (Geo-Fencing, LSA,
-  Local SEO, GBP Management FAQ, AI Agents, Google/Meta Ads, social posting, website
-  pricing, CRM home, training page). Should be aligned to the 10-day rule.
+- **"Cancel anytime" / 30 days' notice fixed on all service pages (Nov 10)** — in the repo, not yet
+  pasted into GHL. Still wrong: CRM home ("cancel anytime" + "30-day money-back guarantee") and the
+  internal training page (sales scripts teach 30 days' notice and "cancel anytime" throughout).
 - **Google Ads and Meta Ads pages describe a 90-day guarantee that credits unused months**
   on prepaid plans — differs from the legal guarantee (campaign extension). Decide which is real.
 - **/reputation-management-checkout** is linked 5× but doesn't exist in GHL — broken buttons.
