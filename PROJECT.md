@@ -161,7 +161,7 @@ PROJECT.md       this file
 ### Status (2026-11-09): 31 of 63 page files have code
 - **Done:** global header/footer, home, all 16 service pages, website pricing, CRM home,
   legal (3), FAQ, contact, training, video library, link tree, Farmers Insurance.
-- **Ready to paste into GHL:** Terms of Service v2.1, Return Policy v2.1, FAQ v2.4.
+- **Live in GHL (Nov 10):** Terms v2.1, Return Policy v2.1, FAQ v2.4 and every policy-aligned service page (see README). Schema still to paste on most pages.
 - **Next (in order):** CRM platform pages (SaaS Pricing, Capture, Nurture, Close, Inbox,
   Calendar, Chat Widget; decide on Forms) → remaining pricing pages → new pages (Google
   Platinum Package, possibly Landing Page) → company rebuilds (Request a Demo, both

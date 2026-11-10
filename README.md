@@ -49,29 +49,29 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `services/local-service-ads.html` | Local Service Ads | ✅ Code in repo | v1.6: 10-day cancellation — paste into GHL |
-| `services/gbp-management.html` | Google Business Management | ✅ Code in repo | v1.3.3: 10-day cancellation, non-refundable from purchase — paste into GHL |
+| `services/local-service-ads.html` | Local Service Ads | ✅ Code in repo | v1.6 live in GHL (Nov 10) — schema still to paste |
+| `services/gbp-management.html` | Google Business Management | ✅ Code in repo | v1.3.3 live in GHL (Nov 10) — schema still to paste |
 | `services/gbp-setup.html` | Google Business Profile Setup | ✅ Code in repo | Up to date |
-| `services/local-seo-booster.html` | SEO Booster | ✅ Code in repo | v2.7: 10-day cancellation, non-refundable from purchase — paste into GHL |
-| `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo | v1.1: 10-day cancellation — paste into GHL |
-| `services/google-ads.html` | Google Ads | ✅ Code in repo | v2.6: 10-day cancellation, satisfaction guarantee removed — paste into GHL |
-| `services/meta-ads.html` | Meta Ads | ✅ Code in repo | v2.3: 10-day cancellation, satisfaction guarantee removed — paste into GHL |
-| `services/google-social-posting.html` | Google Social Posting | ✅ Code in repo | v1.2: 10-day cancellation, hours, review count — paste into GHL |
-| `services/meta-social-posting.html` | Meta Social Posting | ✅ Code in repo | v1.2: 10-day cancellation, hours, review count, Meta Ads link — paste into GHL |
-| `services/reputation-management.html` | Reputation Management | ✅ Code in repo | v1.8: non-refundable from purchase — paste into GHL |
+| `services/local-seo-booster.html` | SEO Booster | ✅ Code in repo | v2.7 live in GHL (Nov 10) — schema still to paste |
+| `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo | v1.1 live in GHL (Nov 10) — schema still to paste |
+| `services/google-ads.html` | Google Ads | ✅ Code in repo | v2.6 live in GHL (Nov 10) — schema still to paste |
+| `services/meta-ads.html` | Meta Ads | ✅ Code in repo | v2.3 live in GHL (Nov 10) — schema still to paste |
+| `services/google-social-posting.html` | Google Social Posting | ✅ Code in repo | v1.2 live in GHL (Nov 10) — schema still to paste |
+| `services/meta-social-posting.html` | Meta Social Posting | ✅ Code in repo | v1.2 live in GHL (Nov 10) — schema still to paste |
+| `services/reputation-management.html` | Reputation Management | ✅ Code in repo | v1.8 live in GHL (Nov 10) — schema still to paste |
 | `services/procard.html` | Pro Card | ✅ Code in repo | Up to date |
 | `services/websites-home.html` | Website Home | ✅ Code in repo | Up to date |
-| `services/ai-employee.html` | AI Employee Website | ✅ Code in repo | v1.14: 10-day cancellation policy — paste into GHL |
+| `services/ai-employee.html` | AI Employee Website | ✅ Code in repo | v1.14 live in GHL (Nov 10) — schema still to paste |
 | `services/local-display-network.html` | Local Display Network | ✅ Code in repo | Up to date |
 | `services/dispensary.html` | Dispensary | ✅ Code in repo | Up to date |
-| `services/seo-services.html` | SEO Services (new page — create in GHL) | ✅ Code in repo | v1.4 — create /seo-services in GHL and paste; not in nav yet. Confirm rank tracking, site health scan and AI visibility check have an owner before launch |
-| `services/payments.html` | Payments | ✅ Code in repo | v1.1: guarantee seal/copy matched to Terms — paste into GHL |
+| `services/seo-services.html` | SEO Services (new page — create in GHL) | ✅ Code in repo | v1.4 live in GHL; not in nav yet; checkout page created, snippets to build |
+| `services/payments.html` | Payments | ✅ Code in repo | v1.1 live in GHL (Nov 10) — schema still to paste |
 
 ### Pricing
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `pricing/website-pricing.html` | Website Pricing | ✅ Code in repo | 10-day cancellation FAQ (Nov 10) — paste into GHL |
+| `pricing/website-pricing.html` | Website Pricing | ✅ Code in repo | Nov 10 update live in GHL (Nov 10) — schema still to paste |
 | `pricing/saas-pricing.html` | SaaS Pricing | ⬜ Placeholder |  |
 
 ### Checkout
@@ -116,12 +116,12 @@ anything still to do on a page (🔁 = needs rebuild).
 | File | GHL page | Status | Notes |
 |---|---|---|---|
 | `company/contact-us.html` | Contact Us Form | ✅ Code in repo | Up to date |
-| `company/faq.html` | FAQS | ✅ Code in repo | v2.4: billing answers revised Nov 9, 2026 — paste into GHL |
+| `company/faq.html` | FAQS | ✅ Code in repo | v2.4 live in GHL (Nov 10) — schema still to paste |
 | `company/request-demo.html` | Request A Demo | ⬜ Placeholder | 🔁 Rebuild as custom HTML (current GHL page OK for now) |
 | `company/schedule-demo.html` | Schedule A Demo | ⬜ Placeholder | Valid; may need future updates |
 | `company/thank-you-after-schedule.html` | Thank You Page After Schedule | ⬜ Placeholder | 🔁 Rebuild needed (current GHL page OK for now) |
 | `company/thank-you-after-form-fill.html` | Thank You Page After Form Fill | ⬜ Placeholder | 🔁 Rebuild needed (current GHL page OK for now) |
-| `company/training.html` | Training | ✅ Code in repo | v1.2: sales scripts on 10-day notice, no money-back, no ads guarantee — paste into GHL |
+| `company/training.html` | Training | ✅ Code in repo | v1.2 live in GHL (Nov 10) — schema still to paste |
 | `company/video-library.html` | Video Library | ✅ Code in repo |  |
 | `company/link-tree.html` | Link Tree | ✅ Code in repo |  |
 
@@ -129,9 +129,9 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `legal/tos.html` | Terms of Service | ✅ Code in repo | v2.1: refund policy revised Nov 9, 2026 — paste into GHL |
+| `legal/tos.html` | Terms of Service | ✅ Code in repo | v2.1 live in GHL (Nov 10) — schema still to paste |
 | `legal/privacy-policy.html` | Privacy Policy | ✅ Code in repo |  |
-| `legal/return-policy.html` | Refund/Return Policy | ✅ Code in repo | v2.1: refund policy revised Nov 9, 2026 — paste into GHL |
+| `legal/return-policy.html` | Refund/Return Policy | ✅ Code in repo | v2.1 live in GHL (Nov 10) — schema still to paste |
 
 ### Partners
 
