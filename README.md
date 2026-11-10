@@ -62,7 +62,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `services/ai-employee.html` | AI Employee Website | ✅ Code in repo | Up to date |
 | `services/local-display-network.html` | Local Display Network | ✅ Code in repo | Up to date |
 | `services/dispensary.html` | Dispensary | ✅ Code in repo | Up to date |
-| `services/seo-services.html` | SEO Services (new page — create in GHL) | ✅ Code in repo | v1.1: simple 4-item package + AI search emphasis — create /seo-services in GHL and paste; not in nav yet |
+| `services/seo-services.html` | SEO Services (new page — create in GHL) | ✅ Code in repo | v1.4 — create /seo-services in GHL and paste; not in nav yet. Confirm rank tracking, site health scan and AI visibility check have an owner before launch |
 | `services/payments.html` | Payments | ✅ Code in repo | Up to date |
 
 ### Pricing

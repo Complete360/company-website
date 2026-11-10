@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — SEO Services
-     c360-seo-services-v1.1.html
+     c360-seo-services-v1.4.html
      GHL: Paste into Custom Code block on /seo-services page (new page).
      Poppins + Font Awesome 6.5.1 loaded via global header.
      Header + footer are GLOBAL sections — do NOT include them here.
@@ -10,21 +10,55 @@
      Reputation Management v1.7: same tokens, buttons, navy hero, trust bar,
      dot field, navy pricing band, reviews widget, final CTA, FAQ pattern.
 
+     v1.4 (2026-11-09) — 2 blog posts a month added (approved by Jared)
+     - Monthly content is now 2 new service/city pages + 2 blog posts +
+       1 refreshed page. The "2 new pages" are now service/city pages only;
+       articles moved to the blog posts.
+     - Updated hero, What we do, How it works, Where it fits, both pricing
+       lists (12 bullets) and the FAQ to match.
+
+     v1.3 (2026-11-09) — fuller deliverables list (approved by Jared)
+     - Added to setup: Google Search Console + Google Analytics setup,
+       competitor review + written keyword plan, AI crawler access check.
+     - Added monthly: 1 existing page refreshed, keyword rank tracking,
+       AI visibility check (ChatGPT, Gemini, Perplexity, Google), site
+       health scan with fixes (rank tracking + health scan run on the
+       platform's SEO package — never name it). No keyword count published
+       until the package's per-site limit is confirmed.
+     - Still 4 headline items so sales can explain it in one sentence;
+       pricing cards expanded to 11 bullets (both cards identical).
+     - Trust bar: added the Google Partners notice ("SEO services are not
+       verified or endorsed by Google.") because this page pairs the
+       Partner badge claim with SEO, matching GBP Management.
+     - New FAQ: "How do you track AI search?"
+
+     v1.2 (2026-11-09) — copy + structure rewrite, AI search up front
+     - Design unchanged. Copy rewritten throughout; sections reordered:
+       Hero → Trust → Why AI search matters → What we do → How it works →
+       Where it fits → Pricing → Reviews → CTA → FAQ.
+     - AI section moved to right after the trust bar and expanded to five
+       concrete things we do to make a site AI-ready.
+     - "What we do" now lists the work behind each of the 4 package items
+       (package itself unchanged: setup · up to 5 main pages · 2 new
+       pages/month · monthly report). Report item now covers ongoing
+       ranking + site-health monitoring.
+     - Free audit / prospecting widget REMOVED (it scans listings and
+       reviews, which fits Local SEO Booster, not website SEO). Its CSS
+       removed too.
+     - "Where it fits" moved below the process and shortened.
+     - FAQ: merged the Local SEO Booster + Google Business Profile
+       questions into one; added "What do you need from me?"; AI answer
+       now names the tools in one place instead of three.
+
      v1.1 (2026-11-09) — simpler package + AI search emphasis
-     - Package cut to 4 items so a new sales team can explain it in one
-       sentence: Website SEO setup · main pages optimized (up to 5) for
-       Google AND AI search · 2 new pages every month · monthly report.
-       Monthly strategy call removed (calls on request, not promised).
-     - AI search (LLMs: ChatGPT, Gemini, Perplexity, Google AI Overviews)
-       now a headline benefit: hero copy, an AI-answer card on the hero
-       visual, a new "Why SEO matters more now" section, an FAQ entry.
-       No claims that we control what AI tools say, and no invented stats.
+     - Package cut to 4 items; monthly strategy call removed.
+     - AI search (ChatGPT, Gemini, Perplexity, Google AI Overviews) made a
+       headline benefit. No claims that we control what AI tools say.
 
      v1.0 (2026-11-09) — first build
      - Positioning: SEO Services = the client's WEBSITE ranking in organic
-       Google results (and AI search). Kept clearly separate from
-       Google Business Profile (Maps listing) and Local SEO Booster
-       (directory listings) — a "where it fits" section says so for sales.
+       Google results (and AI search). Kept separate from Google Business
+       Profile (Maps listing) and Local SEO Booster (directory listings).
      - Pricing: $599/mo or $5,990/yr (= 2 months free, saves $1,198).
      - Terms copy matches ToS / Return Policy v2.1: no refunds from purchase,
        10-day cancellation notice, annual not prorated. No ranking guarantee
@@ -33,14 +67,15 @@
      - Get Started buttons go to /schedule-demo until an SEO checkout exists.
 
      CONFIRM before going live:
-     - Package contents (What's included + both pricing lists — keep in sync).
-     - Free audit section reuses the Local SEO Booster prospecting widget
-       (699344169ea04eda0c083b63). Swap the ID if you set up an SEO-specific one.
+     - Keep the "What we do" bullets in sync with both pricing lists.
+     - Rank tracking + site health scan are live on the SEO package before
+       launch; AI visibility check has an owner and a monthly routine.
+     - "Ranking movement within 3 to 6 months" is OK to publish.
      ══════════════════════════════════════════════════════════════ -->
 
 <style>
 /* ══════════════════════════════════════════════════════
-   Complete360 SEO Services v1.0  |  Prefix: c360-seo-
+   Complete360 SEO Services v1.4  |  Prefix: c360-seo-
    ══════════════════════════════════════════════════════ */
 :root {
   --seo-navy:        #122078;
@@ -288,11 +323,12 @@ section.c360-seo-ai {
 .c360-seo-trust-ico.gold  { background: #FFF8E7; color: #d98b06; }
 .c360-seo-trust-item strong { display: block; font-size: 13px; font-weight: 700; color: var(--seo-text); line-height: 1.25; }
 .c360-seo-trust-item span { font-size: 12px; color: var(--seo-text-muted); }
+.c360-seo-trust-note { font-size: 11.5px; color: var(--seo-text-muted); text-align: center; padding: 0 0 12px; }
 
 /* ══════════════════════════════════════════════════════
    WHERE SEO FITS — three Google products, one job each
    ══════════════════════════════════════════════════════ */
-.c360-seo-fit { padding: 96px 0 88px; }
+.c360-seo-fit { padding: 88px 0 80px; }
 .c360-seo-fit-grid {
   display: grid; grid-template-columns: 1fr 1.15fr 1fr; gap: 20px; align-items: stretch;
 }
@@ -330,20 +366,6 @@ section.c360-seo-ai {
 }
 
 /* ══════════════════════════════════════════════════════
-   FREE AUDIT (prospecting widget) — blue tint band
-   ══════════════════════════════════════════════════════ */
-section.c360-seo-audit { background: var(--seo-blue-light); padding: 84px 0; }
-.c360-seo-audit-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
-.c360-seo-audit p { font-size: 16px; color: var(--seo-text-muted); line-height: 1.65; margin-bottom: 22px; max-width: 480px; }
-.c360-seo-checks { list-style: none; display: flex; flex-direction: column; gap: 11px; }
-.c360-seo-checks li { display: flex; gap: 10px; font-size: 15px; font-weight: 500; color: var(--seo-text); line-height: 1.45; }
-.c360-seo-checks li i { color: var(--seo-green); margin-top: 3px; }
-.c360-seo-audit-widget {
-  background: #fff; border-radius: var(--seo-radius-lg); box-shadow: var(--seo-shadow);
-  padding: 12px; min-height: 360px;
-}
-
-/* ══════════════════════════════════════════════════════
    WHAT'S INCLUDED
    ══════════════════════════════════════════════════════ */
 .c360-seo-included { padding: 96px 0; }
@@ -359,6 +381,9 @@ section.c360-seo-audit { background: var(--seo-blue-light); padding: 84px 0; }
 }
 .c360-seo-inc h3 { font-size: 17px; font-weight: 700; color: var(--seo-text); margin-bottom: 6px; line-height: 1.3; }
 .c360-seo-inc p  { font-size: 14.5px; color: var(--seo-text-muted); line-height: 1.6; }
+.c360-seo-inc-list { list-style: none; margin-top: 12px; display: flex; flex-direction: column; gap: 7px; }
+.c360-seo-inc-list li { display: flex; gap: 9px; font-size: 14px; color: var(--seo-text); line-height: 1.5; }
+.c360-seo-inc-list li i { color: var(--seo-green); font-size: 11px; margin-top: 5px; flex-shrink: 0; }
 .c360-seo-inc-qty {
   display: inline-block; margin-left: 6px; font-size: 12px; font-weight: 700;
   color: var(--seo-navy); background: var(--seo-blue-light); padding: 2px 9px; border-radius: 100px;
@@ -503,7 +528,7 @@ section.c360-seo-cta {
    RESPONSIVE
    ══════════════════════════════════════════════════════ */
 @media (max-width: 980px) {
-  .c360-seo-hero-inner, .c360-seo-audit-inner, .c360-seo-ai-inner { grid-template-columns: 1fr; gap: 44px; }
+  .c360-seo-hero-inner, .c360-seo-ai-inner { grid-template-columns: 1fr; gap: 44px; }
   .c360-seo-ai-card { left: 12px; }
   .c360-seo-serp { transform: none; max-width: 560px; }
   .c360-seo-serp-note { transform: translateX(-50%); }
@@ -516,7 +541,7 @@ section.c360-seo-cta {
 @media (max-width: 768px) {
   section.c360-seo-hero, section.c360-seo-cta { padding: 68px 0 64px; }
   .c360-seo-fit, .c360-seo-included, section.c360-seo-process, section.c360-seo-pricing,
-  .c360-seo-reviews, .c360-seo-faq, section.c360-seo-audit, section.c360-seo-ai { padding: 64px 0; }
+  .c360-seo-reviews, .c360-seo-faq, section.c360-seo-ai { padding: 64px 0; }
   .c360-seo-head { margin-bottom: 38px; }
   .c360-seo-inc-grid { grid-template-columns: 1fr; }
   .c360-seo-trust-inner { grid-template-columns: repeat(2, 1fr); }
@@ -558,23 +583,22 @@ section.c360-seo-cta {
 
       <div>
         <div class="c360-seo-hero-tag"><i class="fa-solid fa-magnifying-glass-chart"></i> SEO Services</div>
-        <h1>Get found on Google and in AI search.</h1>
+        <h1>Show up when customers search Google or ask AI.</h1>
         <p class="c360-seo-hero-sub">
-          Your customers search Google, and more of them now ask AI tools like ChatGPT who to call.
-          Both pull their answers from websites. We optimize yours so Google ranks it and AI tools
-          can understand it, then add new pages every month aimed at the searches that bring in jobs.
+          More customers now ask ChatGPT, Gemini or Google's AI Overviews who to hire, and those tools
+          answer from websites. We make yours the clearest source for what you do and where you do it,
+          then add new pages and blog posts every month aimed at the searches that bring in jobs.
         </p>
         <div class="c360-seo-hero-actions">
           <a href="/schedule-demo" class="c360-seo-btn c360-seo-btn--green"><i class="fa-solid fa-calendar-check"></i> Get a free SEO strategy call</a>
           <a href="#c360-seo-pricing" class="c360-seo-btn c360-seo-btn--ghost">See pricing</a>
         </div>
         <ul class="c360-seo-hero-facts">
-          <li><i class="fa-solid fa-circle-check"></i> Optimized for Google and AI search</li>
-          <li><i class="fa-solid fa-circle-check"></i> 2 new pages every month</li>
-          <li><i class="fa-solid fa-circle-check"></i> $599/mo, or save with annual</li>
+          <li><i class="fa-solid fa-circle-check"></i> Built for Google and AI search</li>
+          <li><i class="fa-solid fa-circle-check"></i> New pages and blog posts monthly</li>
+          <li><i class="fa-solid fa-circle-check"></i> $599/mo, or 2 months free yearly</li>
         </ul>
       </div>
-
       <div class="c360-seo-serp-wrap" aria-hidden="true">
         <div class="c360-seo-serp">
           <div class="c360-seo-serp-bar">
@@ -632,141 +656,114 @@ section.c360-seo-cta {
       </div>
       <div class="c360-seo-trust-item">
         <div class="c360-seo-trust-ico"><i class="fa-solid fa-chart-line"></i></div>
-        <div><strong>Monthly Reporting</strong><span>Rankings, traffic and leads</span></div>
+        <div><strong>Monthly Reporting</strong><span>Rankings, traffic and AI visibility</span></div>
       </div>
       <div class="c360-seo-trust-item">
         <div class="c360-seo-trust-ico green"><i class="fa-solid fa-location-dot"></i></div>
         <div><strong>Since 2018</strong><span>Tucson-based, serving nationwide</span></div>
       </div>
     </div>
+    <p class="c360-seo-trust-note">SEO services are not verified or endorsed by Google.</p>
   </div>
 </div>
 
 <!-- ══════════════════════════════════════════════════════
-     3 — WHERE SEO FITS (separates the three Google products)
-     ══════════════════════════════════════════════════════ -->
-<section class="c360-seo-section c360-seo-fit">
-  <div class="c360-seo-container">
-    <div class="c360-seo-head c360-seo-reveal">
-      <span class="c360-seo-kicker">How customers find you on Google</span>
-      <h2>Three places to show up. This page is about your website.</h2>
-      <p>Google pulls local results from your business profile, from directories across the web, and from your own website. Each one needs its own work.</p>
-    </div>
-    <div class="c360-seo-fit-grid">
-      <div class="c360-seo-fit-card c360-seo-reveal">
-        <div class="c360-seo-fit-ico"><i class="fa-solid fa-map-location-dot"></i></div>
-        <h3>Google Business Profile</h3>
-        <div class="c360-seo-fit-what">Your listing in Google Maps</div>
-        <p>Photos, posts, reviews and hours that help you show up in the map pack when people search nearby.</p>
-        <a class="c360-seo-fit-link" href="/gbp-management">Google Business Profile Management <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-      <div class="c360-seo-fit-card c360-seo-fit-card--this c360-seo-reveal" style="--rd:0.08s;">
-        <div class="c360-seo-fit-ico"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
-        <h3>SEO Services</h3>
-        <div class="c360-seo-fit-what">Your website in Google and AI search</div>
-        <p>Optimized pages and 2 new pages every month, so your own website ranks on Google and is easy for AI tools to recommend.</p>
-        <span class="c360-seo-fit-here"><i class="fa-solid fa-circle-check"></i> You're here</span>
-      </div>
-      <div class="c360-seo-fit-card c360-seo-reveal" style="--rd:0.16s;">
-        <div class="c360-seo-fit-ico"><i class="fa-solid fa-layer-group"></i></div>
-        <h3>Local SEO Booster</h3>
-        <div class="c360-seo-fit-what">Your info across 70+ directories</div>
-        <p>Consistent name, address and phone number on the directories and apps Google and AI assistants check to trust you.</p>
-        <a class="c360-seo-fit-link" href="/local-seo-booster">Local SEO Booster <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-    </div>
-    <p class="c360-seo-fit-foot c360-seo-reveal">They work best together: each one makes the others more credible to Google. Ask about combining them on your strategy call.</p>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════
-     3b — WHY SEO MATTERS MORE NOW (AI search / LLMs)
+     3 — WHY IT MATTERS NOW (AI search)
      ══════════════════════════════════════════════════════ -->
 <section class="c360-seo-section c360-seo-ai">
   <div class="c360-seo-container">
     <div class="c360-seo-ai-inner">
       <div class="c360-seo-ai-copy c360-seo-reveal">
-        <span class="c360-seo-kicker">Why SEO matters more now</span>
-        <h2 class="c360-seo-h2">Customers are asking AI who to hire. It answers from websites.</h2>
-        <p>People don't only scroll through search results anymore. They ask AI assistants for a recommendation, and Google often shows an AI summary before the first link.</p>
-        <p><strong>Those answers are built from websites.</strong> A site that clearly explains what you do, where you do it and why customers trust you is the kind of source AI tools pick up. A thin or outdated site gets skipped, and so does your business.</p>
+        <span class="c360-seo-kicker">Why it matters now</span>
+        <h2 class="c360-seo-h2">Customers are asking AI who to hire.</h2>
+        <p>Someone with a leaking roof doesn't always scroll through ten links anymore. They ask an AI assistant for a recommendation, or read the AI summary Google shows above the results.</p>
+        <p><strong>Those answers come from websites.</strong> AI tools lean on sites that clearly say what a business does, where it works and why people trust it. If your site is thin, outdated or vague, the answer names someone else.</p>
+        <p>Most local business websites were never written with this in mind. That's the gap we close.</p>
         <ul class="c360-seo-ai-sources" aria-label="Where customers search">
           <li>Google</li><li>Google AI Overviews</li><li>ChatGPT</li><li>Gemini</li><li>Perplexity</li>
         </ul>
       </div>
       <div class="c360-seo-ai-how c360-seo-reveal" style="--rd:0.1s;">
-        <h3>How we optimize your site for AI search</h3>
+        <h3>How we make your site AI-ready</h3>
         <ul>
-          <li><i class="fa-solid fa-circle-check"></i><div><b>Clear, direct answers</b><span>Each page answers the questions customers actually ask, in plain language AI tools can quote.</span></div></li>
-          <li><i class="fa-solid fa-circle-check"></i><div><b>Structured data</b><span>Behind-the-scenes code that tells Google and AI tools your services, areas and business details.</span></div></li>
-          <li><i class="fa-solid fa-circle-check"></i><div><b>A page for every service and area</b><span>Two new pages each month give AI tools more reasons to match you to the right search.</span></div></li>
+          <li><i class="fa-solid fa-circle-check"></i><div><b>Let AI tools in</b><span>We check that ChatGPT, Gemini, Perplexity and Google's AI aren't blocked from reading your site. Many sites block them without knowing it.</span></div></li>
+          <li><i class="fa-solid fa-circle-check"></i><div><b>Answer real customer questions</b><span>Each service page answers what people ask before they hire, in plain sentences an AI tool can quote.</span></div></li>
+          <li><i class="fa-solid fa-circle-check"></i><div><b>Label your business for machines</b><span>Structured data (behind-the-scenes code) spells out your services, service areas and business details.</span></div></li>
+          <li><i class="fa-solid fa-circle-check"></i><div><b>One page per service and city</b><span>AI tools match specific questions to specific pages. "AC repair in Oro Valley" needs its own page, not a line on your homepage.</span></div></li>
+          <li><i class="fa-solid fa-circle-check"></i><div><b>Put your proof on the page</b><span>Licensing, years in business, reviews and real job details: the trust signals Google and AI tools look for.</span></div></li>
+          <li><i class="fa-solid fa-circle-check"></i><div><b>Keep every detail consistent</b><span>Your name, phone, services and areas match across the whole site, so nothing contradicts itself.</span></div></li>
         </ul>
-        <p class="c360-seo-ai-honest">No one controls what an AI tool says. What we can do is make your website the clearest, most trustworthy source for your services in your area.</p>
+        <p class="c360-seo-ai-honest">No one controls what an AI tool says. What we can do is make your website the clearest, most trustworthy source for your services in your area, and check every month whether AI tools are mentioning you.</p>
       </div>
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════════════════════
-     4 — FREE AUDIT (prospecting widget)
-     ══════════════════════════════════════════════════════ -->
-<section class="c360-seo-section c360-seo-audit">
-  <div class="c360-seo-container">
-    <div class="c360-seo-audit-inner">
-      <div class="c360-seo-reveal">
-        <span class="c360-seo-kicker">Free instant scan</span>
-        <h2 class="c360-seo-h2">See how your business shows up online today.</h2>
-        <p>Enter your business details for a free report in under a minute. It's the same starting point we use on a strategy call, so you'll know where you stand before we talk.</p>
-        <ul class="c360-seo-checks">
-          <li><i class="fa-solid fa-circle-check"></i> How visible your business is in local search</li>
-          <li><i class="fa-solid fa-circle-check"></i> Missing or inconsistent business information</li>
-          <li><i class="fa-solid fa-circle-check"></i> Your review rating compared with nearby competitors</li>
-        </ul>
-      </div>
-      <div class="c360-seo-audit-widget c360-seo-reveal" style="--rd:0.1s;">
-        <script src="https://services.leadconnectorhq.com/prospecting/client/widget-embed.js" data-widget-id="699344169ea04eda0c083b63"></script>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════════════════════
-     5 — WHAT'S INCLUDED  (keep in sync with the pricing lists)
+     4 — WHAT WE DO  (keep the 4 items in sync with the pricing lists)
      ══════════════════════════════════════════════════════ -->
 <section class="c360-seo-section c360-seo-included">
   <div class="c360-seo-container">
     <div class="c360-seo-head c360-seo-reveal">
-      <span class="c360-seo-kicker">What's included</span>
-      <h2>Four things, done for you.</h2>
-      <p>One simple plan. We do the work every month, and you get a report showing what changed and how your rankings are moving.</p>
+      <span class="c360-seo-kicker">What we do</span>
+      <h2>Four parts, all done for you.</h2>
+      <p>Here's the work behind each part, so you know exactly what you're paying for.</p>
     </div>
     <div class="c360-seo-inc-grid">
       <div class="c360-seo-inc c360-seo-reveal">
         <div class="c360-seo-inc-ico"><i class="fa-solid fa-screwdriver-wrench"></i></div>
         <div>
           <h3>Website SEO setup</h3>
-          <p>We check your site, fix the problems holding it back (speed, mobile issues, broken links, pages Google can't read) and pick the searches to go after.</p>
+          <p>We get your site's foundation right before building on it.</p>
+          <ul class="c360-seo-inc-list">
+            <li><i class="fa-solid fa-check"></i> A technical check for speed, mobile issues, broken links and pages Google can't read, with fixes</li>
+            <li><i class="fa-solid fa-check"></i> Google Search Console and Google Analytics set up, so every result can be measured</li>
+            <li><i class="fa-solid fa-check"></i> A review of your top local competitors and what they rank for</li>
+            <li><i class="fa-solid fa-check"></i> A written keyword plan: the searches we'll target, by service and city</li>
+            <li><i class="fa-solid fa-check"></i> An AI crawler check, so AI tools are allowed to read your site</li>
+            <li><i class="fa-solid fa-check"></i> Structured data added so Google and AI tools read your business correctly</li>
+          </ul>
         </div>
       </div>
       <div class="c360-seo-inc c360-seo-reveal" style="--rd:0.06s;">
         <div class="c360-seo-inc-ico"><i class="fa-solid fa-robot"></i></div>
         <div>
           <h3>Main pages optimized for Google and AI <span class="c360-seo-inc-qty">Up to 5 pages</span></h3>
-          <p>Your most important pages rewritten and structured so Google ranks them and AI tools like ChatGPT can understand and recommend you.</p>
+          <p>Your most important pages, usually your homepage and top services, rewritten to rank and to be understood.</p>
+          <ul class="c360-seo-inc-list">
+            <li><i class="fa-solid fa-check"></i> Page titles, headings and descriptions aimed at the searches you want</li>
+            <li><i class="fa-solid fa-check"></i> Clear answers to the questions customers ask</li>
+            <li><i class="fa-solid fa-check"></i> Your services, areas and proof stated plainly</li>
+            <li><i class="fa-solid fa-check"></i> Links between pages so Google and visitors find what matters</li>
+          </ul>
         </div>
       </div>
       <div class="c360-seo-inc c360-seo-reveal">
         <div class="c360-seo-inc-ico"><i class="fa-solid fa-file-circle-plus"></i></div>
         <div>
-          <h3>2 new pages every month</h3>
-          <p>A page for a service and city you want to win, like "water heater repair in Gilbert," or a helpful article. We pick whichever will help you most that month.</p>
+          <h3>2 new pages + 2 blog posts every month</h3>
+          <p>Every page and post gives Google and AI tools another reason to match you to the right search, and a monthly refresh keeps older pages from going stale.</p>
+          <ul class="c360-seo-inc-list">
+            <li><i class="fa-solid fa-check"></i> 2 service and city pages, like "water heater repair in Gilbert"</li>
+            <li><i class="fa-solid fa-check"></i> 2 blog posts answering what local customers ask before they hire, like "how much does AC repair cost in Tucson?"</li>
+            <li><i class="fa-solid fa-check"></i> One existing page updated each month with fresh details and answers</li>
+            <li><i class="fa-solid fa-check"></i> Written and published by us, using real details from your business</li>
+            <li><i class="fa-solid fa-check"></i> Each topic picked from real local searches, then linked into your site so Google finds it fast</li>
+          </ul>
         </div>
       </div>
       <div class="c360-seo-inc c360-seo-reveal" style="--rd:0.06s;">
         <div class="c360-seo-inc-ico"><i class="fa-solid fa-chart-column"></i></div>
         <div>
-          <h3>Monthly report</h3>
-          <p>Your rankings, website traffic and leads in plain English, so you can see the progress.</p>
+          <h3>Monthly report and monitoring</h3>
+          <p>We keep watch on your site between reports and show you the progress in plain English.</p>
+          <ul class="c360-seo-inc-list">
+            <li><i class="fa-solid fa-check"></i> Rank tracking for the searches in your keyword plan</li>
+            <li><i class="fa-solid fa-check"></i> An AI visibility check: we ask ChatGPT, Gemini, Perplexity and Google real customer questions and show whether you come up</li>
+            <li><i class="fa-solid fa-check"></i> A monthly site health scan, with new issues fixed</li>
+            <li><i class="fa-solid fa-check"></i> Website traffic and leads</li>
+            <li><i class="fa-solid fa-check"></i> The pages planned for next month</li>
+          </ul>
         </div>
       </div>
     </div>
@@ -774,41 +771,78 @@ section.c360-seo-cta {
 </section>
 
 <!-- ══════════════════════════════════════════════════════
-     6 — HOW IT WORKS
+     5 — HOW IT WORKS
      ══════════════════════════════════════════════════════ -->
 <section class="c360-seo-section c360-seo-process">
   <div class="c360-seo-container">
     <div class="c360-seo-head c360-seo-reveal">
       <span class="c360-seo-kicker">How it works</span>
       <h2>A steady plan, not a one-time fix.</h2>
-      <p>SEO compounds. Each month builds on the last, so the work never stops at a launch date.</p>
+      <p>SEO compounds. Every page we add and every fix we make builds on the month before.</p>
     </div>
     <ol class="c360-seo-steps">
       <li class="c360-seo-step c360-seo-reveal">
         <div class="c360-seo-step-when">To start</div>
-        <h3>Audit and keyword plan</h3>
-        <p>We review your site, your competitors and your service area, then agree on the searches to target first.</p>
+        <h3>Audit and plan</h3>
+        <p>We set up tracking, review your site and competitors, and give you a written plan of the searches to go after first.</p>
       </li>
       <li class="c360-seo-step c360-seo-reveal" style="--rd:0.08s;">
         <div class="c360-seo-step-when">Next</div>
         <h3>Fix and optimize</h3>
-        <p>Technical issues get fixed and your main pages get rewritten and structured for Google and AI search.</p>
+        <p>Technical problems get fixed and your main pages get rewritten for Google and AI search.</p>
       </li>
       <li class="c360-seo-step c360-seo-reveal" style="--rd:0.16s;">
         <div class="c360-seo-step-when">Every month</div>
-        <h3>Add 2 new pages</h3>
-        <p>Two new pages go live, each aimed at a search that brings in jobs.</p>
+        <h3>Publish new content</h3>
+        <p>Two new pages and two blog posts go live and one existing page gets updated, each aimed at a search that brings in jobs.</p>
       </li>
       <li class="c360-seo-step c360-seo-reveal" style="--rd:0.24s;">
         <div class="c360-seo-step-when">Every month</div>
-        <h3>Report your progress</h3>
-        <p>You get your monthly report, and we use the results to choose next month's pages.</p>
+        <h3>Report and adjust</h3>
+        <p>You get your rankings, AI visibility and site health in one report, and we use what's working to choose next month's pages.</p>
       </li>
     </ol>
     <p class="c360-seo-timeline-note c360-seo-reveal">
       <strong>What to expect:</strong> most businesses start seeing ranking movement within 3 to 6 months, and results keep building from there.
-      Nobody can honestly guarantee a #1 spot on Google, so we don't. We show you the progress every month instead.
+      Nobody can honestly guarantee a #1 spot on Google or a mention by an AI tool, so we don't. We show you the progress every month instead.
     </p>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════════════════
+     6 — WHERE IT FITS (separates the three Google products)
+     ══════════════════════════════════════════════════════ -->
+<section class="c360-seo-section c360-seo-fit">
+  <div class="c360-seo-container">
+    <div class="c360-seo-head c360-seo-reveal">
+      <span class="c360-seo-kicker">Where it fits</span>
+      <h2>Your website is one of three places to show up.</h2>
+      <p>Google and AI tools also look at your business profile and your directory listings. Each needs its own work.</p>
+    </div>
+    <div class="c360-seo-fit-grid">
+      <div class="c360-seo-fit-card c360-seo-reveal">
+        <div class="c360-seo-fit-ico"><i class="fa-solid fa-map-location-dot"></i></div>
+        <h3>Google Business Profile</h3>
+        <div class="c360-seo-fit-what">Your listing in Google Maps</div>
+        <p>Photos, posts, reviews and hours that help you show up in the map results.</p>
+        <a class="c360-seo-fit-link" href="/gbp-management">Google Business Profile Management <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="c360-seo-fit-card c360-seo-fit-card--this c360-seo-reveal" style="--rd:0.08s;">
+        <div class="c360-seo-fit-ico"><i class="fa-solid fa-magnifying-glass-chart"></i></div>
+        <h3>SEO Services</h3>
+        <div class="c360-seo-fit-what">Your website in Google and AI search</div>
+        <p>Your own site, optimized and growing every month with new pages and blog posts, so it ranks on Google and is easy for AI tools to recommend.</p>
+        <span class="c360-seo-fit-here"><i class="fa-solid fa-circle-check"></i> You're here</span>
+      </div>
+      <div class="c360-seo-fit-card c360-seo-reveal" style="--rd:0.16s;">
+        <div class="c360-seo-fit-ico"><i class="fa-solid fa-layer-group"></i></div>
+        <h3>Local SEO Booster</h3>
+        <div class="c360-seo-fit-what">Your info across 70+ directories</div>
+        <p>The same name, address and phone number on the directories and apps Google and AI tools check.</p>
+        <a class="c360-seo-fit-link" href="/local-seo-booster">Local SEO Booster <i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </div>
+    <p class="c360-seo-fit-foot c360-seo-reveal">Each one makes the others more credible. Ask about combining them on your strategy call.</p>
   </div>
 </section>
 
@@ -832,9 +866,17 @@ section.c360-seo-cta {
         <span class="c360-seo-price-save c360-seo-price-save--blank">&nbsp;</span>
         <div class="c360-seo-price-rule"></div>
         <ul class="c360-seo-price-list">
-          <li><i class="fa-solid fa-check"></i> Website SEO setup</li>
+          <li><i class="fa-solid fa-check"></i> Website SEO setup and technical fixes</li>
+          <li><i class="fa-solid fa-check"></i> Google Search Console and Analytics setup</li>
+          <li><i class="fa-solid fa-check"></i> Competitor review and written keyword plan</li>
+          <li><i class="fa-solid fa-check"></i> AI crawler check</li>
           <li><i class="fa-solid fa-check"></i> Up to 5 main pages optimized for Google and AI search</li>
-          <li><i class="fa-solid fa-check"></i> 2 new pages every month</li>
+          <li><i class="fa-solid fa-check"></i> 2 new service and city pages every month</li>
+          <li><i class="fa-solid fa-check"></i> 2 blog posts every month</li>
+          <li><i class="fa-solid fa-check"></i> 1 existing page refreshed every month</li>
+          <li><i class="fa-solid fa-check"></i> Keyword rank tracking</li>
+          <li><i class="fa-solid fa-check"></i> Monthly AI visibility check</li>
+          <li><i class="fa-solid fa-check"></i> Monthly site health scan, with fixes</li>
           <li><i class="fa-solid fa-check"></i> Monthly report</li>
         </ul>
         <a href="/schedule-demo" class="c360-seo-btn c360-seo-btn--ghost">Get started monthly</a>
@@ -849,9 +891,17 @@ section.c360-seo-cta {
         <span class="c360-seo-price-save">Save $1,198 vs. monthly</span>
         <div class="c360-seo-price-rule"></div>
         <ul class="c360-seo-price-list">
-          <li><i class="fa-solid fa-check"></i> Website SEO setup</li>
+          <li><i class="fa-solid fa-check"></i> Website SEO setup and technical fixes</li>
+          <li><i class="fa-solid fa-check"></i> Google Search Console and Analytics setup</li>
+          <li><i class="fa-solid fa-check"></i> Competitor review and written keyword plan</li>
+          <li><i class="fa-solid fa-check"></i> AI crawler check</li>
           <li><i class="fa-solid fa-check"></i> Up to 5 main pages optimized for Google and AI search</li>
-          <li><i class="fa-solid fa-check"></i> 2 new pages every month</li>
+          <li><i class="fa-solid fa-check"></i> 2 new service and city pages every month</li>
+          <li><i class="fa-solid fa-check"></i> 2 blog posts every month</li>
+          <li><i class="fa-solid fa-check"></i> 1 existing page refreshed every month</li>
+          <li><i class="fa-solid fa-check"></i> Keyword rank tracking</li>
+          <li><i class="fa-solid fa-check"></i> Monthly AI visibility check</li>
+          <li><i class="fa-solid fa-check"></i> Monthly site health scan, with fixes</li>
           <li><i class="fa-solid fa-check"></i> Monthly report</li>
         </ul>
         <a href="/schedule-demo" class="c360-seo-btn c360-seo-btn--green">Get started annual</a>
@@ -912,48 +962,48 @@ section.c360-seo-cta {
       <div class="c360-seo-faq-item">
         <input type="checkbox" id="c360-seo-faq-0" class="c360-seo-faq-toggle">
         <label for="c360-seo-faq-0" class="c360-seo-faq-q">What does "optimized for AI search" mean?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
-        <div class="c360-seo-faq-a"><p>AI tools like ChatGPT, Gemini, Perplexity and Google's AI Overviews build their answers from websites. We write your pages to answer customers' questions clearly and add structured data that spells out your services and service areas, so these tools can understand your business and match it to the right questions. You may hear this called AEO or GEO; it's part of every plan.</p></div>
+        <div class="c360-seo-faq-a"><p>AI tools like ChatGPT, Gemini, Perplexity and Google's AI Overviews build their answers from websites. We write your pages to answer customers' questions clearly, put your proof on the page, and add structured data that spells out your services and service areas, so these tools can understand your business and match it to the right questions. You may hear this called AEO or GEO. It's part of every plan.</p></div>
+      </div>
+
+      <div class="c360-seo-faq-item">
+        <input type="checkbox" id="c360-seo-faq-ai2" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-ai2" class="c360-seo-faq-q">How do you track AI search?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>Every month we ask ChatGPT, Gemini, Perplexity and Google a set of real questions your customers would ask, like "who does roof repair in Mesa?", and show you in your report whether your business comes up. AI answers change from day to day, so treat it as a trend to watch over months, not a score.</p></div>
       </div>
 
       <div class="c360-seo-faq-item">
         <input type="checkbox" id="c360-seo-faq-1" class="c360-seo-faq-toggle">
-        <label for="c360-seo-faq-1" class="c360-seo-faq-q">How is this different from Local SEO Booster?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
-        <div class="c360-seo-faq-a"><p>Local SEO Booster keeps your business information accurate across 70+ directories and apps. SEO Services works on your own website: its pages, content and structure, so the site itself ranks in Google and is easy for AI tools to recommend. They solve different problems and work well together.</p></div>
-      </div>
-
-      <div class="c360-seo-faq-item">
-        <input type="checkbox" id="c360-seo-faq-2" class="c360-seo-faq-toggle">
-        <label for="c360-seo-faq-2" class="c360-seo-faq-q">What about my Google Business Profile?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
-        <div class="c360-seo-faq-a"><p>Your Google Business Profile is the listing that shows in Google Maps. It's managed separately through <a href="/gbp-management">Google Business Profile Management</a>. A strong website helps your profile rank too, which is why many clients run both.</p></div>
-      </div>
-
-      <div class="c360-seo-faq-item">
-        <input type="checkbox" id="c360-seo-faq-3" class="c360-seo-faq-toggle">
-        <label for="c360-seo-faq-3" class="c360-seo-faq-q">How long until I see results?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
-        <div class="c360-seo-faq-a"><p>Most businesses start seeing ranking movement within 3 to 6 months. Competitive services and larger cities can take longer. Results build over time, and your monthly report shows exactly what's moving.</p></div>
-      </div>
-
-      <div class="c360-seo-faq-item">
-        <input type="checkbox" id="c360-seo-faq-4" class="c360-seo-faq-toggle">
-        <label for="c360-seo-faq-4" class="c360-seo-faq-q">Do you guarantee first-page rankings or AI recommendations?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <label for="c360-seo-faq-1" class="c360-seo-faq-q">Do you guarantee first-page rankings or AI recommendations?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
         <div class="c360-seo-faq-a"><p>No. Google decides rankings and AI tools decide what they recommend, so no honest agency can guarantee either. What we commit to is the work in your plan every month and full transparency on the results.</p></div>
       </div>
 
       <div class="c360-seo-faq-item">
-        <input type="checkbox" id="c360-seo-faq-5" class="c360-seo-faq-toggle">
-        <label for="c360-seo-faq-5" class="c360-seo-faq-q">Does my website have to be built by Complete360?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <input type="checkbox" id="c360-seo-faq-2" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-2" class="c360-seo-faq-q">How long until I see results?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>Most businesses start seeing ranking movement within 3 to 6 months. Competitive services and larger cities can take longer. Results build over time, and your monthly report shows exactly what's moving.</p></div>
+      </div>
+
+      <div class="c360-seo-faq-item">
+        <input type="checkbox" id="c360-seo-faq-3" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-3" class="c360-seo-faq-q">How is this different from Local SEO Booster or Google Business Profile Management?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>SEO Services works on your own website: its pages, content and structure. <a href="/local-seo-booster">Local SEO Booster</a> keeps your business information accurate across 70+ directories and apps, and <a href="/gbp-management">Google Business Profile Management</a> handles your listing in Google Maps. They solve different problems, and a strong website helps the other two as well.</p></div>
+      </div>
+
+      <div class="c360-seo-faq-item">
+        <input type="checkbox" id="c360-seo-faq-4" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-4" class="c360-seo-faq-q">Does my website have to be built by Complete360?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
         <div class="c360-seo-faq-a"><p>No. We can work on most websites as long as we have editing access. If your current site is outdated or hard to work with, we'll tell you on the strategy call and you can decide whether a <a href="/websites-home">new website</a> makes sense.</p></div>
       </div>
 
       <div class="c360-seo-faq-item">
-        <input type="checkbox" id="c360-seo-faq-6" class="c360-seo-faq-toggle">
-        <label for="c360-seo-faq-6" class="c360-seo-faq-q">Do I have to write anything?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
-        <div class="c360-seo-faq-a"><p>No. We write and publish your new pages each month. We'll ask for details only you know, like the services you offer, the areas you cover and a few photos, so the pages sound like your business.</p></div>
+        <input type="checkbox" id="c360-seo-faq-5" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-5" class="c360-seo-faq-q">What do you need from me?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <div class="c360-seo-faq-a"><p>Editing access to your website (and to Google Search Console or Analytics if you already have them), plus details only you know: the services you offer, the areas you cover, anything that sets you apart, and a few photos of your work. We write and publish everything else, so the pages sound like your business without you writing them.</p></div>
       </div>
 
       <div class="c360-seo-faq-item">
-        <input type="checkbox" id="c360-seo-faq-7" class="c360-seo-faq-toggle">
-        <label for="c360-seo-faq-7" class="c360-seo-faq-q">How does cancelling work?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
+        <input type="checkbox" id="c360-seo-faq-6" class="c360-seo-faq-toggle">
+        <label for="c360-seo-faq-6" class="c360-seo-faq-q">How does cancelling work?<span class="c360-seo-faq-icon"><i class="fa-solid fa-chevron-down"></i></span></label>
         <div class="c360-seo-faq-a"><p>Monthly plans can be cancelled with at least 10 days' notice before your next billing date, confirmed in writing. Annual plans are billed yearly and aren't refunded or prorated; to stop a renewal, cancel at least 10 days before your renewal date. To cancel, call our customer service team at <a href="tel:+18008632541">(800) 863-2541</a>.</p></div>
       </div>
 
