@@ -26,7 +26,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-35 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
+36 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -80,7 +80,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | File | GHL page | Status | Notes |
 |---|---|---|---|
 | `checkout/local-service-ads/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Local Service Ads Checkout | ✅ Code in repo | v1.0 imported as-is from live GHL (/lsa-checkout). 🔁 Fix next: "cancel anytime", refund wording, "money back from Google", "Performance Promise" vs legal guarantee; confirm background-check cost and setup-fee waiver |
-| `checkout/gbp-management-checkout.html` | GBP Management Checkout | ⬜ Placeholder |  |
+| `checkout/gbp-management/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | GBP Management Checkout | ✅ Code in repo | Imported as-is from live GHL (/gbp-management-checkout); snippets keep their own live version headers (v2 / v2.2 / v2). 🔁 Fix next: "30-Day Satisfaction Guarantee" vs legal guarantee, "cancel anytime", refund wording, "GBP" in copy |
 | `checkout/gbp-setup/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | GBP Setup Checkout | ✅ Code in repo | v1.0 imported as-is from live GHL (/gbp-setup-checkout). 🔁 Fix next: refund wording ("once the discovery call is completed"), "Quality Promise"/satisfaction wording vs guarantee scope, "GBP" in copy |
 | `checkout/local-seo-booster/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Local SEO Checkout | ✅ Code in repo | v1.0 imported as-is from live GHL (/local-seo-checkout). 🔁 Fix next: "cancel anytime", annual no-refund wording, "GBP" in copy, ranking promise in FAQ |
 | `checkout/geo-fencing-ctv-checkout.html` | Geo Fencing CTV Checkout | ⬜ Placeholder |  |

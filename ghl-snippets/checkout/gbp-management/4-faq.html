@@ -1,0 +1,290 @@
+<!-- ============================================================
+     REPO: checkout/gbp-management/4-faq.html — SNIPPET 4 of 4 (live v2)
+     GHL page: "GBP Management Checkout" (/gbp-management-checkout).
+     Paste at the BOTTOM of the page, below the reviews. Header/footer are
+     global — not here.
+     2026-11-11: imported as-is from the live GHL page (its own v2 header
+       below is unchanged). Known issues to fix next: contract FAQ says
+       "cancel anytime" (policy: 10 days' written notice) and "non-refundable
+       once work begins" (policy: non-refundable from purchase); 30-day
+       satisfaction guarantee FAQ conflicts with the legal guarantee; "GBP
+       Setup ... included free with the Annual plan" (matches the service
+       page — keep in sync); "local Tucson agency".
+     ============================================================ -->
+<!-- ============================================================
+     COMPLETE360 — GBP Management Checkout · FAQ  v2
+     Paste into the Custom Code block on the GBP Management checkout page.
+     Prefix: c360co-
+     v2 (Jul 18 2026):
+       - Reporting cadence monthly -> quarterly (Q1 & Q4) to match the page.
+       - Q1: "4 Google Posts" -> "weekly Google Posts" (matches the page).
+       - Q5 (contract/cancellation) rewritten: Monthly is cancel-anytime, but
+         Quarterly / Semi-Annual / Annual are PREPAID for their term and
+         non-refundable once work begins. The old "no long-term contracts /
+         cancel anytime" copy was inaccurate now that prepaid plans exist.
+       - Q6: "credit your next month" -> "credit toward another service"
+         (prepaid plans have no "next month").
+     ============================================================ -->
+
+<!-- Poppins + Font Awesome are already loaded by the global header; these two
+     lines just let the block preview standalone — harmless no-op in GHL. -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  .c360co-faq {
+    background: #fff;
+    padding: 72px 32px 80px;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360co-faq-inner {
+    max-width: 820px;
+    margin: 0 auto;
+  }
+  .c360co-faq-header {
+    text-align: center;
+    margin-bottom: 48px;
+  }
+  .c360co-faq-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+    color: #127825;
+    background: #EAF3DE;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .c360co-faq-title {
+    font-size: clamp(22px, 3.5vw, 30px);
+    font-weight: 700;
+    color: #0F1F5E;
+    line-height: 1.3;
+  }
+  .c360co-faq-sub {
+    font-size: 14px;
+    color: #5F5E5A;
+    margin-top: 8px;
+    line-height: 1.6;
+  }
+  .c360co-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .c360co-faq-item {
+    border-bottom: 1px solid rgba(18,32,120,0.08);
+  }
+  .c360co-faq-item:last-child { border-bottom: none; }
+  .c360co-faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    background: transparent;
+    border: none;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F1F5E;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .c360co-faq-question:hover { background: #F8F9FF; }
+  .c360co-faq-question.c360co-open { background: #F8F9FF; color: #122078; }
+  .c360co-faq-question i {
+    font-size: 13px;
+    color: #888780;
+    flex-shrink: 0;
+    transition: transform 0.25s ease, color 0.15s ease;
+  }
+  .c360co-faq-question.c360co-open i {
+    transform: rotate(45deg);
+    color: #127825;
+  }
+  .c360co-faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+  .c360co-faq-answer.c360co-open { max-height: 400px; }
+  .c360co-faq-answer-inner {
+    padding: 16px 24px 20px;
+    font-size: 13px;
+    color: #5F5E5A;
+    line-height: 1.7;
+    border-top: 1px solid rgba(18,32,120,0.06);
+  }
+  .c360co-faq-cta {
+    margin-top: 40px;
+    background: linear-gradient(135deg, #122078, #1a2e99);
+    border-radius: 10px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .c360co-faq-cta-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .c360co-faq-cta-sub {
+    font-size: 13px;
+    color: rgba(255,255,255,0.65);
+  }
+  .c360co-faq-cta-btn {
+    background: #127825;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 7px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    display: inline-block;
+  }
+  .c360co-faq-cta-btn:hover { background: #0e5e1d; }
+  @media (max-width: 600px) {
+    .c360co-faq { padding: 56px 20px 64px; }
+    .c360co-faq-question { padding: 18px; font-size: 13px; }
+    .c360co-faq-answer-inner { padding: 14px 18px 18px; }
+    .c360co-faq-cta { padding: 22px 20px; }
+    .c360co-faq-cta-btn { width: 100%; text-align: center; display: block; }
+  }
+</style>
+
+<section class="c360co-faq">
+  <div class="c360co-faq-inner">
+    <div class="c360co-faq-header">
+      <div class="c360co-faq-eyebrow">Got questions?</div>
+      <h2 class="c360co-faq-title">Everything you need to know<br>before you get started</h2>
+      <p class="c360co-faq-sub">Still on the fence? These are the questions we hear most often.</p>
+    </div>
+
+    <div class="c360co-faq-list">
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          What exactly does "Google Business Profile Management" include each month?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            Every month our team optimizes your profile for local keywords, publishes weekly Google Posts, monitors and responds to new reviews professionally, and keeps your photos and Q&amp;A section current. Each quarter you also get a full performance report showing calls, direction requests, and profile views — a long enough window to reflect real ranking movement rather than week-to-week noise. You stay focused on your business — we handle your Google presence.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          How long until I start seeing results?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            Most clients see measurable improvement in profile views and call volume within the first 60–90 days. Results depend on your market, competition, and starting point — but consistent monthly optimization compounds over time. Our team will set realistic expectations during your onboarding call.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          Do I need to already have a Google Business Profile?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            You'll need a verified Google Business Profile before we can manage it monthly. If you don't have one yet — or yours is unverified, suspended, or incomplete — check out our one-time GBP Setup service ($399, and included free with the Annual plan). We'll build and verify it for you, then you can move to management from there.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          Will I need to log in or do anything myself?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            Very little. We'll ask you for access to your Google Business Profile during onboarding (we use manager access — you stay the owner). After that, most of the time you'll only need to review your quarterly report. For posts, we work from what you tell us about current promotions, seasons, or services — we do the writing and publishing.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          Is there a contract, and can I cancel?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            It depends on the plan you choose. The <strong>Monthly</strong> plan is month-to-month — cancel anytime before your next billing date, no long-term commitment. The <strong>Quarterly, Semi-Annual, and Annual</strong> plans are prepaid up front for their term in exchange for a lower monthly rate, and are non-refundable once work begins — so they're the right fit if you're committed to consistent growth. We'll walk you through all of this before you buy, so there are no surprises.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          What's your satisfaction guarantee?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            If you're not satisfied with the work in your first 30 days, reach out to our team. We'll work with you to make it right — or credit the value toward a different Complete360 service. We're a local Tucson agency with 147 five-star reviews because we actually stand behind what we deliver.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          Who will be managing my account?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            You'll have a dedicated account success contact at Complete360 — a real person you can call or email. Our team includes a Google Product Expert who helps guide profile strategy. You're not getting handed off to an overseas call center or a bot.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="c360co-faq-cta">
+      <div>
+        <div class="c360co-faq-cta-title">Still have questions before you buy?</div>
+        <div class="c360co-faq-cta-sub">Schedule a free 15-minute call — no pressure, no pitch.</div>
+      </div>
+      <a href="/schedule-demo" class="c360co-faq-cta-btn">Schedule a Call →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.c360co-faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.c360co-faq-item');
+      var answer = item.querySelector('.c360co-faq-answer');
+      var isOpen = btn.classList.contains('c360co-open');
+      document.querySelectorAll('.c360co-faq-question').forEach(function(b) { b.classList.remove('c360co-open'); });
+      document.querySelectorAll('.c360co-faq-answer').forEach(function(a) { a.classList.remove('c360co-open'); });
+      if (!isOpen) {
+        btn.classList.add('c360co-open');
+        answer.classList.add('c360co-open');
+      }
+    });
+  });
+</script>
