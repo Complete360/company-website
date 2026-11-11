@@ -77,6 +77,8 @@ anything still to do on a page (🔁 = needs rebuild).
 
 ### Checkout
 
+All checkout pages are set to **noindex** in GHL and get no schema (decided Nov 11, 2026).
+
 | File | GHL page | Status | Notes |
 |---|---|---|---|
 | `checkout/local-service-ads/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Local Service Ads Checkout | ✅ Code in repo | v1.1 (Nov 11): cancellation/refund copy fixed; "money back" -> credits. Open: "Performance Promise" wording, background-check cost and setup-fee waiver claims; "Tucson businesses" headline. Paste into GHL. |

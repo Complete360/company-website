@@ -191,7 +191,9 @@ PROJECT.md       this file
   commit, and re-paste that page's schema.
 - The builder holds back (⚠ HOLD) any page whose copy still conflicts with the refund/cancellation
   policy; fix the page, re-run, then paste.
-- Thank-you pages, /training and /404 get no schema; set them to noindex.
+- Thank-you pages, /training, /404 and **all checkout pages** get no schema; set them to noindex in GHL.
+  (Checkouts decided Nov 11, 2026: search traffic should land on the service pages, and the checkout
+  FAQs repeat the service-page FAQs.)
 
 ## 6. GoHighLevel
 

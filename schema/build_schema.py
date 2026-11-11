@@ -187,7 +187,9 @@ page("/return-policy", "legal/return-policy.html", "Return & Refund Policy", "le
 # Partners
 page("/farmers-insurance", "partners/farmers-insurance.html", "Farmers Insurance Agent Program", "partner")
 
-# Checkouts (built in GHL; schema only marks them as checkout pages)
+# Checkouts (built in GHL). Decision Nov 11, 2026: every checkout is set to noindex in GHL,
+# so checkouts get no schema. Search traffic should land on the service pages.
+CHECKOUT_PATHS = []
 for path, file, product in [
     ("/lsa-checkout", "checkout/local-service-ads", "Local Service Ads"),
     ("/gbp-management-checkout", "checkout/gbp-management", "Google Business Profile Management"),
@@ -210,8 +212,9 @@ for path, file, product in [
     ("/checkout-2", "checkout/tier-2-plan-checkout.html", "the Complete360 CRM Tier 2 plan"),
     ("/checkout-3", "checkout/tier-3-plan-checkout.html", "the Complete360 CRM Tier 3 plan"),
 ]:
-    page(path, file, "Checkout: " + re.sub(r"^the ", "", product), "checkout",
+    page(path, file, "Checkout: " + re.sub(r"^the ", "", product), "skip",
          desc=f"Secure checkout for {product} from Complete360.")
+    CHECKOUT_PATHS.append(path)
 
 SKIP_WHY = {
     "/thank-you-for-demo": "Thank-you pages shouldn't appear in search. Set this page to noindex in GHL instead of adding schema.",
@@ -219,6 +222,10 @@ SKIP_WHY = {
     "/404": "Error pages don't get schema.",
     "/training": "This page is password-protected client training, so it shouldn't appear in search. Set it to noindex in GHL instead of adding schema.",
 }
+for _p in CHECKOUT_PATHS:
+    SKIP_WHY[_p] = ("Checkout pages are set to noindex in GHL (decision Nov 11, 2026): search traffic should land "
+                    "on the service page, and the checkout FAQs repeat the service-page FAQs. Set this page to noindex instead of adding schema.")
+
 
 # ── Policy guard ─────────────────────────────────────────────────────────
 # Schema repeats page copy word for word, so a page with outdated policy text
