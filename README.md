@@ -36,8 +36,8 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `global/header.html` | Header (on every page) | ✅ Code in repo | v1.9.5: AI menu says "no per-minute AI fees" — compare with live header (v1.9.4 not in repo) before pasting |
-| `global/footer.html` | Footer (on every page) | ✅ Code in repo |  |
+| `global/header.html` | Header (on every page) | ✅ Code in repo | v1.9.5: AI menu says "no per-minute AI fees". ⚠ Repo is behind live (v1.9.4 and possibly v2.0 never committed; footer v1.5 "pairs with Header v2.0"). Import the live header before adding SEO Services |
+| `global/footer.html` | Footer (on every page) | ✅ Code in repo | v1.7: SEO Services link added; "GBP" labels spelled out. Paste into GHL global footer |
 | `global/404.html` | 404 | ⬜ Placeholder |  |
 
 ### Home
