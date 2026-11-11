@@ -26,7 +26,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-32 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
+33 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -79,7 +79,7 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `checkout/local-service-ads-checkout.html` | Local Service Ads Checkout | ⬜ Placeholder |  |
+| `checkout/local-service-ads/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Local Service Ads Checkout | ✅ Code in repo | v1.0 imported as-is from live GHL (/lsa-checkout). 🔁 Fix next: "cancel anytime", refund wording, "money back from Google", "Performance Promise" vs legal guarantee; confirm background-check cost and setup-fee waiver |
 | `checkout/gbp-management-checkout.html` | GBP Management Checkout | ⬜ Placeholder |  |
 | `checkout/gbp-setup-checkout.html` | GBP Setup Checkout | ⬜ Placeholder |  |
 | `checkout/local-seo-booster-checkout.html` | Local SEO Checkout | ⬜ Placeholder |  |

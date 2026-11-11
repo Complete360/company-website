@@ -189,7 +189,7 @@ page("/farmers-insurance", "partners/farmers-insurance.html", "Farmers Insurance
 
 # Checkouts (built in GHL; schema only marks them as checkout pages)
 for path, file, product in [
-    ("/lsa-checkout", "checkout/local-service-ads-checkout.html", "Local Service Ads"),
+    ("/lsa-checkout", "checkout/local-service-ads", "Local Service Ads"),
     ("/gbp-management-checkout", "checkout/gbp-management-checkout.html", "Google Business Profile Management"),
     ("/gbp-setup-checkout", "checkout/gbp-setup-checkout.html", "Google Business Profile Setup"),
     ("/google-platinum-checkout", "checkout/google-platinum", "the Google Platinum Package"),

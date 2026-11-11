@@ -89,7 +89,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Privacy Policy | `/privacy-policy` | `schema/pages/legal/privacy-policy.html` | WebPage | — | ✅ |
 | Return & Refund Policy | `/return-policy` | `schema/pages/legal/return-policy.html` | WebPage | — | ✅ |
 | Farmers Insurance Agent Program | `/farmers-insurance` | `schema/pages/partners/farmers-insurance.html` | WebPage, FAQPage | 8 | ✅ |
-| Checkout: Local Service Ads | `/lsa-checkout` | `schema/pages/checkout/local-service-ads-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
+| Checkout: Local Service Ads | `/lsa-checkout` | `schema/pages/checkout/local-service-ads.html` | CheckoutPage, FAQPage | 8 | ⚠ HOLD: page conflicts with policy ("cancel anytime", money-back guarantee, refundable until work begins) |
 | Checkout: Google Business Profile Management | `/gbp-management-checkout` | `schema/pages/checkout/gbp-management-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Google Business Profile Setup | `/gbp-setup-checkout` | `schema/pages/checkout/gbp-setup-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Google Platinum Package | `/google-platinum-checkout` | `schema/pages/checkout/google-platinum.html` | CheckoutPage, FAQPage | 8 | ⚠ HOLD: page conflicts with policy ("cancel anytime", refundable until work begins) |
