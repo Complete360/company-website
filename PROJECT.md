@@ -241,9 +241,8 @@ PROJECT.md       this file
   The Terms' guarantee (campaign extension) still applies to all ad campaigns.
 - **/reputation-management-checkout** is linked 5× but doesn't exist in GHL — broken buttons.
 - **Local Display Network** page isn't linked from header, footer, or home.
-- **SEO Services** page is live; checkout built (`checkout/seo-services/`, /seo-services-checkout) — the live checkout
-  still shows Google Platinum copy until these snippets are pasted. Then point the page's Get Started buttons
-  (still /schedule-demo) at the checkout and add SEO Services to the header and footer.
+- **SEO Services** page and checkout (/seo-services-checkout, v1.0) are live. Still to do: point the page's Get Started
+  buttons (still /schedule-demo) at the checkout, and add SEO Services to the header and footer.
 - **Google Platinum Package** has a checkout but no service page. **Landing Page** is pitched
   by the AI agents as a product but has no page or checkout.
 - **Lifetime Deal** — confirm whether it's one-time (currently grouped with recurring CRM).
