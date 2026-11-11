@@ -95,7 +95,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Checkout: Google Platinum Package | `/google-platinum-checkout` | `schema/pages/checkout/google-platinum.html` | CheckoutPage, FAQPage | 8 | ⚠ HOLD: page conflicts with policy ("cancel anytime", refundable until work begins) |
 | Checkout: Local SEO Booster | `/local-seo-checkout` | `schema/pages/checkout/local-seo-booster.html` | CheckoutPage, FAQPage | 9 | ⚠ HOLD: page conflicts with policy ("cancel anytime") |
 | Checkout: Google Ads (PPC) Management | `/google-ads-checkout` | `schema/pages/checkout/google-ads-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: Meta Ads Management | `/meta-checkout` | `schema/pages/checkout/meta-ads-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
+| Checkout: Meta Ads Management | `/meta-checkout` | `schema/pages/checkout/meta-ads.html` | CheckoutPage | — | ✅ |
 | Checkout: Geo-Fencing (Mobile) | `/geo-mobile-checkout` | `schema/pages/checkout/geo-fencing-mobile-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Geo-Fencing (Connected TV) | `/geo-ctv-checkout` | `schema/pages/checkout/geo-fencing-ctv-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Google Social Posting | `/google-social-checkout` | `schema/pages/checkout/google-social-posting.html` | CheckoutPage | — | ✅ |

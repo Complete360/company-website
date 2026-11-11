@@ -195,7 +195,7 @@ for path, file, product in [
     ("/google-platinum-checkout", "checkout/google-platinum", "the Google Platinum Package"),
     ("/local-seo-checkout", "checkout/local-seo-booster", "Local SEO Booster"),
     ("/google-ads-checkout", "checkout/google-ads-checkout.html", "Google Ads (PPC) Management"),
-    ("/meta-checkout", "checkout/meta-ads-checkout.html", "Meta Ads Management"),
+    ("/meta-checkout", "checkout/meta-ads", "Meta Ads Management"),
     ("/geo-mobile-checkout", "checkout/geo-fencing-mobile-checkout.html", "Geo-Fencing (Mobile)"),
     ("/geo-ctv-checkout", "checkout/geo-fencing-ctv-checkout.html", "Geo-Fencing (Connected TV)"),
     ("/google-social-checkout", "checkout/google-social-posting", "Google Social Posting"),
