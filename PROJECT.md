@@ -56,7 +56,7 @@ the current page.
 | Local Service Ads (LSA) | /local-service-ads | `services/local-service-ads.html` | One-time setup + recurring management |
 | Google Business Profile Management | /gbp-management | `services/gbp-management.html` | Recurring (monthly or prepaid terms) |
 | Google Business Profile Setup & Optimization | /google-business-profile | `services/gbp-setup.html` | One-time |
-| SEO Services (website SEO) | /seo-services (**live; not in nav yet**) | `services/seo-services.html` | $599/mo or $5,990/yr. One package, 4 parts: website SEO setup (technical fixes, Search Console + Analytics, competitor review + keyword plan, AI crawler check, structured data) · up to 5 main pages optimized for Google and AI search · every month: 2 service/city pages + 2 blog posts + 1 page refreshed · monthly report (rank tracking, AI visibility check, site health scan). No ranking or AI-recommendation guarantees. |
+| SEO Services (website SEO) | /seo-services (**live; in header + footer**) | `services/seo-services.html` | $599/mo or $5,990/yr. One package, 4 parts: website SEO setup (technical fixes, Search Console + Analytics, competitor review + keyword plan, AI crawler check, structured data) · up to 5 main pages optimized for Google and AI search · every month: 2 service/city pages + 2 blog posts + 1 page refreshed · monthly report (rank tracking, AI visibility check, site health scan). No ranking or AI-recommendation guarantees. Tooling: starts on the platform's $79/mo SEO add-on. |
 | Local SEO Booster | /local-seo-booster | `services/local-seo-booster.html` | Annual (monthly plans also offered) |
 | Geo-Fencing (Mobile + CTV) | /geo-fencing | `services/geo-fencing.html` | Recurring / impression packages |
 | Google PPC (Google Ads) | /google-ppc | `services/google-ads.html` | Recurring management; ad spend billed by Google |
@@ -113,6 +113,8 @@ Source: Terms of Service and Return & Refund Policy v2.1 (`ghl-snippets/legal/`)
 - Customer-facing: write **"Google Business Profile"**, not "GBP".
 - Never quote paid-ads (Google PPC / Meta) prices in chat or voice — send the page or book a call.
 - All services are live — never "coming soon".
+- **No promos in pages, checkouts, the knowledge base, or AI agents.** Never mention or improvise
+  discounts, free builds, or special offers. Sales-only offers live in private sales docs, not this repo.
 - **Colors:** navy `#122078` · green `#127825` · sand `#F1EFE8`. **Font:** Poppins.
   **Icons:** Font Awesome 6.5.1 (loaded by the global header).
 
