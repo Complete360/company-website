@@ -26,7 +26,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-46 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
+47 of 64 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -92,6 +92,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `checkout/procard/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | ProCard Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; reviews 144+ -> 147. Prices match /procard. Open: "lifetime license / own it forever" wording; free minor edits promise; "Tucson businesses" headline. Older c360wr-/c360wf- styling. Paste into GHL. |
 | `checkout/website/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Website Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; 30-day guarantee removed; 147 reviews; cancel FAQ now matches /website-pricing (10-day notice). Prices match. Open: page counts (5/10/15+ vs 4/6/8–9 on /website-pricing); "one-time setup" vs deposit + final payment; "own your domain". Older c360wr-/c360wf- styling. Paste into GHL. |
 | `checkout/ai-agents/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | AI Employee Checkout | ✅ Code in repo | Repo v1.1 (Nov 11): imported from live GHL (/ai-checkout); per-minute conflict resolved to PROJECT.md wording (unlimited AI usage, phone line & carrier billed separately); 30-day guarantee removed; 10-day notice; annual cancel FAQ per Terms; 147 reviews. Prices match /ai-agents. Pricing snippet carries its own Custom Quote modal + form_embed.js. Older-style c360ai- recap/FAQ. Paste into GHL. |
+| `checkout/seo-services/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | SEO Services Checkout (/seo-services-checkout) | ✅ Code in repo | v1.0 (Nov 11): NEW — built on the Platinum checkout layout with /seo-services v1.4 content ($599/mo, $5,990/yr). The live GHL page currently shows Platinum copy — paste these to replace it. Then point the /seo-services Get Started buttons here. |
 | `checkout/dispensary/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Dispensary Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; reviews 144+ -> 147; billing FAQ adds 10-day notice + annual non-refundable. Prices match /dispensary. ⚠ Open: legal review of "fully legal"/"no platform policy violations" and VFW/Legion naming; ad spend separate vs fixed impressions; CTV/desktop formats vs cards; "priced slightly higher" monthly. Older c360wr-/c360wf- styling. |
 | `checkout/google-platinum/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Google Platinum Checkout | ✅ Code in repo | v1.1 (Nov 11): cancellation/refund/"GBP" copy fixed. Open: Reputation Management in the bundle vs PROJECT.md; "won't be double-billed" upgrade promise; "Tucson businesses" reviews headline. Paste into GHL. |
 | `checkout/lifetime-deal-checkout.html` | Lifetime Deal Checkout | ⬜ Placeholder |  |

@@ -56,7 +56,7 @@ the current page.
 | Local Service Ads (LSA) | /local-service-ads | `services/local-service-ads.html` | One-time setup + recurring management |
 | Google Business Profile Management | /gbp-management | `services/gbp-management.html` | Recurring (monthly or prepaid terms) |
 | Google Business Profile Setup & Optimization | /google-business-profile | `services/gbp-setup.html` | One-time |
-| SEO Services (website SEO) | /seo-services (**new — not live or in nav yet**) | `services/seo-services.html` | $599/mo or $5,990/yr. One package, 4 parts: website SEO setup (technical fixes, Search Console + Analytics, competitor review + keyword plan, AI crawler check, structured data) · up to 5 main pages optimized for Google and AI search · every month: 2 service/city pages + 2 blog posts + 1 page refreshed · monthly report (rank tracking, AI visibility check, site health scan). No ranking or AI-recommendation guarantees. |
+| SEO Services (website SEO) | /seo-services (**live; not in nav yet**) | `services/seo-services.html` | $599/mo or $5,990/yr. One package, 4 parts: website SEO setup (technical fixes, Search Console + Analytics, competitor review + keyword plan, AI crawler check, structured data) · up to 5 main pages optimized for Google and AI search · every month: 2 service/city pages + 2 blog posts + 1 page refreshed · monthly report (rank tracking, AI visibility check, site health scan). No ranking or AI-recommendation guarantees. |
 | Local SEO Booster | /local-seo-booster | `services/local-seo-booster.html` | Annual (monthly plans also offered) |
 | Geo-Fencing (Mobile + CTV) | /geo-fencing | `services/geo-fencing.html` | Recurring / impression packages |
 | Google PPC (Google Ads) | /google-ppc | `services/google-ads.html` | Recurring management; ad spend billed by Google |
@@ -139,7 +139,7 @@ ghl-snippets/
                  procard/, dispensary/,
                  geo-fencing-mobile/, website/,
                  geo-fencing-ctv/, google-ads/,
-                 ai-agents/
+                 ai-agents/, seo-services/
   crm-platform/  CRM home, Capture/Nurture/Close, feature pages
   company/       FAQ, contact, demo, thank-you, training, video library, link tree
   legal/         tos, privacy-policy, return-policy
@@ -167,7 +167,7 @@ PROJECT.md       this file
   "X of Y files have code" count.
 - Legal files use CRLF line endings — preserve them.
 
-### Status (2026-11-11): 46 of 63 page files have code
+### Status (2026-11-11): 47 of 64 page files have code
 - **Done:** global header/footer, home, all 16 service pages, website pricing, CRM home,
   legal (3), FAQ, contact, training, video library, link tree, Farmers Insurance.
 - **Live in GHL (Nov 10):** Terms v2.1, Return Policy v2.1, FAQ v2.4 and every policy-aligned service page (see README). Schema still to paste on most pages.
@@ -241,7 +241,9 @@ PROJECT.md       this file
   The Terms' guarantee (campaign extension) still applies to all ad campaigns.
 - **/reputation-management-checkout** is linked 5× but doesn't exist in GHL — broken buttons.
 - **Local Display Network** page isn't linked from header, footer, or home.
-- **SEO Services** page built (v1.4) but not yet created in GHL; no checkout yet (buttons go to /schedule-demo); add to header/footer after launch.
+- **SEO Services** page is live; checkout built (`checkout/seo-services/`, /seo-services-checkout) — the live checkout
+  still shows Google Platinum copy until these snippets are pasted. Then point the page's Get Started buttons
+  (still /schedule-demo) at the checkout and add SEO Services to the header and footer.
 - **Google Platinum Package** has a checkout but no service page. **Landing Page** is pitched
   by the AI agents as a product but has no page or checkout.
 - **Lifetime Deal** — confirm whether it's one-time (currently grouped with recurring CRM).

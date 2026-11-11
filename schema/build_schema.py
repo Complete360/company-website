@@ -204,6 +204,7 @@ for path, file, product in [
     ("/website-checkout", "checkout/website", "Website Design"),
     ("/dispensary-checkout", "checkout/dispensary", "Dispensary Advertising"),
     ("/ai-checkout", "checkout/ai-agents", "AI Agents"),
+    ("/seo-services-checkout", "checkout/seo-services", "SEO Services"),
     ("/lifetime-checkout", "checkout/lifetime-deal-checkout.html", "the Complete360 CRM Lifetime Deal"),
     ("/checkout-1", "checkout/tier-1-plan-checkout.html", "the Complete360 CRM Tier 1 plan"),
     ("/checkout-2", "checkout/tier-2-plan-checkout.html", "the Complete360 CRM Tier 2 plan"),
