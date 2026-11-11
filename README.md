@@ -26,7 +26,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-44 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
+45 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -85,7 +85,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `checkout/local-seo-booster/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Local SEO Checkout | ✅ Code in repo | v1.1 (Nov 11): cancellation/annual refund copy, ranking answer and "GBP" fixed. Open: "Tucson businesses" headline. Paste into GHL. |
 | `checkout/geo-fencing-ctv/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Geo Fencing CTV Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; typos fixed ("$1,390" -> "$1,399", "CTVads"). Prices/CPMs match /geo-fencing. Open: "#1 Location Intelligence Platform". Paste into GHL. |
 | `checkout/geo-fencing-mobile/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Geo Fencing Mobile Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; 10-day notice + prepaid non-refundable; 12-mo effective $208.30 -> $209.30. Prices match /geo-fencing. Open: ad spend separate vs 8,000 impressions included; "#1 Location Intelligence Platform"; "completely legal" competitor targeting. Paste into GHL. |
-| `checkout/google-ads-checkout.html` | Google Ads Checkout | ⬜ Placeholder |  |
+| `checkout/google-ads/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Google Ads Checkout | ✅ Code in repo | Repo v1.1 (Nov 11): imported from live GHL; 90-day guarantee removed (matches /google-ads v2.6); 10-day notice; prepaid non-refundable from purchase. Prices match. ⚠ Strip the internal HTML comments (agent-only $299 floor) before pasting — comments show in page source. Open: "don't auto-renew" vs Terms; Most Popular tier (6-mo here, 12-mo on page). Paste into GHL. |
 | `checkout/meta-ads/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Meta Ads Checkout | ✅ Code in repo | v1.1 (Nov 11): 90-day guarantee removed (matches /meta-ads v2.3); 10-day notice; non-refundable from purchase. Older c360wr-/c360wf- styling. Paste into GHL. |
 | `checkout/google-social-posting/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Google Social Posting Checkout | ✅ Code in repo | v1.1 (Nov 11): 30-day guarantee removed; 10-day notice; 147 reviews; "GBP"/vendor name fixed. ⚠ Open: 6/12-month prices ($774/$1,308) vs service page ($715/$1,252). Older c360wr-/c360wf- styling. Paste after prices are settled. |
 | `checkout/meta-social-posting/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Meta Social Posting Checkout | ✅ Code in repo | v1.1 (Nov 11): 30-day guarantee removed; 10-day notice; 147 reviews. Older c360wr-/c360wf- styling. Paste into GHL. |

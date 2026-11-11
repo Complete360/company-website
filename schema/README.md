@@ -94,7 +94,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Checkout: Google Business Profile Setup | `/gbp-setup-checkout` | `schema/pages/checkout/gbp-setup.html` | CheckoutPage, FAQPage | 8 | ✅ |
 | Checkout: Google Platinum Package | `/google-platinum-checkout` | `schema/pages/checkout/google-platinum.html` | CheckoutPage, FAQPage | 8 | ✅ |
 | Checkout: Local SEO Booster | `/local-seo-checkout` | `schema/pages/checkout/local-seo-booster.html` | CheckoutPage, FAQPage | 9 | ✅ |
-| Checkout: Google Ads (PPC) Management | `/google-ads-checkout` | `schema/pages/checkout/google-ads-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
+| Checkout: Google Ads (PPC) Management | `/google-ads-checkout` | `schema/pages/checkout/google-ads.html` | CheckoutPage, FAQPage | 6 | ✅ |
 | Checkout: Meta Ads Management | `/meta-checkout` | `schema/pages/checkout/meta-ads.html` | CheckoutPage | — | ✅ |
 | Checkout: Geo-Fencing (Mobile) | `/geo-mobile-checkout` | `schema/pages/checkout/geo-fencing-mobile.html` | CheckoutPage, FAQPage | 7 | ✅ |
 | Checkout: Geo-Fencing (Connected TV) | `/geo-ctv-checkout` | `schema/pages/checkout/geo-fencing-ctv.html` | CheckoutPage, FAQPage | 8 | ✅ |
