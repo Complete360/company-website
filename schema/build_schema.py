@@ -193,7 +193,7 @@ for path, file, product in [
     ("/gbp-management-checkout", "checkout/gbp-management-checkout.html", "Google Business Profile Management"),
     ("/gbp-setup-checkout", "checkout/gbp-setup-checkout.html", "Google Business Profile Setup"),
     ("/google-platinum-checkout", "checkout/google-platinum", "the Google Platinum Package"),
-    ("/local-seo-checkout", "checkout/local-seo-booster-checkout.html", "Local SEO Booster"),
+    ("/local-seo-checkout", "checkout/local-seo-booster", "Local SEO Booster"),
     ("/google-ads-checkout", "checkout/google-ads-checkout.html", "Google Ads (PPC) Management"),
     ("/meta-checkout", "checkout/meta-ads-checkout.html", "Meta Ads Management"),
     ("/geo-mobile-checkout", "checkout/geo-fencing-mobile-checkout.html", "Geo-Fencing (Mobile)"),
