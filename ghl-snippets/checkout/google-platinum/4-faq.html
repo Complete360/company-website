@@ -1,0 +1,249 @@
+<!-- ============================================================
+     COMPLETE360 — GOOGLE PLATINUM CHECKOUT — SNIPPET 4 of 4: FAQ + CALL CTA (v1.0)
+     GHL page: "Google Platinum Checkout". Paste into the Custom Code element
+     at the BOTTOM of the page, below the reviews.
+     Prefix: c360co- (shared by all 4 snippets on this page).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.0 (2026-11-10): imported as-is from the live GHL page. No edits yet.
+       Known issues to fix next: contract FAQ says "cancel anytime" (policy:
+       10 days' written notice) and "non-refundable once the management
+       period begins" (policy: non-refundable from purchase); "GBP" used
+       customer-facing; "won't be double-billed" promise needs a billing check.
+     ============================================================ -->
+<style>
+  .c360co-faq {
+    background: #fff;
+    padding: 72px 32px 80px;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360co-faq-inner { max-width: 820px; margin: 0 auto; }
+  .c360co-faq-header { text-align: center; margin-bottom: 48px; }
+  .c360co-faq-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+    color: #127825;
+    background: #EAF3DE;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .c360co-faq-title { font-size: clamp(22px, 3.5vw, 30px); font-weight: 700; color: #0F1F5E; line-height: 1.3; }
+  .c360co-faq-sub { font-size: 14px; color: #5F5E5A; margin-top: 8px; line-height: 1.6; }
+  .c360co-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .c360co-faq-item { border-bottom: 1px solid rgba(18,32,120,0.08); }
+  .c360co-faq-item:last-child { border-bottom: none; }
+  .c360co-faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    background: transparent;
+    border: none;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F1F5E;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .c360co-faq-question:hover { background: #F8F9FF; }
+  .c360co-faq-question.c360co-open { background: #F8F9FF; color: #122078; }
+  .c360co-faq-question i {
+    font-size: 13px;
+    color: #888780;
+    flex-shrink: 0;
+    transition: transform 0.25s ease, color 0.15s ease;
+  }
+  .c360co-faq-question.c360co-open i { transform: rotate(45deg); color: #127825; }
+  .c360co-faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .c360co-faq-answer.c360co-open { max-height: 500px; }
+  .c360co-faq-answer-inner {
+    padding: 16px 24px 20px;
+    font-size: 13px;
+    color: #5F5E5A;
+    line-height: 1.7;
+    border-top: 1px solid rgba(18,32,120,0.06);
+  }
+  .c360co-faq-cta {
+    margin-top: 40px;
+    background: linear-gradient(135deg, #122078, #1a2e99);
+    border-radius: 10px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .c360co-faq-cta-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .c360co-faq-cta-sub { font-size: 13px; color: rgba(255,255,255,0.65); }
+  .c360co-faq-cta-btn {
+    background: #127825;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 7px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    display: inline-block;
+  }
+  .c360co-faq-cta-btn:hover { background: #0e5e1d; }
+  @media (max-width: 600px) {
+    .c360co-faq { padding: 56px 20px 64px; }
+    .c360co-faq-question { padding: 18px; font-size: 13px; }
+    .c360co-faq-answer-inner { padding: 14px 18px 18px; }
+    .c360co-faq-cta { padding: 22px 20px; }
+    .c360co-faq-cta-btn { width: 100%; text-align: center; display: block; }
+  }
+</style>
+
+<section class="c360co-faq">
+  <div class="c360co-faq-inner">
+    <div class="c360co-faq-header">
+      <div class="c360co-faq-eyebrow">Got questions?</div>
+      <h2 class="c360co-faq-title">Everything you need to know about<br>the Google Platinum Package</h2>
+      <p class="c360co-faq-sub">Common questions before signing up — answered straight.</p>
+    </div>
+
+    <div class="c360co-faq-list">
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          What exactly is the Google Platinum Package?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            The Platinum Package bundles three of our Google services — Local Service Ads management, Google Business Profile management, and Reputation Management — into one plan managed by one team. Instead of paying separately for each service and coordinating across different providers, you get your entire Google presence handled under one roof with a single point of contact and a combined performance dashboard.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          Why does bundling these three services together produce better results?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            Because LSA, GBP, and reviews are not independent — they compound each other. Google reviews that come in through your GBP directly influence your LSA ranking, meaning more reviews equals better ad placement and lower cost per lead. At the same time, your LSA ads drive calls that lead to more reviews. When the same team manages all three, they can optimize this feedback loop intentionally rather than treating each channel in isolation. That's the core advantage of the Platinum Package.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          Why is the $499 setup fee waived on this plan?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            When you sign up for LSA as a standalone service, the $499 setup fee covers the time and work required to build out your account from scratch. When you bundle it into the Platinum Package, we're doing all of that work anyway as part of the broader onboarding — so we absorb the setup cost. It's our way of rewarding clients who commit to the full Google presence approach rather than piecemealing it together over time.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          How long does it take to get everything up and running?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            GBP management and reputation management can begin within days of onboarding. LSA has the longest lead time due to Google's verification process — typically 1 to 3 weeks depending on how quickly your background check and documents are approved. We run all three onboarding tracks simultaneously so nothing waits on anything else. Most clients are fully live across all three channels within 2 to 3 weeks of signing up.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          What does "Reputation Management" include in this package?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            Reputation management covers review response management — we respond to new Google reviews on your behalf professionally and promptly — plus an active review generation strategy to consistently grow your review count across platforms. We also sync your review profile across key platforms and track your overall reputation score as part of the combined performance dashboard.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          Can I add this package if I'm already on an LSA or GBP plan with you?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            Yes — if you're already a GBP Management or LSA client, you can upgrade to Platinum and we'll consolidate everything under one plan. Your existing setup work carries over and you won't be double-billed for work already done. Reach out to your account contact or schedule a call and we'll map out the cleanest transition for your situation.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          What's the ad spend budget on top of the management fee?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            The Platinum Package management fee covers our team's work — strategy, optimization, reporting, and dispute management. Your LSA ad spend budget is separate and goes directly to Google. We'll recommend a starting budget based on your market and industry during onboarding, and adjust it monthly based on performance. You stay in full control of the ad spend at all times.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          Is there a contract or can I cancel anytime?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            The monthly plan has no long-term contract — cancel before your next billing date anytime. Quarterly, semi-annual, and annual plans are paid upfront in exchange for the discounted rate and are non-refundable once the management period begins. Since all three services are actively being managed from day one, the work investment starts immediately at onboarding.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="c360co-faq-cta">
+      <div>
+        <div class="c360co-faq-cta-title">Still have questions before you buy?</div>
+        <div class="c360co-faq-cta-sub">Schedule a free 15-minute strategy call — no pressure, no pitch.</div>
+      </div>
+      <a href="/schedule-demo" class="c360co-faq-cta-btn">Schedule a Call →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.c360co-faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.c360co-faq-item');
+      var answer = item.querySelector('.c360co-faq-answer');
+      var isOpen = btn.classList.contains('c360co-open');
+      document.querySelectorAll('.c360co-faq-question').forEach(function(b) { b.classList.remove('c360co-open'); });
+      document.querySelectorAll('.c360co-faq-answer').forEach(function(a) { a.classList.remove('c360co-open'); });
+      if (!isOpen) {
+        btn.classList.add('c360co-open');
+        answer.classList.add('c360co-open');
+      }
+    });
+  });
+</script>

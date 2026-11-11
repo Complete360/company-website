@@ -26,7 +26,8 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-31 of 63 files have code. Files marked ⬜ contain only a
+32 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
+numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
 anything still to do on a page (🔁 = needs rebuild).
@@ -92,7 +93,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `checkout/website-checkout.html` | Website Checkout | ⬜ Placeholder |  |
 | `checkout/ai-employee-checkout.html` | AI Employee Checkout | ⬜ Placeholder |  |
 | `checkout/dispensary-checkout.html` | Dispensary Checkout | ⬜ Placeholder |  |
-| `checkout/google-platinum-checkout.html` | Google Platinum Checkout | ⬜ Placeholder |  |
+| `checkout/google-platinum/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Google Platinum Checkout | ✅ Code in repo | v1.0 imported as-is from live GHL. 🔁 Fix next: "cancel anytime", refund wording, "GBP" in copy, bundle contents vs PROJECT.md |
 | `checkout/lifetime-deal-checkout.html` | Lifetime Deal Checkout | ⬜ Placeholder |  |
 | `checkout/tier-1-plan-checkout.html` | Tier 1 Plan Check Out | ⬜ Placeholder |  |
 | `checkout/tier-2-plan-checkout.html` | Tier 2 Plan Check Out | ⬜ Placeholder |  |

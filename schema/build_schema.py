@@ -192,7 +192,7 @@ for path, file, product in [
     ("/lsa-checkout", "checkout/local-service-ads-checkout.html", "Local Service Ads"),
     ("/gbp-management-checkout", "checkout/gbp-management-checkout.html", "Google Business Profile Management"),
     ("/gbp-setup-checkout", "checkout/gbp-setup-checkout.html", "Google Business Profile Setup"),
-    ("/google-platinum-checkout", "checkout/google-platinum-checkout.html", "the Google Platinum Package"),
+    ("/google-platinum-checkout", "checkout/google-platinum", "the Google Platinum Package"),
     ("/local-seo-checkout", "checkout/local-seo-booster-checkout.html", "Local SEO Booster"),
     ("/google-ads-checkout", "checkout/google-ads-checkout.html", "Google Ads (PPC) Management"),
     ("/meta-checkout", "checkout/meta-ads-checkout.html", "Meta Ads Management"),
@@ -412,7 +412,7 @@ def write_readme(rows):
             code = "No schema (noindex instead)"
         else:
             code = "✅" if info["has_code"] else "⬜ (basic schema until code is added)"
-        lines.append(f"| {pg['name']} | `{pg['path']}` | `schema/pages/{pg['file']}` | {info['types']} | "
+        lines.append(f"| {pg['name']} | `{pg['path']}` | `schema/pages/{pg['file'] if pg['file'].endswith('.html') else pg['file'] + '.html'}` | {info['types']} | "
                      f"{info['faqs'] or '—'} | {code} |")
     open(os.path.join(ROOT, "schema", "README.md"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
 

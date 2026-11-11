@@ -1,0 +1,268 @@
+<!-- ============================================================
+     COMPLETE360 — GOOGLE PLATINUM CHECKOUT — SNIPPET 2 of 4: ORDER SUMMARY (v1.0)
+     GHL page: "Google Platinum Checkout". Paste into the Custom Code element
+     in the column BESIDE the GHL order form (right side on desktop).
+     Prefix: c360co- (shared by all 4 snippets on this page).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.0 (2026-11-10): imported as-is from the live GHL page. No edits yet.
+       Known issues to fix next: "GBP" used customer-facing; bundle lists
+       Reputation Management (PROJECT.md says GBP Management + LSA only).
+     ============================================================ -->
+<style>
+  .c360co-summary-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+  }
+  .c360co-summary {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(18,32,120,0.1);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(18,32,120,0.07);
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+  }
+  .c360co-summary-header {
+    background: linear-gradient(135deg, #0d1654, #122078, #1a2e99);
+    padding: 20px 24px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .c360co-summary-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(18,120,37,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .c360co-summary-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 8px;
+  }
+  .c360co-summary-header-badge i { color: #FBBC04; font-size: 9px; }
+  .c360co-summary-header-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 4px; position: relative; }
+  .c360co-summary-header-sub { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.4; position: relative; }
+  .c360co-summary-body {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  /* Bundle service blocks */
+  .c360co-bundle-block {
+    border: 1px solid rgba(18,32,120,0.09);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .c360co-bundle-block-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #F8F9FF;
+    border-bottom: 1px solid rgba(18,32,120,0.07);
+  }
+  .c360co-bundle-block-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .c360co-icon-blue { background: #E6F1FB; color: #122078; }
+  .c360co-icon-green { background: #EAF3DE; color: #127825; }
+  .c360co-bundle-block-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0F1F5E;
+    flex: 1;
+  }
+  .c360co-bundle-block-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .c360co-bundle-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    color: #0F1F5E;
+    line-height: 1.4;
+  }
+  .c360co-bundle-check {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #127825;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .c360co-bundle-check i { font-size: 7px; color: #fff; }
+
+  .c360co-summary-divider { border: none; border-top: 1px solid rgba(18,32,120,0.08); }
+
+  /* Compound effect callout */
+  .c360co-compound-callout {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: linear-gradient(135deg, rgba(18,32,120,0.05), rgba(18,120,37,0.05));
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid rgba(18,32,120,0.1);
+  }
+  .c360co-compound-callout i { color: #FBBC04; font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+  .c360co-compound-title { font-size: 12px; font-weight: 700; color: #0F1F5E; margin-bottom: 2px; }
+  .c360co-compound-desc { font-size: 11px; color: #5F5E5A; line-height: 1.5; }
+
+  /* Setup waiver */
+  .c360co-waiver-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #EAF3DE;
+    border: 1px solid rgba(18,120,37,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #0a4010;
+  }
+  .c360co-waiver-badge i { color: #127825; font-size: 13px; flex-shrink: 0; }
+
+  .c360co-summary-trust { display: flex; flex-direction: column; gap: 7px; }
+  .c360co-summary-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #5F5E5A;
+  }
+  .c360co-summary-trust-item i { font-size: 13px; color: #122078; width: 16px; text-align: center; }
+  .c360co-summary-footer {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.08);
+    padding: 14px 24px;
+    text-align: center;
+    font-size: 11px;
+    color: #888780;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    flex-shrink: 0;
+  }
+  .c360co-summary-footer i { font-size: 12px; color: #127825; }
+</style>
+
+<div id="c360-order-form" class="c360co-summary-wrap">
+  <div class="c360co-summary">
+    <div class="c360co-summary-header">
+      <div class="c360co-summary-header-badge">
+        <i class="fa-solid fa-star"></i>
+        Complete Google Bundle
+      </div>
+      <div class="c360co-summary-header-title">Google Platinum Package</div>
+      <div class="c360co-summary-header-sub">LSA + GBP Management + Reputation Management — your entire Google presence, handled under one roof.</div>
+    </div>
+
+    <div class="c360co-summary-body">
+
+      <!-- LSA Block -->
+      <div class="c360co-bundle-block">
+        <div class="c360co-bundle-block-header">
+          <div class="c360co-bundle-block-icon c360co-icon-blue"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="c360co-bundle-block-title">Local Service Ads Management</div>
+        </div>
+        <div class="c360co-bundle-block-body">
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>LSA account setup &amp; full configuration</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Monthly bid strategy adjustments</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Active spam call &amp; bad lead disputes</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>License, insurance &amp; verification support</div>
+        </div>
+      </div>
+
+      <!-- GBP Block -->
+      <div class="c360co-bundle-block">
+        <div class="c360co-bundle-block-header">
+          <div class="c360co-bundle-block-icon c360co-icon-green"><i class="fa-solid fa-location-dot"></i></div>
+          <div class="c360co-bundle-block-title">GBP Management</div>
+        </div>
+        <div class="c360co-bundle-block-body">
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Monthly profile optimization &amp; keyword alignment</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>GBP post creation &amp; scheduling (4/mo)</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Photo &amp; Q&amp;A profile management</div>
+        </div>
+      </div>
+
+      <!-- Reputation Block -->
+      <div class="c360co-bundle-block">
+        <div class="c360co-bundle-block-header">
+          <div class="c360co-bundle-block-icon c360co-icon-blue"><i class="fa-solid fa-star"></i></div>
+          <div class="c360co-bundle-block-title">Reputation Management</div>
+        </div>
+        <div class="c360co-bundle-block-body">
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Review response management</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Review generation strategy &amp; platform sync</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Combined Google performance dashboard &amp; reporting</div>
+        </div>
+      </div>
+
+      <div class="c360co-compound-callout">
+        <i class="fa-solid fa-star"></i>
+        <div>
+          <div class="c360co-compound-title">Both channels compound each other</div>
+          <div class="c360co-compound-desc">GBP reviews directly boost your LSA ranking — more reviews means higher placement and lower cost per lead across both platforms simultaneously.</div>
+        </div>
+      </div>
+
+      <div class="c360co-waiver-badge">
+        <i class="fa-solid fa-circle-check"></i>
+        $499 LSA setup fee waived — save $499 vs. signing up for LSA separately
+      </div>
+
+      <hr class="c360co-summary-divider">
+
+      <div class="c360co-summary-trust">
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-user-tie"></i> Priority support &amp; dedicated account manager</div>
+        <div class="c360co-summary-trust-item"><i class="fa-brands fa-google"></i> Google Partner certified agency</div>
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-star"></i> 147 five-star reviews on Google</div>
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-phone"></i> Real humans — (866) 527-6205</div>
+      </div>
+    </div>
+
+    <div class="c360co-summary-footer">
+      <i class="fa-solid fa-lock"></i>
+      Secure checkout · Your info stays private
+    </div>
+  </div>
+</div>
