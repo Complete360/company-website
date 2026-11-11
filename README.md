@@ -44,7 +44,7 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `home.html` | Main Home Page | ✅ Code in repo |  |
+| `home.html` | Main Home Page | ✅ Code in repo | v2.2: 147 reviews / 5.0 rating — paste into GHL if live page still shows 144 / 4.9 |
 
 ### Services
 
