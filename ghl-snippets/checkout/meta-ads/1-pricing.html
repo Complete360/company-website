@@ -1,0 +1,265 @@
+<!-- ============================================================
+     REPO: checkout/meta-ads/1-pricing.html — SNIPPET 1 of 4 (repo v1.1, was v1.0)
+     GHL page: "Meta Ads Checkout" (/meta-checkout). Paste ABOVE the GHL
+     order form. Header/footer are global — not here.
+     v1.1 (2026-11-11): Removed "90-day satisfaction guarantee" bullets
+       (removed from /meta-ads v2.3); Monthly card: 10 days' notice to
+       cancel.
+     2026-11-11: imported as-is from the live GHL page (original header
+       below is unchanged). Known issues to fix next: "90-day satisfaction
+       guarantee" on the 6- and 12-month cards — REMOVED from /meta-ads in
+       v2.3 (Nov 10, Jared's call), so it must come off here too; Monthly
+       card says "cancel anytime" twice (policy: 10 days' written notice).
+     ============================================================ -->
+<!-- ============================================================
+     COMPLETE360 — META ADS CHECKOUT — PRICING TABLE
+     For the /meta-checkout page. Prefix c360co- (checkout).
+     Rebuilt from the old Meta Social Posting table — SAME layout/CSS,
+     content swapped to Meta Ads Management pricing.
+
+     MUST STAY IN SYNC WITH:
+       - /meta-ads page (c360ma-) pricing cards
+       - the actual checkout products/prices GHL charges
+       - the pricing sheet
+     Numbers here (v-match to meta-ads v2.1):
+       Monthly $399/mo · 6-Month $1,915 · 12-Month $3,352
+       + $499 one-time setup on every tier
+       6mo = 20% off, 12mo = 30% off the monthly rate
+       Most Popular = 12-Month (matches the page; moved off 6-Month)
+
+     ⚠️ The order form / product below this section MUST charge these exact
+        amounts incl. the $499 setup, or page and cart disagree at payment.
+     ⚠️ Dropped the fa-brands fa-meta logo from the eyebrow — the /meta-ads
+        page deliberately uses no Meta marks (brand-guideline caution).
+        Using a neutral icon here for the same reason.
+     ============================================================ -->
+
+<style>
+  .c360co-pricing-row {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    border-bottom: 1px solid rgba(18,32,120,0.07);
+    padding: 48px 32px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360co-pricing-row-inner { max-width: 960px; margin: 0 auto; }
+  .c360co-pricing-row-header { text-align: center; margin-bottom: 28px; }
+  .c360co-pricing-row-eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px;
+    font-weight: 600; color: #127825; background: #EAF3DE;
+    padding: 4px 12px; border-radius: 4px; margin-bottom: 10px;
+  }
+  .c360co-pricing-row-eyebrow i { font-size: 10px; }
+  .c360co-pricing-row-title {
+    font-size: clamp(18px, 2.5vw, 24px); font-weight: 700;
+    color: #0F1F5E; line-height: 1.3; margin-bottom: 6px;
+  }
+  .c360co-pricing-row-sub { font-size: 13px; color: #5F5E5A; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+  .c360co-pricing-row-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px; margin-bottom: 20px; align-items: stretch;
+  }
+  .c360co-pricing-row-card {
+    background: #fff; border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 10px; padding: 24px 20px; position: relative;
+    box-sizing: border-box;
+    display: flex; flex-direction: column;
+  }
+  .c360co-pricing-row-card-popular {
+    background: #122078; border-color: #127825; border-width: 2px;
+  }
+  .c360co-pricing-row-card-badge {
+    position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 3px 12px; border-radius: 6px;
+    white-space: nowrap; color: #fff; background: #127825;
+  }
+  .c360co-pricing-row-card-tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.4px; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px;
+    background: rgba(18,32,120,0.08); color: #122078;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-tag {
+    background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.85);
+  }
+  .c360co-pricing-row-card-name {
+    font-size: 20px; font-weight: 700; color: #0F1F5E; margin-bottom: 4px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-name { color: #fff; }
+  .c360co-pricing-row-card-tagline {
+    font-size: 11px; color: #888780; margin-bottom: 14px; line-height: 1.4;
+    min-height: 31px;   /* reserve 2 lines so the price row aligns across cards */
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-tagline { color: rgba(255,255,255,0.6); }
+  .c360co-pricing-row-card-was {
+    font-size: 11px; color: #B4B2A9; text-decoration: line-through; margin-bottom: 2px;
+    min-height: 17px;   /* reserved on all cards, incl. the empty Monthly one */
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-was { color: rgba(255,255,255,0.4); }
+  .c360co-pricing-row-card-amount-row {
+    display: flex; align-items: baseline; gap: 2px; margin-bottom: 2px;
+  }
+  .c360co-pricing-row-card-symbol { font-size: 18px; font-weight: 700; color: #122078; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-symbol { color: #fff; }
+  .c360co-pricing-row-card-amount { font-size: 38px; font-weight: 700; color: #122078; line-height: 1; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-amount { color: #fff; }
+  .c360co-pricing-row-card-per { font-size: 13px; color: #888780; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-per { color: rgba(255,255,255,0.6); }
+  .c360co-pricing-row-card-billed {
+    font-size: 10px; color: #888780; margin-bottom: 4px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-billed { color: rgba(255,255,255,0.55); }
+  /* NEW — one-time setup fee line. Prominent on a checkout: this is a real
+     charge, not fine print. */
+  .c360co-pricing-row-card-setup {
+    font-size: 11px; font-weight: 600; color: #122078;
+    background: rgba(18,32,120,0.06); border-radius: 5px;
+    padding: 4px 9px; margin-bottom: 12px; display: inline-block;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-setup {
+    color: #fff; background: rgba(255,255,255,0.14);
+  }
+  .c360co-pricing-row-card-setup strong { font-weight: 700; }
+  .c360co-pricing-row-card-savings {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 600; color: #127825;
+    background: rgba(18,120,37,0.1); border: 1px solid rgba(18,120,37,0.2);
+    padding: 3px 10px; border-radius: 5px; margin-bottom: 14px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-savings {
+    background: rgba(46,204,82,0.18); border-color: rgba(46,204,82,0.35); color: #3dd870;
+  }
+  .c360co-pricing-row-card-savings i { font-size: 9px; }
+  .c360co-pricing-row-card-divider {
+    border: none; border-top: 1px solid rgba(18,32,120,0.07); margin: 0 0 14px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-divider { border-color: rgba(255,255,255,0.15); }
+  .c360co-pricing-row-card-includes {
+    display: flex; flex-direction: column; gap: 7px;
+    flex: 1;   /* absorbs any residual height so cards end level */
+  }
+  .c360co-pricing-row-card-includes-item {
+    display: flex; align-items: flex-start; gap: 7px;
+    font-size: 12px; color: #0F1F5E; line-height: 1.4;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-includes-item { color: rgba(255,255,255,0.88); }
+  .c360co-pricing-row-card-includes-item i {
+    font-size: 10px; color: #127825; width: 14px; flex-shrink: 0; margin-top: 2px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-includes-item i { color: #3dd870; }
+  .c360co-pricing-row-footer-note {
+    text-align: center; font-size: 12px; color: #888780; margin-bottom: 16px; line-height: 1.5;
+  }
+  .c360co-pricing-row-cta {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: rgba(18,32,120,0.04); border: 1px solid rgba(18,32,120,0.08);
+    border-radius: 8px; padding: 12px 20px; text-align: center;
+  }
+  .c360co-pricing-row-cta i { color: #127825; font-size: 13px; flex-shrink: 0; }
+  .c360co-pricing-row-cta span { font-size: 13px; color: #5F5E5A; }
+  .c360co-pricing-row-cta strong { color: #0F1F5E; }
+  @media (max-width: 768px) {
+    .c360co-pricing-row-grid { grid-template-columns: 1fr; gap: 24px; }
+    .c360co-pricing-row { padding: 40px 20px; }
+  }
+</style>
+
+<section class="c360co-pricing-row">
+  <div class="c360co-pricing-row-inner">
+    <div class="c360co-pricing-row-header">
+      <div class="c360co-pricing-row-eyebrow">
+        <i class="fa-solid fa-bullhorn"></i>
+        Meta Ads Management — Facebook &amp; Instagram
+      </div>
+      <h2 class="c360co-pricing-row-title">Simple, flat management pricing.</h2>
+      <p class="c360co-pricing-row-sub">Choose the commitment that fits — every plan is full-service campaign management: strategy, creative, targeting, optimization, and reporting. Your ad budget is separate and paid directly to Meta.</p>
+    </div>
+
+    <div class="c360co-pricing-row-grid">
+
+      <!-- MONTHLY -->
+      <div class="c360co-pricing-row-card">
+        <div class="c360co-pricing-row-card-tag"><i class="fa-solid fa-calendar"></i> Monthly</div>
+        <div class="c360co-pricing-row-card-name">Month-to-Month</div>
+        <div class="c360co-pricing-row-card-tagline">Flexible management — 10 days' notice to cancel.</div>
+        <!-- empty 'was' reserves the strikethrough line so the price aligns with the prepay cards -->
+        <div class="c360co-pricing-row-card-was" aria-hidden="true">&nbsp;</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">399</span>
+          <span class="c360co-pricing-row-card-per">/mo</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">Billed monthly · 10 days' notice to cancel</div>
+        <div class="c360co-pricing-row-card-setup">+ <strong>$499</strong> one-time setup</div>
+        <!-- hidden 'savings' placeholder reserves the badge row so the divider + includes line up -->
+        <div class="c360co-pricing-row-card-savings" style="visibility:hidden;" aria-hidden="true"><i class="fa-solid fa-tag"></i> placeholder</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-includes">
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Full campaign management</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Creative, copy &amp; lead forms</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>CRM integration &amp; reporting</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Dedicated account manager</div>
+        </div>
+      </div>
+
+      <!-- 6-MONTH -->
+      <div class="c360co-pricing-row-card">
+        <div class="c360co-pricing-row-card-tag"><i class="fa-solid fa-calendar-days"></i> 6-Month</div>
+        <div class="c360co-pricing-row-card-name">6-Month Plan</div>
+        <div class="c360co-pricing-row-card-tagline">Six months of managed campaigns — paid in full.</div>
+        <div class="c360co-pricing-row-card-was">$399/mo · $2,394 total</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">1,915</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">Paid in full · one payment covers 6 months</div>
+        <div class="c360co-pricing-row-card-setup">+ <strong>$499</strong> one-time setup</div>
+        <div class="c360co-pricing-row-card-savings"><i class="fa-solid fa-tag"></i> $319/mo equivalent · Save $479</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-includes">
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Everything in Monthly</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Lower effective monthly rate</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Priority optimization cadence</div>
+        </div>
+      </div>
+
+      <!-- 12-MONTH — POPULAR (matches /meta-ads featured tier) -->
+      <div class="c360co-pricing-row-card c360co-pricing-row-card-popular">
+        <div class="c360co-pricing-row-card-badge"><i class="fa-solid fa-bolt"></i> Most Popular</div>
+        <div class="c360co-pricing-row-card-tag"><i class="fa-solid fa-calendar-check"></i> 12-Month</div>
+        <div class="c360co-pricing-row-card-name">12-Month Plan</div>
+        <div class="c360co-pricing-row-card-tagline">Best value — a full year of managed campaigns at the lowest rate.</div>
+        <div class="c360co-pricing-row-card-was">$399/mo · $4,788 total</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">3,352</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">Paid in full · one payment covers 12 months</div>
+        <div class="c360co-pricing-row-card-setup">+ <strong>$499</strong> one-time setup</div>
+        <div class="c360co-pricing-row-card-savings"><i class="fa-solid fa-tag"></i> $279/mo equivalent · Save $1,436</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-includes">
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Everything in Monthly</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Our lowest monthly rate</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Best for long-term lead flow</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="c360co-pricing-row-footer-note">
+      Management fee only — your ad budget is paid directly to Meta ($600/mo minimum recommended). Requires access to your Meta ad account / Business Manager. &nbsp;|&nbsp;
+      <a href="/schedule-demo" style="color:#122078;font-weight:600;text-decoration:none;">Questions? Schedule a free call →</a>
+    </div>
+
+    <div class="c360co-pricing-row-cta">
+      <i class="fa-solid fa-arrow-down"></i>
+      <span>Ready to get started? <strong>Select your plan in the order form below.</strong></span>
+    </div>
+  </div>
+</section>
+<!-- ============================================================
+     END META ADS CHECKOUT PRICING TABLE
+     ============================================================ -->

@@ -1,0 +1,104 @@
+<!-- ============================================================
+     COMPLETE360 — PROCARD CHECKOUT — SNIPPET 4 of 4: FAQ + CALL CTA (v1.0)
+     GHL page: "ProCard Checkout" (/procard-checkout). Paste into the Custom
+     Code element at the BOTTOM of the page.
+     Prefix: c360wf- (older design, like the social checkouts).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.0 (2026-11-11): imported as-is from the live GHL page. No policy
+       fixes needed (one-time product, no cancellation/refund claims).
+       Open (Jared): "own it forever" wording; "day-to-day tweaks ... as part
+       of your ongoing relationship" — confirm free minor edits are offered.
+     ============================================================ -->
+<style>
+.c360wf-wrap {
+  font-family: var(--contentfont, 'Poppins'), sans-serif;
+  max-width: 1160px; margin: 0 auto; padding: 72px 24px 80px;
+}
+.c360wf-header { text-align: center; margin-bottom: 48px; }
+.c360wf-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #127825; margin-bottom: 10px; }
+.c360wf-heading { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: #122078; margin-bottom: 12px; }
+.c360wf-sub { font-size: 1rem; color: #6B7A9D; max-width: 520px; margin: 0 auto; line-height: 1.6; }
+.c360wf-grid { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+.c360wf-item { border: 1px solid #E2E8F4; border-radius: 14px; overflow: hidden; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.c360wf-item.open { border-color: #127825; box-shadow: 0 4px 20px rgba(18,120,37,0.1); }
+.c360wf-q { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; cursor: pointer; font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 0.97rem; font-weight: 600; color: #122078; user-select: none; transition: background 0.15s ease; }
+.c360wf-q:hover { background: #F1EFE8; }
+.c360wf-item.open .c360wf-q { background: #EAF3DE; }
+.c360wf-icon { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: #F1EFE8; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #127825; transition: transform 0.3s ease, background 0.2s ease, color 0.2s ease; line-height: 1; }
+.c360wf-item.open .c360wf-icon { transform: rotate(45deg); background: #127825; color: #fff; }
+.c360wf-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 24px; }
+.c360wf-item.open .c360wf-a { max-height: 400px; padding: 0 24px 20px; }
+.c360wf-a p { font-size: 0.93rem; color: #6B7A9D; line-height: 1.72; margin: 0; }
+.c360wf-a a { color: #127825; font-weight: 600; text-decoration: none; }
+.c360wf-cta { margin-top: 52px; background: linear-gradient(135deg, #122078, #0d1654); border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.c360wf-cta-text h3 { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0 0 6px; }
+.c360wf-cta-text p { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin: 0; }
+.c360wf-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: #127825; color: #fff; padding: 14px 30px; border-radius: 50px; font-family: var(--contentfont, 'Poppins'), sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; white-space: nowrap; }
+.c360wf-cta-btn:hover { background: #0e5e1d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(18,120,37,0.4); }
+@media (max-width: 600px) { .c360wf-cta { flex-direction: column; text-align: center; } .c360wf-q { font-size: 0.9rem; padding: 16px 18px; } .c360wf-a { padding: 0 18px; } .c360wf-item.open .c360wf-a { padding: 0 18px 16px; } }
+</style>
+
+<div class="c360wf-wrap">
+  <div class="c360wf-header">
+    <p class="c360wf-eyebrow">Common Questions</p>
+    <h2 class="c360wf-heading">Frequently Asked Questions</h2>
+    <p class="c360wf-sub">Everything you need to know about getting your ProCard built.</p>
+  </div>
+
+  <div class="c360wf-grid">
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What exactly is a ProCard?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>A ProCard is a mobile-optimized digital business card that lives as a link — shareable via text, email, QR code, or social media. When someone opens your ProCard on their phone, they see your headshot, contact info, social links, and action buttons. One tap saves your contact directly to their phone. No app needed on either end.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Is there a monthly fee after I purchase?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>No. Both Basic and Premium are one-time payments. You pay once, you own it forever — no subscriptions, no monthly platform fees, no surprises. The yearly "Freshen Up" design refresh is included in that one-time price.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">How long does it take to get my ProCard?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Most ProCards are designed and delivered within 3–5 business days of receiving your assets (headshot, logo, info). We'll send you a preview link for review before anything goes live — you approve it before we hand it over.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What's the "Freshen Up" included?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Once per year, we'll update your ProCard — new headshot if you have one, updated job title or contact info, refreshed design if needed. This keeps your card feeling current without any additional cost. Just reach out when you're ready for your annual update.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Can I update my ProCard after it's launched?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Yes — minor updates like phone number changes, new social links, or button edits can be requested anytime. For a full redesign or significant content overhaul outside your yearly Freshen Up, we'll provide a small refresh quote. Day-to-day tweaks are handled as part of your ongoing relationship with our team.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What's the difference between Basic and Premium?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Basic gives you a polished, fully functional digital card — headshot, logo, action buttons, social links, vCard save, and QR code. Premium adds a full bio page, lead magnet form, e-book/PDF download, embedded office map, live news feed, and Calendly/booking integration. If you want your ProCard to actively generate leads and appointments, Premium is the right tier.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What information do I need to provide to get started?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>We'll need your headshot (professional photo), company logo, name and title, phone number, email, website URL, and any social media handles you want linked. For Premium, we'll also need a short bio paragraph and any lead magnet or PDF you'd like offered. We'll send you a simple intake form right after checkout.</p></div>
+    </div>
+
+  </div>
+
+  <div class="c360wf-cta">
+    <div class="c360wf-cta-text">
+      <h3>Still have questions?</h3>
+      <p>Book a free 15-minute call — we'll walk you through both options and recommend the best fit.</p>
+    </div>
+    <a href="/schedule-demo" class="c360wf-cta-btn">Schedule a Call →</a>
+  </div>
+</div>
+
+<script>
+function c360wfToggle(el) {
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.c360wf-item').forEach(function(i) { i.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+</script>

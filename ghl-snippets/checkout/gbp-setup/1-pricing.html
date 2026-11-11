@@ -1,0 +1,204 @@
+<!-- ============================================================
+     COMPLETE360 — GBP SETUP CHECKOUT — SNIPPET 1 of 4: PRICING (v1.0)
+     GHL page: "GBP Setup Checkout" (/gbp-setup-checkout). Paste into the
+     Custom Code element ABOVE the GHL order form.
+     Prefix: c360co- (shared by all 4 snippets on this page).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.0 (2026-11-11): imported as-is from the live GHL page. No edits yet.
+       One-time product: single price card ($399), no plan grid.
+     ============================================================ -->
+<style>
+  .c360co-pricing-row {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    border-bottom: 1px solid rgba(18,32,120,0.07);
+    padding: 48px 32px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360co-pricing-row-inner { max-width: 600px; margin: 0 auto; }
+  .c360co-pricing-row-header { text-align: center; margin-bottom: 28px; }
+  .c360co-pricing-row-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+    color: #127825;
+    background: #EAF3DE;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .c360co-pricing-row-title {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 700;
+    color: #0F1F5E;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .c360co-pricing-row-sub { font-size: 13px; color: #5F5E5A; }
+  .c360co-pricing-single-card {
+    background: #fff;
+    border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 16px;
+  }
+  .c360co-pricing-single-top {
+    background: linear-gradient(135deg, #122078, #1a2e99);
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .c360co-pricing-single-label {
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 6px;
+  }
+  .c360co-pricing-single-name {
+    font-size: 20px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+  .c360co-pricing-single-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+  }
+  .c360co-pricing-single-price {
+    text-align: right;
+    flex-shrink: 0;
+  }
+  .c360co-pricing-single-amount-row {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+    justify-content: flex-end;
+  }
+  .c360co-pricing-single-symbol {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .c360co-pricing-single-amount {
+    font-size: 52px;
+    font-weight: 700;
+    color: #fff;
+    line-height: 1;
+  }
+  .c360co-pricing-single-once {
+    font-size: 12px;
+    color: rgba(255,255,255,0.6);
+    margin-top: 4px;
+    text-align: right;
+  }
+  .c360co-pricing-single-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(18,120,37,0.25);
+    border: 1px solid rgba(26,158,50,0.4);
+    border-radius: 6px;
+    padding: 5px 12px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #6ee87a;
+    margin-top: 8px;
+  }
+  .c360co-pricing-single-badge i { font-size: 10px; }
+  .c360co-pricing-single-bottom {
+    padding: 20px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.07);
+  }
+  .c360co-pricing-single-detail {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #5F5E5A;
+  }
+  .c360co-pricing-single-detail i { color: #127825; font-size: 12px; }
+  .c360co-pricing-row-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(18,32,120,0.04);
+    border: 1px solid rgba(18,32,120,0.08);
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+  }
+  .c360co-pricing-row-cta i { color: #127825; font-size: 13px; flex-shrink: 0; }
+  .c360co-pricing-row-cta span { font-size: 13px; color: #5F5E5A; }
+  .c360co-pricing-row-cta strong { color: #0F1F5E; }
+  @media (max-width: 600px) {
+    .c360co-pricing-row { padding: 40px 20px; }
+    .c360co-pricing-single-top { padding: 22px 20px; }
+    .c360co-pricing-single-bottom { padding: 16px 20px; flex-direction: column; align-items: flex-start; gap: 10px; }
+    .c360co-pricing-single-amount { font-size: 42px; }
+  }
+</style>
+
+<section class="c360co-pricing-row">
+  <div class="c360co-pricing-row-inner">
+    <div class="c360co-pricing-row-header">
+      <div class="c360co-pricing-row-eyebrow">One-time service</div>
+      <h2 class="c360co-pricing-row-title">Simple, one-time pricing. No surprises.</h2>
+      <p class="c360co-pricing-row-sub">Pay once, own a fully optimized Google Business Profile forever. No monthly fees, no contracts.</p>
+    </div>
+
+    <div class="c360co-pricing-single-card">
+      <div class="c360co-pricing-single-top">
+        <div>
+          <div class="c360co-pricing-single-label">Google Business Profile</div>
+          <div class="c360co-pricing-single-name">Setup & Optimization</div>
+          <div class="c360co-pricing-single-sub">Done-for-you · Delivered in 5–7 business days</div>
+          <div class="c360co-pricing-single-badge">
+            <i class="fa-solid fa-check"></i>
+            Everything included — no upsells
+          </div>
+        </div>
+        <div class="c360co-pricing-single-price">
+          <div class="c360co-pricing-single-amount-row">
+            <span class="c360co-pricing-single-symbol">$</span>
+            <span class="c360co-pricing-single-amount">399</span>
+          </div>
+          <div class="c360co-pricing-single-once">one-time payment</div>
+        </div>
+      </div>
+      <div class="c360co-pricing-single-bottom">
+        <div class="c360co-pricing-single-detail">
+          <i class="fa-solid fa-check"></i>
+          Full setup & optimization included
+        </div>
+        <div class="c360co-pricing-single-detail">
+          <i class="fa-solid fa-check"></i>
+          Google Partner certified team
+        </div>
+        <div class="c360co-pricing-single-detail">
+          <i class="fa-solid fa-check"></i>
+          No recurring charges
+        </div>
+      </div>
+    </div>
+
+    <div class="c360co-pricing-row-cta">
+      <i class="fa-solid fa-arrow-down"></i>
+      <span>Ready to get started? <strong>Complete the form below to reserve your spot.</strong></span>
+    </div>
+  </div>
+</section>
