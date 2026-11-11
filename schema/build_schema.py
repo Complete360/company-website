@@ -200,7 +200,7 @@ for path, file, product in [
     ("/geo-ctv-checkout", "checkout/geo-fencing-ctv-checkout.html", "Geo-Fencing (Connected TV)"),
     ("/google-social-checkout", "checkout/google-social-posting", "Google Social Posting"),
     ("/meta-social-checkout", "checkout/meta-social-posting", "Meta Social Posting"),
-    ("/procard-checkout", "checkout/procard-checkout.html", "ProCard"),
+    ("/procard-checkout", "checkout/procard", "ProCard"),
     ("/website-checkout", "checkout/website-checkout.html", "Website Design"),
     ("/dispensary-checkout", "checkout/dispensary-checkout.html", "Dispensary Advertising"),
     ("/ai-checkout", "checkout/ai-employee-checkout.html", "AI Agents"),

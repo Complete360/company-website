@@ -26,7 +26,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-39 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
+40 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -89,7 +89,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `checkout/meta-ads/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Meta Ads Checkout | ✅ Code in repo | v1.1 (Nov 11): 90-day guarantee removed (matches /meta-ads v2.3); 10-day notice; non-refundable from purchase. Older c360wr-/c360wf- styling. Paste into GHL. |
 | `checkout/google-social-posting/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Google Social Posting Checkout | ✅ Code in repo | v1.1 (Nov 11): 30-day guarantee removed; 10-day notice; 147 reviews; "GBP"/vendor name fixed. ⚠ Open: 6/12-month prices ($774/$1,308) vs service page ($715/$1,252). Older c360wr-/c360wf- styling. Paste after prices are settled. |
 | `checkout/meta-social-posting/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Meta Social Posting Checkout | ✅ Code in repo | v1.1 (Nov 11): 30-day guarantee removed; 10-day notice; 147 reviews. Older c360wr-/c360wf- styling. Paste into GHL. |
-| `checkout/procard-checkout.html` | ProCard Checkout | ⬜ Placeholder |  |
+| `checkout/procard/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | ProCard Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; reviews 144+ -> 147. Prices match /procard. Open: "lifetime license / own it forever" wording; free minor edits promise; "Tucson businesses" headline. Older c360wr-/c360wf- styling. Paste into GHL. |
 | `checkout/website-checkout.html` | Website Checkout | ⬜ Placeholder |  |
 | `checkout/ai-employee-checkout.html` | AI Employee Checkout | ⬜ Placeholder |  |
 | `checkout/dispensary-checkout.html` | Dispensary Checkout | ⬜ Placeholder |  |

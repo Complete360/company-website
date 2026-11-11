@@ -135,7 +135,8 @@ ghl-snippets/
                  GHL's native order form. Done (v1.0, as-is): google-platinum/, local-service-ads/,
                  local-seo-booster/, gbp-setup/,
                  gbp-management/, google-social-posting/,
-                 meta-social-posting/, meta-ads/
+                 meta-social-posting/, meta-ads/,
+                 procard/
   crm-platform/  CRM home, Capture/Nurture/Close, feature pages
   company/       FAQ, contact, demo, thank-you, training, video library, link tree
   legal/         tos, privacy-policy, return-policy
@@ -163,7 +164,7 @@ PROJECT.md       this file
   "X of Y files have code" count.
 - Legal files use CRLF line endings — preserve them.
 
-### Status (2026-11-11): 39 of 63 page files have code
+### Status (2026-11-11): 40 of 63 page files have code
 - **Done:** global header/footer, home, all 16 service pages, website pricing, CRM home,
   legal (3), FAQ, contact, training, video library, link tree, Farmers Insurance.
 - **Live in GHL (Nov 10):** Terms v2.1, Return Policy v2.1, FAQ v2.4 and every policy-aligned service page (see README). Schema still to paste on most pages.
@@ -207,6 +208,15 @@ PROJECT.md       this file
 ---
 
 ## 7. Known issues and open decisions
+
+- **Checkout open items (decide at the end of the checkout imports; details in each README row):**
+  Google Social 6/12-month prices ($774/$1,308 checkout vs $715/$1,252 page) ·
+  Platinum: Reputation Management in the bundle, "won't be double-billed" upgrade line ·
+  LSA: "Performance Promise", background-check cost, setup-fee waiver ·
+  GBP Setup: "Quality Promise", "hundreds of profiles" · GBP Management: confirm the Terms'
+  guarantee box (or drop it like Meta Ads) · ProCard: "lifetime license / own it forever",
+  free minor edits · all checkouts: "Tucson businesses" reviews headline · older checkouts
+  use wrapper id `order-form` instead of `c360-order-form`.
 
 - **14-day CRM free trial vs the 10-day cancellation rule:** the Terms don't mention trials. Decide how
   cancelling during a trial works and add it to the Terms (CRM Home v2.10 and Training v1.1 no longer

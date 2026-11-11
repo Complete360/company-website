@@ -100,7 +100,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Checkout: Geo-Fencing (Connected TV) | `/geo-ctv-checkout` | `schema/pages/checkout/geo-fencing-ctv-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Google Social Posting | `/google-social-checkout` | `schema/pages/checkout/google-social-posting.html` | CheckoutPage | — | ✅ |
 | Checkout: Meta Social Posting | `/meta-social-checkout` | `schema/pages/checkout/meta-social-posting.html` | CheckoutPage | — | ✅ |
-| Checkout: ProCard | `/procard-checkout` | `schema/pages/checkout/procard-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
+| Checkout: ProCard | `/procard-checkout` | `schema/pages/checkout/procard.html` | CheckoutPage | — | ✅ |
 | Checkout: Website Design | `/website-checkout` | `schema/pages/checkout/website-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Dispensary Advertising | `/dispensary-checkout` | `schema/pages/checkout/dispensary-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: AI Agents | `/ai-checkout` | `schema/pages/checkout/ai-employee-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
