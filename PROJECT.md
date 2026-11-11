@@ -134,7 +134,7 @@ ghl-snippets/
                  (1-pricing, 2-order-summary, 3-reviews, 4-faq) placed around
                  GHL's native order form. Done (v1.0, as-is): google-platinum/, local-service-ads/,
                  local-seo-booster/, gbp-setup/,
-                 gbp-management/
+                 gbp-management/, google-social-posting/
   crm-platform/  CRM home, Capture/Nurture/Close, feature pages
   company/       FAQ, contact, demo, thank-you, training, video library, link tree
   legal/         tos, privacy-policy, return-policy
@@ -162,7 +162,7 @@ PROJECT.md       this file
   "X of Y files have code" count.
 - Legal files use CRLF line endings — preserve them.
 
-### Status (2026-11-11): 36 of 63 page files have code
+### Status (2026-11-11): 37 of 63 page files have code
 - **Done:** global header/footer, home, all 16 service pages, website pricing, CRM home,
   legal (3), FAQ, contact, training, video library, link tree, Farmers Insurance.
 - **Live in GHL (Nov 10):** Terms v2.1, Return Policy v2.1, FAQ v2.4 and every policy-aligned service page (see README). Schema still to paste on most pages.

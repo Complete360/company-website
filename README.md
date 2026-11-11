@@ -26,7 +26,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-36 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
+37 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -87,7 +87,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `checkout/geo-fencing-mobile-checkout.html` | Geo Fencing Mobile Checkout | ⬜ Placeholder |  |
 | `checkout/google-ads-checkout.html` | Google Ads Checkout | ⬜ Placeholder |  |
 | `checkout/meta-ads-checkout.html` | Meta Ads Checkout | ⬜ Placeholder |  |
-| `checkout/google-social-posting-checkout.html` | Google Social Posting Checkout | ⬜ Placeholder |  |
+| `checkout/google-social-posting/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Google Social Posting Checkout | ✅ Code in repo | v1.0 imported as-is from live GHL (/google-social-checkout). ⚠ 6/12-month prices ($774/$1,308) differ from the service page ($715/$1,252). 🔁 Fix next: "30 days' notice", 30-day guarantee, "144+" reviews, "Yext" named, "GBP" in copy; snippets 2 and 4 use older c360wr-/c360wf- styling |
 | `checkout/meta-social-posting-checkout.html` | Meta Social Posting Checkout | ⬜ Placeholder |  |
 | `checkout/procard-checkout.html` | ProCard Checkout | ⬜ Placeholder |  |
 | `checkout/website-checkout.html` | Website Checkout | ⬜ Placeholder |  |

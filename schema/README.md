@@ -98,7 +98,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Checkout: Meta Ads Management | `/meta-checkout` | `schema/pages/checkout/meta-ads-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Geo-Fencing (Mobile) | `/geo-mobile-checkout` | `schema/pages/checkout/geo-fencing-mobile-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Geo-Fencing (Connected TV) | `/geo-ctv-checkout` | `schema/pages/checkout/geo-fencing-ctv-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: Google Social Posting | `/google-social-checkout` | `schema/pages/checkout/google-social-posting-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
+| Checkout: Google Social Posting | `/google-social-checkout` | `schema/pages/checkout/google-social-posting.html` | CheckoutPage | — | ✅ |
 | Checkout: Meta Social Posting | `/meta-social-checkout` | `schema/pages/checkout/meta-social-posting-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: ProCard | `/procard-checkout` | `schema/pages/checkout/procard-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Website Design | `/website-checkout` | `schema/pages/checkout/website-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |

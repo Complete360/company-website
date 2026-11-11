@@ -198,7 +198,7 @@ for path, file, product in [
     ("/meta-checkout", "checkout/meta-ads-checkout.html", "Meta Ads Management"),
     ("/geo-mobile-checkout", "checkout/geo-fencing-mobile-checkout.html", "Geo-Fencing (Mobile)"),
     ("/geo-ctv-checkout", "checkout/geo-fencing-ctv-checkout.html", "Geo-Fencing (Connected TV)"),
-    ("/google-social-checkout", "checkout/google-social-posting-checkout.html", "Google Social Posting"),
+    ("/google-social-checkout", "checkout/google-social-posting", "Google Social Posting"),
     ("/meta-social-checkout", "checkout/meta-social-posting-checkout.html", "Meta Social Posting"),
     ("/procard-checkout", "checkout/procard-checkout.html", "ProCard"),
     ("/website-checkout", "checkout/website-checkout.html", "Website Design"),
