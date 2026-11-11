@@ -1,0 +1,228 @@
+<!-- ============================================================
+     COMPLETE360 — PROCARD CHECKOUT — SNIPPET 1 of 4: PRICING ROW (v1.0)
+     GHL page: "ProCard Checkout" (/procard-checkout). Paste into the Custom
+     Code element ABOVE the GHL order form.
+     Prefix: c360co- (snippets 2 and 4 on this page use c360wr- / c360wf-).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.0 (2026-11-11): imported as-is from the live GHL page. Prices match
+       /procard (Basic $299, Premium $399, one-time). No policy fixes needed.
+       Open (Jared): "lifetime license / yours to keep" wording — confirm
+       what happens to hosting if the business stops being a client.
+     ============================================================ -->
+<style>
+  .c360co-pricing-row {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    border-bottom: 1px solid rgba(18,32,120,0.07);
+    padding: 48px 32px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360co-pricing-row-inner { max-width: 860px; margin: 0 auto; }
+  .c360co-pricing-row-header { text-align: center; margin-bottom: 28px; }
+  .c360co-pricing-row-eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px;
+    font-weight: 600; color: #127825; background: #EAF3DE;
+    padding: 4px 12px; border-radius: 4px; margin-bottom: 10px;
+  }
+  .c360co-pricing-row-eyebrow i { font-size: 10px; }
+  .c360co-pricing-row-title {
+    font-size: clamp(18px, 2.5vw, 24px); font-weight: 700;
+    color: #0F1F5E; line-height: 1.3; margin-bottom: 6px;
+  }
+  .c360co-pricing-row-sub { font-size: 13px; color: #5F5E5A; max-width: 520px; margin: 0 auto; line-height: 1.6; }
+
+  .c360co-pricing-row-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 20px;
+    align-items: start;
+  }
+
+  .c360co-pricing-row-card {
+    background: #fff;
+    border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 10px;
+    padding: 26px 22px;
+    position: relative;
+  }
+  .c360co-pricing-row-card-popular {
+    background: #122078;
+    border-color: #127825;
+    border-width: 2px;
+  }
+  .c360co-pricing-row-card-badge {
+    position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 3px 14px; border-radius: 6px;
+    white-space: nowrap; color: #fff; background: #127825;
+  }
+  .c360co-pricing-row-card-tag {
+    display: inline-block; font-size: 9px; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 0.4px;
+    padding: 2px 8px; border-radius: 4px; margin-bottom: 8px;
+    background: rgba(18,32,120,0.08); color: #122078;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-tag {
+    background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.85);
+  }
+  .c360co-pricing-row-card-name {
+    font-size: 22px; font-weight: 700; color: #0F1F5E; margin-bottom: 4px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-name { color: #fff; }
+
+  .c360co-pricing-row-card-tagline {
+    font-size: 11px; color: #888780; margin-bottom: 14px; line-height: 1.4;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-tagline { color: rgba(255,255,255,0.6); }
+
+  .c360co-pricing-row-card-amount-row {
+    display: flex; align-items: baseline; gap: 2px; margin-bottom: 2px;
+  }
+  .c360co-pricing-row-card-symbol { font-size: 18px; font-weight: 700; color: #122078; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-symbol { color: #fff; }
+  .c360co-pricing-row-card-amount { font-size: 42px; font-weight: 700; color: #122078; line-height: 1; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-amount { color: #fff; }
+
+  .c360co-pricing-row-card-billed {
+    font-size: 10px; color: #888780; margin-bottom: 4px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-billed { color: rgba(255,255,255,0.55); }
+
+  .c360co-pricing-row-card-freshen {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 10px; font-weight: 600; color: #127825;
+    margin-bottom: 14px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-freshen { color: #6ee87a; }
+  .c360co-pricing-row-card-freshen i { font-size: 9px; }
+
+  .c360co-pricing-row-card-divider {
+    border: none; border-top: 1px solid rgba(18,32,120,0.07); margin: 0 0 14px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-divider { border-color: rgba(255,255,255,0.15); }
+
+  .c360co-pricing-row-card-includes {
+    display: flex; flex-direction: column; gap: 8px;
+  }
+  .c360co-pricing-row-card-includes-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 12px; color: #0F1F5E; line-height: 1.4;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-includes-item { color: rgba(255,255,255,0.88); }
+  .c360co-pricing-row-card-includes-item i {
+    font-size: 10px; width: 14px; flex-shrink: 0; margin-top: 2px;
+  }
+  .c360co-pricing-row-card-includes-item .i-check { color: #127825; }
+  .c360co-pricing-row-card-includes-item .i-plus  { color: #122078; font-weight: 700; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-includes-item .i-check { color: #6ee87a; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-includes-item .i-plus  { color: #3dd870; }
+
+  .c360co-pricing-row-card-section-label {
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; color: #888780; margin: 12px 0 8px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-section-label { color: rgba(255,255,255,0.4); }
+
+  .c360co-pricing-row-footer-note {
+    text-align: center; font-size: 12px; color: #888780;
+    margin-bottom: 16px; line-height: 1.5;
+  }
+  .c360co-pricing-row-cta {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: rgba(18,32,120,0.04); border: 1px solid rgba(18,32,120,0.08);
+    border-radius: 8px; padding: 12px 20px; text-align: center;
+  }
+  .c360co-pricing-row-cta i { color: #127825; font-size: 13px; flex-shrink: 0; }
+  .c360co-pricing-row-cta span { font-size: 13px; color: #5F5E5A; }
+  .c360co-pricing-row-cta strong { color: #0F1F5E; }
+
+  @media (max-width: 600px) {
+    .c360co-pricing-row-grid { grid-template-columns: 1fr; }
+    .c360co-pricing-row { padding: 40px 20px; }
+  }
+</style>
+
+<section class="c360co-pricing-row">
+  <div class="c360co-pricing-row-inner">
+    <div class="c360co-pricing-row-header">
+      <div class="c360co-pricing-row-eyebrow">
+        <i class="fa-solid fa-address-card"></i>
+        ProCard — Digital Business Card
+      </div>
+      <h2 class="c360co-pricing-row-title">One-time investment. Yours to keep.</h2>
+      <p class="c360co-pricing-row-sub">No subscriptions. No monthly fees. Pay once and own your ProCard — including a yearly refresh to keep it current.</p>
+    </div>
+
+    <div class="c360co-pricing-row-grid">
+
+      <!-- BASIC -->
+      <div class="c360co-pricing-row-card">
+        <div class="c360co-pricing-row-card-tag">Basic</div>
+        <div class="c360co-pricing-row-card-name">ProCard Basic</div>
+        <div class="c360co-pricing-row-card-tagline">Everything you need to make a great first impression — live and shareable in days.</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">299</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">one-time · you own it</div>
+        <div class="c360co-pricing-row-card-freshen">
+          <i class="fa-solid fa-arrows-rotate"></i> Includes yearly "Freshen Up"
+        </div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-includes">
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>Custom-designed ProCard</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>Your headshot &amp; company logo</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>Up to 5 action buttons (call, email, book, etc.)</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>Direct social media links</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>vCard one-tap contact save</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>Custom QR code for print materials</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>Text &amp; share option built in</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>Lifetime license — no monthly fee</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>Yearly design refresh included</div>
+        </div>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="c360co-pricing-row-card c360co-pricing-row-card-popular">
+        <div class="c360co-pricing-row-card-badge">Most Popular</div>
+        <div class="c360co-pricing-row-card-tag">Premium</div>
+        <div class="c360co-pricing-row-card-name">ProCard Premium</div>
+        <div class="c360co-pricing-row-card-tagline">The full digital presence — built to convert prospects, not just impress them.</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">399</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">one-time · you own it</div>
+        <div class="c360co-pricing-row-card-freshen">
+          <i class="fa-solid fa-arrows-rotate"></i> Includes yearly "Freshen Up"
+        </div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-includes">
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>Everything in Basic, plus:</div>
+          <div class="c360co-pricing-row-card-section-label">Premium Additions</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-plus i-plus"></i>Full bio page — who you are &amp; what you do</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-plus i-plus"></i>Lead magnet form (capture prospects directly)</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-plus i-plus"></i>E-book / PDF download offer</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-plus i-plus"></i>Embedded office map</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-plus i-plus"></i>Live news feed (updated daily)</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-plus i-plus"></i>Calendly / booking link integration</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>Lifetime license — no monthly fee</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check i-check"></i>Yearly design refresh included</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="c360co-pricing-row-footer-note">
+      Not sure which tier is right for you? <a href="/schedule-demo" style="color:#122078;font-weight:600;text-decoration:none;">Book a free 15-minute call →</a>
+    </div>
+
+    <div class="c360co-pricing-row-cta">
+      <i class="fa-solid fa-arrow-down"></i>
+      <span>Ready to get started? <strong>Fill out the form below and we'll have your ProCard live in days.</strong></span>
+    </div>
+  </div>
+</section>

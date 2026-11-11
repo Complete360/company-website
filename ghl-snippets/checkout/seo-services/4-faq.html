@@ -1,0 +1,250 @@
+<!-- ============================================================
+     COMPLETE360 — SEO SERVICES CHECKOUT — SNIPPET 4 of 4: FAQ + CALL CTA (v1.0)
+     GHL page: /seo-services-checkout. Paste into the Custom Code element
+     at the BOTTOM of the page, below the reviews.
+     Prefix: c360co- (shared by all 4 snippets on this page).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.0 (2026-11-11): built from the Google Platinum checkout layout (same
+       CSS) with SEO Services content from /seo-services v1.4.
+       FAQ copied from the /seo-services FAQ (policy-safe: 10-day written
+       notice, non-refundable from purchase, annual not prorated, no ranking
+       or AI guarantees); cancel answer adds the "non-refundable from
+       purchase" line from the page's pricing note.
+     ============================================================ -->
+<style>
+  .c360co-faq {
+    background: #fff;
+    padding: 72px 32px 80px;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360co-faq-inner { max-width: 820px; margin: 0 auto; }
+  .c360co-faq-header { text-align: center; margin-bottom: 48px; }
+  .c360co-faq-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+    color: #127825;
+    background: #EAF3DE;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+  .c360co-faq-title { font-size: clamp(22px, 3.5vw, 30px); font-weight: 700; color: #0F1F5E; line-height: 1.3; }
+  .c360co-faq-sub { font-size: 14px; color: #5F5E5A; margin-top: 8px; line-height: 1.6; }
+  .c360co-faq-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .c360co-faq-item { border-bottom: 1px solid rgba(18,32,120,0.08); }
+  .c360co-faq-item:last-child { border-bottom: none; }
+  .c360co-faq-question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 20px 24px;
+    background: transparent;
+    border: none;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: #0F1F5E;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.15s ease;
+  }
+  .c360co-faq-question:hover { background: #F8F9FF; }
+  .c360co-faq-question.c360co-open { background: #F8F9FF; color: #122078; }
+  .c360co-faq-question i {
+    font-size: 13px;
+    color: #888780;
+    flex-shrink: 0;
+    transition: transform 0.25s ease, color 0.15s ease;
+  }
+  .c360co-faq-question.c360co-open i { transform: rotate(45deg); color: #127825; }
+  .c360co-faq-answer { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
+  .c360co-faq-answer.c360co-open { max-height: 500px; }
+  .c360co-faq-answer-inner {
+    padding: 16px 24px 20px;
+    font-size: 13px;
+    color: #5F5E5A;
+    line-height: 1.7;
+    border-top: 1px solid rgba(18,32,120,0.06);
+  }
+  .c360co-faq-cta {
+    margin-top: 40px;
+    background: linear-gradient(135deg, #122078, #1a2e99);
+    border-radius: 10px;
+    padding: 28px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  .c360co-faq-cta-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .c360co-faq-cta-sub { font-size: 13px; color: rgba(255,255,255,0.65); }
+  .c360co-faq-cta-btn {
+    background: #127825;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 12px 24px;
+    border-radius: 7px;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: background 0.2s ease;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    display: inline-block;
+  }
+  .c360co-faq-cta-btn:hover { background: #0e5e1d; }
+  @media (max-width: 600px) {
+    .c360co-faq { padding: 56px 20px 64px; }
+    .c360co-faq-question { padding: 18px; font-size: 13px; }
+    .c360co-faq-answer-inner { padding: 14px 18px 18px; }
+    .c360co-faq-cta { padding: 22px 20px; }
+    .c360co-faq-cta-btn { width: 100%; text-align: center; display: block; }
+  }
+</style>
+
+<section class="c360co-faq">
+  <div class="c360co-faq-inner">
+    <div class="c360co-faq-header">
+      <div class="c360co-faq-eyebrow">Got questions?</div>
+      <h2 class="c360co-faq-title">Everything you need to know about<br>SEO Services</h2>
+      <p class="c360co-faq-sub">Common questions before signing up — answered straight.</p>
+    </div>
+
+    <div class="c360co-faq-list">
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          What does "optimized for AI search" mean?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            AI tools like ChatGPT, Gemini, Perplexity and Google's AI Overviews build their answers from websites. We write your pages to answer customers' questions clearly, put your proof on the page, and add structured data that spells out your services and service areas, so these tools can understand your business and match it to the right questions. You may hear this called AEO or GEO. It's part of every plan.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          How do you track AI search?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            Every month we ask ChatGPT, Gemini, Perplexity and Google a set of real questions your customers would ask, like "who does roof repair in Mesa?", and show you in your report whether your business comes up. AI answers change from day to day, so treat it as a trend to watch over months, not a score.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          Do you guarantee first-page rankings or AI recommendations?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            No. Google decides rankings and AI tools decide what they recommend, so no honest agency can guarantee either. What we commit to is the work in your plan every month and full transparency on the results.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          How long until I see results?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            Most businesses start seeing ranking movement within 3 to 6 months. Competitive services and larger cities can take longer. Results build over time, and your monthly report shows exactly what's moving.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          How is this different from Local SEO Booster or Google Business Profile Management?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            SEO Services works on your own website: its pages, content and structure. Local SEO Booster keeps your business information accurate across 70+ directories and apps, and Google Business Profile Management handles your listing in Google Maps. They solve different problems, and a strong website helps the other two as well.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          Does my website have to be built by Complete360?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            No. We can work on most websites as long as we have editing access. If your current site is outdated or hard to work with, we'll tell you on the strategy call and you can decide whether a new website makes sense.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          What do you need from me?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            Editing access to your website (and to Google Search Console or Analytics if you already have them), plus details only you know: the services you offer, the areas you cover, anything that sets you apart, and a few photos of your work. We write and publish everything else, so the pages sound like your business without you writing them.
+          </div>
+        </div>
+      </div>
+
+      <div class="c360co-faq-item">
+        <button class="c360co-faq-question" type="button">
+          How does cancelling work?
+          <i class="fa-solid fa-plus"></i>
+        </button>
+        <div class="c360co-faq-answer">
+          <div class="c360co-faq-answer-inner">
+            Monthly plans can be cancelled with at least 10 days' notice before your next billing date, confirmed in writing. Annual plans are billed yearly and aren't refunded or prorated; to stop a renewal, cancel at least 10 days before your renewal date. All payments are non-refundable from the time of purchase. To cancel, call our customer service team at (800) 863-2541.
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="c360co-faq-cta">
+      <div>
+        <div class="c360co-faq-cta-title">Still have questions before you buy?</div>
+        <div class="c360co-faq-cta-sub">Schedule a free 15-minute strategy call — we'll look at your website and who's ranking instead of you.</div>
+      </div>
+      <a href="/schedule-demo" class="c360co-faq-cta-btn">Schedule a Call →</a>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll('.c360co-faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = btn.closest('.c360co-faq-item');
+      var answer = item.querySelector('.c360co-faq-answer');
+      var isOpen = btn.classList.contains('c360co-open');
+      document.querySelectorAll('.c360co-faq-question').forEach(function(b) { b.classList.remove('c360co-open'); });
+      document.querySelectorAll('.c360co-faq-answer').forEach(function(a) { a.classList.remove('c360co-open'); });
+      if (!isOpen) {
+        btn.classList.add('c360co-open');
+        answer.classList.add('c360co-open');
+      }
+    });
+  });
+</script>

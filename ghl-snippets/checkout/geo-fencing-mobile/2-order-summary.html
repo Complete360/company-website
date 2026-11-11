@@ -1,0 +1,261 @@
+<!-- ============================================================
+     COMPLETE360 — GEO-FENCING MOBILE CHECKOUT — SNIPPET 2 of 4: ORDER SUMMARY (v1.0)
+     GHL page: "Geo Fencing Mobile Checkout" (/geo-mobile-checkout). Paste
+     into the Custom Code element BESIDE the GHL order form.
+     Prefix: c360co- (shared by all 4 snippets on this page).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.0 (2026-11-11): imported as-is from the live GHL page. No policy
+       fixes needed. Open (Jared): "#1 Location Intelligence Platform in
+       the US" (also on /geo-fencing) — a superlative that needs a source.
+     ============================================================ -->
+<style>
+  .c360co-summary-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+  }
+  .c360co-summary {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(18,32,120,0.1);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(18,32,120,0.07);
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+  }
+  .c360co-summary-header {
+    background: linear-gradient(135deg, #122078, #1a2e99);
+    padding: 20px 24px;
+    flex-shrink: 0;
+  }
+  .c360co-summary-header-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 4px;
+  }
+  .c360co-summary-header-title { font-size: 16px; font-weight: 700; color: #fff; margin-bottom: 4px; }
+  .c360co-summary-header-sub { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.4; }
+  .c360co-summary-body {
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    flex: 1;
+  }
+  .c360co-summary-section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #888780;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .c360co-summary-includes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .c360co-summary-includes li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #0F1F5E;
+    line-height: 1.45;
+  }
+  .c360co-summary-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #127825;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .c360co-summary-check i { font-size: 9px; color: #fff; }
+  .c360co-summary-divider { border: none; border-top: 1px solid rgba(18,32,120,0.08); }
+
+  /* Impression counter */
+  .c360co-impression-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+  }
+  .c360co-impression-card {
+    background: #F8F9FF;
+    border: 1px solid rgba(18,32,120,0.08);
+    border-radius: 8px;
+    padding: 10px 10px;
+    text-align: center;
+  }
+  .c360co-impression-card-plan {
+    font-size: 9px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    color: #888780;
+    margin-bottom: 4px;
+  }
+  .c360co-impression-card-count {
+    font-size: 14px;
+    font-weight: 700;
+    color: #122078;
+    line-height: 1;
+    margin-bottom: 1px;
+  }
+  .c360co-impression-card-label {
+    font-size: 9px;
+    color: #888780;
+  }
+
+  .c360co-summary-promise {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #E6F1FB;
+    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid rgba(18,32,120,0.15);
+  }
+  .c360co-summary-promise-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #122078;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    color: #fff;
+  }
+  .c360co-summary-promise-title { font-size: 13px; font-weight: 700; color: #0d1654; margin-bottom: 3px; }
+  .c360co-summary-promise-desc { font-size: 12px; color: #1a2e99; line-height: 1.5; }
+  .c360co-summary-trust { display: flex; flex-direction: column; gap: 8px; }
+  .c360co-summary-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #5F5E5A;
+  }
+  .c360co-summary-trust-item i { font-size: 13px; color: #122078; width: 16px; text-align: center; }
+  .c360co-summary-footer {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.08);
+    padding: 14px 24px;
+    text-align: center;
+    font-size: 11px;
+    color: #888780;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    flex-shrink: 0;
+  }
+  .c360co-summary-footer i { font-size: 12px; color: #127825; }
+</style>
+
+<div id="c360-order-form" class="c360co-summary-wrap">
+  <div class="c360co-summary">
+    <div class="c360co-summary-header">
+      <div class="c360co-summary-header-eyebrow">Mobile Geo-Fencing Ads — Every plan includes</div>
+      <div class="c360co-summary-header-title">What's included with your campaign</div>
+      <div class="c360co-summary-header-sub">Full-service setup, creative, targeting & reporting. You just watch the results.</div>
+    </div>
+
+    <div class="c360co-summary-body">
+      <div>
+        <div class="c360co-summary-section-label">Every plan includes</div>
+        <ul class="c360co-summary-includes">
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Mobile Banner Ads — all sizes, all devices
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            8,000 impressions per month
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Geo-fence zone setup & ongoing management
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            In-house creative production — we build the ads
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Competitor targeting available
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Foot traffic attribution reporting
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Real-time campaign dashboard access
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Monthly performance report
+          </li>
+        </ul>
+      </div>
+      <hr class="c360co-summary-divider">
+      <div>
+        <div class="c360co-summary-section-label">Total impressions by plan</div>
+        <div class="c360co-impression-grid">
+          <div class="c360co-impression-card">
+            <div class="c360co-impression-card-plan">Monthly</div>
+            <div class="c360co-impression-card-count">8,000</div>
+            <div class="c360co-impression-card-label">per month</div>
+          </div>
+          <div class="c360co-impression-card">
+            <div class="c360co-impression-card-plan">6-Month</div>
+            <div class="c360co-impression-card-count">48,000</div>
+            <div class="c360co-impression-card-label">total</div>
+          </div>
+          <div class="c360co-impression-card">
+            <div class="c360co-impression-card-plan">12-Month</div>
+            <div class="c360co-impression-card-count">96,000</div>
+            <div class="c360co-impression-card-label">total</div>
+          </div>
+        </div>
+      </div>
+      <hr class="c360co-summary-divider">
+      <div class="c360co-summary-promise">
+        <div class="c360co-summary-promise-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div>
+          <div class="c360co-summary-promise-title">Our Campaign Quality Promise</div>
+          <div class="c360co-summary-promise-desc">We build, launch, and actively manage your campaign every month. If your ads aren't delivering or zones need adjustment, we fix it — that's what full-service means.</div>
+        </div>
+      </div>
+      <hr class="c360co-summary-divider">
+      <div class="c360co-summary-trust">
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-location-crosshairs"></i> #1 Location Intelligence Platform in the US</div>
+        <div class="c360co-summary-trust-item"><i class="fa-brands fa-google"></i> Google Partner certified agency</div>
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-star"></i> 147 five-star reviews on Google</div>
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-phone"></i> Real humans — (866) 527-6205</div>
+      </div>
+    </div>
+
+    <div class="c360co-summary-footer">
+      <i class="fa-solid fa-lock"></i>
+      Secure checkout · Your info stays private
+    </div>
+  </div>
+</div>

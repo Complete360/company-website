@@ -1,0 +1,143 @@
+<!-- ============================================================
+     COMPLETE360 — DISPENSARY CHECKOUT — SNIPPET 2 of 4: ORDER SUMMARY (v1.1)
+     GHL page: "Dispensary Checkout" (/dispensary-checkout). Paste into the
+     Custom Code element BESIDE the GHL order form.
+     Prefix: c360wr- (older design, like the social checkouts).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.1 (2026-11-11): reviews "144+" -> "147".
+     v1.0 (2026-11-11): imported as-is from the live GHL page.
+       Open (Jared): "CTV video ads built for you" in every package, but the
+       VFW / Legion Starter and the pricing cards list mobile banners only;
+       "without violating any platform policies" — legal review; "Tucson,
+       AZ"; wrapper id "order-form" (not "c360-order-form").
+     ============================================================ -->
+<style>
+.c360wr-wrap {
+  font-family: var(--contentfont, 'Poppins'), sans-serif;
+  background: #fff;
+  border: 2px solid #E2E8F4;
+  border-radius: 20px;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  height: 100%;
+}
+.c360wr-section-title {
+  font-family: var(--headlinefont, 'Poppins'), sans-serif;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #127825; margin-bottom: 14px;
+}
+.c360wr-includes {
+  list-style: none; margin: 0; padding: 0;
+  display: flex; flex-direction: column; gap: 12px;
+}
+.c360wr-includes li {
+  display: flex; align-items: flex-start; gap: 12px;
+  font-size: 0.9rem; color: #0F1F5E; line-height: 1.45;
+}
+.c360wr-check {
+  width: 20px; height: 20px; min-width: 20px;
+  border-radius: 50%; background: #127825;
+  display: flex; align-items: center; justify-content: center; margin-top: 1px;
+}
+.c360wr-check svg { width: 9px; height: 9px; stroke: #fff; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.c360wr-divider { height: 1px; background: #E2E8F4; }
+.c360wr-timeline { display: flex; flex-direction: column; gap: 14px; }
+.c360wr-step { display: flex; align-items: flex-start; gap: 14px; }
+.c360wr-step-num {
+  width: 28px; height: 28px; min-width: 28px; border-radius: 50%;
+  background: linear-gradient(135deg, #122078, #1a2e99);
+  color: #fff; font-family: var(--headlinefont, 'Poppins'), sans-serif;
+  font-size: 0.72rem; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+}
+.c360wr-step-text strong { display: block; font-size: 0.88rem; font-weight: 600; color: #0F1F5E; margin-bottom: 2px; }
+.c360wr-step-text span { font-size: 0.8rem; color: #6B7A9D; line-height: 1.4; }
+.c360wr-compliance {
+  background: #EAF3DE;
+  border: 1px solid rgba(18,120,37,0.2);
+  border-radius: 14px; padding: 20px;
+  display: flex; align-items: flex-start; gap: 14px;
+}
+.c360wr-compliance-icon { font-size: 1.8rem; line-height: 1; flex-shrink: 0; }
+.c360wr-compliance h4 { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 0.9rem; font-weight: 700; color: #127825; margin: 0 0 4px; }
+.c360wr-compliance p { font-size: 0.8rem; color: #2d5510; line-height: 1.5; margin: 0; }
+.c360wr-trust { display: flex; flex-direction: column; gap: 10px; }
+.c360wr-trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: #6B7A9D; font-weight: 500; }
+.c360wr-trust-item::before { content: '✓'; font-size: 0.7rem; font-weight: 800; color: #127825; }
+</style>
+
+<div class="c360wr-wrap" id="order-form">
+
+  <div>
+    <p class="c360wr-section-title">Every Package Includes</p>
+    <ul class="c360wr-includes">
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Cannabis-compliant network delivery — no Google, no Meta restrictions</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Full creative production — mobile banners &amp; CTV video ads built for you</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Geo-fence zone setup around your target locations &amp; competitors</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>21+ age-verified audience targeting</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Impressions, clicks &amp; CTR performance reporting</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Real-time campaign dashboard access</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Dedicated account manager throughout campaign</li>
+    </ul>
+  </div>
+
+  <div class="c360wr-divider"></div>
+
+  <div>
+    <p class="c360wr-section-title">How It Works</p>
+    <div class="c360wr-timeline">
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">1</div>
+        <div class="c360wr-step-text">
+          <strong>Strategy Call</strong>
+          <span>We review your locations, target audience, and campaign goals.</span>
+        </div>
+      </div>
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">2</div>
+        <div class="c360wr-step-text">
+          <strong>Creative Production</strong>
+          <span>Our team builds your cannabis-compliant mobile banners and CTV video ads.</span>
+        </div>
+      </div>
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">3</div>
+        <div class="c360wr-step-text">
+          <strong>Launch in 5–7 Days</strong>
+          <span>Your campaign goes live across compliant networks. You approve before anything runs.</span>
+        </div>
+      </div>
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">4</div>
+        <div class="c360wr-step-text">
+          <strong>Ongoing Reporting</strong>
+          <span>Monthly performance reports with impressions, clicks, and CTR data.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c360wr-divider"></div>
+
+  <div class="c360wr-compliance">
+    <div class="c360wr-compliance-icon">🌿</div>
+    <div>
+      <h4>100% Cannabis-Compliant Delivery</h4>
+      <p>All campaigns run exclusively on cannabis-approved networks — no Google Ads, no Meta. Your ads reach 21+ verified audiences without violating any platform policies.</p>
+    </div>
+  </div>
+
+  <div>
+    <div class="c360wr-trust">
+      <div class="c360wr-trust-item">Google Partner agency · Tucson, AZ</div>
+      <div class="c360wr-trust-item">147 five-star Google reviews</div>
+      <div class="c360wr-trust-item">No hidden fees — management separate from ad spend</div>
+      <div class="c360wr-trust-item">Campaigns live in 5–7 business days</div>
+    </div>
+  </div>
+
+</div>

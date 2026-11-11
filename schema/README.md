@@ -89,22 +89,23 @@ Don't paste them until the page is fixed and this script is re-run.
 | Privacy Policy | `/privacy-policy` | `schema/pages/legal/privacy-policy.html` | WebPage | — | ✅ |
 | Return & Refund Policy | `/return-policy` | `schema/pages/legal/return-policy.html` | WebPage | — | ✅ |
 | Farmers Insurance Agent Program | `/farmers-insurance` | `schema/pages/partners/farmers-insurance.html` | WebPage, FAQPage | 8 | ✅ |
-| Checkout: Local Service Ads | `/lsa-checkout` | `schema/pages/checkout/local-service-ads.html` | CheckoutPage, FAQPage | 8 | ⚠ HOLD: page conflicts with policy ("cancel anytime", money-back guarantee, refundable until work begins) |
-| Checkout: Google Business Profile Management | `/gbp-management-checkout` | `schema/pages/checkout/gbp-management.html` | CheckoutPage, FAQPage | 7 | ⚠ HOLD: page conflicts with policy ("cancel anytime", refundable until work begins) |
-| Checkout: Google Business Profile Setup | `/gbp-setup-checkout` | `schema/pages/checkout/gbp-setup.html` | CheckoutPage, FAQPage | 8 | ✅ |
-| Checkout: Google Platinum Package | `/google-platinum-checkout` | `schema/pages/checkout/google-platinum.html` | CheckoutPage, FAQPage | 8 | ⚠ HOLD: page conflicts with policy ("cancel anytime", refundable until work begins) |
-| Checkout: Local SEO Booster | `/local-seo-checkout` | `schema/pages/checkout/local-seo-booster.html` | CheckoutPage, FAQPage | 9 | ⚠ HOLD: page conflicts with policy ("cancel anytime") |
-| Checkout: Google Ads (PPC) Management | `/google-ads-checkout` | `schema/pages/checkout/google-ads-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: Meta Ads Management | `/meta-checkout` | `schema/pages/checkout/meta-ads.html` | CheckoutPage | — | ✅ |
-| Checkout: Geo-Fencing (Mobile) | `/geo-mobile-checkout` | `schema/pages/checkout/geo-fencing-mobile-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: Geo-Fencing (Connected TV) | `/geo-ctv-checkout` | `schema/pages/checkout/geo-fencing-ctv-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: Google Social Posting | `/google-social-checkout` | `schema/pages/checkout/google-social-posting.html` | CheckoutPage | — | ✅ |
-| Checkout: Meta Social Posting | `/meta-social-checkout` | `schema/pages/checkout/meta-social-posting.html` | CheckoutPage | — | ✅ |
-| Checkout: ProCard | `/procard-checkout` | `schema/pages/checkout/procard-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: Website Design | `/website-checkout` | `schema/pages/checkout/website-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: Dispensary Advertising | `/dispensary-checkout` | `schema/pages/checkout/dispensary-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: AI Agents | `/ai-checkout` | `schema/pages/checkout/ai-employee-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: Complete360 CRM Lifetime Deal | `/lifetime-checkout` | `schema/pages/checkout/lifetime-deal-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: Complete360 CRM Tier 1 plan | `/checkout-1` | `schema/pages/checkout/tier-1-plan-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: Complete360 CRM Tier 2 plan | `/checkout-2` | `schema/pages/checkout/tier-2-plan-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
-| Checkout: Complete360 CRM Tier 3 plan | `/checkout-3` | `schema/pages/checkout/tier-3-plan-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
+| Checkout: Local Service Ads | `/lsa-checkout` | `schema/pages/checkout/local-service-ads.html` | — | — | No schema (noindex instead) |
+| Checkout: Google Business Profile Management | `/gbp-management-checkout` | `schema/pages/checkout/gbp-management.html` | — | — | No schema (noindex instead) |
+| Checkout: Google Business Profile Setup | `/gbp-setup-checkout` | `schema/pages/checkout/gbp-setup.html` | — | — | No schema (noindex instead) |
+| Checkout: Google Platinum Package | `/google-platinum-checkout` | `schema/pages/checkout/google-platinum.html` | — | — | No schema (noindex instead) |
+| Checkout: Local SEO Booster | `/local-seo-checkout` | `schema/pages/checkout/local-seo-booster.html` | — | — | No schema (noindex instead) |
+| Checkout: Google Ads (PPC) Management | `/google-ads-checkout` | `schema/pages/checkout/google-ads.html` | — | — | No schema (noindex instead) |
+| Checkout: Meta Ads Management | `/meta-checkout` | `schema/pages/checkout/meta-ads.html` | — | — | No schema (noindex instead) |
+| Checkout: Geo-Fencing (Mobile) | `/geo-mobile-checkout` | `schema/pages/checkout/geo-fencing-mobile.html` | — | — | No schema (noindex instead) |
+| Checkout: Geo-Fencing (Connected TV) | `/geo-ctv-checkout` | `schema/pages/checkout/geo-fencing-ctv.html` | — | — | No schema (noindex instead) |
+| Checkout: Google Social Posting | `/google-social-checkout` | `schema/pages/checkout/google-social-posting.html` | — | — | No schema (noindex instead) |
+| Checkout: Meta Social Posting | `/meta-social-checkout` | `schema/pages/checkout/meta-social-posting.html` | — | — | No schema (noindex instead) |
+| Checkout: ProCard | `/procard-checkout` | `schema/pages/checkout/procard.html` | — | — | No schema (noindex instead) |
+| Checkout: Website Design | `/website-checkout` | `schema/pages/checkout/website.html` | — | — | No schema (noindex instead) |
+| Checkout: Dispensary Advertising | `/dispensary-checkout` | `schema/pages/checkout/dispensary.html` | — | — | No schema (noindex instead) |
+| Checkout: AI Agents | `/ai-checkout` | `schema/pages/checkout/ai-agents.html` | — | — | No schema (noindex instead) |
+| Checkout: SEO Services | `/seo-services-checkout` | `schema/pages/checkout/seo-services.html` | — | — | No schema (noindex instead) |
+| Checkout: Complete360 CRM Lifetime Deal | `/lifetime-checkout` | `schema/pages/checkout/lifetime-deal-checkout.html` | — | — | No schema (noindex instead) |
+| Checkout: Complete360 CRM Tier 1 plan | `/checkout-1` | `schema/pages/checkout/tier-1-plan-checkout.html` | — | — | No schema (noindex instead) |
+| Checkout: Complete360 CRM Tier 2 plan | `/checkout-2` | `schema/pages/checkout/tier-2-plan-checkout.html` | — | — | No schema (noindex instead) |
+| Checkout: Complete360 CRM Tier 3 plan | `/checkout-3` | `schema/pages/checkout/tier-3-plan-checkout.html` | — | — | No schema (noindex instead) |

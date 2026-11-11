@@ -1,0 +1,336 @@
+<!-- ============================================================
+     COMPLETE360 — GEO-FENCING CTV CHECKOUT — SNIPPET 1 of 4: PRICING ROW (v1.1)
+     GHL page: "Geo Fencing CTV Checkout" (/geo-ctv-checkout). Paste into the
+     Custom Code element ABOVE the GHL order form.
+     Prefix: c360co- (shared by all 4 snippets on this page).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.1 (2026-11-11): strikethrough "was" line "$1,390 for 10k" -> "$1,399
+       for 10k" on the 18k and 24k cards (typo; matches /geo-fencing).
+     v1.0 (2026-11-11): imported as-is from the live GHL page. Prices, CPMs
+       and savings match /geo-fencing ($1,399 / $1,799 / $2,199).
+     ============================================================ -->
+<style>
+  .c360co-pricing-row {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    border-bottom: 1px solid rgba(18,32,120,0.07);
+    padding: 48px 32px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360co-pricing-row-inner { max-width: 960px; margin: 0 auto; }
+  .c360co-pricing-row-header { text-align: center; margin-bottom: 28px; }
+  .c360co-pricing-row-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+    color: #127825;
+    background: #EAF3DE;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .c360co-pricing-row-title {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 700;
+    color: #0F1F5E;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .c360co-pricing-row-sub { font-size: 13px; color: #5F5E5A; max-width: 560px; margin: 0 auto; }
+
+  /* Impression note banner */
+  .c360co-ctv-note {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #E6F1FB;
+    border: 1px solid rgba(18,32,120,0.15);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    font-size: 12px;
+    color: #0F1F5E;
+    line-height: 1.5;
+  }
+  .c360co-ctv-note i { color: #122078; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+
+  .c360co-pricing-row-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: start;
+  }
+  .c360co-pricing-row-card {
+    background: #fff;
+    border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 10px;
+    padding: 24px 20px;
+    position: relative;
+  }
+  .c360co-pricing-row-card-popular {
+    background: #122078;
+    border-color: #122078;
+  }
+  .c360co-pricing-row-card-highlight {
+    background: #EAF3DE;
+    border-color: rgba(18,120,37,0.3);
+  }
+  .c360co-pricing-row-card-badge {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+    color: #fff;
+  }
+  .c360co-badge-popular { background: #127825; }
+  .c360co-badge-value { background: #122078; }
+
+  .c360co-pricing-row-card-tag {
+    display: inline-block;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    padding: 2px 8px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+    background: rgba(18,32,120,0.08);
+    color: #122078;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-tag { background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.8); }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-tag { background: rgba(18,120,37,0.12); color: #127825; }
+
+  .c360co-pricing-row-card-name {
+    font-size: 22px;
+    font-weight: 700;
+    color: #0F1F5E;
+    margin-bottom: 4px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-name { color: #fff; }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-name { color: #0a4010; }
+
+  .c360co-pricing-row-card-tagline {
+    font-size: 11px;
+    color: #888780;
+    margin-bottom: 16px;
+    line-height: 1.4;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-tagline { color: rgba(255,255,255,0.6); }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-tagline { color: #2d5510; }
+
+  .c360co-pricing-row-card-was {
+    font-size: 11px;
+    color: #B4B2A9;
+    text-decoration: line-through;
+    margin-bottom: 2px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-was { color: rgba(255,255,255,0.4); }
+
+  .c360co-pricing-row-card-amount-row {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    margin-bottom: 4px;
+  }
+  .c360co-pricing-row-card-symbol { font-size: 18px; font-weight: 700; color: #122078; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-symbol { color: #fff; }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-symbol { color: #0a4010; }
+  .c360co-pricing-row-card-amount { font-size: 38px; font-weight: 700; color: #122078; line-height: 1; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-amount { color: #fff; }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-amount { color: #0a4010; }
+
+  .c360co-pricing-row-card-cpm {
+    font-size: 11px;
+    font-weight: 600;
+    color: #127825;
+    margin-bottom: 4px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-cpm { color: #6ee87a; }
+
+  .c360co-pricing-row-card-billed {
+    font-size: 10px;
+    color: #888780;
+    margin-bottom: 12px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-billed { color: rgba(255,255,255,0.55); }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-billed { color: #2d5510; }
+
+  .c360co-pricing-row-card-savings {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #127825;
+    background: rgba(18,120,37,0.1);
+    border: 1px solid rgba(18,120,37,0.2);
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin-bottom: 12px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-savings {
+    background: rgba(26,158,50,0.2);
+    border-color: rgba(26,158,50,0.4);
+    color: #6ee87a;
+  }
+
+  .c360co-pricing-row-card-divider {
+    border: none;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    margin: 0 0 14px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-divider { border-color: rgba(255,255,255,0.15); }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-divider { border-color: rgba(18,120,37,0.15); }
+
+  .c360co-pricing-row-card-impressions {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #0F1F5E;
+    margin-bottom: 10px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-impressions { color: #fff; }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-impressions { color: #0a4010; }
+  .c360co-pricing-row-card-impressions i { font-size: 11px; color: #127825; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-impressions i { color: #6ee87a; }
+
+  .c360co-pricing-row-card-note {
+    font-size: 11px;
+    color: #888780;
+    line-height: 1.5;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-note { color: rgba(255,255,255,0.5); }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-note { color: #2d5510; }
+
+  .c360co-pricing-row-footer-note {
+    text-align: center;
+    font-size: 12px;
+    color: #888780;
+    margin-bottom: 16px;
+    line-height: 1.5;
+  }
+  .c360co-pricing-row-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(18,32,120,0.04);
+    border: 1px solid rgba(18,32,120,0.08);
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+  }
+  .c360co-pricing-row-cta i { color: #127825; font-size: 13px; flex-shrink: 0; }
+  .c360co-pricing-row-cta span { font-size: 13px; color: #5F5E5A; }
+  .c360co-pricing-row-cta strong { color: #0F1F5E; }
+
+  @media (max-width: 768px) {
+    .c360co-pricing-row { padding: 40px 20px; }
+    .c360co-pricing-row-grid { grid-template-columns: 1fr; gap: 24px; }
+  }
+</style>
+
+<section class="c360co-pricing-row">
+  <div class="c360co-pricing-row-inner">
+    <div class="c360co-pricing-row-header">
+      <div class="c360co-pricing-row-eyebrow">
+        <i class="fa-solid fa-tv"></i>
+        CTV / OTT Video Ads
+      </div>
+      <h2 class="c360co-pricing-row-title">Simple, transparent pricing</h2>
+      <p class="c360co-pricing-row-sub">Buy the impressions you need and deliver them on your schedule. Every package includes full-service setup, creative production, and geo-fence targeting.</p>
+    </div>
+
+    <div class="c360co-ctv-note">
+      <i class="fa-solid fa-circle-info"></i>
+      <div>CTV packages are impression-based — you purchase a block of impressions upfront and deliver them at your own pace. No monthly commitment required. Need a custom impression volume? <a href="/schedule-demo" style="color:#122078; font-weight:600; text-decoration:none;">Schedule a strategy call →</a></div>
+    </div>
+
+    <div class="c360co-pricing-row-grid">
+
+      <!-- 10k -->
+      <div class="c360co-pricing-row-card">
+        <div class="c360co-pricing-row-card-tag">CTV Video</div>
+        <div class="c360co-pricing-row-card-name">10k Impressions</div>
+        <div class="c360co-pricing-row-card-tagline">A strong entry point for CTV. Deliver on your schedule — all impressions are yours to use.</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">1,399</span>
+        </div>
+        <div class="c360co-pricing-row-card-cpm">$139.90 per 1,000 impressions</div>
+        <div class="c360co-pricing-row-card-billed">One-time impression package · Flexible delivery</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-impressions">
+          <i class="fa-solid fa-eye"></i>
+          10,000 total impressions
+        </div>
+        <div class="c360co-pricing-row-card-note">Best for targeted campaigns in a specific area or event window.</div>
+      </div>
+
+      <!-- 18k -->
+      <div class="c360co-pricing-row-card c360co-pricing-row-card-popular">
+        <div class="c360co-pricing-row-card-badge c360co-badge-popular">Most Popular</div>
+        <div class="c360co-pricing-row-card-tag">CTV Video</div>
+        <div class="c360co-pricing-row-card-name">18k Impressions</div>
+        <div class="c360co-pricing-row-card-tagline">Maximum exposure across streaming platforms at a lower CPM.</div>
+        <div class="c360co-pricing-row-card-was">$1,399 for 10k · $139.90 CPM</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">1,799</span>
+        </div>
+        <div class="c360co-pricing-row-card-cpm">$99.94 per 1,000 impressions</div>
+        <div class="c360co-pricing-row-card-billed">One-time impression package · Flexible delivery</div>
+        <div class="c360co-pricing-row-card-savings"><i class="fa-solid fa-tag"></i> Save $719.20 vs. 10k rate</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-impressions">
+          <i class="fa-solid fa-eye"></i>
+          18,000 total impressions
+        </div>
+        <div class="c360co-pricing-row-card-note">Best balance of reach and cost per impression.</div>
+      </div>
+
+      <!-- 24k -->
+      <div class="c360co-pricing-row-card c360co-pricing-row-card-highlight">
+        <div class="c360co-pricing-row-card-badge c360co-badge-value">Best Value</div>
+        <div class="c360co-pricing-row-card-tag">CTV Video</div>
+        <div class="c360co-pricing-row-card-name">24k Impressions</div>
+        <div class="c360co-pricing-row-card-tagline">Maximum reach at the lowest CPM. Best for businesses running a sustained CTV presence.</div>
+        <div class="c360co-pricing-row-card-was">$1,399 for 10k · $139.90 CPM</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">2,199</span>
+        </div>
+        <div class="c360co-pricing-row-card-cpm">$91.63 per 1,000 impressions</div>
+        <div class="c360co-pricing-row-card-billed">One-time impression package · Flexible delivery</div>
+        <div class="c360co-pricing-row-card-savings"><i class="fa-solid fa-tag"></i> Save $1,158.60 vs. 10k rate</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-impressions">
+          <i class="fa-solid fa-eye"></i>
+          24,000 total impressions
+        </div>
+        <div class="c360co-pricing-row-card-note">Lowest CPM — maximum sustained reach across streaming platforms.</div>
+      </div>
+
+    </div>
+
+    <div class="c360co-pricing-row-cta">
+      <i class="fa-solid fa-arrow-down"></i>
+      <span>Ready to get started? <strong>Select your package in the order form below.</strong></span>
+    </div>
+  </div>
+</section>
