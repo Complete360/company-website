@@ -1,0 +1,250 @@
+<!-- ============================================================
+     COMPLETE360 — LOCAL SERVICE ADS CHECKOUT — SNIPPET 1 of 4: PRICING ROW (v1.1)
+     GHL page: "Local Service Ads Checkout" (/lsa-checkout). Paste into the
+     Custom Code element ABOVE the GHL order form.
+     Prefix: c360co- (shared by all 4 snippets on this page).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.1 (2026-11-11): Monthly card: 10 days' written notice to cancel.
+     v1.0 (2026-11-11): imported as-is from the live GHL page. No edits yet.
+       Known issues to fix next: Monthly card says "cancel anytime"
+       (policy: 10 days' written notice); setup-fee waiver offer for
+       existing LSA accounts needs confirming.
+     ============================================================ -->
+<style>
+  .c360co-pricing-row {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    border-bottom: 1px solid rgba(18,32,120,0.07);
+    padding: 48px 32px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360co-pricing-row-inner { max-width: 1000px; margin: 0 auto; }
+  .c360co-pricing-row-header { text-align: center; margin-bottom: 28px; }
+  .c360co-pricing-row-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+    color: #127825;
+    background: #EAF3DE;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .c360co-pricing-row-title {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 700;
+    color: #0F1F5E;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .c360co-pricing-row-sub { font-size: 13px; color: #5F5E5A; }
+
+  /* Setup fee notice */
+  .c360co-setup-notice {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    background: #E6F1FB;
+    border: 1px solid rgba(18,32,120,0.15);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 24px;
+    font-size: 12px;
+    color: #0F1F5E;
+    line-height: 1.5;
+  }
+  .c360co-setup-notice i { color: #122078; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+  .c360co-setup-notice strong { font-weight: 600; }
+
+  .c360co-pricing-row-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .c360co-pricing-row-card {
+    background: #fff;
+    border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 10px;
+    padding: 20px 16px;
+    position: relative;
+  }
+  .c360co-pricing-row-card-highlight {
+    background: #EAF3DE;
+    border-color: rgba(18,120,37,0.3);
+  }
+  .c360co-pricing-row-card-badge {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #127825;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  .c360co-pricing-row-card-name {
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888780;
+    margin-bottom: 10px;
+  }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-name { color: #2d5510; }
+  .c360co-pricing-row-card-amount-row {
+    display: flex;
+    align-items: baseline;
+    gap: 2px;
+    margin-bottom: 2px;
+  }
+  .c360co-pricing-row-card-symbol { font-size: 16px; font-weight: 700; color: #122078; }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-symbol { color: #0a4010; }
+  .c360co-pricing-row-card-amount { font-size: 32px; font-weight: 700; color: #122078; line-height: 1; }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-amount { color: #0a4010; }
+  .c360co-pricing-row-card-per { font-size: 12px; color: #888780; }
+  .c360co-pricing-row-card-billed { font-size: 10px; color: #888780; margin-bottom: 10px; line-height: 1.4; }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-billed { color: #2d5510; }
+  .c360co-pricing-row-card-divider {
+    border: none;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    margin: 0 0 10px;
+  }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-divider { border-color: rgba(18,120,37,0.15); }
+  .c360co-pricing-row-card-savings {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 600;
+    color: #127825;
+    background: rgba(18,120,37,0.1);
+    border: 1px solid rgba(18,120,37,0.2);
+    padding: 2px 8px;
+    border-radius: 5px;
+    margin-bottom: 6px;
+  }
+  .c360co-pricing-row-card-effective {
+    font-size: 10px;
+    color: #5F5E5A;
+    line-height: 1.4;
+  }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-effective { color: #2d5510; }
+
+  /* Onboarding note */
+  .c360co-onboarding-note {
+    background: #fff;
+    border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 16px;
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+  }
+  .c360co-onboarding-note i { color: #122078; font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+  .c360co-onboarding-note-title { font-size: 13px; font-weight: 600; color: #0F1F5E; margin-bottom: 3px; }
+  .c360co-onboarding-note-desc { font-size: 12px; color: #5F5E5A; line-height: 1.5; }
+
+  .c360co-pricing-row-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(18,32,120,0.04);
+    border: 1px solid rgba(18,32,120,0.08);
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+  }
+  .c360co-pricing-row-cta i { color: #127825; font-size: 13px; flex-shrink: 0; }
+  .c360co-pricing-row-cta span { font-size: 13px; color: #5F5E5A; }
+  .c360co-pricing-row-cta strong { color: #0F1F5E; }
+
+  @media (max-width: 900px) {
+    .c360co-pricing-row-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+  }
+  @media (max-width: 500px) {
+    .c360co-pricing-row { padding: 40px 20px; }
+    .c360co-pricing-row-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>
+
+<section class="c360co-pricing-row">
+  <div class="c360co-pricing-row-inner">
+    <div class="c360co-pricing-row-header">
+      <div class="c360co-pricing-row-eyebrow">LSA Management</div>
+      <h2 class="c360co-pricing-row-title">Pick the plan that fits. No surprises.</h2>
+      <p class="c360co-pricing-row-sub">Same full-service management on every plan — pay monthly or commit longer and save.</p>
+    </div>
+
+    <div class="c360co-setup-notice">
+      <i class="fa-solid fa-circle-info"></i>
+      <div><strong>$499 one-time setup fee applies to all plans.</strong> Due at onboarding along with your first month's management fee. Already have an active LSA account? Ask us about a setup fee waiver on your strategy call.</div>
+    </div>
+
+    <div class="c360co-pricing-row-grid">
+
+      <div class="c360co-pricing-row-card">
+        <div class="c360co-pricing-row-card-name">Monthly</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">349</span>
+          <span class="c360co-pricing-row-card-per">/mo</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">Billed month to month</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-effective">Most flexible — 10 days' written notice to cancel.</div>
+      </div>
+
+      <div class="c360co-pricing-row-card">
+        <div class="c360co-pricing-row-card-name">Quarterly</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">945</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">Paid in full · 3 months</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-savings">Save $102 vs monthly</div>
+        <div class="c360co-pricing-row-card-effective">$315/mo effective</div>
+      </div>
+
+      <div class="c360co-pricing-row-card">
+        <div class="c360co-pricing-row-card-name">Semi-Annual</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">1,680</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">Paid in full · 6 months</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-savings">Save $414 vs monthly</div>
+        <div class="c360co-pricing-row-card-effective">$280/mo effective</div>
+      </div>
+
+      <div class="c360co-pricing-row-card c360co-pricing-row-card-highlight">
+        <div class="c360co-pricing-row-card-badge">Best Value</div>
+        <div class="c360co-pricing-row-card-name">Annual</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">2,940</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">Paid in full · 12 months</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-savings">Save $1,248 vs monthly</div>
+        <div class="c360co-pricing-row-card-effective">$245/mo effective</div>
+      </div>
+
+    </div>
+
+    <div class="c360co-pricing-row-cta">
+      <i class="fa-solid fa-arrow-down"></i>
+      <span>Ready to get started? <strong>Select your plan in the order form below.</strong></span>
+    </div>
+  </div>
+</section>

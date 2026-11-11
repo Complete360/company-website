@@ -1,0 +1,159 @@
+<!-- ============================================================
+     REPO: checkout/google-ads/2-order-summary.html — SNIPPET 2 of 4 (repo v1.1)
+     GHL page: "Google Ads Checkout" (/google-ads-checkout). Paste BESIDE the
+     GHL order form. Header/footer are global — not here.
+     v1.1 (2026-11-11): removed the 90-day satisfaction guarantee box
+       (removed from /google-ads in v2.6). Its CSS is left in place, unused.
+     2026-11-11: imported from the live GHL page (original v1.2 header below
+       unchanged). Open (Jared): no id="c360-order-form" on this sidebar,
+       unlike the other c360co- checkouts.
+     ============================================================ -->
+<!-- ============================================================
+     COMPLETE360 — GOOGLE ADS (PPC) CHECKOUT · ORDER SUMMARY  v1.2
+     Sidebar beside the GHL order form on /google-checkout. Prefix c360co-.
+     Built to match the checkout pricing row + the GBP/Meta summary sidebars.
+
+     Google Partner badge: official gstatic snippet, 100px, links to our
+     Partners profile (id=9636024453). v1.1: moved to the LEFT of the 4 trust
+     items in a cluster (badge | divider | items), mirroring the GBP hero.
+     ⚠️ At 100px Google's ideal clear space is ~50px each side; a compact
+        sidebar can't give the full halo (same trade-off accepted on the GBP
+        checkout). The fully-spec large placements remain the hero + footer.
+     NO SEO disclaimer here — this is PPC, not SEO (§1g not triggered).
+
+     Pricing/plan handled by the GHL order form itself; this sidebar is
+     reassurance (what's included + guarantee + trust), not line items.
+     ============================================================ -->
+<style>
+  .c360co-summary { font-family: 'Poppins', 'Helvetica Neue', sans-serif; }
+  .c360co-summary-card {
+    background: #fff; border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 12px; padding: 28px 28px;
+    width: 100%;               /* v1.2: fill the column (was capped at 380px — too slim) */
+    box-sizing: border-box;
+    container-type: inline-size;
+  }
+  .c360co-summary-eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px;
+    font-weight: 600; color: #127825; background: #EAF3DE;
+    padding: 4px 12px; border-radius: 4px; margin-bottom: 12px;
+  }
+  .c360co-summary-eyebrow i { font-size: 10px; }
+  .c360co-summary-title { font-size: 20px; font-weight: 700; color: #0F1F5E; line-height: 1.25; margin-bottom: 6px; }
+  .c360co-summary-desc { font-size: 12.5px; color: #5F5E5A; line-height: 1.55; margin-bottom: 20px; }
+
+  .c360co-summary-includes-title {
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.6px;
+    color: #888780; margin-bottom: 10px;
+  }
+  .c360co-summary-includes { display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px; }
+  .c360co-summary-includes-item {
+    display: flex; align-items: flex-start; gap: 8px;
+    font-size: 12.5px; color: #0F1F5E; line-height: 1.4;
+  }
+  .c360co-summary-includes-item i { font-size: 10px; color: #127825; width: 14px; flex-shrink: 0; margin-top: 3px; }
+
+  .c360co-summary-guarantee {
+    display: flex; align-items: flex-start; gap: 11px;
+    background: rgba(18,120,37,0.06); border: 1px solid rgba(18,120,37,0.18);
+    border-radius: 8px; padding: 13px 14px; margin-bottom: 22px;
+  }
+  .c360co-summary-guarantee i { color: #127825; font-size: 15px; margin-top: 1px; flex-shrink: 0; }
+  .c360co-summary-guarantee strong { display: block; font-size: 12.5px; font-weight: 700; color: #0F1F5E; margin-bottom: 2px; }
+  .c360co-summary-guarantee span { font-size: 11.5px; color: #5F5E5A; line-height: 1.5; }
+
+  .c360co-summary-divider { border: none; border-top: 1px solid rgba(18,32,120,0.09); margin: 0 0 18px; }
+
+  .c360co-summary-trust { display: flex; flex-direction: column; gap: 10px; flex: 1; min-width: 0; }
+  .c360co-summary-trust-item {
+    display: flex; align-items: center; gap: 9px;
+    font-size: 12.5px; color: #0F1F5E; font-weight: 500;
+  }
+  .c360co-summary-trust-item i { font-size: 12px; color: #127825; width: 15px; text-align: center; flex-shrink: 0; }
+
+  /* ── Google Partner badge — official snippet, 100px, own centered row ──
+     §1: official gstatic snippet only. height set, width:auto (never both).
+     No white chip / border-radius / overflow — the badge ships its own card;
+     a drop-shadow lifts it. Links to our Partners profile — don't strip. */
+  /* ── Trust cluster: Google Partner badge (left) + divider + 4 items (right).
+     Mirrors the GBP hero cluster; badge height-matched to the 4-item column. */
+  .c360co-summary-trust-cluster { display: flex; align-items: center; margin-bottom: 22px; }
+  .c360co-summary-partner {
+    display: inline-flex; align-items: center; flex-shrink: 0;
+    line-height: 0;
+    border: 0; outline: none; box-shadow: none; text-decoration: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+  .c360co-summary-partner img {
+    display: block;
+    height: 100px;         /* set height only — never both */
+    width: auto;
+    max-width: none;       /* guard against a global img{max-width:100%} */
+    filter: drop-shadow(0 8px 20px rgba(18,32,120,0.18));
+    border: 0; outline: none; box-shadow: none;
+    transition: transform 0.15s ease;
+  }
+  .c360co-summary-partner:hover img { transform: translateY(-2px); }
+  /* clear space between badge and text. A 100px badge ideally wants ~50px each
+     side; a narrow sidebar can't give the full halo — same trade-off as the
+     GBP checkout. Fully-spec large placements remain the hero + footer. */
+  .c360co-summary-cred-divider {
+    width: 1px; align-self: stretch; min-height: 100px;
+    background: rgba(18,32,120,0.12); margin: 0 22px; flex-shrink: 0;
+  }
+
+  .c360co-summary-footer {
+    display: flex; align-items: center; justify-content: center; gap: 7px;
+    font-size: 11.5px; color: #888780;
+    border-top: 1px solid rgba(18,32,120,0.09); padding-top: 16px;
+  }
+  .c360co-summary-footer i { color: #127825; font-size: 12px; }
+
+  @container (max-width: 360px) {
+    .c360co-summary-trust-cluster { flex-direction: column; align-items: flex-start; gap: 18px; }
+    .c360co-summary-cred-divider { display: none; }
+    .c360co-summary-trust { width: 100%; }
+    .c360co-summary-partner { align-self: center; }
+  }
+  @container (max-width: 320px) {
+    .c360co-summary-card { padding: 22px 18px; }
+  }
+</style>
+<div class="c360co-summary">
+  <div class="c360co-summary-card">
+    <div class="c360co-summary-eyebrow"><i class="fa-solid fa-bullseye"></i> Your plan</div>
+    <div class="c360co-summary-title">Google Ads — Fully Managed</div>
+    <div class="c360co-summary-desc">Done-for-you Google Search campaigns — built, launched, and managed by our team. Select your billing option in the form, and you're set.</div>
+
+    <div class="c360co-summary-includes-title">What's included</div>
+    <div class="c360co-summary-includes">
+      <div class="c360co-summary-includes-item"><i class="fa-solid fa-check"></i>Keyword research &amp; campaign strategy</div>
+      <div class="c360co-summary-includes-item"><i class="fa-solid fa-check"></i>Ad copywriting, extensions &amp; launch</div>
+      <div class="c360co-summary-includes-item"><i class="fa-solid fa-check"></i>Conversion &amp; call tracking setup</div>
+      <div class="c360co-summary-includes-item"><i class="fa-solid fa-check"></i>Ongoing optimization &amp; reporting</div>
+      <div class="c360co-summary-includes-item"><i class="fa-solid fa-check"></i>A dedicated account manager</div>
+    </div>
+
+    <hr class="c360co-summary-divider">
+
+    <!-- Trust cluster: official Google Partner badge (left, 100px) | divider | 4 items -->
+    <div class="c360co-summary-trust-cluster">
+      <a class="c360co-summary-partner" href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" aria-label="Google Partner — view our Partners profile">
+        <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+      </a>
+      <div class="c360co-summary-cred-divider" aria-hidden="true"></div>
+      <div class="c360co-summary-trust">
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-circle-check"></i> Google Product Expert on team</div>
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-star"></i> 147 five-star reviews on Google</div>
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-phone"></i> Real humans — (866) 527-6205</div>
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-location-dot"></i> Tucson, AZ · Serving nationwide</div>
+      </div>
+    </div>
+
+    <div class="c360co-summary-footer">
+      <i class="fa-solid fa-lock"></i>
+      Secure checkout · Your info stays private
+    </div>
+  </div>
+</div>

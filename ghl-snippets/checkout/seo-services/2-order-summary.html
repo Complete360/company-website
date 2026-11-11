@@ -1,0 +1,277 @@
+<!-- ============================================================
+     COMPLETE360 — SEO SERVICES CHECKOUT — SNIPPET 2 of 4: ORDER SUMMARY (v1.0)
+     GHL page: /seo-services-checkout. Paste into the Custom Code element
+     BESIDE the GHL order form (right column).
+     Prefix: c360co- (shared by all 4 snippets on this page).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.0 (2026-11-11): built from the Google Platinum checkout layout (same
+       CSS) with SEO Services content from /seo-services v1.4.
+       Deliverables grouped into the page's four parts. Partner claim is text
+       with a neutral icon (no Google-G) plus the required "SEO services are
+       not verified or endorsed by Google" note — keep them together.
+     ============================================================ -->
+<style>
+  .c360co-summary-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+  }
+  .c360co-summary {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(18,32,120,0.1);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(18,32,120,0.07);
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+  }
+  .c360co-summary-header {
+    background: linear-gradient(135deg, #0d1654, #122078, #1a2e99);
+    padding: 20px 24px;
+    flex-shrink: 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .c360co-summary-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(18,120,37,0.2) 0%, transparent 60%);
+    pointer-events: none;
+  }
+  .c360co-summary-header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: rgba(255,255,255,0.12);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 3px 10px;
+    font-size: 10px;
+    font-weight: 600;
+    color: rgba(255,255,255,0.85);
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+    margin-bottom: 8px;
+  }
+  .c360co-summary-header-badge i { color: #FBBC04; font-size: 9px; }
+  .c360co-summary-header-title { font-size: 17px; font-weight: 700; color: #fff; margin-bottom: 4px; position: relative; }
+  .c360co-summary-header-sub { font-size: 12px; color: rgba(255,255,255,0.6); line-height: 1.4; position: relative; }
+  .c360co-summary-body {
+    padding: 20px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    flex: 1;
+  }
+
+  /* Bundle service blocks */
+  .c360co-bundle-block {
+    border: 1px solid rgba(18,32,120,0.09);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .c360co-bundle-block-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: #F8F9FF;
+    border-bottom: 1px solid rgba(18,32,120,0.07);
+  }
+  .c360co-bundle-block-icon {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+  .c360co-icon-blue { background: #E6F1FB; color: #122078; }
+  .c360co-icon-green { background: #EAF3DE; color: #127825; }
+  .c360co-bundle-block-title {
+    font-size: 13px;
+    font-weight: 600;
+    color: #0F1F5E;
+    flex: 1;
+  }
+  .c360co-bundle-block-body {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .c360co-bundle-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 12px;
+    color: #0F1F5E;
+    line-height: 1.4;
+  }
+  .c360co-bundle-check {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: #127825;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .c360co-bundle-check i { font-size: 7px; color: #fff; }
+
+  .c360co-summary-divider { border: none; border-top: 1px solid rgba(18,32,120,0.08); }
+
+  /* Compound effect callout */
+  .c360co-compound-callout {
+    display: flex;
+    gap: 10px;
+    align-items: flex-start;
+    background: linear-gradient(135deg, rgba(18,32,120,0.05), rgba(18,120,37,0.05));
+    border-radius: 8px;
+    padding: 12px 14px;
+    border: 1px solid rgba(18,32,120,0.1);
+  }
+  .c360co-compound-callout i { color: #FBBC04; font-size: 15px; flex-shrink: 0; margin-top: 1px; }
+  .c360co-compound-title { font-size: 12px; font-weight: 700; color: #0F1F5E; margin-bottom: 2px; }
+  .c360co-compound-desc { font-size: 11px; color: #5F5E5A; line-height: 1.5; }
+
+  /* Setup waiver */
+  .c360co-waiver-badge {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #EAF3DE;
+    border: 1px solid rgba(18,120,37,0.2);
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #0a4010;
+  }
+  .c360co-waiver-badge i { color: #127825; font-size: 13px; flex-shrink: 0; }
+
+  .c360co-summary-trust { display: flex; flex-direction: column; gap: 7px; }
+  .c360co-summary-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #5F5E5A;
+  }
+  .c360co-summary-trust-item i { font-size: 13px; color: #122078; width: 16px; text-align: center; }
+  .c360co-summary-footer {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.08);
+    padding: 14px 24px;
+    text-align: center;
+    font-size: 11px;
+    color: #888780;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    flex-shrink: 0;
+  }
+  .c360co-summary-footer i { font-size: 12px; color: #127825; }
+
+  /* Required whenever the Partner claim appears alongside SEO */
+  .c360co-summary-seo-note { font-size: 10px; line-height: 1.4; color: #888780; margin: 0; }
+</style>
+
+<div id="c360-order-form" class="c360co-summary-wrap">
+  <div class="c360co-summary">
+    <div class="c360co-summary-header">
+      <div class="c360co-summary-header-badge">
+        <i class="fa-solid fa-star"></i>
+        Every plan includes
+      </div>
+      <div class="c360co-summary-header-title">SEO Services</div>
+      <div class="c360co-summary-header-sub">Your website, optimized for Google and AI search and growing every month — all done for you.</div>
+    </div>
+
+    <div class="c360co-summary-body">
+
+      <div class="c360co-bundle-block">
+        <div class="c360co-bundle-block-header">
+          <div class="c360co-bundle-block-icon c360co-icon-blue"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+          <div class="c360co-bundle-block-title">Website SEO setup</div>
+        </div>
+        <div class="c360co-bundle-block-body">
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Technical check and fixes (speed, mobile, broken links)</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Google Search Console &amp; Analytics setup</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Competitor review &amp; written keyword plan</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>AI crawler check &amp; structured data</div>
+        </div>
+      </div>
+
+      <div class="c360co-bundle-block">
+        <div class="c360co-bundle-block-header">
+          <div class="c360co-bundle-block-icon c360co-icon-green"><i class="fa-solid fa-file-lines"></i></div>
+          <div class="c360co-bundle-block-title">Main pages optimized</div>
+        </div>
+        <div class="c360co-bundle-block-body">
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Up to 5 main pages optimized for Google and AI search</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Clear answers to the questions customers ask</div>
+        </div>
+      </div>
+
+      <div class="c360co-bundle-block">
+        <div class="c360co-bundle-block-header">
+          <div class="c360co-bundle-block-icon c360co-icon-blue"><i class="fa-solid fa-pen-to-square"></i></div>
+          <div class="c360co-bundle-block-title">New content every month</div>
+        </div>
+        <div class="c360co-bundle-block-body">
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>2 new service and city pages</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>2 blog posts</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>1 existing page refreshed</div>
+        </div>
+      </div>
+
+      <div class="c360co-bundle-block">
+        <div class="c360co-bundle-block-header">
+          <div class="c360co-bundle-block-icon c360co-icon-green"><i class="fa-solid fa-chart-line"></i></div>
+          <div class="c360co-bundle-block-title">Monthly report &amp; monitoring</div>
+        </div>
+        <div class="c360co-bundle-block-body">
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Keyword rank tracking</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>AI visibility check (ChatGPT, Gemini, Perplexity, Google)</div>
+          <div class="c360co-bundle-item"><div class="c360co-bundle-check"><i class="fa-solid fa-check"></i></div>Site health scan, with fixes</div>
+        </div>
+      </div>
+
+      <div class="c360co-compound-callout">
+        <i class="fa-solid fa-star"></i>
+        <div>
+          <div class="c360co-compound-title">What to expect</div>
+          <div class="c360co-compound-desc">Most businesses start seeing ranking movement within 3 to 6 months. Nobody can honestly guarantee a #1 spot on Google or a mention by an AI tool, so we don't — we show you the progress every month instead.</div>
+        </div>
+      </div>
+
+      <hr class="c360co-summary-divider">
+
+      <div class="c360co-summary-trust">
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-circle-check"></i> Certified Google Partner</div>
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-user-check"></i> Google Product Expert on the team</div>
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-star"></i> 147 five-star reviews on Google</div>
+        <div class="c360co-summary-trust-item"><i class="fa-solid fa-phone"></i> Real humans — (866) 527-6205</div>
+        <p class="c360co-summary-seo-note">SEO services are not verified or endorsed by Google.</p>
+      </div>
+    </div>
+
+    <div class="c360co-summary-footer">
+      <i class="fa-solid fa-lock"></i>
+      Secure checkout · Your info stays private
+    </div>
+  </div>
+</div>

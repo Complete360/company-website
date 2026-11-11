@@ -1,0 +1,124 @@
+<!-- ============================================================
+     REPO: checkout/meta-ads/4-faq.html — SNIPPET 4 of 4 (repo v1.1, was v1.0)
+     GHL page: "Meta Ads Checkout" (/meta-checkout). Paste at the BOTTOM of
+     the page, below the reviews. Header/footer are global — not here.
+     v1.1 (2026-11-11): Cancel FAQ matches /meta-ads v2.3: 10 days'
+       written notice; prepaid plans and setup fee non-refundable from
+       purchase; 90-day guarantee removed.
+     2026-11-11: imported as-is from the live GHL page (original header
+       below is unchanged). Known issues to fix next: cancel FAQ says
+       "cancelled anytime" (policy: 10 days' written notice) and describes the
+       90-day credit guarantee — REMOVED from /meta-ads in v2.3; the /meta-ads
+       FAQ now says prepaid plans and the setup fee are non-refundable from
+       purchase. Match that wording.
+     ============================================================ -->
+<!-- ============================================================
+     COMPLETE360 — META ADS CHECKOUT — FAQ
+     For /meta-checkout. Prefix c360wf-. Rebuilt from the old Meta Social
+     Posting FAQ — SAME layout/CSS/JS, content swapped to Meta Ads.
+
+     MUST STAY IN SYNC with /meta-ads page FAQ + checkout table + sidebar:
+       - Pricing: $399/mo · 6mo $1,915 · 12mo $3,352 · $499 one-time setup.
+       - Guarantee: 90-DAY (was implicitly none here). Recaptures used months
+         at the $399 standard rate; $499 setup is NON-REFUNDABLE / not part of
+         the credit; credit never expires.
+       - Ad budget separate, paid to Meta, $600/mo min recommended.
+     Key content fixes vs the social-posting original:
+       - "Does this include ads?" (answer: no) -> FLIPPED to "Is my ad budget
+         included?" — the old Q&A is actively wrong on an ADS checkout.
+       - Added a dedicated $499 SETUP FEE question (first appears at checkout).
+       - Cancellation answer now carries the 90-day guarantee + setup terms.
+       - max-height 400px -> 460px (setup/guarantee answers run longer).
+     ============================================================ -->
+<style>
+.c360wf-wrap { font-family: var(--contentfont, 'Poppins'), sans-serif; max-width: 1160px; margin: 0 auto; padding: 72px 24px 80px; }
+.c360wf-header { text-align: center; margin-bottom: 48px; }
+.c360wf-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #127825; margin-bottom: 10px; }
+.c360wf-heading { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: #122078; margin-bottom: 12px; }
+.c360wf-sub { font-size: 1rem; color: #6B7A9D; max-width: 520px; margin: 0 auto; line-height: 1.6; }
+.c360wf-grid { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+.c360wf-item { border: 1px solid #E2E8F4; border-radius: 14px; overflow: hidden; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.c360wf-item.open { border-color: #127825; box-shadow: 0 4px 20px rgba(18,120,37,0.1); }
+.c360wf-q { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; cursor: pointer; font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 0.97rem; font-weight: 600; color: #122078; user-select: none; transition: background 0.15s ease; }
+.c360wf-q:hover { background: #F1EFE8; }
+.c360wf-item.open .c360wf-q { background: #EAF3DE; }
+.c360wf-icon { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: #F1EFE8; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #127825; transition: transform 0.3s ease, background 0.2s ease, color 0.2s ease; line-height: 1; }
+.c360wf-item.open .c360wf-icon { transform: rotate(45deg); background: #127825; color: #fff; }
+.c360wf-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 24px; }
+.c360wf-item.open .c360wf-a { max-height: 460px; padding: 0 24px 20px; }
+.c360wf-a p { font-size: 0.93rem; color: #6B7A9D; line-height: 1.72; margin: 0; }
+.c360wf-a a { color: #127825; font-weight: 600; text-decoration: none; }
+.c360wf-cta { margin-top: 52px; background: linear-gradient(135deg, #122078, #0d1654); border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.c360wf-cta-text h3 { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0 0 6px; }
+.c360wf-cta-text p { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin: 0; }
+.c360wf-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: #127825; color: #fff; padding: 14px 30px; border-radius: 50px; font-family: var(--contentfont, 'Poppins'), sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; white-space: nowrap; }
+.c360wf-cta-btn:hover { background: #0e5e1d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(18,120,37,0.4); }
+@media (max-width: 600px) { .c360wf-cta { flex-direction: column; text-align: center; } .c360wf-q { font-size: 0.9rem; padding: 16px 18px; } .c360wf-a { padding: 0 18px; } .c360wf-item.open .c360wf-a { padding: 0 18px 16px; } }
+</style>
+
+<div class="c360wf-wrap">
+  <div class="c360wf-header">
+    <p class="c360wf-eyebrow">Got Questions?</p>
+    <h2 class="c360wf-heading">Frequently Asked Questions</h2>
+    <p class="c360wf-sub">Everything you need to know about our Facebook &amp; Instagram ad management before signing up.</p>
+  </div>
+
+  <div class="c360wf-grid">
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What's the difference between my management fee and my ad budget?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>They're two separate costs. Your management fee — the plan you select here — is paid to Complete360 for building, running, and optimizing your campaigns. Your ad budget is paid directly to Meta and funds the actual ads; we recommend a minimum of $600/mo for effective local lead generation. You always own and control your ad account, and we never mark up your ad spend.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Is there a setup fee?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Yes — a one-time $499 setup fee applies to every plan. It covers onboarding, ad-account and tracking setup, audience research, and building your first campaign. It's a separate one-time charge from your monthly (or prepaid) management fee, and it's shown on your order before you pay.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What access do you need to run my ads?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>We need access to your Meta ad account through Meta Business Manager — or we'll help you create one during onboarding. This lets us build and manage campaigns on your behalf. You retain full ownership of the ad account and your billing at all times; we only use the access to run and optimize your campaigns.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Do you create the ads, or do I?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>We handle all of it — strategy, ad copy, creative design, and lead forms. During onboarding you tell us about your business, services, and offers, and from there our team builds everything. You'll review and approve the direction, but you won't be stuck making ads. If you have brand assets or photos you'd like us to use, we'll happily work them in.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">How soon after signing up will my campaigns launch?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Most campaigns launch within a few business days of completing onboarding. We'll send you a simple intake form right after checkout to collect your business details, ad-account access, and offers. Meta's system then uses the early period to learn who converts best, so performance and cost per lead keep improving as we optimize.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Where do my leads go?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Straight into your Complete360 CRM, so you can follow up instantly by text, email, or call. Fast follow-up is one of the biggest factors in turning a Meta lead into a paying customer, and the platform makes it automatic — every call and form lead is tracked in one place.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">How do I cancel?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>The Month-to-Month plan has no long-term contract — to cancel, send us written notice at least 10 days before your next billing date. The 6-Month and 12-Month plans are paid upfront for a lower effective rate and, like the one-time $499 setup fee, are non-refundable from the time of purchase.</p></div>
+    </div>
+
+  </div>
+
+  <div class="c360wf-cta">
+    <div class="c360wf-cta-text">
+      <h3>Still have questions?</h3>
+      <p>Book a free 15-minute call — we'll walk you through the service and recommend the right plan.</p>
+    </div>
+    <a href="/schedule-demo" class="c360wf-cta-btn">Schedule a Call →</a>
+  </div>
+</div>
+
+<script>
+function c360wfToggle(el) {
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.c360wf-item').forEach(function(i) { i.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
+<!-- ============================================================
+     END META ADS CHECKOUT FAQ
+     ============================================================ -->

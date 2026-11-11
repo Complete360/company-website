@@ -26,7 +26,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-32 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
+47 of 64 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -77,23 +77,26 @@ anything still to do on a page (🔁 = needs rebuild).
 
 ### Checkout
 
+All checkout pages are set to **noindex** in GHL and get no schema (decided Nov 11, 2026).
+
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `checkout/local-service-ads-checkout.html` | Local Service Ads Checkout | ⬜ Placeholder |  |
-| `checkout/gbp-management-checkout.html` | GBP Management Checkout | ⬜ Placeholder |  |
-| `checkout/gbp-setup-checkout.html` | GBP Setup Checkout | ⬜ Placeholder |  |
-| `checkout/local-seo-booster-checkout.html` | Local SEO Checkout | ⬜ Placeholder |  |
-| `checkout/geo-fencing-ctv-checkout.html` | Geo Fencing CTV Checkout | ⬜ Placeholder |  |
-| `checkout/geo-fencing-mobile-checkout.html` | Geo Fencing Mobile Checkout | ⬜ Placeholder |  |
-| `checkout/google-ads-checkout.html` | Google Ads Checkout | ⬜ Placeholder |  |
-| `checkout/meta-ads-checkout.html` | Meta Ads Checkout | ⬜ Placeholder |  |
-| `checkout/google-social-posting-checkout.html` | Google Social Posting Checkout | ⬜ Placeholder |  |
-| `checkout/meta-social-posting-checkout.html` | Meta Social Posting Checkout | ⬜ Placeholder |  |
-| `checkout/procard-checkout.html` | ProCard Checkout | ⬜ Placeholder |  |
-| `checkout/website-checkout.html` | Website Checkout | ⬜ Placeholder |  |
-| `checkout/ai-employee-checkout.html` | AI Employee Checkout | ⬜ Placeholder |  |
-| `checkout/dispensary-checkout.html` | Dispensary Checkout | ⬜ Placeholder |  |
-| `checkout/google-platinum/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Google Platinum Checkout | ✅ Code in repo | v1.0 imported as-is from live GHL. 🔁 Fix next: "cancel anytime", refund wording, "GBP" in copy, bundle contents vs PROJECT.md |
+| `checkout/local-service-ads/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Local Service Ads Checkout | ✅ Code in repo | v1.1 (Nov 11): cancellation/refund copy fixed; "money back" -> credits. Open: "Performance Promise" wording, background-check cost and setup-fee waiver claims; "Tucson businesses" headline. Paste into GHL. |
+| `checkout/gbp-management/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | GBP Management Checkout | ✅ Code in repo | Repo v1.1 (Nov 11): 30-day guarantee replaced with the Terms' guarantee; cancellation/refund and "GBP" fixed. Open: confirm the guarantee wording. Paste into GHL. |
+| `checkout/gbp-setup/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | GBP Setup Checkout | ✅ Code in repo | v1.1 (Nov 11): refund now non-refundable from purchase; "GBP" fixed. Open: "Quality Promise"/keep-working wording (management review); "hundreds of profiles" claim. Paste into GHL. |
+| `checkout/local-seo-booster/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Local SEO Checkout | ✅ Code in repo | v1.1 (Nov 11): cancellation/annual refund copy, ranking answer and "GBP" fixed. Open: "Tucson businesses" headline. Paste into GHL. |
+| `checkout/geo-fencing-ctv/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Geo Fencing CTV Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; typos fixed ("$1,390" -> "$1,399", "CTVads"). Prices/CPMs match /geo-fencing. Open: "#1 Location Intelligence Platform". Paste into GHL. |
+| `checkout/geo-fencing-mobile/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Geo Fencing Mobile Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; 10-day notice + prepaid non-refundable; 12-mo effective $208.30 -> $209.30. Prices match /geo-fencing. Open: ad spend separate vs 8,000 impressions included; "#1 Location Intelligence Platform"; "completely legal" competitor targeting. Paste into GHL. |
+| `checkout/google-ads/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Google Ads Checkout | ✅ Code in repo | Repo v1.1 (Nov 11): imported from live GHL; 90-day guarantee removed (matches /google-ads v2.6); 10-day notice; prepaid non-refundable from purchase. Prices match. ⚠ Strip the internal HTML comments (agent-only $299 floor) before pasting — comments show in page source. Open: "don't auto-renew" vs Terms; Most Popular tier (6-mo here, 12-mo on page). Paste into GHL. |
+| `checkout/meta-ads/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Meta Ads Checkout | ✅ Code in repo | v1.1 (Nov 11): 90-day guarantee removed (matches /meta-ads v2.3); 10-day notice; non-refundable from purchase. Older c360wr-/c360wf- styling. Paste into GHL. |
+| `checkout/google-social-posting/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Google Social Posting Checkout | ✅ Code in repo | v1.1 (Nov 11): 30-day guarantee removed; 10-day notice; 147 reviews; "GBP"/vendor name fixed. ⚠ Open: 6/12-month prices ($774/$1,308) vs service page ($715/$1,252). Older c360wr-/c360wf- styling. Paste after prices are settled. |
+| `checkout/meta-social-posting/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Meta Social Posting Checkout | ✅ Code in repo | v1.1 (Nov 11): 30-day guarantee removed; 10-day notice; 147 reviews. Older c360wr-/c360wf- styling. Paste into GHL. |
+| `checkout/procard/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | ProCard Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; reviews 144+ -> 147. Prices match /procard. Open: "lifetime license / own it forever" wording; free minor edits promise; "Tucson businesses" headline. Older c360wr-/c360wf- styling. Paste into GHL. |
+| `checkout/website/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Website Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; 30-day guarantee removed; 147 reviews; cancel FAQ now matches /website-pricing (10-day notice). Prices match. Open: page counts (5/10/15+ vs 4/6/8–9 on /website-pricing); "one-time setup" vs deposit + final payment; "own your domain". Older c360wr-/c360wf- styling. Paste into GHL. |
+| `checkout/ai-agents/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | AI Employee Checkout | ✅ Code in repo | Repo v1.1 (Nov 11): imported from live GHL (/ai-checkout); per-minute conflict resolved to PROJECT.md wording (unlimited AI usage, phone line & carrier billed separately); 30-day guarantee removed; 10-day notice; annual cancel FAQ per Terms; 147 reviews. Prices match /ai-agents. Pricing snippet carries its own Custom Quote modal + form_embed.js. Older-style c360ai- recap/FAQ. Paste into GHL. |
+| `checkout/seo-services/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | SEO Services Checkout (/seo-services-checkout) | ✅ Code in repo | v1.0 live in GHL (Nov 11) — schema still to paste. Built on the Platinum checkout layout with /seo-services v1.4 content ($599/mo, $5,990/yr). Next: point the /seo-services Get Started buttons here. |
+| `checkout/dispensary/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Dispensary Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; reviews 144+ -> 147; billing FAQ adds 10-day notice + annual non-refundable. Prices match /dispensary. ⚠ Open: legal review of "fully legal"/"no platform policy violations" and VFW/Legion naming; ad spend separate vs fixed impressions; CTV/desktop formats vs cards; "priced slightly higher" monthly. Older c360wr-/c360wf- styling. |
+| `checkout/google-platinum/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Google Platinum Checkout | ✅ Code in repo | v1.1 (Nov 11): cancellation/refund/"GBP" copy fixed. Open: Reputation Management in the bundle vs PROJECT.md; "won't be double-billed" upgrade promise; "Tucson businesses" reviews headline. Paste into GHL. |
 | `checkout/lifetime-deal-checkout.html` | Lifetime Deal Checkout | ⬜ Placeholder |  |
 | `checkout/tier-1-plan-checkout.html` | Tier 1 Plan Check Out | ⬜ Placeholder |  |
 | `checkout/tier-2-plan-checkout.html` | Tier 2 Plan Check Out | ⬜ Placeholder |  |

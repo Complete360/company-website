@@ -1,0 +1,135 @@
+<!-- ============================================================
+     REPO: checkout/ai-agents/2-order-summary.html — SNIPPET 2 of 4 (repo v1.1)
+     GHL page: "AI Employee Checkout" (/ai-checkout). Paste BESIDE the GHL
+     order form. Header/footer are global — not here.
+     v1.1 (2026-11-11): removed the 30-Day Performance Guarantee (AI Agents
+       aren't covered by the Terms' guarantee; CSS left in place, unused);
+       usage line now "unlimited AI usage, phone line & carrier usage billed
+       separately" (matches PROJECT.md and /ai-agents); "147+" -> "147";
+       last trust line -> "Unlimited AI usage — no per-minute AI fees".
+     2026-11-11: imported from the live GHL page (original header below is
+       unchanged). Open (Jared): "Tucson, AZ"; wrapper id "order-form" (not
+       "c360-order-form").
+     ============================================================ -->
+<!-- ============================================================
+     COMPLETE360 — /ai-checkout — "EVERY PLAN INCLUDES" RECAP PANEL
+     (right-hand column of the order form)
+     Prefix: c360ai-
+
+     CORRECTION: earlier drafts claimed "no per-minute fees." Standard
+     phone number &amp; per-minute usage rates DO apply on top of the
+     monthly plan, so that claim has been removed/reworded below.
+
+     ASSUMPTION: "AI Assistant Adds" list assumes AI Assistant bundles
+     everything in AI Voice Agent plus chat/SMS, cross-channel booking,
+     review requests, and custom workflow automation — inferred from
+     the /ai-agents page's five agent descriptions since the brand doc
+     only gives pricing, not a feature breakdown per product. Adjust
+     if the real split differs.
+     ============================================================ -->
+<style>
+.c360ai-recap-wrap {
+  font-family: var(--contentfont, 'Poppins'), sans-serif;
+  background: #fff; border: 2px solid #E2E8F4;
+  border-radius: 20px; padding: 36px 30px;
+  display: flex; flex-direction: column; gap: 26px; height: 100%;
+}
+.c360ai-recap-section-title {
+  font-family: var(--headlinefont, 'Poppins'), sans-serif;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #127825; margin-bottom: 14px;
+}
+.c360ai-recap-includes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.c360ai-recap-includes li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: #0F1F5E; line-height: 1.45; }
+.c360ai-recap-check { width: 20px; height: 20px; min-width: 20px; border-radius: 50%; background: #127825; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.c360ai-recap-check svg { width: 9px; height: 9px; stroke: #fff; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.c360ai-recap-divider { height: 1px; background: #E2E8F4; }
+.c360ai-recap-timeline { display: flex; flex-direction: column; gap: 14px; }
+.c360ai-recap-step { display: flex; align-items: flex-start; gap: 14px; }
+.c360ai-recap-step-num { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: linear-gradient(135deg, #122078, #1a2e99); color: #fff; font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.c360ai-recap-step-text strong { display: block; font-size: 0.88rem; font-weight: 600; color: #0F1F5E; margin-bottom: 2px; }
+.c360ai-recap-step-text span { font-size: 0.8rem; color: #6B7A9D; line-height: 1.4; }
+.c360ai-recap-guarantee { background: #EAF3DE; border: 1px solid rgba(18,120,37,0.2); border-radius: 14px; padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px; }
+.c360ai-recap-guarantee-icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
+.c360ai-recap-guarantee h4 { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 0.9rem; font-weight: 700; color: #127825; margin: 0 0 4px; }
+.c360ai-recap-guarantee p { font-size: 0.8rem; color: #2d5510; line-height: 1.5; margin: 0; }
+.c360ai-recap-trust { display: flex; flex-direction: column; gap: 10px; }
+.c360ai-recap-trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: #6B7A9D; font-weight: 500; }
+.c360ai-recap-trust-item::before { content: '✓'; font-size: 0.7rem; font-weight: 800; color: #127825; }
+</style>
+
+<div class="c360ai-recap-wrap" id="order-form">
+
+  <div>
+    <p class="c360ai-recap-section-title">Every Plan Includes</p>
+    <ul class="c360ai-recap-includes">
+      <li><span class="c360ai-recap-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Custom AI trained on your business, services &amp; FAQs</li>
+      <li><span class="c360ai-recap-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Dedicated phone number provisioned for you</li>
+      <li><span class="c360ai-recap-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Real-time integration with your calendar for booking</li>
+      <li><span class="c360ai-recap-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Call/chat transcripts &amp; monthly performance recap</li>
+      <li><span class="c360ai-recap-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Flat monthly rate with unlimited AI usage (phone line &amp; carrier usage billed separately)</li>
+      <li><span class="c360ai-recap-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Live in as little as 5–7 business days</li>
+    </ul>
+  </div>
+
+  <div class="c360ai-recap-divider"></div>
+
+  <div>
+    <p class="c360ai-recap-section-title">AI Assistant Adds</p>
+    <ul class="c360ai-recap-includes">
+      <li><span class="c360ai-recap-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Website &amp; SMS chat lead qualification</li>
+      <li><span class="c360ai-recap-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Automated review requests &amp; drafted replies</li>
+      <li><span class="c360ai-recap-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Custom workflow automation</li>
+      <li><span class="c360ai-recap-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Priority onboarding support</li>
+    </ul>
+  </div>
+
+  <div class="c360ai-recap-divider"></div>
+
+  <div>
+    <p class="c360ai-recap-section-title">How It Works</p>
+    <div class="c360ai-recap-timeline">
+      <div class="c360ai-recap-step">
+        <div class="c360ai-recap-step-num">1</div>
+        <div class="c360ai-recap-step-text">
+          <strong>Discovery Call</strong>
+          <span>We learn your business, services, call flows, and how you currently book appointments.</span>
+        </div>
+      </div>
+      <div class="c360ai-recap-step">
+        <div class="c360ai-recap-step-num">2</div>
+        <div class="c360ai-recap-step-text">
+          <strong>We Build &amp; Train Your Agent</strong>
+          <span>Scripts, phone number, and calendar/CRM integrations are configured specifically for your business.</span>
+        </div>
+      </div>
+      <div class="c360ai-recap-step">
+        <div class="c360ai-recap-step-num">3</div>
+        <div class="c360ai-recap-step-text">
+          <strong>Your Agent Goes Live</strong>
+          <span>Calls, chats, and bookings are handled automatically — 24/7, without lifting a finger.</span>
+        </div>
+      </div>
+      <div class="c360ai-recap-step">
+        <div class="c360ai-recap-step-num">4</div>
+        <div class="c360ai-recap-step-text">
+          <strong>Monthly Recap &amp; Optimization</strong>
+          <span>We review performance and refine scripts and flows every month.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c360ai-recap-divider"></div>
+
+  <div>
+    <div class="c360ai-recap-trust">
+      <div class="c360ai-recap-trust-item">Google Partner agency · Tucson, AZ</div>
+      <div class="c360ai-recap-trust-item">147 five-star Google reviews</div>
+      <div class="c360ai-recap-trust-item">Built &amp; trained by real automation specialists — not off-the-shelf bots</div>
+      <div class="c360ai-recap-trust-item">Unlimited AI usage — no per-minute AI fees</div>
+    </div>
+  </div>
+
+</div>

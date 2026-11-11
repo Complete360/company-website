@@ -56,7 +56,7 @@ the current page.
 | Local Service Ads (LSA) | /local-service-ads | `services/local-service-ads.html` | One-time setup + recurring management |
 | Google Business Profile Management | /gbp-management | `services/gbp-management.html` | Recurring (monthly or prepaid terms) |
 | Google Business Profile Setup & Optimization | /google-business-profile | `services/gbp-setup.html` | One-time |
-| SEO Services (website SEO) | /seo-services (**new — not live or in nav yet**) | `services/seo-services.html` | $599/mo or $5,990/yr. One package, 4 parts: website SEO setup (technical fixes, Search Console + Analytics, competitor review + keyword plan, AI crawler check, structured data) · up to 5 main pages optimized for Google and AI search · every month: 2 service/city pages + 2 blog posts + 1 page refreshed · monthly report (rank tracking, AI visibility check, site health scan). No ranking or AI-recommendation guarantees. |
+| SEO Services (website SEO) | /seo-services (**live; not in nav yet**) | `services/seo-services.html` | $599/mo or $5,990/yr. One package, 4 parts: website SEO setup (technical fixes, Search Console + Analytics, competitor review + keyword plan, AI crawler check, structured data) · up to 5 main pages optimized for Google and AI search · every month: 2 service/city pages + 2 blog posts + 1 page refreshed · monthly report (rank tracking, AI visibility check, site health scan). No ranking or AI-recommendation guarantees. |
 | Local SEO Booster | /local-seo-booster | `services/local-seo-booster.html` | Annual (monthly plans also offered) |
 | Geo-Fencing (Mobile + CTV) | /geo-fencing | `services/geo-fencing.html` | Recurring / impression packages |
 | Google PPC (Google Ads) | /google-ppc | `services/google-ads.html` | Recurring management; ad spend billed by Google |
@@ -132,7 +132,14 @@ ghl-snippets/
   pricing/       pricing pages (more coming)
   checkout/      checkout pages: each becomes a folder of numbered snippets
                  (1-pricing, 2-order-summary, 3-reviews, 4-faq) placed around
-                 GHL's native order form. Done: google-platinum/ (v1.0, as-is)
+                 GHL's native order form. Done (v1.0, as-is): google-platinum/, local-service-ads/,
+                 local-seo-booster/, gbp-setup/,
+                 gbp-management/, google-social-posting/,
+                 meta-social-posting/, meta-ads/,
+                 procard/, dispensary/,
+                 geo-fencing-mobile/, website/,
+                 geo-fencing-ctv/, google-ads/,
+                 ai-agents/, seo-services/
   crm-platform/  CRM home, Capture/Nurture/Close, feature pages
   company/       FAQ, contact, demo, thank-you, training, video library, link tree
   legal/         tos, privacy-policy, return-policy
@@ -160,7 +167,7 @@ PROJECT.md       this file
   "X of Y files have code" count.
 - Legal files use CRLF line endings — preserve them.
 
-### Status (2026-11-10): 32 of 63 page files have code
+### Status (2026-11-11): 47 of 64 page files have code
 - **Done:** global header/footer, home, all 16 service pages, website pricing, CRM home,
   legal (3), FAQ, contact, training, video library, link tree, Farmers Insurance.
 - **Live in GHL (Nov 10):** Terms v2.1, Return Policy v2.1, FAQ v2.4 and every policy-aligned service page (see README). Schema still to paste on most pages.
@@ -184,7 +191,9 @@ PROJECT.md       this file
   commit, and re-paste that page's schema.
 - The builder holds back (⚠ HOLD) any page whose copy still conflicts with the refund/cancellation
   policy; fix the page, re-run, then paste.
-- Thank-you pages, /training and /404 get no schema; set them to noindex.
+- Thank-you pages, /training, /404 and **all checkout pages** get no schema; set them to noindex in GHL.
+  (Checkouts decided Nov 11, 2026: search traffic should land on the service pages, and the checkout
+  FAQs repeat the service-page FAQs.)
 
 ## 6. GoHighLevel
 
@@ -204,6 +213,23 @@ PROJECT.md       this file
 ---
 
 ## 7. Known issues and open decisions
+
+- **Checkout open items (decide at the end of the checkout imports; details in each README row):**
+  Google Social 6/12-month prices ($774/$1,308 checkout vs $715/$1,252 page) ·
+  Platinum: Reputation Management in the bundle, "won't be double-billed" upgrade line ·
+  LSA: "Performance Promise", background-check cost, setup-fee waiver ·
+  GBP Setup: "Quality Promise", "hundreds of profiles" · GBP Management: confirm the Terms'
+  guarantee box (or drop it like Meta Ads) · ProCard: "lifetime license / own it forever",
+  free minor edits · Dispensary: legal review of legality/compliance claims and VFW/Legion
+  naming, ad spend vs fixed impressions, CTV/desktop formats vs cards, "slightly higher" monthly ·
+  Geo Mobile: ad spend separate vs impressions included, "#1 Location Intelligence Platform" (also CTV),
+  "completely legal" competitor targeting ·
+  Website: page counts vs /website-pricing, "one-time setup" vs deposit + final payment,
+  "own your domain" ·
+  Google Ads: prepay "don't auto-renew" vs the Terms' renewal clause, Most Popular tier;
+  strip internal HTML comments (agent-only pricing) before pasting ·
+  all checkouts: "Tucson businesses" reviews headline · older checkouts
+  use wrapper id `order-form` instead of `c360-order-form`.
 
 - **14-day CRM free trial vs the 10-day cancellation rule:** the Terms don't mention trials. Decide how
   cancelling during a trial works and add it to the Terms (CRM Home v2.10 and Training v1.1 no longer

@@ -1,0 +1,573 @@
+<!-- ============================================================
+     REPO: checkout/ai-agents/1-pricing.html — SNIPPET 1 of 4 (repo v1.1)
+     GHL page: "AI Employee Checkout" (/ai-checkout). Paste ABOVE the GHL
+     order form. Header/footer are global — not here. Includes the embedded
+     "Get a Custom Quote" modal (c360aiModal) and the form_embed.js script.
+     v1.1 (2026-11-11): per-minute conflict resolved to match PROJECT.md and
+       /ai-agents v1.14 — "Unlimited AI usage — no per-minute AI fees; phone
+       line & carrier usage billed separately" (sub-headline, both usage
+       notes, footer); "Dedicated phone number included" -> "Dedicated phone
+       number set up for you" (the line is billed separately); "cancel
+       anytime" (x2) -> 10 days' notice to cancel.
+     2026-11-11: imported from the live GHL page (original header below is
+       unchanged — its per-minute "CONFLICT TO RESOLVE" note is now history).
+       Prices match /ai-agents ($399 / $599 /mo; $3,990 / $5,990 /yr; $2,000
+       setup).
+     ============================================================ -->
+<!-- ============================================================
+     COMPLETE360 — /ai-checkout — PRICING SECTION
+     Prefix: c360ai- (matches the c360ai- namespace already
+     registered for the /ai-agents page per the July 2026 brand doc)
+
+     PRICING UPDATE (this revision):
+     - AI Voice Agent : $299 -> $399/mo  | annual $2,990 -> $3,990/yr
+                        ($399 x 10, "2 months free")  | equiv $249 -> $332/mo
+     - AI Assistant   : $499 -> $599/mo  | annual $4,990 -> $5,990/yr
+                        ($599 x 10, "2 months free")  | equiv $416 -> $499/mo
+     - One-time setup fee unchanged at $2,000.
+     - These now match the /ai-agents pricing card. Keep the two pages
+       in lockstep on any future change.
+
+     ASSUMPTIONS / OPEN ITEMS:
+     - Setup fee shown as one-time $2,000, generally non-refundable,
+       per the brand doc's mention of "the non-refundable $2,000
+       setup fee" — final refund policy still flagged as unresolved
+       in the doc, so confirm before publishing.
+     - "no long-term contract" is intentionally NOT used anywhere
+       (brand doc copy rule).
+     - ** CONFLICT TO RESOLVE — per-minute fees. ** This page states
+       that per-minute usage rates APPLY (sub-headline, both card
+       usage notes, footer). The /ai-agents page states the OPPOSITE
+       ("Flat monthly pricing — no per-minute fees") and the brand
+       doc's copy rule says to use "no per-minute fees" as the
+       differentiator. Both cannot be true. Decide which is correct
+       and align BOTH pages (and the brand doc) before publishing —
+       a prospect moving from /ai-agents to this checkout currently
+       sees contradictory pricing claims.
+       Confirm the included-minutes allowance per plan and the
+       overage rate so it can be stated precisely (currently
+       described only in general terms below).
+     - The "Get a Custom Quote" button now opens a modal that's
+       embedded directly in THIS file (same design/copy as the
+       header's Get Started modal), using its own unique IDs
+       (c360aiModal / c360ai-modal-*) so there's no ID collision if
+       the page's global header modal is also present. If this
+       checkout page already loads the full global header (with its
+       own #c360Modal), you can safely delete this embedded modal
+       block and switch the button back to class="c360-popup-trigger"
+       to reuse that one instead — whichever matches how this page is
+       actually built.
+     - The embedded modal reuses the SAME GHL form
+       (form-id LdQRuUPar7Zwt5MhbBxi, "Complete360 Popup Modal <>
+       Main Menu") as the header's modal, since no separate AI
+       Agents-specific form ID was provided. Swap the iframe src /
+       data-form-id if you want a dedicated form for AI checkout leads.
+     ============================================================ -->
+<style>
+  .c360ai-pricing-row {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    border-bottom: 1px solid rgba(18,32,120,0.07);
+    padding: 48px 32px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360ai-pricing-row-inner { max-width: 1080px; margin: 0 auto; }
+  .c360ai-pricing-row-header { text-align: center; margin-bottom: 24px; }
+  .c360ai-pricing-row-eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px;
+    font-weight: 600; color: #127825; background: #EAF3DE;
+    padding: 4px 12px; border-radius: 4px; margin-bottom: 10px;
+  }
+  .c360ai-pricing-row-eyebrow i { font-size: 10px; }
+  .c360ai-pricing-row-title {
+    font-size: clamp(18px, 2.5vw, 24px); font-weight: 700;
+    color: #0F1F5E; line-height: 1.3; margin-bottom: 6px;
+  }
+  .c360ai-pricing-row-sub { font-size: 13px; color: #5F5E5A; max-width: 600px; margin: 0 auto; line-height: 1.6; }
+
+  /* ---------- Billing toggle ---------- */
+  .c360ai-toggle-wrap {
+    display: flex; align-items: center; justify-content: center;
+    gap: 10px; margin: 22px 0 30px;
+  }
+  .c360ai-toggle {
+    display: inline-flex; background: #fff; border: 1px solid rgba(18,32,120,0.12);
+    border-radius: 50px; padding: 4px; gap: 4px;
+  }
+  .c360ai-toggle-btn {
+    border: none; background: transparent; cursor: pointer;
+    font-family: inherit; font-size: 13px; font-weight: 600;
+    color: #5F5E5A; padding: 9px 20px; border-radius: 50px;
+    transition: background 0.2s ease, color 0.2s ease;
+    display: flex; align-items: center; gap: 6px; white-space: nowrap;
+  }
+  .c360ai-toggle-btn.c360ai-toggle-active {
+    background: #127825; color: #fff;
+  }
+  .c360ai-toggle-save {
+    font-size: 10px; font-weight: 700; padding: 2px 7px; border-radius: 20px;
+    background: rgba(255,255,255,0.22); color: inherit;
+  }
+  .c360ai-toggle-btn:not(.c360ai-toggle-active) .c360ai-toggle-save {
+    background: #EAF3DE; color: #127825;
+  }
+
+  .c360ai-pricing-row-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px; margin-bottom: 18px; align-items: start;
+  }
+  .c360ai-pricing-row-card {
+    background: #fff; border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 10px; padding: 24px 20px; position: relative;
+  }
+  .c360ai-pricing-row-card-popular {
+    background: #122078; border-color: #127825; border-width: 2px;
+  }
+  .c360ai-pricing-row-card-badge {
+    position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 3px 12px; border-radius: 6px;
+    white-space: nowrap; color: #fff; background: #127825;
+  }
+  .c360ai-pricing-row-card-tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.4px; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px;
+    background: rgba(18,32,120,0.08); color: #122078;
+  }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-tag {
+    background: rgba(255,255,255,0.15); color: rgba(255,255,255,0.85);
+  }
+  .c360ai-pricing-row-card-name {
+    font-size: 20px; font-weight: 700; color: #0F1F5E; margin-bottom: 4px;
+  }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-name { color: #fff; }
+  .c360ai-pricing-row-card-tagline {
+    font-size: 11px; color: #888780; margin-bottom: 14px; line-height: 1.4; min-height: 30px;
+  }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-tagline { color: rgba(255,255,255,0.6); }
+
+  .c360ai-pricing-row-card-amount-row {
+    display: flex; align-items: baseline; gap: 2px; margin-bottom: 2px;
+  }
+  .c360ai-pricing-row-card-symbol { font-size: 18px; font-weight: 700; color: #122078; }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-symbol { color: #fff; }
+  .c360ai-pricing-row-card-amount { font-size: 38px; font-weight: 700; color: #122078; line-height: 1; }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-amount { color: #fff; }
+  .c360ai-pricing-row-card-per { font-size: 13px; color: #888780; }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-per { color: rgba(255,255,255,0.6); }
+  .c360ai-pricing-row-card-billed { font-size: 10px; color: #888780; margin-bottom: 6px; }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-billed { color: rgba(255,255,255,0.55); }
+  .c360ai-pricing-row-card-setup { font-size: 11px; color: #5F5E5A; margin-bottom: 12px; }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-setup { color: rgba(255,255,255,0.7); }
+  .c360ai-pricing-row-card-usage-note { font-size: 10px; color: #888780; margin-top: 12px; line-height: 1.4; }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-usage-note { color: rgba(255,255,255,0.5); }
+
+  .c360ai-pricing-row-card-savings {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 11px; font-weight: 600; color: #127825;
+    background: rgba(18,120,37,0.1); border: 1px solid rgba(18,120,37,0.2);
+    padding: 3px 10px; border-radius: 5px; margin-bottom: 14px;
+  }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-savings {
+    background: rgba(46,204,82,0.18); border-color: rgba(46,204,82,0.35); color: #3dd870;
+  }
+  .c360ai-pricing-row-card-savings i { font-size: 9px; }
+
+  .c360ai-pricing-row-card-divider { border: none; border-top: 1px solid rgba(18,32,120,0.07); margin: 0 0 14px; }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-divider { border-color: rgba(255,255,255,0.15); }
+  .c360ai-pricing-row-card-includes { display: flex; flex-direction: column; gap: 7px; }
+  .c360ai-pricing-row-card-includes-item {
+    display: flex; align-items: flex-start; gap: 7px; font-size: 12px; color: #0F1F5E; line-height: 1.4;
+  }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-includes-item { color: rgba(255,255,255,0.88); }
+  .c360ai-pricing-row-card-includes-item i {
+    font-size: 10px; color: #127825; width: 14px; flex-shrink: 0; margin-top: 2px;
+  }
+  .c360ai-pricing-row-card-popular .c360ai-pricing-row-card-includes-item i { color: #3dd870; }
+
+  /* Custom Agents (quote-based) card */
+  .c360ai-pricing-row-card-quote-price { font-size: 26px; font-weight: 700; color: #122078; margin-bottom: 4px; }
+  .c360ai-pricing-row-card-cta {
+    display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+    width: 100%; margin-top: 14px; background: #127825; color: #fff !important;
+    border: none; padding: 11px 16px; border-radius: 6px; font-size: 13px;
+    font-weight: 600; font-family: inherit; cursor: pointer; text-decoration: none;
+    transition: background 0.2s ease;
+  }
+  .c360ai-pricing-row-card-cta:hover { background: #0e5e1d; }
+
+  .c360ai-pricing-row-footer-note {
+    text-align: center; font-size: 12px; color: #888780; margin-bottom: 16px; line-height: 1.6;
+  }
+  .c360ai-pricing-row-cta {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: rgba(18,32,120,0.04); border: 1px solid rgba(18,32,120,0.08);
+    border-radius: 8px; padding: 12px 20px; text-align: center;
+  }
+  .c360ai-pricing-row-cta i { color: #127825; font-size: 13px; flex-shrink: 0; }
+  .c360ai-pricing-row-cta span { font-size: 13px; color: #5F5E5A; }
+  .c360ai-pricing-row-cta strong { color: #0F1F5E; }
+
+  @media (max-width: 768px) {
+    .c360ai-pricing-row-grid { grid-template-columns: 1fr; gap: 24px; }
+    .c360ai-pricing-row { padding: 40px 20px; }
+    .c360ai-toggle-wrap { flex-wrap: wrap; }
+  }
+</style>
+
+<section class="c360ai-pricing-row">
+  <div class="c360ai-pricing-row-inner">
+    <div class="c360ai-pricing-row-header">
+      <div class="c360ai-pricing-row-eyebrow">
+        <i class="fa-solid fa-robot"></i>
+        AI Agents
+      </div>
+      <h2 class="c360ai-pricing-row-title">Simple pricing for done-for-you AI Agents.</h2>
+      <p class="c360ai-pricing-row-sub">Flat monthly pricing with unlimited AI usage — no per-minute AI fees — plus a one-time setup &amp; training investment so your agent is built specifically for your business. Phone line &amp; carrier usage are billed separately.</p>
+    </div>
+
+    <!-- Billing toggle -->
+    <div class="c360ai-toggle-wrap">
+      <div class="c360ai-toggle" id="c360aiToggle" role="tablist" aria-label="Billing period">
+        <button type="button" class="c360ai-toggle-btn c360ai-toggle-active" data-billing="monthly" onclick="c360aiSetBilling('monthly')">
+          Monthly
+        </button>
+        <button type="button" class="c360ai-toggle-btn" data-billing="annual" onclick="c360aiSetBilling('annual')">
+          Annual <span class="c360ai-toggle-save">2 months free</span>
+        </button>
+      </div>
+    </div>
+
+    <div class="c360ai-pricing-row-grid">
+
+      <!-- AI VOICE AGENT -->
+      <div class="c360ai-pricing-row-card">
+        <div class="c360ai-pricing-row-card-tag"><i class="fa-solid fa-phone-volume"></i> Voice Agent</div>
+        <div class="c360ai-pricing-row-card-name">AI Voice Agent</div>
+        <div class="c360ai-pricing-row-card-tagline">24/7 inbound call handling — never miss another lead.</div>
+
+        <div data-billing-view="monthly">
+          <div class="c360ai-pricing-row-card-amount-row">
+            <span class="c360ai-pricing-row-card-symbol">$</span>
+            <span class="c360ai-pricing-row-card-amount">399</span>
+            <span class="c360ai-pricing-row-card-per">/mo</span>
+          </div>
+          <div class="c360ai-pricing-row-card-billed">Billed monthly · 10 days' notice to cancel</div>
+        </div>
+        <div data-billing-view="annual" hidden>
+          <div class="c360ai-pricing-row-card-amount-row">
+            <span class="c360ai-pricing-row-card-symbol">$</span>
+            <span class="c360ai-pricing-row-card-amount">3,990</span>
+            <span class="c360ai-pricing-row-card-per">/yr</span>
+          </div>
+          <div class="c360ai-pricing-row-card-billed">Billed once per year</div>
+          <div class="c360ai-pricing-row-card-savings"><i class="fa-solid fa-tag"></i> $332/mo equivalent · 2 months free</div>
+        </div>
+
+        <div class="c360ai-pricing-row-card-setup">+ $2,000 one-time setup</div>
+        <hr class="c360ai-pricing-row-card-divider">
+        <div class="c360ai-pricing-row-card-includes">
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>24/7 inbound call answering</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Natural AI conversations</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Automated appointment booking by phone</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Call transcripts &amp; summaries</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Missed-call text-back</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Dedicated phone number set up for you</div>
+        </div>
+        <div class="c360ai-pricing-row-card-usage-note">*Unlimited AI usage — no per-minute AI fees. Phone line &amp; carrier usage billed separately.</div>
+      </div>
+
+      <!-- AI ASSISTANT — MOST COMPLETE -->
+      <div class="c360ai-pricing-row-card c360ai-pricing-row-card-popular">
+        <div class="c360ai-pricing-row-card-badge"><i class="fa-solid fa-star"></i> Most Complete</div>
+        <div class="c360ai-pricing-row-card-tag"><i class="fa-solid fa-wand-magic-sparkles"></i> AI Assistant</div>
+        <div class="c360ai-pricing-row-card-name">AI Assistant</div>
+        <div class="c360ai-pricing-row-card-tagline">Voice, chat, booking &amp; reviews — one AI Assistant running your front office.</div>
+
+        <div data-billing-view="monthly">
+          <div class="c360ai-pricing-row-card-amount-row">
+            <span class="c360ai-pricing-row-card-symbol">$</span>
+            <span class="c360ai-pricing-row-card-amount">599</span>
+            <span class="c360ai-pricing-row-card-per">/mo</span>
+          </div>
+          <div class="c360ai-pricing-row-card-billed">Billed monthly · 10 days' notice to cancel</div>
+        </div>
+        <div data-billing-view="annual" hidden>
+          <div class="c360ai-pricing-row-card-amount-row">
+            <span class="c360ai-pricing-row-card-symbol">$</span>
+            <span class="c360ai-pricing-row-card-amount">5,990</span>
+            <span class="c360ai-pricing-row-card-per">/yr</span>
+          </div>
+          <div class="c360ai-pricing-row-card-billed">Billed once per year</div>
+          <div class="c360ai-pricing-row-card-savings"><i class="fa-solid fa-tag"></i> $499/mo equivalent · 2 months free</div>
+        </div>
+
+        <div class="c360ai-pricing-row-card-setup">+ $2,000 one-time setup</div>
+        <hr class="c360ai-pricing-row-card-divider">
+        <div class="c360ai-pricing-row-card-includes">
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Everything in AI Voice Agent</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Website &amp; SMS chat lead qualification</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Booking across voice, chat &amp; SMS</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Automated review requests &amp; replies</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Custom workflow automation</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Priority onboarding support</div>
+        </div>
+        <div class="c360ai-pricing-row-card-usage-note">*Unlimited AI usage — no per-minute AI fees. Phone line &amp; carrier usage billed separately.</div>
+      </div>
+
+      <!-- CUSTOM AGENTS — QUOTE BASED -->
+      <div class="c360ai-pricing-row-card">
+        <div class="c360ai-pricing-row-card-tag" style="background:rgba(18,32,120,0.08);color:#122078;"><i class="fa-solid fa-gears"></i> Custom Agents</div>
+        <div class="c360ai-pricing-row-card-name">Custom Agents</div>
+        <div class="c360ai-pricing-row-card-tagline">Multi-step workflows &amp; integrations built to your exact process.</div>
+
+        <div class="c360ai-pricing-row-card-quote-price">Custom Quote</div>
+        <div class="c360ai-pricing-row-card-billed">Scoped to your business — no fixed price</div>
+
+        <hr class="c360ai-pricing-row-card-divider">
+        <div class="c360ai-pricing-row-card-includes">
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Multi-step custom workflows</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Integrations with your existing tools/CRM</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Dedicated build &amp; onboarding specialist</div>
+          <div class="c360ai-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Ongoing optimization support</div>
+        </div>
+
+        <!-- Opens the embedded modal below (same design as header's Get Started modal) -->
+        <button type="button" class="c360ai-pricing-row-card-cta c360ai-popup-trigger">Get a Custom Quote</button>
+      </div>
+
+    </div>
+
+    <div class="c360ai-pricing-row-footer-note">
+      One-time setup fee covers agent training, phone number provisioning, and calendar/CRM integration. AI usage is unlimited on every plan; your phone line &amp; carrier usage are billed separately. &nbsp;|&nbsp;
+      <a href="/schedule-demo" style="color:#122078;font-weight:600;text-decoration:none;">Questions? Schedule a free call →</a>
+    </div>
+
+    <div class="c360ai-pricing-row-cta">
+      <i class="fa-solid fa-arrow-down"></i>
+      <span>Ready to get started? <strong>Select your plan in the order form below.</strong></span>
+    </div>
+  </div>
+</section>
+
+<script>
+  function c360aiSetBilling(period) {
+    document.querySelectorAll('#c360aiToggle .c360ai-toggle-btn').forEach(function(btn) {
+      btn.classList.toggle('c360ai-toggle-active', btn.getAttribute('data-billing') === period);
+    });
+    document.querySelectorAll('[data-billing-view]').forEach(function(el) {
+      el.hidden = el.getAttribute('data-billing-view') !== period;
+    });
+  }
+</script>
+
+
+<!-- ============================================================
+     EMBEDDED "GET STARTED" MODAL — same design/copy as the global
+     header's modal, scoped with its own IDs (c360aiModal /
+     c360ai-modal-*) so it won't collide if the header's own
+     #c360Modal is also present on this page.
+     ============================================================ -->
+<style>
+  .c360ai-modal {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360ai-modal.c360ai-modal-open { display: flex; }
+
+  .c360ai-modal-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(18, 32, 120, 0.55);
+    backdrop-filter: blur(3px);
+    animation: c360aiFadeIn 0.2s ease;
+  }
+
+  .c360ai-modal-content {
+    position: relative;
+    background: #fff;
+    border-radius: 12px;
+    max-width: 560px;
+    width: 100%;
+    max-height: 92vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, 0.25);
+    animation: c360aiSlideUp 0.25s ease;
+  }
+
+  .c360ai-modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: transparent;
+    border: none;
+    width: 32px;
+    height: 32px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 20px;
+    color: #888780;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.15s ease, color 0.15s ease;
+    z-index: 2;
+  }
+  .c360ai-modal-close:hover { background: #F1EFE8; color: #0F1F5E; }
+
+  .c360ai-modal-body {
+    flex: 1;
+    overflow-y: auto;
+    padding: 32px 32px 28px;
+  }
+
+  .c360ai-modal-intro { margin-bottom: 22px; }
+  .c360ai-modal-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    color: #127825;
+    background: #EAF3DE;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+    margin-bottom: 12px;
+  }
+  .c360ai-modal-heading {
+    font-size: 22px;
+    font-weight: 600;
+    color: #0F1F5E;
+    margin: 0 0 8px;
+    line-height: 1.25;
+  }
+  .c360ai-modal-subheading {
+    font-size: 13px;
+    color: #5F5E5A;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  .c360ai-modal-form-wrap {
+    width: 100%;
+    min-height: 560px;
+    margin-bottom: 14px;
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .c360ai-modal-form-wrap iframe {
+    width: 100% !important;
+    min-height: 560px;
+    display: block;
+    border: none;
+  }
+
+  .c360ai-modal-footer {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 11px;
+    color: #5F5E5A;
+  }
+  .c360ai-modal-footer i { font-size: 11px; }
+
+  @keyframes c360aiFadeIn { from { opacity: 0; } to { opacity: 1; } }
+  @keyframes c360aiSlideUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 520px) {
+    .c360ai-modal-body { padding: 28px 22px 22px; }
+  }
+</style>
+
+<div class="c360ai-modal" id="c360aiModal" aria-hidden="true">
+  <div class="c360ai-modal-backdrop" data-c360ai-close-modal></div>
+  <div class="c360ai-modal-content" role="dialog" aria-modal="true" aria-labelledby="c360aiModalTitle">
+    <button type="button" class="c360ai-modal-close" data-c360ai-close-modal aria-label="Close">&times;</button>
+    <div class="c360ai-modal-body">
+
+      <div class="c360ai-modal-intro">
+        <span class="c360ai-modal-eyebrow">Let's Talk</span>
+        <h2 class="c360ai-modal-heading" id="c360aiModalTitle">Let's build your AI Agent.</h2>
+        <p class="c360ai-modal-subheading">Tell us a bit about your business and we'll reach out within 1 business day to scope your Custom Agent and pricing.</p>
+      </div>
+
+      <div class="c360ai-modal-form-wrap">
+        <iframe
+          src="https://link.complete360.org/widget/form/LdQRuUPar7Zwt5MhbBxi"
+          id="inline-c360ai-LdQRuUPar7Zwt5MhbBxi"
+          data-layout="{'id':'INLINE'}"
+          data-trigger-type="alwaysShow"
+          data-trigger-value=""
+          data-activation-type="alwaysActivated"
+          data-activation-value=""
+          data-deactivation-type="neverDeactivate"
+          data-deactivation-value=""
+          data-form-name="Complete360 Popup Modal <> AI Checkout"
+          data-height="545"
+          data-layout-iframe-id="inline-c360ai-LdQRuUPar7Zwt5MhbBxi"
+          data-form-id="LdQRuUPar7Zwt5MhbBxi"
+          title="Complete360 Popup Modal <> AI Checkout">
+        </iframe>
+      </div>
+
+      <div class="c360ai-modal-footer">
+        <i class="fa-solid fa-lock"></i>
+        <span>Your info stays private. We never share or sell data.</span>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- GHL form embed script — remove this tag if your global header
+     already loads it, to avoid initializing the form widget twice. -->
+<script src="https://link.complete360.org/js/form_embed.js"></script>
+
+<script>
+(function() {
+  var modal = document.getElementById('c360aiModal');
+  if (!modal) return;
+
+  function openModal() {
+    modal.classList.add('c360ai-modal-open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeModal() {
+    modal.classList.remove('c360ai-modal-open');
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  document.querySelectorAll('.c360ai-popup-trigger').forEach(function(btn) {
+    btn.addEventListener('click', function(e) {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  modal.querySelectorAll('[data-c360ai-close-modal]').forEach(function(el) {
+    el.addEventListener('click', closeModal);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') closeModal();
+  });
+})();
+</script>

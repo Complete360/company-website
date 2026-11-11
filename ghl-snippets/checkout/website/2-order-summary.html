@@ -1,0 +1,248 @@
+<!-- ============================================================
+     COMPLETE360 — WEBSITE CHECKOUT — SNIPPET 2 of 4: ORDER SUMMARY (v1.1)
+     GHL page: "Website Checkout" (/website-checkout). Paste into the Custom
+     Code element BESIDE the GHL order form.
+     Prefix: c360wr- (older design, like the social checkouts).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.1 (2026-11-11): removed the 30-Day Satisfaction Guarantee (websites
+       aren't covered by the Terms' guarantee); reviews "144+" -> "147".
+       (Unused .c360wr-guarantee CSS left in place.)
+     v1.0 (2026-11-11): imported as-is from the live GHL page.
+       Open (Jared): "You own your domain & content, always" — confirm
+       (/website-pricing says clients retain rights to the content);
+       "Tucson, AZ"; wrapper id "order-form" (not "c360-order-form").
+     ============================================================ -->
+<style>
+.c360wr-wrap {
+  font-family: var(--contentfont, 'Poppins'), sans-serif;
+  background: #fff;
+  border: 2px solid #E2E8F4;
+  border-radius: 20px;
+  padding: 36px 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  height: 100%;
+}
+.c360wr-section-title {
+  font-family: var(--headlinefont, 'Poppins'), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #127825;
+  margin-bottom: 14px;
+}
+.c360wr-includes {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.c360wr-includes li {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  font-size: 0.9rem;
+  color: #0F1F5E;
+  line-height: 1.45;
+}
+.c360wr-check {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  border-radius: 50%;
+  background: #127825;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+}
+.c360wr-check svg {
+  width: 9px;
+  height: 9px;
+  stroke: #fff;
+  stroke-width: 3;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.c360wr-divider {
+  height: 1px;
+  background: #E2E8F4;
+}
+.c360wr-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.c360wr-step {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.c360wr-step-num {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #122078, #1a2e99);
+  color: #fff;
+  font-family: var(--headlinefont, 'Poppins'), sans-serif;
+  font-size: 0.72rem;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.c360wr-step-text strong {
+  display: block;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #0F1F5E;
+  margin-bottom: 2px;
+}
+.c360wr-step-text span {
+  font-size: 0.8rem;
+  color: #6B7A9D;
+  line-height: 1.4;
+}
+.c360wr-guarantee {
+  background: #EAF3DE;
+  border: 1px solid rgba(18,120,37,0.2);
+  border-radius: 14px;
+  padding: 20px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+.c360wr-guarantee-icon {
+  font-size: 1.8rem;
+  line-height: 1;
+  flex-shrink: 0;
+}
+.c360wr-guarantee h4 {
+  font-family: var(--headlinefont, 'Poppins'), sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #127825;
+  margin: 0 0 4px;
+}
+.c360wr-guarantee p {
+  font-size: 0.8rem;
+  color: #2d5510;
+  line-height: 1.5;
+  margin: 0;
+}
+.c360wr-trust {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.c360wr-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.82rem;
+  color: #6B7A9D;
+  font-weight: 500;
+}
+.c360wr-trust-item::before {
+  content: '✓';
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: #127825;
+}
+</style>
+
+<div class="c360wr-wrap" id="order-form">
+
+  <div>
+    <p class="c360wr-section-title">Every Plan Includes</p>
+    <ul class="c360wr-includes">
+      <li>
+        <span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+        Professionally designed, mobile-first website
+      </li>
+      <li>
+        <span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+        Industry-ready template selected for your business type
+      </li>
+      <li>
+        <span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+        Contact form, click-to-call &amp; Google Maps integration
+      </li>
+      <li>
+        <span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+        On-page SEO setup (titles, meta, schema)
+      </li>
+      <li>
+        <span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+        SSL certificate + secure managed hosting
+      </li>
+      <li>
+        <span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+        Google Analytics + conversion tracking setup
+      </li>
+      <li>
+        <span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+        Monthly maintenance &amp; content updates
+      </li>
+      <li>
+        <span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+        Dedicated account manager throughout build
+      </li>
+    </ul>
+  </div>
+
+  <div class="c360wr-divider"></div>
+
+  <div>
+    <p class="c360wr-section-title">How It Works</p>
+    <div class="c360wr-timeline">
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">1</div>
+        <div class="c360wr-step-text">
+          <strong>Strategy Call</strong>
+          <span>We learn your business, goals, and design preferences.</span>
+        </div>
+      </div>
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">2</div>
+        <div class="c360wr-step-text">
+          <strong>Design &amp; Build</strong>
+          <span>Our team builds your site — you review and request revisions.</span>
+        </div>
+      </div>
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">3</div>
+        <div class="c360wr-step-text">
+          <strong>Launch</strong>
+          <span>We go live once you approve. Typically 2–3 weeks from kickoff.</span>
+        </div>
+      </div>
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">4</div>
+        <div class="c360wr-step-text">
+          <strong>Ongoing Support</strong>
+          <span>Monthly updates, hosting, and your account manager stays on.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c360wr-divider"></div>
+
+  <div>
+    <div class="c360wr-trust">
+      <div class="c360wr-trust-item">Google Partner agency · Tucson, AZ</div>
+      <div class="c360wr-trust-item">147 five-star Google reviews</div>
+      <div class="c360wr-trust-item">No hidden fees — pricing is exactly as listed</div>
+      <div class="c360wr-trust-item">You own your domain &amp; content, always</div>
+    </div>
+  </div>
+
+</div>

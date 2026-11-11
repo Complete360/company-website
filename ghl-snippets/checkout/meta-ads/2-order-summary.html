@@ -1,0 +1,125 @@
+<!-- ============================================================
+     REPO: checkout/meta-ads/2-order-summary.html — SNIPPET 2 of 4 (repo v1.1, was v1.0)
+     GHL page: "Meta Ads Checkout" (/meta-checkout). Paste BESIDE the GHL
+     order form. Header/footer are global — not here.
+     v1.1 (2026-11-11): Removed the 90-Day Satisfaction Guarantee box
+       (removed from /meta-ads v2.3).
+     2026-11-11: imported as-is from the live GHL page (original header
+       below is unchanged). Known issues to fix next: "90-Day Satisfaction
+       Guarantee" box — REMOVED from /meta-ads in v2.3 (Nov 10), must come
+       off here; "Tucson, AZ"; wrapper id "order-form" (other checkouts use
+       "c360-order-form").
+     ============================================================ -->
+<!-- ============================================================
+     COMPLETE360 — META ADS CHECKOUT — ORDER-FORM SIDEBAR
+     Sits beside the order form on /meta-checkout (#order-form).
+     Prefix c360wr-. Rebuilt from the old Meta Social Posting sidebar —
+     SAME layout/CSS, content swapped to Meta Ads Management.
+
+     MUST STAY IN SYNC with the /meta-ads page + the checkout pricing table:
+       - Guarantee: 90-DAY (was 30-day here — the page/table say 90). Recaptures
+         used months at the $399 standard rate; one-time $499 setup is NOT
+         part of the credit. Kept short here; full detail lives in the page FAQ.
+       - Reviews: 147 (was 144 here; page/footer/table all say 147).
+       - Dropped "not AI-generated filler" — it's social-posting copy AND the
+         page's hero ad mockups are AI-generated, so don't make that claim
+         on the same funnel.
+     ============================================================ -->
+<style>
+.c360wr-wrap {
+  font-family: var(--contentfont, 'Poppins'), sans-serif;
+  background: #fff; border: 2px solid #E2E8F4;
+  border-radius: 20px; padding: 36px 30px;
+  display: flex; flex-direction: column; gap: 26px; height: 100%;
+}
+.c360wr-section-title {
+  font-family: var(--headlinefont, 'Poppins'), sans-serif;
+  font-size: 0.72rem; font-weight: 700;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: #127825; margin-bottom: 14px;
+}
+.c360wr-includes { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 12px; }
+.c360wr-includes li { display: flex; align-items: flex-start; gap: 12px; font-size: 0.9rem; color: #0F1F5E; line-height: 1.45; }
+.c360wr-check { width: 20px; height: 20px; min-width: 20px; border-radius: 50%; background: #127825; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+.c360wr-check svg { width: 9px; height: 9px; stroke: #fff; stroke-width: 3; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.c360wr-divider { height: 1px; background: #E2E8F4; }
+.c360wr-timeline { display: flex; flex-direction: column; gap: 14px; }
+.c360wr-step { display: flex; align-items: flex-start; gap: 14px; }
+.c360wr-step-num { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: linear-gradient(135deg, #122078, #1a2e99); color: #fff; font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 0.72rem; font-weight: 800; display: flex; align-items: center; justify-content: center; }
+.c360wr-step-text strong { display: block; font-size: 0.88rem; font-weight: 600; color: #0F1F5E; margin-bottom: 2px; }
+.c360wr-step-text span { font-size: 0.8rem; color: #6B7A9D; line-height: 1.4; }
+.c360wr-guarantee { background: #EAF3DE; border: 1px solid rgba(18,120,37,0.2); border-radius: 14px; padding: 18px 20px; display: flex; align-items: flex-start; gap: 14px; }
+.c360wr-guarantee-icon { font-size: 1.6rem; line-height: 1; flex-shrink: 0; }
+.c360wr-guarantee h4 { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 0.9rem; font-weight: 700; color: #127825; margin: 0 0 4px; }
+.c360wr-guarantee p { font-size: 0.8rem; color: #2d5510; line-height: 1.5; margin: 0; }
+.c360wr-trust { display: flex; flex-direction: column; gap: 10px; }
+.c360wr-trust-item { display: flex; align-items: center; gap: 10px; font-size: 0.82rem; color: #6B7A9D; font-weight: 500; }
+.c360wr-trust-item::before { content: '✓'; font-size: 0.7rem; font-weight: 800; color: #127825; }
+</style>
+
+<div class="c360wr-wrap" id="order-form">
+
+  <div>
+    <p class="c360wr-section-title">Every Plan Includes</p>
+    <ul class="c360wr-includes">
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Full campaign management across Facebook &amp; Instagram</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Ad creative &amp; copy designed to convert</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Precise local targeting by area, interest &amp; behavior</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Lead forms &amp; click-to-call flowing into your CRM</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Retargeting to stay in front of warm prospects</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>Monthly performance reporting &amp; a dedicated manager</li>
+      <li><span class="c360wr-check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>You keep full ownership of your ad account — always</li>
+    </ul>
+  </div>
+
+  <div class="c360wr-divider"></div>
+
+  <div>
+    <p class="c360wr-section-title">How It Works</p>
+    <div class="c360wr-timeline">
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">1</div>
+        <div class="c360wr-step-text">
+          <strong>Strategy &amp; Audit</strong>
+          <span>We learn your business, ideal customer, and service area, then map a campaign built to generate leads — not likes.</span>
+        </div>
+      </div>
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">2</div>
+        <div class="c360wr-step-text">
+          <strong>Creative &amp; Build</strong>
+          <span>Our team writes the copy, designs the ad creative, and builds high-converting lead forms for your offer.</span>
+        </div>
+      </div>
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">3</div>
+        <div class="c360wr-step-text">
+          <strong>Launch &amp; Target</strong>
+          <span>Campaigns go live with precise targeting across Facebook &amp; Instagram, aimed at people most likely to convert.</span>
+        </div>
+      </div>
+      <div class="c360wr-step">
+        <div class="c360wr-step-num">4</div>
+        <div class="c360wr-step-text">
+          <strong>Optimize &amp; Report</strong>
+          <span>We monitor daily, refine what works, and send clear monthly reports — so your cost per lead keeps dropping.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="c360wr-divider"></div>
+
+  <div>
+    <div class="c360wr-trust">
+      <div class="c360wr-trust-item">Google Partner agency · Tucson, AZ</div>
+      <div class="c360wr-trust-item">147 five-star Google reviews</div>
+      <div class="c360wr-trust-item">Flat monthly management — your ad budget stays yours</div>
+      <div class="c360wr-trust-item">Requires access to your Meta ad account / Business Manager</div>
+    </div>
+  </div>
+
+</div>
+<!-- ============================================================
+     END META ADS CHECKOUT SIDEBAR
+     ============================================================ -->

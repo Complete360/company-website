@@ -1,0 +1,103 @@
+<!-- ============================================================
+     COMPLETE360 — META SOCIAL POSTING CHECKOUT — SNIPPET 4 of 4: FAQ + CALL CTA (v1.1)
+     GHL page: "Meta Social Posting Checkout" (/meta-social-checkout).
+     Paste into the Custom Code element at the BOTTOM of the page.
+     Prefix: c360wf- (older design; same styles as the Google Social checkout).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.1 (2026-11-11): Cancel FAQ: 10 days' written notice, prepaid non-
+       refundable from purchase.
+     v1.0 (2026-11-11): imported as-is from the live GHL page. No edits yet.
+       Known issues to fix next: cancel FAQ says "cancelled anytime with 30
+       days' notice" (policy: 10 days' written notice; prepaid terms
+       non-refundable from purchase).
+     ============================================================ -->
+<style>
+.c360wf-wrap { font-family: var(--contentfont, 'Poppins'), sans-serif; max-width: 1160px; margin: 0 auto; padding: 72px 24px 80px; }
+.c360wf-header { text-align: center; margin-bottom: 48px; }
+.c360wf-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #127825; margin-bottom: 10px; }
+.c360wf-heading { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: #122078; margin-bottom: 12px; }
+.c360wf-sub { font-size: 1rem; color: #6B7A9D; max-width: 520px; margin: 0 auto; line-height: 1.6; }
+.c360wf-grid { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+.c360wf-item { border: 1px solid #E2E8F4; border-radius: 14px; overflow: hidden; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.c360wf-item.open { border-color: #127825; box-shadow: 0 4px 20px rgba(18,120,37,0.1); }
+.c360wf-q { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; cursor: pointer; font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 0.97rem; font-weight: 600; color: #122078; user-select: none; transition: background 0.15s ease; }
+.c360wf-q:hover { background: #F1EFE8; }
+.c360wf-item.open .c360wf-q { background: #EAF3DE; }
+.c360wf-icon { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: #F1EFE8; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #127825; transition: transform 0.3s ease, background 0.2s ease, color 0.2s ease; line-height: 1; }
+.c360wf-item.open .c360wf-icon { transform: rotate(45deg); background: #127825; color: #fff; }
+.c360wf-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 24px; }
+.c360wf-item.open .c360wf-a { max-height: 400px; padding: 0 24px 20px; }
+.c360wf-a p { font-size: 0.93rem; color: #6B7A9D; line-height: 1.72; margin: 0; }
+.c360wf-a a { color: #127825; font-weight: 600; text-decoration: none; }
+.c360wf-cta { margin-top: 52px; background: linear-gradient(135deg, #122078, #0d1654); border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.c360wf-cta-text h3 { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0 0 6px; }
+.c360wf-cta-text p { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin: 0; }
+.c360wf-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: #127825; color: #fff; padding: 14px 30px; border-radius: 50px; font-family: var(--contentfont, 'Poppins'), sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; white-space: nowrap; }
+.c360wf-cta-btn:hover { background: #0e5e1d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(18,120,37,0.4); }
+@media (max-width: 600px) { .c360wf-cta { flex-direction: column; text-align: center; } .c360wf-q { font-size: 0.9rem; padding: 16px 18px; } .c360wf-a { padding: 0 18px; } .c360wf-item.open .c360wf-a { padding: 0 18px 16px; } }
+</style>
+
+<div class="c360wf-wrap">
+  <div class="c360wf-header">
+    <p class="c360wf-eyebrow">Got Questions?</p>
+    <h2 class="c360wf-heading">Frequently Asked Questions</h2>
+    <p class="c360wf-sub">Everything you need to know about our Facebook &amp; Instagram posting service before signing up.</p>
+  </div>
+
+  <div class="c360wf-grid">
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What access do you need to post on my pages?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>We need admin access to your Facebook Business Page and your Instagram business account (connected via Meta Business Suite). This allows us to schedule and publish posts directly. You retain full ownership and control of your accounts at all times — we only use the access to post content on your behalf.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">How many posts will I get each month?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Every plan includes 8–12 posts per month, covering both Facebook and Instagram. That's roughly 2–3 posts per week — the consistent cadence Meta's algorithm rewards. Each post includes a custom branded graphic and a caption with hashtag strategy tailored to your audience and industry.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Do I have to write the content or approve posts?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>No — it's fully handled by our team. During onboarding you tell us about your brand, services, and any promotions you want featured. From there we handle the writing, design, and scheduling. If you'd like to review posts before they go live, just let your account contact know and we'll build that approval step into your workflow.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Does this include Facebook or Instagram ads?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>No — this service covers organic posting only (no paid promotion). Posts are published to your pages and reach your existing followers and their networks. If you're interested in paid Meta advertising campaigns, that's a separate service we offer. Ask about it on your strategy call.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What kind of content will you post for my business?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>We mix content types to keep your pages engaging — promotional posts highlighting your services or offers, educational tips related to your industry, seasonal content, local community posts, and behind-the-scenes updates. Everything is written and designed specifically for your brand, not recycled generic content.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Can I cancel or switch plans?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>To cancel the Month-to-Month plan, send us written notice at least 10 days before your next billing date. The 6-Month and 12-Month plans are prepaid for the full term at a lower effective monthly rate and are non-refundable from the time of purchase. You can upgrade to a longer term or add-on additional services at any time — just reach out to your account manager.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">How soon after signing up will posting begin?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Most clients are posting within 5–7 business days of completing onboarding. We'll send you a simple intake form right after checkout to collect your brand assets, access details, and content preferences. Once that's complete, our team gets to work on your first month's content calendar.</p></div>
+    </div>
+
+  </div>
+
+  <div class="c360wf-cta">
+    <div class="c360wf-cta-text">
+      <h3>Still have questions?</h3>
+      <p>Book a free 15-minute call — we'll walk you through the service and recommend the right plan.</p>
+    </div>
+    <a href="/schedule-demo" class="c360wf-cta-btn">Schedule a Call →</a>
+  </div>
+</div>
+
+<script>
+function c360wfToggle(el) {
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.c360wf-item').forEach(function(i) { i.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+</script>

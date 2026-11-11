@@ -1,0 +1,258 @@
+<!-- ============================================================
+     COMPLETE360 — WEBSITE CHECKOUT — SNIPPET 4 of 4: FAQ + CALL CTA (v1.1)
+     GHL page: "Website Checkout" (/website-checkout). Paste into the Custom
+     Code element at the BOTTOM of the page.
+     Prefix: c360wf- (older design, like the social checkouts).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.1 (2026-11-11): cancel FAQ: "cancel anytime with 30 days' notice"
+       -> /website-pricing wording (10 days' written notice, site live until
+       end of billing period, client retains rights to content). Dropped the
+       "we'll export your content" promise to match that page.
+     v1.0 (2026-11-11): imported as-is from the live GHL page.
+     ============================================================ -->
+<style>
+.c360wf-wrap {
+  font-family: var(--contentfont, 'Poppins'), sans-serif;
+  max-width: 1160px;
+  margin: 0 auto;
+  padding: 72px 24px 80px;
+}
+.c360wf-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.c360wf-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #127825;
+  margin-bottom: 10px;
+}
+.c360wf-heading {
+  font-family: var(--headlinefont, 'Poppins'), sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: #122078;
+  margin-bottom: 12px;
+}
+.c360wf-sub {
+  font-size: 1rem;
+  color: #6B7A9D;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+.c360wf-grid {
+  max-width: 780px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.c360wf-item {
+  border: 1px solid #E2E8F4;
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+.c360wf-item.open {
+  border-color: #127825;
+  box-shadow: 0 4px 20px rgba(18,120,37,0.1);
+}
+.c360wf-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 24px;
+  cursor: pointer;
+  font-family: var(--headlinefont, 'Poppins'), sans-serif;
+  font-size: 0.97rem;
+  font-weight: 600;
+  color: #122078;
+  user-select: none;
+  transition: background 0.15s ease;
+}
+.c360wf-q:hover { background: #F1EFE8; }
+.c360wf-item.open .c360wf-q { background: #EAF3DE; }
+.c360wf-icon {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  border-radius: 50%;
+  background: #F1EFE8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  color: #127825;
+  transition: transform 0.3s ease, background 0.2s ease, color 0.2s ease;
+  line-height: 1;
+}
+.c360wf-item.open .c360wf-icon {
+  transform: rotate(45deg);
+  background: #127825;
+  color: #fff;
+}
+.c360wf-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, padding 0.3s ease;
+  padding: 0 24px;
+}
+.c360wf-item.open .c360wf-a {
+  max-height: 400px;
+  padding: 0 24px 20px;
+}
+.c360wf-a p {
+  font-size: 0.93rem;
+  color: #6B7A9D;
+  line-height: 1.72;
+  margin: 0;
+}
+.c360wf-a a { color: #127825; font-weight: 600; text-decoration: none; }
+.c360wf-cta {
+  margin-top: 52px;
+  background: linear-gradient(135deg, #122078, #0d1654);
+  border-radius: 20px;
+  padding: 40px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.c360wf-cta-text h3 {
+  font-family: var(--headlinefont, 'Poppins'), sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 6px;
+}
+.c360wf-cta-text p {
+  font-size: 0.88rem;
+  color: rgba(255,255,255,0.6);
+  margin: 0;
+}
+.c360wf-cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #127825;
+  color: #fff;
+  padding: 14px 30px;
+  border-radius: 50px;
+  font-family: var(--contentfont, 'Poppins'), sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+.c360wf-cta-btn:hover {
+  background: #0e5e1d;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(18,120,37,0.4);
+}
+@media (max-width: 600px) {
+  .c360wf-cta { flex-direction: column; text-align: center; }
+  .c360wf-q { font-size: 0.9rem; padding: 16px 18px; }
+  .c360wf-a { padding: 0 18px; }
+  .c360wf-item.open .c360wf-a { padding: 0 18px 16px; }
+}
+</style>
+
+<div class="c360wf-wrap">
+  <div class="c360wf-header">
+    <p class="c360wf-eyebrow">Got Questions?</p>
+    <h2 class="c360wf-heading">Frequently Asked Questions</h2>
+    <p class="c360wf-sub">Everything you need to know about getting a website built with Complete360.</p>
+  </div>
+
+  <div class="c360wf-grid">
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">
+        How long does it take to build my website?
+        <span class="c360wf-icon">+</span>
+      </div>
+      <div class="c360wf-a"><p>Most websites are completed within 2–3 weeks from your kickoff strategy call. Timeline depends on how quickly we receive your content (photos, copy, logo) and revision turnaround. We'll keep you updated at every step and won't launch without your final approval.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">
+        Can I make changes to my site myself?
+        <span class="c360wf-icon">+</span>
+      </div>
+      <div class="c360wf-a"><p>Yes — your website is built on a platform that allows us to make changes on your behalf as part of your monthly plan. If you'd like to make edits yourself, we can walk you through the basics. Most clients simply send us change requests and we handle them — usually within 1–2 business days.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">
+        Can I use Complete360 to redesign my existing site?
+        <span class="c360wf-icon">+</span>
+      </div>
+      <div class="c360wf-a"><p>Absolutely. If you already have a website, we'll review it during your strategy call, identify what's working and what isn't, and build you a new site from scratch on our platform. Your old site stays live until the new one is ready to launch — zero downtime.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">
+        What if I already have a domain name?
+        <span class="c360wf-icon">+</span>
+      </div>
+      <div class="c360wf-a"><p>No problem — we'll connect your existing domain to your new Complete360 website. We'll walk you through the DNS update process (or do it with you). If you don't have a domain yet, we'll help you choose and register one.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">
+        What does the monthly fee cover?
+        <span class="c360wf-icon">+</span>
+      </div>
+      <div class="c360wf-a"><p>The monthly fee covers secure managed hosting, SSL certificate, platform updates, ongoing maintenance, and access to your account manager for content changes and support. Essentials and Pro are $97/mo. Premium is $197/mo and includes priority support and more frequent updates.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">
+        Do the templates look the same way for every business?
+        <span class="c360wf-icon">+</span>
+      </div>
+      <div class="c360wf-a"><p>No — every site is customized to your brand. We start from an industry-ready template (colors, layout, structure) and then apply your logo, brand colors, photos, and content. The result looks and feels unique to your business, not like a generic template.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">
+        What custom options are available for my build?
+        <span class="c360wf-icon">+</span>
+      </div>
+      <div class="c360wf-a"><p>We can build pretty much anything — booking systems, lead capture forms, chat widgets, photo galleries, service area pages, pricing pages, video sections, and more. Pro and Premium plans have more room for custom features. If you have something specific in mind, just let us know during your strategy call and we'll let you know what's included vs. what would be an add-on.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">
+        What happens if I need to cancel my monthly plan?
+        <span class="c360wf-icon">+</span>
+      </div>
+      <div class="c360wf-a"><p>There's no long-term contract. To cancel, send us written notice at least 10 days before your next billing date. If you cancel, your site will stay live until the end of the billing period. You retain rights to all the content we created for you.</p></div>
+    </div>
+
+  </div>
+
+  <div class="c360wf-cta">
+    <div class="c360wf-cta-text">
+      <h3>Still have questions?</h3>
+      <p>Book a free 15-minute call — we'll answer everything and recommend the right plan.</p>
+    </div>
+    <a href="/schedule-demo" class="c360wf-cta-btn">Schedule a Call →</a>
+  </div>
+</div>
+
+<script>
+function c360wfToggle(el) {
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.c360wf-item').forEach(function(i) { i.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
