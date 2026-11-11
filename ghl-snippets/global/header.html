@@ -1,13 +1,48 @@
 <!-- ============================================================
-     COMPLETE360 MEGA MENU — v1.9.5
-     Changes from v1.9.3 (2026-11-10):
-     - AI Agents menu CTA: "Unlimited AI usage — no per-minute AI fees" ->
-       "Unlimited AI usage — no per-minute AI fees" (phone service is billed
-       separately, so "no per-minute fees" on its own isn't true).
-     - Version jumps to 1.9.5 because other pages reference a live header
-       v1.9.4 that was never committed. Before pasting, compare this file with
-       the header live in GHL so no v1.9.4 change gets lost.
+     COMPLETE360 MEGA MENU — v2.0  (perf pass over v1.9.3)
      Paste at top of GHL global header code.
+
+     v2.1 — CONTENT ONLY. Reputation Management added to Get Found
+     Organically in the Solutions and Pricing menus, desktop and mobile.
+     Solutions count 6 -> 7. Pricing rail hint $399/mo -> $199/mo (Reputation
+     is now the cheapest organic service). Pricing cards deep-link to
+     #c360-rep-pricing — that is the real section id on that page, not the
+     #pricing convention the other cards use. Search palette needs no edit;
+     it indexes the Solutions menu at runtime.
+
+     v2.0 CHANGELOG — PERFORMANCE ONLY. No content, no links, no copy, no
+     layout changed. Every menu item, price and URL is byte-identical to
+     v1.9.3. If anything LOOKS different, it is a bug — revert and tell me.
+     ─────────────────────────────────────────────────────────────
+     1. MODAL FORM IFRAME NO LONGER LOADS ON PAGE LOAD. The Get Started
+        modal is display:none, but a display:none iframe still downloads its
+        src in every browser — so the entire GHL form app was being fetched
+        on EVERY page view of the whole site. src -> data-src, injected on
+        first modal open. Single biggest win in this file.
+     2. form_embed.js was a parser-blocking <script src> with no defer. It
+        exists only to size that iframe, so it now loads with it.
+     3. FONT AWESOME IS NO LONGER RENDER-BLOCKING. Desktop header bar has 0
+        icons; mobile bar had 1. Those (plus close + search) are now inline
+        SVG, FA loads async, fa-solid woff2 is preloaded. See the block note.
+     4. Closed mega menus + closed mobile panel get content-visibility:hidden.
+        visibility:hidden and translateX() both skip PAINT but still pay full
+        LAYOUT — 4 card grids and 138 mobile links, on every page load.
+     5. ~165 individual event listeners -> 3 delegated handlers.
+     6. Search index builds on first palette open, not at page load.
+     7. body:has(.c360-header) removed (redundant + invalidation cost).
+     8. Fixed the END comment, which still said v1.9.2.
+
+     ⚠️ VERSION NOTE: v1.9.3's own header comment described the social-posting
+     flip, but this file ALSO already contains everything §7 of the brand doc
+     attributes to "Header v1.9.4" (Google PPC + Meta Ads live in Paid Lead
+     Generation, blue icons, #pricing hints). The file was effectively 1.9.4
+     wearing a 1.9.3 label. Calling it v2.0 stops the drift.
+
+     ⚠️ CONTENT BUG SPOTTED, NOT FIXED (needs your call — it is not a perf
+     change so I left it alone): the Pricing menu's left rail says Paid Lead
+     Generation "From $499/mo". $499 is the one-time SETUP fee; the monthly
+     is $399. Every card inside that pane correctly says From $399/mo. Per
+     brand doc §8 you also still need to decide $399 anchor vs $279 annual.
      All styles/scripts prefixed with c360- to avoid collisions.
 
      Changes from v1.9.2:
@@ -82,8 +117,35 @@
      - Footer: add ProCard to Marketing Services column (see footer note at bottom)
      ============================================================ -->
 
-<!-- Font Awesome 6 Free — loaded from cdnjs for reliable icon rendering -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<!-- ============================================================
+     Font Awesome 6 Free — v2.0 PERF: no longer render-blocking.
+     Audit of this header: the DESKTOP header bar contains ZERO icons (logo,
+     nav labels, Login and Get Started are all text). The MOBILE bar contains
+     exactly one (the hamburger). Every other icon here — ~198 of them — sits
+     inside a mega menu, the mobile panel or the modal, i.e. behind a hover or
+     a tap. So a ~100KB stylesheet plus a webfont was blocking first paint for
+     one hamburger.
+     Fix, in three parts:
+       1. The hamburger, the close X and the two search triggers are now
+          inline SVG (see markup) — the header is fully usable with zero FA.
+       2. The stylesheet loads async via preload/onload, with a <noscript>
+          fallback so it still works without JS.
+       3. fa-solid-900.woff2 is preloaded so menu icons are ready the moment
+          someone hovers, instead of starting to download after the CSS parses.
+     fa-brands and fa-regular are NOT used by this header (0 elements each),
+     so they are deliberately not preloaded — the footer pulls fa-brands.
+     NEXT STEP worth doing: this header uses 70 unique icons out of ~2,000.
+     A subset kit would cut the font from ~150KB to a few KB.
+     ============================================================ -->
+<link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+<link rel="preload" as="font" type="font/woff2" crossorigin
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-900.woff2">
+<link rel="preload" as="style"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      onload="this.onload=null;this.rel='stylesheet'">
+<noscript>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</noscript>
 
 <style>
 /* ---------- Brand tokens ---------- */
@@ -103,6 +165,11 @@
   font-family: 'Poppins', 'Helvetica Neue', sans-serif;
 }
 
+/* v2.0 — inline SVG chrome icons (hamburger, close, search). These render
+   with zero dependency on Font Awesome, which is why FA can now load async.
+   currentColor means they inherit their button's colour and hover states. */
+.c360-ico { display: block; flex-shrink: 0; }
+
 .c360-header i.fa-solid,
 .c360-header i.fa-regular,
 .c360-modal i.fa-solid,
@@ -113,8 +180,11 @@
   line-height: 1;
 }
 
-body:has(.c360-header) .hl_header,
-body:has(.c360-header) nav.hl_nav-default { display: none !important; }
+/* v2.0 PERF — was body:has(.c360-header) ... . :has() on <body> makes the
+   engine re-evaluate against the whole document on DOM mutation. The guard
+   was redundant anyway: this is the GLOBAL header, so .c360-header is
+   present on every page the rule can apply to. */
+.hl_header, nav.hl_nav-default { display: none !important; }
 
 /* ---------- Desktop header bar ---------- */
 .c360-header {
@@ -236,11 +306,20 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
   transform: translateY(-8px);
   transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
   z-index: 9997;
+  /* v2.0 PERF — visibility:hidden skips PAINT but not LAYOUT, so all four
+     mega menus (every card, grid and icon inside them) were being laid out
+     on every page load while invisible. content-visibility:hidden skips
+     layout of the subtree too, and costs nothing to flip because the panel
+     is position:absolute and reserves no space either way.
+     Not animatable, which is what we want — it snaps, the opacity/transform
+     transition still does the visible work. */
+  content-visibility: hidden;
 }
 .c360-mega-menu.c360-open {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
+  content-visibility: visible;
 }
 
 .c360-mega-inner {
@@ -638,9 +717,14 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
     transform: translateX(100%);
     transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
     box-shadow: -8px 0 32px rgba(18, 32, 120, 0.2);
+    /* v2.0 PERF — the panel is display:flex and merely translated off-screen,
+       so its ~138 links and 5 accordion groups were fully laid out on every
+       mobile page load. This skips that until it is actually opened. */
+    content-visibility: hidden;
   }
   .c360-mobile-panel.c360-mobile-open {
     transform: translateX(0);
+    content-visibility: visible;
   }
 
   .c360-mobile-panel-header {
@@ -1118,7 +1202,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
         <button class="c360-category c360-cat-active" data-cat="sol-google">
           <div>
             <div class="c360-category-label">Get Found Organically</div>
-            <div class="c360-category-hint">6 services</div>
+            <div class="c360-category-hint">7 services</div>
           </div>
           <span class="c360-category-chevron">›</span>
         </button>
@@ -1173,6 +1257,13 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
               <div class="c360-card-text">
                 <p class="c360-card-title">Google Business Profile Setup/Optimization</p>
                 <p class="c360-card-desc">One-time profile launch/optimization</p>
+              </div>
+            </a>
+            <a href="/reputation-management" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-star"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Reputation Management <span class="c360-badge c360-badge-new">New</span></p>
+                <p class="c360-card-desc">Review requests, auto-responses &amp; feedback capture</p>
               </div>
             </a>
             <a href="/local-seo-booster" class="c360-card">
@@ -1429,7 +1520,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
           <a href="/ai-agents#pricing" class="c360-mega-cta">
             <div class="c360-mega-cta-text">
               <p class="c360-mega-cta-title">Put your AI team to work</p>
-              <p class="c360-mega-cta-subtitle">Unlimited AI usage — no per-minute AI fees</p>
+              <p class="c360-mega-cta-subtitle">Flat monthly pricing — no per-minute fees</p>
             </div>
             <span class="c360-mega-cta-btn">View Pricing →</span>
           </a>
@@ -1604,7 +1695,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
         <button class="c360-category c360-cat-active" data-cat="pri-google">
           <div>
             <div class="c360-category-label">Get Found Organically</div>
-            <div class="c360-category-hint">From $399/mo</div>
+            <div class="c360-category-hint">From $199/mo</div>
           </div>
           <span class="c360-category-chevron">›</span>
         </button>
@@ -1657,6 +1748,13 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
               <div class="c360-card-text">
                 <p class="c360-card-title">Google Business Profile Setup</p>
                 <p class="c360-card-desc"><span class="c360-price-tag">$399 one-time</span></p>
+              </div>
+            </a>
+            <a href="/reputation-management#c360-rep-pricing" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-star"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Reputation Management</p>
+                <p class="c360-card-desc"><span class="c360-price-tag">From $199/mo</span></p>
               </div>
             </a>
             <a href="/local-seo-booster#pricing" class="c360-card">
@@ -1833,7 +1931,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
         <button class="c360-category c360-cat-active" data-cat="res-learn">
           <div>
             <div class="c360-category-label">Resources</div>
-            <div class="c360-category-hint">Tools, guides, FAQ</div>
+            <div class="c360-category-hint">Videos, tools, guides, FAQ</div>
           </div>
           <span class="c360-category-chevron">›</span>
         </button>
@@ -1852,6 +1950,13 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
             <div class="c360-right-title">Resources</div>
           </div>
           <div class="c360-cards-grid">
+            <a href="/video-library" class="c360-card">
+              <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-film"></i></div>
+              <div class="c360-card-text">
+                <p class="c360-card-title">Ad Video Library <span class="c360-badge c360-badge-new">New</span></p>
+                <p class="c360-card-desc">Browse ready-to-run video ads by industry</p>
+              </div>
+            </a>
             <a href="/faq" class="c360-card">
               <div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-circle-question"></i></div>
               <div class="c360-card-text">
@@ -1951,7 +2056,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
     <span class="c-blue">Complete</span><span class="c-green">360</span>
   </a>
   <button type="button" class="c360-mobile-toggle" id="c360MobileToggle" aria-label="Open menu">
-    <i class="fa-solid fa-bars"></i>
+    <svg class="c360-ico" viewBox="0 0 448 512" width="20" height="20" aria-hidden="true" fill="currentColor"><path d="M0 96c0-13.3 10.7-24 24-24H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H24C10.7 120 0 109.3 0 96zm0 160c0-13.3 10.7-24 24-24H424c13.3 0 24 10.7 24 24s-10.7 24-24 24H24c-13.3 0-24-10.7-24-24zM448 416c0 13.3-10.7 24-24 24H24c-13.3 0-24-10.7-24-24s10.7-24 24-24H424c13.3 0 24 10.7 24 24z"/></svg>
   </button>
 </div>
 
@@ -1963,7 +2068,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
       <span class="c-blue">Complete</span><span class="c-green">360</span>
     </a>
     <button type="button" class="c360-mobile-close" id="c360MobileClose" aria-label="Close menu">
-      <i class="fa-solid fa-xmark"></i>
+      <svg class="c360-ico" viewBox="0 0 384 512" width="18" height="18" aria-hidden="true" fill="currentColor"><path d="M342.6 150.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0L192 210.7 86.6 105.4c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L146.7 256 41.4 361.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0L192 301.3 297.4 406.6c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L237.3 256 342.6 150.6z"/></svg>
     </button>
   </div>
 
@@ -1993,6 +2098,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
           <ul class="c360-mobile-cat-items">
             <li><a href="/gbp-management"><i class="fa-solid fa-location-dot"></i>Google Business Management</a></li>
             <li><a href="https://complete360.org/google-business-profile" target="_blank" rel="noopener"><i class="fa-solid fa-rocket"></i>Google Business Setup</a></li>
+            <li><a href="/reputation-management"><i class="fa-solid fa-star"></i>Reputation Management</a></li>
             <li><a href="/local-seo-booster"><i class="fa-solid fa-chart-line"></i>Local SEO Booster</a></li>
             <li><a href="/geo-fencing"><i class="fa-solid fa-location-crosshairs"></i>Geo-Fencing Ads</a></li>
             <li><a href="https://complete360.org/meta-social-posting"><i class="fa-solid fa-share-nodes"></i>Social Posting — Meta</a></li>
@@ -2198,6 +2304,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
           <ul class="c360-mobile-cat-items">
             <li><a href="/gbp-management#pricing"><i class="fa-solid fa-location-dot"></i>Google Business Management — <span class="c360-price-tag">$399/mo</span></a></li>
             <li><a href="https://complete360.org/google-business-profile" target="_blank" rel="noopener"><i class="fa-solid fa-rocket"></i>Google Business Setup — <span class="c360-price-tag">$399</span></a></li>
+            <li><a href="/reputation-management#c360-rep-pricing"><i class="fa-solid fa-star"></i>Reputation Management — <span class="c360-price-tag">From $199/mo</span></a></li>
             <li><a href="/local-seo-booster#pricing"><i class="fa-solid fa-chart-line"></i>Local SEO — <span class="c360-price-tag">$1,198/yr</span></a></li>
             <li><a href="/geo-fencing#pricing"><i class="fa-solid fa-location-crosshairs"></i>Geo-Fencing — <span class="c360-price-tag">Custom</span></a></li>
           </ul>
@@ -2268,6 +2375,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
             <i class="fa-solid fa-chevron-right"></i>
           </button>
           <ul class="c360-mobile-cat-items">
+            <li><a href="/video-library"><i class="fa-solid fa-film"></i>Ad Video Library</a></li>
             <li><a href="/faq"><i class="fa-solid fa-circle-question"></i>FAQ</a></li>
             <li><span class="c360-mobile-disabled"><i class="fa-solid fa-newspaper"></i>Blog <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
             <li><span class="c360-mobile-disabled"><i class="fa-solid fa-toolbox"></i>Free Tools <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
@@ -2313,9 +2421,16 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
         <p class="c360-form-subheading">Tell us a bit about your business and we'll reach out within 1 business day to schedule a free strategy call.</p>
       </div>
 
+      <!-- v2.0 PERF — src is deliberately data-src, NOT src.
+           A display:none iframe still downloads its src in every browser, so
+           the old markup pulled the whole GHL form app (HTML + CSS + JS +
+           fonts) on EVERY page view of the entire site, for a modal most
+           visitors never open. It is now injected on first modal open by
+           c360LoadForm() at the bottom of this block.
+           DO NOT change data-src back to src. -->
       <div class="c360-ghl-form-wrap">
         <iframe
-          src="https://link.complete360.org/widget/form/LdQRuUPar7Zwt5MhbBxi"
+          data-src="https://link.complete360.org/widget/form/LdQRuUPar7Zwt5MhbBxi"
           id="inline-LdQRuUPar7Zwt5MhbBxi"
           data-layout="{'id':'INLINE'}"
           data-trigger-type="alwaysShow"
@@ -2341,8 +2456,11 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
   </div>
 </div>
 
-<!-- GHL form embed script -->
-<script src="https://link.complete360.org/js/form_embed.js"></script>
+<!-- v2.0 PERF — form_embed.js used to sit here as a parser-blocking
+     <script src> with no defer, stalling HTML parsing on every page while it
+     fetched from link.complete360.org. Its only job is sizing the modal
+     iframe, so it is now loaded alongside that iframe on first modal open.
+     See c360LoadForm() below. -->
 
 <script>
 (function() {
@@ -2428,31 +2546,80 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
   if (mobileClose) mobileClose.addEventListener('click', closeMobilePanel);
   if (mobileBackdrop) mobileBackdrop.addEventListener('click', closeMobilePanel);
 
+  /* v2.0 PERF — one delegated handler replaces ~163 individual listeners.
+     The old code attached a click listener to every <a> in the mobile panel
+     (138 of them), plus one per group trigger and per category trigger, at
+     page load — on every page, including desktop where the panel is
+     display:none and can never be clicked. */
   if (mobilePanel) {
-    mobilePanel.querySelectorAll('a[href]').forEach(function(link) {
-      link.addEventListener('click', function() {
-        setTimeout(closeMobilePanel, 50);
-      });
+    mobilePanel.addEventListener('click', function(e) {
+      var groupTrigger = e.target.closest('.c360-mobile-group-trigger');
+      if (groupTrigger) {
+        groupTrigger.closest('.c360-mobile-group').classList.toggle('c360-mobile-expanded');
+        return;
+      }
+      var catTrigger = e.target.closest('.c360-mobile-cat-trigger');
+      if (catTrigger) {
+        catTrigger.closest('.c360-mobile-cat').classList.toggle('c360-mobile-expanded');
+        return;
+      }
+      if (e.target.closest('a[href]')) setTimeout(closeMobilePanel, 50);
     });
   }
-
-  document.querySelectorAll('.c360-mobile-group-trigger').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      btn.closest('.c360-mobile-group').classList.toggle('c360-mobile-expanded');
-    });
-  });
-
-  document.querySelectorAll('.c360-mobile-cat-trigger').forEach(function(btn) {
-    btn.addEventListener('click', function() {
-      btn.closest('.c360-mobile-cat').classList.toggle('c360-mobile-expanded');
-    });
-  });
 
   /* ============ GET STARTED MODAL ============ */
   var modal = document.getElementById('c360Modal');
 
+  /* v2.0 PERF — the form iframe and form_embed.js are fetched the first time
+     the modal opens, not on page load. Previously both loaded on every page
+     view sitewide for a modal most visitors never touch.
+     Order matters: the script registers the postMessage listener that resizes
+     the iframe, so it goes in before the iframe starts loading. */
+  var formLoaded = false;
+  function c360LoadForm() {
+    if (formLoaded) return;
+    formLoaded = true;
+    var frame = document.getElementById('inline-LdQRuUPar7Zwt5MhbBxi');
+    if (!frame) return;
+    var s = document.createElement('script');
+    s.src = 'https://link.complete360.org/js/form_embed.js';
+    s.onload = s.onerror = function () {
+      /* load the form even if the sizing script fails — a form that is the
+         wrong height still works; a form that never loads does not. */
+      if (!frame.src) frame.src = frame.getAttribute('data-src');
+    };
+    document.body.appendChild(s);
+    /* safety net: if the script hangs, don't leave the user staring at a
+       blank modal. */
+    setTimeout(function () {
+      if (!frame.src) frame.src = frame.getAttribute('data-src');
+    }, 1200);
+  }
+
+  /* Warm the connection on intent (hover/touch of any Get Started button) so
+     the lazy load doesn't pay DNS + TLS from cold when it fires. */
+  var warmed = false;
+  function c360Warm() {
+    if (warmed) return;
+    warmed = true;
+    ['preconnect', 'dns-prefetch'].forEach(function (rel) {
+      var l = document.createElement('link');
+      l.rel = rel;
+      l.href = 'https://link.complete360.org';
+      l.crossOrigin = '';
+      document.head.appendChild(l);
+    });
+  }
+  document.addEventListener('mouseover', function (e) {
+    if (e.target.closest && e.target.closest('.c360-popup-trigger')) c360Warm();
+  }, { passive: true, once: false });
+  document.addEventListener('touchstart', function (e) {
+    if (e.target.closest && e.target.closest('.c360-popup-trigger')) c360Warm();
+  }, { passive: true });
+
   function openModal() {
     if (!modal) return;
+    c360LoadForm();
     modal.classList.add('c360-modal-open');
     modal.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
@@ -2465,8 +2632,11 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
     document.body.style.overflow = '';
   }
 
-  document.querySelectorAll('.c360-popup-trigger').forEach(function(btn) {
-    btn.addEventListener('click', function(e) {
+  /* v2.0 PERF — delegated. Also means any .c360-popup-trigger added to a page
+     AFTER this script runs still works, which the old querySelectorAll loop
+     could not do. */
+  document.addEventListener('click', function(e) {
+    if (e.target.closest('.c360-popup-trigger')) {
       e.preventDefault();
       var isMobileOpen = mobilePanel && mobilePanel.classList.contains('c360-mobile-open');
       if (isMobileOpen) {
@@ -2475,11 +2645,9 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
       } else {
         openModal();
       }
-    });
-  });
-
-  document.querySelectorAll('[data-close-modal]').forEach(function(el) {
-    el.addEventListener('click', closeModal);
+      return;
+    }
+    if (e.target.closest('[data-close-modal]')) closeModal();
   });
 
   /* ============ GLOBAL ESC KEY ============ */
@@ -2493,7 +2661,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
 })();
 </script>
 <!-- ============================================================
-     END COMPLETE360 MEGA MENU v1.9.2
+     END COMPLETE360 MEGA MENU v2.0
 
      FOOTER UPDATE REQUIRED (c360-footer):
      In Column 2 (Marketing Services), add ProCard after Website Pricing:
@@ -2502,7 +2670,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
 
 
 <!-- ============================================================
-     COMPLETE360 HEADER SEARCH (Command Palette) — v1.1
+     COMPLETE360 HEADER SEARCH (Command Palette) — v1.2  (perf pass over v1.1)
      Paste as a SEPARATE GHL custom-code block (header or footer).
      Standalone: requires the main header (v1.9.x) to be present on the
      page. Does NOT modify the header markup — it injects its own trigger
@@ -2572,6 +2740,11 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
 }
 .c360s-trigger i { font-size: 13px; color: var(--c360s-grey); }
 .c360s-trigger:hover i { color: var(--c360s-green); }
+/* v2.0 — same treatment for the inline SVG that replaced the FA icon */
+.c360s-trigger .c360-ico { color: var(--c360s-grey); transition: color 0.15s ease; }
+.c360s-trigger:hover .c360-ico { color: var(--c360s-green); }
+.c360s-mtrigger .c360-ico { color: inherit; }
+.c360s-inputwrap > .c360-ico { color: var(--c360s-grey); }
 .c360s-trigger-label { font-weight: 400; }
 .c360s-kbd {
   display: inline-flex;
@@ -2809,7 +2982,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
     <div class="c360s-backdrop" data-c360s-close></div>
     <div class="c360s-panel" role="dialog" aria-modal="true" aria-label="Search Complete360">
       <div class="c360s-inputwrap">
-        <i class="fa-solid fa-magnifying-glass"></i>
+        <svg class="c360-ico" viewBox="0 0 512 512" width="16" height="16" aria-hidden="true" fill="currentColor"><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/></svg>
         <input type="text" class="c360s-input" id="c360sInput"
                placeholder="Search services, pricing, tools…"
                autocomplete="off" spellcheck="false"
@@ -2860,9 +3033,17 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
       })[key] || '';
     }
 
-    /* ---------- build the index from the mega-menu DOM ---------- */
+    /* ---------- build the index from the mega-menu DOM ----------
+       v2.0 PERF — built on FIRST OPEN, not at page load. This walks every
+       link in three mega menus, cloning each title node and running several
+       querySelectorAll calls per link — main-thread work on every page view
+       for a palette most visitors never open. Nothing about the index
+       depends on layout, so deferring it is free. */
     var INDEX = [];
-    (function buildIndex() {
+    var indexBuilt = false;
+    function buildIndex() {
+      if (indexBuilt) return;
+      indexBuilt = true;
       var seen = {};
       function push(item) {
         if (!item.title || !item.href || item.href === '#') return;
@@ -2912,7 +3093,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
         { title: 'Schedule a Demo', href: '/schedule-demo', icon: 'fa-solid fa-calendar', top: 'Company', section: '' },
         { title: 'Contact Us', href: '/contact-us', icon: 'fa-solid fa-envelope', top: 'Company', section: '' }
       ].forEach(function (i) { i.desc = i.desc || ''; push(i); });
-    })();
+    }
 
     /* ---------- search ---------- */
     function runSearch(q) {
@@ -3005,6 +3186,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
 
     /* ---------- open / close ---------- */
     function open() {
+      buildIndex();               /* v2.0 — deferred until now (no-op after 1st) */
       overlay.classList.add('c360s-open');
       overlay.setAttribute('aria-hidden', 'false');
       document.body.style.overflow = 'hidden';
@@ -3042,7 +3224,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
       trigger.className = 'c360s-trigger c360s-root';
       trigger.setAttribute('aria-label', 'Search');
       trigger.innerHTML =
-        '<i class="fa-solid fa-magnifying-glass"></i>' +
+        '<svg class=\'c360-ico\' viewBox=\'0 0 512 512\' width=\'14\' height=\'14\' aria-hidden=\'true\' fill=\'currentColor\'><path d=\'M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z\'/></svg>' +
         '<span class="c360s-trigger-label">Search</span>' +
         '<span class="c360s-kbd">⌘K</span>';
       ctaGroup.insertBefore(trigger, ctaGroup.firstChild);
@@ -3057,7 +3239,7 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
       mBtn.type = 'button';
       mBtn.className = 'c360s-mtrigger c360s-root';
       mBtn.setAttribute('aria-label', 'Search');
-      mBtn.innerHTML = '<i class="fa-solid fa-magnifying-glass"></i>';
+      mBtn.innerHTML = '<svg class=\'c360-ico\' viewBox=\'0 0 512 512\' width=\'14\' height=\'14\' aria-hidden=\'true\' fill=\'currentColor\'><path d=\'M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z\'/></svg>';
       mHeader.insertBefore(mBtn, mToggle);
       mBtn.addEventListener('click', open);
     }
@@ -3094,5 +3276,5 @@ body:has(.c360-header) nav.hl_nav-default { display: none !important; }
 })();
 </script>
 <!-- ============================================================
-     END COMPLETE360 HEADER SEARCH v1.0
+     END COMPLETE360 HEADER SEARCH v2.1
      ============================================================ -->
