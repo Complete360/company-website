@@ -36,8 +36,8 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `global/header.html` | Header (on every page) | ✅ Code in repo | v2.2: imported live v2.1, then added SEO Services (Solutions + Pricing, desktop + mobile), AI prices $399/$599, "no per-minute AI fees". Paste into GHL global header. Open: Paid Lead Gen rail "From $499/mo" |
-| `global/footer.html` | Footer (on every page) | ✅ Code in repo | v1.7.2: "New"/"Soon" pills glued to the last word of the label (v1.7 live Nov 11). Paste into GHL global footer |
+| `global/header.html` | Header (on every page) | ✅ Code in repo | v2.2.1: imported live v2.1, then added SEO Services; mobile "All AI Agents" icon fixed (Pro-only icon) (Solutions + Pricing, desktop + mobile), AI prices $399/$599, "no per-minute AI fees". Paste into GHL global header. Open: Paid Lead Gen rail "From $499/mo" |
+| `global/footer.html` | Footer (on every page) | ✅ Code in repo | v1.7.3: pills glued to the label; Platform Overview icon fixed (was a Pro-only icon) (v1.7 live Nov 11). Paste into GHL global footer |
 | `global/404.html` | 404 | ⬜ Placeholder |  |
 
 ### Home
