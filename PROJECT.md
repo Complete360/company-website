@@ -138,7 +138,8 @@ ghl-snippets/
                  meta-social-posting/, meta-ads/,
                  procard/, dispensary/,
                  geo-fencing-mobile/, website/,
-                 geo-fencing-ctv/, google-ads/
+                 geo-fencing-ctv/, google-ads/,
+                 ai-agents/
   crm-platform/  CRM home, Capture/Nurture/Close, feature pages
   company/       FAQ, contact, demo, thank-you, training, video library, link tree
   legal/         tos, privacy-policy, return-policy
@@ -166,7 +167,7 @@ PROJECT.md       this file
   "X of Y files have code" count.
 - Legal files use CRLF line endings — preserve them.
 
-### Status (2026-11-11): 45 of 63 page files have code
+### Status (2026-11-11): 46 of 63 page files have code
 - **Done:** global header/footer, home, all 16 service pages, website pricing, CRM home,
   legal (3), FAQ, contact, training, video library, link tree, Farmers Insurance.
 - **Live in GHL (Nov 10):** Terms v2.1, Return Policy v2.1, FAQ v2.4 and every policy-aligned service page (see README). Schema still to paste on most pages.

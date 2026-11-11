@@ -103,7 +103,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Checkout: ProCard | `/procard-checkout` | `schema/pages/checkout/procard.html` | CheckoutPage | — | ✅ |
 | Checkout: Website Design | `/website-checkout` | `schema/pages/checkout/website.html` | CheckoutPage | — | ✅ |
 | Checkout: Dispensary Advertising | `/dispensary-checkout` | `schema/pages/checkout/dispensary.html` | CheckoutPage | — | ✅ |
-| Checkout: AI Agents | `/ai-checkout` | `schema/pages/checkout/ai-employee-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
+| Checkout: AI Agents | `/ai-checkout` | `schema/pages/checkout/ai-agents.html` | CheckoutPage, FAQPage | 8 | ✅ |
 | Checkout: Complete360 CRM Lifetime Deal | `/lifetime-checkout` | `schema/pages/checkout/lifetime-deal-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Complete360 CRM Tier 1 plan | `/checkout-1` | `schema/pages/checkout/tier-1-plan-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Complete360 CRM Tier 2 plan | `/checkout-2` | `schema/pages/checkout/tier-2-plan-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
