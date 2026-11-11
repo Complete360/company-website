@@ -1,0 +1,266 @@
+<!-- ============================================================
+     REPO: checkout/gbp-management/1-pricing.html — SNIPPET 1 of 4 (live v2)
+     GHL page: "GBP Management Checkout" (/gbp-management-checkout).
+     Paste ABOVE the GHL order form. Header/footer are global — not here.
+     2026-11-11: imported as-is from the live GHL page (its own v2 header
+       below is unchanged). Known issues to fix next: Monthly card says
+       "cancel anytime" (policy: 10 days' written notice).
+     ============================================================ -->
+<!-- ============================================================
+     COMPLETE360 — GBP Management Checkout · Pricing Table  v2
+     Paste into the Custom Code block above the order form on the
+     GBP Management checkout page. Prefix: c360co-
+     v2 (Jul 18 2026): prices synced to the /gbp-management page + pricing
+       sheet — Quarterly tier ADDED; Semi-Annual $1,995->$1,915 ($332->$319);
+       Annual $3,350->$3,352 (save $1,438->$1,436). Savings shown annualized
+       "vs monthly" for a consistent apples-to-apples comparison across cards.
+     ============================================================ -->
+
+<!-- Poppins + Font Awesome are already loaded by the global header; these two
+     lines just let the block preview standalone — harmless no-op in GHL. -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  .c360co-pricing-row {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    border-bottom: 1px solid rgba(18,32,120,0.07);
+    padding: 48px 32px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360co-pricing-row-inner {
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+  .c360co-pricing-row-header {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .c360co-pricing-row-eyebrow {
+    display: inline-block;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    font-weight: 600;
+    color: #127825;
+    background: #EAF3DE;
+    padding: 4px 12px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
+  .c360co-pricing-row-title {
+    font-size: clamp(18px, 2.5vw, 24px);
+    font-weight: 700;
+    color: #0F1F5E;
+    line-height: 1.3;
+    margin-bottom: 6px;
+  }
+  .c360co-pricing-row-sub {
+    font-size: 13px;
+    color: #5F5E5A;
+  }
+  .c360co-pricing-row-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+  .c360co-pricing-row-card {
+    background: #fff;
+    border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 10px;
+    padding: 22px 20px;
+    position: relative;
+  }
+  .c360co-pricing-row-card-highlight {
+    background: #EAF3DE;
+    border-color: rgba(18,120,37,0.3);
+  }
+  .c360co-pricing-row-card-badge {
+    position: absolute;
+    top: -11px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #127825;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 12px;
+    border-radius: 6px;
+    white-space: nowrap;
+  }
+  /* neutral badge for the "Most Popular" quarterly card (no green fill) */
+  .c360co-pricing-row-card-badge-alt {
+    background: #122078;
+  }
+  .c360co-pricing-row-card-name {
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: #888780;
+    margin-bottom: 10px;
+  }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-name {
+    color: #2d5510;
+  }
+  .c360co-pricing-row-card-price {
+    display: flex;
+    align-items: baseline;
+    gap: 3px;
+    margin-bottom: 3px;
+  }
+  .c360co-pricing-row-card-amount {
+    font-size: 34px;
+    font-weight: 700;
+    color: #122078;
+    line-height: 1;
+  }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-amount {
+    color: #0a4010;
+  }
+  .c360co-pricing-row-card-per {
+    font-size: 13px;
+    color: #888780;
+  }
+  .c360co-pricing-row-card-billed {
+    font-size: 11px;
+    color: #888780;
+    margin-bottom: 12px;
+  }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-billed {
+    color: #2d5510;
+  }
+  .c360co-pricing-row-card-divider {
+    border: none;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    margin: 0 0 12px;
+  }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-divider {
+    border-color: rgba(18,120,37,0.15);
+  }
+  .c360co-pricing-row-card-savings {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 600;
+    color: #127825;
+    background: rgba(18,120,37,0.1);
+    border: 1px solid rgba(18,120,37,0.2);
+    padding: 3px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .c360co-pricing-row-card-savings.c360co-invisible { visibility: hidden; }
+  .c360co-pricing-row-card-note {
+    font-size: 11px;
+    color: #888780;
+    line-height: 1.5;
+  }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-note {
+    color: #2d5510;
+  }
+  .c360co-pricing-row-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    background: rgba(18,32,120,0.04);
+    border: 1px solid rgba(18,32,120,0.08);
+    border-radius: 8px;
+    padding: 12px 20px;
+    text-align: center;
+  }
+  .c360co-pricing-row-cta i {
+    color: #127825;
+    font-size: 13px;
+    flex-shrink: 0;
+  }
+  .c360co-pricing-row-cta span {
+    font-size: 13px;
+    color: #5F5E5A;
+  }
+  .c360co-pricing-row-cta strong {
+    color: #0F1F5E;
+  }
+
+  @media (max-width: 920px) {
+    .c360co-pricing-row-grid { grid-template-columns: 1fr 1fr; gap: 20px; }
+  }
+  @media (max-width: 540px) {
+    .c360co-pricing-row { padding: 40px 20px; }
+    .c360co-pricing-row-grid { grid-template-columns: 1fr; gap: 20px; }
+  }
+</style>
+
+<section class="c360co-pricing-row">
+  <div class="c360co-pricing-row-inner">
+    <div class="c360co-pricing-row-header">
+      <div class="c360co-pricing-row-eyebrow">Billing plans</div>
+      <h2 class="c360co-pricing-row-title">Same service, more savings when you commit longer</h2>
+      <p class="c360co-pricing-row-sub">Every plan includes all features — choose the billing cycle that works best for you.</p>
+    </div>
+
+    <div class="c360co-pricing-row-grid">
+
+      <div class="c360co-pricing-row-card">
+        <div class="c360co-pricing-row-card-name">Monthly</div>
+        <div class="c360co-pricing-row-card-price">
+          <span class="c360co-pricing-row-card-amount">$399</span>
+          <span class="c360co-pricing-row-card-per">/mo</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">Billed month to month</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-savings c360co-invisible">—</div>
+        <div class="c360co-pricing-row-card-note">Most flexible — cancel anytime before your next billing date.</div>
+      </div>
+
+      <div class="c360co-pricing-row-card">
+        <div class="c360co-pricing-row-card-badge c360co-pricing-row-card-badge-alt">Most Popular</div>
+        <div class="c360co-pricing-row-card-name">Quarterly</div>
+        <div class="c360co-pricing-row-card-price">
+          <span class="c360co-pricing-row-card-amount">$1,077</span>
+          <span class="c360co-pricing-row-card-per">/quarter</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">$359/mo · billed every 3 months</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-savings">Save $480/yr vs monthly</div>
+        <div class="c360co-pricing-row-card-note">A short commitment with real monthly savings.</div>
+      </div>
+
+      <div class="c360co-pricing-row-card">
+        <div class="c360co-pricing-row-card-name">Semi-Annual</div>
+        <div class="c360co-pricing-row-card-price">
+          <span class="c360co-pricing-row-card-amount">$1,915</span>
+          <span class="c360co-pricing-row-card-per">/6 mo</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">$319/mo · billed every 6 months</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-savings">Save $958/yr vs monthly</div>
+        <div class="c360co-pricing-row-card-note">Great balance of savings and flexibility.</div>
+      </div>
+
+      <div class="c360co-pricing-row-card c360co-pricing-row-card-highlight">
+        <div class="c360co-pricing-row-card-badge">Best Value</div>
+        <div class="c360co-pricing-row-card-name">Annual</div>
+        <div class="c360co-pricing-row-card-price">
+          <span class="c360co-pricing-row-card-amount">$3,352</span>
+          <span class="c360co-pricing-row-card-per">/year</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">$279/mo · billed once per year</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-savings">Save $1,436/yr vs monthly</div>
+        <div class="c360co-pricing-row-card-note">Best rate — lock in your profile management for the full year.</div>
+      </div>
+
+    </div>
+
+    <div class="c360co-pricing-row-cta">
+      <i class="fa-solid fa-arrow-down"></i>
+      <span>Ready to get started? <strong>Select your plan in the order form below.</strong></span>
+    </div>
+
+  </div>
+</section>

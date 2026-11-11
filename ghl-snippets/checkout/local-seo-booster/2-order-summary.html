@@ -1,0 +1,293 @@
+<!-- ============================================================
+     COMPLETE360 — LOCAL SEO BOOSTER CHECKOUT — SNIPPET 2 of 4: ORDER SUMMARY (v1.0)
+     GHL page: "Local SEO Checkout" (/local-seo-checkout). Paste into the
+     Custom Code element in the column BESIDE the GHL order form.
+     Prefix: c360co- (shared by all 4 snippets on this page).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.0 (2026-11-11): imported as-is from the live GHL page. No edits yet.
+       Includes the official Google Partner badge (links to Partners profile
+       id=9636024453) and the required "SEO services are not verified or
+       endorsed by Google" note — keep both together.
+     ============================================================ -->
+<style>
+  .c360co-summary-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+  }
+  .c360co-summary {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(18,32,120,0.1);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(18,32,120,0.07);
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+  }
+  .c360co-summary-header {
+    background: linear-gradient(135deg, #122078, #1a2e99);
+    padding: 20px 24px;
+    flex-shrink: 0;
+  }
+  .c360co-summary-header-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 4px;
+  }
+  .c360co-summary-header-title { font-size: 16px; font-weight: 700; color: #fff; }
+  .c360co-summary-body {
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    flex: 1;
+  }
+  .c360co-summary-section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #888780;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .c360co-summary-includes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .c360co-summary-includes li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #0F1F5E;
+    line-height: 1.45;
+  }
+  .c360co-summary-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #127825;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .c360co-summary-check i { font-size: 9px; color: #fff; }
+  .c360co-summary-divider { border: none; border-top: 1px solid rgba(18,32,120,0.08); }
+  .c360co-summary-promise {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #E6F1FB;
+    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid rgba(18,32,120,0.15);
+  }
+  .c360co-summary-promise-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #122078;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    color: #fff;
+  }
+  .c360co-summary-promise-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0d1654;
+    margin-bottom: 3px;
+  }
+  .c360co-summary-promise-desc {
+    font-size: 12px;
+    color: #1a2e99;
+    line-height: 1.5;
+  }
+
+  /* ---------- Trust cluster: Google Partner badge + credentials ----------
+     Badge sits LEFT, the four trust items stack to its RIGHT.
+     The badge is the official self-contained snippet (brand doc §1): its own
+     white card/border/padding/arrow mark, so NO wrapping chip and NO
+     border-radius/overflow clip here. Height + width:auto only.
+     Clear space is >= 1/2 the badge height on every side (100px -> 50px); the
+     50px row gap supplies the space to the right of the badge. Vars live on
+     the outer block so the gap and the badge height stay in sync -- resize both
+     via --c360co-badge-h / --c360co-badge-clear. */
+  .c360co-summary-trust {
+    --c360co-badge-h: 100px;
+    --c360co-badge-clear: 50px;   /* keep = 1/2 of --c360co-badge-h */
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .c360co-summary-trust-row {
+    display: flex;
+    align-items: center;
+    gap: var(--c360co-badge-clear);
+  }
+  .c360co-summary-partner {
+    display: inline-block;
+    line-height: 0;
+    flex-shrink: 0;
+    margin: 0;
+    transition: transform 0.15s ease;
+  }
+  .c360co-summary-partner:hover { transform: translateY(-1px); }
+  .c360co-summary-partner img {
+    display: block;
+    height: var(--c360co-badge-h);
+    width: auto;            /* never set both */
+    border: 0;
+    outline: none;
+    box-shadow: none;
+    max-width: none;        /* guard against GHL img{max-width:100%} squashing it */
+  }
+  .c360co-summary-trust-list {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    flex: 1;
+    min-width: 0;
+  }
+  .c360co-summary-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #5F5E5A;
+    line-height: 1.4;
+  }
+  .c360co-summary-trust-item i { font-size: 13px; color: #122078; width: 16px; text-align: center; flex-shrink: 0; }
+  /* Required whenever the badge appears alongside SEO advertising (§1g). */
+  .c360co-summary-seo-note {
+    font-size: 10px;
+    line-height: 1.4;
+    color: #888780;
+    margin: 0;
+  }
+
+  .c360co-summary-footer {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.08);
+    padding: 14px 24px;
+    text-align: center;
+    font-size: 11px;
+    color: #888780;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    flex-shrink: 0;
+  }
+  .c360co-summary-footer i { font-size: 12px; color: #127825; }
+
+  /* On narrow cards, stack the badge above the items and shrink it a touch so
+     its clear space still fits. */
+  @media (max-width: 600px) {
+    .c360co-summary-trust { --c360co-badge-h: 72px; --c360co-badge-clear: 36px; }
+    .c360co-summary-trust-row { flex-direction: column; align-items: flex-start; }
+  }
+</style>
+
+<div id="c360-order-form" class="c360co-summary-wrap">
+  <div class="c360co-summary">
+    <div class="c360co-summary-header">
+      <div class="c360co-summary-header-eyebrow">Local SEO Booster — Every plan includes</div>
+      <div class="c360co-summary-header-title">What's included with your subscription</div>
+    </div>
+
+    <div class="c360co-summary-body">
+      <div>
+        <div class="c360co-summary-section-label">All plans include</div>
+        <ul class="c360co-summary-includes">
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            70+ directory & citation submissions
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Google, Apple Maps, Bing & Yelp sync
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            AI search visibility (ChatGPT, Perplexity & more)
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Voice search optimization (Siri, Alexa, Google)
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            One update pushes everywhere simultaneously
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            NAP consistency monitoring & corrections
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Duplicate listing detection & suppression
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            24/7 automated listing accuracy monitoring
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Live within days, not weeks
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Monthly visibility & performance report
+          </li>
+        </ul>
+      </div>
+      <hr class="c360co-summary-divider">
+      <div class="c360co-summary-promise">
+        <div class="c360co-summary-promise-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div>
+          <div class="c360co-summary-promise-title">Our Listing Quality Promise</div>
+          <div class="c360co-summary-promise-desc">We monitor your listings 24/7. If any listing goes inaccurate, unpublishes, or experiences an error, we'll correct it at no extra charge — that's our commitment to you.</div>
+        </div>
+      </div>
+      <hr class="c360co-summary-divider">
+      <div class="c360co-summary-trust">
+        <div class="c360co-summary-trust-row">
+          <!-- Official Google Partner badge — links to our Partners profile
+               (id=9636024453); never strip this link. -->
+          <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360co-summary-partner">
+            <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+          </a>
+          <div class="c360co-summary-trust-list">
+            <div class="c360co-summary-trust-item"><i class="fa-solid fa-star"></i> 147 five-star reviews on Google</div>
+            <div class="c360co-summary-trust-item"><i class="fa-solid fa-phone"></i> Real humans — (866) 527-6205</div>
+            <div class="c360co-summary-trust-item"><i class="fa-solid fa-location-dot"></i> Tucson, AZ · Serving businesses nationwide</div>
+            <div class="c360co-summary-trust-item"><i class="fa-solid fa-briefcase"></i> In business since 2018</div>
+          </div>
+        </div>
+        <p class="c360co-summary-seo-note">SEO services are not verified or endorsed by Google.</p>
+      </div>
+    </div>
+
+    <div class="c360co-summary-footer">
+      <i class="fa-solid fa-lock"></i>
+      Secure checkout · Your info stays private
+    </div>
+  </div>
+</div>

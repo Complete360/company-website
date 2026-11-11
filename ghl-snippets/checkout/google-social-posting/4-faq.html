@@ -1,0 +1,104 @@
+<!-- ============================================================
+     COMPLETE360 — GOOGLE SOCIAL POSTING CHECKOUT — SNIPPET 4 of 4: FAQ + CALL CTA (v1.0)
+     GHL page: "Google Social Posting Checkout" (/google-social-checkout).
+     Paste into the Custom Code element at the BOTTOM of the page.
+     Prefix: c360wf- (older design; differs from the c360co- checkouts).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.0 (2026-11-11): imported as-is from the live GHL page. No edits yet.
+       Known issues to fix next: cancel FAQ says "cancelled anytime with 30
+       days' notice" (policy: 10 days' written notice; prepaid terms
+       non-refundable from purchase); names a third-party vendor ("Yext") and
+       describes GBP Management as including citation/AI sync and monthly
+       rank reporting, which doesn't match the GBP Management page/checkout;
+       "GBP" used customer-facing.
+     ============================================================ -->
+<style>
+.c360wf-wrap { font-family: var(--contentfont, 'Poppins'), sans-serif; max-width: 1160px; margin: 0 auto; padding: 72px 24px 80px; }
+.c360wf-header { text-align: center; margin-bottom: 48px; }
+.c360wf-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #127825; margin-bottom: 10px; }
+.c360wf-heading { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: #122078; margin-bottom: 12px; }
+.c360wf-sub { font-size: 1rem; color: #6B7A9D; max-width: 520px; margin: 0 auto; line-height: 1.6; }
+.c360wf-grid { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+.c360wf-item { border: 1px solid #E2E8F4; border-radius: 14px; overflow: hidden; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.c360wf-item.open { border-color: #127825; box-shadow: 0 4px 20px rgba(18,120,37,0.1); }
+.c360wf-q { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; cursor: pointer; font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 0.97rem; font-weight: 600; color: #122078; user-select: none; transition: background 0.15s ease; }
+.c360wf-q:hover { background: #F1EFE8; }
+.c360wf-item.open .c360wf-q { background: #EAF3DE; }
+.c360wf-icon { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: #F1EFE8; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #127825; transition: transform 0.3s ease, background 0.2s ease, color 0.2s ease; line-height: 1; }
+.c360wf-item.open .c360wf-icon { transform: rotate(45deg); background: #127825; color: #fff; }
+.c360wf-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 24px; }
+.c360wf-item.open .c360wf-a { max-height: 400px; padding: 0 24px 20px; }
+.c360wf-a p { font-size: 0.93rem; color: #6B7A9D; line-height: 1.72; margin: 0; }
+.c360wf-a a { color: #127825; font-weight: 600; text-decoration: none; }
+.c360wf-cta { margin-top: 52px; background: linear-gradient(135deg, #122078, #0d1654); border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.c360wf-cta-text h3 { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0 0 6px; }
+.c360wf-cta-text p { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin: 0; }
+.c360wf-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: #127825; color: #fff; padding: 14px 30px; border-radius: 50px; font-family: var(--contentfont, 'Poppins'), sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; white-space: nowrap; }
+.c360wf-cta-btn:hover { background: #0e5e1d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(18,120,37,0.4); }
+@media (max-width: 600px) { .c360wf-cta { flex-direction: column; text-align: center; } .c360wf-q { font-size: 0.9rem; padding: 16px 18px; } .c360wf-a { padding: 0 18px; } .c360wf-item.open .c360wf-a { padding: 0 18px 16px; } }
+</style>
+
+<div class="c360wf-wrap">
+  <div class="c360wf-header">
+    <p class="c360wf-eyebrow">Got Questions?</p>
+    <h2 class="c360wf-heading">Frequently Asked Questions</h2>
+    <p class="c360wf-sub">Everything you need to know about our Google Social Posting service before getting started.</p>
+  </div>
+
+  <div class="c360wf-grid">
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What exactly is a Google Post?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Google Posts are short updates that appear directly on your Google Business Profile in Search and Maps — similar to social media posts but on Google itself. They can highlight an offer, an event, a product, or general news. Posting consistently signals to Google that your business is active, which helps your local ranking and gives searchers another reason to choose you over a competitor who hasn't posted in months.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Do I have to write or approve the posts?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>No — it's fully done for you. During onboarding you tell us about your business, services, and any recurring offers, and from there our team handles the writing and design every week. If you'd like to review posts before they go live or send us specific promotions to feature, just let your account contact know and we'll work it into the schedule.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">How many posts will I get each month?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>You'll get roughly 4–5 posts per month — a consistent weekly cadence, which is the sweet spot Google looks for. Each post includes optimized copy, a custom branded graphic, and an action button. We rotate through different post types (What's New, Offers, Events, Products) so your profile never looks repetitive.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Do I need an existing Google Business Profile?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Yes — posting requires a verified Google Business Profile that we can access to publish on your behalf. If you don't have one yet, we offer a one-time GBP Setup for $399 to get you verified and ready, then posting can begin right away.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">How is this different from full GBP Management?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>This service is focused purely on posting — we write, design, and publish weekly Google Posts for you. Full GBP Management does that and a lot more: review generation and responses, profile optimization, citation and AI-platform sync through Yext, and monthly rank reporting. Google Posting is a great fit if you already have a profile in good shape and just need the posting handled consistently. You can step up to full management anytime.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Can I cancel or change plans later?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>The Month-to-Month plan can be cancelled anytime with 30 days' notice. The 6-Month and 12-Month plans are prepaid for the term at a lower monthly rate. You can always upgrade to a longer term or step up to full GBP Management whenever it makes sense — just reach out to your account manager.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">How long until I start seeing results?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Most clients see improved profile engagement (more views, clicks, and calls) within the first 60–90 days of consistent posting. Google rewards activity over time — the longer you post consistently, the more your profile is favored in local search results. This is why the 6 and 12-month plans tend to produce the strongest results.</p></div>
+    </div>
+
+  </div>
+
+  <div class="c360wf-cta">
+    <div class="c360wf-cta-text">
+      <h3>Still have questions?</h3>
+      <p>Book a free 15-minute call — we'll walk you through the service and recommend the right plan.</p>
+    </div>
+    <a href="/schedule-demo" class="c360wf-cta-btn">Schedule a Call →</a>
+  </div>
+</div>
+
+<script>
+function c360wfToggle(el) {
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.c360wf-item').forEach(function(i) { i.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+</script>

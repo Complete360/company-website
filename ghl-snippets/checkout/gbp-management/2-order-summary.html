@@ -1,0 +1,319 @@
+<!-- ============================================================
+     REPO: checkout/gbp-management/2-order-summary.html — SNIPPET 2 of 4 (live v2.2)
+     GHL page: "GBP Management Checkout" (/gbp-management-checkout).
+     Paste BESIDE the GHL order form. Header/footer are global — not here.
+     2026-11-11: imported as-is from the live GHL page (its own v2.2 header
+       below is unchanged). Known issues to fix next: "30-Day Satisfaction
+       Guarantee ... credit the value toward a different service" conflicts
+       with the legal guarantee (campaign extension at the end of the
+       service period) and with the /gbp-management page — needs a decision;
+       "GBP" in the header eyebrow.
+     ============================================================ -->
+<!-- ============================================================
+     COMPLETE360 — GBP Management Checkout · Order Summary  v2.2
+     Sidebar beside the order form. Prefix: c360co-
+     v2.2 (Jul 18 2026): Google Partner badge enlarged 48px -> 100px (per
+       request), kept left of the support items (now roughly height-matched to
+       the 4-item column). Stacks centered above the items if the sidebar is
+       narrower than ~360px. NOTE: at 100px Google's ideal clear space is ~50px
+       each side; this compact card gives it ~22px, so the strict halo isn't
+       fully met — the fully-spec large placements remain the hero + footer.
+     v2.1 (Jul 18 2026):
+       - ADDED the official Google Partner badge (gstatic snippet, links to our
+         Partners profile id=9636024453) to the LEFT of the support items,
+         mirroring the /gbp-management hero cluster. Sized 48px so its required
+         clear space fits the card; on white it carries its own card + a soft
+         drop-shadow. SEO disclaimer added beneath (badge + SEO-adjacent service
+         -> §1g). The first support line was "Google Partner certified agency",
+         which duplicated the badge — swapped to "Google Product Expert".
+     v2 (Jul 18 2026):
+       - Google Partner line: removed the Google-G icon (Google-G next to
+         "Google Partner" is a prohibited badge imitation per the Partners
+         guidelines). Kept as a plain TEXT claim with a neutral check icon.
+         The official badge stays on the /gbp-management hero + site footer.
+       - Reporting: "Monthly performance snapshot report" -> "Quarterly
+         performance report" (matches the page/checkout copy).
+       - Guarantee: "credit your next month" -> "credit the value toward a
+         different service" (prepaid Quarterly/Semi-Annual/Annual plans have
+         no "next month").
+     ============================================================ -->
+
+<!-- Poppins + Font Awesome already load via the global header; these two lines
+     just let the block preview standalone — harmless no-op in GHL. -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<style>
+  .c360co-summary-wrap {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 100%;
+  }
+  .c360co-summary {
+    background: #fff;
+    border-radius: 12px;
+    border: 1px solid rgba(18,32,120,0.1);
+    overflow: hidden;
+    box-shadow: 0 4px 24px rgba(18,32,120,0.07);
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    height: 100%;
+  }
+  .c360co-summary-header {
+    background: linear-gradient(135deg, #122078, #1a2e99);
+    padding: 20px 24px;
+    flex-shrink: 0;
+  }
+  .c360co-summary-header-eyebrow {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: rgba(255,255,255,0.6);
+    margin-bottom: 4px;
+  }
+  .c360co-summary-header-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .c360co-summary-body {
+    padding: 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    flex: 1;
+    container-type: inline-size;
+  }
+  .c360co-summary-section-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    color: #888780;
+    font-weight: 600;
+    margin-bottom: 12px;
+  }
+  .c360co-summary-includes {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+  }
+  .c360co-summary-includes li {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    color: #0F1F5E;
+    line-height: 1.45;
+  }
+  .c360co-summary-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    background: #127825;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .c360co-summary-check i {
+    font-size: 9px;
+    color: #fff;
+  }
+  .c360co-summary-divider {
+    border: none;
+    border-top: 1px solid rgba(18,32,120,0.08);
+  }
+  .c360co-summary-guarantee {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    background: #EAF3DE;
+    border-radius: 8px;
+    padding: 14px;
+    border: 1px solid rgba(18,120,37,0.2);
+  }
+  .c360co-summary-guarantee-icon {
+    width: 34px;
+    height: 34px;
+    border-radius: 8px;
+    background: #127825;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 14px;
+    color: #fff;
+  }
+  .c360co-summary-guarantee-title {
+    font-size: 13px;
+    font-weight: 700;
+    color: #0a4010;
+    margin-bottom: 3px;
+  }
+  .c360co-summary-guarantee-desc {
+    font-size: 12px;
+    color: #2d5510;
+    line-height: 1.5;
+  }
+  .c360co-summary-trust {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .c360co-summary-trust-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12px;
+    color: #5F5E5A;
+  }
+  .c360co-summary-trust-item i {
+    font-size: 13px;
+    color: #122078;
+    width: 16px;
+    text-align: center;
+  }
+
+  /* Google Partner badge cluster — official snippet left of the support items,
+     mirroring the /gbp-management hero. §1 rules: height set + width:auto, its
+     own white card (no chip), no border-radius/overflow clip, clear space >=
+     1/2 badge height each side. 48px is used here (not the hero's 104px) so the
+     24px clear space fits the card's 24px padding without crowding the text. */
+  .c360co-summary-trust-cluster {
+    display: flex;
+    align-items: center;
+    gap: 0;
+  }
+  .c360co-summary-partner {
+    display: inline-block;
+    line-height: 0;
+    flex-shrink: 0;
+    text-decoration: none;
+    border: 0; outline: none;
+    transition: transform 0.15s ease;
+  }
+  .c360co-summary-partner:hover { transform: translateY(-2px); }
+  .c360co-summary-partner img {
+    display: block;
+    height: 100px;         /* set height only — never both (v2.2: 48 -> 100) */
+    width: auto;
+    max-width: none;       /* guard against a global img{max-width:100%} */
+    filter: drop-shadow(0 10px 24px rgba(18,32,120,0.20));
+    border: 0; outline: none; box-shadow: none;
+  }
+  .c360co-summary-cred-divider {
+    width: 1px;
+    align-self: stretch;
+    min-height: 100px;     /* matches badge height */
+    background: rgba(18,32,120,0.12);
+    margin: 0 22px;
+    flex-shrink: 0;
+  }
+  .c360co-summary-trust-cluster .c360co-summary-trust {
+    flex: 1;
+    min-width: 0;
+  }
+  /* If the sidebar is too narrow for the 100px badge beside the text, stack it
+     centered above the items so it never overflows or crowds them. */
+  @container (max-width: 360px) {
+    .c360co-summary-trust-cluster { flex-direction: column; align-items: center; gap: 18px; }
+    .c360co-summary-cred-divider { display: none; }
+    .c360co-summary-trust-cluster .c360co-summary-trust { width: 100%; }
+  }
+  .c360co-summary-seo-note {
+    font-size: 10px;
+    color: #9a9a94;
+    line-height: 1.4;
+    margin: 10px 0 0;
+  }
+  .c360co-summary-footer {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.08);
+    padding: 14px 24px;
+    text-align: center;
+    font-size: 11px;
+    color: #888780;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+    flex-shrink: 0;
+  }
+  .c360co-summary-footer i { font-size: 12px; color: #127825; }
+</style>
+
+<div id="c360-order-form" class="c360co-summary-wrap">
+  <div class="c360co-summary">
+    <div class="c360co-summary-header">
+      <div class="c360co-summary-header-eyebrow">GBP Management — Every plan includes</div>
+      <div class="c360co-summary-header-title">What's included with your subscription</div>
+    </div>
+
+    <div class="c360co-summary-body">
+      <div>
+        <div class="c360co-summary-section-label">All plans include</div>
+        <ul class="c360co-summary-includes">
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Monthly profile optimization & keyword alignment
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Google Posts published weekly (4/mo)
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Review monitoring & professional responses
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Photo & Q&A upkeep
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Quarterly performance report
+          </li>
+          <li>
+            <div class="c360co-summary-check"><i class="fa-solid fa-check"></i></div>
+            Dedicated account success contact
+          </li>
+        </ul>
+      </div>
+      <hr class="c360co-summary-divider">
+      <div class="c360co-summary-guarantee">
+        <div class="c360co-summary-guarantee-icon"><i class="fa-solid fa-shield-halved"></i></div>
+        <div>
+          <div class="c360co-summary-guarantee-title">30-Day Satisfaction Guarantee</div>
+          <div class="c360co-summary-guarantee-desc">Not happy in the first 30 days? We'll make it right — or credit the value toward a different Complete360 service.</div>
+        </div>
+      </div>
+      <hr class="c360co-summary-divider">
+      <div class="c360co-summary-trust-cluster">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360co-summary-partner" aria-label="Google Partner — view our Google Partners profile">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+        <div class="c360co-summary-cred-divider"></div>
+        <div class="c360co-summary-trust">
+          <div class="c360co-summary-trust-item"><i class="fa-solid fa-user-check"></i> Google Product Expert</div>
+          <div class="c360co-summary-trust-item"><i class="fa-solid fa-star"></i> 147 five-star reviews</div>
+          <div class="c360co-summary-trust-item"><i class="fa-solid fa-phone"></i> Real humans — (866) 527-6205</div>
+          <div class="c360co-summary-trust-item"><i class="fa-solid fa-location-dot"></i> Tucson, AZ · nationwide</div>
+        </div>
+      </div>
+      <p class="c360co-summary-seo-note">SEO services are not verified or endorsed by Google.</p>
+    </div>
+
+    <div class="c360co-summary-footer">
+      <i class="fa-solid fa-lock"></i>
+      Secure checkout · Your info stays private
+    </div>
+  </div>
+</div>
