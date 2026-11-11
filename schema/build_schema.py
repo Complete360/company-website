@@ -196,7 +196,7 @@ for path, file, product in [
     ("/local-seo-checkout", "checkout/local-seo-booster", "Local SEO Booster"),
     ("/google-ads-checkout", "checkout/google-ads-checkout.html", "Google Ads (PPC) Management"),
     ("/meta-checkout", "checkout/meta-ads", "Meta Ads Management"),
-    ("/geo-mobile-checkout", "checkout/geo-fencing-mobile-checkout.html", "Geo-Fencing (Mobile)"),
+    ("/geo-mobile-checkout", "checkout/geo-fencing-mobile", "Geo-Fencing (Mobile)"),
     ("/geo-ctv-checkout", "checkout/geo-fencing-ctv-checkout.html", "Geo-Fencing (Connected TV)"),
     ("/google-social-checkout", "checkout/google-social-posting", "Google Social Posting"),
     ("/meta-social-checkout", "checkout/meta-social-posting", "Meta Social Posting"),
