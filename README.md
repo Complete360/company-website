@@ -36,8 +36,8 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `global/header.html` | Header (on every page) | ✅ Code in repo | v1.9.5: AI menu says "no per-minute AI fees". ⚠ Repo is behind live (v1.9.4 and possibly v2.0 never committed; footer v1.5 "pairs with Header v2.0"). Import the live header before adding SEO Services |
-| `global/footer.html` | Footer (on every page) | ✅ Code in repo | v1.7: SEO Services link added; "GBP" labels spelled out. Paste into GHL global footer |
+| `global/header.html` | Header (on every page) | ✅ Code in repo | v2.2: imported live v2.1, then added SEO Services (Solutions + Pricing, desktop + mobile), AI prices $399/$599, "no per-minute AI fees". Paste into GHL global header. Open: Paid Lead Gen rail "From $499/mo" |
+| `global/footer.html` | Footer (on every page) | ✅ Code in repo | v1.7 live in GHL (Nov 11): SEO Services link added; "GBP" labels spelled out |
 | `global/404.html` | 404 | ⬜ Placeholder |  |
 
 ### Home
