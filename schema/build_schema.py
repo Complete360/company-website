@@ -187,30 +187,34 @@ page("/return-policy", "legal/return-policy.html", "Return & Refund Policy", "le
 # Partners
 page("/farmers-insurance", "partners/farmers-insurance.html", "Farmers Insurance Agent Program", "partner")
 
-# Checkouts (built in GHL; schema only marks them as checkout pages)
+# Checkouts (built in GHL). Decision Nov 11, 2026: every checkout is set to noindex in GHL,
+# so checkouts get no schema. Search traffic should land on the service pages.
+CHECKOUT_PATHS = []
 for path, file, product in [
     ("/lsa-checkout", "checkout/local-service-ads", "Local Service Ads"),
     ("/gbp-management-checkout", "checkout/gbp-management", "Google Business Profile Management"),
     ("/gbp-setup-checkout", "checkout/gbp-setup", "Google Business Profile Setup"),
     ("/google-platinum-checkout", "checkout/google-platinum", "the Google Platinum Package"),
     ("/local-seo-checkout", "checkout/local-seo-booster", "Local SEO Booster"),
-    ("/google-ads-checkout", "checkout/google-ads-checkout.html", "Google Ads (PPC) Management"),
+    ("/google-ads-checkout", "checkout/google-ads", "Google Ads (PPC) Management"),
     ("/meta-checkout", "checkout/meta-ads", "Meta Ads Management"),
-    ("/geo-mobile-checkout", "checkout/geo-fencing-mobile-checkout.html", "Geo-Fencing (Mobile)"),
-    ("/geo-ctv-checkout", "checkout/geo-fencing-ctv-checkout.html", "Geo-Fencing (Connected TV)"),
+    ("/geo-mobile-checkout", "checkout/geo-fencing-mobile", "Geo-Fencing (Mobile)"),
+    ("/geo-ctv-checkout", "checkout/geo-fencing-ctv", "Geo-Fencing (Connected TV)"),
     ("/google-social-checkout", "checkout/google-social-posting", "Google Social Posting"),
     ("/meta-social-checkout", "checkout/meta-social-posting", "Meta Social Posting"),
-    ("/procard-checkout", "checkout/procard-checkout.html", "ProCard"),
-    ("/website-checkout", "checkout/website-checkout.html", "Website Design"),
-    ("/dispensary-checkout", "checkout/dispensary-checkout.html", "Dispensary Advertising"),
-    ("/ai-checkout", "checkout/ai-employee-checkout.html", "AI Agents"),
+    ("/procard-checkout", "checkout/procard", "ProCard"),
+    ("/website-checkout", "checkout/website", "Website Design"),
+    ("/dispensary-checkout", "checkout/dispensary", "Dispensary Advertising"),
+    ("/ai-checkout", "checkout/ai-agents", "AI Agents"),
+    ("/seo-services-checkout", "checkout/seo-services", "SEO Services"),
     ("/lifetime-checkout", "checkout/lifetime-deal-checkout.html", "the Complete360 CRM Lifetime Deal"),
     ("/checkout-1", "checkout/tier-1-plan-checkout.html", "the Complete360 CRM Tier 1 plan"),
     ("/checkout-2", "checkout/tier-2-plan-checkout.html", "the Complete360 CRM Tier 2 plan"),
     ("/checkout-3", "checkout/tier-3-plan-checkout.html", "the Complete360 CRM Tier 3 plan"),
 ]:
-    page(path, file, "Checkout: " + re.sub(r"^the ", "", product), "checkout",
+    page(path, file, "Checkout: " + re.sub(r"^the ", "", product), "skip",
          desc=f"Secure checkout for {product} from Complete360.")
+    CHECKOUT_PATHS.append(path)
 
 SKIP_WHY = {
     "/thank-you-for-demo": "Thank-you pages shouldn't appear in search. Set this page to noindex in GHL instead of adding schema.",
@@ -218,6 +222,10 @@ SKIP_WHY = {
     "/404": "Error pages don't get schema.",
     "/training": "This page is password-protected client training, so it shouldn't appear in search. Set it to noindex in GHL instead of adding schema.",
 }
+for _p in CHECKOUT_PATHS:
+    SKIP_WHY[_p] = ("Checkout pages are set to noindex in GHL (decision Nov 11, 2026): search traffic should land "
+                    "on the service page, and the checkout FAQs repeat the service-page FAQs. Set this page to noindex instead of adding schema.")
+
 
 # ── Policy guard ─────────────────────────────────────────────────────────
 # Schema repeats page copy word for word, so a page with outdated policy text

@@ -1,0 +1,124 @@
+<!-- ============================================================
+     REPO: checkout/ai-agents/4-faq.html — SNIPPET 4 of 4 (repo v1.1)
+     GHL page: "AI Employee Checkout" (/ai-checkout). Paste at the BOTTOM of
+     the page, below the reviews. Header/footer are global — not here.
+     v1.1 (2026-11-11): usage FAQs now match PROJECT.md and /ai-agents
+       (unlimited AI usage, no per-minute AI fees; phone line & carrier usage
+       billed separately); annual-cancel FAQ resolved per the Terms (annual
+       plans aren't refunded or prorated; written notice 10 days before
+       renewal to stop it renewing; monthly needs 10 days' written notice).
+     2026-11-11: imported from the live GHL page (original header below is
+       unchanged — its "unresolved" notes are now history).
+     ============================================================ -->
+<!-- ============================================================
+     COMPLETE360 — /ai-checkout — FAQ SECTION
+     Prefix: c360ai-
+
+     ⚠️ UNRESOLVED per brand doc §2/§4: confirm whether cancelling an
+     annual plan results in a prorated refund or non-renewal before
+     the "What happens if I cancel my annual plan?" answer below goes
+     live. Current copy matches what's on the live checkout page today.
+
+     CORRECTION: earlier drafts claimed "no per-minute fees" per the
+     brand doc's copy rule. Standard phone number & per-minute usage
+     rates DO apply on top of the monthly plan, so the "Do you charge
+     per call or per minute?" answer below has been corrected, and a
+     new "Are there any costs besides my monthly plan?" item was added.
+     The exact included-minutes allowance and overage rate aren't
+     specified yet — confirm those numbers so this answer can get more
+     precise before publishing.
+     ============================================================ -->
+<style>
+.c360ai-faq-wrap { font-family: var(--contentfont, 'Poppins'), sans-serif; max-width: 1160px; margin: 0 auto; padding: 72px 24px 80px; }
+.c360ai-faq-header { text-align: center; margin-bottom: 48px; }
+.c360ai-faq-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #127825; margin-bottom: 10px; }
+.c360ai-faq-heading { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: #122078; margin-bottom: 12px; }
+.c360ai-faq-sub { font-size: 1rem; color: #6B7A9D; max-width: 520px; margin: 0 auto; line-height: 1.6; }
+.c360ai-faq-grid { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+.c360ai-faq-item { border: 1px solid #E2E8F4; border-radius: 14px; overflow: hidden; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.c360ai-faq-item.open { border-color: #127825; box-shadow: 0 4px 20px rgba(18,120,37,0.1); }
+.c360ai-faq-q { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; cursor: pointer; font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 0.97rem; font-weight: 600; color: #122078; user-select: none; transition: background 0.15s ease; }
+.c360ai-faq-q:hover { background: #F1EFE8; }
+.c360ai-faq-item.open .c360ai-faq-q { background: #EAF3DE; }
+.c360ai-faq-icon { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: #F1EFE8; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #127825; transition: transform 0.3s ease, background 0.2s ease, color 0.2s ease; line-height: 1; }
+.c360ai-faq-item.open .c360ai-faq-icon { transform: rotate(45deg); background: #127825; color: #fff; }
+.c360ai-faq-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 24px; }
+.c360ai-faq-item.open .c360ai-faq-a { max-height: 400px; padding: 0 24px 20px; }
+.c360ai-faq-a p { font-size: 0.93rem; color: #6B7A9D; line-height: 1.72; margin: 0; }
+.c360ai-faq-a a { color: #127825; font-weight: 600; text-decoration: none; }
+.c360ai-faq-cta { margin-top: 52px; background: linear-gradient(135deg, #122078, #0d1654); border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.c360ai-faq-cta-text h3 { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0 0 6px; }
+.c360ai-faq-cta-text p { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin: 0; }
+.c360ai-faq-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: #127825; color: #fff; padding: 14px 30px; border-radius: 50px; font-family: var(--contentfont, 'Poppins'), sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; white-space: nowrap; }
+.c360ai-faq-cta-btn:hover { background: #0e5e1d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(18,120,37,0.4); }
+@media (max-width: 600px) { .c360ai-faq-cta { flex-direction: column; text-align: center; } .c360ai-faq-q { font-size: 0.9rem; padding: 16px 18px; } .c360ai-faq-a { padding: 0 18px; } .c360ai-faq-item.open .c360ai-faq-a { padding: 0 18px 16px; } }
+</style>
+
+<div class="c360ai-faq-wrap">
+  <div class="c360ai-faq-header">
+    <p class="c360ai-faq-eyebrow">Got Questions?</p>
+    <h2 class="c360ai-faq-heading">Frequently Asked Questions</h2>
+    <p class="c360ai-faq-sub">Everything you need to know about AI Voice Agent, AI Assistant, and Custom Agents before signing up.</p>
+  </div>
+
+  <div class="c360ai-faq-grid">
+
+    <div class="c360ai-faq-item">
+      <div class="c360ai-faq-q" onclick="c360aiFaqToggle(this)">What's the difference between AI Voice Agent and AI Assistant?<span class="c360ai-faq-icon">+</span></div>
+      <div class="c360ai-faq-a"><p>AI Voice Agent handles inbound phone calls 24/7 — answering, qualifying, and booking appointments over the phone. AI Assistant includes everything in Voice Agent plus website &amp; SMS chat, automated review requests, and custom workflow automation, so one AI Assistant runs your entire front office across every channel.</p></div>
+    </div>
+
+    <div class="c360ai-faq-item">
+      <div class="c360ai-faq-q" onclick="c360aiFaqToggle(this)">Is there a setup fee?<span class="c360ai-faq-icon">+</span></div>
+      <div class="c360ai-faq-a"><p>Yes — both plans include a one-time $2,000 setup fee. This covers training your AI Agent on your business, provisioning your dedicated phone number, and integrating your calendar and CRM. The setup fee is a one-time cost and is not refundable.</p></div>
+    </div>
+
+    <div class="c360ai-faq-item">
+      <div class="c360ai-faq-q" onclick="c360aiFaqToggle(this)">Do you charge per call or per minute?<span class="c360ai-faq-icon">+</span></div>
+      <div class="c360ai-faq-a"><p>No per-minute AI fees — AI usage is unlimited on every plan: every minute the agent talks, every message it sends, every review it answers. Your phone line and carrier usage (the cost of the call itself) are billed separately, just like any business phone service. We'll walk you through expected usage during onboarding so there are no surprises.</p></div>
+    </div>
+
+    <div class="c360ai-faq-item">
+      <div class="c360ai-faq-q" onclick="c360aiFaqToggle(this)">Are there any costs besides my monthly plan?<span class="c360ai-faq-icon">+</span></div>
+      <div class="c360ai-faq-a"><p>Yes, two things sit outside the monthly plan fee: the one-time $2,000 setup fee, and your phone line and carrier usage, which are billed separately. Both are covered in detail during onboarding before your agent goes live.</p></div>
+    </div>
+
+    <div class="c360ai-faq-item">
+      <div class="c360ai-faq-q" onclick="c360aiFaqToggle(this)">Can I switch between monthly and annual billing?<span class="c360ai-faq-icon">+</span></div>
+      <div class="c360ai-faq-a"><p>Yes — reach out to your account manager to switch. Moving to annual billing locks in two months free compared to paying monthly.</p></div>
+    </div>
+
+    <div class="c360ai-faq-item">
+      <div class="c360ai-faq-q" onclick="c360aiFaqToggle(this)">What happens if I cancel my annual plan?<span class="c360ai-faq-icon">+</span></div>
+      <div class="c360ai-faq-a"><p>Annual plans are billed once per year and aren't refunded or prorated. To stop an annual plan from renewing, let us know in writing at least 10 days before the renewal date. Monthly plans can be cancelled with written notice at least 10 days before your next billing date.</p></div>
+    </div>
+
+    <div class="c360ai-faq-item">
+      <div class="c360ai-faq-q" onclick="c360aiFaqToggle(this)">How soon will my AI Agent be live?<span class="c360ai-faq-icon">+</span></div>
+      <div class="c360ai-faq-a"><p>Most AI Agents are live within 5–7 business days of completing onboarding. We'll send an intake form right after checkout to collect your business details, call flows, and calendar/CRM access.</p></div>
+    </div>
+
+    <div class="c360ai-faq-item">
+      <div class="c360ai-faq-q" onclick="c360aiFaqToggle(this)">Can I add Custom Agents features later?<span class="c360ai-faq-icon">+</span></div>
+      <div class="c360ai-faq-a"><p>Yes — you can upgrade from AI Voice Agent to AI Assistant, or add Custom Agents workflows, at any time. Just reach out to your account manager and we'll scope the change.</p></div>
+    </div>
+
+  </div>
+
+  <div class="c360ai-faq-cta">
+    <div class="c360ai-faq-cta-text">
+      <h3>Still have questions?</h3>
+      <p>Book a free 15-minute call — we'll walk you through the AI Agents and recommend the right plan.</p>
+    </div>
+    <a href="/schedule-demo" class="c360ai-faq-cta-btn">Schedule a Call →</a>
+  </div>
+</div>
+
+<script>
+function c360aiFaqToggle(el) {
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.c360ai-faq-item').forEach(function(i) { i.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+</script>

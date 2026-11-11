@@ -1,0 +1,288 @@
+<!-- ============================================================
+     COMPLETE360 — DISPENSARY CHECKOUT — SNIPPET 1 of 4: PRICING ROW (v1.0)
+     GHL page: "Dispensary Checkout" (/dispensary-checkout). Paste into the
+     Custom Code element ABOVE the GHL order form.
+     Prefix: c360co- (snippets 2 and 4 on this page use c360wr- / c360wf-).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.0 (2026-11-11): imported as-is from the live GHL page. Prices match
+       /dispensary. No policy wording to fix in this snippet.
+       Open (Jared): footer says "ad spend is separate" while every card
+       sells a fixed number of impressions — which is it?; cards list mobile
+       banners only, but the sidebar/FAQ promise CTV video (and desktop on
+       600k); VFW / American Legion names and veteran targeting for cannabis
+       ads — management/legal review.
+     ============================================================ -->
+<style>
+  .c360co-pricing-row {
+    background: #F8F9FF;
+    border-top: 1px solid rgba(18,32,120,0.07);
+    border-bottom: 1px solid rgba(18,32,120,0.07);
+    padding: 48px 32px;
+    font-family: 'Poppins', 'Helvetica Neue', sans-serif;
+  }
+  .c360co-pricing-row-inner { max-width: 1160px; margin: 0 auto; }
+  .c360co-pricing-row-header { text-align: center; margin-bottom: 28px; }
+  .c360co-pricing-row-eyebrow {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px;
+    font-weight: 600; color: #127825; background: #EAF3DE;
+    padding: 4px 12px; border-radius: 4px; margin-bottom: 10px;
+  }
+  .c360co-pricing-row-title {
+    font-size: clamp(18px, 2.5vw, 24px); font-weight: 700;
+    color: #0F1F5E; line-height: 1.3; margin-bottom: 6px;
+  }
+  .c360co-pricing-row-sub { font-size: 13px; color: #5F5E5A; max-width: 640px; margin: 0 auto; line-height: 1.6; }
+  .c360co-pricing-row-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-bottom: 20px;
+    align-items: start;
+  }
+  .c360co-pricing-row-card {
+    background: #fff;
+    border: 1px solid rgba(18,32,120,0.1);
+    border-radius: 10px;
+    padding: 24px 18px;
+    position: relative;
+  }
+  .c360co-pricing-row-card-popular {
+    background: #122078;
+    border-color: #127825;
+    border-width: 2px;
+  }
+  .c360co-pricing-row-card-highlight {
+    background: #0d1654;
+    border-color: rgba(18,32,120,0.4);
+  }
+  .c360co-pricing-row-card-veteran {
+    background: #fff;
+    border-color: #b8860b;
+    border-width: 2px;
+  }
+  .c360co-pricing-row-card-badge {
+    position: absolute; top: -11px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.5px; padding: 3px 12px; border-radius: 6px;
+    white-space: nowrap; color: #fff;
+  }
+  .c360co-badge-popular { background: #127825; }
+  .c360co-badge-value   { background: #122078; }
+  .c360co-badge-veteran { background: #b8860b; }
+
+  .c360co-pricing-row-card-tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 9px; font-weight: 700; text-transform: uppercase;
+    letter-spacing: 0.4px; padding: 2px 8px; border-radius: 4px; margin-bottom: 8px;
+  }
+  .c360co-tag-veteran  { background: rgba(184,134,11,0.1);  color: #b8860b; }
+  .c360co-tag-growth   { background: rgba(255,255,255,0.12); color: rgba(255,255,255,0.8); }
+  .c360co-tag-multi    { background: rgba(18,32,120,0.06);   color: #122078; }
+  .c360co-tag-dominate { background: rgba(255,255,255,0.1);  color: rgba(255,255,255,0.75); }
+
+  .c360co-pricing-row-card-name {
+    font-size: 19px; font-weight: 700; color: #0F1F5E; margin-bottom: 4px; line-height: 1.2;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-name,
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-name { color: #fff; }
+  .c360co-pricing-row-card-veteran .c360co-pricing-row-card-name { color: #0F1F5E; }
+
+  .c360co-pricing-row-card-tagline {
+    font-size: 11px; color: #888780; margin-bottom: 14px; line-height: 1.45;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-tagline,
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-tagline { color: rgba(255,255,255,0.6); }
+
+  .c360co-pricing-row-card-amount-row {
+    display: flex; align-items: baseline; gap: 2px; margin-bottom: 2px;
+  }
+  .c360co-pricing-row-card-symbol { font-size: 18px; font-weight: 700; color: #122078; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-symbol,
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-symbol { color: #fff; }
+  .c360co-pricing-row-card-veteran .c360co-pricing-row-card-symbol { color: #127825; }
+  .c360co-pricing-row-card-amount { font-size: 34px; font-weight: 700; color: #122078; line-height: 1; }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-amount,
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-amount { color: #fff; }
+  .c360co-pricing-row-card-veteran .c360co-pricing-row-card-amount { color: #127825; }
+
+  .c360co-pricing-row-card-billed {
+    font-size: 10px; color: #888780; margin-bottom: 4px; line-height: 1.4;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-billed,
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-billed { color: rgba(255,255,255,0.55); }
+
+  .c360co-pricing-row-card-mtm {
+    font-size: 10px; font-weight: 600; color: #127825;
+    margin-bottom: 14px; line-height: 1.4;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-mtm  { color: #6ee87a; }
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-mtm { color: #6ee87a; }
+
+  .c360co-pricing-row-card-divider {
+    border: none; border-top: 1px solid rgba(18,32,120,0.07); margin: 0 0 12px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-divider,
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-divider { border-color: rgba(255,255,255,0.15); }
+  .c360co-pricing-row-card-veteran .c360co-pricing-row-card-divider { border-color: rgba(184,134,11,0.2); }
+
+  .c360co-pricing-row-card-includes {
+    display: flex; flex-direction: column; gap: 7px; margin-bottom: 0;
+  }
+  .c360co-pricing-row-card-includes-item {
+    display: flex; align-items: flex-start; gap: 7px;
+    font-size: 11.5px; color: #0F1F5E; line-height: 1.4;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-includes-item,
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-includes-item { color: rgba(255,255,255,0.88); }
+  .c360co-pricing-row-card-includes-item i {
+    font-size: 10px; color: #127825; width: 14px; flex-shrink: 0; margin-top: 2px;
+  }
+  .c360co-pricing-row-card-popular .c360co-pricing-row-card-includes-item i,
+  .c360co-pricing-row-card-highlight .c360co-pricing-row-card-includes-item i { color: #6ee87a; }
+  .c360co-pricing-row-card-veteran .c360co-pricing-row-card-includes-item i  { color: #b8860b; }
+
+  .c360co-pricing-row-footer-note {
+    text-align: center; font-size: 12px; color: #888780; margin-bottom: 16px; line-height: 1.5;
+  }
+  .c360co-pricing-row-cta {
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    background: rgba(18,32,120,0.04); border: 1px solid rgba(18,32,120,0.08);
+    border-radius: 8px; padding: 12px 20px; text-align: center;
+  }
+  .c360co-pricing-row-cta i { color: #127825; font-size: 13px; flex-shrink: 0; }
+  .c360co-pricing-row-cta span { font-size: 13px; color: #5F5E5A; }
+  .c360co-pricing-row-cta strong { color: #0F1F5E; }
+
+  @media (max-width: 960px) {
+    .c360co-pricing-row-grid { grid-template-columns: 1fr 1fr; gap: 24px; }
+  }
+  @media (max-width: 580px) {
+    .c360co-pricing-row-grid { grid-template-columns: 1fr; }
+    .c360co-pricing-row { padding: 40px 20px; }
+  }
+</style>
+
+<section class="c360co-pricing-row">
+  <div class="c360co-pricing-row-inner">
+    <div class="c360co-pricing-row-header">
+      <div class="c360co-pricing-row-eyebrow">
+        <i class="fa-solid fa-location-crosshairs"></i>
+        Cannabis Geo-Fencing Packages
+      </div>
+      <h2 class="c360co-pricing-row-title">Simple, transparent pricing</h2>
+      <p class="c360co-pricing-row-sub">Every package includes full creative production, zone setup, cannabis-compliant network delivery, and detailed reporting. No hidden fees.</p>
+    </div>
+
+    <div class="c360co-pricing-row-grid">
+
+      <!-- VFW / LEGION STARTER -->
+      <div class="c360co-pricing-row-card c360co-pricing-row-card-veteran">
+        <div class="c360co-pricing-row-card-badge c360co-badge-veteran">⭐ Veteran Outreach</div>
+        <div class="c360co-pricing-row-card-tag c360co-tag-veteran"><i class="fa-solid fa-star"></i>VFW / Legion</div>
+        <div class="c360co-pricing-row-card-name">VFW / Legion Starter</div>
+        <div class="c360co-pricing-row-card-tagline">Target the 5 closest American Legion &amp; VFW posts. 21+ verified, cannabis-compliant veteran audience.</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">1,399</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">per year · 1,000 impressions/mo</div>
+        <div class="c360co-pricing-row-card-mtm">&nbsp;</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-includes">
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>5 closest VFW / Legion posts fenced</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>1,000 impressions/mo</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Mobile banner creative included</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Campaign setup &amp; zone management</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Impressions, clicks &amp; CTR reporting</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Home Town Hero Partners program</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Annual performance report</div>
+        </div>
+      </div>
+
+      <!-- 200K — MOST POPULAR -->
+      <div class="c360co-pricing-row-card c360co-pricing-row-card-popular">
+        <div class="c360co-pricing-row-card-badge c360co-badge-popular">Most Popular</div>
+        <div class="c360co-pricing-row-card-tag c360co-tag-growth"><i class="fa-solid fa-chart-line"></i>Local Market Growth</div>
+        <div class="c360co-pricing-row-card-name">200k Impressions</div>
+        <div class="c360co-pricing-row-card-tagline">Maximum monthly reach for a single-location shop ready to dominate their local market and out-advertise competitors.</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">5,000</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">annually</div>
+        <div class="c360co-pricing-row-card-mtm">or $416.66/mo month-to-month</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-includes">
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>200,000 impressions/mo</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Mobile banner ads</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Competitor geo-fencing zones</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Full creative production included</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Cannabis-compliant networks only</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Impressions, clicks &amp; CTR reporting</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Monthly performance report</div>
+        </div>
+      </div>
+
+      <!-- 400K — MULTI-LOCATION -->
+      <div class="c360co-pricing-row-card c360co-pricing-row-card-highlight">
+        <div class="c360co-pricing-row-card-tag c360co-tag-dominate"><i class="fa-solid fa-mobile-screen-button"></i>Multi-Location</div>
+        <div class="c360co-pricing-row-card-name">400k Impressions</div>
+        <div class="c360co-pricing-row-card-tagline">Ideal for dispensaries with 2–3 locations or a larger single-location market needing broader coverage and multi-format reach.</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">10,000</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">annually</div>
+        <div class="c360co-pricing-row-card-mtm">or $833.33/mo month-to-month</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-includes">
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>400,000 impressions/mo</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Mobile banner ads</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Multi-location geo-fence zones</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Full creative production included</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Competitor &amp; event targeting</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Impressions, clicks &amp; CTR reporting</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Monthly performance report</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Dedicated account support</div>
+        </div>
+      </div>
+
+      <!-- 600K — MARKET DOMINATION -->
+      <div class="c360co-pricing-row-card c360co-pricing-row-card-highlight">
+        <div class="c360co-pricing-row-card-badge c360co-badge-value">Best Value</div>
+        <div class="c360co-pricing-row-card-tag c360co-tag-dominate"><i class="fa-solid fa-crown"></i>Market Domination</div>
+        <div class="c360co-pricing-row-card-name">600k Impressions</div>
+        <div class="c360co-pricing-row-card-tagline">For chains and high-volume dispensaries that want to own their entire regional market across every screen and platform.</div>
+        <div class="c360co-pricing-row-card-amount-row">
+          <span class="c360co-pricing-row-card-symbol">$</span>
+          <span class="c360co-pricing-row-card-amount">15,000</span>
+        </div>
+        <div class="c360co-pricing-row-card-billed">annually</div>
+        <div class="c360co-pricing-row-card-mtm">or $1,250/mo month-to-month</div>
+        <hr class="c360co-pricing-row-card-divider">
+        <div class="c360co-pricing-row-card-includes">
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>600,000 impressions/mo</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Mobile banner ads</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Unlimited geo-fence zones</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Full creative production &amp; refresh</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Competitor &amp; weather targeting</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Impressions, clicks &amp; CTR reporting</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Monthly performance report</div>
+          <div class="c360co-pricing-row-card-includes-item"><i class="fa-solid fa-check"></i>Priority support &amp; strategy calls</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="c360co-pricing-row-footer-note">
+      All campaigns run on cannabis-compliant networks only. Ad spend is separate from management fees and goes directly to your campaign. Questions? <a href="/schedule-demo" style="color:#122078;font-weight:600;text-decoration:none;">Schedule a free strategy call →</a>
+    </div>
+
+    <div class="c360co-pricing-row-cta">
+      <i class="fa-solid fa-arrow-down"></i>
+      <span>Ready to get started? <strong>Select your package in the order form below.</strong></span>
+    </div>
+  </div>
+</section>

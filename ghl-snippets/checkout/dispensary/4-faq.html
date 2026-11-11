@@ -1,0 +1,114 @@
+<!-- ============================================================
+     COMPLETE360 — DISPENSARY CHECKOUT — SNIPPET 4 of 4: FAQ + CALL CTA (v1.1)
+     GHL page: "Dispensary Checkout" (/dispensary-checkout). Paste into the
+     Custom Code element at the BOTTOM of the page.
+     Prefix: c360wf- (older design, like the social checkouts).
+     Header + footer are GLOBAL sections — do NOT include them here.
+
+     v1.1 (2026-11-11): billing FAQ now states the 10-day written notice for
+       month-to-month and that annual plans are non-refundable from purchase.
+     v1.0 (2026-11-11): imported as-is from the live GHL page.
+       Open (Jared): "fully legal" / "without violating any ad platform
+       policies" — legal review (cannabis ad rules vary by state); billing
+       FAQ says month-to-month is "priced slightly higher", but each tier's
+       monthly price x 12 equals its annual price; format FAQ (CTV on 200k+,
+       desktop on 600k) doesn't match the pricing cards; ad-spend FAQ vs
+       fixed impressions per package.
+     ============================================================ -->
+<style>
+.c360wf-wrap {
+  font-family: var(--contentfont, 'Poppins'), sans-serif;
+  max-width: 1160px; margin: 0 auto; padding: 72px 24px 80px;
+}
+.c360wf-header { text-align: center; margin-bottom: 48px; }
+.c360wf-eyebrow { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #127825; margin-bottom: 10px; }
+.c360wf-heading { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: clamp(1.8rem, 3vw, 2.4rem); font-weight: 700; color: #122078; margin-bottom: 12px; }
+.c360wf-sub { font-size: 1rem; color: #6B7A9D; max-width: 520px; margin: 0 auto; line-height: 1.6; }
+.c360wf-grid { max-width: 780px; margin: 0 auto; display: flex; flex-direction: column; gap: 10px; }
+.c360wf-item { border: 1px solid #E2E8F4; border-radius: 14px; overflow: hidden; transition: border-color 0.2s ease, box-shadow 0.2s ease; }
+.c360wf-item.open { border-color: #127825; box-shadow: 0 4px 20px rgba(18,120,37,0.1); }
+.c360wf-q { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 20px 24px; cursor: pointer; font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 0.97rem; font-weight: 600; color: #122078; user-select: none; transition: background 0.15s ease; }
+.c360wf-q:hover { background: #F1EFE8; }
+.c360wf-item.open .c360wf-q { background: #EAF3DE; }
+.c360wf-icon { width: 28px; height: 28px; min-width: 28px; border-radius: 50%; background: #F1EFE8; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; color: #127825; transition: transform 0.3s ease, background 0.2s ease, color 0.2s ease; line-height: 1; }
+.c360wf-item.open .c360wf-icon { transform: rotate(45deg); background: #127825; color: #fff; }
+.c360wf-a { max-height: 0; overflow: hidden; transition: max-height 0.4s ease, padding 0.3s ease; padding: 0 24px; }
+.c360wf-item.open .c360wf-a { max-height: 400px; padding: 0 24px 20px; }
+.c360wf-a p { font-size: 0.93rem; color: #6B7A9D; line-height: 1.72; margin: 0; }
+.c360wf-a a { color: #127825; font-weight: 600; text-decoration: none; }
+.c360wf-cta { margin-top: 52px; background: linear-gradient(135deg, #122078, #0d1654); border-radius: 20px; padding: 40px; display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.c360wf-cta-text h3 { font-family: var(--headlinefont, 'Poppins'), sans-serif; font-size: 1.3rem; font-weight: 700; color: #fff; margin: 0 0 6px; }
+.c360wf-cta-text p { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin: 0; }
+.c360wf-cta-btn { display: inline-flex; align-items: center; gap: 8px; background: #127825; color: #fff; padding: 14px 30px; border-radius: 50px; font-family: var(--contentfont, 'Poppins'), sans-serif; font-size: 0.95rem; font-weight: 600; text-decoration: none; transition: all 0.2s ease; white-space: nowrap; }
+.c360wf-cta-btn:hover { background: #0e5e1d; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(18,120,37,0.4); }
+@media (max-width: 600px) { .c360wf-cta { flex-direction: column; text-align: center; } .c360wf-q { font-size: 0.9rem; padding: 16px 18px; } .c360wf-a { padding: 0 18px; } .c360wf-item.open .c360wf-a { padding: 0 18px 16px; } }
+</style>
+
+<div class="c360wf-wrap">
+  <div class="c360wf-header">
+    <p class="c360wf-eyebrow">Got Questions?</p>
+    <h2 class="c360wf-heading">Frequently Asked Questions</h2>
+    <p class="c360wf-sub">Everything you need to know about geo-fencing advertising for cannabis dispensaries.</p>
+  </div>
+
+  <div class="c360wf-grid">
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Is geo-fencing advertising legal for cannabis businesses?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Yes. Geo-fencing on cannabis-compliant programmatic networks is fully legal and the most effective digital advertising option available to dispensaries. Unlike Google Ads or Meta, our platform is built specifically for cannabis businesses — delivering to 21+ verified audiences without violating any ad platform policies.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">How does geo-fencing work without Google or Meta platforms?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>We use a cannabis-compliant programmatic ad network that reaches audiences across thousands of apps, websites, and streaming TV platforms — completely separate from Google and Meta. Your ads are delivered to users based on their real-world location data, reaching them on their phones and TV screens wherever they go after entering your geo-fenced zones.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What ad formats are included in the packages?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>The 200k and 400k packages include mobile banner ads and CTV (connected TV) video ads. The 600k Market Domination package adds desktop display. The VFW / Legion Starter is mobile banner only. All creative — banners and video — is produced by our in-house team and included in the management fee.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Can I target my competitors' customers?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Absolutely. Competitor geo-fencing is included in the 200k package and above. We draw a virtual fence around competing dispensaries and target customers who visit those locations — serving your ads across their devices after they leave. This is one of the most powerful customer acquisition tactics available to dispensaries.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">How long does it take to launch a campaign?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Most campaigns go live within 5–7 business days of onboarding. That includes your strategy call, geo-fence zone setup, creative production, compliance review, and campaign activation. Nothing launches without your approval on the creative first.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What is the VFW / Legion Starter package?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>The VFW / Legion Starter is a specialized veteran outreach package designed to connect cannabis dispensaries with the veteran community — a high-intent, cannabis-friendly audience. We geo-fence the 5 closest American Legion and VFW posts to your location and serve 21+ verified mobile banner ads to that audience. It's also part of our Home Town Hero Partners program.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">What does the monthly vs. annual pricing difference mean?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>The annual price is paid upfront for the full year and reflects our best rate. The month-to-month option gives you flexibility without a long-term commitment but is priced slightly higher per month. Both options include the same campaign, impressions, and deliverables — the difference is simply billing frequency and total cost. Month-to-month plans need at least 10 days' written notice before the next billing date to cancel, and annual plans are non-refundable from the time of purchase.</p></div>
+    </div>
+
+    <div class="c360wf-item">
+      <div class="c360wf-q" onclick="c360wfToggle(this)">Is the ad spend separate from the management fee?<span class="c360wf-icon">+</span></div>
+      <div class="c360wf-a"><p>Yes. The package price covers campaign management, creative production, zone setup, reporting, and account management. Ad spend — the budget that actually funds your impressions — is a separate cost that goes directly to the network. We'll walk you through the recommended ad spend on your strategy call based on your package and market size.</p></div>
+    </div>
+
+  </div>
+
+  <div class="c360wf-cta">
+    <div class="c360wf-cta-text">
+      <h3>Still have questions?</h3>
+      <p>Book a free 15-minute call — we'll recommend the right package for your market.</p>
+    </div>
+    <a href="/schedule-demo" class="c360wf-cta-btn">Schedule a Call →</a>
+  </div>
+</div>
+
+<script>
+function c360wfToggle(el) {
+  var item = el.parentElement;
+  var wasOpen = item.classList.contains('open');
+  document.querySelectorAll('.c360wf-item').forEach(function(i) { i.classList.remove('open'); });
+  if (!wasOpen) item.classList.add('open');
+}
+</script>
