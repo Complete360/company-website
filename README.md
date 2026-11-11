@@ -26,7 +26,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-40 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
+41 of 63 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -92,7 +92,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `checkout/procard/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | ProCard Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; reviews 144+ -> 147. Prices match /procard. Open: "lifetime license / own it forever" wording; free minor edits promise; "Tucson businesses" headline. Older c360wr-/c360wf- styling. Paste into GHL. |
 | `checkout/website-checkout.html` | Website Checkout | ⬜ Placeholder |  |
 | `checkout/ai-employee-checkout.html` | AI Employee Checkout | ⬜ Placeholder |  |
-| `checkout/dispensary-checkout.html` | Dispensary Checkout | ⬜ Placeholder |  |
+| `checkout/dispensary/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Dispensary Checkout | ✅ Code in repo | v1.0/v1.1 (Nov 11): imported from live GHL; reviews 144+ -> 147; billing FAQ adds 10-day notice + annual non-refundable. Prices match /dispensary. ⚠ Open: legal review of "fully legal"/"no platform policy violations" and VFW/Legion naming; ad spend separate vs fixed impressions; CTV/desktop formats vs cards; "priced slightly higher" monthly. Older c360wr-/c360wf- styling. |
 | `checkout/google-platinum/` (4 snippets: `1-pricing`, `2-order-summary`, `3-reviews`, `4-faq`) | Google Platinum Checkout | ✅ Code in repo | v1.1 (Nov 11): cancellation/refund/"GBP" copy fixed. Open: Reputation Management in the bundle vs PROJECT.md; "won't be double-billed" upgrade promise; "Tucson businesses" reviews headline. Paste into GHL. |
 | `checkout/lifetime-deal-checkout.html` | Lifetime Deal Checkout | ⬜ Placeholder |  |
 | `checkout/tier-1-plan-checkout.html` | Tier 1 Plan Check Out | ⬜ Placeholder |  |

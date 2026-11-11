@@ -202,7 +202,7 @@ for path, file, product in [
     ("/meta-social-checkout", "checkout/meta-social-posting", "Meta Social Posting"),
     ("/procard-checkout", "checkout/procard", "ProCard"),
     ("/website-checkout", "checkout/website-checkout.html", "Website Design"),
-    ("/dispensary-checkout", "checkout/dispensary-checkout.html", "Dispensary Advertising"),
+    ("/dispensary-checkout", "checkout/dispensary", "Dispensary Advertising"),
     ("/ai-checkout", "checkout/ai-employee-checkout.html", "AI Agents"),
     ("/lifetime-checkout", "checkout/lifetime-deal-checkout.html", "the Complete360 CRM Lifetime Deal"),
     ("/checkout-1", "checkout/tier-1-plan-checkout.html", "the Complete360 CRM Tier 1 plan"),
