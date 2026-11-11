@@ -89,11 +89,11 @@ Don't paste them until the page is fixed and this script is re-run.
 | Privacy Policy | `/privacy-policy` | `schema/pages/legal/privacy-policy.html` | WebPage | — | ✅ |
 | Return & Refund Policy | `/return-policy` | `schema/pages/legal/return-policy.html` | WebPage | — | ✅ |
 | Farmers Insurance Agent Program | `/farmers-insurance` | `schema/pages/partners/farmers-insurance.html` | WebPage, FAQPage | 8 | ✅ |
-| Checkout: Local Service Ads | `/lsa-checkout` | `schema/pages/checkout/local-service-ads.html` | CheckoutPage, FAQPage | 8 | ⚠ HOLD: page conflicts with policy ("cancel anytime", money-back guarantee, refundable until work begins) |
-| Checkout: Google Business Profile Management | `/gbp-management-checkout` | `schema/pages/checkout/gbp-management.html` | CheckoutPage, FAQPage | 7 | ⚠ HOLD: page conflicts with policy ("cancel anytime", refundable until work begins) |
+| Checkout: Local Service Ads | `/lsa-checkout` | `schema/pages/checkout/local-service-ads.html` | CheckoutPage, FAQPage | 8 | ✅ |
+| Checkout: Google Business Profile Management | `/gbp-management-checkout` | `schema/pages/checkout/gbp-management.html` | CheckoutPage, FAQPage | 7 | ✅ |
 | Checkout: Google Business Profile Setup | `/gbp-setup-checkout` | `schema/pages/checkout/gbp-setup.html` | CheckoutPage, FAQPage | 8 | ✅ |
-| Checkout: Google Platinum Package | `/google-platinum-checkout` | `schema/pages/checkout/google-platinum.html` | CheckoutPage, FAQPage | 8 | ⚠ HOLD: page conflicts with policy ("cancel anytime", refundable until work begins) |
-| Checkout: Local SEO Booster | `/local-seo-checkout` | `schema/pages/checkout/local-seo-booster.html` | CheckoutPage, FAQPage | 9 | ⚠ HOLD: page conflicts with policy ("cancel anytime") |
+| Checkout: Google Platinum Package | `/google-platinum-checkout` | `schema/pages/checkout/google-platinum.html` | CheckoutPage, FAQPage | 8 | ✅ |
+| Checkout: Local SEO Booster | `/local-seo-checkout` | `schema/pages/checkout/local-seo-booster.html` | CheckoutPage, FAQPage | 9 | ✅ |
 | Checkout: Google Ads (PPC) Management | `/google-ads-checkout` | `schema/pages/checkout/google-ads-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Meta Ads Management | `/meta-checkout` | `schema/pages/checkout/meta-ads.html` | CheckoutPage | — | ✅ |
 | Checkout: Geo-Fencing (Mobile) | `/geo-mobile-checkout` | `schema/pages/checkout/geo-fencing-mobile-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
