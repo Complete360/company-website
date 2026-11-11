@@ -1,5 +1,24 @@
 <!-- ============================================================
-     COMPLETE360 FOOTER — v1.6
+     COMPLETE360 FOOTER — v1.7.3
+     v1.7.3 (2026-11-11): Platform Overview icon fixed. It used fa-grid-2,
+       which is a Font Awesome PRO icon, so with the free kit it rendered as
+       a blank space. Now fa-table-columns, the same icon the header uses for
+       CRM Platform Overview.
+     v1.7.2 (2026-11-11): pill glued to the label's last word. In v1.7.1
+       "Reputation Management" fit on one line by itself, so its pill wrapped
+       alone onto the next line. The last word and the pill are now one
+       unbreakable unit (.c360f-nowrap): if they fit, everything stays on one
+       line; if not, the label breaks before the last word and the pill stays
+       beside it ("Reputation / Management NEW").
+     v1.7.1 (2026-11-11): "New"/"Soon" pills now sit right after the label.
+       Each link is a flex row, so a label that wraps to two lines (e.g.
+       "Reputation Management") stretched to the full column width and pushed
+       its pill to the far edge. The label and pill are now wrapped together
+       in .c360f-link-label, so the pill flows inline after the last word.
+     v1.7 (2026-11-11): SEO Services added to Marketing Services (after Local
+       SEO Booster, with a "New" pill) -> /seo-services. "GBP Management" /
+       "GBP Setup" -> "Google Business Profile Management / Setup" (brand rule:
+       no "GBP" customer-facing). No other change.
      Paste in GHL global FOOTER code field (not header).
      All styles prefixed with c360f- to avoid collisions.
 
@@ -238,6 +257,11 @@
         margin: 0 0 22px;
         max-width: 230px;
       }
+      /* v1.7.1 — label + pill travel together, so a wrapped label keeps its
+         pill right after the last word instead of at the column edge. */
+      .c360f-link-label { min-width: 0; }
+      .c360f-nowrap { white-space: nowrap; }
+      .c360f-new-pill, .c360f-soon-pill { white-space: nowrap; vertical-align: 1px; margin-left: 4px; }
       .c360f-new-pill {
         font-size: 9px;
         padding: 1px 6px;
@@ -568,10 +592,11 @@
           <div>
             <h4 class="c360f-col-title">Marketing Services</h4>
             <ul class="c360f-links">
-              <li><a href="/gbp-management"><i class="fa-solid fa-location-dot"></i>GBP Management</a></li>
-              <li><a href="https://complete360.org/google-business-profile" target="_blank" rel="noopener"><i class="fa-solid fa-rocket"></i>GBP Setup</a></li>
+              <li><a href="/gbp-management"><i class="fa-solid fa-location-dot"></i>Google Business Profile Management</a></li>
+              <li><a href="https://complete360.org/google-business-profile" target="_blank" rel="noopener"><i class="fa-solid fa-rocket"></i>Google Business Profile Setup</a></li>
               <li><a href="/local-seo-booster"><i class="fa-solid fa-chart-line"></i>Local SEO Booster</a></li>
-              <li><a href="/reputation-management"><i class="fa-solid fa-star"></i>Reputation Management <span class="c360f-new-pill">New</span></a></li>
+              <li><a href="/seo-services"><i class="fa-solid fa-magnifying-glass"></i><span class="c360f-link-label">SEO <span class="c360f-nowrap">Services <span class="c360f-new-pill">New</span></span></span></a></li>
+              <li><a href="/reputation-management"><i class="fa-solid fa-star"></i><span class="c360f-link-label">Reputation <span class="c360f-nowrap">Management <span class="c360f-new-pill">New</span></span></span></a></li>
               <li><a href="/local-service-ads"><i class="fa-solid fa-shield-halved"></i>Local Service Ads</a></li>
               <li><a href="/geo-fencing"><i class="fa-solid fa-location-crosshairs"></i>Geo-Fencing Ads</a></li>
               <li><a href="/google-ppc"><i class="fa-solid fa-bullseye"></i>Google PPC</a></li>
@@ -579,7 +604,7 @@
               <li><a href="/websites-home"><i class="fa-solid fa-desktop"></i>Website Design</a></li>
               <li><a href="/website-pricing"><i class="fa-solid fa-tag"></i>Website Pricing</a></li>
               <li><a href="/procard"><i class="fa-solid fa-address-card"></i>ProCard</a></li>
-              <li><a href="/ai-agents"><i class="fa-solid fa-robot"></i>AI Agents <span class="c360f-new-pill">New</span></a></li>
+              <li><a href="/ai-agents"><i class="fa-solid fa-robot"></i><span class="c360f-link-label">AI <span class="c360f-nowrap">Agents <span class="c360f-new-pill">New</span></span></span></a></li>
             </ul>
           </div>
       
@@ -588,7 +613,7 @@
           <div>
             <h4 class="c360f-col-title">CRM Platform</h4>
             <ul class="c360f-links">
-              <li><a href="/crm-home"><i class="fa-solid fa-grid-2"></i>Platform Overview</a></li>
+              <li><a href="/crm-home"><i class="fa-solid fa-table-columns"></i>Platform Overview</a></li>
               <li><a href="{{ custom_values.sub_domain_url }}/capture"><i class="fa-solid fa-filter"></i>Capture</a></li>
               <li><a href="{{ custom_values.sub_domain_url }}/capture#section--jUucpMd-O"><i class="fa-solid fa-hashtag"></i>Social Media Management</a></li>
               <li><a href="{{ custom_values.sub_domain_url }}/chat-widget-feature-page"><i class="fa-solid fa-comments"></i>Website Chat Widget</a></li>
@@ -612,8 +637,8 @@
               <li><a href="https://app.complete360.org" target="_blank" rel="noopener"><i class="fa-solid fa-right-to-bracket"></i>CRM Login</a></li>
               <li><a href="https://portal.cmpusa.org/" target="_blank" rel="noopener"><i class="fa-solid fa-satellite-dish"></i>Geo Portal Login</a></li>
               <li><a href="https://complete360.org/payments" target="_blank" rel="noopener"><i class="fa-solid fa-credit-card"></i>Payments</a></li>
-              <li><a href="/blog"><i class="fa-solid fa-newspaper"></i>Blog <span class="c360f-soon-pill">Soon</span></a></li>
-              <li><a href="/about"><i class="fa-solid fa-building"></i>About Us <span class="c360f-soon-pill">Soon</span></a></li>
+              <li><a href="/blog"><i class="fa-solid fa-newspaper"></i><span class="c360f-link-label"><span class="c360f-nowrap">Blog <span class="c360f-soon-pill">Soon</span></span></span></a></li>
+              <li><a href="/about"><i class="fa-solid fa-building"></i><span class="c360f-link-label">About <span class="c360f-nowrap">Us <span class="c360f-soon-pill">Soon</span></span></span></a></li>
             </ul>
           </div>
       

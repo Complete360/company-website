@@ -243,8 +243,10 @@ PROJECT.md       this file
   The Terms' guarantee (campaign extension) still applies to all ad campaigns.
 - **/reputation-management-checkout** is linked 5× but doesn't exist in GHL — broken buttons.
 - **Local Display Network** page isn't linked from header, footer, or home.
-- **SEO Services** page and checkout (/seo-services-checkout, v1.0) are live. Still to do: point the page's Get Started
-  buttons (still /schedule-demo) at the checkout, and add SEO Services to the header and footer.
+- **SEO Services** is live and in the nav (footer v1.7 live; header v2.2 adds it to Solutions + Pricing). The
+  page's Get Started buttons still go to /schedule-demo; point them at /seo-services-checkout.
+- **Header Pricing rail:** Paid Lead Generation says "From $499/mo" ($499 is the setup fee; monthly starts at
+  $349 LSA / $399 PPC & Meta). Decide the label.
 - **Google Platinum Package** has a checkout but no service page. **Landing Page** is pitched
   by the AI agents as a product but has no page or checkout.
 - **Lifetime Deal** — confirm whether it's one-time (currently grouped with recurring CRM).
