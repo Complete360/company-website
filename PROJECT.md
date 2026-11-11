@@ -137,7 +137,8 @@ ghl-snippets/
                  gbp-management/, google-social-posting/,
                  meta-social-posting/, meta-ads/,
                  procard/, dispensary/,
-                 geo-fencing-mobile/, website/
+                 geo-fencing-mobile/, website/,
+                 geo-fencing-ctv/
   crm-platform/  CRM home, Capture/Nurture/Close, feature pages
   company/       FAQ, contact, demo, thank-you, training, video library, link tree
   legal/         tos, privacy-policy, return-policy
@@ -165,7 +166,7 @@ PROJECT.md       this file
   "X of Y files have code" count.
 - Legal files use CRLF line endings — preserve them.
 
-### Status (2026-11-11): 43 of 63 page files have code
+### Status (2026-11-11): 44 of 63 page files have code
 - **Done:** global header/footer, home, all 16 service pages, website pricing, CRM home,
   legal (3), FAQ, contact, training, video library, link tree, Farmers Insurance.
 - **Live in GHL (Nov 10):** Terms v2.1, Return Policy v2.1, FAQ v2.4 and every policy-aligned service page (see README). Schema still to paste on most pages.
@@ -218,7 +219,7 @@ PROJECT.md       this file
   guarantee box (or drop it like Meta Ads) · ProCard: "lifetime license / own it forever",
   free minor edits · Dispensary: legal review of legality/compliance claims and VFW/Legion
   naming, ad spend vs fixed impressions, CTV/desktop formats vs cards, "slightly higher" monthly ·
-  Geo Mobile: ad spend separate vs impressions included, "#1 Location Intelligence Platform",
+  Geo Mobile: ad spend separate vs impressions included, "#1 Location Intelligence Platform" (also CTV),
   "completely legal" competitor targeting ·
   Website: page counts vs /website-pricing, "one-time setup" vs deposit + final payment,
   "own your domain" ·

@@ -97,7 +97,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Checkout: Google Ads (PPC) Management | `/google-ads-checkout` | `schema/pages/checkout/google-ads-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
 | Checkout: Meta Ads Management | `/meta-checkout` | `schema/pages/checkout/meta-ads.html` | CheckoutPage | — | ✅ |
 | Checkout: Geo-Fencing (Mobile) | `/geo-mobile-checkout` | `schema/pages/checkout/geo-fencing-mobile.html` | CheckoutPage, FAQPage | 7 | ✅ |
-| Checkout: Geo-Fencing (Connected TV) | `/geo-ctv-checkout` | `schema/pages/checkout/geo-fencing-ctv-checkout.html` | CheckoutPage | — | ⬜ (basic schema until code is added) |
+| Checkout: Geo-Fencing (Connected TV) | `/geo-ctv-checkout` | `schema/pages/checkout/geo-fencing-ctv.html` | CheckoutPage, FAQPage | 8 | ✅ |
 | Checkout: Google Social Posting | `/google-social-checkout` | `schema/pages/checkout/google-social-posting.html` | CheckoutPage | — | ✅ |
 | Checkout: Meta Social Posting | `/meta-social-checkout` | `schema/pages/checkout/meta-social-posting.html` | CheckoutPage | — | ✅ |
 | Checkout: ProCard | `/procard-checkout` | `schema/pages/checkout/procard.html` | CheckoutPage | — | ✅ |
