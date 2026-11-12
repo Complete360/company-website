@@ -95,7 +95,7 @@ def offer(name, price, period=None):
     return o
 
 # ── Every page on the site ───────────────────────────────────────────────
-# kind: home | service | crm | crm-home | pricing | checkout | contact | faq
+# kind: home | service | industry | crm | crm-home | pricing | checkout | contact | faq
 #       | legal | company | collection | partner | page | skip
 # desc: only needed where the page has no code yet (or to override).
 P = []
@@ -143,6 +143,12 @@ page("/ai-agents", "services/ai-employee.html", "AI Agents", "service",
              offer("AI Agent setup (one time)", 2000)])
 page("/payments", "services/payments.html", "Make a Payment", "page",
      desc="Pay your Complete360 invoice securely online.")
+
+# Industries — nested under the /industries hub (INDUSTRY-PAGES-WORKSHEET v1.3).
+# parent adds the middle breadcrumb step: Home › Industries › page.
+IND = ("Industries", "/industries")
+page("/industries/hvac", "industries/hvac.html", "HVAC Marketing", "industry", parent=IND,
+     service="HVAC Marketing", serviceType="Marketing for HVAC contractors", audience="HVAC contractors")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
@@ -301,16 +307,22 @@ def build(pg):
                       "publisher": ORG_REF, "inLanguage": "en-US"})
         webpage["about"] = ORG_REF
     else:
+        crumbs = [("Home", SITE + "/")]
+        if pg.get("parent"):
+            crumbs.append((pg["parent"][0], SITE + pg["parent"][1]))
+        crumbs.append((pg["name"], url))
         webpage["breadcrumb"] = {"@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
-            {"@type": "ListItem", "position": 2, "name": pg["name"], "item": url}]}
+            {"@type": "ListItem", "position": i, "name": n, "item": u}
+            for i, (n, u) in enumerate(crumbs, 1)]}
 
-    if pg["kind"] == "service":
+    if pg["kind"] in ("service", "industry"):
         svc = {"@type": "Service", "@id": url + "#service", "name": pg["service"],
                "serviceType": pg["serviceType"], "description": desc, "url": url,
                "provider": ORG_REF, "areaServed": {"@type": "Country", "name": "United States"}}
         if pg.get("offers"):
             svc["offers"] = pg["offers"]
+        if pg.get("audience"):
+            svc["audience"] = {"@type": "BusinessAudience", "audienceType": pg["audience"]}
         webpage["mainEntity"] = {"@id": url + "#service"}
         graph.append(svc)
     if pg["kind"] == "crm-home":

@@ -13,11 +13,14 @@ AI agents and new contributors: read `PROJECT.md` first.
 
 `schema/` holds paste-ready structured data (JSON-LD) for every page, generated from the snippets (see its README).
 
+`ghl-meta/` holds copy/paste GHL SEO meta data (title, description, slug, canonical) for new pages, one file per page.
+
 All custom code blocks live in `ghl-snippets/`:
 
 - `global/` — site-wide pieces (header, footer, 404)
 - `home.html` — home page
 - `services/` — one page per service
+- `industries/` — industry pages, live under `/industries/[industry]` (build worksheet: INDUSTRY-PAGES-WORKSHEET)
 - `pricing/` — pricing pages
 - `checkout/` — checkout pages
 - `crm-platform/` — CRM platform home and feature pages
@@ -26,7 +29,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-47 of 64 pages have code. Multi-snippet pages (checkouts) are a folder of
+48 of 65 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -67,6 +70,15 @@ anything still to do on a page (🔁 = needs rebuild).
 | `services/dispensary.html` | Dispensary | ✅ Code in repo | Up to date |
 | `services/seo-services.html` | SEO Services (new page — create in GHL) | ✅ Code in repo | v1.4 live in GHL; not in nav yet; checkout page created, snippets to build |
 | `services/payments.html` | Payments | ✅ Code in repo | v1.1 live in GHL (Nov 10) — schema still to paste |
+
+### Industries
+
+Each industry page has three files: the snippet here, `ghl-meta/industries/[slug].md` (meta data for GHL),
+and `schema/pages/industries/[slug].html` (schema, pasted in one batch after every industry page is live).
+
+| File | GHL page | Status | Notes |
+|---|---|---|---|
+| `industries/hvac.html` | HVAC Marketing (new page at /industries/hvac) | ✅ Code in repo | v1.0: images to make (`hvac-hero`, `hvac-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/hvac.md`, publish. Breadcrumb links to /industries (hub not built yet). Schema waits for the batch. |
 
 ### Pricing
 
