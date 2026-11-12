@@ -149,6 +149,8 @@ page("/payments", "services/payments.html", "Make a Payment", "page",
 IND = ("Industries", "/industries")
 page("/industries/hvac", "industries/hvac.html", "HVAC Marketing", "industry", parent=IND,
      service="HVAC Marketing", serviceType="Marketing for HVAC contractors", audience="HVAC contractors")
+page("/industries/roofing", "industries/roofing.html", "Roofing Marketing", "industry", parent=IND,
+     service="Roofing Marketing", serviceType="Marketing for roofing contractors", audience="Roofing contractors")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
