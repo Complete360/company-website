@@ -78,7 +78,7 @@ and `schema/pages/industries/[slug].html` (schema, pasted in one batch after eve
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `industries/hvac.html` | HVAC Marketing (new page at /industries/hvac) | ✅ Code in repo | v1.0: images to make (`hvac-hero`, `hvac-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/hvac.md`, publish. Breadcrumb links to /industries (hub not built yet). Schema waits for the batch. |
+| `industries/hvac.html` | HVAC Marketing (new page at /industries/hvac) | ✅ Code in repo | v1.3: outcome-column plan, 1680px width, reviews widget; reputation folded into Google Business Profile Management. Images to make (`hvac-hero`, `hvac-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/hvac.md`, publish. Breadcrumb links to /industries (hub not built yet). Schema waits for the batch. |
 
 ### Pricing
 
