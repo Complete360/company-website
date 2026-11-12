@@ -2,7 +2,7 @@
 
 > Read this first. It is the shared context for any AI agent (Claude Code, Claude
 > Projects, Cowork, or other assistants) working on Complete360's website, AI agents,
-> or customer-facing copy. Last updated: 2026-11-10.
+> or customer-facing copy. Last updated: 2026-11-12.
 >
 > If something here conflicts with an older page, prompt, or knowledge base, **this
 > document and the legal pages (ToS / Return Policy v2.1) win.** If you change a fact
@@ -129,6 +129,7 @@ ghl-snippets/
   global/        header.html, footer.html (on every page), 404.html
   home.html
   services/      one file per service page
+  industries/    industry pages at /industries/[industry] (hvac done; see the worksheet)
   pricing/       pricing pages (more coming)
   checkout/      checkout pages: each becomes a folder of numbered snippets
                  (1-pricing, 2-order-summary, 3-reviews, 4-faq) placed around
@@ -146,6 +147,7 @@ ghl-snippets/
   partners/      farmers-insurance
 ai-agents/       prompts for every GHL AI agent (see its README)
 schema/          JSON-LD for every page (schema/pages/), built by schema/build_schema.py
+ghl-meta/        copy/paste GHL SEO meta data for new pages (industries/ first)
 README.md        structure + page checklist (status and notes per file)
 PROJECT.md       this file
 ```
@@ -167,7 +169,7 @@ PROJECT.md       this file
   "X of Y files have code" count.
 - Legal files use CRLF line endings — preserve them.
 
-### Status (2026-11-11): 47 of 64 page files have code
+### Status (2026-11-12): 48 of 65 page files have code
 - **Done:** global header/footer, home, all 16 service pages, website pricing, CRM home,
   legal (3), FAQ, contact, training, video library, link tree, Farmers Insurance.
 - **Live in GHL (Nov 10):** Terms v2.1, Return Policy v2.1, FAQ v2.4 and every policy-aligned service page (see README). Schema still to paste on most pages.
