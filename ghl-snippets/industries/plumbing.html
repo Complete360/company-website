@@ -1,0 +1,622 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Plumbing
+     c360-ind-plumb-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/plumbing
+          (page name "Plumbing Marketing"). Meta data: ghl-meta/industries/plumbing.md.
+          Schema: schema/pages/industries/plumbing.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-plumb-  (new, unique; vars --plumb-*)
+
+     Built to INDUSTRY-PAGES-WORKSHEET v1.3 (page #1) on the HVAC v1.3
+     system: same tokens, type scale (56px section titles, 18px section
+     descriptions, 1680px max width), outcome cards, pill links, reviews
+     widget, CTA above the FAQ. Variations so it doesn't read as a copy:
+       - Hero: solid navy panel on the left that fades into the photo.
+       - Reality: heading, lead and photo on the left; the four pain points
+         stacked as rows on the right (no alignment issues to manage).
+       - Plan: "Start here" cards are navy with white text; "Add as you
+         grow" cards are white.
+       - Journey visuals: emergency Local Services Ad, AI Voice Agent job
+         summary card, Google map results, Google PPC ad for bigger jobs.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       plumb-hero        16:9, 2000px+  (hero background)
+       plumb-on-the-job  4:3, 1200px+   ("The plumbing reality" section)
+
+     Google Partner badge: same rules as /local-service-ads v1.6 (88px,
+     44px clear space, no wrapper card). No SEO notice (page doesn't
+     advertise SEO; the footer carries it).
+
+     v1.0 (2026-11-12) — first build. Plan per the worksheet draft: core =
+       Local Service Ads + Google Business Profile Management (includes
+       review requests) + AI Voice Agent; grow with Google PPC (water
+       heaters, repipes, sewer lines) and Local SEO Booster; Meta Ads and
+       SEO Services as "also available". Plan to be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-plumb{
+  --plumb-navy:#122078;--plumb-navy-dark:#0d1654;--plumb-navy-deeper:#0a1040;
+  --plumb-green:#127825;--plumb-green-hover:#0e5e1d;
+  --plumb-mist:#F4F7FC;--plumb-line:#E7EBF3;--plumb-blue-light:#E6F1FB;
+  --plumb-text:#0F1F5E;--plumb-muted:#5F5E5A;
+  --plumb-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--plumb-font);color:var(--plumb-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-plumb *,.c360-ind-plumb *::before,.c360-ind-plumb *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-plumb :where(h1,h2,h3,h4,p,ul,ol,li){margin:0;padding:0;font-family:var(--plumb-font)}
+.c360-ind-plumb :where(ul,ol){list-style:none}
+.c360-ind-plumb :where(a){color:var(--plumb-navy)}
+.c360-ind-plumb a:focus-visible,.c360-ind-plumb summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:4px}
+.c360-ind-plumb-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-plumb-section{padding:96px 0}
+.c360-ind-plumb-mist{background:var(--plumb-mist)}
+.c360-ind-plumb-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--plumb-text);margin-bottom:16px}
+.c360-ind-plumb-lead{font-size:18px;color:var(--plumb-muted);max-width:760px;line-height:1.65}
+.c360-ind-plumb-head{text-align:center;max-width:900px;margin:0 auto 52px}
+.c360-ind-plumb-head .c360-ind-plumb-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-plumb-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--plumb-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,transform .15s}
+.c360-ind-plumb-btn-primary{background:var(--plumb-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.38)}
+.c360-ind-plumb-btn-primary:hover{background:var(--plumb-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-plumb-btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.55);padding:14px 24px}
+.c360-ind-plumb-btn-ghost:hover{border-color:#fff;color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-plumb a.c360-ind-plumb-btn-primary,.c360-ind-plumb a.c360-ind-plumb-btn-ghost{color:#fff}
+.c360-ind-plumb-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as HVAC v1.3). */
+.c360-ind-plumb-pills{display:flex;flex-wrap:wrap;gap:10px}
+.c360-ind-plumb-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--plumb-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-plumb-pills a:hover{background:var(--plumb-navy);border-color:var(--plumb-navy);color:#fff;text-decoration:none}
+/* Pills on the navy core cards: white outline. */
+.c360-ind-plumb-pills.is-dark a{background:transparent;color:#fff;border-color:rgba(255,255,255,0.55)}
+.c360-ind-plumb-pills.is-dark a:hover{background:#fff;color:var(--plumb-navy);border-color:#fff}
+
+/* ══════════ HERO ══════════ */
+.c360-ind-plumb-hero{position:relative;background:var(--plumb-navy-deeper);color:#fff;overflow:hidden}
+.c360-ind-plumb-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center}
+.c360-ind-plumb-hero-img[src=""],.c360-ind-plumb-hero-img:not([src]){visibility:hidden}
+/* Variation: a solid navy panel on the left that fades into the photo. */
+.c360-ind-plumb-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--plumb-navy-deeper) 0%,var(--plumb-navy-deeper) 38%,rgba(10,16,64,0.78) 56%,rgba(18,32,120,0.15) 100%)}
+.c360-ind-plumb-hero-inner{position:relative;z-index:2;padding:80px 24px 64px;max-width:1680px;margin:0 auto}
+.c360-ind-plumb-hero-copy{max-width:760px}
+.c360-ind-plumb-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-plumb-crumbs li{color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:8px}
+.c360-ind-plumb-crumbs li+li::before{content:"\203A";color:rgba(255,255,255,0.45)}
+.c360-ind-plumb-crumbs a{color:rgba(255,255,255,0.85);text-decoration:none}
+.c360-ind-plumb-crumbs a:hover{color:#fff;text-decoration:underline}
+.c360-ind-plumb-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:#fff;margin-bottom:22px}
+.c360-ind-plumb-hero-sub{font-size:18px;line-height:1.65;color:rgba(255,255,255,0.84);max-width:640px;margin-bottom:32px}
+
+/* Credentials cluster — mirrors /local-service-ads v1.6. Badge 88px,
+   clear space 44px; change BOTH vars together or neither. */
+.c360-ind-plumb-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:14px}
+.c360-ind-plumb-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-plumb-partner img{display:block;height:var(--badge-h);width:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,0.32));border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-plumb-partner,.c360-ind-plumb-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-plumb-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+.c360-ind-plumb-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.75);line-height:1.4}
+.c360-ind-plumb-creds-list i{color:#2ecc52;margin-top:3px;font-size:12px}
+.c360-ind-plumb-stars{color:#FBBC04;letter-spacing:1px}
+
+/* ══════════ THE PLUMBING REALITY ══════════
+   Variation: intro + photo left, pain points as stacked rows right. */
+.c360-ind-plumb-reality{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.c360-ind-plumb-reality .c360-ind-plumb-lead{margin-bottom:36px}
+.c360-ind-plumb-photo{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:repeating-linear-gradient(135deg,#E3E8F1 0 14px,#EBEFF6 14px 28px)}
+.c360-ind-plumb-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.c360-ind-plumb-photo img[src=""],.c360-ind-plumb-photo img:not([src]){visibility:hidden}
+.c360-ind-plumb-photo-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B0C4;font-size:44px;pointer-events:none}
+.c360-ind-plumb-photo img[src]:not([src=""])+.c360-ind-plumb-photo-fallback{display:none}
+.c360-ind-plumb-pains li{display:grid;grid-template-columns:52px 1fr;gap:20px;padding:30px 0;border-top:1px solid var(--plumb-line)}
+.c360-ind-plumb-pains li:first-child{border-top:0;padding-top:8px}
+.c360-ind-plumb-pain-n{font-size:15px;font-weight:700;color:var(--plumb-green);font-variant-numeric:tabular-nums;padding-top:3px}
+.c360-ind-plumb-pains h3{font-size:20px;font-weight:700;line-height:1.35;color:var(--plumb-text);margin-bottom:8px}
+.c360-ind-plumb-pains p{font-size:16px;color:var(--plumb-muted);line-height:1.65;max-width:620px}
+
+/* ══════════ RECOMMENDED PLAN ══════════
+   Variation: navy "Start here" cards, white "Add as you grow" cards. */
+.c360-ind-plumb-tier{text-align:center;margin-bottom:24px}
+.c360-ind-plumb-tier h3{font-size:24px;font-weight:800;letter-spacing:-0.01em;color:var(--plumb-text);margin-bottom:6px}
+.c360-ind-plumb-tier p{font-size:16px;color:var(--plumb-muted)}
+.c360-ind-plumb-plan-row{display:grid;gap:24px;margin:0 auto}
+.c360-ind-plumb-plan-row.is-core{grid-template-columns:repeat(3,1fr);max-width:1400px}
+.c360-ind-plumb-plan-row.is-grow{grid-template-columns:repeat(2,1fr);max-width:1000px}
+.c360-ind-plumb-outcome{border-radius:14px;padding:32px 30px;display:flex;flex-direction:column}
+.c360-ind-plumb-plan-row.is-core .c360-ind-plumb-outcome{background:linear-gradient(160deg,var(--plumb-navy) 0%,var(--plumb-navy-dark) 100%);color:#fff;box-shadow:0 18px 44px rgba(13,22,84,0.22)}
+.c360-ind-plumb-plan-row.is-grow .c360-ind-plumb-outcome{background:#fff;border:1px solid var(--plumb-line);box-shadow:0 12px 32px rgba(15,31,94,0.06);padding:28px 26px}
+.c360-ind-plumb-box{width:26px;height:26px;border:2px solid var(--plumb-navy);border-radius:5px;display:flex;align-items:center;justify-content:center;color:var(--plumb-navy);font-size:13px;margin-bottom:18px;flex-shrink:0}
+.c360-ind-plumb-plan-row.is-core .c360-ind-plumb-box{background:#2ecc52;border-color:#2ecc52;color:var(--plumb-navy-deeper)}
+.c360-ind-plumb-outcome h4{font-size:20px;font-weight:700;line-height:1.3;margin-bottom:10px;color:var(--plumb-text)}
+.c360-ind-plumb-plan-row.is-core .c360-ind-plumb-outcome h4{color:#fff}
+.c360-ind-plumb-outcome p{font-size:15.5px;line-height:1.6;margin-bottom:20px;color:var(--plumb-muted)}
+.c360-ind-plumb-plan-row.is-core .c360-ind-plumb-outcome p{color:rgba(255,255,255,0.8)}
+.c360-ind-plumb-outcome .c360-ind-plumb-pills{margin-top:auto}
+.c360-ind-plumb-plan-gap{height:56px}
+.c360-ind-plumb-plan-foot{text-align:center;max-width:760px;margin:48px auto 0}
+.c360-ind-plumb-plan-foot p{font-size:15px;color:var(--plumb-muted);line-height:1.65}
+.c360-ind-plumb-plan-foot p+p{margin-top:8px}
+.c360-ind-plumb-plan-foot a{font-weight:600}
+.c360-ind-plumb-plan-foot .c360-ind-plumb-btn{margin-top:28px}
+
+/* ══════════ JOURNEY ══════════ */
+.c360-ind-plumb-step{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;padding:56px 0;border-top:1px solid var(--plumb-line)}
+.c360-ind-plumb-head+.c360-ind-plumb-step{border-top:0}
+.c360-ind-plumb-step:nth-of-type(odd) .c360-ind-plumb-step-visual{order:-1}
+.c360-ind-plumb-step-n{display:block;font-size:15px;font-weight:700;color:var(--plumb-green);margin-bottom:10px}
+.c360-ind-plumb-step h3{font-size:clamp(24px,2.8vw,34px);font-weight:800;line-height:1.2;letter-spacing:-0.015em;color:var(--plumb-text);margin-bottom:14px}
+.c360-ind-plumb-step-copy p{font-size:17px;color:var(--plumb-muted);line-height:1.7;max-width:620px}
+.c360-ind-plumb-step-copy p+p{margin-top:12px}
+.c360-ind-plumb-step-copy .c360-ind-plumb-pills{margin-top:22px}
+.c360-ind-plumb-example{font-size:12px;color:var(--plumb-muted);text-align:center;margin-top:10px}
+
+/* Mock Local Services Ad */
+.c360-ind-plumb-serp{background:#fff;border:1px solid var(--plumb-line);border-radius:16px;padding:20px;box-shadow:0 18px 50px rgba(15,31,94,0.10);max-width:460px;margin:0 auto;font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-plumb-serp-bar{display:flex;align-items:center;gap:10px;border:1px solid #DFE1E5;border-radius:100px;padding:10px 16px;font-size:14px;color:#202124;margin-bottom:16px}
+.c360-ind-plumb-serp-bar i{color:#9AA0A6}
+.c360-ind-plumb-serp-tag{font-size:12px;font-weight:700;color:#202124;margin-bottom:8px}
+.c360-ind-plumb-serp-ad{border:1px solid #E8EAED;border-radius:12px;padding:14px 16px}
+.c360-ind-plumb-serp-ad+.c360-ind-plumb-serp-ad{margin-top:10px;opacity:0.55}
+.c360-ind-plumb-serp-name{font-size:15px;font-weight:700;color:#1A0DAB;margin-bottom:4px}
+.c360-ind-plumb-serp-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:13px;color:#4D5156}
+.c360-ind-plumb-serp-rating{color:#202124;font-weight:700}
+.c360-ind-plumb-serp-stars{color:#FBBC04;letter-spacing:1px}
+.c360-ind-plumb-serp-verified{display:inline-flex;align-items:center;gap:5px;color:#137333;font-weight:700}
+.c360-ind-plumb-serp-actions{display:flex;gap:8px;margin-top:12px}
+.c360-ind-plumb-serp-actions span{flex:1;text-align:center;border:1px solid #DADCE0;border-radius:100px;padding:7px 0;font-size:13px;font-weight:700;color:#1A73E8}
+.c360-ind-plumb-serp-actions span:first-child{background:#1A73E8;color:#fff;border-color:#1A73E8}
+
+/* AI Voice Agent job summary card */
+.c360-ind-plumb-job{background:#fff;border:1px solid var(--plumb-line);border-radius:18px;max-width:440px;margin:0 auto;box-shadow:0 18px 50px rgba(15,31,94,0.10);overflow:hidden}
+.c360-ind-plumb-job-top{display:flex;align-items:center;gap:12px;padding:16px 20px;background:var(--plumb-navy);color:#fff}
+.c360-ind-plumb-job-top i{width:36px;height:36px;border-radius:50%;background:rgba(46,204,82,0.2);color:#2ecc52;display:flex;align-items:center;justify-content:center}
+.c360-ind-plumb-job-top strong{display:block;font-size:14.5px}
+.c360-ind-plumb-job-top span{font-size:12.5px;color:rgba(255,255,255,0.7)}
+.c360-ind-plumb-job-top em{margin-left:auto;font-style:normal;font-size:12.5px;color:rgba(255,255,255,0.7);font-variant-numeric:tabular-nums}
+.c360-ind-plumb-job dl{margin:0;padding:6px 20px 4px}
+.c360-ind-plumb-job dl div{display:grid;grid-template-columns:100px 1fr;gap:12px;padding:11px 0;border-top:1px solid var(--plumb-line);font-size:14px}
+.c360-ind-plumb-job dl div:first-child{border-top:0}
+.c360-ind-plumb-job dt{color:var(--plumb-muted)}
+.c360-ind-plumb-job dd{margin:0;color:var(--plumb-text);font-weight:600}
+.c360-ind-plumb-job-flag{display:inline-block;font-size:12px;font-weight:700;color:#A6402A;background:#FBEAE5;border-radius:100px;padding:2px 10px}
+.c360-ind-plumb-job-foot{display:flex;gap:10px;align-items:center;padding:14px 20px;background:#EAF3DE;color:var(--plumb-green);font-size:14px;font-weight:600}
+
+/* Google map results */
+.c360-ind-plumb-map{background:#fff;border:1px solid var(--plumb-line);border-radius:16px;overflow:hidden;max-width:460px;margin:0 auto;box-shadow:0 18px 50px rgba(15,31,94,0.10);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-plumb-map-canvas{position:relative;height:150px;background-color:#E8EEF3;background-image:linear-gradient(90deg,rgba(255,255,255,0.9) 3px,transparent 3px),linear-gradient(0deg,rgba(255,255,255,0.9) 3px,transparent 3px),linear-gradient(35deg,transparent 46%,#F5D88A 46%,#F5D88A 50%,transparent 50%);background-size:64px 64px,64px 64px,100% 100%}
+.c360-ind-plumb-pin{position:absolute;width:26px;height:26px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#9AA0A6;display:flex;align-items:center;justify-content:center}
+.c360-ind-plumb-pin span{transform:rotate(45deg);font-size:11px;font-weight:700;color:#fff}
+.c360-ind-plumb-pin.is-you{background:#EA4335;width:32px;height:32px}
+.c360-ind-plumb-map-list{padding:6px 18px 12px}
+.c360-ind-plumb-map-item{display:grid;grid-template-columns:1fr auto;gap:4px 12px;padding:12px 0;border-top:1px solid #E8EAED}
+.c360-ind-plumb-map-item:first-child{border-top:0}
+.c360-ind-plumb-map-item strong{font-size:15px;color:#202124;font-weight:400}
+.c360-ind-plumb-map-item.is-you strong{color:#1A0DAB;font-weight:700}
+.c360-ind-plumb-map-item span{font-size:13px;color:#4D5156}
+.c360-ind-plumb-map-item em{grid-row:span 2;align-self:center;font-style:normal;font-size:12.5px;font-weight:700;color:#1A73E8;border:1px solid #DADCE0;border-radius:100px;padding:6px 14px}
+.c360-ind-plumb-map-item:not(.is-you){opacity:0.6}
+
+/* Google PPC ad */
+.c360-ind-plumb-ppc{background:#fff;border:1px solid var(--plumb-line);border-radius:16px;padding:22px;max-width:480px;margin:0 auto;box-shadow:0 18px 50px rgba(15,31,94,0.10);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-plumb-ppc-site{display:flex;align-items:center;gap:10px;margin:16px 0 6px}
+.c360-ind-plumb-ppc-fav{width:28px;height:28px;border-radius:50%;background:var(--plumb-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px}
+.c360-ind-plumb-ppc-site strong{display:block;font-size:14px;color:#202124;font-weight:400}
+.c360-ind-plumb-ppc-site span{font-size:12px;color:#4D5156}
+.c360-ind-plumb-ppc-title{font-size:19px;color:#1A0DAB;line-height:1.3;margin-bottom:6px}
+.c360-ind-plumb-ppc-desc{font-size:14px;color:#4D5156;line-height:1.55}
+.c360-ind-plumb-ppc-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:14px;color:#1A0DAB}
+
+/* ══════════ TRUST STRIP ══════════ */
+.c360-ind-plumb-trust{background:var(--plumb-mist);color:var(--plumb-text);padding:40px 0;border-top:1px solid var(--plumb-line)}
+.c360-ind-plumb-trust ul{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1300px;margin:0 auto}
+.c360-ind-plumb-trust li{display:flex;align-items:center;gap:14px;justify-content:center}
+.c360-ind-plumb-trust i{font-size:22px;color:var(--plumb-green);width:28px;text-align:center}
+.c360-ind-plumb-trust strong{display:block;font-size:16px;font-weight:700;line-height:1.3}
+.c360-ind-plumb-trust span{font-size:13.5px;color:var(--plumb-muted)}
+
+/* ══════════ CLOSING CTA ══════════ */
+.c360-ind-plumb-final{background:linear-gradient(135deg,var(--plumb-navy-deeper),var(--plumb-navy));color:#fff;padding:88px 0;text-align:center}
+.c360-ind-plumb-final h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:16px}
+.c360-ind-plumb-final p{font-size:18px;color:rgba(255,255,255,0.8);max-width:660px;margin:0 auto 32px}
+.c360-ind-plumb-final .c360-ind-plumb-ctas{justify-content:center}
+
+/* ══════════ FAQ ══════════ */
+.c360-ind-plumb-faq-list{max-width:860px;margin:40px auto 0}
+.c360-ind-plumb-faq-item{border-top:1px solid var(--plumb-line)}
+.c360-ind-plumb-faq-item:last-child{border-bottom:1px solid var(--plumb-line)}
+.c360-ind-plumb-faq-q{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--plumb-text);cursor:pointer;list-style:none}
+.c360-ind-plumb-faq-q::-webkit-details-marker{display:none}
+.c360-ind-plumb-faq-q::after{content:"+";font-size:24px;font-weight:400;color:var(--plumb-green);line-height:1;flex-shrink:0;transition:transform .2s}
+.c360-ind-plumb-faq-item[open] .c360-ind-plumb-faq-q::after{transform:rotate(45deg)}
+.c360-ind-plumb-faq-a{padding:0 4px 24px;font-size:16px;color:var(--plumb-muted);line-height:1.7;max-width:760px}
+.c360-ind-plumb-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1100px){
+  .c360-ind-plumb-plan-row.is-core{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .c360-ind-plumb-section{padding:72px 0}
+  .c360-ind-plumb-reality,.c360-ind-plumb-step{grid-template-columns:1fr;gap:36px}
+  .c360-ind-plumb-step:nth-of-type(odd) .c360-ind-plumb-step-visual{order:0}
+  .c360-ind-plumb-plan-row.is-core,.c360-ind-plumb-plan-row.is-grow{grid-template-columns:1fr;max-width:560px}
+  .c360-ind-plumb-trust ul{grid-template-columns:1fr;gap:18px}
+  .c360-ind-plumb-trust li{justify-content:flex-start}
+}
+@media (max-width:640px){
+  .c360-ind-plumb-wrap,.c360-ind-plumb-hero-inner{padding-left:18px;padding-right:18px}
+  .c360-ind-plumb-hero-inner{padding-top:48px}
+  .c360-ind-plumb-hero::after{background:linear-gradient(180deg,rgba(10,16,64,0.92) 0%,rgba(10,16,64,0.96) 100%)}
+  .c360-ind-plumb-pains li{grid-template-columns:36px 1fr;gap:12px;padding:24px 0}
+  .c360-ind-plumb-btn{width:100%;justify-content:center}
+  .c360-ind-plumb-partner{--badge-h:64px;--badge-clear:32px}
+  .c360-ind-plumb-job dl div{grid-template-columns:84px 1fr}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-plumb *,.c360-ind-plumb *::before,.c360-ind-plumb *::after{transition:none !important;animation:none !important}
+  .c360-ind-plumb-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-plumb">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="c360-ind-plumb-hero">
+  <!-- IMAGE PLACEHOLDER: plumb-hero — plumber fixing a pipe under a kitchen sink, space on the left for the headline, 16:9 -->
+  <!-- Hero image loads eagerly (it's the largest thing on screen); every other image is lazy. -->
+  <img src="" data-c360-placeholder="plumb-hero" class="c360-ind-plumb-hero-img" alt="Plumber repairing a kitchen sink pipe in a customer's home" fetchpriority="high">
+
+  <div class="c360-ind-plumb-hero-inner">
+    <div class="c360-ind-plumb-hero-copy">
+      <nav class="c360-ind-plumb-crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li aria-current="page">Plumbing</li>
+        </ol>
+      </nav>
+
+      <h1>Plumbing marketing that keeps your phone ringing</h1>
+      <p class="c360-ind-plumb-hero-sub">Burst pipes, backed-up drains and dead water heaters don't wait for business hours. We help your plumbing company show up first, answer every call, and fill the schedule with the bigger jobs too.</p>
+
+      <div class="c360-ind-plumb-ctas">
+        <a href="/schedule-demo" class="c360-ind-plumb-btn c360-ind-plumb-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-plumb-btn c360-ind-plumb-btn-ghost"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+
+      <div class="c360-ind-plumb-creds">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-plumb-partner">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+        <ul class="c360-ind-plumb-creds-list">
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-plumb-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, working with plumbers nationwide since 2018</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE PLUMBING REALITY ══════════ -->
+<section class="c360-ind-plumb-section">
+  <div class="c360-ind-plumb-wrap c360-ind-plumb-reality">
+    <div>
+      <h2 class="c360-ind-plumb-h2">The plumbing reality</h2>
+      <p class="c360-ind-plumb-lead">Most plumbing jobs start with a problem that can't wait. The company that's easiest to find, trust and reach gets the call, and often every call after that.</p>
+      <div class="c360-ind-plumb-photo">
+        <!-- IMAGE PLACEHOLDER: plumb-on-the-job — plumber explaining a water heater to a homeowner in a garage or utility room, 4:3 -->
+        <img src="" data-c360-placeholder="plumb-on-the-job" alt="Plumber explaining a new water heater to a homeowner" loading="lazy">
+        <div class="c360-ind-plumb-photo-fallback" aria-hidden="true"><i class="fa-solid fa-faucet-drip"></i></div>
+      </div>
+    </div>
+    <ol class="c360-ind-plumb-pains">
+      <li>
+        <span class="c360-ind-plumb-pain-n" aria-hidden="true">01</span>
+        <div>
+          <h3>The emergencies come at the worst times</h3>
+          <p>A burst pipe at 2 a.m., a backed-up drain on Thanksgiving morning. If nobody picks up, the homeowner calls the next plumber on the list, and that plumber gets the repeat business too.</p>
+        </div>
+      </li>
+      <li>
+        <span class="c360-ind-plumb-pain-n" aria-hidden="true">02</span>
+        <div>
+          <h3>Water on the floor means no time to shop around</h3>
+          <p>Homeowners in a panic don't read five websites. They call whoever is at the top of Google with good reviews and a phone number they can tap.</p>
+        </div>
+      </li>
+      <li>
+        <span class="c360-ind-plumb-pain-n" aria-hidden="true">03</span>
+        <div>
+          <h3>Small service calls don't pay for the trucks</h3>
+          <p>Clogs and running toilets keep the phones busy, but water heaters, repipes and sewer lines are what make the month. Those homeowners search differently and take longer to decide.</p>
+        </div>
+      </li>
+      <li>
+        <span class="c360-ind-plumb-pain-n" aria-hidden="true">04</span>
+        <div>
+          <h3>Wrong info online sends calls elsewhere</h3>
+          <p>An old phone number on Yelp, the wrong hours on Apple Maps, a duplicate listing on Bing. Every mismatch costs calls you never knew you missed.</p>
+        </div>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN ══════════
+     Outcome first: each card names the result, the pills are the services
+     that deliver it. Draft per the worksheet; confirm with Jared. -->
+<section class="c360-ind-plumb-section c360-ind-plumb-mist" id="plumb-plan">
+  <div class="c360-ind-plumb-wrap">
+    <div class="c360-ind-plumb-head">
+      <h2 class="c360-ind-plumb-h2">Your recommended plumbing marketing plan</h2>
+      <p class="c360-ind-plumb-lead">We don't sell plumbers everything on the menu. Here's what we'd put to work for a residential plumbing company, and in what order.</p>
+    </div>
+
+    <div class="c360-ind-plumb-tier">
+      <h3>Start here</h3>
+      <p>The three services that turn an emergency search into a booked job.</p>
+    </div>
+    <div class="c360-ind-plumb-plan-row is-core">
+      <div class="c360-ind-plumb-outcome">
+        <span class="c360-ind-plumb-box" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+        <h4>Be the first plumber homeowners see</h4>
+        <p>Local Services Ads put your company above everything else on "emergency plumber near me," with your Google Verified badge. You pay per lead, not per click.</p>
+        <div class="c360-ind-plumb-pills is-dark"><a href="/local-service-ads">Local Service Ads</a></div>
+      </div>
+      <div class="c360-ind-plumb-outcome">
+        <span class="c360-ind-plumb-box" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+        <h4>Have the reviews to back it up</h4>
+        <p>We keep your Google Business Profile current and ask every customer for a review. Fresh reviews win the map results and help your Local Services Ads rank.</p>
+        <div class="c360-ind-plumb-pills is-dark"><a href="/gbp-management">Google Business Profile Management</a></div>
+      </div>
+      <div class="c360-ind-plumb-outcome">
+        <span class="c360-ind-plumb-box" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+        <h4>Answer the 2 a.m. burst pipe</h4>
+        <p>The AI Voice Agent picks up nights, weekends and while your team is under a sink, gets the details, and books the job or sends emergencies to your on-call plumber.</p>
+        <div class="c360-ind-plumb-pills is-dark"><a href="/ai-agents">AI Voice Agent</a></div>
+      </div>
+    </div>
+
+    <div class="c360-ind-plumb-plan-gap" aria-hidden="true"></div>
+
+    <div class="c360-ind-plumb-tier">
+      <h3>Add as you grow</h3>
+      <p>For more high-ticket work and a stronger presence everywhere people search.</p>
+    </div>
+    <div class="c360-ind-plumb-plan-row is-grow">
+      <div class="c360-ind-plumb-outcome">
+        <span class="c360-ind-plumb-box" aria-hidden="true"></span>
+        <h4>Book more water heaters, repipes and sewer lines</h4>
+        <p>Search ads aimed at the bigger jobs homeowners research before they call, like tankless water heater installs, whole-house repipes and sewer line replacement.</p>
+        <div class="c360-ind-plumb-pills"><a href="/google-ppc">Google PPC</a></div>
+      </div>
+      <div class="c360-ind-plumb-outcome">
+        <span class="c360-ind-plumb-box" aria-hidden="true"></span>
+        <h4>Show up correctly everywhere homeowners look</h4>
+        <p>Your name, phone number, hours and services kept accurate across 70+ directories and maps, including Apple Maps, Bing, Yelp and AI assistants.</p>
+        <div class="c360-ind-plumb-pills"><a href="/local-seo-booster">Local SEO Booster</a></div>
+      </div>
+    </div>
+
+    <div class="c360-ind-plumb-plan-foot">
+      <p>Also available for plumbing companies: <a href="/meta-ads">Meta Ads</a> to promote seasonal offers like water heater flushes and drain cleanings, and <a href="/seo-services">SEO Services</a> to build steady traffic from Google and AI search. We'll help you decide what fits your goals.</p>
+      <p>Local Services Ads and Google Business Profile Management come together as our <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>. Every service's price is on its own page.</p>
+      <a href="/schedule-demo" class="c360-ind-plumb-btn c360-ind-plumb-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY ══════════ -->
+<section class="c360-ind-plumb-section">
+  <div class="c360-ind-plumb-wrap">
+    <div class="c360-ind-plumb-head">
+      <h2 class="c360-ind-plumb-h2">From "water everywhere" to a booked job</h2>
+      <p class="c360-ind-plumb-lead">Four moments where plumbing companies win or lose the customer.</p>
+    </div>
+
+    <div class="c360-ind-plumb-step">
+      <div class="c360-ind-plumb-step-copy">
+        <span class="c360-ind-plumb-step-n">Step 1 · Get found</span>
+        <h3>Be at the top when the panic search happens</h3>
+        <p>A homeowner standing in an inch of water searches on their phone and taps one of the first results. Local Services Ads put you there with your rating, your hours and the Google Verified badge, which shows Google has checked your license, insurance and background.</p>
+        <div class="c360-ind-plumb-pills"><a href="/local-service-ads">Local Service Ads</a></div>
+      </div>
+      <div class="c360-ind-plumb-step-visual">
+        <div class="c360-ind-plumb-serp" role="img" aria-label="Example Google search for emergency plumber near me, with a Local Services Ad for a plumbing company showing a 4.9 rating, the Google Verified badge and open 24 hours">
+          <div class="c360-ind-plumb-serp-bar"><i class="fa-solid fa-magnifying-glass"></i> emergency plumber near me</div>
+          <div class="c360-ind-plumb-serp-tag">Sponsored</div>
+          <div class="c360-ind-plumb-serp-ad">
+            <div class="c360-ind-plumb-serp-name">Your Company Plumbing</div>
+            <div class="c360-ind-plumb-serp-meta">
+              <span class="c360-ind-plumb-serp-rating">4.9</span><span class="c360-ind-plumb-serp-stars">★★★★★</span><span>(342)</span>
+              <span class="c360-ind-plumb-serp-verified"><i class="fa-solid fa-circle-check"></i> Google Verified</span>
+            </div>
+            <div class="c360-ind-plumb-serp-meta" style="margin-top:4px"><span>Open 24 hours</span><span>Serves your area</span></div>
+            <div class="c360-ind-plumb-serp-actions"><span>Call</span><span>Message</span></div>
+          </div>
+          <div class="c360-ind-plumb-serp-ad" aria-hidden="true">
+            <div class="c360-ind-plumb-serp-name">Another Plumbing Company</div>
+            <div class="c360-ind-plumb-serp-meta"><span class="c360-ind-plumb-serp-rating">4.4</span><span class="c360-ind-plumb-serp-stars">★★★★</span><span>(57)</span></div>
+          </div>
+        </div>
+        <p class="c360-ind-plumb-example">Example listing for illustration</p>
+      </div>
+    </div>
+
+    <div class="c360-ind-plumb-step">
+      <div class="c360-ind-plumb-step-copy">
+        <span class="c360-ind-plumb-step-n">Step 2 · Win the call</span>
+        <h3>Answer every call, even with every plumber on a job</h3>
+        <p>When your team is booked or it's the middle of the night, the AI Voice Agent answers like your dispatcher would. It asks what's wrong and where, flags true emergencies, and books the job or sends it to whoever's on call, with the details already written up.</p>
+        <p>AI usage is unlimited, with no per-minute AI fees. Your phone number and calling minutes are billed separately.</p>
+        <div class="c360-ind-plumb-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+      </div>
+      <div class="c360-ind-plumb-step-visual">
+        <div class="c360-ind-plumb-job" role="img" aria-label="Example job summary from the AI Voice Agent: a leaking water heater flagged as urgent and booked for 7 to 9 AM">
+          <div class="c360-ind-plumb-job-top">
+            <i class="fa-solid fa-phone-volume" aria-hidden="true"></i>
+            <div><strong>New job from the AI Voice Agent</strong><span>Call answered after hours</span></div>
+            <em>5:52 AM</em>
+          </div>
+          <dl>
+            <div><dt>Issue</dt><dd>Water heater leaking in the garage <span class="c360-ind-plumb-job-flag">Urgent</span></dd></div>
+            <div><dt>Caller</dt><dd>Homeowner, gas water heater, about 12 years old</dd></div>
+            <div><dt>Location</dt><dd>Confirmed in your service area</dd></div>
+            <div><dt>Booked</dt><dd>Today, 7–9 AM</dd></div>
+          </dl>
+          <div class="c360-ind-plumb-job-foot"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Sent to your on-call plumber</div>
+        </div>
+        <p class="c360-ind-plumb-example">Example job summary for illustration</p>
+      </div>
+    </div>
+
+    <div class="c360-ind-plumb-step">
+      <div class="c360-ind-plumb-step-copy">
+        <span class="c360-ind-plumb-step-n">Step 3 · Build trust</span>
+        <h3>Win the map with reviews and accurate listings</h3>
+        <p>Right below the ads, Google shows plumbers on a map, and homeowners pick by stars and how recent the reviews are. Google Business Profile Management keeps your profile current and asks every customer for a review.</p>
+        <p>The Local SEO Booster makes sure your details match everywhere else people look, from Apple Maps to AI assistants.</p>
+        <div class="c360-ind-plumb-pills"><a href="/gbp-management">Google Business Profile Management</a><a href="/local-seo-booster">Local SEO Booster</a></div>
+      </div>
+      <div class="c360-ind-plumb-step-visual">
+        <div class="c360-ind-plumb-map" role="img" aria-label="Example Google map results for plumber near me, with your plumbing company listed first with 342 reviews">
+          <div class="c360-ind-plumb-map-canvas" aria-hidden="true">
+            <span class="c360-ind-plumb-pin is-you" style="left:46%;top:30%"><span>A</span></span>
+            <span class="c360-ind-plumb-pin" style="left:20%;top:52%"><span>B</span></span>
+            <span class="c360-ind-plumb-pin" style="left:74%;top:44%"><span>C</span></span>
+          </div>
+          <div class="c360-ind-plumb-map-list">
+            <div class="c360-ind-plumb-map-item is-you"><strong>Your Company Plumbing</strong><em>Call</em><span>4.9 <span class="c360-ind-plumb-serp-stars">★★★★★</span> (342) · Open 24 hours</span></div>
+            <div class="c360-ind-plumb-map-item"><strong>Another Plumbing Co.</strong><em>Call</em><span>4.3 ★★★★ (61) · Closes 6 PM</span></div>
+            <div class="c360-ind-plumb-map-item"><strong>Third Plumbing Service</strong><em>Call</em><span>4.1 ★★★★ (19) · Closes 5 PM</span></div>
+          </div>
+        </div>
+        <p class="c360-ind-plumb-example">Example map results for illustration</p>
+      </div>
+    </div>
+
+    <div class="c360-ind-plumb-step">
+      <div class="c360-ind-plumb-step-copy">
+        <span class="c360-ind-plumb-step-n">Step 4 · Grow the ticket</span>
+        <h3>Go after the jobs that make the month</h3>
+        <p>Homeowners planning a tankless upgrade, a repipe or a sewer line replacement search for it and compare quotes. Google PPC puts your company in front of those searches with ads that lead straight to an estimate request.</p>
+        <p>Budgets are set with you on a strategy call, and ad spend is billed directly by Google.</p>
+        <div class="c360-ind-plumb-pills"><a href="/google-ppc">Google PPC</a></div>
+      </div>
+      <div class="c360-ind-plumb-step-visual">
+        <div class="c360-ind-plumb-ppc" role="img" aria-label="Example Google search ad for a plumbing company offering tankless water heater installation">
+          <div class="c360-ind-plumb-serp-bar" style="margin-bottom:0"><i class="fa-solid fa-magnifying-glass"></i> tankless water heater installation</div>
+          <div class="c360-ind-plumb-ppc-site">
+            <span class="c360-ind-plumb-ppc-fav" aria-hidden="true"><i class="fa-solid fa-wrench"></i></span>
+            <div><strong>Your Company Plumbing</strong><span>Sponsored · yourcompanyplumbing.com</span></div>
+          </div>
+          <p class="c360-ind-plumb-ppc-title">Tankless Water Heater Installation | Upfront, Written Estimates</p>
+          <p class="c360-ind-plumb-ppc-desc">Licensed local plumbers. Gas and electric tankless installs, plus repipes and sewer line replacement. Request your estimate online.</p>
+          <div class="c360-ind-plumb-ppc-links"><span>Request an estimate</span><span>Water heaters</span><span>Sewer lines</span></div>
+        </div>
+        <p class="c360-ind-plumb-example">Example ad for illustration</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TRUST STRIP ══════════ -->
+<section class="c360-ind-plumb-trust" aria-label="Why Complete360">
+  <div class="c360-ind-plumb-wrap">
+    <ul>
+      <li><i class="fa-solid fa-star" aria-hidden="true"></i><div><strong>5.0 on Google</strong><span>147 five-star reviews</span></div></li>
+      <li><i class="fa-solid fa-award" aria-hidden="true"></i><div><strong>Certified Google Partner</strong><span>With a Google Product Expert on the team</span></div></li>
+      <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><strong>In business since 2018</strong><span>Tucson-based, serving nationwide</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS ══════════
+     Same live Google reviews widget as /seo-services (location 1pBjHBEIsKGbwvAUTY9u). -->
+<section class="c360-ind-plumb-section">
+  <div class="c360-ind-plumb-wrap">
+    <div class="c360-ind-plumb-head">
+      <h2 class="c360-ind-plumb-h2">Don't just take our word for it</h2>
+      <p class="c360-ind-plumb-lead">147 five-star Google reviews from business owners we work with across the country.</p>
+    </div>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA ══════════ -->
+<section class="c360-ind-plumb-final">
+  <div class="c360-ind-plumb-wrap">
+    <h2>Be the plumber they call first, and call again</h2>
+    <p>Book a free strategy call. We'll look at how homeowners in your area find a plumber today and show you where the missed calls are.</p>
+    <div class="c360-ind-plumb-ctas">
+      <a href="/schedule-demo" class="c360-ind-plumb-btn c360-ind-plumb-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+      <a href="tel:+18665276205" class="c360-ind-plumb-btn c360-ind-plumb-btn-ghost"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-plumb-section" id="plumb-faq">
+  <div class="c360-ind-plumb-wrap">
+    <div class="c360-ind-plumb-head" style="margin-bottom:0">
+      <h2 class="c360-ind-plumb-h2">Plumbing marketing questions</h2>
+    </div>
+    <div class="c360-ind-plumb-faq-list">
+
+      <details class="c360-ind-plumb-faq-item">
+        <summary class="c360-ind-plumb-faq-q">What's the best way for a plumber to get more calls?</summary>
+        <div class="c360-ind-plumb-faq-a"><p>Be at the top of Google when someone has a plumbing emergency, have the reviews to earn their trust, and answer every call. For most residential plumbers, that means Local Services Ads, Google Business Profile Management with steady review requests, and an AI Voice Agent for after-hours and overflow calls. Google PPC for bigger jobs and the Local SEO Booster for accurate listings come next.</p></div>
+      </details>
+
+      <details class="c360-ind-plumb-faq-item">
+        <summary class="c360-ind-plumb-faq-q">Do Local Services Ads work for plumbers?</summary>
+        <div class="c360-ind-plumb-faq-a"><p>For most residential plumbing companies, they do. Plumbing is one of the categories Google offers Local Services Ads for, you're charged per lead instead of per click, and the ad shows your reviews and Google Verified badge at the top of the page. Results depend on your reviews, budget, service area and how quickly you answer, which is why we pair them with Google Business Profile Management. We'll confirm eligibility for your area on the strategy call.</p></div>
+      </details>
+
+      <details class="c360-ind-plumb-faq-item">
+        <summary class="c360-ind-plumb-faq-q">What is Google Verified for plumbers?</summary>
+        <div class="c360-ind-plumb-faq-a"><p>Google Verified is the badge on Local Services Ads that tells homeowners Google has checked your business, which can include your plumbing license, insurance and background checks depending on your state. It replaced the Google Guaranteed and Google Screened badges in October 2025. We help you through the verification process during setup.</p></div>
+      </details>
+
+      <details class="c360-ind-plumb-faq-item">
+        <summary class="c360-ind-plumb-faq-q">Can an AI Voice Agent handle emergency plumbing calls?</summary>
+        <div class="c360-ind-plumb-faq-a"><p>Yes. It answers 24/7, asks what the problem is and where, captures the caller's details, and either books the job or routes urgent calls to your on-call plumber, based on how you want calls handled. AI usage is unlimited with no per-minute AI fees. Your phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-plumb-faq-item">
+        <summary class="c360-ind-plumb-faq-q">How do I get more water heater, repipe and sewer line jobs?</summary>
+        <div class="c360-ind-plumb-faq-a"><p>Reach homeowners while they're researching the job, before they've picked a plumber. Google PPC puts your company in front of searches like "tankless water heater installation" or "sewer line replacement," and recent reviews that mention those jobs help homeowners trust you with the bigger ticket.</p></div>
+      </details>
+
+      <details class="c360-ind-plumb-faq-item">
+        <summary class="c360-ind-plumb-faq-q">What does the Local SEO Booster do for a plumbing company?</summary>
+        <div class="c360-ind-plumb-faq-a"><p>It keeps your business name, phone number, address, hours and services accurate across 70+ directories, maps and AI assistants, including Apple Maps, Bing and Yelp, and suppresses duplicate listings. Consistent information helps homeowners reach you wherever they search and supports how you show up in local results.</p></div>
+      </details>
+
+      <details class="c360-ind-plumb-faq-item">
+        <summary class="c360-ind-plumb-faq-q">Will you guarantee my plumbing company a number of leads?</summary>
+        <div class="c360-ind-plumb-faq-a"><p>No. Nobody can promise Google rankings or a set number of leads. What we do offer: for Google Business Profile Management and advertising campaigns, including Local Services Ads and Google PPC, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-plumb-faq-item">
+        <summary class="c360-ind-plumb-faq-q">How much does plumbing marketing cost?</summary>
+        <div class="c360-ind-plumb-faq-a"><p>Prices are listed on each service's page, including <a href="/local-service-ads">Local Service Ads</a>, <a href="/gbp-management">Google Business Profile Management</a>, the <a href="/ai-agents">AI Voice Agent</a> and the <a href="/local-seo-booster">Local SEO Booster</a>. Google PPC is planned with you on a strategy call, and ad spend is billed directly by Google. Recurring services need at least 10 days' written notice before the next billing date to cancel, and payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>

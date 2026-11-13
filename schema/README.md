@@ -66,6 +66,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Website Design | `/websites-home` | `schema/pages/services/websites-home.html` | WebPage, Service, FAQPage | 5 | ✅ |
 | AI Agents | `/ai-agents` | `schema/pages/services/ai-employee.html` | WebPage, Service, FAQPage | 6 | ✅ |
 | Make a Payment | `/payments` | `schema/pages/services/payments.html` | WebPage, FAQPage | 5 | ✅ |
+| Plumbing Marketing | `/industries/plumbing` | `schema/pages/industries/plumbing.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | HVAC Marketing | `/industries/hvac` | `schema/pages/industries/hvac.html` | WebPage, Service, FAQPage | 7 | ✅ |
 | Roofing Marketing | `/industries/roofing` | `schema/pages/industries/roofing.html` | WebPage, Service, FAQPage | 7 | ✅ |
 | Website Pricing | `/website-pricing` | `schema/pages/pricing/website-pricing.html` | WebPage, FAQPage | 7 | ✅ |
