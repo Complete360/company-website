@@ -129,7 +129,7 @@ ghl-snippets/
   global/        header.html, footer.html (on every page), 404.html
   home.html
   services/      one file per service page
-  industries/    industry pages at /industries/[industry] (hvac, roofing done; see the worksheet)
+  industries/    industry pages at /industries/[industry] (plumbing, hvac, roofing done; see the worksheet)
   pricing/       pricing pages (more coming)
   checkout/      checkout pages: each becomes a folder of numbered snippets
                  (1-pricing, 2-order-summary, 3-reviews, 4-faq) placed around
@@ -169,7 +169,7 @@ PROJECT.md       this file
   "X of Y files have code" count.
 - Legal files use CRLF line endings — preserve them.
 
-### Status (2026-11-12): 49 of 66 page files have code
+### Status (2026-11-12): 50 of 67 page files have code
 - **Done:** global header/footer, home, all 16 service pages, website pricing, CRM home,
   legal (3), FAQ, contact, training, video library, link tree, Farmers Insurance.
 - **Live in GHL (Nov 10):** Terms v2.1, Return Policy v2.1, FAQ v2.4 and every policy-aligned service page (see README). Schema still to paste on most pages.

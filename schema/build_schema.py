@@ -147,6 +147,8 @@ page("/payments", "services/payments.html", "Make a Payment", "page",
 # Industries — nested under the /industries hub (INDUSTRY-PAGES-WORKSHEET v1.3).
 # parent adds the middle breadcrumb step: Home › Industries › page.
 IND = ("Industries", "/industries")
+page("/industries/plumbing", "industries/plumbing.html", "Plumbing Marketing", "industry", parent=IND,
+     service="Plumbing Marketing", serviceType="Marketing for plumbing companies", audience="Plumbing companies")
 page("/industries/hvac", "industries/hvac.html", "HVAC Marketing", "industry", parent=IND,
      service="HVAC Marketing", serviceType="Marketing for HVAC contractors", audience="HVAC contractors")
 page("/industries/roofing", "industries/roofing.html", "Roofing Marketing", "industry", parent=IND,
