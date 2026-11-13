@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Plumbing
-     c360-ind-plumb-v1.0.html
+     c360-ind-plumb-v1.1.html
      GHL: Paste into a Custom Code block on the new page at /industries/plumbing
           (page name "Plumbing Marketing"). Meta data: ghl-meta/industries/plumbing.md.
           Schema: schema/pages/industries/plumbing.html (batch paste later).
@@ -28,6 +28,9 @@
      Google Partner badge: same rules as /local-service-ads v1.6 (88px,
      44px clear space, no wrapper card). No SEO notice (page doesn't
      advertise SEO; the footer carries it).
+
+     v1.1 (2026-11-12) — "The plumbing reality": pain rows now spread evenly
+       down the full height of the left column (no blank space under 04).
 
      v1.0 (2026-11-12) — first build. Plan per the worksheet draft: core =
        Local Service Ads + Google Business Profile Management (includes
@@ -107,15 +110,20 @@
 
 /* ══════════ THE PLUMBING REALITY ══════════
    Variation: intro + photo left, pain points as stacked rows right. */
-.c360-ind-plumb-reality{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:start}
+.c360-ind-plumb-reality{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:stretch}
 .c360-ind-plumb-reality .c360-ind-plumb-lead{margin-bottom:36px}
 .c360-ind-plumb-photo{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:repeating-linear-gradient(135deg,#E3E8F1 0 14px,#EBEFF6 14px 28px)}
 .c360-ind-plumb-photo img{display:block;width:100%;height:100%;object-fit:cover}
 .c360-ind-plumb-photo img[src=""],.c360-ind-plumb-photo img:not([src]){visibility:hidden}
 .c360-ind-plumb-photo-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B0C4;font-size:44px;pointer-events:none}
 .c360-ind-plumb-photo img[src]:not([src=""])+.c360-ind-plumb-photo-fallback{display:none}
+/* v1.1: the list stretches to the full height of the left column and the
+   four rows share it equally (content centered in each, dividers evenly
+   spaced), so there's no empty space under row 04. */
+.c360-ind-plumb-pains{display:flex;flex-direction:column;height:100%}
+.c360-ind-plumb-pains li{flex:1;align-content:center}
 .c360-ind-plumb-pains li{display:grid;grid-template-columns:52px 1fr;gap:20px;padding:30px 0;border-top:1px solid var(--plumb-line)}
-.c360-ind-plumb-pains li:first-child{border-top:0;padding-top:8px}
+.c360-ind-plumb-pains li:first-child{border-top:0}
 .c360-ind-plumb-pain-n{font-size:15px;font-weight:700;color:var(--plumb-green);font-variant-numeric:tabular-nums;padding-top:3px}
 .c360-ind-plumb-pains h3{font-size:20px;font-weight:700;line-height:1.35;color:var(--plumb-text);margin-bottom:8px}
 .c360-ind-plumb-pains p{font-size:16px;color:var(--plumb-muted);line-height:1.65;max-width:620px}
@@ -244,6 +252,8 @@
 @media (max-width:900px){
   .c360-ind-plumb-section{padding:72px 0}
   .c360-ind-plumb-reality,.c360-ind-plumb-step{grid-template-columns:1fr;gap:36px}
+  .c360-ind-plumb-pains{height:auto}
+  .c360-ind-plumb-pains li{flex:none}
   .c360-ind-plumb-step:nth-of-type(odd) .c360-ind-plumb-step-visual{order:0}
   .c360-ind-plumb-plan-row.is-core,.c360-ind-plumb-plan-row.is-grow{grid-template-columns:1fr;max-width:560px}
   .c360-ind-plumb-trust ul{grid-template-columns:1fr;gap:18px}

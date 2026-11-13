@@ -78,7 +78,7 @@ and `schema/pages/industries/[slug].html` (schema, pasted in one batch after eve
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `industries/plumbing.html` | Plumbing Marketing (new page at /industries/plumbing) | ✅ Code in repo | v1.0: same system as HVAC v1.3 with variations. Plan (draft) to confirm with Jared. Images to make (`plumb-hero`, `plumb-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/plumbing.md`, publish. Schema waits for the batch. |
+| `industries/plumbing.html` | Plumbing Marketing (new page at /industries/plumbing) | ✅ Code in repo | v1.1: same system as HVAC v1.3 with variations; reality rows spread to fill the column. Plan (draft) to confirm with Jared. Images to make (`plumb-hero`, `plumb-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/plumbing.md`, publish. Schema waits for the batch. |
 | `industries/hvac.html` | HVAC Marketing (new page at /industries/hvac) | ✅ Code in repo | v1.3: outcome-column plan, 1680px width, reviews widget; reputation folded into Google Business Profile Management. Images to make (`hvac-hero`, `hvac-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/hvac.md`, publish. Breadcrumb links to /industries (hub not built yet). Schema waits for the batch. |
 | `industries/roofing.html` | Roofing Marketing (new page at /industries/roofing) | ✅ Code in repo | v1.0: same system as HVAC v1.3 with variations. Plan (draft) to confirm with Jared. Images to make (`roof-hero`, `roof-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/roofing.md`, publish. Schema waits for the batch. |
 
