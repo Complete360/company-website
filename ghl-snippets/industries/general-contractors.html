@@ -1,0 +1,646 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: General Contractors
+     c360-ind-gc-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at
+          /industries/general-contractors (page name "General Contractor Marketing").
+          Meta data: ghl-meta/industries/general-contractors.md.
+          Schema: schema/pages/industries/general-contractors.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-gc-  (new, unique; vars --gc-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). The layout
+     is deliberately different (Jared asked for it), with a building-
+     project theme that fits planned remodel work:
+       - Hero: split. Sand panel with navy text on the left, photo on the
+         right (no full-bleed overlay).
+       - Reality: navy "blueprint" section, four columns with outlined
+         numbers; rows aligned with subgrid.
+       - Plan: three build phases on a connected line (Foundation, Build,
+         Finish), outcome first, Phase 1 marked "Start here".
+       - Journey: intro + photo, then a 2x2 grid of cards, each with a
+         code-built visual (Local Services Ad, Google Business Profile
+         project gallery, Meta Ads before/after post, website estimate form).
+       - Trust stats sit inside the reviews section.
+       - CTA is a rounded navy panel, FAQ is two columns.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       gc-hero         16:9, 2000px+ (shown cropped to the right half)
+       gc-on-the-job   4:3, 1200px+  (journey intro)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+     No SEO notice: SEO Services is mentioned but not advertised as a
+     Google service; the footer carries the notice.
+
+     v1.0 (2026-11-12) — first build. Plan per the worksheet draft
+       (Google Business Profile Management incl. reviews + Local Service
+       Ads co-lead; grow with Google PPC, Meta Ads, Website, SEO Services),
+       arranged as phases. To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-gc{
+  --gc-navy:#122078;--gc-navy-dark:#0d1654;--gc-navy-deeper:#0a1040;
+  --gc-green:#127825;--gc-green-hover:#0e5e1d;
+  --gc-sand:#F1EFE8;--gc-sand-dark:#E4E0D4;
+  --gc-mist:#F4F7FC;--gc-line:#E7EBF3;--gc-blue-light:#E6F1FB;
+  --gc-text:#0F1F5E;--gc-muted:#5F5E5A;
+  --gc-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--gc-font);color:var(--gc-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-gc *,.c360-ind-gc *::before,.c360-ind-gc *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-gc :where(h1,h2,h3,h4,p,ul,ol,li,dl,dd){margin:0;padding:0;font-family:var(--gc-font)}
+.c360-ind-gc :where(ul,ol){list-style:none}
+.c360-ind-gc :where(a){color:var(--gc-navy)}
+.c360-ind-gc a:focus-visible,.c360-ind-gc summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:4px}
+.c360-ind-gc-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-gc-section{padding:104px 0}
+.c360-ind-gc-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--gc-text);margin-bottom:16px}
+.c360-ind-gc-lead{font-size:18px;color:var(--gc-muted);max-width:760px;line-height:1.65}
+.c360-ind-gc-kicker{display:inline-block;font-size:14px;font-weight:700;color:var(--gc-green);margin-bottom:14px}
+
+/* ---------- Buttons ---------- */
+.c360-ind-gc-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--gc-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-gc-btn-primary{background:var(--gc-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-gc-btn-primary:hover{background:var(--gc-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-gc-btn-outline{background:transparent;color:var(--gc-navy);border:2px solid var(--gc-navy);padding:14px 24px}
+.c360-ind-gc-btn-outline:hover{background:var(--gc-navy);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-gc-btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.55);padding:14px 24px}
+.c360-ind-gc-btn-ghost:hover{border-color:#fff;color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-gc a.c360-ind-gc-btn-primary,.c360-ind-gc a.c360-ind-gc-btn-ghost{color:#fff}
+.c360-ind-gc a.c360-ind-gc-btn-outline{color:var(--gc-navy)}
+.c360-ind-gc a.c360-ind-gc-btn-outline:hover{color:#fff}
+.c360-ind-gc-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-gc-pills{display:flex;flex-wrap:wrap;gap:10px}
+.c360-ind-gc-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--gc-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-gc-pills a:hover{background:var(--gc-navy);border-color:var(--gc-navy);color:#fff;text-decoration:none}
+
+/* ══════════ HERO (split: sand panel left, photo right) ══════════ */
+.c360-ind-gc-hero{display:grid;grid-template-columns:1fr 1fr;background:var(--gc-sand);min-height:640px}
+.c360-ind-gc-hero-copy{padding:72px 64px 64px max(24px,calc((100vw - 1680px)/2 + 24px));display:flex;flex-direction:column;justify-content:center}
+.c360-ind-gc-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-gc-crumbs li{color:var(--gc-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-gc-crumbs li+li::before{content:"\203A";color:#A9A496}
+.c360-ind-gc-crumbs a{color:var(--gc-navy);text-decoration:none}
+.c360-ind-gc-crumbs a:hover{text-decoration:underline}
+.c360-ind-gc-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--gc-text);margin-bottom:22px;max-width:760px}
+.c360-ind-gc-hero-sub{font-size:18px;line-height:1.65;color:#3E3D39;max-width:620px;margin-bottom:32px}
+.c360-ind-gc-hero-media{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#DAD5C8 0 16px,#E2DED2 16px 32px)}
+.c360-ind-gc-hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-gc-hero-media img[src=""],.c360-ind-gc-hero-media img:not([src]){visibility:hidden}
+.c360-ind-gc-hero-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#B3AD9E;font-size:56px;pointer-events:none}
+.c360-ind-gc-hero-media img[src]:not([src=""])+.c360-ind-gc-hero-fallback{display:none}
+/* Credentials — same badge rules as /local-service-ads v1.6. */
+.c360-ind-gc-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-ind-gc-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-gc-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-gc-partner,.c360-ind-gc-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-gc-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+.c360-ind-gc-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:#3E3D39;line-height:1.4}
+.c360-ind-gc-creds-list i{color:var(--gc-green);margin-top:3px;font-size:12px}
+.c360-ind-gc-stars{color:#E8A400;letter-spacing:1px}
+
+/* ══════════ REALITY (navy blueprint) ══════════ */
+.c360-ind-gc-blueprint{background-color:var(--gc-navy);background-image:linear-gradient(rgba(255,255,255,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:40px 40px;color:#fff}
+.c360-ind-gc-blueprint .c360-ind-gc-h2{color:#fff}
+.c360-ind-gc-blueprint .c360-ind-gc-lead{color:rgba(255,255,255,0.78)}
+.c360-ind-gc-blueprint .c360-ind-gc-kicker{color:#7ddc80}
+.c360-ind-gc-reality-head{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:64px}
+.c360-ind-gc-reality-head .c360-ind-gc-h2{margin-bottom:0}
+/* Four columns; each spans three parent rows (number, title, text) through
+   subgrid so titles and descriptions line up across the row. */
+.c360-ind-gc-pains{display:grid;grid-template-columns:repeat(4,1fr);gap:0 40px}
+.c360-ind-gc-pain{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:12px;border-top:1px solid rgba(255,255,255,0.25);padding-top:22px}
+@supports not (grid-template-rows:subgrid){.c360-ind-gc-pain h3{min-height:2.7em}}
+.c360-ind-gc-pain-n{font-size:64px;font-weight:800;line-height:1;color:transparent;-webkit-text-stroke:1.5px rgba(255,255,255,0.55)}
+.c360-ind-gc-pain h3{font-size:20px;font-weight:700;line-height:1.35;color:#fff;align-self:start}
+.c360-ind-gc-pain p{font-size:16px;line-height:1.65;color:rgba(255,255,255,0.75)}
+
+/* ══════════ PLAN (three phases on a line) ══════════ */
+.c360-ind-gc-plan-head{text-align:center;max-width:900px;margin:0 auto 64px}
+.c360-ind-gc-plan-head .c360-ind-gc-lead{margin:0 auto}
+.c360-ind-gc-phases{display:grid;grid-template-columns:repeat(3,1fr);column-gap:28px;row-gap:0;position:relative}
+.c360-ind-gc-phases::before{content:"";position:absolute;top:22px;left:calc(100%/6);right:calc(100%/6);height:3px;background:repeating-linear-gradient(90deg,var(--gc-navy) 0 14px,transparent 14px 22px)}
+/* Each phase spans 6 parent rows (dot, label, title, intro, outcome,
+   outcome); the card shares rows 2-6 through a nested subgrid, so titles
+   and outcomes line up across the three phases. */
+.c360-ind-gc-phase{position:relative;display:grid;grid-row:span 6;grid-template-rows:subgrid;row-gap:0}
+.c360-ind-gc-phase-dot{position:relative;z-index:1;width:46px;height:46px;border-radius:50%;margin:0 auto 26px;display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:800;background:#fff;color:var(--gc-navy);border:3px solid var(--gc-navy)}
+.c360-ind-gc-phase.is-first .c360-ind-gc-phase-dot{background:var(--gc-navy);color:#fff}
+.c360-ind-gc-phase-card{grid-row:span 5;display:grid;grid-template-rows:subgrid;row-gap:0;background:var(--gc-mist);border:1px solid var(--gc-line);border-radius:16px;padding:32px 30px}
+@supports not (grid-template-rows:subgrid){.c360-ind-gc-phase{display:flex;flex-direction:column}.c360-ind-gc-phase-card{flex:1;display:block}}
+.c360-ind-gc-phase.is-first .c360-ind-gc-phase-card{background:#fff;border:2px solid var(--gc-navy);box-shadow:0 20px 50px rgba(15,31,94,0.12)}
+.c360-ind-gc-phase-top{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:6px;align-self:start}
+.c360-ind-gc-phase-label{font-size:14px;font-weight:700;color:var(--gc-green)}
+.c360-ind-gc-phase-tag{font-size:12px;font-weight:700;color:#fff;background:var(--gc-green);border-radius:100px;padding:4px 12px}
+.c360-ind-gc-phase h3{font-size:26px;font-weight:800;line-height:1.2;letter-spacing:-0.01em;color:var(--gc-text);margin-bottom:8px}
+.c360-ind-gc-phase-intro{font-size:15.5px;color:var(--gc-muted);line-height:1.6;margin-bottom:8px}
+.c360-ind-gc-outcome{padding:22px 0;border-top:1px solid var(--gc-line);display:flex;flex-direction:column}
+.c360-ind-gc-outcome .c360-ind-gc-pills{margin-top:auto}
+.c360-ind-gc-outcome:last-child{padding-bottom:0}
+.c360-ind-gc-outcome h4{font-size:18px;font-weight:700;line-height:1.35;color:var(--gc-text);margin-bottom:6px}
+.c360-ind-gc-outcome p{font-size:15.5px;color:var(--gc-muted);line-height:1.6;margin-bottom:14px}
+.c360-ind-gc-plan-foot{text-align:center;max-width:780px;margin:52px auto 0}
+.c360-ind-gc-plan-foot p{font-size:15px;color:var(--gc-muted);line-height:1.65}
+.c360-ind-gc-plan-foot a{font-weight:600}
+.c360-ind-gc-plan-foot .c360-ind-gc-btn{margin-top:26px}
+
+/* ══════════ JOURNEY (intro + 2x2 cards) ══════════ */
+.c360-ind-gc-journey{background:var(--gc-sand)}
+.c360-ind-gc-journey-head{display:grid;grid-template-columns:1.1fr 0.9fr;gap:72px;align-items:center;margin-bottom:64px}
+.c360-ind-gc-photo{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:repeating-linear-gradient(135deg,#DAD5C8 0 14px,#E2DED2 14px 28px)}
+.c360-ind-gc-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.c360-ind-gc-photo img[src=""],.c360-ind-gc-photo img:not([src]){visibility:hidden}
+.c360-ind-gc-photo-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#B3AD9E;font-size:44px;pointer-events:none}
+.c360-ind-gc-photo img[src]:not([src=""])+.c360-ind-gc-photo-fallback{display:none}
+.c360-ind-gc-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+/* Cards in the same row share the visual and body rows (subgrid), so the
+   visual panels are the same height side by side. */
+.c360-ind-gc-card{background:#fff;border-radius:18px;overflow:hidden;display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0;box-shadow:0 14px 40px rgba(60,52,30,0.08)}
+.c360-ind-gc-card-visual{background:var(--gc-mist);padding:36px 28px;display:flex;align-items:center;justify-content:center;min-height:340px;border-bottom:1px solid var(--gc-line)}
+.c360-ind-gc-card-body{padding:30px 32px 32px;display:flex;flex-direction:column;flex:1}
+.c360-ind-gc-card-step{font-size:14px;font-weight:700;color:var(--gc-green);margin-bottom:8px}
+.c360-ind-gc-card h3{font-size:clamp(22px,2.2vw,28px);font-weight:800;line-height:1.25;letter-spacing:-0.01em;color:var(--gc-text);margin-bottom:12px}
+.c360-ind-gc-card-body p{font-size:16.5px;color:var(--gc-muted);line-height:1.7;margin-bottom:20px}
+.c360-ind-gc-card-body .c360-ind-gc-pills{margin-top:auto}
+.c360-ind-gc-example{display:block;font-size:11.5px;color:var(--gc-muted);text-align:center;margin-top:10px}
+.c360-ind-gc-mock{width:100%;max-width:420px}
+
+/* Mock: Local Services Ad */
+.c360-ind-gc-serp{background:#fff;border:1px solid var(--gc-line);border-radius:14px;padding:18px;box-shadow:0 12px 32px rgba(15,31,94,0.08);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-gc-serp-bar{display:flex;align-items:center;gap:10px;border:1px solid #DFE1E5;border-radius:100px;padding:9px 16px;font-size:14px;color:#202124;margin-bottom:14px}
+.c360-ind-gc-serp-bar i{color:#9AA0A6}
+.c360-ind-gc-serp-tag{font-size:12px;font-weight:700;color:#202124;margin-bottom:8px}
+.c360-ind-gc-serp-ad{border:1px solid #E8EAED;border-radius:12px;padding:13px 15px}
+.c360-ind-gc-serp-name{font-size:15px;font-weight:700;color:#1A0DAB;margin-bottom:4px}
+.c360-ind-gc-serp-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:13px;color:#4D5156}
+.c360-ind-gc-serp-rating{color:#202124;font-weight:700}
+.c360-ind-gc-serp-stars{color:#FBBC04;letter-spacing:1px}
+.c360-ind-gc-serp-verified{display:inline-flex;align-items:center;gap:5px;color:#137333;font-weight:700}
+.c360-ind-gc-serp-actions{display:flex;gap:8px;margin-top:12px}
+.c360-ind-gc-serp-actions span{flex:1;text-align:center;border:1px solid #DADCE0;border-radius:100px;padding:7px 0;font-size:13px;font-weight:700;color:#1A73E8}
+.c360-ind-gc-serp-actions span:first-child{background:#1A73E8;color:#fff;border-color:#1A73E8}
+
+/* Mock: Google Business Profile project gallery */
+.c360-ind-gc-gbp{background:#fff;border:1px solid var(--gc-line);border-radius:14px;overflow:hidden;box-shadow:0 12px 32px rgba(15,31,94,0.08);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-gc-gbp-head{padding:14px 16px 10px}
+.c360-ind-gc-gbp-head strong{display:block;font-size:17px;font-weight:400;color:#202124}
+.c360-ind-gc-gbp-head span{font-size:13px;color:#4D5156}
+.c360-ind-gc-gbp-tabs{display:flex;gap:18px;padding:0 16px;border-bottom:1px solid #E8EAED;font-size:13px;color:#4D5156}
+.c360-ind-gc-gbp-tabs span{padding:8px 0}
+.c360-ind-gc-gbp-tabs .is-on{color:#1A73E8;border-bottom:2px solid #1A73E8;font-weight:700}
+.c360-ind-gc-gbp-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:3px;padding:3px}
+.c360-ind-gc-gbp-grid span{display:flex;align-items:flex-end;height:78px;padding:7px 9px;font-size:11.5px;font-weight:700;color:#fff}
+.c360-ind-gc-gbp-grid span:nth-child(1){background:repeating-linear-gradient(160deg,#6E5D4C 0 9px,#5F4F40 9px 18px)}
+.c360-ind-gc-gbp-grid span:nth-child(2){background:repeating-linear-gradient(160deg,#5A6E80 0 9px,#4C5F70 9px 18px)}
+.c360-ind-gc-gbp-grid span:nth-child(3){background:repeating-linear-gradient(160deg,#4F6B52 0 9px,#425B45 9px 18px)}
+.c360-ind-gc-gbp-grid span:nth-child(4){background:repeating-linear-gradient(160deg,#7A6A5A 0 9px,#695A4B 9px 18px)}
+
+/* Mock: Meta Ads before/after post */
+.c360-ind-gc-meta{background:#fff;border:1px solid var(--gc-line);border-radius:14px;overflow:hidden;box-shadow:0 12px 32px rgba(15,31,94,0.08);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-gc-meta-head{display:flex;align-items:center;gap:10px;padding:12px 14px}
+.c360-ind-gc-meta-av{width:34px;height:34px;border-radius:50%;background:var(--gc-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px}
+.c360-ind-gc-meta-head strong{display:block;font-size:14px;color:#050505}
+.c360-ind-gc-meta-head span{font-size:12px;color:#65676B}
+.c360-ind-gc-meta-text{padding:0 14px 10px;font-size:14px;color:#050505;line-height:1.45}
+.c360-ind-gc-meta-img{display:grid;grid-template-columns:1fr 1fr;height:130px}
+.c360-ind-gc-meta-img span{display:flex;align-items:flex-start;padding:8px 10px;font-size:11.5px;font-weight:700;color:#fff}
+.c360-ind-gc-meta-img span:first-child{background:repeating-linear-gradient(160deg,#8A8578 0 9px,#7A7568 9px 18px)}
+.c360-ind-gc-meta-img span:last-child{background:repeating-linear-gradient(160deg,#4B6A8C 0 9px,#3F5C7B 9px 18px)}
+.c360-ind-gc-meta-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 14px;background:#F0F2F5}
+.c360-ind-gc-meta-cta span{font-size:13px;color:#050505;font-weight:600}
+.c360-ind-gc-meta-cta em{font-style:normal;font-size:13px;font-weight:700;color:#050505;background:#E4E6EB;border-radius:6px;padding:7px 12px}
+
+/* Mock: website estimate form */
+.c360-ind-gc-form{background:#fff;border:1px solid var(--gc-line);border-radius:14px;padding:20px;box-shadow:0 12px 32px rgba(15,31,94,0.08)}
+.c360-ind-gc-form-title{font-size:17px;font-weight:800;color:var(--gc-text);margin-bottom:4px}
+.c360-ind-gc-form-sub{font-size:13px;color:var(--gc-muted);margin-bottom:14px}
+.c360-ind-gc-form dl{display:grid;gap:10px;margin-bottom:14px}
+.c360-ind-gc-form dl div{border:1px solid #D9DEE8;border-radius:8px;padding:8px 12px}
+.c360-ind-gc-form dt{font-size:11.5px;color:var(--gc-muted)}
+.c360-ind-gc-form dd{font-size:14px;font-weight:600;color:var(--gc-text)}
+.c360-ind-gc-form-btn{display:block;text-align:center;background:var(--gc-green);color:#fff;font-size:14px;font-weight:700;border-radius:8px;padding:11px}
+
+/* ══════════ REVIEWS (with trust stats) ══════════ */
+.c360-ind-gc-reviews-head{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:44px}
+.c360-ind-gc-reviews-head .c360-ind-gc-h2{margin-bottom:0}
+.c360-ind-gc-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--gc-line);border-bottom:1px solid var(--gc-line);margin-bottom:44px}
+.c360-ind-gc-stats li{padding:26px 28px;border-left:1px solid var(--gc-line)}
+.c360-ind-gc-stats li:first-child{border-left:0;padding-left:0}
+.c360-ind-gc-stats strong{display:block;font-size:30px;font-weight:800;letter-spacing:-0.01em;color:var(--gc-text);line-height:1.2}
+.c360-ind-gc-stats span{font-size:15px;color:var(--gc-muted)}
+
+/* ══════════ CTA (rounded navy panel) ══════════ */
+.c360-ind-gc-cta{background:linear-gradient(135deg,var(--gc-navy-deeper),var(--gc-navy));border-radius:24px;padding:64px;display:grid;grid-template-columns:1.3fr 0.7fr;gap:48px;align-items:center;color:#fff}
+.c360-ind-gc-cta h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:14px}
+.c360-ind-gc-cta p{font-size:18px;line-height:1.65;color:rgba(255,255,255,0.8);max-width:640px}
+.c360-ind-gc-cta .c360-ind-gc-ctas{flex-direction:column;align-items:stretch}
+.c360-ind-gc-cta .c360-ind-gc-btn{justify-content:center}
+
+/* ══════════ FAQ (two columns) ══════════ */
+.c360-ind-gc-faq{display:grid;grid-template-columns:0.8fr 1.2fr;gap:80px;align-items:start}
+.c360-ind-gc-faq-side p{font-size:18px;color:var(--gc-muted);line-height:1.65;margin-bottom:24px}
+.c360-ind-gc-faq-side a.c360-ind-gc-faq-phone{font-size:20px;font-weight:700;color:var(--gc-navy);text-decoration:none}
+.c360-ind-gc-faq-side a.c360-ind-gc-faq-phone:hover{text-decoration:underline}
+.c360-ind-gc-faq-item{border-top:1px solid var(--gc-line)}
+.c360-ind-gc-faq-item:last-child{border-bottom:1px solid var(--gc-line)}
+.c360-ind-gc-faq-q{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--gc-text);cursor:pointer;list-style:none}
+.c360-ind-gc-faq-q::-webkit-details-marker{display:none}
+.c360-ind-gc-faq-q::after{content:"+";font-size:24px;font-weight:400;color:var(--gc-green);line-height:1;flex-shrink:0;transition:transform .2s}
+.c360-ind-gc-faq-item[open] .c360-ind-gc-faq-q::after{transform:rotate(45deg)}
+.c360-ind-gc-faq-a{padding:0 4px 24px;font-size:16px;color:var(--gc-muted);line-height:1.7;max-width:800px}
+.c360-ind-gc-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1200px){
+  .c360-ind-gc-pains{grid-template-columns:repeat(2,1fr);gap:40px 40px}
+  .c360-ind-gc-phases{grid-template-columns:1fr;max-width:640px;margin:0 auto}
+  .c360-ind-gc-phases::before{display:none}
+  .c360-ind-gc-phase-dot{margin:0 0 16px}
+}
+@media (max-width:900px){
+  .c360-ind-gc-section{padding:76px 0}
+  .c360-ind-gc-hero{grid-template-columns:1fr;min-height:0}
+  .c360-ind-gc-hero-copy{padding:48px 24px 40px}
+  .c360-ind-gc-hero-media{aspect-ratio:16/10;order:-1}
+  .c360-ind-gc-reality-head,.c360-ind-gc-journey-head,.c360-ind-gc-reviews-head,.c360-ind-gc-faq{grid-template-columns:1fr;gap:28px}
+  .c360-ind-gc-cards{grid-template-columns:1fr}
+  .c360-ind-gc-cta{grid-template-columns:1fr;padding:44px 32px}
+  .c360-ind-gc-stats{grid-template-columns:1fr}
+  .c360-ind-gc-stats li{border-left:0;border-top:1px solid var(--gc-line);padding-left:0}
+  .c360-ind-gc-stats li:first-child{border-top:0}
+}
+@media (max-width:640px){
+  .c360-ind-gc-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-gc-hero-copy{padding-left:18px;padding-right:18px}
+  .c360-ind-gc-pains{grid-template-columns:1fr}
+  .c360-ind-gc-card-visual{padding:24px 16px;min-height:0}
+  .c360-ind-gc-card-body{padding:24px 20px}
+  .c360-ind-gc-phase-card{padding:26px 22px}
+  .c360-ind-gc-cta{padding:36px 22px;border-radius:18px}
+  .c360-ind-gc-btn{width:100%;justify-content:center}
+  .c360-ind-gc-partner{--badge-h:64px;--badge-clear:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-gc *,.c360-ind-gc *::before,.c360-ind-gc *::after{transition:none !important;animation:none !important}
+  .c360-ind-gc-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-gc">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="c360-ind-gc-hero">
+  <div class="c360-ind-gc-hero-copy">
+    <nav class="c360-ind-gc-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/industries">Industries</a></li>
+        <li aria-current="page">General Contractors</li>
+      </ol>
+    </nav>
+
+    <h1>General contractor marketing that brings in the projects you want</h1>
+    <p class="c360-ind-gc-hero-sub">Homeowners planning a remodel or addition spend weeks checking out contractors before they pick up the phone. We make sure that when they look, your company is the one that looks established, trusted and ready to build.</p>
+
+    <div class="c360-ind-gc-ctas">
+      <a href="/schedule-demo" class="c360-ind-gc-btn c360-ind-gc-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+      <a href="tel:+18665276205" class="c360-ind-gc-btn c360-ind-gc-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+    </div>
+
+    <div class="c360-ind-gc-creds">
+      <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-gc-partner">
+        <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+      </a>
+      <ul class="c360-ind-gc-creds-list">
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-gc-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, working with contractors nationwide since 2018</li>
+      </ul>
+    </div>
+  </div>
+  <div class="c360-ind-gc-hero-media">
+    <!-- IMAGE PLACEHOLDER: gc-hero — kitchen remodel in progress, open framing or new cabinets going in, contractor at work, 16:9 (shown cropped to the right half) -->
+    <img src="" data-c360-placeholder="gc-hero" alt="General contractor working on a kitchen remodel in progress" fetchpriority="high">
+    <div class="c360-ind-gc-hero-fallback" aria-hidden="true"><i class="fa-solid fa-helmet-safety"></i></div>
+  </div>
+</section>
+
+<!-- ══════════ THE CONTRACTOR REALITY (blueprint) ══════════ -->
+<section class="c360-ind-gc-section c360-ind-gc-blueprint">
+  <div class="c360-ind-gc-wrap">
+    <div class="c360-ind-gc-reality-head">
+      <div>
+        <span class="c360-ind-gc-kicker">Why it's harder than it looks</span>
+        <h2 class="c360-ind-gc-h2">The general contractor reality</h2>
+      </div>
+      <p class="c360-ind-gc-lead">You can build anything. Keeping a steady line of good projects coming in, without living on referrals and bid sites, is the part nobody trained you for.</p>
+    </div>
+    <div class="c360-ind-gc-pains">
+      <div class="c360-ind-gc-pain">
+        <span class="c360-ind-gc-pain-n" aria-hidden="true">01</span>
+        <h3>Referrals are great until they stop</h3>
+        <p>Word of mouth built your business, but it comes and goes. One slow quarter and the crew is waiting on the next callback.</p>
+      </div>
+      <div class="c360-ind-gc-pain">
+        <span class="c360-ind-gc-pain-n" aria-hidden="true">02</span>
+        <h3>Homeowners research you for weeks</h3>
+        <p>Before they invite you over for a walkthrough, they read your reviews, scroll your photos and compare you with three other contractors.</p>
+      </div>
+      <div class="c360-ind-gc-pain">
+        <span class="c360-ind-gc-pain-n" aria-hidden="true">03</span>
+        <h3>Too many estimates go nowhere</h3>
+        <p>Every bid costs you an evening. When the leads are price shoppers or projects that were never going to happen, it adds up fast.</p>
+      </div>
+      <div class="c360-ind-gc-pain">
+        <span class="c360-ind-gc-pain-n" aria-hidden="true">04</span>
+        <h3>Your best work lives in your camera roll</h3>
+        <p>The kitchen you gutted and rebuilt, the addition that came out perfect. If homeowners can't see it online, it isn't winning you the next job.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PLAN (phases) ══════════
+     Outcome first. Draft per the worksheet; confirm with Jared. -->
+<section class="c360-ind-gc-section" id="gc-plan">
+  <div class="c360-ind-gc-wrap">
+    <div class="c360-ind-gc-plan-head">
+      <span class="c360-ind-gc-kicker">Your recommended plan</span>
+      <h2 class="c360-ind-gc-h2">Built in phases, like any good project</h2>
+      <p class="c360-ind-gc-lead">General contracting is planned work, so homeowners pick the contractor they trust most. We build that trust first, then add the pieces that bring in bigger projects.</p>
+    </div>
+
+    <div class="c360-ind-gc-phases">
+      <div class="c360-ind-gc-phase is-first">
+        <span class="c360-ind-gc-phase-dot" aria-hidden="true">1</span>
+        <div class="c360-ind-gc-phase-card">
+          <div class="c360-ind-gc-phase-top"><span class="c360-ind-gc-phase-label">Phase 1 · Foundation</span><span class="c360-ind-gc-phase-tag">Start here</span></div>
+          <h3>Get found and trusted</h3>
+          <p class="c360-ind-gc-phase-intro">What every homeowner checks before they call.</p>
+          <div class="c360-ind-gc-outcome">
+            <h4>Look like the contractor they can trust</h4>
+            <p>A Google Business Profile full of finished projects, accurate service areas and fresh reviews from every client.</p>
+            <div class="c360-ind-gc-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+          </div>
+          <div class="c360-ind-gc-outcome">
+            <h4>Show up when they search for a contractor</h4>
+            <p>Local Services Ads put you at the top of "general contractor near me" with the Google Verified badge, and you pay per lead.</p>
+            <div class="c360-ind-gc-pills"><a href="/local-service-ads">Local Service Ads</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="c360-ind-gc-phase">
+        <span class="c360-ind-gc-phase-dot" aria-hidden="true">2</span>
+        <div class="c360-ind-gc-phase-card">
+          <div class="c360-ind-gc-phase-top"><span class="c360-ind-gc-phase-label">Phase 2 · Build</span></div>
+          <h3>Fill the pipeline with bigger projects</h3>
+          <p class="c360-ind-gc-phase-intro">Reach homeowners while they're still planning.</p>
+          <div class="c360-ind-gc-outcome">
+            <h4>Reach homeowners planning a remodel</h4>
+            <p>Search ads for kitchen remodels, bathroom remodels and additions, aimed at the projects you want more of.</p>
+            <div class="c360-ind-gc-pills"><a href="/google-ppc">Google PPC</a></div>
+          </div>
+          <div class="c360-ind-gc-outcome">
+            <h4>Put your finished work in front of them</h4>
+            <p>Before-and-after posts on Facebook and Instagram, shown to homeowners in the areas you serve.</p>
+            <div class="c360-ind-gc-pills"><a href="/meta-ads">Meta Ads</a></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="c360-ind-gc-phase">
+        <span class="c360-ind-gc-phase-dot" aria-hidden="true">3</span>
+        <div class="c360-ind-gc-phase-card">
+          <div class="c360-ind-gc-phase-top"><span class="c360-ind-gc-phase-label">Phase 3 · Finish</span></div>
+          <h3>Win the bid before the walkthrough</h3>
+          <p class="c360-ind-gc-phase-intro">Where serious homeowners go to decide.</p>
+          <div class="c360-ind-gc-outcome">
+            <h4>A website that shows your work and books estimates</h4>
+            <p>Project galleries, the services you offer and an estimate request form that asks the right questions up front.</p>
+            <div class="c360-ind-gc-pills"><a href="/websites-home">Websites</a></div>
+          </div>
+          <div class="c360-ind-gc-outcome">
+            <h4>Steady traffic from Google and AI search</h4>
+            <p>Your main pages optimized and new pages added each month, so homeowners researching projects find you.</p>
+            <div class="c360-ind-gc-pills"><a href="/seo-services">SEO Services</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c360-ind-gc-plan-foot">
+      <p>Google Business Profile Management and Local Services Ads come together as our <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>. Every service's price is on its own page, and we'll help you decide which phases fit your goals.</p>
+      <a href="/schedule-demo" class="c360-ind-gc-btn c360-ind-gc-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (2x2 cards) ══════════ -->
+<section class="c360-ind-gc-section c360-ind-gc-journey">
+  <div class="c360-ind-gc-wrap">
+    <div class="c360-ind-gc-journey-head">
+      <div>
+        <span class="c360-ind-gc-kicker">How homeowners choose a contractor</span>
+        <h2 class="c360-ind-gc-h2">From "we're thinking about remodeling" to a signed contract</h2>
+        <p class="c360-ind-gc-lead">A remodel is one of the biggest checks a homeowner writes. Here's where your company needs to show up along the way.</p>
+      </div>
+      <div class="c360-ind-gc-photo">
+        <!-- IMAGE PLACEHOLDER: gc-on-the-job — contractor reviewing plans with a couple at their kitchen island, 4:3 -->
+        <img src="" data-c360-placeholder="gc-on-the-job" alt="General contractor reviewing remodel plans with homeowners at their kitchen island" loading="lazy">
+        <div class="c360-ind-gc-photo-fallback" aria-hidden="true"><i class="fa-solid fa-compass-drafting"></i></div>
+      </div>
+    </div>
+
+    <div class="c360-ind-gc-cards">
+      <article class="c360-ind-gc-card">
+        <div class="c360-ind-gc-card-visual">
+          <div class="c360-ind-gc-mock">
+            <div class="c360-ind-gc-serp" role="img" aria-label="Example Google search for general contractor near me, with a Local Services Ad showing a 4.9 rating and the Google Verified badge">
+              <div class="c360-ind-gc-serp-bar"><i class="fa-solid fa-magnifying-glass"></i> general contractor near me</div>
+              <div class="c360-ind-gc-serp-tag">Sponsored</div>
+              <div class="c360-ind-gc-serp-ad">
+                <div class="c360-ind-gc-serp-name">Your Company Builders</div>
+                <div class="c360-ind-gc-serp-meta"><span class="c360-ind-gc-serp-rating">4.9</span><span class="c360-ind-gc-serp-stars">★★★★★</span><span>(128)</span><span class="c360-ind-gc-serp-verified"><i class="fa-solid fa-circle-check"></i> Google Verified</span></div>
+                <div class="c360-ind-gc-serp-meta" style="margin-top:4px"><span>18 years in business</span><span>Serves your area</span></div>
+                <div class="c360-ind-gc-serp-actions"><span>Call</span><span>Message</span></div>
+              </div>
+            </div>
+            <span class="c360-ind-gc-example">Example listing for illustration</span>
+          </div>
+        </div>
+        <div class="c360-ind-gc-card-body">
+          <span class="c360-ind-gc-card-step">1 · Get found</span>
+          <h3>Be at the top when they start looking</h3>
+          <p>When a homeowner searches for a contractor, Local Services Ads put your company first, with your rating and the Google Verified badge that shows Google checked your license, insurance and background.</p>
+          <div class="c360-ind-gc-pills"><a href="/local-service-ads">Local Service Ads</a></div>
+        </div>
+      </article>
+
+      <article class="c360-ind-gc-card">
+        <div class="c360-ind-gc-card-visual">
+          <div class="c360-ind-gc-mock">
+            <div class="c360-ind-gc-gbp" role="img" aria-label="Example Google Business Profile for a contractor showing project photos of a kitchen remodel, primary bath, home addition and deck">
+              <div class="c360-ind-gc-gbp-head"><strong>Your Company Builders</strong><span>4.9 <span class="c360-ind-gc-serp-stars">★★★★★</span> 128 reviews · General contractor</span></div>
+              <div class="c360-ind-gc-gbp-tabs" aria-hidden="true"><span>Overview</span><span class="is-on">Photos</span><span>Reviews</span></div>
+              <div class="c360-ind-gc-gbp-grid" aria-hidden="true"><span>Kitchen remodel</span><span>Primary bath</span><span>Home addition</span><span>Back deck</span></div>
+            </div>
+            <span class="c360-ind-gc-example">Example profile for illustration</span>
+          </div>
+        </div>
+        <div class="c360-ind-gc-card-body">
+          <span class="c360-ind-gc-card-step">2 · Build trust</span>
+          <h3>Let your finished projects do the talking</h3>
+          <p>We keep your Google Business Profile stocked with project photos and current details, and ask every client for a review, so homeowners comparing contractors see proof, not promises.</p>
+          <div class="c360-ind-gc-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+        </div>
+      </article>
+
+      <article class="c360-ind-gc-card">
+        <div class="c360-ind-gc-card-visual">
+          <div class="c360-ind-gc-mock">
+            <div class="c360-ind-gc-meta" role="img" aria-label="Example Facebook ad showing a before and after kitchen remodel with a Get quote button">
+              <div class="c360-ind-gc-meta-head"><span class="c360-ind-gc-meta-av" aria-hidden="true"><i class="fa-solid fa-helmet-safety"></i></span><div><strong>Your Company Builders</strong><span>Sponsored</span></div></div>
+              <p class="c360-ind-gc-meta-text">Before and after: a dated kitchen, opened up and rebuilt from the studs. Planning a remodel this year? Let's talk.</p>
+              <div class="c360-ind-gc-meta-img" aria-hidden="true"><span>Before</span><span>After</span></div>
+              <div class="c360-ind-gc-meta-cta"><span>Kitchen and bath remodeling</span><em>Get quote</em></div>
+            </div>
+            <span class="c360-ind-gc-example">Example ad for illustration</span>
+          </div>
+        </div>
+        <div class="c360-ind-gc-card-body">
+          <span class="c360-ind-gc-card-step">3 · Stay top of mind</span>
+          <h3>Be the name they remember when they're ready</h3>
+          <p>Most remodels are planned months ahead. Google PPC reaches homeowners searching for their project, and Meta Ads keep your before-and-afters in front of them until they're ready to call.</p>
+          <div class="c360-ind-gc-pills"><a href="/google-ppc">Google PPC</a><a href="/meta-ads">Meta Ads</a></div>
+        </div>
+      </article>
+
+      <article class="c360-ind-gc-card">
+        <div class="c360-ind-gc-card-visual">
+          <div class="c360-ind-gc-mock">
+            <div class="c360-ind-gc-form" role="img" aria-label="Example estimate request form on a contractor website asking for project type, timeline and budget">
+              <p class="c360-ind-gc-form-title">Request an estimate</p>
+              <p class="c360-ind-gc-form-sub">Tell us about your project and we'll set up a walkthrough.</p>
+              <dl>
+                <div><dt>Project type</dt><dd>Kitchen remodel</dd></div>
+                <div><dt>When do you want to start?</dt><dd>In the next 3 months</dd></div>
+                <div><dt>Budget range</dt><dd>$50,000 – $75,000</dd></div>
+              </dl>
+              <span class="c360-ind-gc-form-btn">Request my estimate</span>
+            </div>
+            <span class="c360-ind-gc-example">Example form for illustration</span>
+          </div>
+        </div>
+        <div class="c360-ind-gc-card-body">
+          <span class="c360-ind-gc-card-step">4 · Win the bid</span>
+          <h3>Turn visits into walkthroughs worth your time</h3>
+          <p>A website with your project galleries and an estimate form that asks about project type, timeline and budget, so you know what you're walking into before you drive out. SEO Services helps homeowners find it.</p>
+          <div class="c360-ind-gc-pills"><a href="/websites-home">Websites</a><a href="/seo-services">SEO Services</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS + TRUST STATS ══════════
+     Same live Google reviews widget as /seo-services (location 1pBjHBEIsKGbwvAUTY9u). -->
+<section class="c360-ind-gc-section">
+  <div class="c360-ind-gc-wrap">
+    <div class="c360-ind-gc-reviews-head">
+      <div>
+        <span class="c360-ind-gc-kicker">Our own reviews</span>
+        <h2 class="c360-ind-gc-h2">We practice what we preach</h2>
+      </div>
+      <p class="c360-ind-gc-lead">We ask every client for a review, just like we will for you. Here's what they say.</p>
+    </div>
+    <ul class="c360-ind-gc-stats">
+      <li><strong>5.0 on Google</strong><span>147 five-star reviews</span></li>
+      <li><strong>Certified Google Partner</strong><span>With a Google Product Expert on the team</span></li>
+      <li><strong>Since 2018</strong><span>Tucson-based, serving nationwide</span></li>
+    </ul>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (rounded panel) ══════════ -->
+<section class="c360-ind-gc-section" style="padding-top:0">
+  <div class="c360-ind-gc-wrap">
+    <div class="c360-ind-gc-cta">
+      <div>
+        <h2>Let's plan your next busy season</h2>
+        <p>Book a free strategy call. We'll look at how homeowners in your area find contractors today and map out which phase to start with.</p>
+      </div>
+      <div class="c360-ind-gc-ctas">
+        <a href="/schedule-demo" class="c360-ind-gc-btn c360-ind-gc-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-gc-btn c360-ind-gc-btn-ghost"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (two columns) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-gc-section" id="gc-faq" style="background:var(--gc-mist)">
+  <div class="c360-ind-gc-wrap c360-ind-gc-faq">
+    <div class="c360-ind-gc-faq-side">
+      <h2 class="c360-ind-gc-h2">General contractor marketing questions</h2>
+      <p>Straight answers about how this works for contracting businesses. Still have a question?</p>
+      <a href="tel:+18665276205" class="c360-ind-gc-faq-phone"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+    </div>
+    <div>
+
+      <details class="c360-ind-gc-faq-item">
+        <summary class="c360-ind-gc-faq-q">How do general contractors get more remodeling leads?</summary>
+        <div class="c360-ind-gc-faq-a"><p>Make your company easy to find and easy to trust while homeowners are researching. Start with a strong Google Business Profile full of project photos and fresh reviews, plus Local Services Ads at the top of contractor searches. Then add Google PPC for remodel searches, Meta Ads with your before-and-afters, and a website that turns visits into estimate requests.</p></div>
+      </details>
+
+      <details class="c360-ind-gc-faq-item">
+        <summary class="c360-ind-gc-faq-q">Can general contractors use Google Local Services Ads?</summary>
+        <div class="c360-ind-gc-faq-a"><p>Yes. General contractor is one of the categories Google offers Local Services Ads for. You pay per lead rather than per click, and the ad shows your rating and Google Verified badge. Because remodels are researched over weeks, we run it alongside Google Business Profile Management rather than on its own. We'll confirm eligibility for your area on the strategy call.</p></div>
+      </details>
+
+      <details class="c360-ind-gc-faq-item">
+        <summary class="c360-ind-gc-faq-q">Why does my Google Business Profile matter so much?</summary>
+        <div class="c360-ind-gc-faq-a"><p>It's often the first thing a homeowner sees about your company, in the map results and when they search your name. Project photos, accurate service areas and recent reviews tell them you're established and active. Your reviews also affect how your Local Services Ads rank.</p></div>
+      </details>
+
+      <details class="c360-ind-gc-faq-item">
+        <summary class="c360-ind-gc-faq-q">How do I attract bigger projects instead of small jobs?</summary>
+        <div class="c360-ind-gc-faq-a"><p>Show the work you want more of and aim your ads at it. Google PPC can focus on searches like "kitchen remodel contractor" or "home addition builder," Meta Ads can feature your largest projects, and an estimate form that asks about scope and budget helps you spend your time on the right walkthroughs.</p></div>
+      </details>
+
+      <details class="c360-ind-gc-faq-item">
+        <summary class="c360-ind-gc-faq-q">Do I need a new website as a general contractor?</summary>
+        <div class="c360-ind-gc-faq-a"><p>Not always. If your current site shows your projects clearly, works well on a phone and makes it easy to request an estimate, we can work with it. If it doesn't, we build contractor websites with project galleries and estimate request forms. Options and pricing are on our <a href="/website-pricing">website pricing page</a>.</p></div>
+      </details>
+
+      <details class="c360-ind-gc-faq-item">
+        <summary class="c360-ind-gc-faq-q">Do you guarantee a number of leads or projects?</summary>
+        <div class="c360-ind-gc-faq-a"><p>No. No one can promise rankings, lead counts or signed projects. For Google Business Profile Management and advertising campaigns, including Local Services Ads, Google PPC and Meta Ads, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-gc-faq-item">
+        <summary class="c360-ind-gc-faq-q">What does it cost, and how do contracts work?</summary>
+        <div class="c360-ind-gc-faq-a"><p>Each service lists its price on its own page, including <a href="/gbp-management">Google Business Profile Management</a>, <a href="/local-service-ads">Local Service Ads</a>, <a href="/seo-services">SEO Services</a> and <a href="/website-pricing">websites</a>. Google PPC and Meta Ads are planned with you on a strategy call, and ad spend is paid directly to Google or Meta. To cancel a recurring service, give at least 10 days' written notice before your next billing date. All payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
