@@ -29,7 +29,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-54 of 71 pages have code. Multi-snippet pages (checkouts) are a folder of
+55 of 72 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -78,6 +78,7 @@ and `schema/pages/industries/[slug].html` (schema, pasted in one batch after eve
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
+| `industries/pool-service.html` | Pool Service Marketing (new page at /industries/pool-service) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (deep-water hero with porthole photo and wave edge, rising-water reality cards, plan matrix with row labels, scroll-snap journey carousel, round stat badges, photo CTA with wave top, accent-bar FAQ). Plan (draft) to confirm with Jared. Images to make (`pool-hero`, `pool-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/pool-service.md`, publish. Schema waits for the batch. |
 | `industries/cleaning-services.html` | Cleaning Business Marketing (new page at /industries/cleaning-services) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (centered hero with booking/photo/review panels, checklist reality card, two package-style plan columns, four steps on a line plus visuals row, rating card beside reviews, mist CTA panel, FAQ with check markers). Plan (draft) to confirm with Jared. Images to make (`clean-hero`, `clean-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/cleaning-services.md`, publish. Schema waits for the batch. |
 | `industries/lawn-care.html` | Lawn Care Marketing (new page at /industries/lawn-care) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (green hero with arch photo, mowing-stripe reality rows, bento plan, neighborhood map journey with callouts, light-green reviews, striped navy CTA, numbered FAQ). Plan (draft) to confirm with Jared. Images to make (`lawn-hero`, `lawn-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/lawn-care.md`, publish. Schema waits for the batch. |
 | `industries/painting.html` | Painting Contractor Marketing (new page at /industries/painting) | ✅ Code in repo | v1.1: same dimensions as the other industry pages, own layout (editorial hero on a light blue wash with swatches, paint-chip reality cards, two-coat palette plan, before/after slider + three cards, big-number reviews, sand CTA, two-column FAQ). Plan (draft) to confirm with Jared. Images to make (`paint-hero`, `paint-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/painting.md`, publish. Schema waits for the batch. |
