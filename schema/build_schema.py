@@ -175,6 +175,8 @@ page("/industries/mortgage", "industries/mortgage.html", "Mortgage Marketing", "
      service="Mortgage Marketing", serviceType="Marketing for mortgage loan officers and brokers", audience="Mortgage loan officers")
 page("/industries/auto-shops", "industries/auto-shops.html", "Auto Repair Shop Marketing", "industry", parent=IND,
      service="Auto Repair Shop Marketing", serviceType="Marketing for auto repair shops", audience="Auto repair shops")
+page("/industries/funeral-homes", "industries/funeral-homes.html", "Funeral Home Marketing", "industry", parent=IND,
+     service="Funeral Home Marketing", serviceType="Marketing for funeral homes", audience="Funeral homes")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
