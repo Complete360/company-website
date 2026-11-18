@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Restaurants
-     c360-ind-rest-v1.1.html
+     c360-ind-rest-v1.2.html
      GHL: Paste into a Custom Code block on the new page at /industries/restaurants
           (page name "Restaurant Marketing"). Meta data: ghl-meta/industries/restaurants.md.
           Schema: schema/pages/industries/restaurants.html (batch paste later).
@@ -29,6 +29,9 @@
 
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.2 (2026-11-12) — Added a "Chef's tip" card at the bottom of the
+       Ingredients column so it no longer leaves empty space beside Method.
 
      v1.1 (2026-11-12) — Jared: move away from tan. Same palette as the
        cleaning services page: light blue backgrounds (#EEF5FD / #E6F1FB),
@@ -137,7 +140,19 @@
 .c360-ind-rest-plan-bg{background:var(--rest-cream)}
 .c360-ind-rest-recipe{max-width:1460px;margin:0 auto;background:#fff;border-radius:18px;box-shadow:0 24px 60px rgba(15,31,94,0.12);overflow:hidden;display:grid;grid-template-columns:0.85fr 1.15fr;position:relative}
 .c360-ind-rest-recipe::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:linear-gradient(90deg,var(--rest-navy) 0 50%,var(--rest-green) 50% 100%)}
-.c360-ind-rest-ingr{background:var(--rest-cream-2);padding:56px 44px 44px}
+.c360-ind-rest-ingr{background:var(--rest-cream-2);padding:56px 44px 44px;display:flex;flex-direction:column}
+/* v1.2: chef's tip card fills the bottom of the Ingredients column so it
+   balances the longer Method column. */
+.c360-ind-rest-tip{margin-top:auto;background:#fff;border-radius:16px;padding:26px 26px 22px;box-shadow:0 10px 26px rgba(15,31,94,0.08)}
+.c360-ind-rest-ingr-note+.c360-ind-rest-tip{margin-top:auto}
+.c360-ind-rest-tip-head{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.c360-ind-rest-tip-head i{width:42px;height:42px;border-radius:12px;background:var(--rest-tomato-light);color:var(--rest-tomato);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+.c360-ind-rest-tip-head strong{font-size:18px;font-weight:800;color:var(--rest-text)}
+.c360-ind-rest-tip > p{font-size:15px;color:var(--rest-muted);line-height:1.6;margin-bottom:14px}
+.c360-ind-rest-tip ul{border-top:1px solid var(--rest-line)}
+.c360-ind-rest-tip li{display:flex;align-items:center;gap:10px;padding:10px 0;border-bottom:1px solid var(--rest-line);font-size:14.5px;font-weight:600;color:var(--rest-text)}
+.c360-ind-rest-tip li:last-child{border-bottom:0;padding-bottom:0}
+.c360-ind-rest-tip li i{color:var(--rest-green);width:18px;text-align:center}
 .c360-ind-rest-ingr h3,.c360-ind-rest-method h3{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:800;color:var(--rest-text);margin-bottom:6px}
 .c360-ind-rest-ingr h3 i,.c360-ind-rest-method h3 i{color:var(--rest-tomato)}
 .c360-ind-rest-ingr > p,.c360-ind-rest-method > p{font-size:15px;color:var(--rest-muted);margin-bottom:22px}
@@ -151,7 +166,7 @@
 .c360-ind-rest-ingr li a{font-size:16px;font-weight:600;color:var(--rest-text);text-decoration:none;border-bottom:1.5px solid #9DB3DC}
 .c360-ind-rest-ingr li a:hover{color:var(--rest-navy);border-color:var(--rest-navy)}
 .c360-ind-rest-ingr li span{margin-left:auto;font-size:12.5px;color:var(--rest-muted)}
-.c360-ind-rest-ingr-note{margin-top:26px;font-size:14px;color:var(--rest-muted);line-height:1.6}
+.c360-ind-rest-ingr-note{margin:26px 0 28px;font-size:14px;color:var(--rest-muted);line-height:1.6}
 .c360-ind-rest-ingr-note a{font-weight:600}
 .c360-ind-rest-method{padding:56px 52px 44px}
 .c360-ind-rest-steps li{display:grid;grid-template-columns:48px 1fr;gap:18px;padding:20px 0;border-top:1px solid var(--rest-line)}
@@ -376,6 +391,15 @@
           <li class="is-opt"><i class="fa-solid fa-plus" aria-hidden="true"></i><a href="/local-seo-booster">Local SEO Booster</a><span>optional</span></li>
         </ul>
         <p class="c360-ind-rest-ingr-note">On the side: a <a href="/websites-home">website</a> with your menu and hours, the <a href="/ai-agents">AI Voice Agent</a> to answer calls during the rush, and <a href="/seo-services">SEO Services</a>. Every service's price is on its own page.</p>
+        <div class="c360-ind-rest-tip">
+          <div class="c360-ind-rest-tip-head"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i><strong>Chef's tip</strong></div>
+          <p>Start with your Google profile. It's the first thing hungry diners see, and it makes every post and ad that follows work harder.</p>
+          <ul>
+            <li><i class="fa-solid fa-clock" aria-hidden="true"></i> Hours that are right everywhere</li>
+            <li><i class="fa-solid fa-camera" aria-hidden="true"></i> Fresh photos and a new post every week</li>
+            <li><i class="fa-solid fa-comment-dots" aria-hidden="true"></i> A friendly reply to every review</li>
+          </ul>
+        </div>
       </div>
       <div class="c360-ind-rest-method">
         <h3><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Method</h3>
