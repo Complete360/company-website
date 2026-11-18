@@ -155,6 +155,8 @@ page("/industries/roofing", "industries/roofing.html", "Roofing Marketing", "ind
      service="Roofing Marketing", serviceType="Marketing for roofing contractors", audience="Roofing contractors")
 page("/industries/general-contractors", "industries/general-contractors.html", "General Contractor Marketing", "industry", parent=IND,
      service="General Contractor Marketing", serviceType="Marketing for general contractors and remodelers", audience="General contractors")
+page("/industries/painting", "industries/painting.html", "Painting Contractor Marketing", "industry", parent=IND,
+     service="Painting Contractor Marketing", serviceType="Marketing for painting contractors", audience="Painting contractors")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")

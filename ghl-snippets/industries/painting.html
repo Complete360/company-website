@@ -1,0 +1,624 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Painting
+     c360-ind-paint-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/painting
+          (page name "Painting Contractor Marketing"). Meta data: ghl-meta/industries/painting.md.
+          Schema: schema/pages/industries/painting.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-paint-  (new, unique; vars --paint-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from HVAC and Roofing), with a paint theme:
+       - Hero: editorial. Headline across the top left, description and
+         buttons on the right, then a wide rounded photo with a row of
+         paint swatches overlapping its bottom edge.
+       - Reality: intro + photo, then four "paint chip" cards with a solid
+         color top (subgrid keeps titles and text aligned).
+       - Plan: one palette card, four columns that get lighter left to
+         right: "First coat" (start here) and "Second coat" (add as you
+         grow).
+       - Journey: a before/after slider (code-built room, no photos) next
+         to the copy, then three cards in a row with code-built visuals.
+       - Reviews with big numbers, sand CTA band with swatches, FAQ in two
+         plain columns.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       paint-hero        16:9, 2000px+ (shown wide, about 21:8)
+       paint-on-the-job  4:3, 1200px+  (reality intro)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-12) — first build. Plan per the worksheet draft:
+       Google Platinum Package (Local Service Ads + Google Business
+       Profile Management incl. reviews) first; grow with Meta Ads
+       (before/after) and Google PPC. Website, SEO Services and the AI
+       Voice Agent as "also available". To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-paint{
+  --paint-navy:#122078;--paint-navy-dark:#0d1654;--paint-navy-deeper:#0a1040;
+  --paint-green:#127825;--paint-green-hover:#0e5e1d;
+  --paint-sand:#F1EFE8;--paint-sand-dark:#E4E0D4;
+  --paint-mist:#F4F7FC;--paint-line:#E7EBF3;--paint-blue-light:#E6F1FB;
+  --paint-text:#0F1F5E;--paint-muted:#5F5E5A;
+  /* palette shades used across the page */
+  --paint-c1:#122078;--paint-c2:#3A4BA3;--paint-c3:#8FA3D6;--paint-c4:#D9E2F5;
+  --paint-c5:#127825;--paint-c6:#C9A66B;
+  --paint-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--paint-font);color:var(--paint-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-paint *,.c360-ind-paint *::before,.c360-ind-paint *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-paint :where(h1,h2,h3,h4,p,ul,ol,li){margin:0;padding:0;font-family:var(--paint-font)}
+.c360-ind-paint :where(ul,ol){list-style:none}
+.c360-ind-paint :where(a){color:var(--paint-navy)}
+.c360-ind-paint a:focus-visible,.c360-ind-paint summary:focus-visible,.c360-ind-paint input:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-paint-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-paint-section{padding:104px 0}
+.c360-ind-paint-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--paint-text);margin-bottom:16px}
+.c360-ind-paint-lead{font-size:18px;color:var(--paint-muted);max-width:760px;line-height:1.65}
+.c360-ind-paint-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--paint-green);margin-bottom:14px}
+.c360-ind-paint-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-paint-head .c360-ind-paint-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-paint-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--paint-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-paint-btn-primary{background:var(--paint-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-paint-btn-primary:hover{background:var(--paint-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-paint-btn-outline{background:transparent;color:var(--paint-navy);border:2px solid var(--paint-navy);padding:14px 24px}
+.c360-ind-paint-btn-outline:hover{background:var(--paint-navy);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-paint a.c360-ind-paint-btn-primary{color:#fff}
+.c360-ind-paint a.c360-ind-paint-btn-outline{color:var(--paint-navy)}
+.c360-ind-paint a.c360-ind-paint-btn-outline:hover{color:#fff}
+.c360-ind-paint-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-paint-pills{display:flex;flex-wrap:wrap;gap:10px}
+.c360-ind-paint-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--paint-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-paint-pills a:hover{background:var(--paint-navy);border-color:var(--paint-navy);color:#fff;text-decoration:none}
+
+/* ══════════ HERO (editorial) ══════════ */
+.c360-ind-paint-hero{background:var(--paint-sand);padding:56px 0 0}
+.c360-ind-paint-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-paint-crumbs li{color:var(--paint-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-paint-crumbs li+li::before{content:"\203A";color:#A9A496}
+.c360-ind-paint-crumbs a{color:var(--paint-navy);text-decoration:none}
+.c360-ind-paint-crumbs a:hover{text-decoration:underline}
+.c360-ind-paint-hero-top{display:grid;grid-template-columns:1.25fr 1fr;gap:72px;align-items:end;margin-bottom:48px}
+.c360-ind-paint-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--paint-text)}
+.c360-ind-paint-hero-sub{font-size:18px;line-height:1.65;color:#3E3D39;margin-bottom:28px}
+.c360-ind-paint-hero-media{position:relative;padding-bottom:44px}
+.c360-ind-paint-hero-img{position:relative;aspect-ratio:21/8;border-radius:28px;overflow:hidden;background:repeating-linear-gradient(135deg,#DAD5C8 0 16px,#E2DED2 16px 32px)}
+.c360-ind-paint-hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-paint-hero-img img[src=""],.c360-ind-paint-hero-img img:not([src]){visibility:hidden}
+.c360-ind-paint-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#B3AD9E;font-size:56px;pointer-events:none}
+.c360-ind-paint-hero-img img[src]:not([src=""])+.c360-ind-paint-fallback,.c360-ind-paint-photo img[src]:not([src=""])+.c360-ind-paint-fallback{display:none}
+.c360-ind-paint-swatches{position:absolute;left:48px;bottom:0;display:flex;gap:10px}
+.c360-ind-paint-swatches span{width:64px;height:88px;border-radius:10px;border:4px solid #fff;box-shadow:0 12px 30px rgba(15,31,94,0.18)}
+/* Credentials row under the hero image */
+.c360-ind-paint-creds{display:flex;align-items:center;flex-wrap:wrap;gap:0 32px;padding:4px 0 8px}
+.c360-ind-paint-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear) var(--badge-clear) var(--badge-clear) 0}
+.c360-ind-paint-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-paint-partner,.c360-ind-paint-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-paint-creds-list{display:flex;flex-wrap:wrap;gap:10px 28px}
+.c360-ind-paint-creds-list li{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:#3E3D39}
+.c360-ind-paint-creds-list i{color:var(--paint-green);font-size:12px}
+.c360-ind-paint-stars{color:#E8A400;letter-spacing:1px}
+
+/* ══════════ REALITY (paint chips) ══════════ */
+.c360-ind-paint-reality-head{display:grid;grid-template-columns:1fr 0.8fr;gap:72px;align-items:center;margin-bottom:64px}
+.c360-ind-paint-photo{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:repeating-linear-gradient(135deg,#DAD5C8 0 14px,#E2DED2 14px 28px)}
+.c360-ind-paint-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-paint-photo img[src=""],.c360-ind-paint-photo img:not([src]){visibility:hidden}
+.c360-ind-paint-chips{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+/* Each chip spans three parent rows (color, title, text) via subgrid. */
+.c360-ind-paint-chip{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;background:#fff;border:1px solid var(--paint-line);border-radius:14px;overflow:hidden;box-shadow:0 12px 30px rgba(15,31,94,0.06)}
+@supports not (grid-template-rows:subgrid){.c360-ind-paint-chip h3{min-height:2.7em}}
+.c360-ind-paint-chip-color{display:flex;flex-direction:column;justify-content:flex-end;height:150px;padding:14px 18px;color:#fff}
+.c360-ind-paint-chip-color b{font-size:15px;font-weight:700;line-height:1.2}
+.c360-ind-paint-chip-color small{font-size:12px;opacity:0.85;font-variant-numeric:tabular-nums}
+.c360-ind-paint-chip.is-light .c360-ind-paint-chip-color{color:var(--paint-text)}
+.c360-ind-paint-chip h3{font-size:20px;font-weight:700;line-height:1.35;color:var(--paint-text);padding:22px 22px 8px;align-self:start}
+.c360-ind-paint-chip p{font-size:16px;color:var(--paint-muted);line-height:1.65;padding:0 22px 26px}
+
+/* ══════════ PLAN (palette card) ══════════ */
+.c360-ind-paint-plan-bg{background:var(--paint-mist)}
+.c360-ind-paint-palette{display:grid;grid-template-columns:repeat(4,1fr);background:#fff;border-radius:24px;overflow:hidden;box-shadow:0 22px 56px rgba(15,31,94,0.09);max-width:1500px;margin:0 auto}
+/* Each column spans four parent rows (swatch, title, text, pills). */
+.c360-ind-paint-col{display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;border-left:1px solid var(--paint-line)}
+.c360-ind-paint-col:first-child{border-left:0}
+@supports not (grid-template-rows:subgrid){.c360-ind-paint-col{display:flex;flex-direction:column}}
+.c360-ind-paint-col-swatch{padding:26px 28px 24px;color:#fff;display:flex;flex-direction:column;gap:2px}
+.c360-ind-paint-col-swatch b{font-size:16px;font-weight:700}
+.c360-ind-paint-col-swatch small{font-size:13px;opacity:0.85}
+.c360-ind-paint-col.c1 .c360-ind-paint-col-swatch{background:var(--paint-c1)}
+.c360-ind-paint-col.c2 .c360-ind-paint-col-swatch{background:var(--paint-c2)}
+.c360-ind-paint-col.c3 .c360-ind-paint-col-swatch{background:var(--paint-c3);color:var(--paint-text)}
+.c360-ind-paint-col.c4 .c360-ind-paint-col-swatch{background:var(--paint-c4);color:var(--paint-text)}
+.c360-ind-paint-col h4{font-size:20px;font-weight:700;line-height:1.3;color:var(--paint-text);padding:28px 28px 10px;align-self:start}
+.c360-ind-paint-col p{font-size:15.5px;color:var(--paint-muted);line-height:1.65;padding:0 28px 22px}
+.c360-ind-paint-col .c360-ind-paint-pills{padding:0 28px 30px;align-self:end}
+.c360-ind-paint-coats{display:grid;grid-template-columns:repeat(4,1fr);max-width:1500px;margin:0 auto 14px}
+.c360-ind-paint-coat{grid-column:span 2;display:flex;align-items:center;gap:12px;padding:0 6px}
+.c360-ind-paint-coat h3{font-size:22px;font-weight:800;letter-spacing:-0.01em;color:var(--paint-text);white-space:nowrap}
+.c360-ind-paint-coat p{font-size:15px;color:var(--paint-muted)}
+.c360-ind-paint-coat::after{content:"";flex:1;height:2px;background:linear-gradient(90deg,#C3CCDD,transparent)}
+.c360-ind-paint-plan-foot{text-align:center;max-width:820px;margin:44px auto 0}
+.c360-ind-paint-plan-foot p{font-size:15.5px;color:var(--paint-muted);line-height:1.65}
+.c360-ind-paint-plan-foot p+p{margin-top:8px}
+.c360-ind-paint-plan-foot a{font-weight:600}
+.c360-ind-paint-plan-foot .c360-ind-paint-btn{margin-top:26px}
+
+/* ══════════ JOURNEY ══════════ */
+.c360-ind-paint-feature{display:grid;grid-template-columns:1.1fr 0.9fr;gap:72px;align-items:center;margin-bottom:56px}
+.c360-ind-paint-feature-copy h3{font-size:clamp(26px,3vw,38px);font-weight:800;line-height:1.15;letter-spacing:-0.015em;color:var(--paint-text);margin-bottom:14px}
+.c360-ind-paint-feature-copy p{font-size:17px;color:var(--paint-muted);line-height:1.7}
+.c360-ind-paint-feature-copy p+p{margin-top:12px}
+.c360-ind-paint-feature-copy .c360-ind-paint-pills{margin-top:24px}
+.c360-ind-paint-step{display:block;font-size:14px;font-weight:700;color:var(--paint-green);margin-bottom:8px}
+.c360-ind-paint-example{display:block;font-size:12px;color:var(--paint-muted);text-align:center;margin-top:10px}
+
+/* Before/after slider (code-built room) */
+.c360-ind-paint-ba{position:relative;aspect-ratio:16/10;border-radius:22px;overflow:hidden;box-shadow:0 22px 56px rgba(15,31,94,0.16);--pos:50%;user-select:none}
+.c360-ind-paint-room{position:absolute;inset:0}
+.c360-ind-paint-room.is-before{background:radial-gradient(circle at 22% 30%,rgba(120,100,60,0.22) 0 7%,transparent 8%),radial-gradient(circle at 70% 62%,rgba(120,100,60,0.18) 0 9%,transparent 10%),linear-gradient(180deg,#CFC4A8 0%,#BFB497 100%)}
+.c360-ind-paint-room.is-after{background:linear-gradient(180deg,#5F7F8E 0%,#557483 100%);clip-path:inset(0 0 0 var(--pos))}
+.c360-ind-paint-room::before{content:"";position:absolute;left:14%;top:16%;width:26%;height:44%;border-radius:4px;background:linear-gradient(180deg,#DDEBF5,#BCD3E6);box-shadow:inset 0 0 0 8px #F2EFE6}
+.c360-ind-paint-room.is-before::before{box-shadow:inset 0 0 0 8px #D8D0BB}
+.c360-ind-paint-room::after{content:"";position:absolute;left:0;right:0;bottom:0;height:16%;background:#8C6B4F;box-shadow:0 -10px 0 #F2EFE6}
+.c360-ind-paint-room.is-before::after{box-shadow:0 -10px 0 #CFC6AF}
+.c360-ind-paint-crack{position:absolute;left:62%;top:20%;width:3px;height:26%;background:rgba(90,75,50,0.45);transform:rotate(18deg);border-radius:2px}
+.c360-ind-paint-frame{position:absolute;right:16%;top:24%;width:16%;height:26%;border:6px solid #F2EFE6;background:#C9A66B;border-radius:3px}
+.c360-ind-paint-ba-tag{position:absolute;top:16px;font-size:12.5px;font-weight:700;color:#fff;background:rgba(10,16,64,0.7);border-radius:100px;padding:5px 12px;pointer-events:none}
+.c360-ind-paint-ba-tag.is-l{left:16px}
+.c360-ind-paint-ba-tag.is-r{right:16px}
+.c360-ind-paint-ba-line{position:absolute;top:0;bottom:0;left:var(--pos);width:3px;margin-left:-1.5px;background:#fff;pointer-events:none}
+.c360-ind-paint-ba-line::after{content:"\2194";position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;background:#fff;color:var(--paint-navy);display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,0.25)}
+.c360-ind-paint-ba input{position:absolute;inset:0;width:100%;height:100%;opacity:0;cursor:ew-resize;margin:0}
+
+.c360-ind-paint-row3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.c360-ind-paint-card{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0;background:#fff;border:1px solid var(--paint-line);border-radius:20px;overflow:hidden;box-shadow:0 12px 32px rgba(15,31,94,0.06)}
+@supports not (grid-template-rows:subgrid){.c360-ind-paint-card{display:flex;flex-direction:column}}
+.c360-ind-paint-card-visual{background:var(--paint-sand);padding:30px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.c360-ind-paint-card-body{padding:28px 28px 30px;display:flex;flex-direction:column}
+.c360-ind-paint-card-body h3{font-size:clamp(21px,2vw,26px);font-weight:800;line-height:1.25;color:var(--paint-text);margin-bottom:10px}
+.c360-ind-paint-card-body p{font-size:16px;color:var(--paint-muted);line-height:1.7;margin-bottom:20px}
+.c360-ind-paint-card-body .c360-ind-paint-pills{margin-top:auto}
+.c360-ind-paint-mock{width:100%;max-width:380px}
+
+/* Mock: Local Services Ad */
+.c360-ind-paint-serp{background:#fff;border:1px solid var(--paint-line);border-radius:14px;padding:16px;box-shadow:0 12px 28px rgba(15,31,94,0.08);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-paint-serp-bar{display:flex;align-items:center;gap:10px;border:1px solid #DFE1E5;border-radius:100px;padding:8px 14px;font-size:13.5px;color:#202124;margin-bottom:12px}
+.c360-ind-paint-serp-bar i{color:#9AA0A6}
+.c360-ind-paint-serp-tag{font-size:12px;font-weight:700;color:#202124;margin-bottom:6px}
+.c360-ind-paint-serp-ad{border:1px solid #E8EAED;border-radius:12px;padding:12px 14px}
+.c360-ind-paint-serp-name{font-size:15px;font-weight:700;color:#1A0DAB;margin-bottom:4px}
+.c360-ind-paint-serp-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:13px;color:#4D5156}
+.c360-ind-paint-serp-rating{color:#202124;font-weight:700}
+.c360-ind-paint-serp-stars{color:#FBBC04;letter-spacing:1px}
+.c360-ind-paint-serp-verified{display:inline-flex;align-items:center;gap:5px;color:#137333;font-weight:700}
+
+/* Mock: review request text */
+.c360-ind-paint-sms{background:#fff;border:1px solid var(--paint-line);border-radius:24px;padding:18px 16px;box-shadow:0 12px 28px rgba(15,31,94,0.08)}
+.c360-ind-paint-sms-from{text-align:center;font-size:12px;color:var(--paint-muted);margin-bottom:12px}
+.c360-ind-paint-sms-from strong{display:block;font-size:13.5px;color:var(--paint-text)}
+.c360-ind-paint-sms-in,.c360-ind-paint-sms-out{font-size:13.5px;line-height:1.5;padding:9px 13px;border-radius:16px;margin-bottom:8px;max-width:88%}
+.c360-ind-paint-sms-in{background:#EEF0F4;color:#1C1C1E;border-bottom-left-radius:5px}
+.c360-ind-paint-sms-in u{color:#1A73E8;text-decoration:none}
+.c360-ind-paint-sms-out{background:var(--paint-green);color:#fff;margin-left:auto;margin-bottom:0;border-bottom-right-radius:5px}
+
+/* Mock: Meta ad */
+.c360-ind-paint-meta{background:#fff;border:1px solid var(--paint-line);border-radius:14px;overflow:hidden;box-shadow:0 12px 28px rgba(15,31,94,0.08);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-paint-meta-head{display:flex;align-items:center;gap:10px;padding:11px 13px}
+.c360-ind-paint-meta-av{width:32px;height:32px;border-radius:50%;background:var(--paint-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px}
+.c360-ind-paint-meta-head strong{display:block;font-size:13.5px;color:#050505}
+.c360-ind-paint-meta-head span{font-size:12px;color:#65676B}
+.c360-ind-paint-meta-text{padding:0 13px 9px;font-size:13.5px;color:#050505;line-height:1.45}
+.c360-ind-paint-meta-img{display:grid;grid-template-columns:1fr 1fr;height:110px}
+.c360-ind-paint-meta-img span{display:flex;align-items:flex-start;padding:7px 9px;font-size:11.5px;font-weight:700;color:#fff}
+.c360-ind-paint-meta-img span:first-child{background:#B9AE92}
+.c360-ind-paint-meta-img span:last-child{background:#5F7F8E}
+.c360-ind-paint-meta-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 13px;background:#F0F2F5}
+.c360-ind-paint-meta-cta span{font-size:12.5px;color:#050505;font-weight:600}
+.c360-ind-paint-meta-cta em{font-style:normal;font-size:12.5px;font-weight:700;color:#050505;background:#E4E6EB;border-radius:6px;padding:6px 11px}
+
+/* ══════════ REVIEWS (big numbers) ══════════ */
+.c360-ind-paint-numbers{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1300px;margin:0 auto 52px;text-align:center}
+.c360-ind-paint-numbers li{padding:8px 16px}
+.c360-ind-paint-numbers strong{display:block;font-size:clamp(48px,5vw,72px);font-weight:800;line-height:1;letter-spacing:-0.03em;color:var(--paint-navy);margin-bottom:10px}
+.c360-ind-paint-numbers span{font-size:16px;color:var(--paint-muted)}
+
+/* ══════════ CTA (sand band with swatches) ══════════ */
+.c360-ind-paint-final{background:var(--paint-sand);padding:88px 0;text-align:center;border-top:1px solid var(--paint-sand-dark)}
+.c360-ind-paint-final .c360-ind-paint-swatch-row{display:flex;justify-content:center;gap:8px;margin-bottom:26px}
+.c360-ind-paint-final .c360-ind-paint-swatch-row span{width:40px;height:40px;border-radius:8px;border:3px solid #fff;box-shadow:0 6px 16px rgba(15,31,94,0.12)}
+.c360-ind-paint-final h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--paint-text);margin-bottom:16px}
+.c360-ind-paint-final p{font-size:18px;color:#3E3D39;max-width:660px;margin:0 auto 32px;line-height:1.65}
+.c360-ind-paint-final .c360-ind-paint-ctas{justify-content:center}
+
+/* ══════════ FAQ (two plain columns) ══════════ */
+.c360-ind-paint-faq-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 64px;max-width:1400px;margin:0 auto}
+.c360-ind-paint-faq-item{border-top:1px solid var(--paint-line)}
+.c360-ind-paint-faq-col .c360-ind-paint-faq-item:last-child{border-bottom:1px solid var(--paint-line)}
+.c360-ind-paint-faq-q{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:24px 4px;font-size:17px;font-weight:600;color:var(--paint-text);cursor:pointer;list-style:none}
+.c360-ind-paint-faq-q::-webkit-details-marker{display:none}
+.c360-ind-paint-faq-q::after{content:"";flex-shrink:0;width:14px;height:14px;border-right:2.5px solid var(--paint-green);border-bottom:2.5px solid var(--paint-green);transform:rotate(45deg) translate(-3px,-3px);transition:transform .2s}
+.c360-ind-paint-faq-item[open] .c360-ind-paint-faq-q::after{transform:rotate(225deg) translate(-3px,-3px)}
+.c360-ind-paint-faq-a{padding:0 4px 24px;font-size:16px;color:var(--paint-muted);line-height:1.7}
+.c360-ind-paint-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1200px){
+  .c360-ind-paint-chips{grid-template-columns:repeat(2,1fr)}
+  .c360-ind-paint-palette{grid-template-columns:repeat(2,1fr)}
+  .c360-ind-paint-col:nth-child(3){border-left:0}
+  .c360-ind-paint-coats{display:none}
+  .c360-ind-paint-col-swatch small{display:block}
+}
+@media (max-width:900px){
+  .c360-ind-paint-section{padding:76px 0}
+  .c360-ind-paint-hero-top,.c360-ind-paint-reality-head,.c360-ind-paint-feature{grid-template-columns:1fr;gap:32px}
+  .c360-ind-paint-hero-img{aspect-ratio:16/10}
+  .c360-ind-paint-row3{grid-template-columns:1fr}
+  .c360-ind-paint-numbers{grid-template-columns:1fr;gap:28px}
+  .c360-ind-paint-faq-cols{grid-template-columns:1fr}
+  .c360-ind-paint-faq-col:first-child .c360-ind-paint-faq-item:last-child{border-bottom:0}
+}
+@media (max-width:640px){
+  .c360-ind-paint-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-paint-hero{padding-top:40px}
+  .c360-ind-paint-chips,.c360-ind-paint-palette{grid-template-columns:1fr}
+  .c360-ind-paint-col{border-left:0;border-top:1px solid var(--paint-line)}
+  .c360-ind-paint-swatches{left:20px}
+  .c360-ind-paint-swatches span{width:44px;height:62px}
+  .c360-ind-paint-btn{width:100%}
+  .c360-ind-paint-partner{--badge-h:64px;--badge-clear:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-paint *,.c360-ind-paint *::before,.c360-ind-paint *::after{transition:none !important;animation:none !important}
+  .c360-ind-paint-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-paint">
+
+<!-- ══════════ HERO (editorial) ══════════ -->
+<section class="c360-ind-paint-hero">
+  <div class="c360-ind-paint-wrap">
+    <nav class="c360-ind-paint-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/industries">Industries</a></li>
+        <li aria-current="page">Painting</li>
+      </ol>
+    </nav>
+    <div class="c360-ind-paint-hero-top">
+      <h1>Painting contractor marketing that fills your calendar</h1>
+      <div>
+        <p class="c360-ind-paint-hero-sub">Homeowners pick a painter by looking: at reviews, at photos of past jobs, at who seems most professional. We make your painting company the obvious choice, then keep your calendar full from spring exteriors to winter interiors.</p>
+        <div class="c360-ind-paint-ctas">
+          <a href="/schedule-demo" class="c360-ind-paint-btn c360-ind-paint-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-paint-btn c360-ind-paint-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+      </div>
+    </div>
+    <div class="c360-ind-paint-hero-media">
+      <div class="c360-ind-paint-hero-img">
+        <!-- IMAGE PLACEHOLDER: paint-hero — painter rolling a fresh color onto an interior living room wall, wide shot, 16:9 (shown wide, about 21:8) -->
+        <img src="" data-c360-placeholder="paint-hero" alt="Painter rolling fresh paint onto an interior living room wall" fetchpriority="high">
+        <div class="c360-ind-paint-fallback" aria-hidden="true"><i class="fa-solid fa-paint-roller"></i></div>
+      </div>
+      <div class="c360-ind-paint-swatches" aria-hidden="true">
+        <span style="background:var(--paint-c1)"></span><span style="background:var(--paint-c2)"></span><span style="background:var(--paint-c3)"></span><span style="background:var(--paint-c5)"></span><span style="background:var(--paint-c6)"></span>
+      </div>
+    </div>
+    <div class="c360-ind-paint-creds">
+      <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-paint-partner">
+        <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+      </a>
+      <ul class="c360-ind-paint-creds-list">
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner with a Google Product Expert</li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-paint-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Helping painting companies nationwide since 2018</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE PAINTING REALITY (paint chips) ══════════ -->
+<section class="c360-ind-paint-section">
+  <div class="c360-ind-paint-wrap">
+    <div class="c360-ind-paint-reality-head">
+      <div>
+        <span class="c360-ind-paint-kicker"><i class="fa-solid fa-palette" aria-hidden="true"></i> What painters tell us</span>
+        <h2 class="c360-ind-paint-h2">The painting reality</h2>
+        <p class="c360-ind-paint-lead">Almost anyone can buy a roller, so homeowners have a lot of choices and very little to go on. The painters who grow are the ones who make their quality easy to see before the first estimate.</p>
+      </div>
+      <div class="c360-ind-paint-photo">
+        <!-- IMAGE PLACEHOLDER: paint-on-the-job — freshly painted home exterior with a painter packing up, or painter walking a homeowner through the finished room, 4:3 -->
+        <img src="" data-c360-placeholder="paint-on-the-job" alt="Freshly painted home exterior with a painter finishing up the job" loading="lazy">
+        <div class="c360-ind-paint-fallback" aria-hidden="true"><i class="fa-solid fa-brush"></i></div>
+      </div>
+    </div>
+    <div class="c360-ind-paint-chips">
+      <div class="c360-ind-paint-chip">
+        <div class="c360-ind-paint-chip-color" style="background:var(--paint-c1)"><b>Price shoppers</b><small>No. 01</small></div>
+        <h3>Underbid by guys with a truck and a ladder</h3>
+        <p>Homeowners who can't tell painters apart compare on price. You lose jobs to crews who skip the prep work you'd never skip.</p>
+      </div>
+      <div class="c360-ind-paint-chip">
+        <div class="c360-ind-paint-chip-color" style="background:var(--paint-c2)"><b>The seasons</b><small>No. 02</small></div>
+        <h3>Exterior season fills up, then drops off</h3>
+        <p>Spring and summer book out fast. When the weather turns, the exterior jobs stop and the schedule needs interior work to fill it.</p>
+      </div>
+      <div class="c360-ind-paint-chip is-light">
+        <div class="c360-ind-paint-chip-color" style="background:var(--paint-c3)"><b>Hidden work</b><small>No. 03</small></div>
+        <h3>Your best work never gets seen</h3>
+        <p>That crisp cut line and the cabinets that look factory-new live on your phone. Homeowners choosing a painter never see them.</p>
+      </div>
+      <div class="c360-ind-paint-chip is-light">
+        <div class="c360-ind-paint-chip-color" style="background:var(--paint-c4)"><b>Word of mouth</b><small>No. 04</small></div>
+        <h3>Referrals don't scale</h3>
+        <p>Happy customers send friends your way, but not on a schedule. Growing past word of mouth means being found by people who don't know you yet.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (palette) ══════════
+     Outcome first. Draft per the worksheet; confirm with Jared. -->
+<section class="c360-ind-paint-section c360-ind-paint-plan-bg" id="paint-plan">
+  <div class="c360-ind-paint-wrap">
+    <div class="c360-ind-paint-head">
+      <span class="c360-ind-paint-kicker">Your recommended plan</span>
+      <h2 class="c360-ind-paint-h2">A painting marketing plan, applied in two coats</h2>
+      <p class="c360-ind-paint-lead">The first coat makes you the painter homeowners trust. The second puts your work in front of more of them.</p>
+    </div>
+
+    <div class="c360-ind-paint-coats" aria-hidden="true">
+      <div class="c360-ind-paint-coat"><h3>First coat</h3><p>Start here</p></div>
+      <div class="c360-ind-paint-coat"><h3>Second coat</h3><p>Add as you grow</p></div>
+    </div>
+    <div class="c360-ind-paint-palette">
+      <div class="c360-ind-paint-col c1">
+        <div class="c360-ind-paint-col-swatch"><b>Get found</b><small>First coat</small></div>
+        <h4>Show up first when homeowners search for a painter</h4>
+        <p>Local Services Ads put you at the top of "painters near me" with your rating and the Google Verified badge, and you pay per lead, not per click.</p>
+        <div class="c360-ind-paint-pills"><a href="/local-service-ads">Local Service Ads</a></div>
+      </div>
+      <div class="c360-ind-paint-col c2">
+        <div class="c360-ind-paint-col-swatch"><b>Get chosen</b><small>First coat</small></div>
+        <h4>Look like the professional choice</h4>
+        <p>A Google Business Profile full of before-and-after photos and fresh reviews from every customer. Strong reviews also help your Local Services Ads rank.</p>
+        <div class="c360-ind-paint-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+      </div>
+      <div class="c360-ind-paint-col c3">
+        <div class="c360-ind-paint-col-swatch"><b>Get remembered</b><small>Second coat</small></div>
+        <h4>Show off your transformations</h4>
+        <p>Before-and-after ads on Facebook and Instagram, shown to homeowners in your area, so they think of you when it's time to paint.</p>
+        <div class="c360-ind-paint-pills"><a href="/meta-ads">Meta Ads</a></div>
+      </div>
+      <div class="c360-ind-paint-col c4">
+        <div class="c360-ind-paint-col-swatch"><b>Get bigger jobs</b><small>Second coat</small></div>
+        <h4>Win the whole-house and exterior jobs</h4>
+        <p>Search ads for exterior painting, cabinet refinishing and whole-home repaints, the projects that fill a week instead of a day.</p>
+        <div class="c360-ind-paint-pills"><a href="/google-ppc">Google PPC</a></div>
+      </div>
+    </div>
+
+    <div class="c360-ind-paint-plan-foot">
+      <p>Also available for painting companies: a <a href="/websites-home">website</a> with a project gallery, <a href="/seo-services">SEO Services</a> for steady traffic from Google and AI search, and the <a href="/ai-agents">AI Voice Agent</a> to answer calls while you're on a ladder. We'll help you decide what fits your goals.</p>
+      <p>Local Services Ads and Google Business Profile Management come together as our <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>. Every service's price is on its own page.</p>
+      <a href="/schedule-demo" class="c360-ind-paint-btn c360-ind-paint-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY ══════════ -->
+<section class="c360-ind-paint-section">
+  <div class="c360-ind-paint-wrap">
+    <div class="c360-ind-paint-head">
+      <span class="c360-ind-paint-kicker">How homeowners choose a painter</span>
+      <h2 class="c360-ind-paint-h2">From "we should repaint" to a booked crew</h2>
+      <p class="c360-ind-paint-lead">Painting is a visual decision. Here's where your company needs to show up, and what homeowners should see when it does.</p>
+    </div>
+
+    <div class="c360-ind-paint-feature">
+      <div>
+        <div class="c360-ind-paint-ba" id="paint-ba" role="group" aria-label="Before and after example of a repainted room">
+          <div class="c360-ind-paint-room is-before" aria-hidden="true"><span class="c360-ind-paint-crack"></span><span class="c360-ind-paint-frame"></span></div>
+          <div class="c360-ind-paint-room is-after" aria-hidden="true"><span class="c360-ind-paint-frame"></span></div>
+          <span class="c360-ind-paint-ba-tag is-l" aria-hidden="true">Before</span>
+          <span class="c360-ind-paint-ba-tag is-r" aria-hidden="true">After</span>
+          <span class="c360-ind-paint-ba-line" aria-hidden="true"></span>
+          <input type="range" min="0" max="100" value="50" aria-label="Drag to compare before and after">
+        </div>
+        <span class="c360-ind-paint-example">Drag to compare. Example for illustration</span>
+      </div>
+      <div class="c360-ind-paint-feature-copy">
+        <span class="c360-ind-paint-step">The thing that sells painting</span>
+        <h3>Let your before-and-afters do the selling</h3>
+        <p>Nothing convinces a homeowner like seeing a tired room or a faded exterior transformed. We put your best transformations where homeowners make their decision: on your Google Business Profile and in your ads.</p>
+        <p>Every finished job is a chance for a new photo and a new review, and we make sure neither goes to waste.</p>
+        <div class="c360-ind-paint-pills"><a href="/gbp-management">Google Business Profile Management</a><a href="/meta-ads">Meta Ads</a></div>
+      </div>
+    </div>
+
+    <div class="c360-ind-paint-row3">
+      <article class="c360-ind-paint-card">
+        <div class="c360-ind-paint-card-visual">
+          <div class="c360-ind-paint-mock">
+            <div class="c360-ind-paint-serp" role="img" aria-label="Example Google search for painters near me, with a Local Services Ad showing a 4.9 rating and the Google Verified badge">
+              <div class="c360-ind-paint-serp-bar"><i class="fa-solid fa-magnifying-glass"></i> painters near me</div>
+              <div class="c360-ind-paint-serp-tag">Sponsored</div>
+              <div class="c360-ind-paint-serp-ad">
+                <div class="c360-ind-paint-serp-name">Your Company Painting</div>
+                <div class="c360-ind-paint-serp-meta"><span class="c360-ind-paint-serp-rating">4.9</span><span class="c360-ind-paint-serp-stars">★★★★★</span><span>(176)</span></div>
+                <div class="c360-ind-paint-serp-meta" style="margin-top:4px"><span class="c360-ind-paint-serp-verified"><i class="fa-solid fa-circle-check"></i> Google Verified</span><span>Serves your area</span></div>
+              </div>
+            </div>
+          </div>
+          <span class="c360-ind-paint-example">Example listing for illustration</span>
+        </div>
+        <div class="c360-ind-paint-card-body">
+          <span class="c360-ind-paint-step">1 · Get found</span>
+          <h3>Be first on the list</h3>
+          <p>When a homeowner searches for a painter, Local Services Ads put you at the top with your stars and the Google Verified badge, which shows Google checked your license, insurance and background.</p>
+          <div class="c360-ind-paint-pills"><a href="/local-service-ads">Local Service Ads</a></div>
+        </div>
+      </article>
+
+      <article class="c360-ind-paint-card">
+        <div class="c360-ind-paint-card-visual">
+          <div class="c360-ind-paint-mock">
+            <div class="c360-ind-paint-sms" role="img" aria-label="Example review request text sent after a painting job, with the homeowner replying that they left a review">
+              <div class="c360-ind-paint-sms-from"><strong>Your Company Painting</strong>Text message, today 5:40 PM</div>
+              <p class="c360-ind-paint-sms-in">Hi Lauren, thanks for having our crew this week. Would you take 30 seconds to share how the living room turned out? <u>review link</u></p>
+              <p class="c360-ind-paint-sms-out">Just did! The lines are perfect and they left the place spotless.</p>
+            </div>
+          </div>
+          <span class="c360-ind-paint-example">Example message for illustration</span>
+        </div>
+        <div class="c360-ind-paint-card-body">
+          <span class="c360-ind-paint-step">2 · Get reviewed</span>
+          <h3>Turn every finished room into a review</h3>
+          <p>Every customer gets a short text with a direct link when the job wraps up. Fresh reviews win the comparison against the low bidder and help your Local Services Ads rank.</p>
+          <div class="c360-ind-paint-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+        </div>
+      </article>
+
+      <article class="c360-ind-paint-card">
+        <div class="c360-ind-paint-card-visual">
+          <div class="c360-ind-paint-mock">
+            <div class="c360-ind-paint-meta" role="img" aria-label="Example Facebook ad for a painting company showing a before and after exterior with a Get quote button">
+              <div class="c360-ind-paint-meta-head"><span class="c360-ind-paint-meta-av" aria-hidden="true"><i class="fa-solid fa-paint-roller"></i></span><div><strong>Your Company Painting</strong><span>Sponsored</span></div></div>
+              <p class="c360-ind-paint-meta-text">Same house, one week apart. Booking exterior projects for spring now.</p>
+              <div class="c360-ind-paint-meta-img" aria-hidden="true"><span>Before</span><span>After</span></div>
+              <div class="c360-ind-paint-meta-cta"><span>Interior and exterior painting</span><em>Get quote</em></div>
+            </div>
+          </div>
+          <span class="c360-ind-paint-example">Example ad for illustration</span>
+        </div>
+        <div class="c360-ind-paint-card-body">
+          <span class="c360-ind-paint-step">3 · Get remembered</span>
+          <h3>Fill the calendar before the season starts</h3>
+          <p>Meta Ads put your transformations in front of local homeowners ahead of exterior season, and Google PPC reaches people searching for bigger projects like exteriors and cabinet refinishing.</p>
+          <div class="c360-ind-paint-pills"><a href="/meta-ads">Meta Ads</a><a href="/google-ppc">Google PPC</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+  <script>
+  (function(){
+    var ba=document.getElementById('paint-ba'); if(!ba) return;
+    var r=ba.querySelector('input[type=range]');
+    function set(){ba.style.setProperty('--pos',r.value+'%');}
+    r.addEventListener('input',set); set();
+  })();
+  </script>
+</section>
+
+<!-- ══════════ REVIEWS (big numbers) ══════════
+     Same live Google reviews widget as /seo-services (location 1pBjHBEIsKGbwvAUTY9u). -->
+<section class="c360-ind-paint-section" style="padding-top:0">
+  <div class="c360-ind-paint-wrap">
+    <div class="c360-ind-paint-head" style="margin-bottom:44px">
+      <span class="c360-ind-paint-kicker">Our own reviews</span>
+      <h2 class="c360-ind-paint-h2">The proof is in our reviews too</h2>
+      <p class="c360-ind-paint-lead">We ask every client for a review, the same way we'll help you ask yours.</p>
+    </div>
+    <ul class="c360-ind-paint-numbers">
+      <li><strong>5.0</strong><span>Rating on Google</span></li>
+      <li><strong>147</strong><span>Five-star reviews</span></li>
+      <li><strong>2018</strong><span>Year founded · Certified Google Partner</span></li>
+    </ul>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (sand band) ══════════ -->
+<section class="c360-ind-paint-final">
+  <div class="c360-ind-paint-wrap">
+    <div class="c360-ind-paint-swatch-row" aria-hidden="true">
+      <span style="background:var(--paint-c1)"></span><span style="background:var(--paint-c2)"></span><span style="background:var(--paint-c3)"></span><span style="background:var(--paint-c5)"></span><span style="background:var(--paint-c6)"></span>
+    </div>
+    <h2>Ready for a fuller calendar?</h2>
+    <p>Book a free strategy call. We'll look at how homeowners in your area find painters today and show you where you can stand out.</p>
+    <div class="c360-ind-paint-ctas">
+      <a href="/schedule-demo" class="c360-ind-paint-btn c360-ind-paint-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+      <a href="tel:+18665276205" class="c360-ind-paint-btn c360-ind-paint-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (two plain columns) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-paint-section" id="paint-faq">
+  <div class="c360-ind-paint-wrap">
+    <div class="c360-ind-paint-head">
+      <h2 class="c360-ind-paint-h2">Painting marketing questions</h2>
+    </div>
+    <div class="c360-ind-paint-faq-cols">
+      <div class="c360-ind-paint-faq-col">
+
+        <details class="c360-ind-paint-faq-item">
+          <summary class="c360-ind-paint-faq-q">How do painting contractors get more leads?</summary>
+          <div class="c360-ind-paint-faq-a"><p>Make it easy for homeowners to find you and easy to see the quality of your work. Start with Local Services Ads at the top of painter searches and a Google Business Profile full of before-and-after photos and fresh reviews. Then add Meta Ads to show your transformations around town and Google PPC for exterior and whole-house projects.</p></div>
+        </details>
+
+        <details class="c360-ind-paint-faq-item">
+          <summary class="c360-ind-paint-faq-q">Can painters use Google Local Services Ads?</summary>
+          <div class="c360-ind-paint-faq-a"><p>Yes. Painting is one of the categories Google offers Local Services Ads for. You pay per lead instead of per click, and the ad shows your rating and Google Verified badge. Lead volume depends on your reviews, budget, service area and how quickly you respond, so we pair it with Google Business Profile Management. We'll confirm eligibility for your area on the strategy call.</p></div>
+        </details>
+
+        <details class="c360-ind-paint-faq-item">
+          <summary class="c360-ind-paint-faq-q">What does Google Verified mean for a painting company?</summary>
+          <div class="c360-ind-paint-faq-a"><p>It's the badge on Local Services Ads showing that Google has checked your business, which can include your contractor license, insurance and background checks depending on your state. It replaced the Google Guaranteed and Google Screened badges in October 2025, and we walk you through verification during setup.</p></div>
+        </details>
+
+        <details class="c360-ind-paint-faq-item">
+          <summary class="c360-ind-paint-faq-q">How do I compete with painters who bid lower?</summary>
+          <div class="c360-ind-paint-faq-a"><p>Give homeowners a reason to pay for quality. A steady stream of recent reviews, photos that show your prep and finish work, and ads that keep your name in front of them all make the cheapest bid look like the risky one. Homeowners who already trust you before the estimate are less likely to shop on price alone.</p></div>
+        </details>
+
+      </div>
+      <div class="c360-ind-paint-faq-col">
+
+        <details class="c360-ind-paint-faq-item">
+          <summary class="c360-ind-paint-faq-q">How do I book exterior jobs before the season starts?</summary>
+          <div class="c360-ind-paint-faq-a"><p>Reach homeowners while they're still planning. Meta Ads with your exterior before-and-afters can run in the weeks before your season, and Google PPC catches people searching for exterior painting quotes. Booking early helps you plan crews instead of scrambling once the weather turns.</p></div>
+        </details>
+
+        <details class="c360-ind-paint-faq-item">
+          <summary class="c360-ind-paint-faq-q">Why do before-and-after photos matter so much?</summary>
+          <div class="c360-ind-paint-faq-a"><p>Painting is judged by how it looks, and homeowners can't picture your quality from a description. Before-and-after photos on your Google Business Profile and in your ads show exactly what they'll get, which builds trust faster than anything you could write.</p></div>
+        </details>
+
+        <details class="c360-ind-paint-faq-item">
+          <summary class="c360-ind-paint-faq-q">Can you guarantee a number of painting leads?</summary>
+          <div class="c360-ind-paint-faq-a"><p>No. No one can promise rankings or a set number of leads. For Google Business Profile Management and advertising campaigns, including Local Services Ads, Meta Ads and Google PPC, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+        </details>
+
+        <details class="c360-ind-paint-faq-item">
+          <summary class="c360-ind-paint-faq-q">How much does painting marketing cost?</summary>
+          <div class="c360-ind-paint-faq-a"><p>Each service's price is on its own page, including <a href="/local-service-ads">Local Service Ads</a> and <a href="/gbp-management">Google Business Profile Management</a>. Meta Ads and Google PPC are planned with you on a strategy call, and ad spend is billed directly by Meta or Google. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+        </details>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+</div>

@@ -29,7 +29,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-51 of 68 pages have code. Multi-snippet pages (checkouts) are a folder of
+52 of 69 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -78,6 +78,7 @@ and `schema/pages/industries/[slug].html` (schema, pasted in one batch after eve
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
+| `industries/painting.html` | Painting Contractor Marketing (new page at /industries/painting) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (editorial hero with swatches, paint-chip reality cards, two-coat palette plan, before/after slider + three cards, big-number reviews, sand CTA, two-column FAQ). Plan (draft) to confirm with Jared. Images to make (`paint-hero`, `paint-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/painting.md`, publish. Schema waits for the batch. |
 | `industries/general-contractors.html` | General Contractor Marketing (new page at /industries/general-contractors) | ✅ Code in repo | v1.1: same dimensions as the other industry pages, different layout (split sand hero, blueprint reality, phased plan, 2x2 journey cards, two-column FAQ). Plan (draft) to confirm with Jared. Images to make (`gc-hero`, `gc-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/general-contractors.md`, publish. Schema waits for the batch. |
 | `industries/plumbing.html` | Plumbing Marketing (new page at /industries/plumbing) | ✅ Code in repo | v1.1: same system as HVAC v1.3 with variations; reality rows spread to fill the column. Plan (draft) to confirm with Jared. Images to make (`plumb-hero`, `plumb-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/plumbing.md`, publish. Schema waits for the batch. |
 | `industries/hvac.html` | HVAC Marketing (new page at /industries/hvac) | ✅ Code in repo | v1.3: outcome-column plan, 1680px width, reviews widget; reputation folded into Google Business Profile Management. Images to make (`hvac-hero`, `hvac-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/hvac.md`, publish. Breadcrumb links to /industries (hub not built yet). Schema waits for the batch. |
