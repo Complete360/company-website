@@ -79,6 +79,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Medicare Agent Marketing | `/industries/medicare-agents` | `schema/pages/industries/medicare-agents.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Health Insurance Agent Marketing | `/industries/health-insurance` | `schema/pages/industries/health-insurance.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Mortgage Marketing | `/industries/mortgage` | `schema/pages/industries/mortgage.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Auto Repair Shop Marketing | `/industries/auto-shops` | `schema/pages/industries/auto-shops.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Website Pricing | `/website-pricing` | `schema/pages/pricing/website-pricing.html` | WebPage, FAQPage | 7 | ✅ |
 | Complete360 CRM Pricing | `/pricing` | `schema/pages/pricing/saas-pricing.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Complete360 CRM | `/crm-home` | `schema/pages/crm-platform/crm-home.html` | WebPage, SoftwareApplication, FAQPage | 8 | ✅ |

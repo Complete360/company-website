@@ -29,7 +29,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-60 of 77 pages have code. Multi-snippet pages (checkouts) are a folder of
+61 of 78 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -78,6 +78,7 @@ and `schema/pages/industries/[slug].html` (schema, pasted in one batch after eve
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
+| `industries/auto-shops.html` | Auto Repair Shop Marketing (new page at /industries/auto-shops) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (garage-door hero with open-bay photo, dashboard warning lights, menu-board plan, road-and-signposts journey, odometer reviews, checkered CTA, owner's-manual FAQ). Plan (draft) to confirm with Jared. Images to make (`auto-hero`, `auto-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/auto-shops.md`, publish. Schema waits for the batch. |
 | `industries/mortgage.html` | Mortgage Marketing (new page at /industries/mortgage) | ✅ Code in repo | v1.1: same dimensions as the other industry pages, own layout (split hero with photo left and loan tracker, heading column + loan-file folders, Gantt-style plan timeline, hub-and-spoke journey with the loan officer photo at the center, chip reviews, certificate CTA with seal, dark FAQ, disclaimer). Management/legal review recommended (mortgage advertising rules, NMLS). Plan (draft) to confirm with Jared. Images to make (`mort-hero`, `mort-on-the-job` = loan officer portrait), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/mortgage.md`, publish. Schema waits for the batch. |
 | `industries/health-insurance.html` | Health Insurance Agent Marketing (new page at /industries/health-insurance) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (white hero with mint shape and member card, audience cards plus agent strip, four coverage levels with meters, three-segment ribbon journey, mint review banner, booking-card CTA, tinted FAQ, not-affiliated note). Management/legal read recommended (insurance marketing). Plan (draft) to confirm with Jared. Images to make (`health-hero`, `health-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/health-insurance.md`, publish. Schema waits for the batch. |
 | `industries/medicare-agents.html` | Medicare Agent Marketing (new page at /industries/medicare-agents) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (inset hero card, Medicare calendar plus problem cards, summary-of-benefits plan table, center-spine journey, stat-band reviews, photo + two-option CTA, Q-badge FAQ, not-affiliated note). ⚠ Do not publish until management/legal review (CMS marketing rules; worksheet open item). Plan (draft) to confirm with Jared. Images to make (`medi-hero`, `medi-on-the-job`). Schema waits for the batch. |

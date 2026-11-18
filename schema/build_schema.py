@@ -173,6 +173,8 @@ page("/industries/health-insurance", "industries/health-insurance.html", "Health
      service="Health Insurance Agent Marketing", serviceType="Marketing for licensed health insurance agents", audience="Health insurance agents")
 page("/industries/mortgage", "industries/mortgage.html", "Mortgage Marketing", "industry", parent=IND,
      service="Mortgage Marketing", serviceType="Marketing for mortgage loan officers and brokers", audience="Mortgage loan officers")
+page("/industries/auto-shops", "industries/auto-shops.html", "Auto Repair Shop Marketing", "industry", parent=IND,
+     service="Auto Repair Shop Marketing", serviceType="Marketing for auto repair shops", audience="Auto repair shops")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
