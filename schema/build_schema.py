@@ -169,6 +169,8 @@ page("/industries/real-estate", "industries/real-estate.html", "Real Estate Mark
      service="Real Estate Marketing", serviceType="Marketing for real estate agents and brokerages", audience="Real estate agents")
 page("/industries/medicare-agents", "industries/medicare-agents.html", "Medicare Agent Marketing", "industry", parent=IND,
      service="Medicare Agent Marketing", serviceType="Marketing for licensed Medicare insurance agents", audience="Licensed Medicare agents")
+page("/industries/health-insurance", "industries/health-insurance.html", "Health Insurance Agent Marketing", "industry", parent=IND,
+     service="Health Insurance Agent Marketing", serviceType="Marketing for licensed health insurance agents", audience="Health insurance agents")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
