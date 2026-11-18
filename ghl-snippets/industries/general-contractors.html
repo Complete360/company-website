@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: General Contractors
-     c360-ind-gc-v1.0.html
+     c360-ind-gc-v1.1.html
      GHL: Paste into a Custom Code block on the new page at
           /industries/general-contractors (page name "General Contractor Marketing").
           Meta data: ghl-meta/industries/general-contractors.md.
@@ -35,6 +35,9 @@
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
      No SEO notice: SEO Services is mentioned but not advertised as a
      Google service; the footer carries the notice.
+
+     v1.1 (2026-11-12) — Reviews section: heading, kicker and description
+       stacked and centered; the three trust stats centered in their columns.
 
      v1.0 (2026-11-12) — first build. Plan per the worksheet draft
        (Google Business Profile Management incl. reviews + Local Service
@@ -231,11 +234,11 @@
 .c360-ind-gc-form-btn{display:block;text-align:center;background:var(--gc-green);color:#fff;font-size:14px;font-weight:700;border-radius:8px;padding:11px}
 
 /* ══════════ REVIEWS (with trust stats) ══════════ */
-.c360-ind-gc-reviews-head{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:end;margin-bottom:44px}
-.c360-ind-gc-reviews-head .c360-ind-gc-h2{margin-bottom:0}
+.c360-ind-gc-reviews-head{text-align:center;max-width:900px;margin:0 auto 44px}
+.c360-ind-gc-reviews-head .c360-ind-gc-lead{margin:0 auto}
 .c360-ind-gc-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--gc-line);border-bottom:1px solid var(--gc-line);margin-bottom:44px}
-.c360-ind-gc-stats li{padding:26px 28px;border-left:1px solid var(--gc-line)}
-.c360-ind-gc-stats li:first-child{border-left:0;padding-left:0}
+.c360-ind-gc-stats li{padding:28px;border-left:1px solid var(--gc-line);text-align:center}
+.c360-ind-gc-stats li:first-child{border-left:0}
 .c360-ind-gc-stats strong{display:block;font-size:30px;font-weight:800;letter-spacing:-0.01em;color:var(--gc-text);line-height:1.2}
 .c360-ind-gc-stats span{font-size:15px;color:var(--gc-muted)}
 
@@ -272,11 +275,11 @@
   .c360-ind-gc-hero{grid-template-columns:1fr;min-height:0}
   .c360-ind-gc-hero-copy{padding:48px 24px 40px}
   .c360-ind-gc-hero-media{aspect-ratio:16/10;order:-1}
-  .c360-ind-gc-reality-head,.c360-ind-gc-journey-head,.c360-ind-gc-reviews-head,.c360-ind-gc-faq{grid-template-columns:1fr;gap:28px}
+  .c360-ind-gc-reality-head,.c360-ind-gc-journey-head,.c360-ind-gc-faq{grid-template-columns:1fr;gap:28px}
   .c360-ind-gc-cards{grid-template-columns:1fr}
   .c360-ind-gc-cta{grid-template-columns:1fr;padding:44px 32px}
   .c360-ind-gc-stats{grid-template-columns:1fr}
-  .c360-ind-gc-stats li{border-left:0;border-top:1px solid var(--gc-line);padding-left:0}
+  .c360-ind-gc-stats li{border-left:0;border-top:1px solid var(--gc-line);padding:22px 0}
   .c360-ind-gc-stats li:first-child{border-top:0}
 }
 @media (max-width:640px){
@@ -558,10 +561,8 @@
 <section class="c360-ind-gc-section">
   <div class="c360-ind-gc-wrap">
     <div class="c360-ind-gc-reviews-head">
-      <div>
-        <span class="c360-ind-gc-kicker">Our own reviews</span>
-        <h2 class="c360-ind-gc-h2">We practice what we preach</h2>
-      </div>
+      <span class="c360-ind-gc-kicker">Our own reviews</span>
+      <h2 class="c360-ind-gc-h2">We practice what we preach</h2>
       <p class="c360-ind-gc-lead">We ask every client for a review, just like we will for you. Here's what they say.</p>
     </div>
     <ul class="c360-ind-gc-stats">
