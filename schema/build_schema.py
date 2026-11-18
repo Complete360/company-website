@@ -167,6 +167,8 @@ page("/industries/pest-control", "industries/pest-control.html", "Pest Control M
      service="Pest Control Marketing", serviceType="Marketing for pest control companies", audience="Pest control companies")
 page("/industries/real-estate", "industries/real-estate.html", "Real Estate Marketing", "industry", parent=IND,
      service="Real Estate Marketing", serviceType="Marketing for real estate agents and brokerages", audience="Real estate agents")
+page("/industries/medicare-agents", "industries/medicare-agents.html", "Medicare Agent Marketing", "industry", parent=IND,
+     service="Medicare Agent Marketing", serviceType="Marketing for licensed Medicare insurance agents", audience="Licensed Medicare agents")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")

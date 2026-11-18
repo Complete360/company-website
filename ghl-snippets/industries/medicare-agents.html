@@ -1,0 +1,630 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Medicare Agents
+     c360-ind-medi-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at
+          /industries/medicare-agents (page name "Medicare Agent Marketing").
+          Meta data: ghl-meta/industries/medicare-agents.md.
+          Schema: schema/pages/industries/medicare-agents.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-medi-  (new, unique; vars --medi-*)
+
+     ⚠ NEEDS MANAGEMENT / LEGAL REVIEW BEFORE PUBLISHING (worksheet open
+     item: CMS marketing rules). This page markets Complete360 to licensed
+     agents; the ads we run for agents are subject to CMS rules. Copy is
+     written to avoid plan or benefit claims, government-affiliation
+     implications and unsolicited-contact promises, and says the agent
+     approves every ad, page and form before it runs. Review especially:
+     the AI Voice Agent wording, review requests, and the compliance FAQ.
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from the other pages), calendar themed:
+       - Hero: an inset rounded navy card (not full bleed) with text left
+         and the photo inside the card on the right.
+       - Reality: a 12-month enrollment calendar (AEP, MA OEP, turning 65
+         all year) above four problem cards tied to it.
+       - Plan: a "Summary of benefits" document table (service, what it
+         does, when to add it).
+       - Journey: center-spine timeline with cards alternating left/right.
+       - Reviews with a stat band, two-option CTA beside a photo, FAQ with
+         Q badges, and a not-affiliated-with-Medicare note.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       medi-hero        16:9, 2000px+ (inside the hero card, right half)
+       medi-on-the-job  4:3, 1200px+  (closing CTA, left)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-12) — first build. Plan per the worksheet draft: Meta
+       Ads + Google Business Profile Management (incl. reviews) first;
+       grow with the AI Voice Agent and Complete360 CRM. Website and SEO
+       Services as "also available". No Local Services Ads. To be
+       confirmed by Jared and reviewed by management/legal.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-medi{
+  --medi-navy:#122078;--medi-navy-dark:#0d1654;--medi-navy-deeper:#0a1040;
+  --medi-green:#127825;--medi-green-hover:#0e5e1d;--medi-green-light:#EAF3DE;
+  --medi-sand:#F1EFE8;--medi-mist:#F4F7FC;--medi-line:#E7EBF3;--medi-blue-light:#E6F1FB;
+  --medi-aep:#127825;--medi-oep:#3A6FB8;--medi-t65:#C9A66B;
+  --medi-text:#0F1F5E;--medi-muted:#5F5E5A;
+  --medi-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--medi-font);color:var(--medi-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-medi *,.c360-ind-medi *::before,.c360-ind-medi *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-medi :where(h1,h2,h3,h4,p,ul,ol,li,table,th,td){margin:0;padding:0;font-family:var(--medi-font)}
+.c360-ind-medi :where(ul,ol){list-style:none}
+.c360-ind-medi :where(a){color:var(--medi-navy)}
+.c360-ind-medi a:focus-visible,.c360-ind-medi summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-medi-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-medi-section{padding:104px 0}
+.c360-ind-medi-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--medi-text);margin-bottom:16px}
+.c360-ind-medi-lead{font-size:18px;color:var(--medi-muted);max-width:760px;line-height:1.65}
+.c360-ind-medi-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--medi-green);margin-bottom:14px}
+.c360-ind-medi-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-medi-head .c360-ind-medi-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-medi-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--medi-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-medi-btn-primary{background:var(--medi-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.32)}
+.c360-ind-medi-btn-primary:hover{background:var(--medi-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-medi-btn-outline{background:#fff;color:var(--medi-navy);border:2px solid var(--medi-navy);padding:14px 24px}
+.c360-ind-medi-btn-outline:hover{background:var(--medi-navy);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-medi-btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.6);padding:14px 24px}
+.c360-ind-medi-btn-ghost:hover{border-color:#fff;color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-medi a.c360-ind-medi-btn-primary,.c360-ind-medi a.c360-ind-medi-btn-ghost{color:#fff}
+.c360-ind-medi a.c360-ind-medi-btn-outline{color:var(--medi-navy)}
+.c360-ind-medi a.c360-ind-medi-btn-outline:hover{color:#fff}
+.c360-ind-medi-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-medi-pills{display:flex;flex-wrap:wrap;gap:10px}
+.c360-ind-medi-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--medi-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-medi-pills a:hover{background:var(--medi-navy);border-color:var(--medi-navy);color:#fff;text-decoration:none}
+
+/* ══════════ HERO (inset card) ══════════ */
+.c360-ind-medi-hero{padding:24px 0 0;background:#fff}
+.c360-ind-medi-hero-card{display:grid;grid-template-columns:1.1fr 0.9fr;gap:0;background:linear-gradient(150deg,var(--medi-navy) 0%,var(--medi-navy-deeper) 100%);border-radius:32px;overflow:hidden;color:#fff;min-height:620px}
+.c360-ind-medi-hero-copy{padding:64px 56px 56px 64px;display:flex;flex-direction:column;justify-content:center}
+.c360-ind-medi-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-medi-crumbs li{color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:8px}
+.c360-ind-medi-crumbs li+li::before{content:"\203A";color:rgba(255,255,255,0.45)}
+.c360-ind-medi-crumbs a{color:#fff;text-decoration:none}
+.c360-ind-medi-crumbs a:hover{text-decoration:underline}
+.c360-ind-medi-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:#fff;margin-bottom:22px}
+.c360-ind-medi-hero-sub{font-size:18px;line-height:1.65;color:rgba(255,255,255,0.85);max-width:640px;margin-bottom:32px}
+.c360-ind-medi-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-ind-medi-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-medi-partner img{display:block;height:var(--badge-h);width:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,0.3));border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-medi-partner,.c360-ind-medi-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-medi-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+.c360-ind-medi-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.8);line-height:1.4}
+.c360-ind-medi-creds-list i{color:#2ecc52;margin-top:3px;font-size:12px}
+.c360-ind-medi-stars{color:#FBBC04;letter-spacing:1px}
+.c360-ind-medi-hero-media{position:relative;margin:20px 20px 20px 0;border-radius:22px;overflow:hidden;background:repeating-linear-gradient(135deg,#25358F 0 18px,#2C3D99 18px 36px)}
+.c360-ind-medi-hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-medi-hero-media img[src=""],.c360-ind-medi-hero-media img:not([src]){visibility:hidden}
+.c360-ind-medi-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.35);font-size:60px;pointer-events:none}
+.c360-ind-medi-hero-media img[src]:not([src=""])+.c360-ind-medi-fallback,.c360-ind-medi-cta-media img[src]:not([src=""])+.c360-ind-medi-fallback{display:none}
+.c360-ind-medi-hero-note{position:absolute;left:20px;bottom:20px;right:20px;display:flex;align-items:center;gap:12px;background:rgba(255,255,255,0.95);color:var(--medi-text);border-radius:14px;padding:14px 16px;font-size:14px;font-weight:600;box-shadow:0 12px 30px rgba(0,0,0,0.18)}
+.c360-ind-medi-hero-note i{width:36px;height:36px;border-radius:10px;background:var(--medi-green-light);color:var(--medi-green);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+
+/* ══════════ REALITY (calendar + cards) ══════════ */
+.c360-ind-medi-cal{max-width:1500px;margin:0 auto 40px;background:#fff;border:1px solid var(--medi-line);border-radius:24px;padding:30px 34px 26px;box-shadow:0 16px 40px rgba(15,31,94,0.07)}
+.c360-ind-medi-cal-top{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-bottom:18px}
+.c360-ind-medi-cal-top strong{font-size:17px;font-weight:800;color:var(--medi-text)}
+.c360-ind-medi-cal-key{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:13px;font-weight:600;color:var(--medi-muted)}
+.c360-ind-medi-cal-key span{display:inline-flex;align-items:center;gap:7px}
+.c360-ind-medi-cal-key i{display:inline-block;width:14px;height:10px;border-radius:3px}
+.c360-ind-medi-months{display:grid;grid-template-columns:repeat(12,1fr);gap:4px}
+.c360-ind-medi-months span{text-align:center;font-size:12.5px;font-weight:700;color:var(--medi-muted);padding:6px 0}
+.c360-ind-medi-bars{position:relative;height:96px;margin-top:6px;background:repeating-linear-gradient(90deg,var(--medi-mist) 0 calc(100%/12 - 4px),transparent calc(100%/12 - 4px) calc(100%/12));border-radius:8px}
+.c360-ind-medi-bar{position:absolute;height:26px;border-radius:7px;display:flex;align-items:center;padding:0 10px;font-size:12px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden}
+.c360-ind-medi-bar.is-t65{top:6px;left:0;right:0;background:var(--medi-t65);color:var(--medi-text)}
+.c360-ind-medi-bar.is-oep{top:38px;left:0;width:25%;background:var(--medi-oep)}
+.c360-ind-medi-bar.is-aep{top:64px;left:calc(100%/12*9 + 100%/12*14/31);width:calc(100%/12*(17/31 + 1 + 7/31));background:var(--medi-aep)}
+.c360-ind-medi-cal-foot{font-size:12.5px;color:var(--medi-muted);margin-top:12px}
+.c360-ind-medi-probs{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;max-width:1500px;margin:0 auto}
+.c360-ind-medi-prob{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;background:#fff;border:1px solid var(--medi-line);border-radius:20px;padding:26px 24px 28px}
+@supports not (grid-template-rows:subgrid){.c360-ind-medi-prob h3{min-height:2.7em}}
+.c360-ind-medi-prob-tag{align-self:start;justify-self:start;font-size:12px;font-weight:700;border-radius:6px;padding:4px 10px;margin-bottom:14px}
+.c360-ind-medi-prob h3{font-size:19px;font-weight:700;line-height:1.35;color:var(--medi-text);margin-bottom:8px;align-self:start}
+.c360-ind-medi-prob p{font-size:16px;color:var(--medi-muted);line-height:1.65}
+
+/* ══════════ PLAN (summary of benefits) ══════════ */
+.c360-ind-medi-plan-bg{background:var(--medi-sand)}
+.c360-ind-medi-doc{max-width:1400px;margin:0 auto;background:#fff;border-radius:6px;box-shadow:0 2px 0 #E4E0D4,0 28px 64px rgba(60,52,30,0.14);padding:48px 52px 40px;position:relative}
+.c360-ind-medi-doc::before{content:"";position:absolute;top:0;left:0;right:0;height:8px;background:var(--medi-navy);border-radius:6px 6px 0 0}
+.c360-ind-medi-doc-top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;padding-bottom:20px;border-bottom:2px solid var(--medi-text);margin-bottom:6px}
+.c360-ind-medi-doc-top h3{font-size:clamp(22px,2.4vw,30px);font-weight:800;color:var(--medi-text);letter-spacing:-0.01em}
+.c360-ind-medi-doc-top dl{display:flex;gap:28px;margin:0;font-size:14px}
+.c360-ind-medi-doc-top dt{color:var(--medi-muted);font-size:12.5px}
+.c360-ind-medi-doc-top dd{margin:0;font-weight:700;color:var(--medi-text)}
+.c360-ind-medi-doc table{width:100%;border-collapse:collapse}
+.c360-ind-medi-doc th{text-align:left;font-size:12.5px;font-weight:700;color:var(--medi-muted);padding:14px 16px 10px;border-bottom:1px solid var(--medi-line)}
+.c360-ind-medi-doc tbody th{font-size:14px;color:#fff;background:var(--medi-navy);padding:10px 16px;border:0}
+.c360-ind-medi-doc tbody tr.is-grow-head th{background:var(--medi-oep)}
+.c360-ind-medi-doc td{padding:22px 16px;border-bottom:1px solid var(--medi-line);vertical-align:top}
+.c360-ind-medi-doc td:first-child{width:38%}
+.c360-ind-medi-doc td:nth-child(2){width:22%}
+.c360-ind-medi-doc td h4{font-size:18px;font-weight:700;line-height:1.35;color:var(--medi-text);margin-bottom:4px}
+.c360-ind-medi-doc td p{font-size:15.5px;color:var(--medi-muted);line-height:1.6}
+.c360-ind-medi-when{display:inline-flex;align-items:center;gap:7px;font-size:13.5px;font-weight:600;color:var(--medi-text);background:var(--medi-mist);border-radius:100px;padding:6px 12px}
+.c360-ind-medi-doc-foot{font-size:14px;color:var(--medi-muted);line-height:1.6;padding-top:18px}
+.c360-ind-medi-doc-foot a{font-weight:600}
+.c360-ind-medi-plan-foot{text-align:center;max-width:820px;margin:40px auto 0}
+.c360-ind-medi-plan-foot p{font-size:15.5px;color:var(--medi-muted);line-height:1.65}
+.c360-ind-medi-plan-foot .c360-ind-medi-btn{margin-top:24px}
+
+/* ══════════ JOURNEY (center spine) ══════════ */
+.c360-ind-medi-spine{position:relative;max-width:1400px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;column-gap:96px;row-gap:28px}
+.c360-ind-medi-spine::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:3px;margin-left:-1.5px;background:linear-gradient(180deg,var(--medi-t65),var(--medi-navy) 60%,var(--medi-aep))}
+.c360-ind-medi-stop{position:relative;background:#fff;border:1px solid var(--medi-line);border-radius:22px;padding:28px 30px 30px;box-shadow:0 14px 36px rgba(15,31,94,0.07)}
+.c360-ind-medi-stop:nth-child(odd){grid-column:1}
+.c360-ind-medi-stop:nth-child(even){grid-column:2;margin-top:110px}
+.c360-ind-medi-stop::before{content:"";position:absolute;top:34px;width:20px;height:20px;border-radius:50%;background:#fff;border:5px solid var(--medi-green)}
+.c360-ind-medi-stop:nth-child(odd)::before{right:-59px}
+.c360-ind-medi-stop:nth-child(even)::before{left:-59px}
+.c360-ind-medi-stop-when{display:inline-flex;align-items:center;gap:8px;font-size:13.5px;font-weight:700;color:var(--medi-green);margin-bottom:8px}
+.c360-ind-medi-stop h3{font-size:clamp(21px,2vw,26px);font-weight:800;line-height:1.25;color:var(--medi-text);margin-bottom:10px}
+.c360-ind-medi-stop > p{font-size:16px;color:var(--medi-muted);line-height:1.7;margin-bottom:18px}
+.c360-ind-medi-mini{background:var(--medi-mist);border-radius:14px;padding:16px;margin-bottom:18px}
+.c360-ind-medi-example{display:block;font-size:12px;color:var(--medi-muted);text-align:center;margin-top:8px}
+
+/* Mini mock: Meta lead form */
+.c360-ind-medi-form{background:#fff;border:1px solid var(--medi-line);border-radius:12px;padding:14px;font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-medi-form-head{display:flex;align-items:center;gap:9px;margin-bottom:10px}
+.c360-ind-medi-form-head span{width:28px;height:28px;border-radius:50%;background:var(--medi-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px}
+.c360-ind-medi-form-head strong{font-size:13px;color:#050505;display:block}
+.c360-ind-medi-form-head em{font-style:normal;font-size:11.5px;color:#65676B}
+.c360-ind-medi-form p{font-size:13px;color:#050505;line-height:1.45;margin-bottom:8px}
+.c360-ind-medi-form-field{border:1px solid #DADDE1;border-radius:6px;padding:7px 10px;font-size:12.5px;color:#65676B;margin-bottom:6px}
+.c360-ind-medi-form-consent{font-size:11px;color:#65676B;line-height:1.4;margin:6px 0 8px}
+.c360-ind-medi-form-btn{display:block;text-align:center;background:#1877F2;color:#fff;font-size:13px;font-weight:700;border-radius:6px;padding:8px}
+/* Mini mock: profile + review */
+.c360-ind-medi-gbp{background:#fff;border:1px solid var(--medi-line);border-radius:12px;padding:14px;font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-medi-gbp strong{display:block;font-size:15px;color:#202124;font-weight:400}
+.c360-ind-medi-gbp > span{display:block;font-size:12.5px;color:#4D5156;margin-bottom:8px}
+.c360-ind-medi-gbp p{font-size:13px;color:#3C4043;line-height:1.5;border-top:1px solid #E8EAED;padding-top:8px}
+.c360-ind-medi-gbp b{color:#202124}
+.c360-ind-medi-stars2{color:#FBBC04;letter-spacing:1px}
+/* Mini mock: appointment booked */
+.c360-ind-medi-appt{background:var(--medi-navy-deeper);color:#fff;border-radius:12px;padding:14px}
+.c360-ind-medi-appt-head{display:flex;align-items:center;gap:9px;font-size:13px;margin-bottom:10px}
+.c360-ind-medi-appt-head i{width:28px;height:28px;border-radius:50%;background:rgba(46,204,82,0.2);color:#2ecc52;display:flex;align-items:center;justify-content:center;font-size:12px}
+.c360-ind-medi-appt dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13px}
+.c360-ind-medi-appt dt{color:rgba(255,255,255,0.6)}
+.c360-ind-medi-appt dd{margin:0;font-weight:600}
+/* Mini mock: annual review reminder */
+.c360-ind-medi-sms{display:flex;flex-direction:column;gap:6px}
+.c360-ind-medi-sms p{font-size:13px;line-height:1.45;padding:8px 12px;border-radius:14px;max-width:92%}
+.c360-ind-medi-sms .is-in{background:#fff;border:1px solid var(--medi-line);color:#1C1C1E;border-bottom-left-radius:4px}
+.c360-ind-medi-sms .is-out{background:var(--medi-green);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+
+/* ══════════ REVIEWS (stat band) ══════════ */
+.c360-ind-medi-band{display:grid;grid-template-columns:repeat(3,1fr);background:var(--medi-navy);color:#fff;border-radius:22px 22px 0 0;max-width:1500px;margin:0 auto}
+.c360-ind-medi-band li{padding:24px 28px;text-align:center;border-left:1px solid rgba(255,255,255,0.14)}
+.c360-ind-medi-band li:first-child{border-left:0}
+.c360-ind-medi-band strong{display:block;font-size:22px;font-weight:800;line-height:1.25}
+.c360-ind-medi-band span{font-size:14px;color:rgba(255,255,255,0.72)}
+.c360-ind-medi-review-box{max-width:1500px;margin:0 auto;border:1px solid var(--medi-line);border-top:0;border-radius:0 0 22px 22px;padding:28px}
+
+/* ══════════ CTA (photo + two options) ══════════ */
+.c360-ind-medi-cta{display:grid;grid-template-columns:0.9fr 1.1fr;gap:28px;max-width:1500px;margin:0 auto;align-items:stretch}
+.c360-ind-medi-cta-media{position:relative;border-radius:26px;overflow:hidden;min-height:440px;background:repeating-linear-gradient(135deg,#DAD5C8 0 16px,#E2DED2 16px 32px)}
+.c360-ind-medi-cta-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-medi-cta-media img[src=""],.c360-ind-medi-cta-media img:not([src]){visibility:hidden}
+.c360-ind-medi-cta-media .c360-ind-medi-fallback{color:#B3AD9E}
+.c360-ind-medi-cta-right{display:flex;flex-direction:column;justify-content:center}
+.c360-ind-medi-cta-right .c360-ind-medi-h2{margin-bottom:12px}
+.c360-ind-medi-cta-right > p{font-size:18px;color:var(--medi-muted);line-height:1.65;margin-bottom:28px;max-width:640px}
+.c360-ind-medi-options{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.c360-ind-medi-option{border-radius:20px;padding:28px;display:flex;flex-direction:column;gap:10px}
+.c360-ind-medi-option.is-book{background:var(--medi-navy);color:#fff}
+.c360-ind-medi-option.is-call{background:var(--medi-mist);border:1px solid var(--medi-line)}
+.c360-ind-medi-option i.c360-ind-medi-opt-icon{width:44px;height:44px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:18px}
+.c360-ind-medi-option.is-book i.c360-ind-medi-opt-icon{background:rgba(255,255,255,0.12);color:#7ddc80}
+.c360-ind-medi-option.is-call i.c360-ind-medi-opt-icon{background:#fff;color:var(--medi-navy)}
+.c360-ind-medi-option h3{font-size:21px;font-weight:800;line-height:1.25}
+.c360-ind-medi-option.is-book h3{color:#fff}
+.c360-ind-medi-option.is-call h3{color:var(--medi-text)}
+.c360-ind-medi-option p{font-size:15px;line-height:1.6}
+.c360-ind-medi-option.is-book p{color:rgba(255,255,255,0.78)}
+.c360-ind-medi-option.is-call p{color:var(--medi-muted)}
+.c360-ind-medi-option .c360-ind-medi-btn{margin-top:auto;align-self:flex-start}
+
+/* ══════════ FAQ (Q badges) ══════════ */
+.c360-ind-medi-faq-list{max-width:1000px;margin:0 auto}
+.c360-ind-medi-faq-item{border-bottom:1px solid var(--medi-line)}
+.c360-ind-medi-faq-item:first-child{border-top:1px solid var(--medi-line)}
+.c360-ind-medi-faq-q{display:grid;grid-template-columns:40px 1fr 24px;align-items:center;gap:14px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--medi-text);cursor:pointer;list-style:none}
+.c360-ind-medi-faq-q::-webkit-details-marker{display:none}
+.c360-ind-medi-faq-q::before{content:"Q";width:34px;height:34px;border-radius:10px;background:var(--medi-blue-light);color:var(--medi-navy);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:800}
+.c360-ind-medi-faq-item[open] .c360-ind-medi-faq-q::before{background:var(--medi-navy);color:#fff}
+.c360-ind-medi-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--medi-green);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-medi-faq-item[open] .c360-ind-medi-faq-q::after{transform:rotate(45deg)}
+.c360-ind-medi-faq-a{padding:0 40px 24px 58px;font-size:16px;color:var(--medi-muted);line-height:1.7}
+.c360-ind-medi-faq-a a{font-weight:600}
+.c360-ind-medi-disclaim{max-width:1000px;margin:36px auto 0;font-size:13.5px;color:var(--medi-muted);line-height:1.6;text-align:center}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1200px){
+  .c360-ind-medi-probs{grid-template-columns:repeat(2,1fr)}
+  .c360-ind-medi-cta{grid-template-columns:1fr}
+  .c360-ind-medi-cta-media{min-height:0;aspect-ratio:16/9}
+}
+@media (max-width:900px){
+  .c360-ind-medi-section{padding:76px 0}
+  .c360-ind-medi-hero-card{grid-template-columns:1fr;min-height:0}
+  .c360-ind-medi-hero-copy{padding:44px 28px 36px}
+  .c360-ind-medi-hero-media{margin:0 16px 16px;aspect-ratio:4/3}
+  .c360-ind-medi-months span{font-size:10px}
+  .c360-ind-medi-bar{font-size:10.5px;padding:0 6px}
+  .c360-ind-medi-doc{padding:36px 22px 28px}
+  .c360-ind-medi-doc thead{display:none}
+  .c360-ind-medi-doc tbody tr{display:grid;grid-template-columns:1fr;gap:10px;padding:18px 0;border-bottom:1px solid var(--medi-line)}
+  .c360-ind-medi-doc tbody tr.is-core-head,.c360-ind-medi-doc tbody tr.is-grow-head{padding:0;border:0}
+  .c360-ind-medi-doc td{padding:0;border:0;width:auto !important}
+  .c360-ind-medi-spine{grid-template-columns:1fr;padding-left:36px}
+  .c360-ind-medi-spine::before{left:8px}
+  .c360-ind-medi-stop:nth-child(n){grid-column:1;margin-top:0}
+  .c360-ind-medi-stop:nth-child(n)::before{left:-38px;right:auto}
+  .c360-ind-medi-band{grid-template-columns:1fr}
+  .c360-ind-medi-band li{border-left:0;border-top:1px solid rgba(255,255,255,0.14)}
+  .c360-ind-medi-band li:first-child{border-top:0}
+}
+@media (max-width:640px){
+  .c360-ind-medi-wrap{padding-left:14px;padding-right:14px}
+  .c360-ind-medi-cal{padding:22px 16px}
+  .c360-ind-medi-probs,.c360-ind-medi-options{grid-template-columns:1fr}
+  .c360-ind-medi-stop{padding:22px 20px}
+  .c360-ind-medi-review-box{padding:14px}
+  .c360-ind-medi-faq-q{grid-template-columns:34px 1fr 20px}
+  .c360-ind-medi-faq-a{padding:0 4px 22px 50px}
+  .c360-ind-medi-btn{width:100%}
+  .c360-ind-medi-partner{--badge-h:64px;--badge-clear:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-medi *,.c360-ind-medi *::before,.c360-ind-medi *::after{transition:none !important;animation:none !important}
+  .c360-ind-medi-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-medi">
+
+<!-- ══════════ HERO (inset card) ══════════ -->
+<section class="c360-ind-medi-hero">
+  <div class="c360-ind-medi-wrap">
+    <div class="c360-ind-medi-hero-card">
+      <div class="c360-ind-medi-hero-copy">
+        <nav class="c360-ind-medi-crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/industries">Industries</a></li>
+            <li aria-current="page">Medicare Agents</li>
+          </ol>
+        </nav>
+        <h1>Medicare agent marketing that fills your calendar all year</h1>
+        <p class="c360-ind-medi-hero-sub">Turning-65 leads, a trusted local reputation, and follow-up that brings clients back every enrollment season. Built for licensed agents, with your approval on every ad, page and form before it runs.</p>
+        <div class="c360-ind-medi-ctas">
+          <a href="/schedule-demo" class="c360-ind-medi-btn c360-ind-medi-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-medi-btn c360-ind-medi-btn-ghost"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+        <div class="c360-ind-medi-creds">
+          <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-medi-partner">
+            <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+          </a>
+          <ul class="c360-ind-medi-creds-list">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-medi-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, helping insurance agents nationwide since 2018</li>
+          </ul>
+        </div>
+      </div>
+      <div class="c360-ind-medi-hero-media">
+        <!-- IMAGE PLACEHOLDER: medi-hero — insurance agent meeting with an older couple at their kitchen table, reviewing papers together, warm and professional, 16:9 (inside the hero card, right side) -->
+        <img src="" data-c360-placeholder="medi-hero" alt="Insurance agent meeting with an older couple at their kitchen table" fetchpriority="high">
+        <div class="c360-ind-medi-fallback" aria-hidden="true"><i class="fa-solid fa-handshake"></i></div>
+        <div class="c360-ind-medi-hero-note"><i class="fa-solid fa-clipboard-check" aria-hidden="true"></i> You review and approve everything before it runs.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE MEDICARE AGENT REALITY (calendar + cards) ══════════ -->
+<section class="c360-ind-medi-section">
+  <div class="c360-ind-medi-wrap">
+    <div class="c360-ind-medi-head">
+      <span class="c360-ind-medi-kicker"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> Your year at a glance</span>
+      <h2 class="c360-ind-medi-h2">The Medicare agent reality</h2>
+      <p class="c360-ind-medi-lead">Your business runs on the Medicare calendar. Everyone fights for attention in the fall, and the rest of the year depends on turning-65 clients and the relationships you keep.</p>
+    </div>
+
+    <div class="c360-ind-medi-cal" role="img" aria-label="Medicare calendar: people turning 65 all year, Medicare Advantage Open Enrollment from January 1 to March 31, and the Annual Enrollment Period from October 15 to December 7">
+      <div class="c360-ind-medi-cal-top">
+        <strong>The Medicare year</strong>
+        <div class="c360-ind-medi-cal-key" aria-hidden="true">
+          <span><i style="background:var(--medi-t65)"></i> Turning 65 (all year)</span>
+          <span><i style="background:var(--medi-oep)"></i> MA Open Enrollment</span>
+          <span><i style="background:var(--medi-aep)"></i> Annual Enrollment Period</span>
+        </div>
+      </div>
+      <div class="c360-ind-medi-months" aria-hidden="true"><span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span><span>Aug</span><span>Sep</span><span>Oct</span><span>Nov</span><span>Dec</span></div>
+      <div class="c360-ind-medi-bars" aria-hidden="true">
+        <span class="c360-ind-medi-bar is-t65">Turning 65: new clients every month</span>
+        <span class="c360-ind-medi-bar is-oep">Jan 1 – Mar 31</span>
+        <span class="c360-ind-medi-bar is-aep">Oct 15 – Dec 7</span>
+      </div>
+      <p class="c360-ind-medi-cal-foot">Special Enrollment Periods can also apply throughout the year, depending on each person's situation.</p>
+    </div>
+
+    <div class="c360-ind-medi-probs">
+      <div class="c360-ind-medi-prob">
+        <span class="c360-ind-medi-prob-tag" style="background:var(--medi-green-light);color:var(--medi-green)">Oct – Dec</span>
+        <h3>Everyone is shouting during AEP</h3>
+        <p>Carriers, call centers and every other agent are advertising at once. Being the familiar local name matters more than being the loudest.</p>
+      </div>
+      <div class="c360-ind-medi-prob">
+        <span class="c360-ind-medi-prob-tag" style="background:#F6EEDD;color:#7A5A20">All year</span>
+        <h3>The turning-65 pipeline goes quiet without effort</h3>
+        <p>New clients age in every month, but they start researching months ahead. If you're not in front of them early, someone else is.</p>
+      </div>
+      <div class="c360-ind-medi-prob">
+        <span class="c360-ind-medi-prob-tag" style="background:var(--medi-blue-light);color:var(--medi-navy)">Every ad</span>
+        <h3>Compliance makes marketing harder</h3>
+        <p>CMS rules shape what you can say and how you can reach people. Generic marketing agencies don't plan for that, and you're the one responsible.</p>
+      </div>
+      <div class="c360-ind-medi-prob">
+        <span class="c360-ind-medi-prob-tag" style="background:var(--medi-mist);color:var(--medi-muted)">Lead vendors</span>
+        <h3>Shared leads that go to five agents</h3>
+        <p>Bought leads are often sold more than once. You end up racing other agents for someone who never asked to hear from you specifically.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (summary of benefits) ══════════
+     Outcome first. Draft per the worksheet; confirm with Jared. -->
+<section class="c360-ind-medi-section c360-ind-medi-plan-bg" id="medi-plan">
+  <div class="c360-ind-medi-wrap">
+    <div class="c360-ind-medi-head">
+      <span class="c360-ind-medi-kicker">Your recommended plan</span>
+      <h2 class="c360-ind-medi-h2">Your Medicare agent marketing plan</h2>
+      <p class="c360-ind-medi-lead">Laid out like a summary of benefits: what each piece does for your business, and when it makes sense to add it.</p>
+    </div>
+
+    <div class="c360-ind-medi-doc">
+      <div class="c360-ind-medi-doc-top">
+        <h3>Summary of marketing benefits</h3>
+        <dl><div><dt>Prepared for</dt><dd>Licensed Medicare agents</dd></div><div><dt>Plan type</dt><dd>Year-round growth</dd></div></dl>
+      </div>
+      <table>
+        <thead><tr><th scope="col">What you get</th><th scope="col">Service</th><th scope="col">When to add it</th></tr></thead>
+        <tbody>
+          <tr class="is-core-head"><th colspan="3" scope="colgroup">Start here</th></tr>
+          <tr>
+            <td><h4>Reach people turning 65 in your area</h4><p>Facebook and Instagram ads with lead forms that ask permission before you reach out, so every lead requested to hear from you.</p></td>
+            <td><div class="c360-ind-medi-pills"><a href="/meta-ads">Meta Ads</a></div></td>
+            <td><span class="c360-ind-medi-when"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Year-round, heavier before AEP</span></td>
+          </tr>
+          <tr>
+            <td><h4>Be the local agent people trust</h4><p>A Google Business Profile with your office, hours and reviews from clients you've helped, kept current all year.</p></td>
+            <td><div class="c360-ind-medi-pills"><a href="/gbp-management">Google Business Profile Management</a></div></td>
+            <td><span class="c360-ind-medi-when"><i class="fa-solid fa-calendar" aria-hidden="true"></i> From day one</span></td>
+          </tr>
+          <tr class="is-grow-head"><th colspan="3" scope="colgroup">Add as you grow</th></tr>
+          <tr>
+            <td><h4>Never miss a call during the busy season</h4><p>The AI Voice Agent answers when you're with a client, takes the caller's details and schedules an appointment with you. It doesn't discuss or compare plans.</p></td>
+            <td><div class="c360-ind-medi-pills"><a href="/ai-agents">AI Voice Agent</a></div></td>
+            <td><span class="c360-ind-medi-when"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Before AEP</span></td>
+          </tr>
+          <tr>
+            <td><h4>Stay in touch with every client, every year</h4><p>Every lead and client in one place, with reminders and follow-ups for people who've given you permission to contact them, like annual review check-ins.</p></td>
+            <td><div class="c360-ind-medi-pills"><a href="/crm-home">Complete360 CRM</a></div></td>
+            <td><span class="c360-ind-medi-when"><i class="fa-solid fa-calendar" aria-hidden="true"></i> Once leads are flowing</span></td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="c360-ind-medi-doc-foot">Also available: a <a href="/websites-home">website</a> for your agency and <a href="/seo-services">SEO Services</a> for steady traffic from Google and AI search. Every service's price is on its own page.</p>
+    </div>
+
+    <div class="c360-ind-medi-plan-foot">
+      <p>Every ad, landing page and form is sent to you for approval before it runs, so you can review it with your upline or carriers.</p>
+      <a href="/schedule-demo" class="c360-ind-medi-btn c360-ind-medi-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (center spine) ══════════ -->
+<section class="c360-ind-medi-section">
+  <div class="c360-ind-medi-wrap">
+    <div class="c360-ind-medi-head">
+      <span class="c360-ind-medi-kicker">From first click to client for life</span>
+      <h2 class="c360-ind-medi-h2">How a turning-65 lead becomes a long-term client</h2>
+      <p class="c360-ind-medi-lead">Four moments, months apart, that decide which agent someone works with.</p>
+    </div>
+
+    <div class="c360-ind-medi-spine">
+      <article class="c360-ind-medi-stop">
+        <span class="c360-ind-medi-stop-when"><i class="fa-solid fa-hourglass-start" aria-hidden="true"></i> Months before 65</span>
+        <h3>They raise their hand</h3>
+        <p>A Meta ad offers a free, no-obligation review with a local licensed agent. The form asks for permission to contact them, so the lead is theirs and yours alone.</p>
+        <div class="c360-ind-medi-mini">
+          <div class="c360-ind-medi-form" role="img" aria-label="Example Facebook lead form offering a free review with a local licensed agent, with a permission-to-contact line">
+            <div class="c360-ind-medi-form-head"><span aria-hidden="true"><i class="fa-solid fa-user-tie"></i></span><div><strong>Your Agency Name</strong><em>Sponsored</em></div></div>
+            <p>Turning 65 soon? Talk through your options with a local licensed agent. Free, no obligation.</p>
+            <div class="c360-ind-medi-form-field">Full name</div>
+            <div class="c360-ind-medi-form-field">Phone number</div>
+            <p class="c360-ind-medi-form-consent">I agree that a licensed insurance agent may contact me about my request.</p>
+            <span class="c360-ind-medi-form-btn">Submit</span>
+          </div>
+          <span class="c360-ind-medi-example">Example form for illustration</span>
+        </div>
+        <div class="c360-ind-medi-pills"><a href="/meta-ads">Meta Ads</a></div>
+      </article>
+
+      <article class="c360-ind-medi-stop">
+        <span class="c360-ind-medi-stop-when"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> Before they call</span>
+        <h3>They look you up</h3>
+        <p>They search your name and find a real local office, current hours and reviews from people like them. That's what turns a form into a phone call.</p>
+        <div class="c360-ind-medi-mini">
+          <div class="c360-ind-medi-gbp" role="img" aria-label="Example Google Business Profile for a local insurance agency with a five-star review">
+            <strong>Your Agency Name</strong>
+            <span>4.9 <span class="c360-ind-medi-stars2">★★★★★</span> 112 reviews · Insurance agency</span>
+            <p><b>Linda P.</b> Patient, explained everything in plain English, and never pushed. I've sent her two friends already.</p>
+          </div>
+          <span class="c360-ind-medi-example">Example profile for illustration</span>
+        </div>
+        <div class="c360-ind-medi-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+      </article>
+
+      <article class="c360-ind-medi-stop">
+        <span class="c360-ind-medi-stop-when"><i class="fa-solid fa-phone" aria-hidden="true"></i> The first call</span>
+        <h3>Someone answers, even when you're with a client</h3>
+        <p>The AI Voice Agent takes the call, gets their details and puts an appointment on your calendar. AI usage is unlimited with no per-minute AI fees; your phone number and calling minutes are billed separately.</p>
+        <div class="c360-ind-medi-mini">
+          <div class="c360-ind-medi-appt" role="img" aria-label="Example appointment scheduled by the AI Voice Agent for a phone consultation">
+            <div class="c360-ind-medi-appt-head"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Appointment scheduled</div>
+            <dl><dt>With</dt><dd>You</dd><dt>When</dt><dd>Thu, 10:30 AM</dd><dt>Type</dt><dd>Phone consultation</dd><dt>Reason</dt><dd>Turning 65 in March</dd></dl>
+          </div>
+          <span class="c360-ind-medi-example">Example for illustration</span>
+        </div>
+        <div class="c360-ind-medi-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+      </article>
+
+      <article class="c360-ind-medi-stop">
+        <span class="c360-ind-medi-stop-when"><i class="fa-solid fa-rotate" aria-hidden="true"></i> Every year after</span>
+        <h3>They hear from you before every AEP</h3>
+        <p>Your CRM reminds clients who've opted in that it's time for their annual review, so they come back to you instead of the next ad they see.</p>
+        <div class="c360-ind-medi-mini">
+          <div class="c360-ind-medi-sms" role="img" aria-label="Example annual review reminder text and the client's reply">
+            <p class="is-in">Hi Robert, it's time for your annual review before enrollment season. Want to set up a quick call?</p>
+            <p class="is-out">Yes, next Tuesday works.</p>
+          </div>
+          <span class="c360-ind-medi-example">Example message for illustration</span>
+        </div>
+        <div class="c360-ind-medi-pills"><a href="/crm-home">Complete360 CRM</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (stat band) ══════════
+     Same live Google reviews widget as /seo-services (location 1pBjHBEIsKGbwvAUTY9u). -->
+<section class="c360-ind-medi-section" style="padding-top:0">
+  <div class="c360-ind-medi-wrap">
+    <div class="c360-ind-medi-head" style="margin-bottom:36px">
+      <span class="c360-ind-medi-kicker">Our own reviews</span>
+      <h2 class="c360-ind-medi-h2">What our clients say</h2>
+      <p class="c360-ind-medi-lead">Local business owners across the country, in their own words.</p>
+    </div>
+    <ul class="c360-ind-medi-band">
+      <li><strong>5.0 on Google</strong><span>147 five-star reviews</span></li>
+      <li><strong>Certified Google Partner</strong><span>With a Google Product Expert on the team</span></li>
+      <li><strong>Since 2018</strong><span>Tucson-based, serving nationwide</span></li>
+    </ul>
+    <div class="c360-ind-medi-review-box">
+      <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+      <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+        src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+        frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (photo + two options) ══════════ -->
+<section class="c360-ind-medi-section" style="padding-top:0">
+  <div class="c360-ind-medi-wrap">
+    <div class="c360-ind-medi-cta">
+      <div class="c360-ind-medi-cta-media">
+        <!-- IMAGE PLACEHOLDER: medi-on-the-job — agent presenting at a small community seminar to older adults, 4:3 -->
+        <img src="" data-c360-placeholder="medi-on-the-job" alt="Insurance agent presenting at a small community seminar" loading="lazy">
+        <div class="c360-ind-medi-fallback" aria-hidden="true"><i class="fa-solid fa-people-group"></i></div>
+      </div>
+      <div class="c360-ind-medi-cta-right">
+        <h2 class="c360-ind-medi-h2">Get ready for next enrollment season now</h2>
+        <p>The agents with the fullest calendars in the fall start building in the spring. Pick whichever way works for you.</p>
+        <div class="c360-ind-medi-options">
+          <div class="c360-ind-medi-option is-book">
+            <i class="fa-solid fa-calendar-check c360-ind-medi-opt-icon" aria-hidden="true"></i>
+            <h3>Book a strategy call</h3>
+            <p>We'll look at how people in your area find agents today and map out your year.</p>
+            <a href="/schedule-demo" class="c360-ind-medi-btn c360-ind-medi-btn-primary">Book a free strategy call</a>
+          </div>
+          <div class="c360-ind-medi-option is-call">
+            <i class="fa-solid fa-phone c360-ind-medi-opt-icon" aria-hidden="true"></i>
+            <h3>Talk to us now</h3>
+            <p>Monday to Thursday 7am–4pm, Friday 7am–1pm, Arizona time.</p>
+            <a href="tel:+18665276205" class="c360-ind-medi-btn c360-ind-medi-btn-outline">(866) 527-6205</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (Q badges) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits.
+     ⚠ Compliance answers need management/legal review. -->
+<section class="c360-ind-medi-section" id="medi-faq" style="background:var(--medi-mist)">
+  <div class="c360-ind-medi-wrap">
+    <div class="c360-ind-medi-head">
+      <h2 class="c360-ind-medi-h2">Medicare agent marketing questions</h2>
+    </div>
+    <div class="c360-ind-medi-faq-list">
+
+      <details class="c360-ind-medi-faq-item">
+        <summary class="c360-ind-medi-faq-q">How do Medicare agents get more clients?</summary>
+        <div class="c360-ind-medi-faq-a"><p>Reach people before they turn 65, look like the trusted local agent when they check you out, and stay in touch every year. For most agents that starts with Meta Ads and a Google Business Profile with steady new reviews. An AI Voice Agent for busy-season calls and a CRM for annual follow-up come next.</p></div>
+      </details>
+
+      <details class="c360-ind-medi-faq-item">
+        <summary class="c360-ind-medi-faq-q">Do Facebook ads work for Medicare agents?</summary>
+        <div class="c360-ind-medi-faq-a"><p>They're one of the best ways to reach people approaching Medicare age in your area, months before they decide. We use lead forms that ask for permission to contact them, so the leads come to you directly instead of being shared with other agents. Every ad and form goes to you for approval before it runs.</p></div>
+      </details>
+
+      <details class="c360-ind-medi-faq-item">
+        <summary class="c360-ind-medi-faq-q">How do you handle CMS marketing rules?</summary>
+        <div class="c360-ind-medi-faq-a"><p>We write ads and pages that avoid plan or benefit claims, and every ad, landing page and form is sent to you for approval before it runs, so you can review it with your upline or carriers. As the licensed agent, you have final say on compliance.</p></div>
+      </details>
+
+      <details class="c360-ind-medi-faq-item">
+        <summary class="c360-ind-medi-faq-q">Can an AI Voice Agent answer calls for a Medicare agency?</summary>
+        <div class="c360-ind-medi-faq-a"><p>Yes, for scheduling. It answers inbound calls, takes the caller's details and puts an appointment on your calendar. It doesn't discuss, compare or enroll anyone in plans; that conversation is yours. AI usage is unlimited with no per-minute AI fees. Your phone number and calling minutes are billed separately. Confirm any call recording requirements with your compliance team.</p></div>
+      </details>
+
+      <details class="c360-ind-medi-faq-item">
+        <summary class="c360-ind-medi-faq-q">How do I stay busy outside of the Annual Enrollment Period?</summary>
+        <div class="c360-ind-medi-faq-a"><p>Focus on people turning 65, who need help every month of the year, and on your existing clients. Meta Ads keep turning-65 leads coming year-round, and annual review reminders through your CRM keep current clients coming back.</p></div>
+      </details>
+
+      <details class="c360-ind-medi-faq-item">
+        <summary class="c360-ind-medi-faq-q">Why does a Google Business Profile matter for an independent agent?</summary>
+        <div class="c360-ind-medi-faq-a"><p>When someone gets your name from an ad or a friend, they look you up. A Google Business Profile with your office, hours and reviews shows you're a real local agent, which matters to people who are wary of call centers.</p></div>
+      </details>
+
+      <details class="c360-ind-medi-faq-item">
+        <summary class="c360-ind-medi-faq-q">Can you guarantee a number of leads or enrollments?</summary>
+        <div class="c360-ind-medi-faq-a"><p>No. No one can promise lead counts or enrollments. For Google Business Profile Management and advertising campaigns, including Meta Ads, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-medi-faq-item">
+        <summary class="c360-ind-medi-faq-q">How much does Medicare agent marketing cost?</summary>
+        <div class="c360-ind-medi-faq-a"><p>Each service's price is on its own page, including <a href="/gbp-management">Google Business Profile Management</a>, the <a href="/ai-agents">AI Voice Agent</a> and <a href="/crm-home">Complete360 CRM</a>. Meta Ads are planned with you on a strategy call, and ad spend is billed directly by Meta. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+    <p class="c360-ind-medi-disclaim">Complete360 is a marketing agency for licensed insurance agents. We don't sell insurance and aren't affiliated with or endorsed by Medicare or any government agency.</p>
+  </div>
+</section>
+
+</div>

@@ -76,6 +76,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Pool Service Marketing | `/industries/pool-service` | `schema/pages/industries/pool-service.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Pest Control Marketing | `/industries/pest-control` | `schema/pages/industries/pest-control.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Real Estate Marketing | `/industries/real-estate` | `schema/pages/industries/real-estate.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Medicare Agent Marketing | `/industries/medicare-agents` | `schema/pages/industries/medicare-agents.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Website Pricing | `/website-pricing` | `schema/pages/pricing/website-pricing.html` | WebPage, FAQPage | 7 | ✅ |
 | Complete360 CRM Pricing | `/pricing` | `schema/pages/pricing/saas-pricing.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Complete360 CRM | `/crm-home` | `schema/pages/crm-platform/crm-home.html` | WebPage, SoftwareApplication, FAQPage | 8 | ✅ |
