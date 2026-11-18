@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Painting
-     c360-ind-paint-v1.0.html
+     c360-ind-paint-v1.1.html
      GHL: Paste into a Custom Code block on the new page at /industries/painting
           (page name "Painting Contractor Marketing"). Meta data: ghl-meta/industries/painting.md.
           Schema: schema/pages/industries/painting.html (batch paste later).
@@ -33,6 +33,10 @@
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
 
+     v1.1 (2026-11-12) — sand background swapped for a light blue wash
+       (hero, journey card backgrounds, CTA band, image placeholders);
+       body text on it is a cooler gray to match.
+
      v1.0 (2026-11-12) — first build. Plan per the worksheet draft:
        Google Platinum Package (Local Service Ads + Google Business
        Profile Management incl. reviews) first; grow with Meta Ads
@@ -44,7 +48,8 @@
 .c360-ind-paint{
   --paint-navy:#122078;--paint-navy-dark:#0d1654;--paint-navy-deeper:#0a1040;
   --paint-green:#127825;--paint-green-hover:#0e5e1d;
-  --paint-sand:#F1EFE8;--paint-sand-dark:#E4E0D4;
+  /* v1.1: light "fresh paint" blue wash replaces the sand background */
+  --paint-wash:#EBF0FA;--paint-wash-dark:#D9E2F3;
   --paint-mist:#F4F7FC;--paint-line:#E7EBF3;--paint-blue-light:#E6F1FB;
   --paint-text:#0F1F5E;--paint-muted:#5F5E5A;
   /* palette shades used across the page */
@@ -86,20 +91,20 @@
 .c360-ind-paint-pills a:hover{background:var(--paint-navy);border-color:var(--paint-navy);color:#fff;text-decoration:none}
 
 /* ══════════ HERO (editorial) ══════════ */
-.c360-ind-paint-hero{background:var(--paint-sand);padding:56px 0 0}
+.c360-ind-paint-hero{background:var(--paint-wash);padding:56px 0 0}
 .c360-ind-paint-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
 .c360-ind-paint-crumbs li{color:var(--paint-muted);display:flex;align-items:center;gap:8px}
-.c360-ind-paint-crumbs li+li::before{content:"\203A";color:#A9A496}
+.c360-ind-paint-crumbs li+li::before{content:"\203A";color:#9FB0D0}
 .c360-ind-paint-crumbs a{color:var(--paint-navy);text-decoration:none}
 .c360-ind-paint-crumbs a:hover{text-decoration:underline}
 .c360-ind-paint-hero-top{display:grid;grid-template-columns:1.25fr 1fr;gap:72px;align-items:end;margin-bottom:48px}
 .c360-ind-paint-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--paint-text)}
-.c360-ind-paint-hero-sub{font-size:18px;line-height:1.65;color:#3E3D39;margin-bottom:28px}
+.c360-ind-paint-hero-sub{font-size:18px;line-height:1.65;color:#3B4566;margin-bottom:28px}
 .c360-ind-paint-hero-media{position:relative;padding-bottom:44px}
-.c360-ind-paint-hero-img{position:relative;aspect-ratio:21/8;border-radius:28px;overflow:hidden;background:repeating-linear-gradient(135deg,#DAD5C8 0 16px,#E2DED2 16px 32px)}
+.c360-ind-paint-hero-img{position:relative;aspect-ratio:21/8;border-radius:28px;overflow:hidden;background:repeating-linear-gradient(135deg,#D6DFF0 0 16px,#E2E9F6 16px 32px)}
 .c360-ind-paint-hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .c360-ind-paint-hero-img img[src=""],.c360-ind-paint-hero-img img:not([src]){visibility:hidden}
-.c360-ind-paint-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#B3AD9E;font-size:56px;pointer-events:none}
+.c360-ind-paint-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#9FB0D0;font-size:56px;pointer-events:none}
 .c360-ind-paint-hero-img img[src]:not([src=""])+.c360-ind-paint-fallback,.c360-ind-paint-photo img[src]:not([src=""])+.c360-ind-paint-fallback{display:none}
 .c360-ind-paint-swatches{position:absolute;left:48px;bottom:0;display:flex;gap:10px}
 .c360-ind-paint-swatches span{width:64px;height:88px;border-radius:10px;border:4px solid #fff;box-shadow:0 12px 30px rgba(15,31,94,0.18)}
@@ -109,13 +114,13 @@
 .c360-ind-paint-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
 .c360-ind-paint-partner,.c360-ind-paint-partner:active{border:0;text-decoration:none;box-shadow:none}
 .c360-ind-paint-creds-list{display:flex;flex-wrap:wrap;gap:10px 28px}
-.c360-ind-paint-creds-list li{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:#3E3D39}
+.c360-ind-paint-creds-list li{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:#3B4566}
 .c360-ind-paint-creds-list i{color:var(--paint-green);font-size:12px}
 .c360-ind-paint-stars{color:#E8A400;letter-spacing:1px}
 
 /* ══════════ REALITY (paint chips) ══════════ */
 .c360-ind-paint-reality-head{display:grid;grid-template-columns:1fr 0.8fr;gap:72px;align-items:center;margin-bottom:64px}
-.c360-ind-paint-photo{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:repeating-linear-gradient(135deg,#DAD5C8 0 14px,#E2DED2 14px 28px)}
+.c360-ind-paint-photo{position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;background:repeating-linear-gradient(135deg,#D6DFF0 0 14px,#E2E9F6 14px 28px)}
 .c360-ind-paint-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .c360-ind-paint-photo img[src=""],.c360-ind-paint-photo img:not([src]){visibility:hidden}
 .c360-ind-paint-chips{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
@@ -187,7 +192,7 @@
 .c360-ind-paint-row3{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
 .c360-ind-paint-card{display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:0;background:#fff;border:1px solid var(--paint-line);border-radius:20px;overflow:hidden;box-shadow:0 12px 32px rgba(15,31,94,0.06)}
 @supports not (grid-template-rows:subgrid){.c360-ind-paint-card{display:flex;flex-direction:column}}
-.c360-ind-paint-card-visual{background:var(--paint-sand);padding:30px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.c360-ind-paint-card-visual{background:var(--paint-wash);padding:30px 24px;display:flex;flex-direction:column;align-items:center;justify-content:center}
 .c360-ind-paint-card-body{padding:28px 28px 30px;display:flex;flex-direction:column}
 .c360-ind-paint-card-body h3{font-size:clamp(21px,2vw,26px);font-weight:800;line-height:1.25;color:var(--paint-text);margin-bottom:10px}
 .c360-ind-paint-card-body p{font-size:16px;color:var(--paint-muted);line-height:1.7;margin-bottom:20px}
@@ -237,11 +242,11 @@
 .c360-ind-paint-numbers span{font-size:16px;color:var(--paint-muted)}
 
 /* ══════════ CTA (sand band with swatches) ══════════ */
-.c360-ind-paint-final{background:var(--paint-sand);padding:88px 0;text-align:center;border-top:1px solid var(--paint-sand-dark)}
+.c360-ind-paint-final{background:var(--paint-wash);padding:88px 0;text-align:center;border-top:1px solid var(--paint-wash-dark)}
 .c360-ind-paint-final .c360-ind-paint-swatch-row{display:flex;justify-content:center;gap:8px;margin-bottom:26px}
 .c360-ind-paint-final .c360-ind-paint-swatch-row span{width:40px;height:40px;border-radius:8px;border:3px solid #fff;box-shadow:0 6px 16px rgba(15,31,94,0.12)}
 .c360-ind-paint-final h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--paint-text);margin-bottom:16px}
-.c360-ind-paint-final p{font-size:18px;color:#3E3D39;max-width:660px;margin:0 auto 32px;line-height:1.65}
+.c360-ind-paint-final p{font-size:18px;color:#3B4566;max-width:660px;margin:0 auto 32px;line-height:1.65}
 .c360-ind-paint-final .c360-ind-paint-ctas{justify-content:center}
 
 /* ══════════ FAQ (two plain columns) ══════════ */
