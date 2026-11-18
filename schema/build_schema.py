@@ -171,6 +171,8 @@ page("/industries/medicare-agents", "industries/medicare-agents.html", "Medicare
      service="Medicare Agent Marketing", serviceType="Marketing for licensed Medicare insurance agents", audience="Licensed Medicare agents")
 page("/industries/health-insurance", "industries/health-insurance.html", "Health Insurance Agent Marketing", "industry", parent=IND,
      service="Health Insurance Agent Marketing", serviceType="Marketing for licensed health insurance agents", audience="Health insurance agents")
+page("/industries/mortgage", "industries/mortgage.html", "Mortgage Marketing", "industry", parent=IND,
+     service="Mortgage Marketing", serviceType="Marketing for mortgage loan officers and brokers", audience="Mortgage loan officers")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")

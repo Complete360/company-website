@@ -29,7 +29,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-59 of 76 pages have code. Multi-snippet pages (checkouts) are a folder of
+60 of 77 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -78,6 +78,7 @@ and `schema/pages/industries/[slug].html` (schema, pasted in one batch after eve
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
+| `industries/mortgage.html` | Mortgage Marketing (new page at /industries/mortgage) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (navy hero with tilted card stack, loan-file folders, Gantt-style plan timeline, hub-and-spoke journey, chip reviews, certificate CTA with seal, dark FAQ, disclaimer). Management/legal review recommended (mortgage advertising rules, NMLS). Plan (draft) to confirm with Jared. Images to make (`mort-hero`, `mort-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/mortgage.md`, publish. Schema waits for the batch. |
 | `industries/health-insurance.html` | Health Insurance Agent Marketing (new page at /industries/health-insurance) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (white hero with mint shape and member card, audience cards plus agent strip, four coverage levels with meters, three-segment ribbon journey, mint review banner, booking-card CTA, tinted FAQ, not-affiliated note). Management/legal read recommended (insurance marketing). Plan (draft) to confirm with Jared. Images to make (`health-hero`, `health-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/health-insurance.md`, publish. Schema waits for the batch. |
 | `industries/medicare-agents.html` | Medicare Agent Marketing (new page at /industries/medicare-agents) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (inset hero card, Medicare calendar plus problem cards, summary-of-benefits plan table, center-spine journey, stat-band reviews, photo + two-option CTA, Q-badge FAQ, not-affiliated note). ⚠ Do not publish until management/legal review (CMS marketing rules; worksheet open item). Plan (draft) to confirm with Jared. Images to make (`medi-hero`, `medi-on-the-job`). Schema waits for the batch. |
 | `industries/real-estate.html` | Real Estate Marketing (new page at /industries/real-estate) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (photo hero with listing card, status-tag listing cards, pipeline-board plan, buyers/sellers tracks plus CRM follow-up strip, spec-row reviews, yard-sign CTA, house-marker FAQ). Meta-led, no LSA. Housing-ad and fair-housing wording needs management/legal review. Plan (draft) to confirm with Jared. Images to make (`re-hero`, `re-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/real-estate.md`, publish. Schema waits for the batch. |
