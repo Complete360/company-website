@@ -163,6 +163,8 @@ page("/industries/cleaning-services", "industries/cleaning-services.html", "Clea
      service="Cleaning Business Marketing", serviceType="Marketing for residential cleaning companies", audience="Cleaning companies")
 page("/industries/pool-service", "industries/pool-service.html", "Pool Service Marketing", "industry", parent=IND,
      service="Pool Service Marketing", serviceType="Marketing for pool service companies", audience="Pool service companies")
+page("/industries/pest-control", "industries/pest-control.html", "Pest Control Marketing", "industry", parent=IND,
+     service="Pest Control Marketing", serviceType="Marketing for pest control companies", audience="Pest control companies")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
