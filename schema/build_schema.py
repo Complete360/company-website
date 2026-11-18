@@ -165,6 +165,8 @@ page("/industries/pool-service", "industries/pool-service.html", "Pool Service M
      service="Pool Service Marketing", serviceType="Marketing for pool service companies", audience="Pool service companies")
 page("/industries/pest-control", "industries/pest-control.html", "Pest Control Marketing", "industry", parent=IND,
      service="Pest Control Marketing", serviceType="Marketing for pest control companies", audience="Pest control companies")
+page("/industries/real-estate", "industries/real-estate.html", "Real Estate Marketing", "industry", parent=IND,
+     service="Real Estate Marketing", serviceType="Marketing for real estate agents and brokerages", audience="Real estate agents")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")

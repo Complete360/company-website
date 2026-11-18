@@ -29,7 +29,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-56 of 73 pages have code. Multi-snippet pages (checkouts) are a folder of
+57 of 74 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -78,6 +78,7 @@ and `schema/pages/industries/[slug].html` (schema, pasted in one batch after eve
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
+| `industries/real-estate.html` | Real Estate Marketing (new page at /industries/real-estate) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (photo hero with listing card, status-tag listing cards, pipeline-board plan, buyers/sellers tracks plus CRM follow-up strip, spec-row reviews, yard-sign CTA, house-marker FAQ). Meta-led, no LSA. Housing-ad and fair-housing wording needs management/legal review. Plan (draft) to confirm with Jared. Images to make (`re-hero`, `re-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/real-estate.md`, publish. Schema waits for the batch. |
 | `industries/pest-control.html` | Pest Control Marketing (new page at /industries/pest-control) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (diagonal-split hero with green edge, inspection-report table, perimeter plan with center core card, staircase journey, scorecard reviews, diagonal photo CTA, FAQ in two groups). Plan (draft) to confirm with Jared. Images to make (`pest-hero`, `pest-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/pest-control.md`, publish. Schema waits for the batch. |
 | `industries/pool-service.html` | Pool Service Marketing (new page at /industries/pool-service) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (deep-water hero with porthole photo and wave edge, rising-water reality cards, plan matrix with row labels, scroll-snap journey carousel, round stat badges, photo CTA with wave top, accent-bar FAQ). Plan (draft) to confirm with Jared. Images to make (`pool-hero`, `pool-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/pool-service.md`, publish. Schema waits for the batch. |
 | `industries/cleaning-services.html` | Cleaning Business Marketing (new page at /industries/cleaning-services) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (centered hero with booking/photo/review panels, checklist reality card, two package-style plan columns, four steps on a line plus visuals row, rating card beside reviews, mist CTA panel, FAQ with check markers). Plan (draft) to confirm with Jared. Images to make (`clean-hero`, `clean-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/cleaning-services.md`, publish. Schema waits for the batch. |

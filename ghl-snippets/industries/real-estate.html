@@ -1,0 +1,596 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Real Estate
+     c360-ind-re-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/real-estate
+          (page name "Real Estate Marketing"). Meta data: ghl-meta/industries/real-estate.md.
+          Schema: schema/pages/industries/real-estate.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-re-  (new, unique; vars --re-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from the other pages), listings themed:
+       - Hero: full-bleed photo with a white "listing card" holding the
+         headline, overlapping the bottom edge.
+       - Reality: four horizontal listing cards with status tags
+         (Expired, Back on market, Price reduced, 90+ days on market).
+       - Plan: a deal pipeline board, four stage columns with service
+         cards tagged "Start here" or "Add as you grow".
+       - Journey: buyers and sellers as two side-by-side tracks, each with
+         a code-built ad, then a CRM follow-up timeline strip.
+       - Reviews with a spec row, "yard sign" CTA, FAQ with house markers.
+
+     Office-based industry: Meta-led per the worksheet. No Local Services
+     Ads on this page. Housing ads: copy says Meta's special ad category
+     and fair housing rules shape targeting; Geo-Fencing is described as
+     places (open houses, farm areas), never as people. Flagged for
+     management/legal review in the PR.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       re-hero        16:9, 2000px+ (full-bleed hero)
+       re-on-the-job  4:3, 1200px+  (journey intro, shown wide)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-12) — first build. Plan per the worksheet draft: Meta
+       Ads + Google Business Profile Management (incl. reviews) first;
+       grow with Complete360 CRM, Geo-Fencing and a Website. SEO Services
+       as "also available". To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-re{
+  --re-navy:#122078;--re-navy-dark:#0d1654;--re-navy-deeper:#0a1040;
+  --re-green:#127825;--re-green-hover:#0e5e1d;--re-green-light:#EAF3DE;
+  --re-sand:#F1EFE8;--re-mist:#F4F7FC;--re-line:#E7EBF3;--re-blue-light:#E6F1FB;
+  --re-red:#B42318;--re-red-bg:#FDECEA;--re-amber:#8A5A00;--re-amber-bg:#FFF4D6;
+  --re-text:#0F1F5E;--re-muted:#5F5E5A;
+  --re-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--re-font);color:var(--re-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-re *,.c360-ind-re *::before,.c360-ind-re *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-re :where(h1,h2,h3,h4,p,ul,ol,li){margin:0;padding:0;font-family:var(--re-font)}
+.c360-ind-re :where(ul,ol){list-style:none}
+.c360-ind-re :where(a){color:var(--re-navy)}
+.c360-ind-re a:focus-visible,.c360-ind-re summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-re-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-re-section{padding:104px 0}
+.c360-ind-re-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--re-text);margin-bottom:16px}
+.c360-ind-re-lead{font-size:18px;color:var(--re-muted);max-width:760px;line-height:1.65}
+.c360-ind-re-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--re-green);margin-bottom:14px}
+.c360-ind-re-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-re-head .c360-ind-re-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-re-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--re-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-re-btn-primary{background:var(--re-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-re-btn-primary:hover{background:var(--re-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-re-btn-outline{background:#fff;color:var(--re-navy);border:2px solid var(--re-navy);padding:14px 24px}
+.c360-ind-re-btn-outline:hover{background:var(--re-navy);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-re-btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.6);padding:14px 24px}
+.c360-ind-re-btn-ghost:hover{border-color:#fff;color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-re a.c360-ind-re-btn-primary,.c360-ind-re a.c360-ind-re-btn-ghost{color:#fff}
+.c360-ind-re a.c360-ind-re-btn-outline{color:var(--re-navy)}
+.c360-ind-re a.c360-ind-re-btn-outline:hover{color:#fff}
+.c360-ind-re-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-re-pills{display:flex;flex-wrap:wrap;gap:10px}
+.c360-ind-re-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--re-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-re-pills a:hover{background:var(--re-navy);border-color:var(--re-navy);color:#fff;text-decoration:none}
+
+/* ══════════ HERO (photo + listing card) ══════════ */
+.c360-ind-re-hero{position:relative;background:#fff;padding-bottom:40px}
+.c360-ind-re-hero-media{position:relative;height:clamp(360px,42vw,560px);background:repeating-linear-gradient(135deg,#D9DFEA 0 18px,#E3E8F1 18px 36px);overflow:hidden}
+.c360-ind-re-hero-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-re-hero-media img[src=""],.c360-ind-re-hero-media img:not([src]){visibility:hidden}
+.c360-ind-re-hero-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,64,0) 50%,rgba(10,16,64,0.35) 100%)}
+.c360-ind-re-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B0C4;font-size:60px;pointer-events:none}
+.c360-ind-re-hero-media img[src]:not([src=""])+.c360-ind-re-fallback,.c360-ind-re-photo img[src]:not([src=""])+.c360-ind-re-fallback{display:none}
+.c360-ind-re-hero-crumbs{position:absolute;top:28px;left:0;right:0;z-index:2}
+.c360-ind-re-crumbs ol{display:inline-flex;flex-wrap:wrap;gap:8px;font-size:13px;background:rgba(255,255,255,0.92);border-radius:100px;padding:7px 16px}
+.c360-ind-re-crumbs li{color:var(--re-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-re-crumbs li+li::before{content:"\203A";color:#A6B0C4}
+.c360-ind-re-crumbs a{color:var(--re-navy);text-decoration:none}
+.c360-ind-re-crumbs a:hover{text-decoration:underline}
+.c360-ind-re-listing{position:relative;z-index:3;margin-top:-220px;display:grid;grid-template-columns:1.2fr 0.8fr;gap:0;background:#fff;border-radius:26px;box-shadow:0 30px 70px rgba(15,31,94,0.18);overflow:hidden;max-width:1400px;margin-left:auto;margin-right:auto}
+.c360-ind-re-listing-main{padding:48px 52px 44px}
+.c360-ind-re-status{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#fff;background:var(--re-green);border-radius:6px;padding:6px 12px;margin-bottom:18px}
+.c360-ind-re-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--re-text);margin-bottom:20px}
+.c360-ind-re-hero-sub{font-size:18px;line-height:1.65;color:var(--re-muted);max-width:640px;margin-bottom:30px}
+.c360-ind-re-listing-side{background:var(--re-mist);border-left:1px solid var(--re-line);padding:44px 40px;display:flex;flex-direction:column;justify-content:center}
+.c360-ind-re-specs{display:grid;grid-template-columns:1fr;gap:0;margin-bottom:8px}
+.c360-ind-re-specs li{display:flex;align-items:center;gap:14px;padding:16px 0;border-bottom:1px solid var(--re-line)}
+.c360-ind-re-specs li:last-child{border-bottom:0}
+.c360-ind-re-specs i{width:40px;height:40px;border-radius:10px;background:#fff;color:var(--re-navy);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;box-shadow:0 4px 12px rgba(15,31,94,0.06)}
+.c360-ind-re-specs strong{display:block;font-size:15.5px;font-weight:700;color:var(--re-text);line-height:1.3}
+.c360-ind-re-specs span{font-size:13.5px;color:var(--re-muted)}
+.c360-ind-re-creds{display:flex;align-items:center;flex-wrap:wrap;max-width:1400px;margin:0 auto}
+.c360-ind-re-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-re-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-re-partner,.c360-ind-re-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-re-creds-list{display:flex;flex-wrap:wrap;gap:10px 28px}
+.c360-ind-re-creds-list li{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:#3B4566}
+.c360-ind-re-creds-list i{color:var(--re-green);font-size:12px}
+.c360-ind-re-stars{color:#E8A400;letter-spacing:1px}
+
+/* ══════════ REALITY (listing cards with status tags) ══════════ */
+.c360-ind-re-listings{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1500px;margin:0 auto}
+.c360-ind-re-lcard{display:grid;grid-template-columns:200px 1fr;background:#fff;border:1px solid var(--re-line);border-radius:22px;overflow:hidden;box-shadow:0 14px 36px rgba(15,31,94,0.06)}
+.c360-ind-re-lcard-img{position:relative;display:flex;align-items:center;justify-content:center;font-size:44px;color:rgba(255,255,255,0.85);background:linear-gradient(160deg,#2B3C99,var(--re-navy))}
+.c360-ind-re-lcard:nth-child(2) .c360-ind-re-lcard-img{background:linear-gradient(160deg,#3A6FB8,#1F4E8C)}
+.c360-ind-re-lcard:nth-child(3) .c360-ind-re-lcard-img{background:linear-gradient(160deg,#1E8A35,var(--re-green))}
+.c360-ind-re-lcard:nth-child(4) .c360-ind-re-lcard-img{background:linear-gradient(160deg,#6B7A99,#48577A)}
+.c360-ind-re-tag{position:absolute;top:14px;left:14px;font-size:12px;font-weight:700;border-radius:6px;padding:5px 10px}
+.c360-ind-re-tag.is-red{background:var(--re-red-bg);color:var(--re-red)}
+.c360-ind-re-tag.is-amber{background:var(--re-amber-bg);color:var(--re-amber)}
+.c360-ind-re-tag.is-blue{background:var(--re-blue-light);color:var(--re-navy)}
+.c360-ind-re-lcard-body{padding:30px 32px}
+.c360-ind-re-lcard-body h3{font-size:20px;font-weight:700;line-height:1.35;color:var(--re-text);margin-bottom:8px}
+.c360-ind-re-lcard-body p{font-size:16px;color:var(--re-muted);line-height:1.65}
+
+/* ══════════ PLAN (pipeline board) ══════════ */
+.c360-ind-re-plan-bg{background:var(--re-mist)}
+.c360-ind-re-board{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1600px;margin:0 auto;align-items:start}
+.c360-ind-re-col{background:#E9EEF7;border-radius:20px;padding:16px;display:flex;flex-direction:column;gap:14px}
+.c360-ind-re-col-head{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:6px 8px 4px}
+.c360-ind-re-col-head h3{font-size:17px;font-weight:800;color:var(--re-text);display:flex;align-items:center;gap:10px}
+.c360-ind-re-col-head h3 i{width:30px;height:30px;border-radius:8px;background:var(--re-navy);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-size:13px}
+.c360-ind-re-col-head span{font-size:12.5px;font-weight:700;color:var(--re-muted)}
+.c360-ind-re-deal{background:#fff;border-radius:16px;padding:22px 22px 24px;box-shadow:0 6px 18px rgba(15,31,94,0.07);display:flex;flex-direction:column}
+.c360-ind-re-deal-tag{align-self:flex-start;font-size:12px;font-weight:700;border-radius:100px;padding:4px 11px;margin-bottom:14px}
+.c360-ind-re-deal.is-core .c360-ind-re-deal-tag{background:var(--re-green);color:#fff}
+.c360-ind-re-deal.is-grow .c360-ind-re-deal-tag{background:var(--re-blue-light);color:var(--re-navy)}
+.c360-ind-re-deal.is-core{border-left:5px solid var(--re-green)}
+.c360-ind-re-deal h4{font-size:19px;font-weight:700;line-height:1.3;color:var(--re-text);margin-bottom:8px}
+.c360-ind-re-deal p{font-size:15.5px;color:var(--re-muted);line-height:1.6;margin-bottom:16px}
+.c360-ind-re-deal .c360-ind-re-pills{margin-top:auto}
+.c360-ind-re-plan-foot{text-align:center;max-width:820px;margin:44px auto 0}
+.c360-ind-re-plan-foot p{font-size:15.5px;color:var(--re-muted);line-height:1.65}
+.c360-ind-re-plan-foot a{font-weight:600}
+.c360-ind-re-plan-foot .c360-ind-re-btn{margin-top:26px}
+
+/* ══════════ JOURNEY (two tracks + follow-up strip) ══════════ */
+.c360-ind-re-photo{position:relative;aspect-ratio:3/1;border-radius:26px;overflow:hidden;max-width:1500px;margin:0 auto 48px;background:repeating-linear-gradient(135deg,#D9DFEA 0 16px,#E3E8F1 16px 32px)}
+.c360-ind-re-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-re-photo img[src=""],.c360-ind-re-photo img:not([src]){visibility:hidden}
+.c360-ind-re-tracks{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1500px;margin:0 auto}
+.c360-ind-re-track{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:0;background:#fff;border:1px solid var(--re-line);border-radius:26px;overflow:hidden;box-shadow:0 14px 36px rgba(15,31,94,0.06)}
+@supports not (grid-template-rows:subgrid){.c360-ind-re-track{display:flex;flex-direction:column}}
+.c360-ind-re-track-head{display:flex;align-items:center;gap:16px;padding:28px 34px;border-bottom:1px solid var(--re-line)}
+.c360-ind-re-track-head i{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:22px;flex-shrink:0}
+.c360-ind-re-track.is-buy .c360-ind-re-track-head i{background:var(--re-blue-light);color:var(--re-navy)}
+.c360-ind-re-track.is-sell .c360-ind-re-track-head i{background:var(--re-green-light);color:var(--re-green)}
+.c360-ind-re-track-head h3{font-size:clamp(22px,2.2vw,28px);font-weight:800;line-height:1.2;color:var(--re-text)}
+.c360-ind-re-track-head p{font-size:15px;color:var(--re-muted)}
+.c360-ind-re-track ol{padding:10px 34px 4px}
+.c360-ind-re-track li{display:grid;grid-template-columns:34px 1fr;gap:14px;padding:18px 0;border-bottom:1px dashed #CBD3E1}
+.c360-ind-re-track li:last-child{border-bottom:0}
+.c360-ind-re-track li b{width:30px;height:30px;border-radius:50%;background:var(--re-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px}
+.c360-ind-re-track.is-sell li b{background:var(--re-green)}
+.c360-ind-re-track li h4{font-size:17.5px;font-weight:700;line-height:1.35;color:var(--re-text);margin-bottom:4px}
+.c360-ind-re-track li p{font-size:15.5px;color:var(--re-muted);line-height:1.6}
+.c360-ind-re-track li .c360-ind-re-pills{margin-top:10px}
+.c360-ind-re-track-visual{background:var(--re-mist);padding:28px 34px;display:flex;flex-direction:column;align-items:center;justify-content:center}
+.c360-ind-re-example{display:block;font-size:12px;color:var(--re-muted);text-align:center;margin-top:10px}
+.c360-ind-re-mock{width:100%;max-width:420px}
+
+/* Mock: Meta lead-form ad */
+.c360-ind-re-meta{background:#fff;border:1px solid var(--re-line);border-radius:14px;overflow:hidden;box-shadow:0 10px 26px rgba(15,31,94,0.08);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-re-meta-head{display:flex;align-items:center;gap:9px;padding:10px 12px}
+.c360-ind-re-meta-av{width:30px;height:30px;border-radius:50%;background:var(--re-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px}
+.c360-ind-re-meta-head strong{display:block;font-size:13px;color:#050505}
+.c360-ind-re-meta-head span{font-size:11.5px;color:#65676B}
+.c360-ind-re-meta-text{padding:0 12px 9px;font-size:13px;color:#050505;line-height:1.45}
+.c360-ind-re-meta-img{height:96px;position:relative;background:linear-gradient(180deg,#BFD6EF 0 55%,#8FB27A 55% 100%)}
+.c360-ind-re-meta-img::before{content:"";position:absolute;left:36%;bottom:30%;width:28%;height:42%;background:#F4F1EA;border-radius:2px}
+.c360-ind-re-meta-img::after{content:"";position:absolute;left:31%;bottom:70%;width:38%;height:0;border-left:19px solid transparent;border-right:19px solid transparent;border-bottom:26px solid #7A4E3A;box-sizing:content-box;transform:translateX(-0px)}
+.c360-ind-re-meta-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 12px;background:#F0F2F5}
+.c360-ind-re-meta-cta span{font-size:12.5px;color:#050505;font-weight:600}
+.c360-ind-re-meta-cta em{font-style:normal;font-size:12.5px;font-weight:700;color:#050505;background:#E4E6EB;border-radius:6px;padding:6px 11px}
+
+/* CRM follow-up strip */
+.c360-ind-re-follow{max-width:1500px;margin:28px auto 0;background:var(--re-navy-deeper);color:#fff;border-radius:26px;padding:36px 40px}
+.c360-ind-re-follow-top{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-bottom:26px}
+.c360-ind-re-follow-top h3{font-size:clamp(22px,2.2vw,28px);font-weight:800;line-height:1.25;color:#fff}
+.c360-ind-re-follow-top p{font-size:16px;color:rgba(255,255,255,0.78);max-width:640px;margin-top:6px}
+.c360-ind-re-follow-top .c360-ind-re-pills a{background:transparent;color:#fff;border-color:rgba(255,255,255,0.55)}
+.c360-ind-re-follow-top .c360-ind-re-pills a:hover{background:#fff;color:var(--re-navy)}
+.c360-ind-re-follow ol{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;position:relative}
+.c360-ind-re-follow ol::before{content:"";position:absolute;left:0;right:0;top:15px;height:2px;background:rgba(255,255,255,0.18)}
+.c360-ind-re-follow li{position:relative;padding-top:40px}
+.c360-ind-re-follow li::before{content:"";position:absolute;top:8px;left:0;width:16px;height:16px;border-radius:50%;background:#2ecc52;box-shadow:0 0 0 5px rgba(46,204,82,0.2)}
+.c360-ind-re-follow li b{display:block;font-size:13px;font-weight:700;color:#7ddc80;margin-bottom:6px}
+.c360-ind-re-follow li span{display:block;font-size:14px;line-height:1.5;color:rgba(255,255,255,0.9);background:rgba(255,255,255,0.07);border-radius:12px;padding:12px 14px}
+
+/* ══════════ REVIEWS (spec row) ══════════ */
+.c360-ind-re-specrow{display:flex;justify-content:center;flex-wrap:wrap;gap:0;margin:0 auto 44px;border:1px solid var(--re-line);border-radius:100px;max-width:max-content;overflow:hidden}
+.c360-ind-re-specrow li{display:flex;align-items:center;gap:10px;padding:14px 26px;font-size:15.5px;font-weight:600;color:var(--re-text);border-left:1px solid var(--re-line)}
+.c360-ind-re-specrow li:first-child{border-left:0}
+.c360-ind-re-specrow i{color:var(--re-green)}
+
+/* ══════════ CTA (yard sign) ══════════ */
+.c360-ind-re-final{background:var(--re-sand);padding:96px 0 0;overflow:hidden}
+.c360-ind-re-sign{position:relative;max-width:980px;margin:0 auto;padding:0 24px}
+.c360-ind-re-sign-post{position:absolute;left:50%;top:-96px;bottom:0;width:18px;margin-left:-9px;background:linear-gradient(90deg,#E4E0D4,#FFFFFF 50%,#E4E0D4);border-radius:4px}
+.c360-ind-re-sign-board{position:relative;background:var(--re-navy);color:#fff;border-radius:18px;padding:56px 56px 52px;text-align:center;box-shadow:0 28px 60px rgba(13,22,84,0.28);border:6px solid #fff}
+.c360-ind-re-sign-rider{position:absolute;top:-28px;left:50%;transform:translateX(-50%);background:var(--re-green);color:#fff;font-size:14px;font-weight:800;letter-spacing:0.04em;border-radius:8px;padding:10px 22px;border:4px solid #fff;white-space:nowrap}
+.c360-ind-re-sign-board h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:16px}
+.c360-ind-re-sign-board p{font-size:18px;color:rgba(255,255,255,0.82);max-width:620px;margin:0 auto 30px;line-height:1.65}
+.c360-ind-re-sign-board .c360-ind-re-ctas{justify-content:center}
+.c360-ind-re-sign-ground{height:96px}
+
+/* ══════════ FAQ (house markers) ══════════ */
+.c360-ind-re-faq-list{max-width:1000px;margin:0 auto}
+.c360-ind-re-faq-item{border-bottom:1px solid var(--re-line)}
+.c360-ind-re-faq-item:first-child{border-top:1px solid var(--re-line)}
+.c360-ind-re-faq-q{display:grid;grid-template-columns:40px 1fr 24px;align-items:center;gap:12px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--re-text);cursor:pointer;list-style:none}
+.c360-ind-re-faq-q::-webkit-details-marker{display:none}
+.c360-ind-re-faq-q::before{content:"";width:28px;height:24px;background:var(--re-blue-light);clip-path:polygon(50% 0,100% 42%,100% 100%,0 100%,0 42%);border-radius:2px}
+.c360-ind-re-faq-item[open] .c360-ind-re-faq-q::before{background:var(--re-green)}
+.c360-ind-re-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--re-navy);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-re-faq-item[open] .c360-ind-re-faq-q::after{transform:rotate(45deg)}
+.c360-ind-re-faq-a{padding:0 40px 24px 56px;font-size:16px;color:var(--re-muted);line-height:1.7}
+.c360-ind-re-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1200px){
+  .c360-ind-re-board{grid-template-columns:repeat(2,1fr)}
+  .c360-ind-re-listing{grid-template-columns:1fr}
+  .c360-ind-re-listing-side{border-left:0;border-top:1px solid var(--re-line)}
+  .c360-ind-re-specs{grid-template-columns:repeat(3,1fr);gap:16px}
+  .c360-ind-re-specs li{border-bottom:0;padding:0}
+}
+@media (max-width:900px){
+  .c360-ind-re-section{padding:76px 0}
+  .c360-ind-re-listing{margin-top:-120px}
+  .c360-ind-re-listing-main{padding:36px 28px}
+  .c360-ind-re-listing-side{padding:28px}
+  .c360-ind-re-specs{grid-template-columns:1fr;gap:14px}
+  .c360-ind-re-listings,.c360-ind-re-tracks{grid-template-columns:1fr}
+  .c360-ind-re-tracks{row-gap:28px}
+  .c360-ind-re-track{grid-row:auto;display:flex;flex-direction:column}
+  .c360-ind-re-photo{aspect-ratio:16/9}
+  .c360-ind-re-follow ol{grid-template-columns:1fr 1fr;row-gap:20px}
+  .c360-ind-re-follow ol::before{display:none}
+  .c360-ind-re-specrow{border-radius:20px}
+}
+@media (max-width:640px){
+  .c360-ind-re-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-re-lcard{grid-template-columns:1fr}
+  .c360-ind-re-lcard-img{height:120px}
+  .c360-ind-re-board{grid-template-columns:1fr}
+  .c360-ind-re-track ol,.c360-ind-re-track-head,.c360-ind-re-track-visual{padding-left:22px;padding-right:22px}
+  .c360-ind-re-follow{padding:28px 22px}
+  .c360-ind-re-follow ol{grid-template-columns:1fr}
+  .c360-ind-re-sign-board{padding:48px 22px 40px}
+  .c360-ind-re-specrow li{border-left:0;padding:10px 18px}
+  .c360-ind-re-btn{width:100%}
+  .c360-ind-re-partner{--badge-h:64px;--badge-clear:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-re *,.c360-ind-re *::before,.c360-ind-re *::after{transition:none !important;animation:none !important}
+  .c360-ind-re-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-re">
+
+<!-- ══════════ HERO (photo + listing card) ══════════ -->
+<section class="c360-ind-re-hero">
+  <div class="c360-ind-re-hero-media">
+    <!-- IMAGE PLACEHOLDER: re-hero — real estate agent handing house keys to happy buyers in front of a home, 16:9 (full width) -->
+    <img src="" data-c360-placeholder="re-hero" alt="Real estate agent handing house keys to new homeowners in front of their home" fetchpriority="high">
+    <div class="c360-ind-re-fallback" aria-hidden="true"><i class="fa-solid fa-house"></i></div>
+    <div class="c360-ind-re-hero-crumbs">
+      <div class="c360-ind-re-wrap">
+        <nav class="c360-ind-re-crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/industries">Industries</a></li>
+            <li aria-current="page">Real Estate</li>
+          </ol>
+        </nav>
+      </div>
+    </div>
+  </div>
+  <div class="c360-ind-re-wrap">
+    <div class="c360-ind-re-listing">
+      <div class="c360-ind-re-listing-main">
+        <span class="c360-ind-re-status"><i class="fa-solid fa-house-circle-check" aria-hidden="true"></i> Just listed: your next closing</span>
+        <h1>Real estate marketing that keeps your pipeline full</h1>
+        <p class="c360-ind-re-hero-sub">Buyers and sellers pick an agent long before they're ready to sign. We help you show up in their feed, look like the local expert on Google, and stay in touch until they're ready to move.</p>
+        <div class="c360-ind-re-ctas">
+          <a href="/schedule-demo" class="c360-ind-re-btn c360-ind-re-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-re-btn c360-ind-re-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+      </div>
+      <div class="c360-ind-re-listing-side">
+        <ul class="c360-ind-re-specs">
+          <li><i class="fa-solid fa-user-plus" aria-hidden="true"></i><div><strong>New buyer and seller leads</strong><span>From Facebook and Instagram</span></div></li>
+          <li><i class="fa-solid fa-star" aria-hidden="true"></i><div><strong>A profile full of reviews</strong><span>On Google, where clients check you</span></div></li>
+          <li><i class="fa-solid fa-repeat" aria-hidden="true"></i><div><strong>Follow-up that never forgets</strong><span>Until they're ready to move</span></div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="c360-ind-re-creds">
+      <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-re-partner">
+        <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+      </a>
+      <ul class="c360-ind-re-creds-list">
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner with a Google Product Expert</li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-re-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Helping agents and brokerages nationwide since 2018</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE REAL ESTATE REALITY (listing cards) ══════════ -->
+<section class="c360-ind-re-section" style="background:var(--re-mist)">
+  <div class="c360-ind-re-wrap">
+    <div class="c360-ind-re-head">
+      <span class="c360-ind-re-kicker"><i class="fa-solid fa-sign-hanging" aria-hidden="true"></i> Current market conditions</span>
+      <h2 class="c360-ind-re-h2">The real estate reality</h2>
+      <p class="c360-ind-re-lead">Real estate runs on relationships that start months before a deal. These are the listings no agent wants in their pipeline.</p>
+    </div>
+    <div class="c360-ind-re-listings">
+      <article class="c360-ind-re-lcard">
+        <div class="c360-ind-re-lcard-img" aria-hidden="true"><span class="c360-ind-re-tag is-red">Expired</span><i class="fa-solid fa-snowflake"></i></div>
+        <div class="c360-ind-re-lcard-body"><h3>Leads that went cold</h3><p>Most buyers and sellers aren't ready on day one. Without steady follow-up, the lead you paid for signs with whoever checked in last.</p></div>
+      </article>
+      <article class="c360-ind-re-lcard">
+        <div class="c360-ind-re-lcard-img" aria-hidden="true"><span class="c360-ind-re-tag is-blue">Back on market</span><i class="fa-solid fa-people-arrows"></i></div>
+        <div class="c360-ind-re-lcard-body"><h3>Past clients who forget your name</h3><p>Your best source of deals is people you've already helped. Years later, many can't remember who their agent was.</p></div>
+      </article>
+      <article class="c360-ind-re-lcard">
+        <div class="c360-ind-re-lcard-img" aria-hidden="true"><span class="c360-ind-re-tag is-amber">Price reduced</span><i class="fa-solid fa-tags"></i></div>
+        <div class="c360-ind-re-lcard-body"><h3>Competing on commission instead of trust</h3><p>When clients can't tell agents apart, the conversation turns to fees. Reviews and a visible local presence change that conversation.</p></div>
+      </article>
+      <article class="c360-ind-re-lcard">
+        <div class="c360-ind-re-lcard-img" aria-hidden="true"><span class="c360-ind-re-tag is-blue">90+ days on market</span><i class="fa-solid fa-hourglass-half"></i></div>
+        <div class="c360-ind-re-lcard-body"><h3>Referrals don't arrive on a schedule</h3><p>Word of mouth is great, but you can't plan a year around it. A steady flow of new leads keeps the slow months from getting slower.</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (pipeline board) ══════════
+     Outcome first. Draft per the worksheet; confirm with Jared. -->
+<section class="c360-ind-re-section" id="re-plan">
+  <div class="c360-ind-re-wrap">
+    <div class="c360-ind-re-head">
+      <span class="c360-ind-re-kicker">Your recommended plan</span>
+      <h2 class="c360-ind-re-h2">Your real estate marketing plan, stage by stage</h2>
+      <p class="c360-ind-re-lead">Laid out like your own deal pipeline. Start with the cards marked "Start here," and add the rest as your pipeline grows.</p>
+    </div>
+
+    <div class="c360-ind-re-board">
+      <div class="c360-ind-re-col">
+        <div class="c360-ind-re-col-head"><h3><i class="fa-solid fa-user-plus" aria-hidden="true"></i> New leads</h3><span>Stage 1</span></div>
+        <div class="c360-ind-re-deal is-core">
+          <span class="c360-ind-re-deal-tag">Start here</span>
+          <h4>Reach buyers and sellers in your market</h4>
+          <p>Facebook and Instagram ads with lead forms for new listings, home valuations and buyer consultations, built within Meta's rules for housing ads.</p>
+          <div class="c360-ind-re-pills"><a href="/meta-ads">Meta Ads</a></div>
+        </div>
+      </div>
+      <div class="c360-ind-re-col">
+        <div class="c360-ind-re-col-head"><h3><i class="fa-solid fa-handshake" aria-hidden="true"></i> Get chosen</h3><span>Stage 2</span></div>
+        <div class="c360-ind-re-deal is-core">
+          <span class="c360-ind-re-deal-tag">Start here</span>
+          <h4>Be the agent with the reviews</h4>
+          <p>When a lead looks you up, your Google Business Profile shows recent sales, local expertise and fresh reviews from every client you've helped.</p>
+          <div class="c360-ind-re-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+        </div>
+      </div>
+      <div class="c360-ind-re-col">
+        <div class="c360-ind-re-col-head"><h3><i class="fa-solid fa-comments" aria-hidden="true"></i> Stay in touch</h3><span>Stage 3</span></div>
+        <div class="c360-ind-re-deal is-grow">
+          <span class="c360-ind-re-deal-tag">Add as you grow</span>
+          <h4>Follow up until they're ready</h4>
+          <p>Every lead and past client in one pipeline, with automatic texts and emails that keep you top of mind for months, not days.</p>
+          <div class="c360-ind-re-pills"><a href="/crm-home">Complete360 CRM</a></div>
+        </div>
+      </div>
+      <div class="c360-ind-re-col">
+        <div class="c360-ind-re-col-head"><h3><i class="fa-solid fa-map-location-dot" aria-hidden="true"></i> Farm and showcase</h3><span>Stage 4</span></div>
+        <div class="c360-ind-re-deal is-grow">
+          <span class="c360-ind-re-deal-tag">Add as you grow</span>
+          <h4>Own your farm area and open houses</h4>
+          <p>Ads on phones and connected TVs around your open houses and the neighborhoods you farm.</p>
+          <div class="c360-ind-re-pills"><a href="/geo-fencing">Geo-Fencing</a></div>
+        </div>
+        <div class="c360-ind-re-deal is-grow">
+          <span class="c360-ind-re-deal-tag">Add as you grow</span>
+          <h4>A website that's yours, not your brokerage's</h4>
+          <p>Your listings, your story and your lead forms, on a site you keep when you move.</p>
+          <div class="c360-ind-re-pills"><a href="/websites-home">Websites</a></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="c360-ind-re-plan-foot">
+      <p>Also available: <a href="/seo-services">SEO Services</a> for steady traffic from Google and AI search. Every service's price is on its own page, and we'll help you decide what fits your goals.</p>
+      <a href="/schedule-demo" class="c360-ind-re-btn c360-ind-re-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (buyers / sellers tracks) ══════════ -->
+<section class="c360-ind-re-section" style="background:var(--re-mist)">
+  <div class="c360-ind-re-wrap">
+    <div class="c360-ind-re-head">
+      <span class="c360-ind-re-kicker">Two kinds of clients, one system</span>
+      <h2 class="c360-ind-re-h2">From "just browsing" to "where do I sign?"</h2>
+      <p class="c360-ind-re-lead">Buyers and sellers find agents differently. The plan covers both, and the follow-up ties them together.</p>
+    </div>
+
+    <div class="c360-ind-re-photo">
+      <!-- IMAGE PLACEHOLDER: re-on-the-job — busy open house, agent greeting visitors in a bright living room, 4:3 (shown wide, about 3:1) -->
+      <img src="" data-c360-placeholder="re-on-the-job" alt="Real estate agent greeting visitors at a busy open house" loading="lazy">
+      <div class="c360-ind-re-fallback" aria-hidden="true"><i class="fa-solid fa-door-open"></i></div>
+    </div>
+
+    <div class="c360-ind-re-tracks">
+      <article class="c360-ind-re-track is-buy">
+        <div class="c360-ind-re-track-head"><i class="fa-solid fa-key" aria-hidden="true"></i><div><h3>Buyers</h3><p>Months of browsing before the first showing</p></div></div>
+        <ol>
+          <li><b>1</b><div><h4>They see new listings in their feed</h4><p>Meta Ads put your listings and a "get new homes first" form in front of people looking in your market.</p><div class="c360-ind-re-pills"><a href="/meta-ads">Meta Ads</a></div></div></li>
+          <li><b>2</b><div><h4>They check you out</h4><p>Your Google Business Profile and reviews show you know the area and take care of your clients.</p><div class="c360-ind-re-pills"><a href="/gbp-management">Google Business Profile Management</a></div></div></li>
+          <li><b>3</b><div><h4>They hear from you until they're ready</h4><p>New listings and check-ins arrive automatically, so you're the agent they call when they're ready to tour.</p><div class="c360-ind-re-pills"><a href="/crm-home">Complete360 CRM</a></div></div></li>
+        </ol>
+        <div class="c360-ind-re-track-visual">
+          <div class="c360-ind-re-mock">
+            <div class="c360-ind-re-meta" role="img" aria-label="Example Facebook ad inviting home buyers to get new listings first, with a Sign up button">
+              <div class="c360-ind-re-meta-head"><span class="c360-ind-re-meta-av" aria-hidden="true"><i class="fa-solid fa-house"></i></span><div><strong>Your Name, Real Estate Agent</strong><span>Sponsored</span></div></div>
+              <p class="c360-ind-re-meta-text">New listings in your area, sent to you the day they hit the market.</p>
+              <div class="c360-ind-re-meta-img" aria-hidden="true"></div>
+              <div class="c360-ind-re-meta-cta"><span>Get new listings first</span><em>Sign up</em></div>
+            </div>
+          </div>
+          <span class="c360-ind-re-example">Example ad for illustration</span>
+        </div>
+      </article>
+
+      <article class="c360-ind-re-track is-sell">
+        <div class="c360-ind-re-track-head"><i class="fa-solid fa-sign-hanging" aria-hidden="true"></i><div><h3>Sellers</h3><p>Curious about value long before they list</p></div></div>
+        <ol>
+          <li><b>1</b><div><h4>They wonder what their home is worth</h4><p>Meta Ads offer a free home value review to homeowners in your market, the classic first step for sellers.</p><div class="c360-ind-re-pills"><a href="/meta-ads">Meta Ads</a></div></div></li>
+          <li><b>2</b><div><h4>They see you around the neighborhood</h4><p>Geo-Fencing shows your ads around your open houses and the areas you farm, so your name is familiar before the listing appointment.</p><div class="c360-ind-re-pills"><a href="/geo-fencing">Geo-Fencing</a></div></div></li>
+          <li><b>3</b><div><h4>They pick the agent they already trust</h4><p>Recent sales and reviews on your Google Business Profile and your own website close the deal on who gets the listing.</p><div class="c360-ind-re-pills"><a href="/gbp-management">Google Business Profile Management</a><a href="/websites-home">Websites</a></div></div></li>
+        </ol>
+        <div class="c360-ind-re-track-visual">
+          <div class="c360-ind-re-mock">
+            <div class="c360-ind-re-meta" role="img" aria-label="Example Facebook ad offering homeowners a free home value review, with a Get my value button">
+              <div class="c360-ind-re-meta-head"><span class="c360-ind-re-meta-av" aria-hidden="true" style="background:var(--re-green)"><i class="fa-solid fa-sign-hanging"></i></span><div><strong>Your Name, Real Estate Agent</strong><span>Sponsored</span></div></div>
+              <p class="c360-ind-re-meta-text">Curious what your home would sell for today? Get a free, no-pressure home value review from a local agent.</p>
+              <div class="c360-ind-re-meta-img" aria-hidden="true"></div>
+              <div class="c360-ind-re-meta-cta"><span>Free home value review</span><em>Get my value</em></div>
+            </div>
+          </div>
+          <span class="c360-ind-re-example">Example ad for illustration</span>
+        </div>
+      </article>
+    </div>
+
+    <div class="c360-ind-re-follow">
+      <div class="c360-ind-re-follow-top">
+        <div>
+          <h3>The follow-up that ties it together</h3>
+          <p>Complete360 CRM keeps every lead and past client on a schedule, by text and email, so no one goes cold.</p>
+        </div>
+        <div class="c360-ind-re-pills"><a href="/crm-home">Complete360 CRM</a></div>
+      </div>
+      <ol aria-label="Example follow-up schedule for a new lead">
+        <li><b>Day 1</b><span>"Thanks for reaching out! Here are three homes that match what you're looking for."</span></li>
+        <li><b>Day 7</b><span>"Two new listings just came up in your price range. Want to take a look this weekend?"</span></li>
+        <li><b>Day 30</b><span>"Quick check-in: is your timeline the same, or would a market update help?"</span></li>
+        <li><b>Day 90</b><span>"Rates and prices moved this quarter. Here's what it means for your search."</span></li>
+      </ol>
+      <span class="c360-ind-re-example" style="color:rgba(255,255,255,0.6);margin-top:18px">Example follow-up for illustration</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (spec row) ══════════
+     Same live Google reviews widget as /seo-services (location 1pBjHBEIsKGbwvAUTY9u). -->
+<section class="c360-ind-re-section">
+  <div class="c360-ind-re-wrap">
+    <div class="c360-ind-re-head" style="margin-bottom:36px">
+      <span class="c360-ind-re-kicker">Our own reviews</span>
+      <h2 class="c360-ind-re-h2">What our clients say</h2>
+      <p class="c360-ind-re-lead">Business owners across the country, in their own words.</p>
+    </div>
+    <ul class="c360-ind-re-specrow">
+      <li><i class="fa-solid fa-star" aria-hidden="true"></i> 5.0 on Google</li>
+      <li><i class="fa-solid fa-comment" aria-hidden="true"></i> 147 five-star reviews</li>
+      <li><i class="fa-solid fa-award" aria-hidden="true"></i> Certified Google Partner</li>
+      <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Since 2018</li>
+    </ul>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (yard sign) ══════════ -->
+<section class="c360-ind-re-final">
+  <div class="c360-ind-re-sign">
+    <span class="c360-ind-re-sign-post" aria-hidden="true"></span>
+    <div class="c360-ind-re-sign-board">
+      <span class="c360-ind-re-sign-rider" aria-hidden="true">FREE STRATEGY CALL</span>
+      <h2>Let's fill your pipeline</h2>
+      <p>Book a free strategy call. We'll look at how buyers and sellers in your market find agents today and map out your plan.</p>
+      <div class="c360-ind-re-ctas">
+        <a href="/schedule-demo" class="c360-ind-re-btn c360-ind-re-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-re-btn c360-ind-re-btn-ghost"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+    </div>
+    <div class="c360-ind-re-sign-ground" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (house markers) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-re-section" id="re-faq">
+  <div class="c360-ind-re-wrap">
+    <div class="c360-ind-re-head">
+      <h2 class="c360-ind-re-h2">Real estate marketing questions</h2>
+    </div>
+    <div class="c360-ind-re-faq-list">
+
+      <details class="c360-ind-re-faq-item">
+        <summary class="c360-ind-re-faq-q">How do real estate agents get more leads online?</summary>
+        <div class="c360-ind-re-faq-a"><p>Reach buyers and sellers early, look like the local expert when they check you out, and follow up until they're ready. For most agents that starts with Meta Ads and a Google Business Profile with steady new reviews. A CRM for follow-up, Geo-Fencing around open houses and farm areas, and a website of your own come next.</p></div>
+      </details>
+
+      <details class="c360-ind-re-faq-item">
+        <summary class="c360-ind-re-faq-q">Do Facebook and Instagram ads work for real estate agents?</summary>
+        <div class="c360-ind-re-faq-a"><p>They're one of the best ways to reach people months before they're ready to buy or sell, with offers like new-listing alerts and home value reviews. Meta treats real estate ads as housing ads, which limits how they can be targeted, and fair housing rules apply too. We build campaigns within those rules and focus on the offer and the follow-up.</p></div>
+      </details>
+
+      <details class="c360-ind-re-faq-item">
+        <summary class="c360-ind-re-faq-q">Why does a Google Business Profile matter for an agent?</summary>
+        <div class="c360-ind-re-faq-a"><p>When a lead searches your name, your Google Business Profile is often the first thing they see. Recent reviews, photos and posts about your sales and your market show them you're active and trusted, which matters most when they're choosing between agents.</p></div>
+      </details>
+
+      <details class="c360-ind-re-faq-item">
+        <summary class="c360-ind-re-faq-q">How do I follow up with leads who aren't ready yet?</summary>
+        <div class="c360-ind-re-faq-a"><p>Put them on a schedule. Complete360 CRM keeps every lead and past client in one pipeline and sends automatic texts and emails, like new listings, check-ins and market updates, so you stay top of mind without having to remember who to call.</p></div>
+      </details>
+
+      <details class="c360-ind-re-faq-item">
+        <summary class="c360-ind-re-faq-q">Can I advertise around my open houses or farm area?</summary>
+        <div class="c360-ind-re-faq-a"><p>Yes. Geo-Fencing shows your ads on phones and connected TVs in the places you choose, like the neighborhood around an open house or the area you farm. Housing ads still have to follow fair housing rules and each platform's policies, so campaigns are built around places and offers, not around who people are.</p></div>
+      </details>
+
+      <details class="c360-ind-re-faq-item">
+        <summary class="c360-ind-re-faq-q">Do I need my own website if my brokerage gives me one?</summary>
+        <div class="c360-ind-re-faq-a"><p>A brokerage page works, but it usually isn't yours to keep or customize. Your own website holds your listings, your story and your lead forms, and it stays with you if you change brokerages. Options and pricing are on our <a href="/website-pricing">website pricing page</a>.</p></div>
+      </details>
+
+      <details class="c360-ind-re-faq-item">
+        <summary class="c360-ind-re-faq-q">Can you guarantee a number of leads or closings?</summary>
+        <div class="c360-ind-re-faq-a"><p>No. No one can promise lead counts or closings. For Google Business Profile Management and advertising campaigns, including Meta Ads and Geo-Fencing, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-re-faq-item">
+        <summary class="c360-ind-re-faq-q">How much does real estate marketing cost?</summary>
+        <div class="c360-ind-re-faq-a"><p>Each service's price is on its own page, including <a href="/gbp-management">Google Business Profile Management</a>, <a href="/geo-fencing">Geo-Fencing</a>, <a href="/crm-home">Complete360 CRM</a> and <a href="/website-pricing">websites</a>. Meta Ads are planned with you on a strategy call, and ad spend is billed directly by Meta. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
