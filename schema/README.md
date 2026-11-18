@@ -72,6 +72,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | General Contractor Marketing | `/industries/general-contractors` | `schema/pages/industries/general-contractors.html` | WebPage, Service, FAQPage | 7 | ✅ |
 | Painting Contractor Marketing | `/industries/painting` | `schema/pages/industries/painting.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Lawn Care Marketing | `/industries/lawn-care` | `schema/pages/industries/lawn-care.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Cleaning Business Marketing | `/industries/cleaning-services` | `schema/pages/industries/cleaning-services.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Website Pricing | `/website-pricing` | `schema/pages/pricing/website-pricing.html` | WebPage, FAQPage | 7 | ✅ |
 | Complete360 CRM Pricing | `/pricing` | `schema/pages/pricing/saas-pricing.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Complete360 CRM | `/crm-home` | `schema/pages/crm-platform/crm-home.html` | WebPage, SoftwareApplication, FAQPage | 8 | ✅ |
