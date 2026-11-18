@@ -81,6 +81,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Mortgage Marketing | `/industries/mortgage` | `schema/pages/industries/mortgage.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Auto Repair Shop Marketing | `/industries/auto-shops` | `schema/pages/industries/auto-shops.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Funeral Home Marketing | `/industries/funeral-homes` | `schema/pages/industries/funeral-homes.html` | WebPage, Service, FAQPage | 7 | ✅ |
+| Restaurant Marketing | `/industries/restaurants` | `schema/pages/industries/restaurants.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Website Pricing | `/website-pricing` | `schema/pages/pricing/website-pricing.html` | WebPage, FAQPage | 7 | ✅ |
 | Complete360 CRM Pricing | `/pricing` | `schema/pages/pricing/saas-pricing.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Complete360 CRM | `/crm-home` | `schema/pages/crm-platform/crm-home.html` | WebPage, SoftwareApplication, FAQPage | 8 | ✅ |

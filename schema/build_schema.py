@@ -177,6 +177,8 @@ page("/industries/auto-shops", "industries/auto-shops.html", "Auto Repair Shop M
      service="Auto Repair Shop Marketing", serviceType="Marketing for auto repair shops", audience="Auto repair shops")
 page("/industries/funeral-homes", "industries/funeral-homes.html", "Funeral Home Marketing", "industry", parent=IND,
      service="Funeral Home Marketing", serviceType="Marketing for funeral homes", audience="Funeral homes")
+page("/industries/restaurants", "industries/restaurants.html", "Restaurant Marketing", "industry", parent=IND,
+     service="Restaurant Marketing", serviceType="Marketing for restaurants", audience="Restaurants")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")

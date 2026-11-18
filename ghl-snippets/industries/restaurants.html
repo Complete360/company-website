@@ -1,0 +1,553 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Restaurants
+     c360-ind-rest-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/restaurants
+          (page name "Restaurant Marketing"). Meta data: ghl-meta/industries/restaurants.md.
+          Schema: schema/pages/industries/restaurants.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-rest-  (new, unique; vars --rest-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from the other pages), restaurant themed:
+       - Hero: cream; photo on the LEFT in a large rounded frame with a
+         code-built kitchen order ticket overlapping it; text on the right.
+       - Reality: four kitchen tickets hanging from a ticket rail.
+       - Plan: a recipe card: "Ingredients" (the services, start here and
+         optional) beside "Method" (the outcomes, step by step).
+       - Journey: three phone screens side by side (search, profile, ad).
+       - Reviews with table-tent stats, "Reserved" table-card CTA, simple
+         FAQ with a fork marker.
+     No Local Services Ads (restaurants aren't an LSA category).
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       rest-hero        16:9, 2000px+ (left frame)
+       rest-on-the-job  4:3, 1200px+  (beside the reserved card)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-12) — first build. Plan per the worksheet draft:
+       Google Business Profile Management (incl. reviews; replaces the
+       separate Reputation Management line), Google Social Posting and Meta
+       Ads first; grow with Geo-Fencing, plus the Local SEO Booster (added,
+       for hours and listings accuracy). Website, AI Voice Agent and SEO
+       Services as "also available". To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-rest{
+  --rest-navy:#122078;--rest-navy-dark:#0d1654;--rest-navy-deeper:#0a1040;
+  --rest-green:#127825;--rest-green-hover:#0e5e1d;--rest-green-light:#EAF3DE;
+  --rest-cream:#FBF6EE;--rest-cream-2:#F3EADB;--rest-tomato:#C2410C;--rest-tomato-light:#FDEBE1;
+  --rest-mist:#F4F7FC;--rest-line:#E9E1D3;--rest-blue-light:#E6F1FB;
+  --rest-text:#1C2340;--rest-muted:#5F5E5A;
+  --rest-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--rest-font);color:var(--rest-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-rest *,.c360-ind-rest *::before,.c360-ind-rest *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-rest :where(h1,h2,h3,h4,p,ul,ol,li){margin:0;padding:0;font-family:var(--rest-font)}
+.c360-ind-rest :where(ul,ol){list-style:none}
+.c360-ind-rest :where(a){color:var(--rest-navy)}
+.c360-ind-rest a:focus-visible,.c360-ind-rest summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-rest-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-rest-section{padding:104px 0}
+.c360-ind-rest-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--rest-text);margin-bottom:16px}
+.c360-ind-rest-lead{font-size:18px;color:var(--rest-muted);max-width:760px;line-height:1.65}
+.c360-ind-rest-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--rest-tomato);margin-bottom:14px}
+.c360-ind-rest-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-rest-head .c360-ind-rest-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-rest-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--rest-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-rest-btn-primary{background:var(--rest-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-rest-btn-primary:hover{background:var(--rest-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-rest-btn-outline{background:transparent;color:var(--rest-text);border:2px solid var(--rest-text);padding:14px 24px}
+.c360-ind-rest-btn-outline:hover{background:var(--rest-text);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-rest a.c360-ind-rest-btn-primary{color:#fff}
+.c360-ind-rest a.c360-ind-rest-btn-outline{color:var(--rest-text)}
+.c360-ind-rest a.c360-ind-rest-btn-outline:hover{color:#fff}
+.c360-ind-rest-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-rest-pills{display:flex;flex-wrap:wrap;gap:10px}
+.c360-ind-rest-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--rest-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-rest-pills a:hover{background:var(--rest-navy);border-color:var(--rest-navy);color:#fff;text-decoration:none}
+
+/* Order-ticket shape (hero + reality): zigzag bottom edge */
+.c360-ind-rest-ticket{background:#fff;color:#2A2A2A;font-family:'Courier New',Courier,monospace;padding:22px 22px 30px;-webkit-mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%;mask:conic-gradient(from -45deg at bottom,#0000,#000 1deg 89deg,#0000 90deg) 50%/18px 100%}
+
+/* ══════════ HERO (photo left + order ticket) ══════════ */
+.c360-ind-rest-hero{background:var(--rest-cream)}
+.c360-ind-rest-hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;padding-top:64px;padding-bottom:96px}
+.c360-ind-rest-hero-media{position:relative;padding:0 60px 60px 0}
+.c360-ind-rest-hero-img{position:relative;aspect-ratio:5/4;border-radius:32px;overflow:hidden;background:repeating-linear-gradient(135deg,#EADFCB 0 16px,#F1E8D8 16px 32px);box-shadow:0 26px 60px rgba(60,40,20,0.16)}
+.c360-ind-rest-hero-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-rest-hero-img img[src=""],.c360-ind-rest-hero-img img:not([src]){visibility:hidden}
+.c360-ind-rest-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#C9B897;font-size:58px;pointer-events:none}
+.c360-ind-rest-hero-img img[src]:not([src=""])+.c360-ind-rest-fallback,.c360-ind-rest-cta-photo img[src]:not([src=""])+.c360-ind-rest-fallback{display:none}
+.c360-ind-rest-hero-tkt-wrap{position:absolute;right:0;bottom:0;width:260px;transform:rotate(4deg);filter:drop-shadow(0 18px 22px rgba(60,40,20,0.25))}
+.c360-ind-rest-hero-ticket b{display:block;font-size:15px;letter-spacing:0.08em;text-align:center;border-bottom:1.5px dashed #999;padding-bottom:8px;margin-bottom:10px}
+.c360-ind-rest-hero-ticket li{display:flex;justify-content:space-between;gap:8px;font-size:13.5px;padding:4px 0}
+.c360-ind-rest-hero-ticket li span:first-child{font-weight:700}
+.c360-ind-rest-hero-ticket p{font-size:12px;text-align:center;border-top:1.5px dashed #999;padding-top:8px;margin-top:8px}
+.c360-ind-rest-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-rest-crumbs li{color:var(--rest-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-rest-crumbs li+li::before{content:"\203A";color:#B7AD98}
+.c360-ind-rest-crumbs a{color:var(--rest-text);text-decoration:none}
+.c360-ind-rest-crumbs a:hover{text-decoration:underline}
+.c360-ind-rest-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--rest-text);margin-bottom:22px}
+.c360-ind-rest-hero-sub{font-size:18px;line-height:1.65;color:#4A4842;max-width:640px;margin-bottom:32px}
+.c360-ind-rest-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-ind-rest-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-rest-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-rest-partner,.c360-ind-rest-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-rest-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+.c360-ind-rest-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:#4A4842;line-height:1.4}
+.c360-ind-rest-creds-list i{color:var(--rest-green);margin-top:3px;font-size:12px}
+.c360-ind-rest-stars{color:#E8A400;letter-spacing:1px}
+
+/* ══════════ REALITY (ticket rail) ══════════ */
+.c360-ind-rest-rail-wrap{max-width:1560px;margin:0 auto;position:relative;padding-top:30px}
+.c360-ind-rest-rail{position:absolute;left:0;right:0;top:0;height:22px;border-radius:6px;background:linear-gradient(180deg,#E3E6EC 0%,#A9AFBC 55%,#D5D9E1 100%);box-shadow:0 6px 14px rgba(20,24,40,0.15)}
+.c360-ind-rest-tickets{display:grid;grid-template-columns:repeat(4,1fr);gap:28px;padding:0 20px;align-items:start}
+/* The ticket itself is masked (zigzag edge), so its shadow comes from a
+   drop-shadow filter on the unmasked wrapper. */
+.c360-ind-rest-tkt{position:relative;display:flex;flex-direction:column;min-height:330px;filter:drop-shadow(0 14px 18px rgba(60,40,20,0.18))}
+.c360-ind-rest-tkt:nth-child(odd){transform:rotate(-1.2deg)}
+.c360-ind-rest-tkt:nth-child(even){transform:rotate(1.3deg)}
+.c360-ind-rest-tkt .c360-ind-rest-ticket{flex:1;padding:24px 24px 40px}
+.c360-ind-rest-tkt-top{display:flex;justify-content:space-between;align-items:center;font-size:13px;font-weight:700;padding-bottom:10px;margin-bottom:14px;border-bottom:1.5px dashed #AAA}
+.c360-ind-rest-tkt-top em{font-style:normal;color:var(--rest-tomato)}
+.c360-ind-rest-tkt h3{font-family:var(--rest-font);font-size:20px;font-weight:700;line-height:1.35;color:var(--rest-text);margin-bottom:10px}
+.c360-ind-rest-tkt p{font-family:var(--rest-font);font-size:16px;color:var(--rest-muted);line-height:1.65}
+
+/* ══════════ PLAN (recipe card) ══════════ */
+.c360-ind-rest-plan-bg{background:var(--rest-cream)}
+.c360-ind-rest-recipe{max-width:1460px;margin:0 auto;background:#fff;border-radius:18px;box-shadow:0 24px 60px rgba(60,40,20,0.12);overflow:hidden;display:grid;grid-template-columns:0.85fr 1.15fr;position:relative}
+.c360-ind-rest-recipe::before{content:"";position:absolute;left:0;right:0;top:0;height:10px;background:repeating-linear-gradient(90deg,var(--rest-tomato) 0 22px,#fff 22px 44px)}
+.c360-ind-rest-ingr{background:var(--rest-cream-2);padding:56px 44px 44px}
+.c360-ind-rest-ingr h3,.c360-ind-rest-method h3{display:flex;align-items:center;gap:12px;font-size:24px;font-weight:800;color:var(--rest-text);margin-bottom:6px}
+.c360-ind-rest-ingr h3 i,.c360-ind-rest-method h3 i{color:var(--rest-tomato)}
+.c360-ind-rest-ingr > p,.c360-ind-rest-method > p{font-size:15px;color:var(--rest-muted);margin-bottom:22px}
+.c360-ind-rest-ingr h4{font-size:13px;font-weight:800;letter-spacing:0.06em;margin:22px 0 10px}
+.c360-ind-rest-ingr h4.is-core{color:var(--rest-green)}
+.c360-ind-rest-ingr h4.is-grow{color:var(--rest-navy)}
+.c360-ind-rest-ingr li{display:flex;align-items:center;gap:12px;padding:10px 0;border-bottom:1px dashed #D6C9AF}
+.c360-ind-rest-ingr li:last-child{border-bottom:0}
+.c360-ind-rest-ingr li i{color:var(--rest-green);width:16px;text-align:center}
+.c360-ind-rest-ingr li.is-opt i{color:#9AA4BE}
+.c360-ind-rest-ingr li a{font-size:16px;font-weight:600;color:var(--rest-text);text-decoration:none;border-bottom:1.5px solid #CBB98F}
+.c360-ind-rest-ingr li a:hover{color:var(--rest-navy);border-color:var(--rest-navy)}
+.c360-ind-rest-ingr li span{margin-left:auto;font-size:12.5px;color:var(--rest-muted)}
+.c360-ind-rest-ingr-note{margin-top:26px;font-size:14px;color:var(--rest-muted);line-height:1.6}
+.c360-ind-rest-ingr-note a{font-weight:600}
+.c360-ind-rest-method{padding:56px 52px 44px}
+.c360-ind-rest-steps li{display:grid;grid-template-columns:48px 1fr;gap:18px;padding:20px 0;border-top:1px solid var(--rest-line)}
+.c360-ind-rest-steps li:first-child{border-top:0;padding-top:4px}
+.c360-ind-rest-steps b{width:40px;height:40px;border-radius:50%;background:var(--rest-tomato-light);color:var(--rest-tomato);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:800}
+.c360-ind-rest-steps h4{font-size:19px;font-weight:700;line-height:1.35;color:var(--rest-text);margin-bottom:6px}
+.c360-ind-rest-steps p{font-size:15.5px;color:var(--rest-muted);line-height:1.65;margin-bottom:12px}
+.c360-ind-rest-yield{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-top:18px;padding-top:20px;border-top:2px solid var(--rest-text)}
+.c360-ind-rest-yield span{font-size:15px;font-weight:700;color:var(--rest-text)}
+.c360-ind-rest-yield span i{color:var(--rest-tomato);margin-right:6px}
+
+/* ══════════ JOURNEY (three phones) ══════════ */
+.c360-ind-rest-phones{display:grid;grid-template-columns:repeat(3,1fr);gap:36px;max-width:1400px;margin:0 auto}
+.c360-ind-rest-ph{display:flex;flex-direction:column;align-items:center;text-align:center}
+.c360-ind-rest-phone{width:100%;max-width:320px;aspect-ratio:9/17;border-radius:42px;background:#111;padding:12px;box-shadow:0 28px 60px rgba(20,24,40,0.22);margin-bottom:28px;position:relative}
+.c360-ind-rest-phone::before{content:"";position:absolute;top:22px;left:50%;width:90px;height:22px;margin-left:-45px;border-radius:100px;background:#111;z-index:2}
+.c360-ind-rest-screen{width:100%;height:100%;border-radius:32px;background:#fff;overflow:hidden;font-family:Arial,'Helvetica Neue',sans-serif;text-align:left;padding:52px 14px 14px;display:flex;flex-direction:column;gap:10px}
+.c360-ind-rest-bar{display:flex;align-items:center;gap:8px;border:1px solid #DFE1E5;border-radius:100px;padding:8px 12px;font-size:12.5px;color:#202124}
+.c360-ind-rest-bar i{color:#9AA0A6}
+.c360-ind-rest-mapmini{height:96px;border-radius:10px;background-color:#E8EEF3;background-image:linear-gradient(90deg,#fff 4px,transparent 4px),linear-gradient(0deg,#fff 4px,transparent 4px);background-size:40px 36px;position:relative}
+.c360-ind-rest-mapmini i{position:absolute;color:#EA4335;font-size:20px}
+.c360-ind-rest-listing{border-bottom:1px solid #EEE;padding:8px 2px}
+.c360-ind-rest-listing strong{display:block;font-size:13.5px;color:#1A0DAB}
+.c360-ind-rest-listing > span{display:block;font-size:11.5px;color:#4D5156}
+.c360-ind-rest-listing em{font-style:normal;color:#188038;font-weight:700}
+.c360-ind-rest-listing:not(.is-you){opacity:0.55}
+.c360-ind-rest-ystars{color:#FBBC04;letter-spacing:1px}
+.c360-ind-rest-photogrid{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.c360-ind-rest-photogrid span{height:70px;border-radius:6px}
+.c360-ind-rest-photogrid span:nth-child(1){background:radial-gradient(circle at 50% 50%,#F2C77B 0 26%,#E8E3D9 27% 40%,#C9B897 41%)}
+.c360-ind-rest-photogrid span:nth-child(2){background:linear-gradient(135deg,#8B5A3C,#5C3A26)}
+.c360-ind-rest-photogrid span:nth-child(3){background:linear-gradient(135deg,#C2410C,#7C2A08)}
+.c360-ind-rest-photogrid span:nth-child(4){background:radial-gradient(circle at 50% 50%,#7FA35A 0 24%,#EEE 25% 38%,#D9CBB1 39%)}
+.c360-ind-rest-chips{display:flex;flex-wrap:wrap;gap:6px}
+.c360-ind-rest-chips span{font-size:11px;font-weight:700;color:#1A73E8;border:1px solid #DADCE0;border-radius:100px;padding:5px 10px}
+.c360-ind-rest-rev{font-size:12px;color:#3C4043;line-height:1.45;border-top:1px solid #EEE;padding-top:8px}
+.c360-ind-rest-rev b{color:#202124}
+.c360-ind-rest-ad-head{display:flex;align-items:center;gap:8px;font-size:12px}
+.c360-ind-rest-ad-head span{width:28px;height:28px;border-radius:50%;background:var(--rest-tomato);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px}
+.c360-ind-rest-ad-head strong{display:block;color:#050505}
+.c360-ind-rest-ad-head em{font-style:normal;color:#65676B}
+.c360-ind-rest-ad-text{font-size:12.5px;color:#050505;line-height:1.45}
+.c360-ind-rest-ad-img{flex:1;min-height:120px;border-radius:8px;background:radial-gradient(circle at 50% 55%,#E9C46A 0 22%,#F4EDE0 23% 36%,#2A1B14 37%)}
+.c360-ind-rest-ad-cta{display:flex;justify-content:space-between;align-items:center;gap:8px;background:#F0F2F5;border-radius:8px;padding:8px 10px;font-size:11.5px;font-weight:600;color:#050505}
+.c360-ind-rest-ad-cta b{background:#E4E6EB;border-radius:6px;padding:5px 9px}
+.c360-ind-rest-ph h3{font-size:clamp(20px,1.9vw,24px);font-weight:800;line-height:1.25;color:var(--rest-text);margin-bottom:8px}
+.c360-ind-rest-ph-time{display:inline-block;font-size:13px;font-weight:700;color:var(--rest-tomato);margin-bottom:6px}
+.c360-ind-rest-ph > p{font-size:16px;color:var(--rest-muted);line-height:1.65;margin-bottom:16px;max-width:400px}
+.c360-ind-rest-ph .c360-ind-rest-pills{justify-content:center}
+.c360-ind-rest-example{display:block;font-size:12px;color:var(--rest-muted);text-align:center;margin:-18px 0 18px}
+
+/* ══════════ REVIEWS (table tents) ══════════ */
+.c360-ind-rest-tents{display:flex;justify-content:center;flex-wrap:wrap;gap:28px;margin:0 auto 48px}
+.c360-ind-rest-tents li{position:relative;width:200px;padding:26px 16px 22px;background:#fff;border:1px solid var(--rest-line);border-radius:10px 10px 4px 4px;text-align:center;box-shadow:0 12px 26px rgba(60,40,20,0.10)}
+.c360-ind-rest-tents li::before{content:"";position:absolute;left:12px;right:12px;top:-8px;height:8px;background:var(--rest-cream-2);border-radius:6px 6px 0 0;border:1px solid var(--rest-line);border-bottom:0}
+.c360-ind-rest-tents strong{display:block;font-size:34px;font-weight:800;line-height:1.1;color:var(--rest-text)}
+.c360-ind-rest-tents span{font-size:13.5px;color:var(--rest-muted)}
+
+/* ══════════ CTA (reserved card) ══════════ */
+.c360-ind-rest-cta{display:grid;grid-template-columns:1fr 1fr;gap:40px;max-width:1400px;margin:0 auto;align-items:center}
+.c360-ind-rest-cta-photo{position:relative;aspect-ratio:4/3;border-radius:28px;overflow:hidden;background:repeating-linear-gradient(135deg,#EADFCB 0 16px,#F1E8D8 16px 32px)}
+.c360-ind-rest-cta-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-rest-cta-photo img[src=""],.c360-ind-rest-cta-photo img:not([src]){visibility:hidden}
+.c360-ind-rest-reserved{background:#fff;border:1px solid var(--rest-line);border-radius:18px;padding:56px 52px;text-align:center;box-shadow:0 24px 60px rgba(60,40,20,0.12);position:relative}
+.c360-ind-rest-reserved::after{content:"";position:absolute;left:24px;right:24px;bottom:-10px;height:10px;background:var(--rest-cream-2);border-radius:0 0 12px 12px;border:1px solid var(--rest-line);border-top:0}
+.c360-ind-rest-reserved-tag{display:inline-block;font-size:14px;font-weight:800;letter-spacing:0.3em;color:var(--rest-tomato);border-top:1.5px solid var(--rest-tomato);border-bottom:1.5px solid var(--rest-tomato);padding:6px 4px;margin-bottom:18px}
+.c360-ind-rest-reserved h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--rest-text);margin-bottom:14px}
+.c360-ind-rest-reserved p{font-size:18px;color:var(--rest-muted);line-height:1.65;margin:0 auto 30px;max-width:520px}
+.c360-ind-rest-reserved .c360-ind-rest-ctas{justify-content:center}
+
+/* ══════════ FAQ (fork marker) ══════════ */
+.c360-ind-rest-faq-list{max-width:1000px;margin:0 auto}
+.c360-ind-rest-faq-item{border-bottom:1px solid var(--rest-line)}
+.c360-ind-rest-faq-item:first-child{border-top:1px solid var(--rest-line)}
+.c360-ind-rest-faq-q{display:grid;grid-template-columns:34px 1fr 24px;align-items:center;gap:12px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--rest-text);cursor:pointer;list-style:none}
+.c360-ind-rest-faq-q::-webkit-details-marker{display:none}
+.c360-ind-rest-faq-q::before{content:"";width:26px;height:26px;border-radius:50%;background:var(--rest-tomato-light);box-shadow:inset 0 0 0 6px #fff,inset 0 0 0 7px var(--rest-tomato)}
+.c360-ind-rest-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--rest-tomato);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-rest-faq-item[open] .c360-ind-rest-faq-q::after{transform:rotate(45deg)}
+.c360-ind-rest-faq-a{padding:0 40px 24px 50px;font-size:16px;color:var(--rest-muted);line-height:1.7}
+.c360-ind-rest-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1200px){
+  .c360-ind-rest-tickets{grid-template-columns:repeat(2,1fr);row-gap:36px}
+  .c360-ind-rest-recipe{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .c360-ind-rest-section{padding:76px 0}
+  .c360-ind-rest-hero-grid{grid-template-columns:1fr;gap:40px;padding-top:48px}
+  .c360-ind-rest-hero-media{order:2;padding:0 30px 50px 0}
+  .c360-ind-rest-hero-tkt-wrap{width:210px}
+  .c360-ind-rest-phones{grid-template-columns:1fr;gap:56px}
+  .c360-ind-rest-cta{grid-template-columns:1fr}
+  .c360-ind-rest-ingr,.c360-ind-rest-method{padding:44px 26px 32px}
+  .c360-ind-rest-reserved{padding:44px 24px}
+}
+@media (max-width:640px){
+  .c360-ind-rest-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-rest-tickets{grid-template-columns:1fr;padding:0 6px}
+  .c360-ind-rest-tkt{min-height:0}
+  .c360-ind-rest-tkt:nth-child(n){transform:none}
+  .c360-ind-rest-faq-a{padding:0 4px 22px 46px}
+  .c360-ind-rest-btn{width:100%}
+  .c360-ind-rest-partner{--badge-h:64px;--badge-clear:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-rest *,.c360-ind-rest *::before,.c360-ind-rest *::after{transition:none !important;animation:none !important}
+  .c360-ind-rest-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-rest">
+
+<!-- ══════════ HERO (photo left + order ticket) ══════════ -->
+<section class="c360-ind-rest-hero">
+  <div class="c360-ind-rest-wrap c360-ind-rest-hero-grid">
+    <div class="c360-ind-rest-hero-media">
+      <div class="c360-ind-rest-hero-img">
+        <!-- IMAGE PLACEHOLDER: rest-hero — chef plating a colorful dish at the pass, warm kitchen light, 16:9 (left frame) -->
+        <img src="" data-c360-placeholder="rest-hero" alt="Chef plating a dish at the pass in a busy restaurant kitchen" fetchpriority="high">
+        <div class="c360-ind-rest-fallback" aria-hidden="true"><i class="fa-solid fa-utensils"></i></div>
+      </div>
+      <div class="c360-ind-rest-hero-tkt-wrap"><div class="c360-ind-rest-ticket c360-ind-rest-hero-ticket" role="img" aria-label="Example order ticket: more new guests, fresh reviews, busy weeknights and regulars coming back">
+        <b>ORDER #147 · FRI</b>
+        <ul>
+          <li><span>2x</span><span>New guests found you</span></li>
+          <li><span>1x</span><span>Fresh 5-star review</span></li>
+          <li><span>1x</span><span>Busy Tuesday</span></li>
+          <li><span>4x</span><span>Regulars back again</span></li>
+        </ul>
+        <p>Example for illustration</p>
+      </div></div>
+    </div>
+    <div>
+      <nav class="c360-ind-rest-crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li aria-current="page">Restaurants</li>
+        </ol>
+      </nav>
+      <h1>Restaurant marketing that fills tables, not just Friday nights</h1>
+      <p class="c360-ind-rest-hero-sub">Hungry people decide where to eat in a few taps: the map, the photos, the reviews. We help your restaurant win that moment, keep your profile fresh every week, and bring guests back on the slow nights too.</p>
+      <div class="c360-ind-rest-ctas">
+        <a href="/schedule-demo" class="c360-ind-rest-btn c360-ind-rest-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-rest-btn c360-ind-rest-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+      <div class="c360-ind-rest-creds">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-rest-partner">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+        <ul class="c360-ind-rest-creds-list">
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-rest-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, helping local restaurants nationwide since 2018</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE RESTAURANT REALITY (ticket rail) ══════════ -->
+<section class="c360-ind-rest-section" style="background:var(--rest-cream-2)">
+  <div class="c360-ind-rest-wrap">
+    <div class="c360-ind-rest-head">
+      <span class="c360-ind-rest-kicker"><i class="fa-solid fa-receipt" aria-hidden="true"></i> Orders up</span>
+      <h2 class="c360-ind-rest-h2">The restaurant reality</h2>
+      <p class="c360-ind-rest-lead">Great food isn't enough if nobody can find it. These are the tickets every restaurant owner knows too well.</p>
+    </div>
+    <div class="c360-ind-rest-rail-wrap">
+      <span class="c360-ind-rest-rail" aria-hidden="true"></span>
+      <div class="c360-ind-rest-tickets">
+        <div class="c360-ind-rest-tkt"><div class="c360-ind-rest-ticket">
+          <div class="c360-ind-rest-tkt-top"><span>TABLE 1</span><em>86'd</em></div>
+          <h3>Empty tables Monday through Thursday</h3>
+          <p>Weekends take care of themselves. The weeknights are where the year is won or lost, and they need a reason for people to come in.</p>
+        </div></div>
+        <div class="c360-ind-rest-tkt"><div class="c360-ind-rest-ticket">
+          <div class="c360-ind-rest-tkt-top"><span>TABLE 2</span><em>RUSH</em></div>
+          <h3>Delivery apps take a big slice</h3>
+          <p>Third-party apps bring orders, but they keep a lot of the margin and the customer relationship. More direct guests means more of it stays with you.</p>
+        </div></div>
+        <div class="c360-ind-rest-tkt"><div class="c360-ind-rest-ticket">
+          <div class="c360-ind-rest-tkt-top"><span>TABLE 3</span><em>FIRE</em></div>
+          <h3>The wrong hours show up online</h3>
+          <p>Holiday hours on Google, an old phone number on Yelp, a closed location on Apple Maps. One wrong listing sends hungry people somewhere else.</p>
+        </div></div>
+        <div class="c360-ind-rest-tkt"><div class="c360-ind-rest-ticket">
+          <div class="c360-ind-rest-tkt-top"><span>TABLE 4</span><em>HOLD</em></div>
+          <h3>One bad review sits at the top</h3>
+          <p>A single unanswered complaint can outweigh a hundred happy meals. Fresh reviews and thoughtful replies change what diners see first.</p>
+        </div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (recipe card) ══════════
+     Outcome first. Draft per the worksheet; confirm with Jared. -->
+<section class="c360-ind-rest-section" id="rest-plan">
+  <div class="c360-ind-rest-wrap">
+    <div class="c360-ind-rest-head">
+      <span class="c360-ind-rest-kicker">Your recommended plan</span>
+      <h2 class="c360-ind-rest-h2">The recipe for a full dining room</h2>
+      <p class="c360-ind-rest-lead">A few good ingredients, used the right way. Start with the essentials and add the rest to taste.</p>
+    </div>
+
+    <div class="c360-ind-rest-recipe">
+      <div class="c360-ind-rest-ingr">
+        <h3><i class="fa-solid fa-basket-shopping" aria-hidden="true"></i> Ingredients</h3>
+        <p>The services that make it work.</p>
+        <h4 class="is-core">START HERE</h4>
+        <ul>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i><a href="/gbp-management">Google Business Profile Management</a><span>reviews included</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i><a href="/google-social-posting">Google Social Posting</a><span>weekly</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i><a href="/meta-ads">Meta Ads</a><span>to taste</span></li>
+        </ul>
+        <h4 class="is-grow">ADD AS YOU GROW</h4>
+        <ul>
+          <li class="is-opt"><i class="fa-solid fa-plus" aria-hidden="true"></i><a href="/geo-fencing">Geo-Fencing</a><span>optional</span></li>
+          <li class="is-opt"><i class="fa-solid fa-plus" aria-hidden="true"></i><a href="/local-seo-booster">Local SEO Booster</a><span>optional</span></li>
+        </ul>
+        <p class="c360-ind-rest-ingr-note">On the side: a <a href="/websites-home">website</a> with your menu and hours, the <a href="/ai-agents">AI Voice Agent</a> to answer calls during the rush, and <a href="/seo-services">SEO Services</a>. Every service's price is on its own page.</p>
+      </div>
+      <div class="c360-ind-rest-method">
+        <h3><i class="fa-solid fa-list-ol" aria-hidden="true"></i> Method</h3>
+        <p>What each ingredient does for your restaurant.</p>
+        <ol class="c360-ind-rest-steps">
+          <li><b>1</b><div><h4>Win the "where should we eat?" moment</h4><p>An accurate Google Business Profile with mouth-watering photos, your menu link, current hours and a steady flow of fresh reviews with thoughtful replies.</p><div class="c360-ind-rest-pills"><a href="/gbp-management">Google Business Profile Management</a></div></div></li>
+          <li><b>2</b><div><h4>Keep your profile fresh every week</h4><p>Weekly Google posts for specials, events and new dishes, written and designed for you, so diners always see what's new.</p><div class="c360-ind-rest-pills"><a href="/google-social-posting">Google Social Posting</a></div></div></li>
+          <li><b>3</b><div><h4>Give locals a reason to come in tonight</h4><p>Facebook and Instagram ads for your best dishes, happy hour, weeknight specials and events, shown to people nearby.</p><div class="c360-ind-rest-pills"><a href="/meta-ads">Meta Ads</a></div></div></li>
+          <li><b>4</b><div><h4>Reach more people, with the right hours everywhere</h4><p>Ads on phones and connected TVs around nearby offices and venues, plus accurate hours and details across Yelp, Apple Maps, Bing and AI assistants.</p><div class="c360-ind-rest-pills"><a href="/geo-fencing">Geo-Fencing</a><a href="/local-seo-booster">Local SEO Booster</a></div></div></li>
+        </ol>
+        <div class="c360-ind-rest-yield">
+          <span><i class="fa-solid fa-utensils" aria-hidden="true"></i> Serves: your restaurant, year-round</span>
+          <a href="/schedule-demo" class="c360-ind-rest-btn c360-ind-rest-btn-primary">Walk through this plan with us</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (three phones) ══════════ -->
+<section class="c360-ind-rest-section">
+  <div class="c360-ind-rest-wrap">
+    <div class="c360-ind-rest-head">
+      <span class="c360-ind-rest-kicker">How diners decide</span>
+      <h2 class="c360-ind-rest-h2">From "where should we eat?" to a table for four</h2>
+      <p class="c360-ind-rest-lead">Most dining decisions happen on a phone in a few minutes. Here's what they see, and what's working for you on each screen.</p>
+    </div>
+
+    <div class="c360-ind-rest-phones">
+      <div class="c360-ind-rest-ph">
+        <div class="c360-ind-rest-phone" role="img" aria-label="Example phone screen: Google map results for restaurants near me, with your restaurant first and open now">
+          <div class="c360-ind-rest-screen">
+            <div class="c360-ind-rest-bar"><i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i> restaurants near me</div>
+            <div class="c360-ind-rest-mapmini" aria-hidden="true"><i class="fa-solid fa-location-dot" style="left:44%;top:30%"></i><i class="fa-solid fa-location-dot" style="left:18%;top:56%;color:#9AA0A6"></i><i class="fa-solid fa-location-dot" style="left:72%;top:48%;color:#9AA0A6"></i></div>
+            <div class="c360-ind-rest-listing is-you"><strong>Your Restaurant</strong><span>4.7 <span class="c360-ind-rest-ystars">★★★★★</span> (1,284) · Italian</span><span><em>Open now</em> · Closes 10 PM</span></div>
+            <div class="c360-ind-rest-listing"><strong>Another Place</strong><span>4.2 ★★★★ (310)</span></div>
+            <div class="c360-ind-rest-listing"><strong>Third Spot</strong><span>3.9 ★★★★ (88)</span></div>
+          </div>
+        </div>
+        <span class="c360-ind-rest-example">Example for illustration</span>
+        <span class="c360-ind-rest-ph-time">5:12 PM</span>
+        <h3>They search, and you're open</h3>
+        <p>An accurate profile with current hours puts you on the map, and the Local SEO Booster keeps those hours right on every other app too.</p>
+        <div class="c360-ind-rest-pills"><a href="/gbp-management">Google Business Profile Management</a><a href="/local-seo-booster">Local SEO Booster</a></div>
+      </div>
+
+      <div class="c360-ind-rest-ph">
+        <div class="c360-ind-rest-phone" role="img" aria-label="Example phone screen: your restaurant's Google profile with food photos, menu and reservation buttons, a recent review and a weekly post">
+          <div class="c360-ind-rest-screen">
+            <div class="c360-ind-rest-photogrid" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+            <div class="c360-ind-rest-listing is-you" style="border:0"><strong style="color:#202124">Your Restaurant</strong><span>4.7 <span class="c360-ind-rest-ystars">★★★★★</span> (1,284) · $$</span></div>
+            <div class="c360-ind-rest-chips" aria-hidden="true"><span>Menu</span><span>Directions</span><span>Call</span></div>
+            <div class="c360-ind-rest-rev"><b>Priya S.</b> Best carbonara in town and the staff remembered our anniversary.</div>
+            <div class="c360-ind-rest-rev"><b>This week:</b> Tuesday pasta night, two courses for one price.</div>
+          </div>
+        </div>
+        <span class="c360-ind-rest-example">Example for illustration</span>
+        <span class="c360-ind-rest-ph-time">5:14 PM</span>
+        <h3>They look at the photos and reviews</h3>
+        <p>Fresh photos, a new post every week and recent reviews with friendly replies make the decision easy.</p>
+        <div class="c360-ind-rest-pills"><a href="/google-social-posting">Google Social Posting</a></div>
+      </div>
+
+      <div class="c360-ind-rest-ph">
+        <div class="c360-ind-rest-phone" role="img" aria-label="Example phone screen: an Instagram-style ad for a weeknight special with a Get directions button">
+          <div class="c360-ind-rest-screen">
+            <div class="c360-ind-rest-ad-head"><span aria-hidden="true"><i class="fa-solid fa-utensils"></i></span><div><strong>Your Restaurant</strong><em>Sponsored</em></div></div>
+            <p class="c360-ind-rest-ad-text">Wednesday date night: shareable plates and a bottle of house wine. Tables are open tonight.</p>
+            <div class="c360-ind-rest-ad-img" aria-hidden="true"></div>
+            <div class="c360-ind-rest-ad-cta"><span>Your Restaurant · 0.8 mi</span><b>Get directions</b></div>
+          </div>
+        </div>
+        <span class="c360-ind-rest-example">Example for illustration</span>
+        <span class="c360-ind-rest-ph-time">Next Wednesday</span>
+        <h3>They come back on a weeknight</h3>
+        <p>Meta Ads put your weeknight specials and events in front of locals who've been in before and people who haven't yet.</p>
+        <div class="c360-ind-rest-pills"><a href="/meta-ads">Meta Ads</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (table tents) ══════════
+     Same live Google reviews widget as /seo-services (location 1pBjHBEIsKGbwvAUTY9u). -->
+<section class="c360-ind-rest-section" style="background:var(--rest-cream)">
+  <div class="c360-ind-rest-wrap">
+    <div class="c360-ind-rest-head" style="margin-bottom:40px">
+      <span class="c360-ind-rest-kicker">Our own reviews</span>
+      <h2 class="c360-ind-rest-h2">Rave reviews, our own</h2>
+      <p class="c360-ind-rest-lead">Local business owners across the country, in their own words.</p>
+    </div>
+    <ul class="c360-ind-rest-tents">
+      <li><strong>5.0</strong><span>on Google</span></li>
+      <li><strong>147</strong><span>five-star reviews</span></li>
+      <li><strong>2018</strong><span>in business since</span></li>
+    </ul>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (reserved card) ══════════ -->
+<section class="c360-ind-rest-section">
+  <div class="c360-ind-rest-wrap">
+    <div class="c360-ind-rest-cta">
+      <div class="c360-ind-rest-cta-photo">
+        <!-- IMAGE PLACEHOLDER: rest-on-the-job — busy, warmly lit dining room with guests at tables, 4:3 -->
+        <img src="" data-c360-placeholder="rest-on-the-job" alt="Busy, warmly lit restaurant dining room with guests at tables" loading="lazy">
+        <div class="c360-ind-rest-fallback" aria-hidden="true"><i class="fa-solid fa-wine-glass"></i></div>
+      </div>
+      <div class="c360-ind-rest-reserved">
+        <span class="c360-ind-rest-reserved-tag">RESERVED</span>
+        <h2>A table for your restaurant</h2>
+        <p>Book a free strategy call. We'll look at how diners in your area find a place to eat and show you where to start.</p>
+        <div class="c360-ind-rest-ctas">
+          <a href="/schedule-demo" class="c360-ind-rest-btn c360-ind-rest-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-rest-btn c360-ind-rest-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (plate marker) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-rest-section" id="rest-faq" style="padding-top:0">
+  <div class="c360-ind-rest-wrap">
+    <div class="c360-ind-rest-head">
+      <h2 class="c360-ind-rest-h2">Restaurant marketing questions</h2>
+    </div>
+    <div class="c360-ind-rest-faq-list">
+
+      <details class="c360-ind-rest-faq-item">
+        <summary class="c360-ind-rest-faq-q">How do restaurants get more customers from Google?</summary>
+        <div class="c360-ind-rest-faq-a"><p>Show up on the map with accurate hours, great photos and plenty of recent reviews, and keep your profile active. For most restaurants that starts with Google Business Profile Management and weekly Google posts. Meta Ads for specials and events, Geo-Fencing and the Local SEO Booster come next.</p></div>
+      </details>
+
+      <details class="c360-ind-rest-faq-item">
+        <summary class="c360-ind-rest-faq-q">Why does my Google Business Profile matter so much?</summary>
+        <div class="c360-ind-rest-faq-a"><p>It's often the first and only thing a hungry diner looks at. Your hours, photos, menu link, price range and reviews all appear right on the map, and diners decide in seconds whether to go or keep scrolling.</p></div>
+      </details>
+
+      <details class="c360-ind-rest-faq-item">
+        <summary class="c360-ind-rest-faq-q">How should a restaurant handle negative reviews?</summary>
+        <div class="c360-ind-rest-faq-a"><p>Reply calmly and kindly, and keep fresh positive reviews coming. Google Business Profile Management includes review requests to your guests and thoughtful responses to the reviews you receive, so one bad night doesn't define your restaurant.</p></div>
+      </details>
+
+      <details class="c360-ind-rest-faq-item">
+        <summary class="c360-ind-rest-faq-q">Do Facebook and Instagram ads work for restaurants?</summary>
+        <div class="c360-ind-rest-faq-a"><p>They're one of the best ways to show off your food to people nearby. Ads for weeknight specials, happy hour, events and new menu items give locals a reason to come in this week instead of someday.</p></div>
+      </details>
+
+      <details class="c360-ind-rest-faq-item">
+        <summary class="c360-ind-rest-faq-q">How do I fill tables on slow nights?</summary>
+        <div class="c360-ind-rest-faq-a"><p>Give people a specific reason to come in on that night, and tell them at the right time. Weekly Google posts and Meta Ads can promote a Tuesday special or a Wednesday event in the days leading up to it.</p></div>
+      </details>
+
+      <details class="c360-ind-rest-faq-item">
+        <summary class="c360-ind-rest-faq-q">How do I keep my hours right on every app?</summary>
+        <div class="c360-ind-rest-faq-a"><p>The Local SEO Booster keeps your name, address, phone number and hours accurate across 70+ directories, maps and AI assistants, including Yelp, Apple Maps and Bing, so a holiday schedule change doesn't send diners to a locked door.</p></div>
+      </details>
+
+      <details class="c360-ind-rest-faq-item">
+        <summary class="c360-ind-rest-faq-q">Can you guarantee more diners?</summary>
+        <div class="c360-ind-rest-faq-a"><p>No. No one can promise rankings or a set number of guests. For Google Business Profile Management and advertising campaigns, including Meta Ads and Geo-Fencing, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-rest-faq-item">
+        <summary class="c360-ind-rest-faq-q">How much does restaurant marketing cost?</summary>
+        <div class="c360-ind-rest-faq-a"><p>Each service's price is on its own page, including <a href="/gbp-management">Google Business Profile Management</a>, <a href="/google-social-posting">Google Social Posting</a>, <a href="/geo-fencing">Geo-Fencing</a> and the <a href="/local-seo-booster">Local SEO Booster</a>. Meta Ads are planned with you on a strategy call, and ad spend is billed directly by Meta. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
