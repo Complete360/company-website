@@ -191,6 +191,8 @@ page("/industries/appliance-repair", "industries/appliance-repair.html", "Applia
      service="Appliance Repair Marketing", serviceType="Marketing for appliance repair companies", audience="Appliance repair companies")
 page("/industries/tree-service", "industries/tree-service.html", "Tree Service Marketing", "industry", parent=IND,
      service="Tree Service Marketing", serviceType="Marketing for tree service companies and arborists", audience="Tree service companies")
+page("/industries/junk-removal", "industries/junk-removal.html", "Junk Removal Marketing", "industry", parent=IND,
+     service="Junk Removal Marketing", serviceType="Marketing for junk removal and hauling companies", audience="Junk removal companies")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")

@@ -88,6 +88,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Water Damage Restoration Marketing | `/industries/water-damage-restoration` | `schema/pages/industries/water-damage-restoration.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Appliance Repair Marketing | `/industries/appliance-repair` | `schema/pages/industries/appliance-repair.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Tree Service Marketing | `/industries/tree-service` | `schema/pages/industries/tree-service.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Junk Removal Marketing | `/industries/junk-removal` | `schema/pages/industries/junk-removal.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Website Pricing | `/website-pricing` | `schema/pages/pricing/website-pricing.html` | WebPage, FAQPage | 7 | ✅ |
 | Complete360 CRM Pricing | `/pricing` | `schema/pages/pricing/saas-pricing.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Complete360 CRM | `/crm-home` | `schema/pages/crm-platform/crm-home.html` | WebPage, SoftwareApplication, FAQPage | 8 | ✅ |
