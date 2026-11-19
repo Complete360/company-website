@@ -185,6 +185,8 @@ page("/industries/garage-door-repair", "industries/garage-door-repair.html", "Ga
      service="Garage Door Repair Marketing", serviceType="Marketing for garage door repair and installation companies", audience="Garage door companies")
 page("/industries/locksmiths", "industries/locksmiths.html", "Locksmith Marketing", "industry", parent=IND,
      service="Locksmith Marketing", serviceType="Marketing for locksmith businesses", audience="Locksmiths")
+page("/industries/water-damage-restoration", "industries/water-damage-restoration.html", "Water Damage Restoration Marketing", "industry", parent=IND,
+     service="Water Damage Restoration Marketing", serviceType="Marketing for water damage restoration companies", audience="Water damage restoration companies")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")

@@ -85,6 +85,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Insurance Agency Marketing | `/industries/insurance-agencies` | `schema/pages/industries/insurance-agencies.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Garage Door Repair Marketing | `/industries/garage-door-repair` | `schema/pages/industries/garage-door-repair.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Locksmith Marketing | `/industries/locksmiths` | `schema/pages/industries/locksmiths.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Water Damage Restoration Marketing | `/industries/water-damage-restoration` | `schema/pages/industries/water-damage-restoration.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Website Pricing | `/website-pricing` | `schema/pages/pricing/website-pricing.html` | WebPage, FAQPage | 7 | ✅ |
 | Complete360 CRM Pricing | `/pricing` | `schema/pages/pricing/saas-pricing.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Complete360 CRM | `/crm-home` | `schema/pages/crm-platform/crm-home.html` | WebPage, SoftwareApplication, FAQPage | 8 | ✅ |
