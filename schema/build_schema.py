@@ -181,6 +181,8 @@ page("/industries/restaurants", "industries/restaurants.html", "Restaurant Marke
      service="Restaurant Marketing", serviceType="Marketing for restaurants", audience="Restaurants")
 page("/industries/insurance-agencies", "industries/insurance-agencies.html", "Insurance Agency Marketing", "industry", parent=IND,
      service="Insurance Agency Marketing", serviceType="Marketing for property and casualty (P&C) insurance agencies", audience="P&C insurance agents and agencies")
+page("/industries/garage-door-repair", "industries/garage-door-repair.html", "Garage Door Repair Marketing", "industry", parent=IND,
+     service="Garage Door Repair Marketing", serviceType="Marketing for garage door repair and installation companies", audience="Garage door companies")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
