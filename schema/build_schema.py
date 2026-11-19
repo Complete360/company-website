@@ -183,6 +183,8 @@ page("/industries/insurance-agencies", "industries/insurance-agencies.html", "In
      service="Insurance Agency Marketing", serviceType="Marketing for property and casualty (P&C) insurance agencies", audience="P&C insurance agents and agencies")
 page("/industries/garage-door-repair", "industries/garage-door-repair.html", "Garage Door Repair Marketing", "industry", parent=IND,
      service="Garage Door Repair Marketing", serviceType="Marketing for garage door repair and installation companies", audience="Garage door companies")
+page("/industries/locksmiths", "industries/locksmiths.html", "Locksmith Marketing", "industry", parent=IND,
+     service="Locksmith Marketing", serviceType="Marketing for locksmith businesses", audience="Locksmiths")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
