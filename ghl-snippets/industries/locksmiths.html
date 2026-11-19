@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Locksmiths
-     c360-ind-lock-v1.0.html
+     c360-ind-lock-v1.1.html
      GHL: Paste into a Custom Code block on the new page at /industries/locksmiths
           (page name "Locksmith Marketing"). Meta data: ghl-meta/industries/locksmiths.md.
           Schema: schema/pages/industries/locksmiths.html (batch paste later).
@@ -20,8 +20,8 @@
          sub-masters = grow with, change keys = also available).
        - Journey: two swimlanes across four stages, "the customer" and
          "your business", with a mock in between.
-       - Stat line + reviews widget, full-bleed photo CTA with navy
-         overlay, FAQ with key markers.
+       - Stat line + reviews widget, navy CTA band with the text left and
+         a framed photo right, FAQ with key markers.
      Light-blue palette (#EEF5FD / #E6F1FB), navy, green, steel grey.
 
      Policy notes (verified 2026-11-19): locksmith is a Local Services Ads
@@ -30,10 +30,14 @@
 
      Images still to fill: search this file for IMAGE PLACEHOLDER
        lock-hero        16:9, 2000px+ (shown as a square frame; keep the subject centered)
-       lock-on-the-job  4:3, 1200px+  (full-width CTA background; keep the subject on the right)
+       lock-on-the-job  4:3, 1200px+  (framed on the right of the CTA band)
 
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.1 (2026-11-19) — Jared: empty right half in the CTA. The photo is
+       now a framed 4:3 card on the right of the navy band (text left), with
+       a styled fallback, so the band is balanced with or without the image.
 
      v1.0 (2026-11-19) — first build. Draft plan per worksheet v1.4 (Wave 5):
        Google Platinum Package and AI Voice Agent first; grow with Google
@@ -207,12 +211,12 @@
 .c360-ind-lock-statline strong{display:block;font-size:38px;font-weight:800;line-height:1.1;color:var(--lock-text)}
 .c360-ind-lock-statline span{font-size:14px;color:var(--lock-muted)}
 
-/* ══════════ CTA (full-bleed photo, navy overlay) ══════════ */
-.c360-ind-lock-cta{position:relative;overflow:hidden;background:var(--lock-navy-deeper);color:#fff}
-.c360-ind-lock-cta .c360-ind-lock-img{position:absolute;inset:0;background:repeating-linear-gradient(135deg,#0E1650 0 16px,#111A5C 16px 32px)}
-.c360-ind-lock-cta .c360-ind-lock-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,16,64,0.92) 0%,rgba(10,16,64,0.78) 55%,rgba(10,16,64,0.45) 100%)}
-.c360-ind-lock-cta .c360-ind-lock-fallback{color:#2A3580}
-.c360-ind-lock-cta-body{position:relative;max-width:780px;padding:128px 0}
+/* ══════════ CTA (v1.1: navy band, text left, framed photo right) ══════════ */
+.c360-ind-lock-cta{background:var(--lock-navy-deeper);color:#fff;padding:96px 0}
+.c360-ind-lock-cta-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:center;max-width:1560px;margin:0 auto}
+.c360-ind-lock-cta .c360-ind-lock-img{aspect-ratio:4/3;border-radius:24px;background:repeating-linear-gradient(135deg,#16206A 0 16px,#1A2575 16px 32px);box-shadow:0 30px 60px rgba(0,0,0,0.3)}
+.c360-ind-lock-cta .c360-ind-lock-fallback{color:#3A47A0}
+.c360-ind-lock-cta-body{max-width:780px}
 .c360-ind-lock-cta-body .c360-ind-lock-h2{color:#fff}
 .c360-ind-lock-cta-body p{font-size:18px;color:#DCE2F7;line-height:1.65;margin-bottom:32px;max-width:640px}
 
@@ -250,7 +254,8 @@
   .c360-ind-lock-node{grid-row:auto;display:flex;flex-direction:column}
   .c360-ind-lock-change{padding-top:24px}
   .c360-ind-lock-change::before{display:none}
-  .c360-ind-lock-cta-body{padding:84px 0}
+  .c360-ind-lock-cta{padding:76px 0}
+  .c360-ind-lock-cta-grid{grid-template-columns:1fr;gap:40px}
 }
 @media (max-width:760px){
   .c360-ind-lock-keys,.c360-ind-lock-lanes{grid-template-columns:1fr}
@@ -495,20 +500,22 @@
   </div>
 </section>
 
-<!-- ══════════ CLOSING CTA (full-bleed photo) ══════════ -->
+<!-- ══════════ CLOSING CTA (navy band, text left, framed photo right) ══════════ -->
 <section class="c360-ind-lock-cta">
-  <div class="c360-ind-lock-img">
-    <!-- IMAGE PLACEHOLDER: lock-on-the-job — locksmith working on a commercial door lock at a small storefront, friendly owner nearby, 4:3 (used as a full-width background behind navy; keep the subject on the right) -->
-    <img src="" data-c360-placeholder="lock-on-the-job" alt="Locksmith installing a new lock on a small business storefront door" loading="lazy">
-    <div class="c360-ind-lock-fallback" aria-hidden="true"></div>
-  </div>
   <div class="c360-ind-lock-wrap">
-    <div class="c360-ind-lock-cta-body">
-      <h2 class="c360-ind-lock-h2">Let's unlock your locksmith marketing</h2>
-      <p>On a free strategy call we'll look at your service area, your reviews and Google's verification steps for locksmiths, and show you where your lockout, rekey and commercial calls will come from.</p>
-      <div class="c360-ind-lock-ctas">
-        <a href="/schedule-demo" class="c360-ind-lock-btn c360-ind-lock-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
-        <a href="tel:+18665276205" class="c360-ind-lock-btn c360-ind-lock-btn-light"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+    <div class="c360-ind-lock-cta-grid">
+      <div class="c360-ind-lock-cta-body">
+        <h2 class="c360-ind-lock-h2">Let's unlock your locksmith marketing</h2>
+        <p>On a free strategy call we'll look at your service area, your reviews and Google's verification steps for locksmiths, and show you where your lockout, rekey and commercial calls will come from.</p>
+        <div class="c360-ind-lock-ctas">
+          <a href="/schedule-demo" class="c360-ind-lock-btn c360-ind-lock-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-lock-btn c360-ind-lock-btn-light"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+      </div>
+      <div class="c360-ind-lock-img">
+        <!-- IMAGE PLACEHOLDER: lock-on-the-job — locksmith working on a commercial door lock at a small storefront, friendly owner nearby, 4:3 (used as a framed card on the right of the CTA band) -->
+        <img src="" data-c360-placeholder="lock-on-the-job" alt="Locksmith installing a new lock on a small business storefront door" loading="lazy">
+        <div class="c360-ind-lock-fallback" aria-hidden="true"><i class="fa-solid fa-key"></i></div>
       </div>
     </div>
   </div>
