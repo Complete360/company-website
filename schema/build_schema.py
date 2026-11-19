@@ -179,6 +179,8 @@ page("/industries/funeral-homes", "industries/funeral-homes.html", "Funeral Home
      service="Funeral Home Marketing", serviceType="Marketing for funeral homes", audience="Funeral homes")
 page("/industries/restaurants", "industries/restaurants.html", "Restaurant Marketing", "industry", parent=IND,
      service="Restaurant Marketing", serviceType="Marketing for restaurants", audience="Restaurants")
+page("/industries/insurance-agencies", "industries/insurance-agencies.html", "Insurance Agency Marketing", "industry", parent=IND,
+     service="Insurance Agency Marketing", serviceType="Marketing for property and casualty (P&C) insurance agencies", audience="P&C insurance agents and agencies")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")

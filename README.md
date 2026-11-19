@@ -29,7 +29,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-63 of 80 pages have code. Multi-snippet pages (checkouts) are a folder of
+64 of 81 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -78,6 +78,7 @@ and `schema/pages/industries/[slug].html` (schema, pasted in one batch after eve
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
+| `industries/insurance-agencies.html` | Insurance Agency Marketing (new page at /industries/insurance-agencies) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, light-blue palette, own layout (navy hero with security-print pattern, shield-cropped photo and ID card, two-sided "what agents tell us / what fixes it" conversation, policy-declarations plan with a California-or-Florida switch for the Local Services Ads row, four stages around a renewal ring, ID-card stats, navy CTA panel, FAQ with heading column, not-affiliated note). Meta-led; LSA for CA/FL agents only. Plan (draft) to confirm with Jared; management/legal review suggested. Images to make (`pc-hero`, `pc-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/insurance-agencies.md`, publish. Schema waits for the batch. |
 | `industries/restaurants.html` | Restaurant Marketing (new page at /industries/restaurants) | ✅ Code in repo | v1.3: same dimensions as the other industry pages, cleaning-services blue palette, own layout (hero with photo left and order ticket, kitchen tickets on a rail, recipe-card plan with ingredients and method, four phone screens journey, table-tent stats, reserved-card CTA). No LSA. Plan (draft) to confirm with Jared. Images to make (`rest-hero`, `rest-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/restaurants.md`, publish. Schema waits for the batch. |
 | `industries/funeral-homes.html` | Funeral Home Marketing (new page at /industries/funeral-homes) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own deliberately quiet layout (sand hero with matted photo frame, two ruled columns around an arched photo, three-column plan divided by rules, at-need / pre-need moments, quiet stat line, framed CTA, ruled FAQ). No AI Voice Agent. Plan (draft) to confirm with Jared. Images to make (`fun-hero`, `fun-on-the-job`; respectful, no caskets), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/funeral-homes.md`, publish. Schema waits for the batch. |
 | `industries/auto-shops.html` | Auto Repair Shop Marketing (new page at /industries/auto-shops) | ✅ Code in repo | v1.0: same dimensions as the other industry pages, own layout (garage-door hero with open-bay photo, dashboard warning lights, menu-board plan, road-and-signposts journey, odometer reviews, checkered CTA, owner's-manual FAQ). Plan (draft) to confirm with Jared. Images to make (`auto-hero`, `auto-on-the-job`), then create the page in GHL, paste, complete meta data from `ghl-meta/industries/auto-shops.md`, publish. Schema waits for the batch. |
