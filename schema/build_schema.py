@@ -187,6 +187,8 @@ page("/industries/locksmiths", "industries/locksmiths.html", "Locksmith Marketin
      service="Locksmith Marketing", serviceType="Marketing for locksmith businesses", audience="Locksmiths")
 page("/industries/water-damage-restoration", "industries/water-damage-restoration.html", "Water Damage Restoration Marketing", "industry", parent=IND,
      service="Water Damage Restoration Marketing", serviceType="Marketing for water damage restoration companies", audience="Water damage restoration companies")
+page("/industries/appliance-repair", "industries/appliance-repair.html", "Appliance Repair Marketing", "industry", parent=IND,
+     service="Appliance Repair Marketing", serviceType="Marketing for appliance repair companies", audience="Appliance repair companies")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
