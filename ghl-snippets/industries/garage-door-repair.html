@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Garage Door Repair
-     c360-ind-gdr-v1.0.html
+     c360-ind-gdr-v1.1.html
      GHL: Paste into a Custom Code block on the new page at /industries/garage-door-repair
           (page name "Garage Door Repair Marketing"). Meta data: ghl-meta/industries/garage-door-repair.md.
           Schema: schema/pages/industries/garage-door-repair.html (batch paste later).
@@ -19,8 +19,8 @@
        - Plan: a labeled garage door diagram (springs, opener, tracks,
          sensors, panels) with numbered pins that match a five-card legend.
        - Journey: one stuck door on a timeline (7:48 AM to 3 weeks later).
-       - Navy rating card beside the reviews widget, sky CTA panel with the
-         photo on the right, boxed FAQ with door-panel markers.
+       - Navy rating band above the full-width reviews widget, sky CTA panel
+         with the photo on the right, boxed FAQ with door-panel markers.
      Light-blue palette (#EEF5FD / #E6F1FB), navy, green, a little amber for alerts.
 
      Policy notes (verified 2026-11-19): garage door services is a Local
@@ -33,6 +33,10 @@
 
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.1 (2026-11-19) — Jared: empty space under the reviews widget. The
+       navy rating card is now a full-width band (title left, three stats
+       right) above a full-width widget, so nothing is left empty.
 
      v1.0 (2026-11-19) — first build. New industry (not in the worksheet
        yet). Draft plan: Google Platinum Package and AI Voice Agent first;
@@ -186,15 +190,15 @@
 .c360-ind-gdr-ad-btn{display:inline-block;background:#E4E6EB;border-radius:6px;padding:6px 12px;font-size:12.5px;font-weight:700;color:#050505}
 .c360-ind-gdr-note{font-size:12px;color:var(--gdr-muted);text-align:center;margin-top:10px}
 
-/* ══════════ REVIEWS (rating card beside the widget) ══════════ */
-.c360-ind-gdr-rev{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:48px;align-items:start;max-width:1560px;margin:0 auto}
-.c360-ind-gdr-score{background:var(--gdr-navy);color:#fff;border-radius:24px;padding:40px 36px}
-.c360-ind-gdr-score .c360-ind-gdr-h2{color:#fff}
-.c360-ind-gdr-score > p{font-size:16px;color:#C7D0EE;margin-bottom:28px}
-.c360-ind-gdr-score dl{display:grid;grid-template-columns:1fr;border-top:1px solid #2C3A92}
-.c360-ind-gdr-score dl div{display:flex;align-items:baseline;justify-content:space-between;gap:16px;padding:14px 0;border-bottom:1px solid #2C3A92}
-.c360-ind-gdr-score dt{font-size:15px;color:#C7D0EE}
-.c360-ind-gdr-score dd{margin:0;font-size:30px;font-weight:800;line-height:1.1}
+/* ══════════ REVIEWS (v1.1: navy rating band above a full-width widget) ══════════ */
+.c360-ind-gdr-rev{display:flex;flex-direction:column;gap:32px;max-width:1560px;margin:0 auto}
+.c360-ind-gdr-score{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:28px 56px;align-items:center;background:var(--gdr-navy);color:#fff;border-radius:24px;padding:48px 52px}
+.c360-ind-gdr-score .c360-ind-gdr-h2{color:#fff;margin-bottom:12px}
+.c360-ind-gdr-score-intro p{font-size:16px;color:#C7D0EE}
+.c360-ind-gdr-score dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.c360-ind-gdr-score dl div{display:flex;flex-direction:column-reverse;gap:4px;padding:6px 0 6px 24px;border-left:1px solid #2C3A92}
+.c360-ind-gdr-score dt{font-size:14.5px;color:#C7D0EE;line-height:1.35}
+.c360-ind-gdr-score dd{margin:0;font-size:40px;font-weight:800;line-height:1.1}
 
 /* ══════════ CTA (sky panel, text left, photo right) ══════════ */
 .c360-ind-gdr-cta{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:center;max-width:1400px;margin:0 auto;background:var(--gdr-sky);border:1px solid var(--gdr-line);border-radius:28px;padding:56px}
@@ -224,7 +228,7 @@
   .c360-ind-gdr-codes{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px}
   .c360-ind-gdr-day{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:48px}
   .c360-ind-gdr-day::before{display:none}
-  .c360-ind-gdr-rev{grid-template-columns:1fr}
+  .c360-ind-gdr-score{grid-template-columns:1fr}
 }
 @media (max-width:900px){
   .c360-ind-gdr-section{padding:76px 0}
@@ -250,6 +254,8 @@
   .c360-ind-gdr-btn{width:100%}
   .c360-ind-gdr-partner{--badge-h:64px;--badge-clear:32px}
   .c360-ind-gdr-score{padding:32px 24px}
+  .c360-ind-gdr-score dl div{padding-left:14px}
+  .c360-ind-gdr-score dd{font-size:30px}
 }
 @media (prefers-reduced-motion:reduce){
   .c360-ind-gdr *,.c360-ind-gdr *::before,.c360-ind-gdr *::after{transition:none !important;animation:none !important}
@@ -518,9 +524,11 @@
   <div class="c360-ind-gdr-wrap">
     <div class="c360-ind-gdr-rev">
       <div class="c360-ind-gdr-score">
-        <span class="c360-ind-gdr-kicker" style="color:#7FD38F">Our own reviews</span>
-        <h2 class="c360-ind-gdr-h2">Five stars, from owners like you</h2>
-        <p>Local service business owners across the country, in their own words.</p>
+        <div class="c360-ind-gdr-score-intro">
+          <span class="c360-ind-gdr-kicker" style="color:#7FD38F">Our own reviews</span>
+          <h2 class="c360-ind-gdr-h2">Five stars, from owners like you</h2>
+          <p>Local service business owners across the country, in their own words.</p>
+        </div>
         <dl>
           <div><dt>Google rating</dt><dd>5.0</dd></div>
           <div><dt>Five-star reviews</dt><dd>147</dd></div>
