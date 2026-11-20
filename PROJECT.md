@@ -216,7 +216,7 @@ PROJECT.md       this file
 
 - **Checkout open items (decide at the end of the checkout imports; details in each README row):**
   Google Social 6/12-month prices ($774/$1,308 checkout vs $715/$1,252 page) ·
-  Platinum: Reputation Management in the bundle, "won't be double-billed" upgrade line ·
+  Platinum: "won't be double-billed" upgrade line ·
   LSA: "Performance Promise", background-check cost, setup-fee waiver ·
   GBP Setup: "Quality Promise", "hundreds of profiles" · GBP Management: confirm the Terms'
   guarantee box (or drop it like Meta Ads) · ProCard: "lifetime license / own it forever",
