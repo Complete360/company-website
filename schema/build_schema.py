@@ -193,6 +193,10 @@ page("/industries/tree-service", "industries/tree-service.html", "Tree Service M
      service="Tree Service Marketing", serviceType="Marketing for tree service companies and arborists", audience="Tree service companies")
 page("/industries/junk-removal", "industries/junk-removal.html", "Junk Removal Marketing", "industry", parent=IND,
      service="Junk Removal Marketing", serviceType="Marketing for junk removal and hauling companies", audience="Junk removal companies")
+page("/industries/movers", "industries/movers.html", "Moving Company Marketing", "industry", parent=IND,
+     service="Moving Company Marketing", serviceType="Marketing for moving companies", audience="Moving companies")
+page("/industries/handyman", "industries/handyman.html", "Handyman Marketing", "industry", parent=IND,
+     service="Handyman Marketing", serviceType="Marketing for handyman businesses", audience="Handyman businesses")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
