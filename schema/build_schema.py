@@ -195,6 +195,8 @@ page("/industries/junk-removal", "industries/junk-removal.html", "Junk Removal M
      service="Junk Removal Marketing", serviceType="Marketing for junk removal and hauling companies", audience="Junk removal companies")
 page("/industries/movers", "industries/movers.html", "Moving Company Marketing", "industry", parent=IND,
      service="Moving Company Marketing", serviceType="Marketing for moving companies", audience="Moving companies")
+page("/industries/handyman", "industries/handyman.html", "Handyman Marketing", "industry", parent=IND,
+     service="Handyman Marketing", serviceType="Marketing for handyman businesses", audience="Handyman businesses")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
