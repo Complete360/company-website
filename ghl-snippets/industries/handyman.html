@@ -1,0 +1,563 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Handyman
+     c360-ind-handy-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/handyman
+          (page name "Handyman Marketing"). Meta data: ghl-meta/industries/handyman.md.
+          Schema: schema/pages/industries/handyman.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-handy-  (new, unique; vars --handy-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from the last page), handyman themed:
+       - Hero: white; text left; photo framed by a code-built framing
+         square (ruler ticks along the top and left edges).
+       - Reality: one big lined to-do notepad (four unchecked items) beside
+         the second photo.
+       - Plan: a pegboard with three dashed zones (use every day / use
+         often / keep handy) and service cards hanging from hooks.
+       - Journey: 2x2 grid of side-by-side cards (mock left, text right).
+       - Reviews: stats marked on a measuring tape, widget below.
+       - CTA: navy panel with a "today's list" checklist (book a call,
+         phone with office hours). FAQ with pegboard-hole markers.
+     Light-blue palette (#EEF5FD / #E6F1FB), navy, green.
+
+     Policy notes (verified 2026-11-19): handyman is a Local Services Ads
+     category. No gig-app brand names used.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       handy-hero        16:9, 2000px+ (framed 4:3 in the hero; keep the handyman centered)
+       handy-on-the-job  4:3, 1200px+  (beside the to-do notepad)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-19) — first build. Draft plan per worksheet v1.4 (Wave 5):
+       Google Platinum Package (co-lead with reviews) first; grow with Meta
+       Ads, Google Social Posting and Website. AI Voice Agent, Google PPC
+       and Local SEO Booster as "also available". To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-handy{
+  --handy-navy:#122078;--handy-navy-dark:#0d1654;--handy-navy-deeper:#0a1040;
+  --handy-green:#127825;--handy-green-hover:#0e5e1d;--handy-green-light:#EAF3DE;
+  --handy-sky:#EEF5FD;--handy-sky-2:#E6F1FB;--handy-line:#E2E8F2;--handy-rule:#BFD0EA;--handy-peg:#C9D6EA;
+  --handy-text:#0F1F5E;--handy-muted:#5F5E5A;--handy-body:#3B4566;
+  --handy-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--handy-font);color:var(--handy-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-handy *,.c360-ind-handy *::before,.c360-ind-handy *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-handy :where(h1,h2,h3,h4,p,ul,ol,li,figure){margin:0;padding:0;font-family:var(--handy-font)}
+.c360-ind-handy :where(ul,ol){list-style:none}
+.c360-ind-handy :where(a){color:var(--handy-navy)}
+.c360-ind-handy a:focus-visible,.c360-ind-handy summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-handy-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-handy-section{padding:104px 0}
+.c360-ind-handy-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--handy-text);margin-bottom:16px}
+.c360-ind-handy-lead{font-size:18px;color:var(--handy-muted);max-width:760px;line-height:1.65}
+.c360-ind-handy-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--handy-green);margin-bottom:14px}
+.c360-ind-handy-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-handy-head .c360-ind-handy-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-handy-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--handy-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-handy-btn-primary{background:var(--handy-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-handy-btn-primary:hover{background:var(--handy-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-handy-btn-outline{background:transparent;color:var(--handy-text);border:2px solid var(--handy-text);padding:14px 24px}
+.c360-ind-handy-btn-outline:hover{background:var(--handy-text);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-handy a.c360-ind-handy-btn-primary{color:#fff}
+.c360-ind-handy a.c360-ind-handy-btn-outline{color:var(--handy-text)}
+.c360-ind-handy a.c360-ind-handy-btn-outline:hover{color:#fff}
+.c360-ind-handy-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-handy-pills{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;align-items:flex-start}
+.c360-ind-handy-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--handy-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-handy-pills a:hover{background:var(--handy-navy);border-color:var(--handy-navy);color:#fff;text-decoration:none}
+
+/* Image slots: styled fallback until the GHL image URL is pasted in. */
+.c360-ind-handy-img{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#DCE7F5 0 16px,#E7EFF9 16px 32px)}
+.c360-ind-handy-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-handy-img img[src=""],.c360-ind-handy-img img:not([src]){visibility:hidden}
+.c360-ind-handy-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B9D8;font-size:58px;pointer-events:none}
+.c360-ind-handy-img img[src]:not([src=""])+.c360-ind-handy-fallback{display:none}
+
+/* Ruler ticks (hero frame + reviews tape) */
+.c360-ind-handy-ticks-x{background:
+  repeating-linear-gradient(90deg,var(--handy-navy) 0 2px,transparent 2px 60px) 0 0/100% 22px no-repeat,
+  repeating-linear-gradient(90deg,var(--handy-navy) 0 1.5px,transparent 1.5px 30px) 0 0/100% 14px no-repeat,
+  repeating-linear-gradient(90deg,var(--handy-rule) 0 1px,transparent 1px 6px) 0 0/100% 8px no-repeat,#fff}
+.c360-ind-handy-ticks-y{background:
+  repeating-linear-gradient(180deg,var(--handy-navy) 0 2px,transparent 2px 60px) 0 0/22px 100% no-repeat,
+  repeating-linear-gradient(180deg,var(--handy-navy) 0 1.5px,transparent 1.5px 30px) 0 0/14px 100% no-repeat,
+  repeating-linear-gradient(180deg,var(--handy-rule) 0 1px,transparent 1px 6px) 0 0/8px 100% no-repeat,#fff}
+
+/* ══════════ HERO (photo in a framing-square ruler) ══════════ */
+.c360-ind-handy-hero{background:#fff;border-bottom:1px solid var(--handy-line)}
+.c360-ind-handy-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center;padding-top:56px;padding-bottom:96px}
+.c360-ind-handy-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-handy-crumbs li{color:var(--handy-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-handy-crumbs li+li::before{content:"\203A";color:#A6B0C4}
+.c360-ind-handy-crumbs a{color:var(--handy-text);text-decoration:none}
+.c360-ind-handy-crumbs a:hover{text-decoration:underline}
+.c360-ind-handy-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--handy-text);margin-bottom:22px}
+.c360-ind-handy-hero-sub{font-size:18px;line-height:1.65;color:var(--handy-body);max-width:640px;margin-bottom:32px}
+.c360-ind-handy-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-ind-handy-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-handy-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-handy-partner,.c360-ind-handy-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-handy-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+.c360-ind-handy-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:var(--handy-body);line-height:1.4}
+.c360-ind-handy-creds-list i{color:var(--handy-green);margin-top:3px;font-size:12px}
+.c360-ind-handy-stars{color:#E8A400;letter-spacing:1px}
+.c360-ind-handy-square{display:grid;grid-template-columns:34px minmax(0,1fr);grid-template-rows:34px auto}
+.c360-ind-handy-square-corner{background:var(--handy-navy);border-radius:8px 0 0 0}
+.c360-ind-handy-square-top{border-top:2px solid var(--handy-navy);border-right:2px solid var(--handy-navy);border-radius:0 8px 0 0}
+.c360-ind-handy-square-left{border-left:2px solid var(--handy-navy);border-bottom:2px solid var(--handy-navy);border-radius:0 0 0 8px}
+.c360-ind-handy-square .c360-ind-handy-img{aspect-ratio:4/3;border-radius:0 0 24px 0}
+.c360-ind-handy-square-cap{grid-column:1/-1;display:flex;justify-content:space-between;font-size:12.5px;color:var(--handy-muted);margin-top:12px}
+
+/* ══════════ REALITY (one big to-do notepad + photo) ══════════ */
+.c360-ind-handy-padgrid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;max-width:1560px;margin:0 auto;align-items:stretch}
+.c360-ind-handy-pad{position:relative;background:#fff;border-radius:6px 6px 18px 18px;box-shadow:0 24px 50px rgba(15,31,94,0.12);padding:64px 48px 40px 92px;
+  background-image:linear-gradient(90deg,transparent 70px,#F1A7A7 70px 72px,transparent 72px)}
+.c360-ind-handy-pad::before{content:"";position:absolute;left:0;right:0;top:0;height:34px;border-radius:6px 6px 0 0;background:var(--handy-navy)}
+.c360-ind-handy-pad h3.c360-ind-handy-pad-title{position:absolute;top:6px;left:24px;font-size:15px;font-weight:700;color:#fff}
+.c360-ind-handy-todo{display:grid;grid-template-columns:28px 1fr;gap:4px 18px;padding:20px 0;border-bottom:1px solid var(--handy-rule)}
+.c360-ind-handy-todo span{grid-row:span 2;width:24px;height:24px;border:2.5px solid var(--handy-navy);border-radius:5px;margin-top:4px;background:#fff}
+.c360-ind-handy-todo h4{font-size:20px;font-weight:700;line-height:1.4}
+.c360-ind-handy-todo p{font-size:15.5px;color:var(--handy-body);line-height:1.6}
+.c360-ind-handy-padphoto{border-radius:24px;min-height:420px}
+
+/* ══════════ PLAN (pegboard with hanging cards) ══════════ */
+.c360-ind-handy-peg{max-width:1560px;margin:0 auto;border-radius:28px;padding:40px;background-color:#F6F9FD;background-image:radial-gradient(circle,var(--handy-peg) 3.5px,transparent 4px);background-size:28px 28px;border:1px solid var(--handy-line)}
+.c360-ind-handy-zones{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px}
+.c360-ind-handy-zone{display:flex;flex-direction:column;gap:30px;border:2px dashed #9DB3DC;border-radius:20px;padding:20px 20px 24px;background:rgba(255,255,255,0.55)}
+.c360-ind-handy-zone.is-core{border-color:var(--handy-green)}
+.c360-ind-handy-zone-h{display:flex;justify-content:space-between;align-items:baseline;gap:10px;background:#fff;border-radius:12px;padding:12px 16px}
+.c360-ind-handy-zone-h b{font-size:20px;font-weight:800}
+.c360-ind-handy-zone-h span{font-size:13px;font-weight:700;color:var(--handy-muted)}
+.c360-ind-handy-zone.is-core .c360-ind-handy-zone-h span{color:var(--handy-green)}
+.c360-ind-handy-zone-tools{display:flex;flex-direction:column;gap:30px;flex:1;padding-top:6px}
+.c360-ind-handy-tool{position:relative;flex:1;display:flex;flex-direction:column;gap:10px;background:#fff;border:1px solid var(--handy-line);border-radius:16px;padding:24px 22px 22px;box-shadow:0 10px 24px rgba(15,31,94,0.08)}
+.c360-ind-handy-tool::before{content:"";position:absolute;top:-20px;left:50%;width:22px;height:22px;transform:translateX(-50%);border:4px solid var(--handy-navy);border-bottom-color:transparent;border-radius:50%}
+.c360-ind-handy-zone.is-core .c360-ind-handy-tool::before{border-color:var(--handy-green);border-bottom-color:transparent}
+.c360-ind-handy-tool h3{font-size:19px;font-weight:700;line-height:1.3}
+.c360-ind-handy-tool p{font-size:15px;color:var(--handy-muted);line-height:1.6}
+.c360-ind-handy-tool ul{display:flex;flex-direction:column;gap:8px}
+.c360-ind-handy-tool li{display:flex;gap:10px;font-size:14.5px;color:var(--handy-body);line-height:1.5}
+.c360-ind-handy-tool li i{color:var(--handy-green);margin-top:4px;font-size:12px}
+.c360-ind-handy-tool .c360-ind-handy-pills{margin-top:auto;padding-top:4px}
+.c360-ind-handy-plan-cta{display:flex;justify-content:center;margin-top:40px}
+
+/* ══════════ JOURNEY (2x2 side-by-side cards) ══════════ */
+.c360-ind-handy-grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;max-width:1560px;margin:0 auto}
+.c360-ind-handy-jcard{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:28px;align-items:center;background:#fff;border:1px solid var(--handy-line);border-radius:24px;padding:24px;box-shadow:0 14px 34px rgba(15,31,94,0.07)}
+.c360-ind-handy-mock{background:var(--handy-sky);border-radius:18px;padding:18px;align-self:stretch;display:flex;flex-direction:column;justify-content:center;min-height:220px}
+.c360-ind-handy-jtext small{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--handy-green);margin-bottom:8px}
+.c360-ind-handy-jtext small span{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:50%;background:var(--handy-navy);color:#fff;font-size:13px}
+.c360-ind-handy-jtext h3{font-size:22px;font-weight:700;line-height:1.3;margin-bottom:8px}
+.c360-ind-handy-jtext p{font-size:15.5px;color:var(--handy-muted);line-height:1.65;margin-bottom:16px}
+.c360-ind-handy-card{background:#fff;border:1px solid var(--handy-line);border-radius:12px;padding:12px 14px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:#202124;box-shadow:0 8px 18px rgba(15,31,94,0.07)}
+.c360-ind-handy-card + .c360-ind-handy-card{margin-top:10px}
+.c360-ind-handy-card small{display:block;font-size:11.5px;font-weight:700;color:#5F6368;margin-bottom:3px}
+.c360-ind-handy-card b{display:block;font-size:14px;color:#1A0DAB}
+.c360-ind-handy-card b.is-plain{color:#202124}
+.c360-ind-handy-card span{display:block;font-size:12.5px;color:#5F6368;line-height:1.45}
+.c360-ind-handy-ver{display:inline-flex !important;align-items:center;gap:5px;color:#137333 !important;font-weight:700}
+.c360-ind-handy-st{color:#E8A400}
+.c360-ind-handy-sms{font-size:13px;line-height:1.45;padding:10px 12px;border-radius:14px}
+.c360-ind-handy-sms-out{background:var(--handy-navy);color:#fff;border-bottom-right-radius:4px;margin-left:10%}
+.c360-ind-handy-sms-in{background:#fff;border:1px solid var(--handy-line);color:#202124;border-bottom-left-radius:4px;margin-top:8px;margin-right:10%}
+.c360-ind-handy-note{font-size:12px;color:var(--handy-muted);text-align:center;margin-top:18px}
+
+/* ══════════ REVIEWS (stats on a measuring tape) ══════════ */
+.c360-ind-handy-tape{position:relative;max-width:1100px;margin:0 auto 56px;height:120px;border-radius:12px;border:2px solid var(--handy-navy);overflow:hidden}
+.c360-ind-handy-tape-ticks{position:absolute;left:0;right:0;top:0;height:24px}
+.c360-ind-handy-marks{position:absolute;inset:24px 0 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.c360-ind-handy-marks div{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;border-left:2px dashed var(--handy-rule)}
+.c360-ind-handy-marks div:first-child{border-left:0}
+.c360-ind-handy-marks strong{font-size:36px;font-weight:800;line-height:1.1}
+.c360-ind-handy-marks span{font-size:14px;color:var(--handy-muted)}
+
+/* ══════════ CTA (navy panel with a checklist) ══════════ */
+.c360-ind-handy-cta{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center;max-width:1560px;margin:0 auto;background:var(--handy-navy);border-radius:32px;padding:64px;color:#fff}
+.c360-ind-handy-cta .c360-ind-handy-h2{color:#fff}
+.c360-ind-handy-cta > div > p{font-size:18px;color:#DCE2F7;line-height:1.65;max-width:640px}
+.c360-ind-handy-check{background:#fff;color:var(--handy-text);border-radius:20px;padding:24px 26px;box-shadow:0 20px 40px rgba(5,10,40,0.3)}
+.c360-ind-handy-check h3{font-size:16px;font-weight:700;color:var(--handy-muted);margin-bottom:8px}
+.c360-ind-handy-check li{border-top:1px solid var(--handy-line)}
+.c360-ind-handy-check li:first-of-type{border-top:0}
+.c360-ind-handy-check a,.c360-ind-handy-check li > div{display:grid;grid-template-columns:30px 1fr;gap:2px 14px;align-items:center;padding:14px 4px;text-decoration:none;color:var(--handy-text)}
+.c360-ind-handy-check a:hover b{text-decoration:underline}
+.c360-ind-handy-check i{grid-row:span 2;width:26px;height:26px;border:2.5px solid var(--handy-navy);border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-size:12px;color:#fff}
+.c360-ind-handy-check a.is-go i{background:var(--handy-green);border-color:var(--handy-green)}
+.c360-ind-handy-check b{font-size:17px;line-height:1.3}
+.c360-ind-handy-check span{font-size:13.5px;color:var(--handy-muted);line-height:1.4}
+.c360-ind-handy a.c360-ind-handy-checklink{color:var(--handy-text)}
+
+/* ══════════ FAQ (peg markers) ══════════ */
+.c360-ind-handy-faq-list{max-width:1000px;margin:0 auto}
+.c360-ind-handy-faq-item{border-bottom:1px solid var(--handy-line)}
+.c360-ind-handy-faq-item:first-child{border-top:1px solid var(--handy-line)}
+.c360-ind-handy-faq-q{display:grid;grid-template-columns:22px 1fr 24px;align-items:center;gap:14px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--handy-text);cursor:pointer;list-style:none}
+.c360-ind-handy-faq-q::-webkit-details-marker{display:none}
+.c360-ind-handy-faq-q::before{content:"";width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--handy-peg);justify-self:center;transition:border-color .2s}
+.c360-ind-handy-faq-item[open] .c360-ind-handy-faq-q::before{border-color:var(--handy-green)}
+.c360-ind-handy-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--handy-navy);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-handy-faq-item[open] .c360-ind-handy-faq-q::after{transform:rotate(45deg)}
+.c360-ind-handy-faq-a{padding:0 40px 24px 40px;font-size:16px;color:var(--handy-muted);line-height:1.7}
+.c360-ind-handy-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1300px){
+  .c360-ind-handy-grid2{grid-template-columns:1fr}
+}
+@media (max-width:1200px){
+  .c360-ind-handy-zones{grid-template-columns:1fr 1fr}
+  .c360-ind-handy-zone.is-core{grid-column:1/-1}
+  .c360-ind-handy-zone.is-core .c360-ind-handy-zone-tools{display:grid;grid-template-columns:1fr 1fr;gap:30px 20px}
+  .c360-ind-handy-padgrid{grid-template-columns:1fr}
+  .c360-ind-handy-padphoto{min-height:0;aspect-ratio:16/9}
+}
+@media (max-width:900px){
+  .c360-ind-handy-section{padding:76px 0}
+  .c360-ind-handy-hero-grid{grid-template-columns:1fr;gap:44px;padding-top:44px;padding-bottom:76px}
+  .c360-ind-handy-zones{grid-template-columns:1fr}
+  .c360-ind-handy-zone.is-core .c360-ind-handy-zone-tools{grid-template-columns:1fr}
+  .c360-ind-handy-peg{padding:20px}
+  .c360-ind-handy-cta{grid-template-columns:1fr;padding:40px 26px}
+}
+@media (max-width:760px){
+  .c360-ind-handy-jcard{grid-template-columns:1fr}
+  .c360-ind-handy-pad{padding:56px 22px 28px 62px;background-image:linear-gradient(90deg,transparent 44px,#F1A7A7 44px 46px,transparent 46px)}
+  .c360-ind-handy-tape{height:auto}
+  .c360-ind-handy-marks{position:relative;inset:auto;margin-top:24px;grid-template-columns:1fr}
+  .c360-ind-handy-marks div{border-left:0;border-top:2px dashed var(--handy-rule);padding:14px 0}
+  .c360-ind-handy-marks div:first-child{border-top:0}
+}
+@media (max-width:640px){
+  .c360-ind-handy-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-handy-btn{width:100%}
+  .c360-ind-handy-partner{--badge-h:64px;--badge-clear:32px}
+  .c360-ind-handy-square{grid-template-columns:22px minmax(0,1fr);grid-template-rows:22px auto}
+  .c360-ind-handy-faq-a{padding:0 4px 22px 40px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-handy *,.c360-ind-handy *::before,.c360-ind-handy *::after{transition:none !important;animation:none !important}
+  .c360-ind-handy-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-handy">
+
+<!-- ══════════ HERO (photo framed by a framing-square ruler) ══════════ -->
+<section class="c360-ind-handy-hero">
+  <div class="c360-ind-handy-wrap c360-ind-handy-hero-grid">
+    <div>
+      <nav class="c360-ind-handy-crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li aria-current="page">Handyman</li>
+        </ol>
+      </nav>
+      <h1>Handyman marketing that fills your calendar with the jobs you want</h1>
+      <p class="c360-ind-handy-hero-sub">Leaky faucets, drywall patches, TV mounts and whole honey-do lists. We help your handyman business show up first on Google, earn the reviews homeowners trust, and keep a steady stream of small jobs that turn into bigger ones.</p>
+      <div class="c360-ind-handy-ctas">
+        <a href="/schedule-demo" class="c360-ind-handy-btn c360-ind-handy-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-handy-btn c360-ind-handy-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+      <div class="c360-ind-handy-creds">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-handy-partner">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+        <ul class="c360-ind-handy-creds-list">
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-handy-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, serving nationwide since 2018</li>
+        </ul>
+      </div>
+    </div>
+    <div class="c360-ind-handy-square">
+      <div class="c360-ind-handy-square-corner" aria-hidden="true"></div>
+      <div class="c360-ind-handy-square-top c360-ind-handy-ticks-x" aria-hidden="true"></div>
+      <div class="c360-ind-handy-square-left c360-ind-handy-ticks-y" aria-hidden="true"></div>
+      <div class="c360-ind-handy-img">
+        <!-- IMAGE PLACEHOLDER: handy-hero — handyman in a navy work shirt mounting a shelf on a living room wall with a level, homeowner's tidy home, 16:9 (shown 4:3; keep the handyman centered) -->
+        <img src="" data-c360-placeholder="handy-hero" alt="Handyman mounting a shelf with a level in a homeowner's living room" fetchpriority="high">
+        <div class="c360-ind-handy-fallback" aria-hidden="true"><i class="fa-solid fa-hammer"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE HANDYMAN REALITY (one big to-do notepad + photo) ══════════ -->
+<section class="c360-ind-handy-section" style="background:var(--handy-sky)">
+  <div class="c360-ind-handy-wrap">
+    <div class="c360-ind-handy-head">
+      <span class="c360-ind-handy-kicker"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Your own to-do list</span>
+      <h2 class="c360-ind-handy-h2">The handyman reality</h2>
+      <p class="c360-ind-handy-lead">You spend all day crossing items off other people's lists. These are the ones that stay on yours.</p>
+    </div>
+    <div class="c360-ind-handy-padgrid">
+      <div class="c360-ind-handy-pad">
+        <h3 class="c360-ind-handy-pad-title">Still to do</h3>
+        <div class="c360-ind-handy-todo"><span aria-hidden="true"></span><h4>Answer the phone while on a ladder</h4><p>Calls come in mid-job. By the time you call back, the homeowner has booked someone else.</p></div>
+        <div class="c360-ind-handy-todo"><span aria-hidden="true"></span><h4>Show what you actually do</h4><p>Homeowners aren't sure if a job is "handyman" or "contractor." A clear list of services and recent work gets you the call.</p></div>
+        <div class="c360-ind-handy-todo"><span aria-hidden="true"></span><h4>Stand out from gig apps and lowball quotes</h4><p>Cheap, unknown help is everywhere. Homeowners who want it done right look for reviews and a real local business.</p></div>
+        <div class="c360-ind-handy-todo"><span aria-hidden="true"></span><h4>Turn small jobs into bigger ones</h4><p>The faucet fix is how you meet a customer. The bathroom refresh is where the money is, if they think of you.</p></div>
+      </div>
+      <div class="c360-ind-handy-img c360-ind-handy-padphoto">
+        <!-- IMAGE PLACEHOLDER: handy-on-the-job — handyman fixing a kitchen cabinet door while a smiling homeowner looks on, 4:3 -->
+        <img src="" data-c360-placeholder="handy-on-the-job" alt="Handyman repairing a kitchen cabinet door while the homeowner watches" loading="lazy">
+        <div class="c360-ind-handy-fallback" aria-hidden="true"><i class="fa-solid fa-screwdriver-wrench"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (pegboard) ══════════
+     Draft plan, to confirm with Jared. -->
+<section class="c360-ind-handy-section" id="handy-plan">
+  <div class="c360-ind-handy-wrap">
+    <div class="c360-ind-handy-head">
+      <span class="c360-ind-handy-kicker"><i class="fa-solid fa-toolbox" aria-hidden="true"></i> Your recommended plan</span>
+      <h2 class="c360-ind-handy-h2">The right tools, in the right spots</h2>
+      <p class="c360-ind-handy-lead">Hang what you use every day where you can reach it. Keep the rest handy for when you need it.</p>
+    </div>
+    <div class="c360-ind-handy-peg">
+      <div class="c360-ind-handy-zones">
+        <div class="c360-ind-handy-zone is-core">
+          <div class="c360-ind-handy-zone-h"><b>Start here</b><span>Use every day</span></div>
+          <div class="c360-ind-handy-zone-tools">
+            <article class="c360-ind-handy-tool">
+              <h3>Google Platinum Package</h3>
+              <p>Local Services Ads with the Google Verified badge at the top of Google, plus Google Business Profile Management.</p>
+              <ul>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i> Google Verified after Google's license (where required), insurance and background checks</li>
+                <li><i class="fa-solid fa-check" aria-hidden="true"></i> Your services and service area listed clearly on your profile</li>
+              </ul>
+              <div class="c360-ind-handy-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+            </article>
+            <article class="c360-ind-handy-tool">
+              <h3>Reviews, built in</h3>
+              <p>Review requests after every job and a reply to every review, included in Google Business Profile Management. For someone letting you into their home, reviews do the selling.</p>
+              <div class="c360-ind-handy-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+            </article>
+          </div>
+        </div>
+        <div class="c360-ind-handy-zone">
+          <div class="c360-ind-handy-zone-h"><b>Grow with</b><span>Use often</span></div>
+          <div class="c360-ind-handy-zone-tools">
+            <article class="c360-ind-handy-tool">
+              <h3>Meta Ads</h3>
+              <p>Before-and-after photos and seasonal honey-do offers shown to homeowners in your neighborhoods.</p>
+              <div class="c360-ind-handy-pills"><a href="/meta-ads">Meta Ads</a></div>
+            </article>
+            <article class="c360-ind-handy-tool">
+              <h3>Google Social Posting</h3>
+              <p>Weekly posts of recent jobs on your Google Business Profile, so people see everything you can fix.</p>
+              <div class="c360-ind-handy-pills"><a href="/google-social-posting">Google Social Posting</a></div>
+            </article>
+            <article class="c360-ind-handy-tool">
+              <h3>Website</h3>
+              <p>A clear list of what you do, your service area, real job photos and an easy booking form.</p>
+              <div class="c360-ind-handy-pills"><a href="/websites-home">Website</a></div>
+            </article>
+          </div>
+        </div>
+        <div class="c360-ind-handy-zone">
+          <div class="c360-ind-handy-zone-h"><b>Also available</b><span>Keep handy</span></div>
+          <div class="c360-ind-handy-zone-tools">
+            <article class="c360-ind-handy-tool">
+              <h3>AI Voice Agent</h3>
+              <p>Answers while you're on a job and books the visit. No per-minute AI fees; the phone number and calling minutes are billed separately.</p>
+              <div class="c360-ind-handy-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+            </article>
+            <article class="c360-ind-handy-tool">
+              <h3>Google PPC</h3>
+              <p>Search ads for the bigger projects you want more of, like bathroom refreshes, decks or fence repair.</p>
+              <div class="c360-ind-handy-pills"><a href="/google-ppc">Google PPC</a></div>
+            </article>
+            <article class="c360-ind-handy-tool">
+              <h3>Local SEO Booster</h3>
+              <p>Keeps your business name, address, phone and hours accurate across 70+ directories and maps.</p>
+              <div class="c360-ind-handy-pills"><a href="/local-seo-booster">Local SEO Booster</a></div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="c360-ind-handy-plan-cta">
+      <a href="/schedule-demo" class="c360-ind-handy-btn c360-ind-handy-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (2x2 side-by-side cards) ══════════ -->
+<section class="c360-ind-handy-section" style="background:var(--handy-sky)">
+  <div class="c360-ind-handy-wrap">
+    <div class="c360-ind-handy-head">
+      <span class="c360-ind-handy-kicker"><i class="fa-solid fa-route" aria-hidden="true"></i> How it works</span>
+      <h2 class="c360-ind-handy-h2">From one small fix to a regular customer</h2>
+      <p class="c360-ind-handy-lead">It starts with a squeaky door. Here's how the plan turns it into a customer who calls you for everything.</p>
+    </div>
+    <div class="c360-ind-handy-grid2">
+      <article class="c360-ind-handy-jcard">
+        <div class="c360-ind-handy-mock" role="img" aria-label="Example sponsored Google result for a Google Verified handyman with a 4.9 star rating">
+          <div class="c360-ind-handy-card"><small>Sponsored · handyman near me</small><b>BrightFix Handyman</b><span class="c360-ind-handy-ver"><i class="fa-solid fa-circle-check"></i> Google Verified</span><span><span class="c360-ind-handy-st">★★★★★</span> 4.9 (188) · Repairs, mounting, drywall</span></div>
+        </div>
+        <div class="c360-ind-handy-jtext">
+          <small><span>1</span> Get found</small>
+          <h3>The search that starts it all</h3>
+          <p>A homeowner searches for a handyman nearby. Your Google Verified ad, rating and service list show up first.</p>
+          <div class="c360-ind-handy-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+        </div>
+      </article>
+      <article class="c360-ind-handy-jcard">
+        <div class="c360-ind-handy-mock" role="img" aria-label="Example: a homeowner's message asking to mount a TV and fix a squeaky door, booked for Saturday morning">
+          <div class="c360-ind-handy-card"><small>New message</small><b class="is-plain">"Can you mount a TV and fix a squeaky door this weekend?"</b></div>
+          <div class="c360-ind-handy-card"><small>AI Voice Agent · called back</small><b class="is-plain">Booked: Saturday, 9 to 11 AM</b><span>Two small jobs, one visit</span></div>
+        </div>
+        <div class="c360-ind-handy-jtext">
+          <small><span>2</span> Win the job</small>
+          <h3>Book it before they keep looking</h3>
+          <p>You're on a ladder across town. The AI Voice Agent calls back, bundles the small jobs into one visit and books it.</p>
+          <div class="c360-ind-handy-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+        </div>
+      </article>
+      <article class="c360-ind-handy-jcard">
+        <div class="c360-ind-handy-mock" role="img" aria-label="Example text asking for a Google review after the job, and the homeowner replying that they posted one">
+          <div class="c360-ind-handy-sms c360-ind-handy-sms-out">Thanks for having us, Carla! Would you leave BrightFix a quick Google review?</div>
+          <div class="c360-ind-handy-sms c360-ind-handy-sms-in">Done. Already sending you my list for next month!</div>
+        </div>
+        <div class="c360-ind-handy-jtext">
+          <small><span>3</span> Build trust</small>
+          <h3>A review for every finished list</h3>
+          <p>A friendly text asks for a review right after the job, and every review gets a reply. That's what the next homeowner reads.</p>
+          <div class="c360-ind-handy-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+        </div>
+      </article>
+      <article class="c360-ind-handy-jcard">
+        <div class="c360-ind-handy-mock" role="img" aria-label="Example Google Business Profile post showing a recent bathroom vanity swap">
+          <div class="c360-ind-handy-card"><small>Google post · this week</small><b class="is-plain">Recent job: bathroom vanity swap</b><span>Old vanity out, new one in, same afternoon. Have a project like this? Book a visit.</span></div>
+          <div class="c360-ind-handy-card"><small>BrightFix · Sponsored</small><b class="is-plain">Spring honey-do list? We'll knock it out in a day.</b></div>
+        </div>
+        <div class="c360-ind-handy-jtext">
+          <small><span>4</span> Grow</small>
+          <h3>Show them the bigger jobs</h3>
+          <p>Weekly posts and before-and-after ads show past customers, and their neighbors, everything else you can do.</p>
+          <div class="c360-ind-handy-pills"><a href="/google-social-posting">Google Social Posting</a><a href="/meta-ads">Meta Ads</a></div>
+        </div>
+      </article>
+    </div>
+    <p class="c360-ind-handy-note">Examples for illustration</p>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (stats on a measuring tape) ══════════ -->
+<section class="c360-ind-handy-section">
+  <div class="c360-ind-handy-wrap">
+    <div class="c360-ind-handy-head">
+      <span class="c360-ind-handy-kicker">Our own reviews</span>
+      <h2 class="c360-ind-handy-h2">How we measure up</h2>
+      <p class="c360-ind-handy-lead">Local business owners across the country, in their own words.</p>
+    </div>
+    <div class="c360-ind-handy-tape">
+      <div class="c360-ind-handy-tape-ticks c360-ind-handy-ticks-x" aria-hidden="true"></div>
+      <div class="c360-ind-handy-marks">
+        <div><strong>5.0</strong><span>Google rating</span></div>
+        <div><strong>147</strong><span>five-star reviews</span></div>
+        <div><strong>2018</strong><span>in business since</span></div>
+      </div>
+    </div>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (navy panel with a checklist) ══════════ -->
+<section class="c360-ind-handy-section" style="padding-top:0">
+  <div class="c360-ind-handy-wrap">
+    <div class="c360-ind-handy-cta">
+      <div>
+        <h2 class="c360-ind-handy-h2">Add one more item to today's list</h2>
+        <p>On a free strategy call we'll look at your service area, your reviews and the jobs you want more of, and show you where your next customers will come from.</p>
+      </div>
+      <div class="c360-ind-handy-check">
+        <h3>Today's list</h3>
+        <ul>
+          <li><a class="c360-ind-handy-checklink is-go" href="/schedule-demo"><i class="fa-solid fa-arrow-right" aria-hidden="true"></i><b>Book a free strategy call</b><span>Pick a time that works for you</span></a></li>
+          <li><a class="c360-ind-handy-checklink" href="tel:+18665276205"><i aria-hidden="true"></i><b>Or call (866) 527-6205</b><span>Mon to Thu 7 AM to 4 PM, Fri 7 AM to 1 PM, Arizona time</span></a></li>
+          <li><div><i aria-hidden="true"></i><b>Get back to the jobs you love</b><span>We'll handle the marketing</span></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (peg markers) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-handy-section" id="handy-faq" style="padding-top:0">
+  <div class="c360-ind-handy-wrap">
+    <div class="c360-ind-handy-head">
+      <h2 class="c360-ind-handy-h2">Handyman marketing questions</h2>
+    </div>
+    <div class="c360-ind-handy-faq-list">
+
+      <details class="c360-ind-handy-faq-item">
+        <summary class="c360-ind-handy-faq-q">How do handyman businesses get more jobs?</summary>
+        <div class="c360-ind-handy-faq-a"><p>Show up at the top of Google with proof you're trusted, and make it clear what you can fix. For most handyman businesses that starts with the Google Platinum Package (Local Services Ads plus Google Business Profile Management, reviews included). Meta Ads, Google Social Posting and a website that lists your services come next.</p></div>
+      </details>
+
+      <details class="c360-ind-handy-faq-item">
+        <summary class="c360-ind-handy-faq-q">Can handymen run Google Local Services Ads?</summary>
+        <div class="c360-ind-handy-faq-a"><p>Yes. Handyman is an eligible Local Services Ads category. Google checks your business license where your state requires one, your insurance and backgrounds before your ads earn the Google Verified badge. We walk you through each step.</p></div>
+      </details>
+
+      <details class="c360-ind-handy-faq-item">
+        <summary class="c360-ind-handy-faq-q">How do I get bigger jobs instead of just small fixes?</summary>
+        <div class="c360-ind-handy-faq-a"><p>Show people what else you do. Weekly Google posts and before-and-after ads put your bigger projects in front of past customers and their neighbors, and Google PPC can reach people searching for the projects you want more of.</p></div>
+      </details>
+
+      <details class="c360-ind-handy-faq-item">
+        <summary class="c360-ind-handy-faq-q">How do I compete with gig apps and lowball quotes?</summary>
+        <div class="c360-ind-handy-faq-a"><p>Look like the safe choice. The Google Verified badge, steady reviews that mention you by name, real photos of your work and a clear list of services tell homeowners they're hiring a real local business, not a stranger from an app.</p></div>
+      </details>
+
+      <details class="c360-ind-handy-faq-item">
+        <summary class="c360-ind-handy-faq-q">What happens to calls while I'm on a job?</summary>
+        <div class="c360-ind-handy-faq-a"><p>The AI Voice Agent can answer them. It takes the caller's name, address and list of jobs, and books the visit or passes the details to you. There are no per-minute AI fees; the phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-handy-faq-item">
+        <summary class="c360-ind-handy-faq-q">Do Facebook and Instagram ads work for handymen?</summary>
+        <div class="c360-ind-handy-faq-a"><p>Yes. Before-and-after photos and seasonal honey-do offers shown to homeowners nearby remind them about the list they've been putting off. Meta Ads are planned with you on a strategy call, and ad spend is billed directly by Meta.</p></div>
+      </details>
+
+      <details class="c360-ind-handy-faq-item">
+        <summary class="c360-ind-handy-faq-q">Can you guarantee more jobs?</summary>
+        <div class="c360-ind-handy-faq-a"><p>No. No one can promise rankings or a set number of leads or jobs. For Google Business Profile Management and advertising campaigns, including Local Services Ads, Meta Ads and Google PPC, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-handy-faq-item">
+        <summary class="c360-ind-handy-faq-q">How much does handyman marketing cost?</summary>
+        <div class="c360-ind-handy-faq-a"><p>Each service's price is on its own page, including the <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>, <a href="/google-social-posting">Google Social Posting</a> and <a href="/website-pricing">websites</a>. Meta Ads and Google PPC are planned with you on a strategy call. Ad spend is separate and billed directly by Meta or Google. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
