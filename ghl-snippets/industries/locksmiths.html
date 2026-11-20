@@ -1,0 +1,578 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Locksmiths
+     c360-ind-lock-v1.1.html
+     GHL: Paste into a Custom Code block on the new page at /industries/locksmiths
+          (page name "Locksmith Marketing"). Meta data: ghl-meta/industries/locksmiths.md.
+          Schema: schema/pages/industries/locksmiths.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-lock-  (new, unique; vars --lock-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from the last page), locksmith themed:
+       - Hero: white; text left; tall photo right with a stack of
+         code-built phone notifications (AI Voice Agent, review, booking).
+       - Reality: four cards whose top edges are cut like key blades.
+       - Plan: a "master key system" tree (master keys = start here,
+         sub-masters = grow with, change keys = also available).
+       - Journey: two swimlanes across four stages, "the customer" and
+         "your business", with a mock in between.
+       - Stat line + reviews widget, navy CTA band with the text left and
+         a framed photo right, FAQ with key markers.
+     Light-blue palette (#EEF5FD / #E6F1FB), navy, green, steel grey.
+
+     Policy notes (verified 2026-11-19): locksmith is a Local Services Ads
+     category; US locksmith ads require Google's Advanced Verification and
+     pre-badge ads aren't available for locksmiths.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       lock-hero        16:9, 2000px+ (shown as a square frame; keep the subject centered)
+       lock-on-the-job  4:3, 1200px+  (framed on the right of the CTA band)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.1 (2026-11-19) — Jared: empty right half in the CTA. The photo is
+       now a framed 4:3 card on the right of the navy band (text left), with
+       a styled fallback, so the band is balanced with or without the image.
+
+     v1.0 (2026-11-19) — first build. Draft plan per worksheet v1.4 (Wave 5):
+       Google Platinum Package and AI Voice Agent first; grow with Google
+       PPC (rekeying, commercial, access control) and the Local SEO Booster.
+       Meta Ads, Website and Google Social Posting as "also available".
+       To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-lock{
+  --lock-navy:#122078;--lock-navy-dark:#0d1654;--lock-navy-deeper:#0a1040;
+  --lock-green:#127825;--lock-green-hover:#0e5e1d;--lock-green-light:#EAF3DE;
+  --lock-sky:#EEF5FD;--lock-sky-2:#E6F1FB;--lock-line:#E2E8F2;--lock-steel:#AEBBD3;
+  --lock-text:#0F1F5E;--lock-muted:#5F5E5A;--lock-body:#3B4566;
+  --lock-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--lock-font);color:var(--lock-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-lock *,.c360-ind-lock *::before,.c360-ind-lock *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-lock :where(h1,h2,h3,h4,p,ul,ol,li,dl,dt,dd){margin:0;padding:0;font-family:var(--lock-font)}
+.c360-ind-lock :where(ul,ol){list-style:none}
+.c360-ind-lock :where(a){color:var(--lock-navy)}
+.c360-ind-lock a:focus-visible,.c360-ind-lock summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-lock-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-lock-section{padding:104px 0}
+.c360-ind-lock-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--lock-text);margin-bottom:16px}
+.c360-ind-lock-lead{font-size:18px;color:var(--lock-muted);max-width:760px;line-height:1.65}
+.c360-ind-lock-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--lock-green);margin-bottom:14px}
+.c360-ind-lock-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-lock-head .c360-ind-lock-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-lock-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--lock-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-lock-btn-primary{background:var(--lock-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-lock-btn-primary:hover{background:var(--lock-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-lock-btn-outline{background:transparent;color:var(--lock-text);border:2px solid var(--lock-text);padding:14px 24px}
+.c360-ind-lock-btn-outline:hover{background:var(--lock-text);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-lock-btn-light{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.8);padding:14px 24px}
+.c360-ind-lock-btn-light:hover{background:#fff;color:var(--lock-navy);text-decoration:none;transform:translateY(-2px)}
+.c360-ind-lock a.c360-ind-lock-btn-primary{color:#fff}
+.c360-ind-lock a.c360-ind-lock-btn-outline{color:var(--lock-text)}
+.c360-ind-lock a.c360-ind-lock-btn-outline:hover{color:#fff}
+.c360-ind-lock a.c360-ind-lock-btn-light{color:#fff}
+.c360-ind-lock a.c360-ind-lock-btn-light:hover{color:var(--lock-navy)}
+.c360-ind-lock-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-lock-pills{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;align-items:flex-start}
+.c360-ind-lock-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--lock-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-lock-pills a:hover{background:var(--lock-navy);border-color:var(--lock-navy);color:#fff;text-decoration:none}
+
+/* Image slots: styled fallback until the GHL image URL is pasted in. */
+.c360-ind-lock-img{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#DCE7F5 0 16px,#E7EFF9 16px 32px)}
+.c360-ind-lock-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-lock-img img[src=""],.c360-ind-lock-img img:not([src]){visibility:hidden}
+.c360-ind-lock-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B9D8;font-size:58px;pointer-events:none}
+.c360-ind-lock-img img[src]:not([src=""])+.c360-ind-lock-fallback{display:none}
+
+/* ══════════ HERO (photo with lock-screen notifications) ══════════ */
+.c360-ind-lock-hero{background:#fff;border-bottom:1px solid var(--lock-line)}
+.c360-ind-lock-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center;padding-top:56px;padding-bottom:96px}
+.c360-ind-lock-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-lock-crumbs li{color:var(--lock-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-lock-crumbs li+li::before{content:"\203A";color:#A6B0C4}
+.c360-ind-lock-crumbs a{color:var(--lock-text);text-decoration:none}
+.c360-ind-lock-crumbs a:hover{text-decoration:underline}
+.c360-ind-lock-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--lock-text);margin-bottom:22px}
+.c360-ind-lock-hero-sub{font-size:18px;line-height:1.65;color:var(--lock-body);max-width:640px;margin-bottom:32px}
+.c360-ind-lock-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-ind-lock-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-lock-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-lock-partner,.c360-ind-lock-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-lock-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+.c360-ind-lock-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:var(--lock-body);line-height:1.4}
+.c360-ind-lock-creds-list i{color:var(--lock-green);margin-top:3px;font-size:12px}
+.c360-ind-lock-stars{color:#E8A400;letter-spacing:1px}
+.c360-ind-lock-shot{position:relative}
+.c360-ind-lock-shot .c360-ind-lock-img{aspect-ratio:1/1;border-radius:36px;box-shadow:0 30px 60px rgba(15,31,94,0.16)}
+/* night-time tint so the notifications read like a lock screen */
+.c360-ind-lock-shot .c360-ind-lock-img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,64,0) 35%,rgba(10,16,64,0.55) 100%);pointer-events:none}
+.c360-ind-lock-notes{position:absolute;left:28px;right:28px;bottom:28px;display:flex;flex-direction:column;gap:10px}
+.c360-ind-lock-notif{display:grid;grid-template-columns:38px 1fr auto;gap:12px;align-items:start;background:rgba(255,255,255,0.94);border-radius:18px;padding:13px 16px;box-shadow:0 10px 26px rgba(10,16,64,0.25);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.c360-ind-lock-notif > i{width:38px;height:38px;border-radius:10px;display:inline-flex;align-items:center;justify-content:center;font-size:16px;color:#fff;background:var(--lock-navy)}
+.c360-ind-lock-notif.is-green > i{background:var(--lock-green)}
+.c360-ind-lock-notif.is-star > i{background:#E8A400}
+.c360-ind-lock-notif b{display:block;font-size:13px;font-weight:700;line-height:1.3}
+.c360-ind-lock-notif span{display:block;font-size:13px;color:var(--lock-body);line-height:1.4}
+.c360-ind-lock-notif time{font-size:11.5px;color:var(--lock-muted);white-space:nowrap}
+.c360-ind-lock-notes p{font-size:11.5px;color:#fff;text-align:right;text-shadow:0 1px 3px rgba(0,0,0,0.5)}
+
+/* ══════════ REALITY (cards with key-cut tops) ══════════ */
+.c360-ind-lock-keys{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto;gap:0 24px;max-width:1560px;margin:0 auto}
+.c360-ind-lock-key{position:relative;display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:14px;background:#fff;border:1px solid var(--lock-line);border-top:0;border-radius:0 0 18px 18px;padding:54px 26px 30px;box-shadow:0 14px 30px rgba(15,31,94,0.07)}
+/* The top edge is cut like a key blade; each card has its own bitting */
+.c360-ind-lock-key::before{content:"";position:absolute;left:-1px;right:-1px;top:-18px;height:44px;background:var(--lock-navy);
+  clip-path:polygon(0 100%,0 30%,10% 30%,14% 0,22% 0,26% 55%,36% 55%,40% 15%,50% 15%,54% 70%,64% 70%,68% 25%,78% 25%,82% 50%,100% 50%,100% 100%)}
+.c360-ind-lock-key:nth-child(2)::before{clip-path:polygon(0 100%,0 45%,8% 45%,12% 10%,20% 10%,24% 65%,32% 65%,36% 0,46% 0,50% 40%,62% 40%,66% 75%,74% 75%,78% 20%,100% 20%,100% 100%)}
+.c360-ind-lock-key:nth-child(3)::before{clip-path:polygon(0 100%,0 20%,12% 20%,16% 60%,24% 60%,28% 5%,38% 5%,42% 45%,52% 45%,56% 0,64% 0,68% 65%,80% 65%,84% 35%,100% 35%,100% 100%)}
+.c360-ind-lock-key:nth-child(4)::before{clip-path:polygon(0 100%,0 55%,10% 55%,14% 15%,24% 15%,28% 70%,36% 70%,40% 30%,48% 30%,52% 0,62% 0,66% 50%,76% 50%,80% 10%,100% 10%,100% 100%)}
+.c360-ind-lock-key i{font-size:24px;color:var(--lock-green)}
+.c360-ind-lock-key h3{font-size:20px;font-weight:700;line-height:1.35}
+.c360-ind-lock-key p{font-size:15.5px;color:var(--lock-muted);line-height:1.65}
+
+/* ══════════ PLAN (master key system tree) ══════════ */
+.c360-ind-lock-tree{max-width:1240px;margin:0 auto}
+.c360-ind-lock-root{display:flex;justify-content:center}
+.c360-ind-lock-root div{display:inline-flex;align-items:center;gap:12px;background:var(--lock-navy);color:#fff;border-radius:100px;padding:14px 28px;font-size:17px;font-weight:700}
+.c360-ind-lock-root i{color:#7FD38F}
+.c360-ind-lock-tier{position:relative;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto auto auto;column-gap:32px;padding-top:44px}
+/* connectors: stub down from the parent, a bar across, stubs into each node */
+.c360-ind-lock-tier::before{content:"";position:absolute;top:0;left:50%;width:2px;height:22px;background:var(--lock-steel);transform:translateX(-1px)}
+.c360-ind-lock-tier::after{content:"";position:absolute;top:22px;left:calc(25% - 8px);right:calc(25% - 8px);height:2px;background:var(--lock-steel)}
+.c360-ind-lock-node{position:relative;display:grid;grid-template-rows:subgrid;grid-row:span 4;row-gap:12px;background:#fff;border:1px solid var(--lock-line);border-radius:20px;padding:26px 28px 28px;box-shadow:0 14px 30px rgba(15,31,94,0.07)}
+.c360-ind-lock-node::before{content:"";position:absolute;top:-23px;left:50%;width:2px;height:23px;background:var(--lock-steel);transform:translateX(-1px)}
+.c360-ind-lock-node.is-master{border:2px solid var(--lock-green)}
+.c360-ind-lock-tag{display:inline-flex;align-items:center;gap:8px;justify-self:start;font-size:13px;font-weight:700;padding:5px 12px;border-radius:100px;background:var(--lock-sky-2);color:var(--lock-navy)}
+.c360-ind-lock-node.is-master .c360-ind-lock-tag{background:var(--lock-green-light);color:var(--lock-green)}
+.c360-ind-lock-node h3{font-size:22px;font-weight:700;line-height:1.3}
+.c360-ind-lock-node p{font-size:15.5px;color:var(--lock-muted);line-height:1.65}
+.c360-ind-lock-change{position:relative;padding-top:44px;text-align:center}
+.c360-ind-lock-change::before{content:"";position:absolute;top:0;left:50%;width:2px;height:22px;background:var(--lock-steel);transform:translateX(-1px)}
+.c360-ind-lock-change > div{display:inline-flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 16px;background:#fff;border:1px dashed var(--lock-steel);border-radius:18px;padding:18px 24px}
+.c360-ind-lock-change b{font-size:15px;color:var(--lock-muted);font-weight:600}
+.c360-ind-lock-plan-cta{display:flex;justify-content:center;margin-top:40px}
+
+/* ══════════ JOURNEY (customer / your business swimlanes) ══════════ */
+.c360-ind-lock-lanes{display:grid;grid-template-columns:150px repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto auto auto;max-width:1560px;margin:0 auto}
+.c360-ind-lock-lane-labels{display:grid;grid-template-rows:subgrid;grid-row:1/6;grid-column:1}
+.c360-ind-lock-lane-labels span{display:flex;align-items:center;font-size:14px;font-weight:700;padding-right:16px}
+.c360-ind-lock-lane-labels span:nth-child(2){color:var(--lock-navy)}
+.c360-ind-lock-lane-labels span:nth-child(4){color:var(--lock-green)}
+.c360-ind-lock-stage{display:grid;grid-template-rows:subgrid;grid-row:1/6}
+.c360-ind-lock-stage > *{padding:0 18px}
+.c360-ind-lock-stage-h{display:flex;align-items:center;gap:12px;padding-bottom:20px}
+.c360-ind-lock-stage-h span{flex:none;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;background:var(--lock-navy);color:#fff;font-size:16px;font-weight:700}
+.c360-ind-lock-stage-h h3{font-size:22px;font-weight:700;line-height:1.25}
+.c360-ind-lock-cust,.c360-ind-lock-you{font-size:15.5px;line-height:1.6;padding-top:18px;padding-bottom:18px}
+.c360-ind-lock-cust{background:var(--lock-sky);color:var(--lock-body)}
+.c360-ind-lock-you{background:var(--lock-green-light);color:#25352A}
+.c360-ind-lock-stage:nth-child(2) .c360-ind-lock-cust{border-radius:16px 0 0 16px}
+.c360-ind-lock-stage:nth-child(2) .c360-ind-lock-you{border-radius:16px 0 0 16px}
+.c360-ind-lock-stage:nth-child(5) .c360-ind-lock-cust,.c360-ind-lock-stage:nth-child(5) .c360-ind-lock-you{border-radius:0 16px 16px 0}
+.c360-ind-lock-stage + .c360-ind-lock-stage .c360-ind-lock-cust,.c360-ind-lock-stage + .c360-ind-lock-stage .c360-ind-lock-you{border-left:1px solid rgba(15,31,94,0.08)}
+.c360-ind-lock-lane-tag{display:none;font-size:12.5px;font-weight:700;margin-bottom:4px}
+.c360-ind-lock-mockcell{padding-top:16px;padding-bottom:16px;display:flex;flex-direction:column;justify-content:center}
+.c360-ind-lock-stage > .c360-ind-lock-pills{padding-top:18px}
+.c360-ind-lock-card{background:#fff;border:1px solid var(--lock-line);border-radius:12px;padding:14px 16px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:13.5px;color:#202124;box-shadow:0 10px 24px rgba(15,31,94,0.08)}
+.c360-ind-lock-card + .c360-ind-lock-card{margin-top:10px}
+.c360-ind-lock-q{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #DFE1E5;border-radius:100px;padding:8px 14px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:13.5px;color:#202124;margin-bottom:10px}
+.c360-ind-lock-q i{color:#4285F4}
+.c360-ind-lock-spons{font-size:11.5px;font-weight:700}
+.c360-ind-lock-name{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:15px;color:#1A0DAB;margin:2px 0}
+.c360-ind-lock-ver{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#137333;font-weight:700;white-space:nowrap}
+.c360-ind-lock-sub{font-size:12.5px;color:#5F6368}
+.c360-ind-lock-st{color:#E8A400}
+.c360-ind-lock-call{display:flex;gap:12px;align-items:flex-start}
+.c360-ind-lock-call i{flex:none;width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;background:var(--lock-green-light);color:var(--lock-green)}
+.c360-ind-lock-call b{display:block;font-size:13.5px}
+.c360-ind-lock-call span{font-size:12.5px;color:#5F6368}
+.c360-ind-lock-sms{max-width:94%;font-size:13px;line-height:1.45;padding:10px 13px;border-radius:16px}
+.c360-ind-lock-sms-out{background:var(--lock-navy);color:#fff;border-bottom-right-radius:4px;margin-left:auto}
+.c360-ind-lock-sms-in{background:#fff;border:1px solid var(--lock-line);color:#202124;border-bottom-left-radius:4px;margin-top:8px}
+.c360-ind-lock-note{font-size:12px;color:var(--lock-muted);text-align:center;margin-top:10px}
+
+/* ══════════ REVIEWS (stat line + widget) ══════════ */
+.c360-ind-lock-statline{display:flex;justify-content:center;flex-wrap:wrap;max-width:1000px;margin:0 auto 48px;border:1px solid var(--lock-line);border-radius:18px;background:#fff;overflow:hidden}
+.c360-ind-lock-statline div{flex:1;min-width:200px;text-align:center;padding:24px 16px}
+.c360-ind-lock-statline div + div{border-left:1px solid var(--lock-line)}
+.c360-ind-lock-statline strong{display:block;font-size:38px;font-weight:800;line-height:1.1;color:var(--lock-text)}
+.c360-ind-lock-statline span{font-size:14px;color:var(--lock-muted)}
+
+/* ══════════ CTA (v1.1: navy band, text left, framed photo right) ══════════ */
+.c360-ind-lock-cta{background:var(--lock-navy-deeper);color:#fff;padding:96px 0}
+.c360-ind-lock-cta-grid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:center;max-width:1560px;margin:0 auto}
+.c360-ind-lock-cta .c360-ind-lock-img{aspect-ratio:4/3;border-radius:24px;background:repeating-linear-gradient(135deg,#16206A 0 16px,#1A2575 16px 32px);box-shadow:0 30px 60px rgba(0,0,0,0.3)}
+.c360-ind-lock-cta .c360-ind-lock-fallback{color:#3A47A0}
+.c360-ind-lock-cta-body{max-width:780px}
+.c360-ind-lock-cta-body .c360-ind-lock-h2{color:#fff}
+.c360-ind-lock-cta-body p{font-size:18px;color:#DCE2F7;line-height:1.65;margin-bottom:32px;max-width:640px}
+
+/* ══════════ FAQ (key markers) ══════════ */
+.c360-ind-lock-faq-list{max-width:1000px;margin:0 auto}
+.c360-ind-lock-faq-item{border-bottom:1px solid var(--lock-line)}
+.c360-ind-lock-faq-item:first-child{border-top:1px solid var(--lock-line)}
+.c360-ind-lock-faq-q{display:grid;grid-template-columns:36px 1fr 24px;align-items:center;gap:12px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--lock-text);cursor:pointer;list-style:none}
+.c360-ind-lock-faq-q::-webkit-details-marker{display:none}
+.c360-ind-lock-faq-q::before{content:"\f084";font-family:"Font Awesome 6 Free";font-weight:900;font-size:15px;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:var(--lock-sky-2);color:var(--lock-navy);transform:rotate(-45deg);transition:transform .2s,background .2s,color .2s}
+.c360-ind-lock-faq-item[open] .c360-ind-lock-faq-q::before{transform:rotate(45deg);background:var(--lock-green-light);color:var(--lock-green)}
+.c360-ind-lock-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--lock-navy);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-lock-faq-item[open] .c360-ind-lock-faq-q::after{transform:rotate(45deg)}
+.c360-ind-lock-faq-a{padding:0 40px 24px 52px;font-size:16px;color:var(--lock-muted);line-height:1.7}
+.c360-ind-lock-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1200px){
+  .c360-ind-lock-keys{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:48px}
+  .c360-ind-lock-lanes{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:none;gap:28px}
+  .c360-ind-lock-lane-labels{display:none}
+  .c360-ind-lock-stage{grid-row:auto;display:flex;flex-direction:column;background:#fff;border:1px solid var(--lock-line);border-radius:20px;overflow:hidden;padding-bottom:20px}
+  .c360-ind-lock-stage-h{padding-top:20px}
+  .c360-ind-lock-stage:nth-child(n) .c360-ind-lock-cust,.c360-ind-lock-stage:nth-child(n) .c360-ind-lock-you{border-radius:0;border-left:0}
+  .c360-ind-lock-lane-tag{display:block}
+  .c360-ind-lock-cust .c360-ind-lock-lane-tag{color:var(--lock-navy)}
+  .c360-ind-lock-you .c360-ind-lock-lane-tag{color:var(--lock-green)}
+}
+@media (max-width:900px){
+  .c360-ind-lock-section{padding:76px 0}
+  .c360-ind-lock-hero-grid{grid-template-columns:1fr;gap:44px;padding-top:44px;padding-bottom:76px}
+  .c360-ind-lock-shot{max-width:560px}
+  .c360-ind-lock-tier{grid-template-columns:1fr;row-gap:24px;padding-top:24px}
+  .c360-ind-lock-tier::before,.c360-ind-lock-tier::after,.c360-ind-lock-node::before{display:none}
+  .c360-ind-lock-node{grid-row:auto;display:flex;flex-direction:column}
+  .c360-ind-lock-change{padding-top:24px}
+  .c360-ind-lock-change::before{display:none}
+  .c360-ind-lock-cta{padding:76px 0}
+  .c360-ind-lock-cta-grid{grid-template-columns:1fr;gap:40px}
+}
+@media (max-width:760px){
+  .c360-ind-lock-keys,.c360-ind-lock-lanes{grid-template-columns:1fr}
+  .c360-ind-lock-key{grid-row:auto;display:flex;flex-direction:column}
+  .c360-ind-lock-statline div + div{border-left:0;border-top:1px solid var(--lock-line)}
+}
+@media (max-width:640px){
+  .c360-ind-lock-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-lock-btn{width:100%}
+  .c360-ind-lock-partner{--badge-h:64px;--badge-clear:32px}
+  .c360-ind-lock-notes{left:12px;right:12px;bottom:12px}
+  .c360-ind-lock-notif{grid-template-columns:32px 1fr;padding:11px 12px}
+  .c360-ind-lock-notif > i{width:32px;height:32px;font-size:14px}
+  .c360-ind-lock-notif time{display:none}
+  .c360-ind-lock-shot .c360-ind-lock-img{aspect-ratio:3/4}
+  .c360-ind-lock-faq-a{padding:0 4px 22px 52px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-lock *,.c360-ind-lock *::before,.c360-ind-lock *::after{transition:none !important;animation:none !important}
+  .c360-ind-lock-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-lock">
+
+<!-- ══════════ HERO (photo with lock-screen notifications) ══════════ -->
+<section class="c360-ind-lock-hero">
+  <div class="c360-ind-lock-wrap c360-ind-lock-hero-grid">
+    <div>
+      <nav class="c360-ind-lock-crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li aria-current="page">Locksmiths</li>
+        </ol>
+      </nav>
+      <h1>Locksmith marketing that answers the lockout call first</h1>
+      <p class="c360-ind-lock-hero-sub">Someone locked out at 11 PM calls the first locksmith that looks legit and picks up. We help your locksmith business be the one they trust on Google, answer every call, and win the rekeys and commercial work that come after.</p>
+      <div class="c360-ind-lock-ctas">
+        <a href="/schedule-demo" class="c360-ind-lock-btn c360-ind-lock-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-lock-btn c360-ind-lock-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+      <div class="c360-ind-lock-creds">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-lock-partner">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+        <ul class="c360-ind-lock-creds-list">
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-lock-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, helping local service companies nationwide since 2018</li>
+        </ul>
+      </div>
+    </div>
+    <div class="c360-ind-lock-shot">
+      <div class="c360-ind-lock-img">
+        <!-- IMAGE PLACEHOLDER: lock-hero — locksmith in a navy work shirt rekeying a front door lock on a home's porch, tools in hand, evening light, 16:9 (shown as a square frame; keep the locksmith and the door in the center) -->
+        <img src="" data-c360-placeholder="lock-hero" alt="Locksmith rekeying the front door lock of a home" fetchpriority="high">
+        <div class="c360-ind-lock-fallback" aria-hidden="true"><i class="fa-solid fa-key"></i></div>
+      </div>
+      <div class="c360-ind-lock-notes" role="img" aria-label="Example phone notifications: the AI Voice Agent answered an 11:42 PM lockout call and sent it to the on-call tech, a new five-star Google review, and a rekey appointment booked for tomorrow">
+        <div class="c360-ind-lock-notif is-green"><i class="fa-solid fa-headset"></i><div><b>AI Voice Agent</b><span>Answered a house lockout call. Sent to your on-call tech.</span></div><time>11:42 PM</time></div>
+        <div class="c360-ind-lock-notif is-star"><i class="fa-solid fa-star"></i><div><b>New Google review ★★★★★</b><span>"Got me back inside in 20 minutes."</span></div><time>12:31 AM</time></div>
+        <div class="c360-ind-lock-notif"><i class="fa-solid fa-calendar-check"></i><div><b>Booked</b><span>Rekey 3 doors for a new homeowner, tomorrow 9 AM</span></div><time>8:05 AM</time></div>
+        <p>Example for illustration</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE LOCKSMITH REALITY (key-cut cards) ══════════ -->
+<section class="c360-ind-lock-section" style="background:var(--lock-sky)">
+  <div class="c360-ind-lock-wrap">
+    <div class="c360-ind-lock-head">
+      <span class="c360-ind-lock-kicker"><i class="fa-solid fa-lock" aria-hidden="true"></i> Sound familiar?</span>
+      <h2 class="c360-ind-lock-h2">The locksmith reality</h2>
+      <p class="c360-ind-lock-lead">Nobody plans to need a locksmith. When they do, it's urgent, it's often late, and they're wary of who they call.</p>
+    </div>
+    <div class="c360-ind-lock-keys">
+      <article class="c360-ind-lock-key">
+        <i class="fa-solid fa-moon" aria-hidden="true"></i>
+        <h3>Lockouts don't wait for business hours</h3>
+        <p>The 11 PM call that goes to voicemail is a job for the next locksmith on the list. Nobody waits until morning to get back inside.</p>
+      </article>
+      <article class="c360-ind-lock-key">
+        <i class="fa-solid fa-user-shield" aria-hidden="true"></i>
+        <h3>Fake listings make people wary</h3>
+        <p>Stories about lowball quotes and surprise bills have homeowners on guard. They look for proof you're real, local and licensed before they call.</p>
+      </article>
+      <article class="c360-ind-lock-key">
+        <i class="fa-solid fa-building-lock" aria-hidden="true"></i>
+        <h3>Lockouts pay today, rekeys and commercial pay all year</h3>
+        <p>New homeowners, landlords, property managers and businesses bring steady, planned work, but they find you through different searches.</p>
+      </article>
+      <article class="c360-ind-lock-key">
+        <i class="fa-solid fa-star-half-stroke" aria-hidden="true"></i>
+        <h3>Reviews decide who gets let in</h3>
+        <p>People letting a stranger work on their locks read reviews closely. A profile with few or old reviews loses to one that looks busy and trusted.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (master key system) ══════════
+     Draft plan, to confirm with Jared. -->
+<section class="c360-ind-lock-section" id="lock-plan">
+  <div class="c360-ind-lock-wrap">
+    <div class="c360-ind-lock-head">
+      <span class="c360-ind-lock-kicker"><i class="fa-solid fa-key" aria-hidden="true"></i> Your recommended plan</span>
+      <h2 class="c360-ind-lock-h2">Your marketing, keyed like a master system</h2>
+      <p class="c360-ind-lock-lead">You know how a master key system works: one key opens the most doors, and the rest are cut for specific jobs. We build your plan the same way.</p>
+    </div>
+    <div class="c360-ind-lock-tree">
+      <div class="c360-ind-lock-root"><div><i class="fa-solid fa-store" aria-hidden="true"></i> Your locksmith business</div></div>
+
+      <div class="c360-ind-lock-tier">
+        <article class="c360-ind-lock-node is-master">
+          <span class="c360-ind-lock-tag"><i class="fa-solid fa-key" aria-hidden="true"></i> Master key: start here</span>
+          <h3>Google Platinum Package</h3>
+          <p>Local Services Ads with the Google Verified badge at the top of Google, plus Google Business Profile Management for your map listing, photos, review requests and replies. Opens the most doors.</p>
+          <div class="c360-ind-lock-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+        </article>
+        <article class="c360-ind-lock-node is-master">
+          <span class="c360-ind-lock-tag"><i class="fa-solid fa-key" aria-hidden="true"></i> Master key: start here</span>
+          <h3>AI Voice Agent</h3>
+          <p>Answers lockout calls day or night, gets the address and the situation, and sends it to your on-call tech or books the appointment. No per-minute AI fees; the phone number and calling minutes are billed separately.</p>
+          <div class="c360-ind-lock-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+        </article>
+      </div>
+
+      <div class="c360-ind-lock-tier">
+        <article class="c360-ind-lock-node">
+          <span class="c360-ind-lock-tag"><i class="fa-solid fa-key" aria-hidden="true"></i> Sub-master: grow with</span>
+          <h3>Google PPC</h3>
+          <p>Search ads for the planned, higher-value work: rekeying after a move, commercial locks, access control and safes.</p>
+          <div class="c360-ind-lock-pills"><a href="/google-ppc">Google PPC</a></div>
+        </article>
+        <article class="c360-ind-lock-node">
+          <span class="c360-ind-lock-tag"><i class="fa-solid fa-key" aria-hidden="true"></i> Sub-master: grow with</span>
+          <h3>Local SEO Booster</h3>
+          <p>Keeps your business name, address, phone and hours consistent across 70+ directories and maps, so Google and customers see a real, local shop.</p>
+          <div class="c360-ind-lock-pills"><a href="/local-seo-booster">Local SEO Booster</a></div>
+        </article>
+      </div>
+
+      <div class="c360-ind-lock-change">
+        <div>
+          <b>Change keys: also available</b>
+          <div class="c360-ind-lock-pills"><a href="/meta-ads">Meta Ads</a><a href="/websites-home">Website</a><a href="/google-social-posting">Google Social Posting</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="c360-ind-lock-plan-cta">
+      <a href="/schedule-demo" class="c360-ind-lock-btn c360-ind-lock-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (customer / your business swimlanes) ══════════ -->
+<section class="c360-ind-lock-section" style="background:#fff;padding-top:0">
+  <div class="c360-ind-lock-wrap">
+    <div class="c360-ind-lock-head">
+      <span class="c360-ind-lock-kicker"><i class="fa-solid fa-route" aria-hidden="true"></i> How it works</span>
+      <h2 class="c360-ind-lock-h2">What they do, and what happens on your side</h2>
+      <p class="c360-ind-lock-lead">Every lockout has two sides: a stressed customer and a busy locksmith. Here's how the plan connects them.</p>
+    </div>
+    <div class="c360-ind-lock-lanes">
+      <div class="c360-ind-lock-lane-labels" aria-hidden="true"><span></span><span>The customer</span><span></span><span>Your business</span><span></span></div>
+
+      <article class="c360-ind-lock-stage">
+        <div class="c360-ind-lock-stage-h"><span>1</span><h3>Get found</h3></div>
+        <p class="c360-ind-lock-cust"><span class="c360-ind-lock-lane-tag">The customer</span>Locked out on the porch, they search "locksmith near me" on their phone.</p>
+        <div class="c360-ind-lock-mockcell" role="img" aria-label="Example Google search for locksmith near me showing a sponsored Google Verified locksmith with a 4.9 star rating, open 24 hours">
+          <div class="c360-ind-lock-q"><i class="fa-solid fa-magnifying-glass"></i> locksmith near me</div>
+          <div class="c360-ind-lock-card">
+            <div class="c360-ind-lock-spons">Sponsored</div>
+            <div class="c360-ind-lock-name">Keystone Lock &amp; Key <span class="c360-ind-lock-ver"><i class="fa-solid fa-circle-check"></i> Google Verified</span></div>
+            <div class="c360-ind-lock-sub"><span class="c360-ind-lock-st">★★★★★</span> 4.9 (318) · Open 24 hours</div>
+          </div>
+        </div>
+        <p class="c360-ind-lock-you"><span class="c360-ind-lock-lane-tag">Your business</span>Your Google Verified ad and fresh reviews show up at the top, proof you're a real, checked local company.</p>
+        <div class="c360-ind-lock-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+      </article>
+
+      <article class="c360-ind-lock-stage">
+        <div class="c360-ind-lock-stage-h"><span>2</span><h3>Win the call</h3></div>
+        <p class="c360-ind-lock-cust"><span class="c360-ind-lock-lane-tag">The customer</span>They tap to call the first one that looks trustworthy. Whoever answers gets the job.</p>
+        <div class="c360-ind-lock-mockcell" role="img" aria-label="Example: a car lockout call answered by the AI Voice Agent and sent to the on-call tech">
+          <div class="c360-ind-lock-card c360-ind-lock-call"><i class="fa-solid fa-headset"></i><div><b>AI Voice Agent answered</b><span>Car lockout, grocery store parking lot</span></div></div>
+          <div class="c360-ind-lock-card c360-ind-lock-call"><i class="fa-solid fa-truck-fast"></i><div><b>Sent to your on-call tech</b><span>Address, vehicle and callback number</span></div></div>
+          <p class="c360-ind-lock-note">Example for illustration</p>
+        </div>
+        <p class="c360-ind-lock-you"><span class="c360-ind-lock-lane-tag">Your business</span>If your tech is on another job, the AI Voice Agent picks up, gets the details and passes them on.</p>
+        <div class="c360-ind-lock-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+      </article>
+
+      <article class="c360-ind-lock-stage">
+        <div class="c360-ind-lock-stage-h"><span>3</span><h3>Earn the review</h3></div>
+        <p class="c360-ind-lock-cust"><span class="c360-ind-lock-lane-tag">The customer</span>They're back inside and relieved, and happy to say so.</p>
+        <div class="c360-ind-lock-mockcell" role="img" aria-label="Example text asking the customer for a Google review after the lockout, and the customer replying that they left one">
+          <div class="c360-ind-lock-sms c360-ind-lock-sms-out">Glad we got you back in tonight, Sam! Would you mind leaving Keystone a quick Google review?</div>
+          <div class="c360-ind-lock-sms c360-ind-lock-sms-in">Just did. Thank you for coming so late!</div>
+        </div>
+        <p class="c360-ind-lock-you"><span class="c360-ind-lock-lane-tag">Your business</span>A review request goes out right after the job, and every review gets a reply.</p>
+        <div class="c360-ind-lock-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+      </article>
+
+      <article class="c360-ind-lock-stage">
+        <div class="c360-ind-lock-stage-h"><span>4</span><h3>Grow the planned work</h3></div>
+        <p class="c360-ind-lock-cust"><span class="c360-ind-lock-lane-tag">The customer</span>Later, they buy a house, rent out a unit or open a shop, and need locks rekeyed or upgraded.</p>
+        <div class="c360-ind-lock-mockcell" role="img" aria-label="Example Google search for rekey locks new home showing a sponsored search ad from the locksmith offering same-day rekeys">
+          <div class="c360-ind-lock-q"><i class="fa-solid fa-magnifying-glass"></i> rekey locks new home</div>
+          <div class="c360-ind-lock-card">
+            <div class="c360-ind-lock-spons">Sponsored · keystonelockandkey.com</div>
+            <div class="c360-ind-lock-name">Rekey Every Lock in Your New Home</div>
+            <div class="c360-ind-lock-sub">Same-day appointments. Homes, rentals and businesses.</div>
+          </div>
+        </div>
+        <p class="c360-ind-lock-you"><span class="c360-ind-lock-lane-tag">Your business</span>Search ads for rekeys and commercial work, and accurate listings everywhere, bring in steady jobs you can schedule.</p>
+        <div class="c360-ind-lock-pills"><a href="/google-ppc">Google PPC</a><a href="/local-seo-booster">Local SEO Booster</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (stat line + widget) ══════════ -->
+<section class="c360-ind-lock-section" style="background:var(--lock-sky)">
+  <div class="c360-ind-lock-wrap">
+    <div class="c360-ind-lock-head">
+      <span class="c360-ind-lock-kicker">Our own reviews</span>
+      <h2 class="c360-ind-lock-h2">Trusted by local business owners</h2>
+      <p class="c360-ind-lock-lead">Owners across the country, in their own words.</p>
+    </div>
+    <div class="c360-ind-lock-statline">
+      <div><strong>5.0</strong><span>Google rating</span></div>
+      <div><strong>147</strong><span>five-star reviews</span></div>
+      <div><strong>2018</strong><span>in business since</span></div>
+    </div>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (navy band, text left, framed photo right) ══════════ -->
+<section class="c360-ind-lock-cta">
+  <div class="c360-ind-lock-wrap">
+    <div class="c360-ind-lock-cta-grid">
+      <div class="c360-ind-lock-cta-body">
+        <h2 class="c360-ind-lock-h2">Let's unlock your locksmith marketing</h2>
+        <p>On a free strategy call we'll look at your service area, your reviews and Google's verification steps for locksmiths, and show you where your lockout, rekey and commercial calls will come from.</p>
+        <div class="c360-ind-lock-ctas">
+          <a href="/schedule-demo" class="c360-ind-lock-btn c360-ind-lock-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-lock-btn c360-ind-lock-btn-light"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+      </div>
+      <div class="c360-ind-lock-img">
+        <!-- IMAGE PLACEHOLDER: lock-on-the-job — locksmith working on a commercial door lock at a small storefront, friendly owner nearby, 4:3 (used as a framed card on the right of the CTA band) -->
+        <img src="" data-c360-placeholder="lock-on-the-job" alt="Locksmith installing a new lock on a small business storefront door" loading="lazy">
+        <div class="c360-ind-lock-fallback" aria-hidden="true"><i class="fa-solid fa-key"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (key markers) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-lock-section" id="lock-faq">
+  <div class="c360-ind-lock-wrap">
+    <div class="c360-ind-lock-head">
+      <h2 class="c360-ind-lock-h2">Locksmith marketing questions</h2>
+    </div>
+    <div class="c360-ind-lock-faq-list">
+
+      <details class="c360-ind-lock-faq-item">
+        <summary class="c360-ind-lock-faq-q">How do locksmiths get more calls?</summary>
+        <div class="c360-ind-lock-faq-a"><p>Show up at the top of Google with proof you're real and trusted, and answer every call, day or night. For most locksmiths that starts with the Google Platinum Package (Local Services Ads plus Google Business Profile Management) and an AI Voice Agent. Google PPC for rekeys and commercial work and the Local SEO Booster come next.</p></div>
+      </details>
+
+      <details class="c360-ind-lock-faq-item">
+        <summary class="c360-ind-lock-faq-q">Can locksmiths run Google Local Services Ads?</summary>
+        <div class="c360-ind-lock-faq-a"><p>Yes, but Google holds locksmiths to a higher bar. Your business has to pass Google's Advanced Verification before ads can run, and Google doesn't offer early pre-badge ads for locksmiths. Expect license (where your state requires one), insurance and background checks. We walk you through each step so your ads can go live with the Google Verified badge.</p></div>
+      </details>
+
+      <details class="c360-ind-lock-faq-item">
+        <summary class="c360-ind-lock-faq-q">How do I stand out from fake locksmith listings?</summary>
+        <div class="c360-ind-lock-faq-a"><p>Give people proof. The Google Verified badge, a complete profile with real photos of your team and vans, steady new reviews with replies, and consistent business details across the web all show you're a real, local company. That's what the Google Platinum Package and the Local SEO Booster are built to do.</p></div>
+      </details>
+
+      <details class="c360-ind-lock-faq-item">
+        <summary class="c360-ind-lock-faq-q">What happens to lockout calls at night or when I'm on a job?</summary>
+        <div class="c360-ind-lock-faq-a"><p>The AI Voice Agent answers them. It takes the caller's name, location and situation, and sends it to your on-call tech or books the appointment, so the job doesn't go to the next locksmith on the list. There are no per-minute AI fees; the phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-lock-faq-item">
+        <summary class="c360-ind-lock-faq-q">How do I get more rekeying and commercial work?</summary>
+        <div class="c360-ind-lock-faq-a"><p>Those customers search differently than someone locked out. Google PPC puts you in front of searches like rekeying after a move, commercial locks and access control, and a Google Business Profile that lists those services helps you show up for them on the map.</p></div>
+      </details>
+
+      <details class="c360-ind-lock-faq-item">
+        <summary class="c360-ind-lock-faq-q">Are Local Services Ads leads shared with other locksmiths?</summary>
+        <div class="c360-ind-lock-faq-a"><p>No. Customers call or message your business directly from your ad, and you pay for leads rather than clicks. That's why answering every call quickly matters so much.</p></div>
+      </details>
+
+      <details class="c360-ind-lock-faq-item">
+        <summary class="c360-ind-lock-faq-q">Can you guarantee more jobs?</summary>
+        <div class="c360-ind-lock-faq-a"><p>No. No one can promise rankings or a set number of leads or jobs. For Google Business Profile Management and advertising campaigns, including Local Services Ads, Google PPC and Meta Ads, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-lock-faq-item">
+        <summary class="c360-ind-lock-faq-q">How much does locksmith marketing cost?</summary>
+        <div class="c360-ind-lock-faq-a"><p>Each service's price is on its own page, including the <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>, the <a href="/ai-agents">AI Voice Agent</a> and the <a href="/local-seo-booster">Local SEO Booster</a>. Google PPC and Meta Ads are planned with you on a strategy call. Ad spend is separate and billed directly by Google or Meta. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>

@@ -66,8 +66,31 @@ Don't paste them until the page is fixed and this script is re-run.
 | Website Design | `/websites-home` | `schema/pages/services/websites-home.html` | WebPage, Service, FAQPage | 5 | ✅ |
 | AI Agents | `/ai-agents` | `schema/pages/services/ai-employee.html` | WebPage, Service, FAQPage | 6 | ✅ |
 | Make a Payment | `/payments` | `schema/pages/services/payments.html` | WebPage, FAQPage | 5 | ✅ |
+| Plumbing Marketing | `/industries/plumbing` | `schema/pages/industries/plumbing.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | HVAC Marketing | `/industries/hvac` | `schema/pages/industries/hvac.html` | WebPage, Service, FAQPage | 7 | ✅ |
 | Roofing Marketing | `/industries/roofing` | `schema/pages/industries/roofing.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| General Contractor Marketing | `/industries/general-contractors` | `schema/pages/industries/general-contractors.html` | WebPage, Service, FAQPage | 7 | ✅ |
+| Painting Contractor Marketing | `/industries/painting` | `schema/pages/industries/painting.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Lawn Care Marketing | `/industries/lawn-care` | `schema/pages/industries/lawn-care.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Cleaning Business Marketing | `/industries/cleaning-services` | `schema/pages/industries/cleaning-services.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Pool Service Marketing | `/industries/pool-service` | `schema/pages/industries/pool-service.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Pest Control Marketing | `/industries/pest-control` | `schema/pages/industries/pest-control.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Real Estate Marketing | `/industries/real-estate` | `schema/pages/industries/real-estate.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Medicare Agent Marketing | `/industries/medicare-agents` | `schema/pages/industries/medicare-agents.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Health Insurance Agent Marketing | `/industries/health-insurance` | `schema/pages/industries/health-insurance.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Mortgage Marketing | `/industries/mortgage` | `schema/pages/industries/mortgage.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Auto Repair Shop Marketing | `/industries/auto-shops` | `schema/pages/industries/auto-shops.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Funeral Home Marketing | `/industries/funeral-homes` | `schema/pages/industries/funeral-homes.html` | WebPage, Service, FAQPage | 7 | ✅ |
+| Restaurant Marketing | `/industries/restaurants` | `schema/pages/industries/restaurants.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Insurance Agency Marketing | `/industries/insurance-agencies` | `schema/pages/industries/insurance-agencies.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Garage Door Repair Marketing | `/industries/garage-door-repair` | `schema/pages/industries/garage-door-repair.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Locksmith Marketing | `/industries/locksmiths` | `schema/pages/industries/locksmiths.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Water Damage Restoration Marketing | `/industries/water-damage-restoration` | `schema/pages/industries/water-damage-restoration.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Appliance Repair Marketing | `/industries/appliance-repair` | `schema/pages/industries/appliance-repair.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Tree Service Marketing | `/industries/tree-service` | `schema/pages/industries/tree-service.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Junk Removal Marketing | `/industries/junk-removal` | `schema/pages/industries/junk-removal.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Moving Company Marketing | `/industries/movers` | `schema/pages/industries/movers.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Handyman Marketing | `/industries/handyman` | `schema/pages/industries/handyman.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Website Pricing | `/website-pricing` | `schema/pages/pricing/website-pricing.html` | WebPage, FAQPage | 7 | ✅ |
 | Complete360 CRM Pricing | `/pricing` | `schema/pages/pricing/saas-pricing.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Complete360 CRM | `/crm-home` | `schema/pages/crm-platform/crm-home.html` | WebPage, SoftwareApplication, FAQPage | 8 | ✅ |
