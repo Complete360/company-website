@@ -1,0 +1,544 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Junk Removal
+     c360-ind-junk-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/junk-removal
+          (page name "Junk Removal Marketing"). Meta data: ghl-meta/industries/junk-removal.md.
+          Schema: schema/pages/industries/junk-removal.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-junk-  (new, unique; vars --junk-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from the last page), junk removal themed:
+       - Hero: text left; a two-photo collage right (both images live
+         here) with a booking chip.
+       - Reality: heading column beside four taped "moving box" cards.
+       - Plan: a code-built truck loaded with the services (start here,
+         next load, room to spare), then three load cards with details.
+       - Journey: four steps beside one phone screen showing all four moments.
+       - Reviews: one card with a header bar (title + stats) around the widget.
+       - CTA: navy panel with two action cards (no photo needed), FAQ with
+         taped-box markers.
+     Light-blue palette (#EEF5FD / #E6F1FB), navy, green.
+
+     Policy notes (verified 2026-11-19): junk removal is a nationwide Local
+     Services Ads category.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       junk-hero        16:9, 2000px+ (big hero photo, shown 4:3; keep the crew centered)
+       junk-on-the-job  4:3, 1200px+  (small tilted photo in the hero collage)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-19) — first build. Draft plan per worksheet v1.4 (Wave 5):
+       Google Platinum Package and AI Voice Agent first; grow with Meta Ads
+       and Google Social Posting. Google PPC, Local SEO Booster and Website
+       as "also available". To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-junk{
+  --junk-navy:#122078;--junk-navy-dark:#0d1654;--junk-navy-deeper:#0a1040;
+  --junk-green:#127825;--junk-green-hover:#0e5e1d;--junk-green-light:#EAF3DE;
+  --junk-sky:#EEF5FD;--junk-sky-2:#E6F1FB;--junk-line:#E2E8F2;--junk-tape:#C7D7EF;
+  --junk-text:#0F1F5E;--junk-muted:#5F5E5A;--junk-body:#3B4566;
+  --junk-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--junk-font);color:var(--junk-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-junk *,.c360-ind-junk *::before,.c360-ind-junk *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-junk :where(h1,h2,h3,h4,p,ul,ol,li){margin:0;padding:0;font-family:var(--junk-font)}
+.c360-ind-junk :where(ul,ol){list-style:none}
+.c360-ind-junk :where(a){color:var(--junk-navy)}
+.c360-ind-junk a:focus-visible,.c360-ind-junk summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-junk-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-junk-section{padding:104px 0}
+.c360-ind-junk-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--junk-text);margin-bottom:16px}
+.c360-ind-junk-lead{font-size:18px;color:var(--junk-muted);max-width:760px;line-height:1.65}
+.c360-ind-junk-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--junk-green);margin-bottom:14px}
+.c360-ind-junk-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-junk-head .c360-ind-junk-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-junk-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--junk-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-junk-btn-primary{background:var(--junk-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-junk-btn-primary:hover{background:var(--junk-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-junk-btn-outline{background:transparent;color:var(--junk-text);border:2px solid var(--junk-text);padding:14px 24px}
+.c360-ind-junk-btn-outline:hover{background:var(--junk-text);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-junk a.c360-ind-junk-btn-primary{color:#fff}
+.c360-ind-junk a.c360-ind-junk-btn-outline{color:var(--junk-text)}
+.c360-ind-junk a.c360-ind-junk-btn-outline:hover{color:#fff}
+.c360-ind-junk-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-junk-pills{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;align-items:flex-start}
+.c360-ind-junk-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--junk-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-junk-pills a:hover{background:var(--junk-navy);border-color:var(--junk-navy);color:#fff;text-decoration:none}
+
+/* Image slots: styled fallback until the GHL image URL is pasted in. */
+.c360-ind-junk-img{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#DCE7F5 0 16px,#E7EFF9 16px 32px)}
+.c360-ind-junk-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-junk-img img[src=""],.c360-ind-junk-img img:not([src]){visibility:hidden}
+.c360-ind-junk-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B9D8;font-size:58px;pointer-events:none}
+.c360-ind-junk-img img[src]:not([src=""])+.c360-ind-junk-fallback{display:none}
+
+/* ══════════ HERO (text left, two-photo collage right) ══════════ */
+.c360-ind-junk-hero{background:var(--junk-sky)}
+.c360-ind-junk-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center;padding-top:56px;padding-bottom:104px}
+.c360-ind-junk-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-junk-crumbs li{color:var(--junk-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-junk-crumbs li+li::before{content:"\203A";color:#A6B0C4}
+.c360-ind-junk-crumbs a{color:var(--junk-text);text-decoration:none}
+.c360-ind-junk-crumbs a:hover{text-decoration:underline}
+.c360-ind-junk-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--junk-text);margin-bottom:22px}
+.c360-ind-junk-hero-sub{font-size:18px;line-height:1.65;color:var(--junk-body);max-width:640px;margin-bottom:32px}
+.c360-ind-junk-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-ind-junk-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-junk-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-junk-partner,.c360-ind-junk-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-junk-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+.c360-ind-junk-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:var(--junk-body);line-height:1.4}
+.c360-ind-junk-creds-list i{color:var(--junk-green);margin-top:3px;font-size:12px}
+.c360-ind-junk-stars{color:#E8A400;letter-spacing:1px}
+.c360-ind-junk-collage{position:relative;padding:0 0 90px 90px}
+.c360-ind-junk-collage-a{aspect-ratio:4/3;border-radius:28px;box-shadow:0 30px 60px rgba(15,31,94,0.16)}
+.c360-ind-junk-collage-b{position:absolute;left:0;bottom:0;width:46%;aspect-ratio:4/3;border-radius:22px;border:8px solid #fff;box-shadow:0 22px 44px rgba(15,31,94,0.2);transform:rotate(-3deg)}
+.c360-ind-junk-collage-b .c360-ind-junk-fallback{font-size:40px}
+.c360-ind-junk-chip{position:absolute;right:24px;bottom:56px;display:flex;align-items:center;gap:12px;background:#fff;border-radius:16px;padding:14px 18px;box-shadow:0 18px 36px rgba(15,31,94,0.18)}
+.c360-ind-junk-chip i{width:40px;height:40px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;background:var(--junk-green-light);color:var(--junk-green);font-size:18px}
+.c360-ind-junk-chip b{display:block;font-size:14.5px;line-height:1.3}
+.c360-ind-junk-chip span{display:block;font-size:12.5px;color:var(--junk-muted)}
+
+/* ══════════ REALITY (taped moving boxes) ══════════ */
+.c360-ind-junk-pile{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:64px;align-items:center;max-width:1560px;margin:0 auto}
+.c360-ind-junk-boxes{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto auto auto auto auto;gap:0 28px}
+.c360-ind-junk-box{position:relative;display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:10px;background:#fff;border:2px solid var(--junk-navy);border-radius:6px;padding:40px 28px 28px;margin-bottom:28px}
+.c360-ind-junk-box::before{content:"";position:absolute;left:50%;top:-2px;width:72px;height:30px;transform:translateX(-50%);background:var(--junk-tape);opacity:.9;border-radius:0 0 3px 3px}
+.c360-ind-junk-box:nth-child(1){transform:rotate(-1deg)}
+.c360-ind-junk-box:nth-child(2){transform:rotate(1.2deg)}
+.c360-ind-junk-box:nth-child(3){transform:rotate(.8deg)}
+.c360-ind-junk-box:nth-child(4){transform:rotate(-1.1deg)}
+.c360-ind-junk-box small{font-size:13px;font-weight:700;color:var(--junk-green);display:flex;align-items:center;gap:8px}
+.c360-ind-junk-box h3{font-size:20px;font-weight:700;line-height:1.35}
+.c360-ind-junk-box p{font-size:15.5px;color:var(--junk-muted);line-height:1.65}
+
+/* ══════════ PLAN (code-built truck + three loads) ══════════ */
+.c360-ind-junk-truck{position:relative;max-width:1320px;margin:0 auto 64px;padding-bottom:62px}
+.c360-ind-junk-truck-body{display:grid;grid-template-columns:minmax(0,1fr) 190px;align-items:end}
+.c360-ind-junk-bed{display:flex;align-items:flex-end;gap:10px;padding:18px 18px 0;min-height:260px;border:6px solid var(--junk-navy);border-top:0;border-radius:0 0 0 14px;background:linear-gradient(180deg,rgba(230,241,251,0) 0,var(--junk-sky-2) 100%)}
+.c360-ind-junk-cargo{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:2px;border-radius:8px 8px 0 0;padding:14px 16px;font-size:15px;font-weight:700;line-height:1.3;color:#fff}
+.c360-ind-junk-cargo span{font-size:12.5px;font-weight:600;opacity:.85}
+.c360-ind-junk-cargo.is-core{flex:1.5;height:220px;background:var(--junk-green)}
+.c360-ind-junk-cargo.is-grow{height:160px;background:var(--junk-navy)}
+.c360-ind-junk-cargo.is-also{height:110px;background:#fff;border:2px dashed #9DB3DC;border-bottom:0;color:var(--junk-navy)}
+.c360-ind-junk-cab{position:relative;height:200px;background:var(--junk-navy);border-radius:0 60px 14px 0;margin-left:-6px}
+.c360-ind-junk-cab::before{content:"";position:absolute;right:26px;top:26px;width:86px;height:64px;border-radius:0 34px 6px 6px;background:var(--junk-sky-2)}
+.c360-ind-junk-cab::after{content:"";position:absolute;right:-8px;bottom:22px;width:16px;height:12px;border-radius:4px;background:#F2C230}
+.c360-ind-junk-wheel{position:absolute;bottom:0;width:72px;height:72px;border-radius:50%;background:radial-gradient(circle,#C5CEDD 0 22%,#2A2F45 23% 60%,#151a2e 61%)}
+.c360-ind-junk-wheel:nth-of-type(1){left:9%}
+.c360-ind-junk-wheel:nth-of-type(2){left:27%}
+.c360-ind-junk-wheel:nth-of-type(3){right:46px}
+.c360-ind-junk-loads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:1560px;margin:0 auto}
+.c360-ind-junk-load{background:#fff;border:1px solid var(--junk-line);border-radius:22px;padding:28px 28px 30px;border-top:6px solid var(--junk-navy)}
+.c360-ind-junk-load.is-core{border-top-color:var(--junk-green)}
+.c360-ind-junk-load.is-also{border-top:6px dashed #9DB3DC}
+.c360-ind-junk-load > small{display:block;font-size:13px;font-weight:700;color:var(--junk-muted);margin-bottom:4px}
+.c360-ind-junk-load > h3{font-size:24px;font-weight:800;margin-bottom:18px}
+.c360-ind-junk-load li{padding:14px 0;border-top:1px solid var(--junk-line)}
+.c360-ind-junk-load li b{display:block;font-size:17px;margin-bottom:4px}
+.c360-ind-junk-load li p{font-size:14.5px;color:var(--junk-muted);line-height:1.6;margin-bottom:10px}
+.c360-ind-junk-plan-cta{display:flex;justify-content:center;margin-top:40px}
+
+/* ══════════ JOURNEY (steps beside one phone) ══════════ */
+.c360-ind-junk-phonegrid{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:72px;align-items:stretch;max-width:1400px;margin:0 auto}
+.c360-ind-junk-steps{display:flex;flex-direction:column}
+.c360-ind-junk-step{display:grid;grid-template-columns:56px 1fr;gap:4px 20px;padding:26px 0;border-bottom:1px solid var(--junk-line)}
+.c360-ind-junk-step:first-child{border-top:1px solid var(--junk-line)}
+.c360-ind-junk-step > span{grid-row:span 3;display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:14px;background:var(--junk-navy);color:#fff;font-size:20px;font-weight:800}
+.c360-ind-junk-step h3{font-size:22px;font-weight:700;line-height:1.3}
+.c360-ind-junk-step p{font-size:16px;color:var(--junk-muted);line-height:1.65;margin-bottom:10px}
+.c360-ind-junk-phone{display:flex;justify-self:center;width:100%;max-width:400px;background:var(--junk-navy-deeper);border-radius:48px;padding:14px;box-shadow:0 40px 80px rgba(15,31,94,0.25)}
+.c360-ind-junk-screen{flex:1;background:var(--junk-sky);border-radius:36px;padding:56px 16px 24px;position:relative;display:flex;flex-direction:column;justify-content:center;gap:16px}
+.c360-ind-junk-screen::before{content:"";position:absolute;top:14px;left:50%;width:96px;height:22px;transform:translateX(-50%);border-radius:20px;background:var(--junk-navy-deeper)}
+.c360-ind-junk-pcard{background:#fff;border:1px solid var(--junk-line);border-radius:16px;padding:12px 14px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:#202124;box-shadow:0 8px 18px rgba(15,31,94,0.07)}
+.c360-ind-junk-pcard small{display:flex;align-items:center;gap:8px;font-size:11.5px;font-weight:700;color:#5F6368;margin-bottom:4px}
+.c360-ind-junk-pcard small em{font-style:normal;display:inline-flex;align-items:center;justify-content:center;width:18px;height:18px;border-radius:50%;background:var(--junk-navy);color:#fff;font-size:10.5px}
+.c360-ind-junk-pcard b{display:block;font-size:14px}
+.c360-ind-junk-pcard span{display:block;font-size:12.5px;color:#5F6368;line-height:1.4}
+.c360-ind-junk-ver{display:inline-flex !important;align-items:center;gap:5px;color:#137333 !important;font-weight:700}
+.c360-ind-junk-st{color:#E8A400}
+.c360-ind-junk-note{font-size:11.5px;color:var(--junk-muted);text-align:center}
+
+/* ══════════ REVIEWS (header bar card around the widget) ══════════ */
+.c360-ind-junk-revcard{max-width:1560px;margin:0 auto;background:#fff;border:1px solid var(--junk-line);border-radius:28px;overflow:hidden;box-shadow:0 20px 50px rgba(15,31,94,0.07)}
+.c360-ind-junk-revbar{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:center;padding:40px 44px;border-bottom:1px solid var(--junk-line)}
+.c360-ind-junk-revbar .c360-ind-junk-h2{margin-bottom:8px}
+.c360-ind-junk-revbar .c360-ind-junk-lead{font-size:17px}
+.c360-ind-junk-revstats{display:flex;gap:12px}
+.c360-ind-junk-revstats div{min-width:140px;text-align:center;background:var(--junk-sky);border-radius:16px;padding:16px 18px}
+.c360-ind-junk-revstats strong{display:block;font-size:34px;font-weight:800;line-height:1.1}
+.c360-ind-junk-revstats span{font-size:13.5px;color:var(--junk-muted)}
+.c360-ind-junk-revbody{padding:24px 24px 16px}
+
+/* ══════════ CTA (navy panel, text left, action cards right) ══════════ */
+.c360-ind-junk-cta{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:center;max-width:1560px;margin:0 auto;background:var(--junk-navy);color:#fff;border-radius:32px;padding:64px}
+.c360-ind-junk-cta .c360-ind-junk-h2{color:#fff}
+.c360-ind-junk-cta > div > p{font-size:18px;color:#DCE2F7;line-height:1.65;max-width:620px}
+.c360-ind-junk-actions{display:flex;flex-direction:column;gap:16px}
+.c360-ind-junk-action{display:grid;grid-template-columns:56px 1fr auto;gap:16px;align-items:center;background:#fff;color:var(--junk-text);border-radius:20px;padding:22px 24px;text-decoration:none;transition:transform .15s}
+.c360-ind-junk-action:hover{transform:translateY(-2px);text-decoration:none}
+.c360-ind-junk-action > i{width:56px;height:56px;border-radius:16px;display:inline-flex;align-items:center;justify-content:center;font-size:22px;background:var(--junk-green-light);color:var(--junk-green)}
+.c360-ind-junk-action b{display:block;font-size:18px;line-height:1.3}
+.c360-ind-junk-action span{display:block;font-size:14px;color:var(--junk-muted);line-height:1.45}
+.c360-ind-junk-action > em{font-style:normal;font-size:20px;color:var(--junk-navy)}
+.c360-ind-junk a.c360-ind-junk-action{color:var(--junk-text)}
+
+/* ══════════ FAQ (tape markers) ══════════ */
+.c360-ind-junk-faq-list{max-width:1000px;margin:0 auto}
+.c360-ind-junk-faq-item{border-bottom:1px solid var(--junk-line)}
+.c360-ind-junk-faq-item:first-child{border-top:1px solid var(--junk-line)}
+.c360-ind-junk-faq-q{display:grid;grid-template-columns:26px 1fr 24px;align-items:center;gap:14px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--junk-text);cursor:pointer;list-style:none}
+.c360-ind-junk-faq-q::-webkit-details-marker{display:none}
+.c360-ind-junk-faq-q::before{content:"";width:22px;height:20px;border:2px solid var(--junk-navy);border-radius:3px;background:linear-gradient(90deg,transparent 35%,var(--junk-tape) 35% 65%,transparent 65%)}
+.c360-ind-junk-faq-item[open] .c360-ind-junk-faq-q::before{border-color:var(--junk-green);background:linear-gradient(90deg,transparent 35%,var(--junk-green-light) 35% 65%,transparent 65%)}
+.c360-ind-junk-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--junk-navy);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-junk-faq-item[open] .c360-ind-junk-faq-q::after{transform:rotate(45deg)}
+.c360-ind-junk-faq-a{padding:0 40px 24px 44px;font-size:16px;color:var(--junk-muted);line-height:1.7}
+.c360-ind-junk-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1200px){
+  .c360-ind-junk-pile{grid-template-columns:1fr;gap:40px}
+  .c360-ind-junk-pile .c360-ind-junk-head{text-align:center}
+  .c360-ind-junk-loads{grid-template-columns:1fr 1fr}
+  .c360-ind-junk-load.is-also{grid-column:1/-1}
+  .c360-ind-junk-revbar{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .c360-ind-junk-section{padding:76px 0}
+  .c360-ind-junk-hero-grid{grid-template-columns:1fr;gap:48px;padding-top:44px;padding-bottom:76px}
+  .c360-ind-junk-collage{padding:0 0 70px 40px;max-width:600px}
+  .c360-ind-junk-truck-body{grid-template-columns:1fr}
+  .c360-ind-junk-cab,.c360-ind-junk-wheel{display:none}
+  .c360-ind-junk-truck{padding-bottom:0}
+  .c360-ind-junk-bed{flex-wrap:wrap;min-height:0;border-radius:0 0 14px 14px;padding:14px 14px 0}
+  .c360-ind-junk-cargo,.c360-ind-junk-cargo.is-core,.c360-ind-junk-cargo.is-grow,.c360-ind-junk-cargo.is-also{flex:1 1 44%;height:auto;min-height:90px;border-radius:8px;margin-bottom:10px}
+  .c360-ind-junk-cargo.is-also{border-bottom:2px dashed #9DB3DC}
+  .c360-ind-junk-phonegrid{grid-template-columns:1fr;gap:48px}
+  .c360-ind-junk-cta{grid-template-columns:1fr;padding:40px 26px}
+}
+@media (max-width:760px){
+  .c360-ind-junk-boxes{grid-template-columns:1fr}
+  .c360-ind-junk-box{grid-row:auto;display:flex;flex-direction:column}
+  .c360-ind-junk-loads{grid-template-columns:1fr}
+  .c360-ind-junk-revbar{padding:28px 22px}
+  .c360-ind-junk-revstats{flex-wrap:wrap}
+  .c360-ind-junk-revstats div{flex:1;min-width:100px}
+}
+@media (max-width:640px){
+  .c360-ind-junk-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-junk-btn{width:100%}
+  .c360-ind-junk-partner{--badge-h:64px;--badge-clear:32px}
+  .c360-ind-junk-collage{padding:0 0 60px 0}
+  .c360-ind-junk-collage-b{width:52%}
+  .c360-ind-junk-chip{right:8px;bottom:12px;padding:10px 12px}
+  .c360-ind-junk-action{grid-template-columns:48px 1fr;padding:18px}
+  .c360-ind-junk-action > i{width:48px;height:48px}
+  .c360-ind-junk-action > em{display:none}
+  .c360-ind-junk-faq-a{padding:0 4px 22px 44px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-junk *,.c360-ind-junk *::before,.c360-ind-junk *::after{transition:none !important;animation:none !important}
+  .c360-ind-junk-btn:hover,.c360-ind-junk-action:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-junk">
+
+<!-- ══════════ HERO (text left, two-photo collage right) ══════════ -->
+<section class="c360-ind-junk-hero">
+  <div class="c360-ind-junk-wrap c360-ind-junk-hero-grid">
+    <div>
+      <nav class="c360-ind-junk-crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li aria-current="page">Junk Removal</li>
+        </ol>
+      </nav>
+      <h1>Junk removal marketing that keeps your trucks full</h1>
+      <p class="c360-ind-junk-hero-sub">Garage cleanouts, old couches, move-outs and estate jobs. We help your junk removal company show up first on Google, answer and book every call, and turn happy customers into reviews and repeat work.</p>
+      <div class="c360-ind-junk-ctas">
+        <a href="/schedule-demo" class="c360-ind-junk-btn c360-ind-junk-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-junk-btn c360-ind-junk-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+      <div class="c360-ind-junk-creds">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-junk-partner">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+        <ul class="c360-ind-junk-creds-list">
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-junk-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, serving nationwide since 2018</li>
+        </ul>
+      </div>
+    </div>
+    <div class="c360-ind-junk-collage">
+      <div class="c360-ind-junk-img c360-ind-junk-collage-a">
+        <!-- IMAGE PLACEHOLDER: junk-hero — two-person crew in navy shirts carrying an old couch out of a garage toward their truck, daylight, 16:9 (shown 4:3; keep the crew in the center) -->
+        <img src="" data-c360-placeholder="junk-hero" alt="Junk removal crew carrying an old couch out of a garage to their truck" fetchpriority="high">
+        <div class="c360-ind-junk-fallback" aria-hidden="true"><i class="fa-solid fa-truck-pickup"></i></div>
+      </div>
+      <div class="c360-ind-junk-img c360-ind-junk-collage-b">
+        <!-- IMAGE PLACEHOLDER: junk-on-the-job — a fully cleared, swept-out garage after a cleanout, bright and empty, 4:3 (small tilted photo in the hero collage) -->
+        <img src="" data-c360-placeholder="junk-on-the-job" alt="A garage completely cleared out and swept clean after a junk removal job" loading="lazy">
+        <div class="c360-ind-junk-fallback" aria-hidden="true"><i class="fa-solid fa-broom"></i></div>
+      </div>
+      <div class="c360-ind-junk-chip" role="img" aria-label="Example booking: garage cleanout on Saturday at 9 AM">
+        <i class="fa-solid fa-calendar-check"></i>
+        <div><b>Booked: garage cleanout</b><span>Saturday, 9 AM · example</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE JUNK REMOVAL REALITY (taped boxes) ══════════ -->
+<section class="c360-ind-junk-section">
+  <div class="c360-ind-junk-wrap">
+    <div class="c360-ind-junk-pile">
+      <div class="c360-ind-junk-head" style="text-align:left;margin:0">
+        <span class="c360-ind-junk-kicker"><i class="fa-solid fa-box-open" aria-hidden="true"></i> Unpacking it</span>
+        <h2 class="c360-ind-junk-h2">The junk removal reality</h2>
+        <p class="c360-ind-junk-lead">Hauling is the easy part. Here's what really gets in the way of a full schedule.</p>
+      </div>
+      <div class="c360-ind-junk-boxes">
+        <article class="c360-ind-junk-box">
+          <small><i class="fa-solid fa-phone" aria-hidden="true"></i> Fragile</small>
+          <h3>Calls come in while you're mid-haul</h3>
+          <p>Your crew's hands are full of a sectional sofa. The caller doesn't leave a message, they try the next company.</p>
+        </article>
+        <article class="c360-ind-junk-box">
+          <small><i class="fa-solid fa-scale-balanced" aria-hidden="true"></i> Handle with care</small>
+          <h3>Price shoppers call five companies</h3>
+          <p>"How much to haul a couch?" They book the one who answers, gives a clear next step and looks trustworthy.</p>
+        </article>
+        <article class="c360-ind-junk-box">
+          <small><i class="fa-solid fa-building" aria-hidden="true"></i> Heavy</small>
+          <h3>National brands outspend you</h3>
+          <p>Big franchises have big ad budgets. Locally, steady reviews, real photos and fast answers still win the job.</p>
+        </article>
+        <article class="c360-ind-junk-box">
+          <small><i class="fa-solid fa-calendar-week" aria-hidden="true"></i> This side up</small>
+          <h3>Busy weekends, empty weekdays</h3>
+          <p>Calls bunch up around weekends and month-end moves. You need marketing that fills the gaps between them.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (truck + three loads) ══════════
+     Draft plan, to confirm with Jared. -->
+<section class="c360-ind-junk-section" id="junk-plan" style="background:var(--junk-sky)">
+  <div class="c360-ind-junk-wrap">
+    <div class="c360-ind-junk-head">
+      <span class="c360-ind-junk-kicker"><i class="fa-solid fa-truck-ramp-box" aria-hidden="true"></i> Your recommended plan</span>
+      <h2 class="c360-ind-junk-h2">Load your marketing in the right order</h2>
+      <p class="c360-ind-junk-lead">The heavy items go in first. Then what fills the slow days, with room to spare for more.</p>
+    </div>
+    <div class="c360-ind-junk-truck" role="img" aria-label="Illustration of a junk removal truck loaded with the plan: Google Platinum Package and AI Voice Agent first, then Meta Ads and Google Social Posting, with room for Google PPC, Local SEO Booster and Website">
+      <div class="c360-ind-junk-truck-body">
+        <div class="c360-ind-junk-bed">
+          <div class="c360-ind-junk-cargo is-core">Google Platinum Package<span>Loaded first</span></div>
+          <div class="c360-ind-junk-cargo is-core">AI Voice Agent<span>Loaded first</span></div>
+          <div class="c360-ind-junk-cargo is-grow">Meta Ads<span>Next load</span></div>
+          <div class="c360-ind-junk-cargo is-grow">Google Social Posting<span>Next load</span></div>
+          <div class="c360-ind-junk-cargo is-also">More room<span>Also available</span></div>
+        </div>
+        <div class="c360-ind-junk-cab"></div>
+      </div>
+      <span class="c360-ind-junk-wheel"></span><span class="c360-ind-junk-wheel"></span><span class="c360-ind-junk-wheel"></span>
+    </div>
+    <div class="c360-ind-junk-loads">
+      <div class="c360-ind-junk-load is-core">
+        <small>Loaded first</small>
+        <h3>Start here</h3>
+        <ul>
+          <li><b>Google Platinum Package</b><p>Local Services Ads with the Google Verified badge at the top of Google, plus Google Business Profile Management for your map listing, photos, review requests and replies.</p><div class="c360-ind-junk-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div></li>
+          <li><b>AI Voice Agent</b><p>Answers while your crew is mid-haul, asks what needs to go and where, and books the pickup. No per-minute AI fees; the phone number and calling minutes are billed separately.</p><div class="c360-ind-junk-pills"><a href="/ai-agents">AI Voice Agent</a></div></li>
+        </ul>
+      </div>
+      <div class="c360-ind-junk-load">
+        <small>Next load</small>
+        <h3>Grow with</h3>
+        <ul>
+          <li><b>Meta Ads</b><p>Before-and-after cleanout photos and seasonal offers for spring cleaning, moves and estate jobs, shown to neighbors nearby.</p><div class="c360-ind-junk-pills"><a href="/meta-ads">Meta Ads</a></div></li>
+          <li><b>Google Social Posting</b><p>Weekly posts on your Google Business Profile with recent jobs and specials, so your profile always looks busy and current.</p><div class="c360-ind-junk-pills"><a href="/google-social-posting">Google Social Posting</a></div></li>
+        </ul>
+      </div>
+      <div class="c360-ind-junk-load is-also">
+        <small>Room to spare</small>
+        <h3>Also available</h3>
+        <ul>
+          <li><b>Google PPC</b><p>Search ads for the bigger jobs you want more of, like estate cleanouts, hot tub removal or commercial hauling.</p><div class="c360-ind-junk-pills"><a href="/google-ppc">Google PPC</a></div></li>
+          <li><b>Local SEO Booster and Website</b><p>Accurate listings across 70+ directories and maps, and a fast site with a tap-to-call button and an easy booking form.</p><div class="c360-ind-junk-pills"><a href="/local-seo-booster">Local SEO Booster</a><a href="/websites-home">Website</a></div></li>
+        </ul>
+      </div>
+    </div>
+    <div class="c360-ind-junk-plan-cta">
+      <a href="/schedule-demo" class="c360-ind-junk-btn c360-ind-junk-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (steps beside one phone) ══════════ -->
+<section class="c360-ind-junk-section">
+  <div class="c360-ind-junk-wrap">
+    <div class="c360-ind-junk-head">
+      <span class="c360-ind-junk-kicker"><i class="fa-solid fa-mobile-screen" aria-hidden="true"></i> How it works</span>
+      <h2 class="c360-ind-junk-h2">One customer, start to finish</h2>
+      <p class="c360-ind-junk-lead">From "who hauls junk around here?" to their next cleanout, it all happens on their phone.</p>
+    </div>
+    <div class="c360-ind-junk-phonegrid">
+      <ol class="c360-ind-junk-steps">
+        <li class="c360-ind-junk-step">
+          <span>1</span>
+          <h3>Get found</h3>
+          <p>They search for junk removal nearby. Your Google Verified ad, rating and photos show up first, above the big franchises' ads.</p>
+          <div class="c360-ind-junk-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+        </li>
+        <li class="c360-ind-junk-step">
+          <span>2</span>
+          <h3>Book the call</h3>
+          <p>Your crew is mid-haul. The AI Voice Agent answers, asks what needs to go and where, and books the pickup.</p>
+          <div class="c360-ind-junk-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+        </li>
+        <li class="c360-ind-junk-step">
+          <span>3</span>
+          <h3>Earn the review</h3>
+          <p>The garage is empty and swept. A friendly text asks for a Google review while they're still amazed.</p>
+          <div class="c360-ind-junk-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+        </li>
+        <li class="c360-ind-junk-step">
+          <span>4</span>
+          <h3>Bring them back</h3>
+          <p>Seasonal ads and weekly posts remind them, and their neighbors, the next time a room fills up.</p>
+          <div class="c360-ind-junk-pills"><a href="/meta-ads">Meta Ads</a><a href="/google-social-posting">Google Social Posting</a></div>
+        </li>
+      </ol>
+      <div class="c360-ind-junk-phone" role="img" aria-label="Example phone screen showing the four moments: a Google Verified search result, a pickup booked by the AI Voice Agent, a review request text and a spring cleanout ad">
+        <div class="c360-ind-junk-screen">
+          <div class="c360-ind-junk-pcard"><small><em>1</em> Google · Sponsored</small><b>Haul Pros Junk Removal</b><span><span class="c360-ind-junk-ver"><i class="fa-solid fa-circle-check"></i> Google Verified</span></span><span><span class="c360-ind-junk-st">★★★★★</span> 4.9 (241) · Open today</span></div>
+          <div class="c360-ind-junk-pcard"><small><em>2</em> AI Voice Agent</small><b>Booked: garage cleanout</b><span>Saturday, 9 to 11 AM · old couch, boxes, a treadmill</span></div>
+          <div class="c360-ind-junk-pcard"><small><em>3</em> Text message</small><b>Thanks, Jenna! Would you leave us a quick Google review?</b><span>Reply: "Done! Can't believe how fast you were."</span></div>
+          <div class="c360-ind-junk-pcard"><small><em>4</em> Haul Pros · Sponsored</small><b>Spring cleanout season is here</b><span>Book your pickup before the weekends fill up.</span></div>
+          <p class="c360-ind-junk-note">Example for illustration</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (header bar card around the widget) ══════════ -->
+<section class="c360-ind-junk-section" style="background:var(--junk-sky)">
+  <div class="c360-ind-junk-wrap">
+    <div class="c360-ind-junk-revcard">
+      <div class="c360-ind-junk-revbar">
+        <div>
+          <span class="c360-ind-junk-kicker">Our own reviews</span>
+          <h2 class="c360-ind-junk-h2">Five stars from local business owners</h2>
+          <p class="c360-ind-junk-lead">Owners across the country, in their own words.</p>
+        </div>
+        <div class="c360-ind-junk-revstats">
+          <div><strong>5.0</strong><span>Google rating</span></div>
+          <div><strong>147</strong><span>five-star reviews</span></div>
+          <div><strong>2018</strong><span>in business since</span></div>
+        </div>
+      </div>
+      <div class="c360-ind-junk-revbody">
+        <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+        <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+          src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+          frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (navy panel, action cards) ══════════ -->
+<section class="c360-ind-junk-section">
+  <div class="c360-ind-junk-wrap">
+    <div class="c360-ind-junk-cta">
+      <div>
+        <h2 class="c360-ind-junk-h2">Let's fill your weekdays, not just your weekends</h2>
+        <p>On a free strategy call we'll look at your service area, your reviews and how your calls get answered, and show you where your next cleanouts will come from.</p>
+      </div>
+      <div class="c360-ind-junk-actions">
+        <a class="c360-ind-junk-action" href="/schedule-demo"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i><div><b>Book a free strategy call</b><span>Pick a time that works for you</span></div><em aria-hidden="true">›</em></a>
+        <a class="c360-ind-junk-action" href="tel:+18665276205"><i class="fa-solid fa-phone" aria-hidden="true"></i><div><b>(866) 527-6205</b><span>Mon to Thu 7 AM to 4 PM, Fri 7 AM to 1 PM, Arizona time</span></div><em aria-hidden="true">›</em></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (tape markers) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-junk-section" id="junk-faq" style="padding-top:0">
+  <div class="c360-ind-junk-wrap">
+    <div class="c360-ind-junk-head">
+      <h2 class="c360-ind-junk-h2">Junk removal marketing questions</h2>
+    </div>
+    <div class="c360-ind-junk-faq-list">
+
+      <details class="c360-ind-junk-faq-item">
+        <summary class="c360-ind-junk-faq-q">How do junk removal companies get more jobs?</summary>
+        <div class="c360-ind-junk-faq-a"><p>Show up at the top of Google with proof you're trusted, and answer every call. For most junk removal companies that starts with the Google Platinum Package (Local Services Ads plus Google Business Profile Management) and an AI Voice Agent. Meta Ads and Google Social Posting come next.</p></div>
+      </details>
+
+      <details class="c360-ind-junk-faq-item">
+        <summary class="c360-ind-junk-faq-q">Can junk removal companies run Google Local Services Ads?</summary>
+        <div class="c360-ind-junk-faq-a"><p>Yes. Junk removal is an eligible Local Services Ads category. Google checks your business license where your state requires one, your insurance and backgrounds before your ads earn the Google Verified badge. We walk you through each step.</p></div>
+      </details>
+
+      <details class="c360-ind-junk-faq-item">
+        <summary class="c360-ind-junk-faq-q">What happens to calls while my crew is on a job?</summary>
+        <div class="c360-ind-junk-faq-a"><p>The AI Voice Agent answers them. It takes the caller's name and address, asks what needs to go and where it is, and books the pickup or passes the details to your team. There are no per-minute AI fees; the phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-junk-faq-item">
+        <summary class="c360-ind-junk-faq-q">How do I compete with the big junk removal franchises?</summary>
+        <div class="c360-ind-junk-faq-a"><p>Win locally. The Google Verified badge, steady reviews that mention your crew by name, real photos of your trucks and jobs, and a phone that's always answered are what homeowners compare, and a local company can beat a national brand on every one.</p></div>
+      </details>
+
+      <details class="c360-ind-junk-faq-item">
+        <summary class="c360-ind-junk-faq-q">Do Facebook and Instagram ads work for junk removal?</summary>
+        <div class="c360-ind-junk-faq-a"><p>Yes. Before-and-after cleanout photos are some of the most eye-catching ads a local business can run. Seasonal offers for spring cleaning, moves and estate cleanouts, shown to neighbors nearby, keep your trucks busy on weekdays too.</p></div>
+      </details>
+
+      <details class="c360-ind-junk-faq-item">
+        <summary class="c360-ind-junk-faq-q">Are Local Services Ads leads shared with other companies?</summary>
+        <div class="c360-ind-junk-faq-a"><p>No. Customers call or message your business directly from your ad, and you pay for leads rather than clicks. That's why answering every call quickly matters so much.</p></div>
+      </details>
+
+      <details class="c360-ind-junk-faq-item">
+        <summary class="c360-ind-junk-faq-q">Can you guarantee more jobs?</summary>
+        <div class="c360-ind-junk-faq-a"><p>No. No one can promise rankings or a set number of leads or jobs. For Google Business Profile Management and advertising campaigns, including Local Services Ads, Meta Ads and Google PPC, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-junk-faq-item">
+        <summary class="c360-ind-junk-faq-q">How much does junk removal marketing cost?</summary>
+        <div class="c360-ind-junk-faq-a"><p>Each service's price is on its own page, including the <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>, the <a href="/ai-agents">AI Voice Agent</a> and <a href="/google-social-posting">Google Social Posting</a>. Meta Ads and Google PPC are planned with you on a strategy call. Ad spend is separate and billed directly by Meta or Google. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
