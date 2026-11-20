@@ -70,7 +70,7 @@ the current page.
 | Websites (Essentials / Pro / Premium) + hosting | /websites-home, /website-pricing | `services/websites-home.html`, `pricing/website-pricing.html` | Deposit + final payment; hosting monthly |
 | AI Agents (AI Voice Agent, AI Assistant, Custom) | /ai-agents | `services/ai-employee.html` | Monthly or annual + one-time setup |
 | CRM Platform (SaaS tiers, Lifetime Deal) | /crm-home, /pricing | `crm-platform/crm-home.html`, `pricing/saas-pricing.html` | Monthly (all tiers) |
-| Google Platinum Package | — (checkout only, **no service page yet**) | — | Bundle of Google services (GBP Management + LSA) |
+| Google Platinum Package | — (checkout only, **no service page yet**) | — | Bundle: Local Services Ads + Google Business Profile Management (review requests and responses included in GBP Management; Reputation Management is not a separate part) |
 | Farmers Insurance agent program | /farmers-insurance | `partners/farmers-insurance.html` | Partner program |
 
 **AI Agents pricing (as published on /ai-agents):** AI Voice Agent $399/mo or $3,990/yr ·
