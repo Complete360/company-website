@@ -1,0 +1,593 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Tree Service
+     c360-ind-tree-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/tree-service
+          (page name "Tree Service Marketing"). Meta data: ghl-meta/industries/tree-service.md.
+          Schema: schema/pages/industries/tree-service.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-tree-  (new, unique; vars --tree-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from the last page), tree service themed:
+       - Hero: three columns (text | tall photo | "the calls we help you
+         win" list).
+       - Reality: one continuous four-season strip (spring, summer, fall,
+         winter), one pain point per season.
+       - Plan: layered roots / trunk / branches (start here / grow with /
+         also available), label column on the left.
+       - Journey: four zigzag rows, mock and text alternating sides.
+       - Reviews: tree-ring rating badge with stats either side, widget
+         below. Bordered CTA card with photo right, FAQ in two groups.
+     Light-blue palette (#EEF5FD / #E6F1FB), navy, green, leaf green.
+
+     Policy notes (verified 2026-11-19): tree services is a nationwide
+     Local Services Ads category.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       tree-hero        16:9, 2000px+ (tall frame in the middle column; keep the arborist centered)
+       tree-on-the-job  4:3, 1200px+  (CTA card, right)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-19) — first build. Draft plan per worksheet v1.4 (Wave 5):
+       Google Platinum Package (co-lead with reviews) first; grow with
+       Google PPC (emergency removal), Meta Ads (seasonal trimming) and
+       Geo-Fencing (storm areas). AI Voice Agent, Local SEO Booster and
+       Website as "also available". To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-tree{
+  --tree-navy:#122078;--tree-navy-dark:#0d1654;--tree-navy-deeper:#0a1040;
+  --tree-green:#127825;--tree-green-hover:#0e5e1d;--tree-green-light:#EAF3DE;--tree-leaf:#4E9A5B;
+  --tree-sky:#EEF5FD;--tree-sky-2:#E6F1FB;--tree-line:#E2E8F2;
+  --tree-text:#0F1F5E;--tree-muted:#5F5E5A;--tree-body:#3B4566;
+  --tree-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--tree-font);color:var(--tree-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-tree *,.c360-ind-tree *::before,.c360-ind-tree *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-tree :where(h1,h2,h3,h4,p,ul,ol,li){margin:0;padding:0;font-family:var(--tree-font)}
+.c360-ind-tree :where(ul,ol){list-style:none}
+.c360-ind-tree :where(a){color:var(--tree-navy)}
+.c360-ind-tree a:focus-visible,.c360-ind-tree summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-tree-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-tree-section{padding:104px 0}
+.c360-ind-tree-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--tree-text);margin-bottom:16px}
+.c360-ind-tree-lead{font-size:18px;color:var(--tree-muted);max-width:760px;line-height:1.65}
+.c360-ind-tree-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--tree-green);margin-bottom:14px}
+.c360-ind-tree-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-tree-head .c360-ind-tree-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-tree-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--tree-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-tree-btn-primary{background:var(--tree-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-tree-btn-primary:hover{background:var(--tree-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-tree-btn-outline{background:transparent;color:var(--tree-text);border:2px solid var(--tree-text);padding:14px 24px}
+.c360-ind-tree-btn-outline:hover{background:var(--tree-text);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-tree a.c360-ind-tree-btn-primary{color:#fff}
+.c360-ind-tree a.c360-ind-tree-btn-outline{color:var(--tree-text)}
+.c360-ind-tree a.c360-ind-tree-btn-outline:hover{color:#fff}
+.c360-ind-tree-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-tree-pills{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;align-items:flex-start}
+.c360-ind-tree-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--tree-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-tree-pills a:hover{background:var(--tree-navy);border-color:var(--tree-navy);color:#fff;text-decoration:none}
+
+/* Image slots: styled fallback until the GHL image URL is pasted in. */
+.c360-ind-tree-img{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#DCE7F5 0 16px,#E7EFF9 16px 32px)}
+.c360-ind-tree-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-tree-img img[src=""],.c360-ind-tree-img img:not([src]){visibility:hidden}
+.c360-ind-tree-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B9D8;font-size:58px;pointer-events:none}
+.c360-ind-tree-img img[src]:not([src=""])+.c360-ind-tree-fallback{display:none}
+
+/* ══════════ HERO (three columns: text | tall photo | job list) ══════════ */
+.c360-ind-tree-hero{background:#fff;border-bottom:1px solid var(--tree-line)}
+.c360-ind-tree-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;padding-top:40px;margin-bottom:28px}
+.c360-ind-tree-crumbs li{color:var(--tree-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-tree-crumbs li+li::before{content:"\203A";color:#A6B0C4}
+.c360-ind-tree-crumbs a{color:var(--tree-text);text-decoration:none}
+.c360-ind-tree-crumbs a:hover{text-decoration:underline}
+.c360-ind-tree-hero-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,4fr) minmax(0,3fr);gap:48px;align-items:stretch;padding-bottom:96px}
+.c360-ind-tree-hero-text{display:flex;flex-direction:column;justify-content:center}
+.c360-ind-tree-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--tree-text);margin-bottom:22px}
+.c360-ind-tree-hero-sub{font-size:18px;line-height:1.65;color:var(--tree-body);margin-bottom:32px}
+.c360-ind-tree-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-ind-tree-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-tree-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-tree-partner,.c360-ind-tree-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-tree-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:220px}
+.c360-ind-tree-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:var(--tree-body);line-height:1.4}
+.c360-ind-tree-creds-list i{color:var(--tree-green);margin-top:3px;font-size:12px}
+.c360-ind-tree-stars{color:#E8A400;letter-spacing:1px}
+.c360-ind-tree-hero-photo{border-radius:28px;min-height:600px}
+.c360-ind-tree-jobs{display:flex;flex-direction:column;gap:14px}
+.c360-ind-tree-jobs h2{font-size:16px;font-weight:700;color:var(--tree-muted);margin-bottom:4px}
+.c360-ind-tree-job{flex:1;display:grid;grid-template-columns:48px 1fr;gap:4px 14px;align-content:center;align-items:center;background:var(--tree-sky);border-radius:18px;padding:20px}
+.c360-ind-tree-job i{grid-row:span 2;width:48px;height:48px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;background:#fff;color:var(--tree-green);font-size:20px}
+.c360-ind-tree-job b{font-size:16.5px;line-height:1.3}
+.c360-ind-tree-job span{font-size:14px;color:var(--tree-muted);line-height:1.4}
+
+/* ══════════ REALITY (four-season strip) ══════════ */
+.c360-ind-tree-seasons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto;max-width:1560px;margin:0 auto;border-radius:24px;overflow:hidden;box-shadow:0 20px 50px rgba(15,31,94,0.08)}
+.c360-ind-tree-season{display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:14px;padding:36px 30px 40px}
+.c360-ind-tree-season:nth-child(1){background:#EEF7E9}
+.c360-ind-tree-season:nth-child(2){background:#E6F1FB}
+.c360-ind-tree-season:nth-child(3){background:#F1F4FA}
+.c360-ind-tree-season:nth-child(4){background:#E9EEF7}
+.c360-ind-tree-season-top{display:flex;align-items:center;gap:12px;font-size:15px;font-weight:700}
+.c360-ind-tree-season-top i{width:42px;height:42px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:#fff;font-size:18px}
+.c360-ind-tree-season:nth-child(1) .c360-ind-tree-season-top i{color:var(--tree-leaf)}
+.c360-ind-tree-season:nth-child(2) .c360-ind-tree-season-top i{color:#2F6FD0}
+.c360-ind-tree-season:nth-child(3) .c360-ind-tree-season-top i{color:#D97706}
+.c360-ind-tree-season:nth-child(4) .c360-ind-tree-season-top i{color:var(--tree-navy)}
+.c360-ind-tree-season h3{font-size:21px;font-weight:700;line-height:1.35}
+.c360-ind-tree-season p{font-size:15.5px;color:var(--tree-body);line-height:1.65}
+
+/* ══════════ PLAN (roots, trunk, branches) ══════════ */
+.c360-ind-tree-layers{position:relative;max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:20px}
+.c360-ind-tree-layer{display:grid;grid-template-columns:240px minmax(0,1fr);gap:32px;align-items:stretch}
+.c360-ind-tree-layer-label{position:relative;display:flex;flex-direction:column;justify-content:center;gap:4px;padding:24px 26px;border-radius:20px;background:#fff;border:1px solid var(--tree-line)}
+.c360-ind-tree-layer-label i{font-size:22px;color:var(--tree-green);margin-bottom:6px}
+.c360-ind-tree-layer-label b{font-size:22px;font-weight:800;line-height:1.2}
+.c360-ind-tree-layer-label span{font-size:14px;font-weight:600;color:var(--tree-muted)}
+.c360-ind-tree-layer.is-roots .c360-ind-tree-layer-label{background:var(--tree-green);border-color:var(--tree-green);color:#fff}
+.c360-ind-tree-layer.is-roots .c360-ind-tree-layer-label i,.c360-ind-tree-layer.is-roots .c360-ind-tree-layer-label span{color:#D9EDD0}
+.c360-ind-tree-layer-cards{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-template-rows:auto auto auto;gap:0 20px}
+.c360-ind-tree-svc{display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:10px;background:#fff;border:1px solid var(--tree-line);border-radius:20px;padding:24px 24px 26px}
+.c360-ind-tree-svc h3{font-size:19px;font-weight:700;line-height:1.3}
+.c360-ind-tree-svc p{font-size:15px;color:var(--tree-muted);line-height:1.6}
+/* the roots layer holds one wide card: description left, what's included right */
+.c360-ind-tree-roots{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:20px 40px;background:#fff;border:2px solid var(--tree-green);border-radius:20px;padding:28px 32px}
+.c360-ind-tree-roots h3{font-size:22px;font-weight:700;margin-bottom:8px}
+.c360-ind-tree-roots p{font-size:15.5px;color:var(--tree-muted);line-height:1.65;margin-bottom:18px}
+.c360-ind-tree-roots ul{display:flex;flex-direction:column;gap:10px;align-self:center}
+.c360-ind-tree-roots li{display:flex;gap:12px;font-size:15px;color:var(--tree-body);line-height:1.5}
+.c360-ind-tree-roots li i{color:var(--tree-green);margin-top:4px}
+.c360-ind-tree-plan-cta{display:flex;justify-content:center;margin-top:40px}
+
+/* ══════════ JOURNEY (zigzag rows) ══════════ */
+.c360-ind-tree-zig{max-width:1400px;margin:0 auto;display:flex;flex-direction:column;gap:72px}
+.c360-ind-tree-zrow{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center}
+.c360-ind-tree-zrow:nth-child(even) .c360-ind-tree-zmock{order:2}
+.c360-ind-tree-zbadge{display:inline-flex;align-items:center;justify-content:center;width:52px;height:52px;border-radius:0 50% 50% 50%;background:var(--tree-green);color:#fff;font-size:20px;font-weight:800;margin-bottom:16px}
+.c360-ind-tree-zrow h3{font-size:30px;font-weight:800;line-height:1.2;letter-spacing:-0.01em;margin-bottom:12px}
+.c360-ind-tree-zrow p{font-size:17px;color:var(--tree-muted);line-height:1.7;margin-bottom:20px;max-width:560px}
+.c360-ind-tree-zmock{background:var(--tree-sky);border-radius:28px;padding:40px;display:flex;flex-direction:column;justify-content:center;min-height:300px}
+.c360-ind-tree-card{background:#fff;border:1px solid var(--tree-line);border-radius:14px;padding:16px 18px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:14px;color:#202124;box-shadow:0 12px 26px rgba(15,31,94,0.09);max-width:460px;width:100%;margin:0 auto}
+.c360-ind-tree-card + .c360-ind-tree-card{margin-top:12px}
+.c360-ind-tree-q{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #DFE1E5;border-radius:100px;padding:9px 16px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:14px;color:#202124;margin:0 auto 12px;max-width:460px;width:100%}
+.c360-ind-tree-q i{color:#4285F4}
+.c360-ind-tree-spons{font-size:12px;font-weight:700}
+.c360-ind-tree-name{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;font-size:16px;color:#1A0DAB;margin:2px 0}
+.c360-ind-tree-ver{display:inline-flex;align-items:center;gap:5px;font-size:12.5px;color:#137333;font-weight:700;white-space:nowrap}
+.c360-ind-tree-sub{font-size:13px;color:#5F6368}
+.c360-ind-tree-st{color:#E8A400}
+.c360-ind-tree-msg{display:flex;gap:12px;align-items:flex-start}
+.c360-ind-tree-msg i{flex:none;width:36px;height:36px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;background:var(--tree-sky-2);color:var(--tree-navy)}
+.c360-ind-tree-msg.is-ai i{background:var(--tree-green-light);color:var(--tree-green)}
+.c360-ind-tree-msg b{display:block;font-size:14px}
+.c360-ind-tree-msg span{font-size:13px;color:#5F6368;line-height:1.45}
+.c360-ind-tree-sms{max-width:78%;font-size:14px;line-height:1.45;padding:11px 14px;border-radius:16px}
+.c360-ind-tree-sms-out{background:var(--tree-navy);color:#fff;border-bottom-right-radius:4px;margin-left:auto}
+.c360-ind-tree-sms-in{background:#fff;border:1px solid var(--tree-line);color:#202124;border-bottom-left-radius:4px;margin-top:8px}
+.c360-ind-tree-ba{display:grid;grid-template-columns:1fr 1fr;gap:4px;height:120px;border-radius:8px;overflow:hidden;margin:10px 0}
+.c360-ind-tree-ba span{display:flex;align-items:flex-end;padding:6px 8px;font-size:11.5px;font-weight:700;color:#fff}
+.c360-ind-tree-ba span:first-child{background:radial-gradient(circle at 50% 30%,#3C6B43 0 38%,transparent 39%),linear-gradient(180deg,#B9CBE0,#8DA2BC)}
+.c360-ind-tree-ba span:last-child{background:radial-gradient(ellipse at 50% 40%,#4E9A5B 0 26%,transparent 27%),linear-gradient(180deg,#CFE0F2,#A9C2DE);color:var(--tree-navy)}
+.c360-ind-tree-ad-btn{display:inline-block;background:#E4E6EB;border-radius:6px;padding:7px 12px;font-size:13px;font-weight:700;color:#050505}
+.c360-ind-tree-note{font-size:12px;color:var(--tree-muted);text-align:center;margin-top:12px}
+
+/* ══════════ REVIEWS (tree-ring rating badge) ══════════ */
+.c360-ind-tree-rings{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:48px;align-items:center;max-width:1000px;margin:0 auto 48px}
+.c360-ind-tree-ringstat{text-align:center}
+.c360-ind-tree-ringstat strong{display:block;font-size:46px;font-weight:800;line-height:1.1}
+.c360-ind-tree-ringstat span{font-size:15px;color:var(--tree-muted)}
+.c360-ind-tree-ring{position:relative;width:240px;height:240px;display:grid;place-items:center;text-align:center}
+.c360-ind-tree-ring svg{position:absolute;inset:0;width:100%;height:100%}
+.c360-ind-tree-ring div{position:relative}
+.c360-ind-tree-ring strong{display:block;font-size:56px;font-weight:800;line-height:1}
+.c360-ind-tree-ring span{display:block;font-size:13.5px;color:var(--tree-muted);margin-top:4px}
+
+/* ══════════ CTA (bordered card, text left, photo right) ══════════ */
+.c360-ind-tree-cta{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;align-items:center;max-width:1400px;margin:0 auto;background:#fff;border:1px solid var(--tree-line);border-top:8px solid var(--tree-green);border-radius:28px;padding:56px;box-shadow:0 24px 60px rgba(15,31,94,0.08)}
+.c360-ind-tree-cta p{font-size:18px;color:var(--tree-muted);line-height:1.65;margin-bottom:30px;max-width:620px}
+.c360-ind-tree-cta .c360-ind-tree-img{aspect-ratio:4/3;border-radius:20px}
+
+/* ══════════ FAQ (grouped list) ══════════ */
+.c360-ind-tree-faq-list{max-width:1000px;margin:0 auto}
+.c360-ind-tree-faq-group{font-size:15px;font-weight:700;color:var(--tree-green);margin:40px 0 8px;display:flex;align-items:center;gap:10px}
+.c360-ind-tree-faq-group:first-child{margin-top:0}
+.c360-ind-tree-faq-item{border-bottom:1px solid var(--tree-line)}
+.c360-ind-tree-faq-group + .c360-ind-tree-faq-item{border-top:1px solid var(--tree-line)}
+.c360-ind-tree-faq-q{display:grid;grid-template-columns:24px 1fr 24px;align-items:center;gap:14px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--tree-text);cursor:pointer;list-style:none}
+.c360-ind-tree-faq-q::-webkit-details-marker{display:none}
+.c360-ind-tree-faq-q::before{content:"";width:18px;height:18px;border-radius:0 50% 50% 50%;background:var(--tree-sky-2);border:2px solid var(--tree-leaf);transform:rotate(45deg);transition:background .2s}
+.c360-ind-tree-faq-item[open] .c360-ind-tree-faq-q::before{background:var(--tree-leaf)}
+.c360-ind-tree-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--tree-navy);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-tree-faq-item[open] .c360-ind-tree-faq-q::after{transform:rotate(45deg)}
+.c360-ind-tree-faq-a{padding:0 40px 24px 42px;font-size:16px;color:var(--tree-muted);line-height:1.7}
+.c360-ind-tree-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1300px){
+  .c360-ind-tree-hero-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:32px}
+  .c360-ind-tree-hero-text{grid-column:1/-1}
+  .c360-ind-tree-hero-photo{min-height:460px}
+}
+@media (max-width:1200px){
+  .c360-ind-tree-seasons{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c360-ind-tree-layer{grid-template-columns:1fr;gap:14px}
+  .c360-ind-tree-layer-label{flex-direction:row;align-items:center;gap:14px;padding:18px 22px}
+  .c360-ind-tree-layer-label i{margin-bottom:0}
+}
+@media (max-width:900px){
+  .c360-ind-tree-section{padding:76px 0}
+  .c360-ind-tree-hero-grid{grid-template-columns:1fr;padding-bottom:76px}
+  .c360-ind-tree-hero-photo{min-height:0;aspect-ratio:4/3}
+  .c360-ind-tree-layer-cards{grid-template-columns:1fr;row-gap:14px}
+  .c360-ind-tree-svc{grid-row:auto;display:flex;flex-direction:column}
+  .c360-ind-tree-roots{grid-template-columns:1fr}
+  .c360-ind-tree-zrow{grid-template-columns:1fr;gap:28px}
+  .c360-ind-tree-zrow:nth-child(even) .c360-ind-tree-zmock{order:0}
+  .c360-ind-tree-zmock{padding:24px;min-height:0}
+  .c360-ind-tree-zig{gap:56px}
+  .c360-ind-tree-rings{grid-template-columns:1fr;gap:20px}
+  .c360-ind-tree-ring{justify-self:center;order:-1}
+  .c360-ind-tree-cta{grid-template-columns:1fr;padding:36px 24px}
+}
+@media (max-width:760px){
+  .c360-ind-tree-seasons{grid-template-columns:1fr}
+  .c360-ind-tree-season{grid-row:auto;display:flex;flex-direction:column}
+}
+@media (max-width:640px){
+  .c360-ind-tree-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-tree-btn{width:100%}
+  .c360-ind-tree-partner{--badge-h:64px;--badge-clear:32px}
+  .c360-ind-tree-faq-a{padding:0 4px 22px 42px}
+  .c360-ind-tree-zrow h3{font-size:24px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-tree *,.c360-ind-tree *::before,.c360-ind-tree *::after{transition:none !important;animation:none !important}
+  .c360-ind-tree-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-tree">
+
+<!-- ══════════ HERO (text | tall photo | jobs we help you win) ══════════ -->
+<section class="c360-ind-tree-hero">
+  <div class="c360-ind-tree-wrap">
+    <nav class="c360-ind-tree-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/industries">Industries</a></li>
+        <li aria-current="page">Tree Service</li>
+      </ol>
+    </nav>
+    <div class="c360-ind-tree-hero-grid">
+      <div class="c360-ind-tree-hero-text">
+        <h1>Tree service marketing that books jobs in every season</h1>
+        <p class="c360-ind-tree-hero-sub">Spring trimming, summer storms, fall cleanups and a quiet winter. We help your tree company show up first on Google, catch the storm calls, and keep your crews booked between the busy stretches.</p>
+        <div class="c360-ind-tree-ctas">
+          <a href="/schedule-demo" class="c360-ind-tree-btn c360-ind-tree-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-tree-btn c360-ind-tree-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+        <div class="c360-ind-tree-creds">
+          <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-tree-partner">
+            <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+          </a>
+          <ul class="c360-ind-tree-creds-list">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-tree-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, serving nationwide since 2018</li>
+          </ul>
+        </div>
+      </div>
+      <div class="c360-ind-tree-img c360-ind-tree-hero-photo">
+        <!-- IMAGE PLACEHOLDER: tree-hero — arborist in a navy shirt and helmet working from a bucket truck in a large backyard tree, clear sky, 16:9 (shown as a tall frame; keep the arborist in the center) -->
+        <img src="" data-c360-placeholder="tree-hero" alt="Arborist trimming a large backyard tree from a bucket truck" fetchpriority="high">
+        <div class="c360-ind-tree-fallback" aria-hidden="true"><i class="fa-solid fa-tree"></i></div>
+      </div>
+      <div class="c360-ind-tree-jobs">
+        <h2>The calls we help you win</h2>
+        <div class="c360-ind-tree-job"><i class="fa-solid fa-cloud-bolt" aria-hidden="true"></i><b>Storm and emergency removals</b><span>A limb on the roof can't wait until Monday</span></div>
+        <div class="c360-ind-tree-job"><i class="fa-solid fa-scissors" aria-hidden="true"></i><b>Trimming and pruning</b><span>Planned work that fills your calendar</span></div>
+        <div class="c360-ind-tree-job"><i class="fa-solid fa-tree" aria-hidden="true"></i><b>Removals and stump grinding</b><span>Bigger tickets from homeowners who shop around</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE TREE SERVICE REALITY (four seasons) ══════════ -->
+<section class="c360-ind-tree-section" style="background:var(--tree-sky)">
+  <div class="c360-ind-tree-wrap">
+    <div class="c360-ind-tree-head">
+      <span class="c360-ind-tree-kicker"><i class="fa-solid fa-leaf" aria-hidden="true"></i> A year in tree work</span>
+      <h2 class="c360-ind-tree-h2">The tree service reality</h2>
+      <p class="c360-ind-tree-lead">Every season brings its own problem. The companies that grow have marketing for all four.</p>
+    </div>
+    <div class="c360-ind-tree-seasons">
+      <article class="c360-ind-tree-season">
+        <div class="c360-ind-tree-season-top"><i class="fa-solid fa-seedling" aria-hidden="true"></i> Spring</div>
+        <h3>Everyone wants trimming at once</h3>
+        <p>Calls pile up faster than you can return them, and the jobs go to whoever calls back and quotes first.</p>
+      </article>
+      <article class="c360-ind-tree-season">
+        <div class="c360-ind-tree-season-top"><i class="fa-solid fa-cloud-showers-heavy" aria-hidden="true"></i> Summer</div>
+        <h3>Storm calls come in at night</h3>
+        <p>A tree on the house at 11 PM goes to the first company that picks up. A voicemail greeting loses it.</p>
+      </article>
+      <article class="c360-ind-tree-season">
+        <div class="c360-ind-tree-season-top"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Fall</div>
+        <h3>Every homeowner gets three quotes</h3>
+        <p>The bid goes to the company that looks insured, experienced and trusted, which usually means reviews and real photos.</p>
+      </article>
+      <article class="c360-ind-tree-season">
+        <div class="c360-ind-tree-season-top"><i class="fa-solid fa-snowflake" aria-hidden="true"></i> Winter</div>
+        <h3>The schedule goes quiet</h3>
+        <p>Crews and equipment sit while bills don't. You need planned removals and pruning on the books before spring.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (roots, trunk, branches) ══════════
+     Draft plan, to confirm with Jared. -->
+<section class="c360-ind-tree-section" id="tree-plan">
+  <div class="c360-ind-tree-wrap">
+    <div class="c360-ind-tree-head">
+      <span class="c360-ind-tree-kicker"><i class="fa-solid fa-diagram-project" aria-hidden="true"></i> Your recommended plan</span>
+      <h2 class="c360-ind-tree-h2">Grow it like a healthy tree</h2>
+      <p class="c360-ind-tree-lead">Strong roots first, then the trunk that carries the busy seasons, then branches when you're ready to reach further.</p>
+    </div>
+    <div class="c360-ind-tree-layers">
+      <div class="c360-ind-tree-layer is-roots">
+        <div class="c360-ind-tree-layer-label"><i class="fa-solid fa-circle-nodes" aria-hidden="true"></i><b>Roots</b><span>Start here</span></div>
+        <div class="c360-ind-tree-roots">
+          <div>
+            <h3>Google Platinum Package</h3>
+            <p>Local Services Ads with the Google Verified badge at the top of Google, plus Google Business Profile Management. For tree work, the badge and steady reviews are what win the call over the cheaper quote.</p>
+            <div class="c360-ind-tree-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+          </div>
+          <ul>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Google Verified badge after Google's license (where required), insurance and background checks</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Map listing, photos and service areas kept up to date</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Review requests to your customers and replies to every review</li>
+          </ul>
+        </div>
+      </div>
+      <div class="c360-ind-tree-layer">
+        <div class="c360-ind-tree-layer-label"><i class="fa-solid fa-grip-lines-vertical" aria-hidden="true"></i><b>Trunk</b><span>Grow with</span></div>
+        <div class="c360-ind-tree-layer-cards">
+          <article class="c360-ind-tree-svc">
+            <h3>Google PPC</h3>
+            <p>Search ads for emergency removal, storm cleanup, stump grinding and land clearing, turned up when the weather turns.</p>
+            <div class="c360-ind-tree-pills"><a href="/google-ppc">Google PPC</a></div>
+          </article>
+          <article class="c360-ind-tree-svc">
+            <h3>Meta Ads</h3>
+            <p>Before-and-after photos and seasonal trimming offers shown to homeowners in the neighborhoods you serve.</p>
+            <div class="c360-ind-tree-pills"><a href="/meta-ads">Meta Ads</a></div>
+          </article>
+          <article class="c360-ind-tree-svc">
+            <h3>Geo-Fencing</h3>
+            <p>Mobile and streaming TV ads for neighborhoods hit by a storm, so you're the name they remember for cleanup.</p>
+            <div class="c360-ind-tree-pills"><a href="/geo-fencing">Geo-Fencing</a></div>
+          </article>
+        </div>
+      </div>
+      <div class="c360-ind-tree-layer">
+        <div class="c360-ind-tree-layer-label"><i class="fa-solid fa-code-branch" aria-hidden="true"></i><b>Branches</b><span>Also available</span></div>
+        <div class="c360-ind-tree-layer-cards">
+          <article class="c360-ind-tree-svc">
+            <h3>AI Voice Agent</h3>
+            <p>Answers storm calls day or night and books the estimate. No per-minute AI fees; the phone number and calling minutes are billed separately.</p>
+            <div class="c360-ind-tree-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+          </article>
+          <article class="c360-ind-tree-svc">
+            <h3>Local SEO Booster</h3>
+            <p>Keeps your business name, address, phone and hours consistent across 70+ directories and maps.</p>
+            <div class="c360-ind-tree-pills"><a href="/local-seo-booster">Local SEO Booster</a></div>
+          </article>
+          <article class="c360-ind-tree-svc">
+            <h3>Website</h3>
+            <p>A fast site with your services, service area, project photos and a tap-to-call button.</p>
+            <div class="c360-ind-tree-pills"><a href="/websites-home">Website</a></div>
+          </article>
+        </div>
+      </div>
+    </div>
+    <div class="c360-ind-tree-plan-cta">
+      <a href="/schedule-demo" class="c360-ind-tree-btn c360-ind-tree-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (zigzag rows) ══════════ -->
+<section class="c360-ind-tree-section" style="background:#fff;padding-top:0">
+  <div class="c360-ind-tree-wrap">
+    <div class="c360-ind-tree-head">
+      <span class="c360-ind-tree-kicker"><i class="fa-solid fa-route" aria-hidden="true"></i> How it works</span>
+      <h2 class="c360-ind-tree-h2">From storm call to repeat customer</h2>
+      <p class="c360-ind-tree-lead">One homeowner, one fallen limb, and the four moments that decide who gets the work now and next season.</p>
+    </div>
+    <div class="c360-ind-tree-zig">
+      <article class="c360-ind-tree-zrow">
+        <div class="c360-ind-tree-zmock" role="img" aria-label="Example Google search for emergency tree removal near me showing a sponsored Google Verified tree service with a 4.9 star rating, open 24 hours">
+          <div class="c360-ind-tree-q"><i class="fa-solid fa-magnifying-glass"></i> emergency tree removal near me</div>
+          <div class="c360-ind-tree-card">
+            <div class="c360-ind-tree-spons">Sponsored</div>
+            <div class="c360-ind-tree-name">Oak &amp; Ridge Tree Care <span class="c360-ind-tree-ver"><i class="fa-solid fa-circle-check"></i> Google Verified</span></div>
+            <div class="c360-ind-tree-sub"><span class="c360-ind-tree-st">★★★★★</span> 4.9 (127) · Open 24 hours</div>
+          </div>
+        </div>
+        <div>
+          <span class="c360-ind-tree-zbadge">1</span>
+          <h3>Get found when the storm hits</h3>
+          <p>A big limb comes down on the fence. The homeowner searches, and your Google Verified ad, rating and photos sit at the top of Google, above everyone else.</p>
+          <div class="c360-ind-tree-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+        </div>
+      </article>
+      <article class="c360-ind-tree-zrow">
+        <div class="c360-ind-tree-zmock" role="img" aria-label="Example: a message from a homeowner about a limb on their fence, answered by the AI Voice Agent, which booked an estimate for tomorrow at 8 AM">
+          <div class="c360-ind-tree-card c360-ind-tree-msg"><i class="fa-solid fa-message"></i><div><b>New message, 9:48 PM</b><span>"Big limb came down on our fence in the storm. Can someone look tomorrow?"</span></div></div>
+          <div class="c360-ind-tree-card c360-ind-tree-msg is-ai"><i class="fa-solid fa-headset"></i><div><b>AI Voice Agent called back</b><span>Estimate booked for tomorrow, 8 AM. Photos requested.</span></div></div>
+          <p class="c360-ind-tree-note">Example for illustration</p>
+        </div>
+        <div>
+          <span class="c360-ind-tree-zbadge">2</span>
+          <h3>Answer before the next company does</h3>
+          <p>Storm calls come in all at once, often after dark. Fast replies win them, and the AI Voice Agent makes sure nobody hears a voicemail greeting.</p>
+          <div class="c360-ind-tree-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+        </div>
+      </article>
+      <article class="c360-ind-tree-zrow">
+        <div class="c360-ind-tree-zmock" role="img" aria-label="Example text asking the homeowner for a Google review after the cleanup, and the homeowner replying that the crew was fast and careful">
+          <div class="c360-ind-tree-sms c360-ind-tree-sms-out">The yard's all cleaned up, Tom! Would you leave Oak &amp; Ridge a quick Google review?</div>
+          <div class="c360-ind-tree-sms c360-ind-tree-sms-in">Absolutely. Your crew was fast and careful with the house.</div>
+        </div>
+        <div>
+          <span class="c360-ind-tree-zbadge">3</span>
+          <h3>Turn the cleanup into a review</h3>
+          <p>A review request goes out when the job's done, and every review gets a reply. Those reviews are what win the next three-quote bid.</p>
+          <div class="c360-ind-tree-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+        </div>
+      </article>
+      <article class="c360-ind-tree-zrow">
+        <div class="c360-ind-tree-zmock" role="img" aria-label="Example Facebook ad from the tree service showing an overgrown tree beside a neatly trimmed one, offering spring trimming estimates">
+          <div class="c360-ind-tree-card">
+            <div class="c360-ind-tree-spons">Oak &amp; Ridge Tree Care · Sponsored</div>
+            <div class="c360-ind-tree-sub" style="margin-top:4px">Spring trimming spots are filling up. Book your free estimate.</div>
+            <div class="c360-ind-tree-ba"><span>Before</span><span>After</span></div>
+            <span class="c360-ind-tree-ad-btn">Get estimate</span>
+          </div>
+        </div>
+        <div>
+          <span class="c360-ind-tree-zbadge">4</span>
+          <h3>Fill next season before it starts</h3>
+          <p>Seasonal trimming ads, search ads for removals and storm-area ads keep planned work on the books, even in the quiet months.</p>
+          <div class="c360-ind-tree-pills"><a href="/meta-ads">Meta Ads</a><a href="/google-ppc">Google PPC</a><a href="/geo-fencing">Geo-Fencing</a></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (tree-ring rating badge) ══════════ -->
+<section class="c360-ind-tree-section" style="background:var(--tree-sky)">
+  <div class="c360-ind-tree-wrap">
+    <div class="c360-ind-tree-head">
+      <span class="c360-ind-tree-kicker">Our own reviews</span>
+      <h2 class="c360-ind-tree-h2">Deep roots with our clients</h2>
+      <p class="c360-ind-tree-lead">Local service owners across the country, in their own words.</p>
+    </div>
+    <div class="c360-ind-tree-rings">
+      <div class="c360-ind-tree-ringstat"><strong>147</strong><span>five-star reviews</span></div>
+      <div class="c360-ind-tree-ring">
+        <svg viewBox="0 0 240 240" aria-hidden="true">
+          <circle cx="120" cy="120" r="116" fill="#fff"/>
+          <g fill="none">
+            <ellipse cx="120" cy="121" rx="112" ry="110" stroke="#122078" stroke-width="3"/>
+            <ellipse cx="121" cy="120" rx="98" ry="96" stroke="#9DB3DC" stroke-width="2"/>
+            <ellipse cx="119" cy="121" rx="86" ry="85" stroke="#4E9A5B" stroke-width="2"/>
+          </g>
+        </svg>
+        <div><strong>5.0</strong><span class="c360-ind-tree-stars" aria-hidden="true">★★★★★</span><span>on Google</span></div>
+      </div>
+      <div class="c360-ind-tree-ringstat"><strong>2018</strong><span>in business since</span></div>
+    </div>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (bordered card, photo right) ══════════ -->
+<section class="c360-ind-tree-section">
+  <div class="c360-ind-tree-wrap">
+    <div class="c360-ind-tree-cta">
+      <div>
+        <h2 class="c360-ind-tree-h2">Let's plan your busiest year yet</h2>
+        <p>On a free strategy call we'll look at your service area, your reviews and your slow months, and show you where your storm, trimming and removal jobs will come from.</p>
+        <div class="c360-ind-tree-ctas">
+          <a href="/schedule-demo" class="c360-ind-tree-btn c360-ind-tree-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-tree-btn c360-ind-tree-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+      </div>
+      <div class="c360-ind-tree-img">
+        <!-- IMAGE PLACEHOLDER: tree-on-the-job — tree crew stacking cut limbs in a tidy front yard while the homeowner chats with the crew lead, 4:3 -->
+        <img src="" data-c360-placeholder="tree-on-the-job" alt="Tree service crew cleaning up cut limbs while the crew lead talks with the homeowner" loading="lazy">
+        <div class="c360-ind-tree-fallback" aria-hidden="true"><i class="fa-solid fa-tree"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (grouped list) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-tree-section" id="tree-faq" style="padding-top:0">
+  <div class="c360-ind-tree-wrap">
+    <div class="c360-ind-tree-head">
+      <h2 class="c360-ind-tree-h2">Tree service marketing questions</h2>
+    </div>
+    <div class="c360-ind-tree-faq-list">
+      <h3 class="c360-ind-tree-faq-group"><i class="fa-solid fa-leaf" aria-hidden="true"></i> Getting more jobs</h3>
+
+      <details class="c360-ind-tree-faq-item">
+        <summary class="c360-ind-tree-faq-q">How do tree service companies get more jobs?</summary>
+        <div class="c360-ind-tree-faq-a"><p>Show up at the top of Google with proof you're insured and trusted, and keep reviews coming. For most tree companies that starts with the Google Platinum Package (Local Services Ads plus Google Business Profile Management). Google PPC for emergency removals, Meta Ads for seasonal trimming and Geo-Fencing for storm-hit neighborhoods come next.</p></div>
+      </details>
+
+      <details class="c360-ind-tree-faq-item">
+        <summary class="c360-ind-tree-faq-q">Can tree service companies run Google Local Services Ads?</summary>
+        <div class="c360-ind-tree-faq-a"><p>Yes. Tree services is an eligible Local Services Ads category. Google checks your business license where your state requires one, your insurance and backgrounds before your ads earn the Google Verified badge. We walk you through each step.</p></div>
+      </details>
+
+      <details class="c360-ind-tree-faq-item">
+        <summary class="c360-ind-tree-faq-q">How do I handle storm calls at night?</summary>
+        <div class="c360-ind-tree-faq-a"><p>Answer them, even when your crew is off the clock. The AI Voice Agent picks up day or night, takes the caller's name, address and what happened, and books the estimate or passes it to your team. There are no per-minute AI fees; the phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-tree-faq-item">
+        <summary class="c360-ind-tree-faq-q">How do I win more bids against cheaper quotes?</summary>
+        <div class="c360-ind-tree-faq-a"><p>Show homeowners what they're paying for. The Google Verified badge, steady reviews that mention careful, clean work, and real photos of your crew and equipment make your quote feel like the safe choice, not the expensive one.</p></div>
+      </details>
+
+      <details class="c360-ind-tree-faq-item">
+        <summary class="c360-ind-tree-faq-q">How do I fill the slow winter months?</summary>
+        <div class="c360-ind-tree-faq-a"><p>Book planned work before you need it. Search ads for removals and stump grinding, and Meta Ads promoting winter pruning or early spring trimming, put jobs on the calendar while the phone would otherwise be quiet.</p></div>
+      </details>
+
+      <details class="c360-ind-tree-faq-item">
+        <summary class="c360-ind-tree-faq-q">Do Facebook and Instagram ads work for tree services?</summary>
+        <div class="c360-ind-tree-faq-a"><p>Yes, especially for planned work. Before-and-after photos and seasonal offers shown to homeowners nearby remind them about the overgrown tree they've been meaning to deal with. Meta Ads are planned with you on a strategy call, and ad spend is billed directly by Meta.</p></div>
+      </details>
+
+      <h3 class="c360-ind-tree-faq-group"><i class="fa-solid fa-receipt" aria-hidden="true"></i> Costs and commitments</h3>
+
+      <details class="c360-ind-tree-faq-item">
+        <summary class="c360-ind-tree-faq-q">Can you guarantee more jobs?</summary>
+        <div class="c360-ind-tree-faq-a"><p>No. No one can promise rankings or a set number of leads or jobs. For Google Business Profile Management and advertising campaigns, including Local Services Ads, Google PPC, Meta Ads and Geo-Fencing, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-tree-faq-item">
+        <summary class="c360-ind-tree-faq-q">How much does tree service marketing cost?</summary>
+        <div class="c360-ind-tree-faq-a"><p>Each service's price is on its own page, including the <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>, <a href="/geo-fencing">Geo-Fencing</a> and the <a href="/ai-agents">AI Voice Agent</a>. Google PPC and Meta Ads are planned with you on a strategy call. Ad spend is separate and billed directly by Google or Meta. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
