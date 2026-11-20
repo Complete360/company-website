@@ -1,0 +1,601 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Cleaning Services
+     c360-ind-clean-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at
+          /industries/cleaning-services (page name "Cleaning Business Marketing").
+          Meta data: ghl-meta/industries/cleaning-services.md.
+          Schema: schema/pages/industries/cleaning-services.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-clean-  (new, unique; vars --clean-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from the other pages), clean and checklist
+     themed:
+       - Hero: centered text on white, then a three-panel row: booking
+         card, photo, review card.
+       - Reality: one big checklist card (four unchecked items) beside
+         the on-the-job photo.
+       - Plan: two package-style columns, "Essential clean" (start here)
+         and "Deep clean" (everything in Essential, plus). No prices.
+       - Journey: four steps on a connector line, then a row of three
+         code-built visuals.
+       - Reviews: navy rating card beside the widget. CTA: mist panel.
+         FAQ: single column with check markers.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       clean-hero        16:9, 2000px+ (center panel of the hero row)
+       clean-on-the-job  4:3, 1200px+  (beside the checklist)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-12) — first build. Plan per the worksheet draft:
+       Google Platinum Package (Local Service Ads + Google Business Profile
+       Management incl. reviews) first; grow with Meta Ads. The AI Voice
+       Agent is added to the "Deep clean" column (crews can't answer while
+       cleaning). Website and SEO Services as "also available". To be
+       confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-clean{
+  --clean-navy:#122078;--clean-navy-dark:#0d1654;--clean-navy-deeper:#0a1040;
+  --clean-green:#127825;--clean-green-hover:#0e5e1d;--clean-green-light:#EAF3DE;
+  --clean-mist:#F4F7FC;--clean-line:#E7EBF3;--clean-blue-light:#E6F1FB;--clean-sky:#EEF5FD;
+  --clean-text:#0F1F5E;--clean-muted:#5F5E5A;
+  --clean-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--clean-font);color:var(--clean-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-clean *,.c360-ind-clean *::before,.c360-ind-clean *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-clean :where(h1,h2,h3,h4,p,ul,ol,li){margin:0;padding:0;font-family:var(--clean-font)}
+.c360-ind-clean :where(ul,ol){list-style:none}
+.c360-ind-clean :where(a){color:var(--clean-navy)}
+.c360-ind-clean a:focus-visible,.c360-ind-clean summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-clean-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-clean-section{padding:104px 0}
+.c360-ind-clean-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--clean-text);margin-bottom:16px}
+.c360-ind-clean-lead{font-size:18px;color:var(--clean-muted);max-width:760px;line-height:1.65}
+.c360-ind-clean-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--clean-green);margin-bottom:14px}
+.c360-ind-clean-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-clean-head .c360-ind-clean-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-clean-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--clean-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:100px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-clean-btn-primary{background:var(--clean-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-clean-btn-primary:hover{background:var(--clean-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-clean-btn-outline{background:#fff;color:var(--clean-navy);border:2px solid var(--clean-navy);padding:14px 26px}
+.c360-ind-clean-btn-outline:hover{background:var(--clean-navy);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-clean a.c360-ind-clean-btn-primary{color:#fff}
+.c360-ind-clean a.c360-ind-clean-btn-outline{color:var(--clean-navy)}
+.c360-ind-clean a.c360-ind-clean-btn-outline:hover{color:#fff}
+.c360-ind-clean-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-clean-pills{display:flex;flex-wrap:wrap;gap:10px}
+.c360-ind-clean-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--clean-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-clean-pills a:hover{background:var(--clean-navy);border-color:var(--clean-navy);color:#fff;text-decoration:none}
+
+/* ══════════ HERO (centered + three panels) ══════════ */
+.c360-ind-clean-hero{background:#fff;padding:56px 0 0}
+/* The three panels sit on a band that turns light blue halfway down. */
+.c360-ind-clean-band{background:linear-gradient(180deg,#fff 0%,#fff 40%,var(--clean-sky) 40%,var(--clean-sky) 100%);padding:8px 0 88px}
+.c360-ind-clean-hero-copy{text-align:center;max-width:1040px;margin:0 auto 24px}
+.c360-ind-clean-crumbs ol{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:13px;margin-bottom:26px}
+.c360-ind-clean-crumbs li{color:var(--clean-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-clean-crumbs li+li::before{content:"\203A";color:#A6B0C4}
+.c360-ind-clean-crumbs a{color:var(--clean-navy);text-decoration:none}
+.c360-ind-clean-crumbs a:hover{text-decoration:underline}
+.c360-ind-clean-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--clean-text);margin-bottom:22px}
+.c360-ind-clean-hero-sub{font-size:18px;line-height:1.65;color:var(--clean-muted);max-width:720px;margin:0 auto 32px}
+.c360-ind-clean-hero .c360-ind-clean-ctas{justify-content:center}
+.c360-ind-clean-creds{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.c360-ind-clean-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear)}
+.c360-ind-clean-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-clean-partner,.c360-ind-clean-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-clean-creds-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px}
+.c360-ind-clean-creds-list li{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:#3B4566}
+.c360-ind-clean-creds-list i{color:var(--clean-green);font-size:12px}
+.c360-ind-clean-stars{color:#E8A400;letter-spacing:1px}
+.c360-ind-clean-panels{display:grid;grid-template-columns:0.8fr 1.4fr 0.8fr;gap:24px;align-items:stretch;max-width:1500px;margin:0 auto}
+.c360-ind-clean-panel{background:#fff;border-radius:24px;padding:28px;box-shadow:0 18px 48px rgba(15,31,94,0.10);display:flex;flex-direction:column;justify-content:center}
+.c360-ind-clean-panel-photo{position:relative;border-radius:24px;overflow:hidden;min-height:380px;background:repeating-linear-gradient(135deg,#DCE7F5 0 16px,#E7EFF9 16px 32px);box-shadow:0 18px 48px rgba(15,31,94,0.12)}
+.c360-ind-clean-panel-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-clean-panel-photo img[src=""],.c360-ind-clean-panel-photo img:not([src]){visibility:hidden}
+.c360-ind-clean-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B9D8;font-size:56px;pointer-events:none}
+.c360-ind-clean-panel-photo img[src]:not([src=""])+.c360-ind-clean-fallback,.c360-ind-clean-photo img[src]:not([src=""])+.c360-ind-clean-fallback{display:none}
+.c360-ind-clean-panel-label{font-size:13px;font-weight:700;color:var(--clean-green);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.c360-ind-clean-book dl{margin:0}
+.c360-ind-clean-book dl div{display:flex;justify-content:space-between;gap:12px;padding:10px 0;border-top:1px solid var(--clean-line);font-size:14px}
+.c360-ind-clean-book dl div:first-child{border-top:0}
+.c360-ind-clean-book dt{color:var(--clean-muted)}
+.c360-ind-clean-book dd{margin:0;font-weight:700;color:var(--clean-text);text-align:right}
+.c360-ind-clean-book-status{margin-top:14px;display:flex;align-items:center;gap:8px;background:var(--clean-green-light);color:var(--clean-green);font-size:13.5px;font-weight:700;border-radius:10px;padding:10px 12px}
+.c360-ind-clean-rev-stars{color:#FBBC04;font-size:18px;letter-spacing:2px;margin-bottom:10px}
+.c360-ind-clean-rev-text{font-size:15px;color:var(--clean-text);line-height:1.6;margin-bottom:14px}
+.c360-ind-clean-rev-by{font-size:13px;color:var(--clean-muted)}
+.c360-ind-clean-example{display:block;font-size:12px;color:var(--clean-muted);text-align:center;margin-top:12px}
+
+/* ══════════ REALITY (checklist card) ══════════ */
+.c360-ind-clean-reality{display:grid;grid-template-columns:1.25fr 0.75fr;gap:48px;align-items:stretch}
+.c360-ind-clean-checklist{background:#fff;border:1px solid var(--clean-line);border-radius:28px;padding:48px 52px;box-shadow:0 18px 48px rgba(15,31,94,0.07)}
+.c360-ind-clean-checklist-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:22px;margin-bottom:8px;border-bottom:2px solid var(--clean-text)}
+.c360-ind-clean-checklist-head .c360-ind-clean-h2{margin-bottom:6px}
+.c360-ind-clean-checklist-head .c360-ind-clean-lead{max-width:640px}
+.c360-ind-clean-checklist-head i{font-size:44px;color:#C3D2EA;flex-shrink:0}
+.c360-ind-clean-items{display:grid;grid-template-columns:1fr 1fr;column-gap:48px}
+.c360-ind-clean-items li{display:grid;grid-template-columns:30px 1fr;gap:16px;padding:26px 0;border-bottom:1px dashed #C9D3E4}
+.c360-ind-clean-box{width:26px;height:26px;border:2.5px solid var(--clean-navy);border-radius:6px;margin-top:2px}
+.c360-ind-clean-items h3{font-size:19px;font-weight:700;line-height:1.35;color:var(--clean-text);margin-bottom:6px}
+.c360-ind-clean-items p{font-size:16px;color:var(--clean-muted);line-height:1.65}
+.c360-ind-clean-photo{position:relative;border-radius:28px;overflow:hidden;min-height:420px;background:repeating-linear-gradient(135deg,#DCE7F5 0 14px,#E7EFF9 14px 28px)}
+.c360-ind-clean-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-clean-photo img[src=""],.c360-ind-clean-photo img:not([src]){visibility:hidden}
+
+/* ══════════ PLAN (package columns) ══════════ */
+.c360-ind-clean-plan-bg{background:var(--clean-mist)}
+.c360-ind-clean-packages{display:grid;grid-template-columns:1fr 1fr;gap:28px;max-width:1300px;margin:0 auto;align-items:stretch}
+.c360-ind-clean-pkg{position:relative;background:#fff;border:1px solid var(--clean-line);border-radius:28px;padding:44px 44px 40px;display:flex;flex-direction:column;box-shadow:0 14px 40px rgba(15,31,94,0.06)}
+.c360-ind-clean-pkg.is-core{border:2px solid var(--clean-navy);box-shadow:0 24px 60px rgba(15,31,94,0.14)}
+.c360-ind-clean-pkg-flag{position:absolute;top:-15px;left:44px;font-size:13px;font-weight:700;color:#fff;background:var(--clean-green);border-radius:100px;padding:6px 16px}
+.c360-ind-clean-pkg-name{font-size:30px;font-weight:800;letter-spacing:-0.015em;color:var(--clean-text);margin-bottom:6px}
+.c360-ind-clean-pkg-for{font-size:16px;color:var(--clean-muted);line-height:1.6;padding-bottom:22px;border-bottom:1px solid var(--clean-line)}
+.c360-ind-clean-pkg-plus{font-size:14px;font-weight:700;color:var(--clean-navy);background:var(--clean-blue-light);border-radius:10px;padding:10px 14px;margin-top:22px}
+.c360-ind-clean-pkg ul{margin-top:6px}
+.c360-ind-clean-pkg li{display:grid;grid-template-columns:28px 1fr;gap:14px;padding:22px 0;border-bottom:1px solid var(--clean-line)}
+.c360-ind-clean-pkg li:last-child{border-bottom:0;padding-bottom:4px}
+.c360-ind-clean-tick{width:26px;height:26px;border-radius:50%;background:var(--clean-green);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px;margin-top:2px}
+.c360-ind-clean-pkg h4{font-size:19px;font-weight:700;line-height:1.35;color:var(--clean-text);margin-bottom:6px}
+.c360-ind-clean-pkg li p{font-size:15.5px;color:var(--clean-muted);line-height:1.6;margin-bottom:14px}
+.c360-ind-clean-plan-foot{text-align:center;max-width:820px;margin:44px auto 0}
+.c360-ind-clean-plan-foot p{font-size:15.5px;color:var(--clean-muted);line-height:1.65}
+.c360-ind-clean-plan-foot p+p{margin-top:8px}
+.c360-ind-clean-plan-foot a{font-weight:600}
+.c360-ind-clean-plan-foot .c360-ind-clean-btn{margin-top:26px}
+
+/* ══════════ JOURNEY (steps on a line + visuals row) ══════════ */
+.c360-ind-clean-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;position:relative;max-width:1500px;margin:0 auto 64px}
+.c360-ind-clean-steps::before{content:"";position:absolute;top:36px;left:12.5%;right:12.5%;height:2px;background:repeating-linear-gradient(90deg,#9DB3DC 0 10px,transparent 10px 18px)}
+/* Each step spans four parent rows (icon, title, text, pills) via subgrid. */
+.c360-ind-clean-step{position:relative;display:grid;grid-row:span 4;grid-template-rows:subgrid;row-gap:0;text-align:center;justify-items:center}
+@supports not (grid-template-rows:subgrid){.c360-ind-clean-step{display:flex;flex-direction:column;align-items:center}}
+.c360-ind-clean-step-icon{width:72px;height:72px;border-radius:50%;background:#fff;border:2px solid var(--clean-navy);color:var(--clean-navy);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:20px;position:relative;z-index:1}
+.c360-ind-clean-step-icon b{position:absolute;top:-6px;right:-6px;width:26px;height:26px;border-radius:50%;background:var(--clean-green);color:#fff;font-size:12.5px;display:flex;align-items:center;justify-content:center}
+.c360-ind-clean-step h3{font-size:clamp(20px,1.8vw,24px);font-weight:800;line-height:1.25;color:var(--clean-text);margin-bottom:10px}
+.c360-ind-clean-step p{font-size:16px;color:var(--clean-muted);line-height:1.65;max-width:340px;margin-bottom:18px}
+.c360-ind-clean-step .c360-ind-clean-pills{justify-content:center;align-self:start}
+.c360-ind-clean-proof{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1500px;margin:0 auto;background:var(--clean-sky);border-radius:28px;padding:40px}
+.c360-ind-clean-proof > div{display:flex;flex-direction:column;align-items:center}
+.c360-ind-clean-mock{width:100%;max-width:400px}
+
+/* Mock: Local Services Ad */
+.c360-ind-clean-serp{background:#fff;border:1px solid var(--clean-line);border-radius:14px;padding:16px;box-shadow:0 12px 28px rgba(15,31,94,0.08);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-clean-serp-bar{display:flex;align-items:center;gap:10px;border:1px solid #DFE1E5;border-radius:100px;padding:8px 14px;font-size:13.5px;color:#202124;margin-bottom:12px}
+.c360-ind-clean-serp-bar i{color:#9AA0A6}
+.c360-ind-clean-serp-tag{font-size:12px;font-weight:700;color:#202124;margin-bottom:6px}
+.c360-ind-clean-serp-ad{border:1px solid #E8EAED;border-radius:12px;padding:12px 14px}
+.c360-ind-clean-serp-name{font-size:15px;font-weight:700;color:#1A0DAB;margin-bottom:4px}
+.c360-ind-clean-serp-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:13px;color:#4D5156}
+.c360-ind-clean-serp-stars{color:#FBBC04;letter-spacing:1px}
+.c360-ind-clean-serp-verified{display:inline-flex;align-items:center;gap:5px;color:#137333;font-weight:700}
+/* Mock: AI Voice Agent booking note */
+.c360-ind-clean-call{background:var(--clean-navy-deeper);color:#fff;border-radius:18px;padding:18px;box-shadow:0 14px 34px rgba(10,16,64,0.25)}
+.c360-ind-clean-call-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.c360-ind-clean-call-head i{width:34px;height:34px;border-radius:50%;background:rgba(46,204,82,0.2);color:#2ecc52;display:flex;align-items:center;justify-content:center}
+.c360-ind-clean-call-head strong{display:block;font-size:13.5px}
+.c360-ind-clean-call-head span{font-size:12px;color:rgba(255,255,255,0.65)}
+.c360-ind-clean-call p{font-size:13px;line-height:1.5;padding:8px 11px;border-radius:12px;margin-bottom:7px;max-width:90%}
+.c360-ind-clean-call .is-ai{background:rgba(255,255,255,0.09)}
+.c360-ind-clean-call .is-caller{background:rgba(46,204,82,0.18);margin-left:auto}
+.c360-ind-clean-call-done{display:flex;gap:8px;align-items:center;background:#fff;color:var(--clean-text);border-radius:10px;padding:9px 11px;font-size:13px;font-weight:600}
+.c360-ind-clean-call-done i{color:var(--clean-green)}
+/* Mock: Meta ad */
+.c360-ind-clean-meta{background:#fff;border:1px solid var(--clean-line);border-radius:14px;overflow:hidden;box-shadow:0 12px 28px rgba(15,31,94,0.08);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-clean-meta-head{display:flex;align-items:center;gap:10px;padding:11px 13px}
+.c360-ind-clean-meta-av{width:32px;height:32px;border-radius:50%;background:var(--clean-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px}
+.c360-ind-clean-meta-head strong{display:block;font-size:13.5px;color:#050505}
+.c360-ind-clean-meta-head span{font-size:12px;color:#65676B}
+.c360-ind-clean-meta-text{padding:0 13px 9px;font-size:13.5px;color:#050505;line-height:1.45}
+.c360-ind-clean-meta-img{height:104px;background:linear-gradient(135deg,#DCEBFA,#F4F8FD);display:flex;align-items:center;justify-content:center;gap:14px;color:#7F9CC9;font-size:28px}
+.c360-ind-clean-meta-cta{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 13px;background:#F0F2F5}
+.c360-ind-clean-meta-cta span{font-size:12.5px;color:#050505;font-weight:600}
+.c360-ind-clean-meta-cta em{font-style:normal;font-size:12.5px;font-weight:700;color:#050505;background:#E4E6EB;border-radius:6px;padding:6px 11px}
+
+/* ══════════ REVIEWS (rating card + widget) ══════════ */
+.c360-ind-clean-reviews{display:grid;grid-template-columns:0.6fr 1.4fr;gap:40px;align-items:start}
+.c360-ind-clean-rating{background:linear-gradient(160deg,var(--clean-navy) 0%,var(--clean-navy-deeper) 100%);color:#fff;border-radius:28px;padding:44px 40px;position:sticky;top:110px}
+.c360-ind-clean-rating .c360-ind-clean-kicker{color:#7ddc80}
+.c360-ind-clean-rating-n{font-size:clamp(64px,7vw,96px);font-weight:800;line-height:1;letter-spacing:-0.03em}
+.c360-ind-clean-rating-stars{color:#FBBC04;font-size:24px;letter-spacing:3px;margin:8px 0 16px}
+.c360-ind-clean-rating p{font-size:16px;color:rgba(255,255,255,0.82);line-height:1.6;margin-bottom:22px}
+.c360-ind-clean-rating ul li{display:flex;align-items:center;gap:10px;padding:11px 0;border-top:1px solid rgba(255,255,255,0.14);font-size:15px;font-weight:600}
+.c360-ind-clean-rating ul i{color:#7ddc80;width:18px;text-align:center}
+.c360-ind-clean-reviews-head .c360-ind-clean-h2{margin-bottom:24px}
+
+/* ══════════ CTA (mist panel) ══════════ */
+.c360-ind-clean-cta{max-width:1300px;margin:0 auto;background:var(--clean-sky);border-radius:32px;padding:72px 48px;text-align:center;position:relative;overflow:hidden}
+.c360-ind-clean-cta::before,.c360-ind-clean-cta::after{content:"\2726";position:absolute;color:#BFD3EE;font-size:64px;line-height:1}
+.c360-ind-clean-cta::before{left:48px;top:40px}
+.c360-ind-clean-cta::after{right:56px;bottom:36px;font-size:44px}
+.c360-ind-clean-cta h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--clean-text);margin-bottom:16px}
+.c360-ind-clean-cta p{font-size:18px;color:var(--clean-muted);max-width:660px;margin:0 auto 32px;line-height:1.65}
+.c360-ind-clean-cta .c360-ind-clean-ctas{justify-content:center}
+
+/* ══════════ FAQ (check markers) ══════════ */
+.c360-ind-clean-faq-list{max-width:1000px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.c360-ind-clean-faq-item{background:#fff;border:1px solid var(--clean-line);border-radius:16px;transition:border-color .15s}
+.c360-ind-clean-faq-item[open]{border-color:#9DB3DC}
+.c360-ind-clean-faq-q{display:grid;grid-template-columns:30px 1fr 24px;align-items:center;gap:14px;padding:22px 24px;font-size:17px;font-weight:600;color:var(--clean-text);cursor:pointer;list-style:none}
+.c360-ind-clean-faq-q::-webkit-details-marker{display:none}
+.c360-ind-clean-faq-q::before{content:"\2713";width:28px;height:28px;border-radius:50%;background:var(--clean-green-light);color:var(--clean-green);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:800}
+.c360-ind-clean-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--clean-navy);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-clean-faq-item[open] .c360-ind-clean-faq-q::after{transform:rotate(45deg)}
+.c360-ind-clean-faq-a{padding:0 32px 24px 68px;font-size:16px;color:var(--clean-muted);line-height:1.7}
+.c360-ind-clean-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1200px){
+  .c360-ind-clean-panels{grid-template-columns:1fr 1fr;grid-template-areas:"photo photo" "book rev"}
+  .c360-ind-clean-panel-photo{grid-area:photo}
+  .c360-ind-clean-panel.is-book{grid-area:book}
+  .c360-ind-clean-panel.is-rev{grid-area:rev}
+  .c360-ind-clean-steps{grid-template-columns:repeat(2,1fr);row-gap:44px}
+  .c360-ind-clean-steps::before{display:none}
+  .c360-ind-clean-proof{grid-template-columns:1fr 1fr}
+}
+@media (max-width:900px){
+  .c360-ind-clean-section{padding:76px 0}
+  .c360-ind-clean-reality,.c360-ind-clean-packages,.c360-ind-clean-reviews{grid-template-columns:1fr}
+  .c360-ind-clean-photo{min-height:0;aspect-ratio:4/3}
+  .c360-ind-clean-items{grid-template-columns:1fr}
+  .c360-ind-clean-checklist{padding:36px 28px}
+  .c360-ind-clean-rating{position:static}
+  .c360-ind-clean-packages{row-gap:44px}
+}
+@media (max-width:640px){
+  .c360-ind-clean-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-clean-hero{padding-top:40px}
+  .c360-ind-clean-panels{grid-template-columns:1fr;grid-template-areas:"photo" "book" "rev"}
+  .c360-ind-clean-panel-photo{min-height:0;aspect-ratio:4/3}
+  .c360-ind-clean-steps,.c360-ind-clean-proof{grid-template-columns:1fr}
+  .c360-ind-clean-proof{padding:24px 16px}
+  .c360-ind-clean-pkg{padding:36px 24px 30px}
+  .c360-ind-clean-pkg-flag{left:24px}
+  .c360-ind-clean-cta{padding:52px 22px}
+  .c360-ind-clean-cta::before,.c360-ind-clean-cta::after{display:none}
+  .c360-ind-clean-faq-q{grid-template-columns:28px 1fr 20px;padding:18px}
+  .c360-ind-clean-faq-a{padding:0 18px 20px 60px}
+  .c360-ind-clean-btn{width:100%}
+  .c360-ind-clean-partner{--badge-h:64px;--badge-clear:28px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-clean *,.c360-ind-clean *::before,.c360-ind-clean *::after{transition:none !important;animation:none !important}
+  .c360-ind-clean-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-clean">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="c360-ind-clean-hero">
+  <div class="c360-ind-clean-wrap">
+    <div class="c360-ind-clean-hero-copy">
+      <nav class="c360-ind-clean-crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li aria-current="page">Cleaning Services</li>
+        </ol>
+      </nav>
+      <h1>Cleaning business marketing that books more recurring clients</h1>
+      <p class="c360-ind-clean-hero-sub">Homeowners only let a cleaning company in when they trust it. We help your cleaning business show up first, look like the safe choice, and turn one-time cleans into weekly and biweekly clients.</p>
+      <div class="c360-ind-clean-ctas">
+        <a href="/schedule-demo" class="c360-ind-clean-btn c360-ind-clean-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-clean-btn c360-ind-clean-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+      <div class="c360-ind-clean-creds">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-clean-partner">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+        <ul class="c360-ind-clean-creds-list">
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner with a Google Product Expert</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-clean-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Helping cleaning companies nationwide since 2018</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="c360-ind-clean-band">
+  <div class="c360-ind-clean-wrap">
+    <div class="c360-ind-clean-panels">
+      <div class="c360-ind-clean-panel is-book" role="img" aria-label="Example booking: a recurring biweekly home cleaning confirmed for Tuesday at 9 AM">
+        <p class="c360-ind-clean-panel-label"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> New recurring client</p>
+        <div class="c360-ind-clean-book">
+          <dl>
+            <div><dt>Service</dt><dd>Home cleaning</dd></div>
+            <div><dt>Frequency</dt><dd>Every 2 weeks</dd></div>
+            <div><dt>First visit</dt><dd>Tue, 9:00 AM</dd></div>
+            <div><dt>Home</dt><dd>3 bed · 2 bath</dd></div>
+          </dl>
+          <div class="c360-ind-clean-book-status"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Booked from a Google search</div>
+        </div>
+        <span class="c360-ind-clean-example">Example for illustration</span>
+      </div>
+      <div class="c360-ind-clean-panel-photo">
+        <!-- IMAGE PLACEHOLDER: clean-hero — professional cleaner wiping down a bright, modern kitchen counter, 16:9 (center panel) -->
+        <img src="" data-c360-placeholder="clean-hero" alt="Professional cleaner wiping down a bright kitchen counter in a customer's home" fetchpriority="high">
+        <div class="c360-ind-clean-fallback" aria-hidden="true"><i class="fa-solid fa-spray-can-sparkles"></i></div>
+      </div>
+      <div class="c360-ind-clean-panel is-rev" role="img" aria-label="Example five-star review praising a trustworthy, thorough cleaning team">
+        <p class="c360-ind-clean-panel-label"><i class="fa-solid fa-star" aria-hidden="true"></i> New Google review</p>
+        <div class="c360-ind-clean-rev-stars" aria-hidden="true">★★★★★</div>
+        <p class="c360-ind-clean-rev-text">"I was nervous about having a cleaning service in the house. They were on time, thorough, and I trust them completely. Signed up for every other week."</p>
+        <p class="c360-ind-clean-rev-by">Jenna M. · 3 days ago</p>
+        <span class="c360-ind-clean-example">Example for illustration</span>
+      </div>
+    </div>
+  </div>
+  </div>
+</section>
+
+<!-- ══════════ THE CLEANING REALITY (checklist) ══════════ -->
+<section class="c360-ind-clean-section">
+  <div class="c360-ind-clean-wrap c360-ind-clean-reality">
+    <div class="c360-ind-clean-checklist">
+      <div class="c360-ind-clean-checklist-head">
+        <div>
+          <span class="c360-ind-clean-kicker"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Still on the to-do list</span>
+          <h2 class="c360-ind-clean-h2">The cleaning business reality</h2>
+          <p class="c360-ind-clean-lead">Cleaning is built on trust and repeat visits. These are the things that keep good cleaning companies from growing.</p>
+        </div>
+        <i class="fa-solid fa-clipboard-check" aria-hidden="true"></i>
+      </div>
+      <ul class="c360-ind-clean-items">
+        <li><span class="c360-ind-clean-box" aria-hidden="true"></span><div><h3>Homeowners are nervous about letting strangers in</h3><p>Before anyone gets a key or a door code, homeowners want proof you're safe, insured and reliable. Without it, they keep scrolling.</p></div></li>
+        <li><span class="c360-ind-clean-box" aria-hidden="true"></span><div><h3>One-time deep cleans that never come back</h3><p>A move-out clean pays once. Recurring weekly and biweekly clients are what make the schedule and the revenue predictable.</p></div></li>
+        <li><span class="c360-ind-clean-box" aria-hidden="true"></span><div><h3>Calls come in while your team is cleaning</h3><p>Hands are full and phones are in pockets. Every missed call is a homeowner booking with whoever picks up first.</p></div></li>
+        <li><span class="c360-ind-clean-box" aria-hidden="true"></span><div><h3>Booking apps make you look like everyone else</h3><p>On a list of cheap options, cleaning becomes a price contest. Your own reviews and reputation are what set you apart.</p></div></li>
+      </ul>
+    </div>
+    <div class="c360-ind-clean-photo">
+      <!-- IMAGE PLACEHOLDER: clean-on-the-job — cleaning team arriving at a home's front door with supplies, friendly and uniformed, 4:3 -->
+      <img src="" data-c360-placeholder="clean-on-the-job" alt="Uniformed cleaning team arriving at a customer's front door with supplies" loading="lazy">
+      <div class="c360-ind-clean-fallback" aria-hidden="true"><i class="fa-solid fa-broom"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (package columns) ══════════
+     Outcome first. No prices. Draft per the worksheet; confirm with Jared. -->
+<section class="c360-ind-clean-section c360-ind-clean-plan-bg" id="clean-plan">
+  <div class="c360-ind-clean-wrap">
+    <div class="c360-ind-clean-head">
+      <span class="c360-ind-clean-kicker">Your recommended plan</span>
+      <h2 class="c360-ind-clean-h2">Your cleaning business marketing plan</h2>
+      <p class="c360-ind-clean-lead">Like your own services, it comes in two levels. Start with the essentials, then go deeper as your schedule fills up.</p>
+    </div>
+
+    <div class="c360-ind-clean-packages">
+      <div class="c360-ind-clean-pkg is-core">
+        <span class="c360-ind-clean-pkg-flag">Start here</span>
+        <h3 class="c360-ind-clean-pkg-name">Essential clean</h3>
+        <p class="c360-ind-clean-pkg-for">For every cleaning company that wants to be found and trusted on Google.</p>
+        <ul>
+          <li><span class="c360-ind-clean-tick" aria-hidden="true"><i class="fa-solid fa-check"></i></span><div>
+            <h4>Show up first when homeowners search for a cleaner</h4>
+            <p>Local Services Ads put you at the top of "house cleaning near me" with your rating and the Google Verified badge. You pay per lead, not per click.</p>
+            <div class="c360-ind-clean-pills"><a href="/local-service-ads">Local Service Ads</a></div>
+          </div></li>
+          <li><span class="c360-ind-clean-tick" aria-hidden="true"><i class="fa-solid fa-check"></i></span><div>
+            <h4>Earn trust before they hand over the key</h4>
+            <p>A Google Business Profile with real photos and a steady flow of fresh reviews from every client. Reviews also help your Local Services Ads rank.</p>
+            <div class="c360-ind-clean-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+          </div></li>
+        </ul>
+      </div>
+
+      <div class="c360-ind-clean-pkg">
+        <span class="c360-ind-clean-pkg-flag" style="background:var(--clean-navy)">Add as you grow</span>
+        <h3 class="c360-ind-clean-pkg-name">Deep clean</h3>
+        <p class="c360-ind-clean-pkg-for">For cleaning companies ready to fill every slot on the schedule.</p>
+        <p class="c360-ind-clean-pkg-plus">Everything in Essential clean, plus:</p>
+        <ul>
+          <li><span class="c360-ind-clean-tick" aria-hidden="true"><i class="fa-solid fa-check"></i></span><div>
+            <h4>Fill slow weeks with recurring and seasonal cleans</h4>
+            <p>Facebook and Instagram ads for recurring service, move-in and move-out cleans, and spring or holiday deep cleans, shown to homeowners in your area.</p>
+            <div class="c360-ind-clean-pills"><a href="/meta-ads">Meta Ads</a></div>
+          </div></li>
+          <li><span class="c360-ind-clean-tick" aria-hidden="true"><i class="fa-solid fa-check"></i></span><div>
+            <h4>Answer every call while your team is cleaning</h4>
+            <p>The AI Voice Agent picks up 24/7, asks about the home and the service, and books the estimate or sends the details to you.</p>
+            <div class="c360-ind-clean-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+          </div></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="c360-ind-clean-plan-foot">
+      <p>Also available for cleaning companies: a <a href="/websites-home">website</a> that takes booking requests and <a href="/seo-services">SEO Services</a> for steady traffic from Google and AI search. We'll help you decide what fits your goals.</p>
+      <p>Local Services Ads and Google Business Profile Management come together as our <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>. Every service's price is on its own page.</p>
+      <a href="/schedule-demo" class="c360-ind-clean-btn c360-ind-clean-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (steps + visuals row) ══════════ -->
+<section class="c360-ind-clean-section">
+  <div class="c360-ind-clean-wrap">
+    <div class="c360-ind-clean-head">
+      <span class="c360-ind-clean-kicker">How a homeowner becomes a regular</span>
+      <h2 class="c360-ind-clean-h2">From "we need help around the house" to a standing appointment</h2>
+      <p class="c360-ind-clean-lead">Four steps, and where your company needs to show up for each one.</p>
+    </div>
+
+    <div class="c360-ind-clean-steps">
+      <div class="c360-ind-clean-step">
+        <span class="c360-ind-clean-step-icon" aria-hidden="true"><i class="fa-solid fa-magnifying-glass"></i><b>1</b></span>
+        <h3>They search</h3>
+        <p>Local Services Ads put you at the top with your stars and the Google Verified badge, which shows Google checked your business, insurance and background.</p>
+        <div class="c360-ind-clean-pills"><a href="/local-service-ads">Local Service Ads</a></div>
+      </div>
+      <div class="c360-ind-clean-step">
+        <span class="c360-ind-clean-step-icon" aria-hidden="true"><i class="fa-solid fa-shield-heart"></i><b>2</b></span>
+        <h3>They check you out</h3>
+        <p>Your Google Business Profile shows real photos and recent reviews from clients who trust you in their homes.</p>
+        <div class="c360-ind-clean-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+      </div>
+      <div class="c360-ind-clean-step">
+        <span class="c360-ind-clean-step-icon" aria-hidden="true"><i class="fa-solid fa-phone"></i><b>3</b></span>
+        <h3>They call, and someone answers</h3>
+        <p>Even mid-clean, the AI Voice Agent picks up, gets the details and books the estimate. AI usage is unlimited with no per-minute AI fees; your phone number and calling minutes are billed separately.</p>
+        <div class="c360-ind-clean-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+      </div>
+      <div class="c360-ind-clean-step">
+        <span class="c360-ind-clean-step-icon" aria-hidden="true"><i class="fa-solid fa-repeat"></i><b>4</b></span>
+        <h3>They come back, and bring friends</h3>
+        <p>Every client is asked for a review, and Meta Ads keep your recurring service and seasonal deep cleans in front of homeowners nearby.</p>
+        <div class="c360-ind-clean-pills"><a href="/meta-ads">Meta Ads</a></div>
+      </div>
+    </div>
+
+    <div class="c360-ind-clean-proof">
+      <div>
+        <div class="c360-ind-clean-mock">
+          <div class="c360-ind-clean-serp" role="img" aria-label="Example Google search for house cleaning near me, with a Local Services Ad showing a 4.9 rating and the Google Verified badge">
+            <div class="c360-ind-clean-serp-bar"><i class="fa-solid fa-magnifying-glass"></i> house cleaning near me</div>
+            <div class="c360-ind-clean-serp-tag">Sponsored</div>
+            <div class="c360-ind-clean-serp-ad">
+              <div class="c360-ind-clean-serp-name">Your Company Cleaning</div>
+              <div class="c360-ind-clean-serp-meta"><b style="color:#202124">4.9</b><span class="c360-ind-clean-serp-stars">★★★★★</span><span>(264)</span></div>
+              <div class="c360-ind-clean-serp-meta" style="margin-top:4px"><span class="c360-ind-clean-serp-verified"><i class="fa-solid fa-circle-check"></i> Google Verified</span><span>Serves your area</span></div>
+            </div>
+          </div>
+        </div>
+        <span class="c360-ind-clean-example">Example listing for illustration</span>
+      </div>
+      <div>
+        <div class="c360-ind-clean-mock">
+          <div class="c360-ind-clean-call" role="img" aria-label="Example call answered by the AI Voice Agent: a homeowner books a biweekly cleaning estimate">
+            <div class="c360-ind-clean-call-head"><i class="fa-solid fa-phone-volume" aria-hidden="true"></i><div><strong>Call answered by AI Voice Agent</strong><span>Your team was mid-clean</span></div></div>
+            <p class="is-ai">Thanks for calling! How many bedrooms and bathrooms is the home?</p>
+            <p class="is-caller">Three and two. We'd like every other week.</p>
+            <div class="c360-ind-clean-call-done"><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Estimate booked for Thursday</div>
+          </div>
+        </div>
+        <span class="c360-ind-clean-example">Example call for illustration</span>
+      </div>
+      <div>
+        <div class="c360-ind-clean-mock">
+          <div class="c360-ind-clean-meta" role="img" aria-label="Example Facebook ad for spring deep cleaning with a Book now button">
+            <div class="c360-ind-clean-meta-head"><span class="c360-ind-clean-meta-av" aria-hidden="true"><i class="fa-solid fa-broom"></i></span><div><strong>Your Company Cleaning</strong><span>Sponsored</span></div></div>
+            <p class="c360-ind-clean-meta-text">Spring deep clean spots are filling up. Insured, background-checked team, trusted by your neighbors.</p>
+            <div class="c360-ind-clean-meta-img" aria-hidden="true"><i class="fa-solid fa-spray-can-sparkles"></i><i class="fa-solid fa-house"></i></div>
+            <div class="c360-ind-clean-meta-cta"><span>Home cleaning, weekly or one-time</span><em>Book now</em></div>
+          </div>
+        </div>
+        <span class="c360-ind-clean-example">Example ad for illustration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (rating card + widget) ══════════
+     Same live Google reviews widget as /seo-services (location 1pBjHBEIsKGbwvAUTY9u). -->
+<section class="c360-ind-clean-section" style="padding-top:0">
+  <div class="c360-ind-clean-wrap c360-ind-clean-reviews">
+    <div class="c360-ind-clean-rating">
+      <span class="c360-ind-clean-kicker">Our own reviews</span>
+      <div class="c360-ind-clean-rating-n">5.0</div>
+      <div class="c360-ind-clean-rating-stars" aria-hidden="true">★★★★★</div>
+      <p>From 147 five-star Google reviews. We ask every client for one, just like we'll help you do.</p>
+      <ul>
+        <li><i class="fa-solid fa-award" aria-hidden="true"></i> Certified Google Partner</li>
+        <li><i class="fa-solid fa-user-check" aria-hidden="true"></i> Google Product Expert on the team</li>
+        <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Tucson-based since 2018</li>
+      </ul>
+    </div>
+    <div>
+      <div class="c360-ind-clean-reviews-head"><h2 class="c360-ind-clean-h2">What our clients say</h2></div>
+      <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+      <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+        src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+        frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (mist panel) ══════════ -->
+<section class="c360-ind-clean-section" style="padding-top:0">
+  <div class="c360-ind-clean-wrap">
+    <div class="c360-ind-clean-cta">
+      <h2>Let's fill your schedule with regulars</h2>
+      <p>Book a free strategy call. We'll look at how homeowners in your area find cleaning services today and show you where to start.</p>
+      <div class="c360-ind-clean-ctas">
+        <a href="/schedule-demo" class="c360-ind-clean-btn c360-ind-clean-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-clean-btn c360-ind-clean-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (check markers) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-clean-section" id="clean-faq" style="background:var(--clean-mist)">
+  <div class="c360-ind-clean-wrap">
+    <div class="c360-ind-clean-head">
+      <h2 class="c360-ind-clean-h2">Cleaning business marketing questions</h2>
+    </div>
+    <div class="c360-ind-clean-faq-list">
+
+      <details class="c360-ind-clean-faq-item">
+        <summary class="c360-ind-clean-faq-q">How do cleaning companies get more clients?</summary>
+        <div class="c360-ind-clean-faq-a"><p>Show up when homeowners search, prove you can be trusted in their home, and answer every inquiry quickly. For most cleaning companies that starts with Local Services Ads and a Google Business Profile with steady new reviews. Meta Ads for recurring and seasonal cleans and an AI Voice Agent for calls you can't take come next.</p></div>
+      </details>
+
+      <details class="c360-ind-clean-faq-item">
+        <summary class="c360-ind-clean-faq-q">Can cleaning services use Google Local Services Ads?</summary>
+        <div class="c360-ind-clean-faq-a"><p>Yes. Cleaning services is one of the categories Google offers Local Services Ads for. You pay per lead instead of per click, and the ad shows your rating and Google Verified badge. Lead volume depends on your reviews, budget, service area and how quickly you respond, so we pair it with Google Business Profile Management. We'll confirm eligibility for your area on the strategy call.</p></div>
+      </details>
+
+      <details class="c360-ind-clean-faq-item">
+        <summary class="c360-ind-clean-faq-q">What does Google Verified mean for a cleaning company?</summary>
+        <div class="c360-ind-clean-faq-a"><p>It's the badge on Local Services Ads showing that Google has checked your business, which can include insurance and background checks depending on your state. For a service that works inside people's homes, that badge does a lot of the trust-building for you. It replaced the Google Guaranteed and Google Screened badges in October 2025, and we walk you through verification during setup.</p></div>
+      </details>
+
+      <details class="c360-ind-clean-faq-item">
+        <summary class="c360-ind-clean-faq-q">How do I turn one-time cleans into recurring clients?</summary>
+        <div class="c360-ind-clean-faq-a"><p>Make the first clean the start of a relationship. Ask every client for a review, keep your Google Business Profile current, and promote recurring service to homeowners nearby with Meta Ads. Homeowners who see your reviews and your name regularly are much more comfortable committing to weekly or biweekly service.</p></div>
+      </details>
+
+      <details class="c360-ind-clean-faq-item">
+        <summary class="c360-ind-clean-faq-q">How can I answer calls while my team is cleaning?</summary>
+        <div class="c360-ind-clean-faq-a"><p>The AI Voice Agent answers 24/7, asks about the home and the service the caller needs, captures their details, and books the estimate or routes the call to you, based on how you want calls handled. AI usage is unlimited with no per-minute AI fees. Your phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-clean-faq-item">
+        <summary class="c360-ind-clean-faq-q">How do I fill slow weeks on the schedule?</summary>
+        <div class="c360-ind-clean-faq-a"><p>Promote the cleans people plan around: move-in and move-out cleans, spring deep cleans and pre-holiday cleans. Meta Ads can put those offers in front of homeowners in your service area right when they're thinking about them.</p></div>
+      </details>
+
+      <details class="c360-ind-clean-faq-item">
+        <summary class="c360-ind-clean-faq-q">Can you guarantee a number of new clients?</summary>
+        <div class="c360-ind-clean-faq-a"><p>No. No one can promise rankings, lead counts or bookings. For Google Business Profile Management and advertising campaigns, including Local Services Ads and Meta Ads, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-clean-faq-item">
+        <summary class="c360-ind-clean-faq-q">How much does cleaning business marketing cost?</summary>
+        <div class="c360-ind-clean-faq-a"><p>Each service's price is on its own page, including <a href="/local-service-ads">Local Service Ads</a>, <a href="/gbp-management">Google Business Profile Management</a> and the <a href="/ai-agents">AI Voice Agent</a>. Meta Ads are planned with you on a strategy call, and ad spend is billed directly by Meta. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>

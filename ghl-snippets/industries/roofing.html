@@ -1,0 +1,616 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Roofing
+     c360-ind-roof-v2.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/roofing
+          (page name "Roofing Marketing"). Meta data: ghl-meta/industries/roofing.md.
+          Schema: schema/pages/industries/roofing.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-roof-  (vars --roof-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). The layout
+     is its own, so it doesn't repeat HVAC, Plumbing or General Contractors.
+     Theme: the storm cycle.
+       - Hero: centered text over a full-bleed photo, credentials in one
+         centered row.
+       - Reality: photo bleeds to the left edge, pain points in a 2x2 grid
+         on a light panel (rows aligned with subgrid).
+       - Plan: sticky intro on the left; outcome rows on the right, grouped
+         "Start here" / "Add as you grow", pills aligned right.
+       - Journey: one timeline rail ("The morning after" → "When it's time
+         to replace") with a card per stop, each card holding copy and a
+         code-built visual (Local Services Ad, Google Business Profile,
+         Geo-Fencing area map, Google PPC ad).
+       - Reviews on navy with the widget in a white panel; green CTA band;
+         FAQ as a two-column grid of cards.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       roof-hero        16:9, 2000px+  (hero background, centered text on top)
+       roof-on-the-job  4:3, 1200px+   (reality section, left half)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v2.0 (2026-11-12) — new layout (Jared: make roofing look different
+       from HVAC and Plumbing, same font and page dimensions). Copy and
+       plan carried over from v1.0. FAQ: one question added (AI Voice Agent
+       during a storm-week rush) so the two-column grid ends even.
+     v1.0 (2026-11-12) — first build on the HVAC v1.3 system.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-roof{
+  --roof-navy:#122078;--roof-navy-dark:#0d1654;--roof-navy-deeper:#0a1040;
+  --roof-green:#127825;--roof-green-hover:#0e5e1d;
+  --roof-mist:#F4F7FC;--roof-line:#E7EBF3;--roof-blue-light:#E6F1FB;
+  --roof-text:#0F1F5E;--roof-muted:#5F5E5A;
+  --roof-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--roof-font);color:var(--roof-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;
+  overflow-x:clip; /* clip, not hidden, so the sticky plan intro works */
+}
+.c360-ind-roof *,.c360-ind-roof *::before,.c360-ind-roof *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-roof :where(h1,h2,h3,h4,p,ul,ol,li){margin:0;padding:0;font-family:var(--roof-font)}
+.c360-ind-roof :where(ul,ol){list-style:none}
+.c360-ind-roof :where(a){color:var(--roof-navy)}
+.c360-ind-roof a:focus-visible,.c360-ind-roof summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:4px}
+.c360-ind-roof-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-roof-section{padding:104px 0}
+.c360-ind-roof-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--roof-text);margin-bottom:16px}
+.c360-ind-roof-lead{font-size:18px;color:var(--roof-muted);max-width:760px;line-height:1.65}
+.c360-ind-roof-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--roof-green);margin-bottom:14px}
+.c360-ind-roof-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-roof-head .c360-ind-roof-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-roof-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--roof-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-roof-btn-primary{background:var(--roof-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.38)}
+.c360-ind-roof-btn-primary:hover{background:var(--roof-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-roof-btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.6);padding:14px 24px}
+.c360-ind-roof-btn-ghost:hover{border-color:#fff;color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-roof-btn-white{background:#fff;color:var(--roof-green);box-shadow:0 4px 20px rgba(0,0,0,0.15)}
+.c360-ind-roof-btn-white:hover{background:#F1F8EC;color:var(--roof-green-hover);transform:translateY(-2px);text-decoration:none}
+.c360-ind-roof a.c360-ind-roof-btn-primary,.c360-ind-roof a.c360-ind-roof-btn-ghost{color:#fff}
+.c360-ind-roof a.c360-ind-roof-btn-white{color:var(--roof-green)}
+.c360-ind-roof-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-roof-pills{display:flex;flex-wrap:wrap;gap:10px}
+.c360-ind-roof-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--roof-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;white-space:nowrap;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-roof-pills a:hover{background:var(--roof-navy);border-color:var(--roof-navy);color:#fff;text-decoration:none}
+
+/* ══════════ HERO (centered over full-bleed photo) ══════════ */
+.c360-ind-roof-hero{position:relative;background:linear-gradient(180deg,#1b2a72 0%,var(--roof-navy-deeper) 100%);color:#fff;overflow:hidden;text-align:center}
+.c360-ind-roof-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.c360-ind-roof-hero-img[src=""],.c360-ind-roof-hero-img:not([src]){visibility:hidden}
+.c360-ind-roof-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,64,0.55) 0%,rgba(10,16,64,0.78) 45%,rgba(10,16,64,0.95) 100%)}
+.c360-ind-roof-hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:96px 24px 72px}
+.c360-ind-roof-crumbs ol{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-roof-crumbs li{color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:8px}
+.c360-ind-roof-crumbs li+li::before{content:"\203A";color:rgba(255,255,255,0.45)}
+.c360-ind-roof-crumbs a{color:rgba(255,255,255,0.85);text-decoration:none}
+.c360-ind-roof-crumbs a:hover{color:#fff;text-decoration:underline}
+.c360-ind-roof-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:#fff;margin:0 auto 22px;max-width:980px}
+.c360-ind-roof-hero-sub{font-size:18px;line-height:1.65;color:rgba(255,255,255,0.86);max-width:720px;margin:0 auto 34px}
+.c360-ind-roof-hero .c360-ind-roof-ctas{justify-content:center}
+/* Credentials in one centered row. Badge 88px with 44px clear space
+   (same rule as /local-service-ads v1.6). */
+.c360-ind-roof-creds{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:22px;column-gap:0}
+.c360-ind-roof-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear)}
+.c360-ind-roof-partner img{display:block;height:var(--badge-h);width:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,0.32));border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-roof-partner,.c360-ind-roof-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-roof-creds-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px}
+.c360-ind-roof-creds-list li{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:rgba(255,255,255,0.82)}
+.c360-ind-roof-creds-list i{color:#2ecc52;font-size:12px}
+.c360-ind-roof-stars{color:#FBBC04;letter-spacing:1px}
+
+/* ══════════ REALITY (half-bleed photo + 2x2 panel) ══════════ */
+.c360-ind-roof-reality{display:grid;grid-template-columns:1fr 1fr;background:var(--roof-mist)}
+.c360-ind-roof-reality-media{position:relative;min-height:560px;background:repeating-linear-gradient(135deg,#E3E8F1 0 16px,#EBEFF6 16px 32px)}
+.c360-ind-roof-reality-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-roof-reality-media img[src=""],.c360-ind-roof-reality-media img:not([src]){visibility:hidden}
+.c360-ind-roof-media-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B0C4;font-size:52px;pointer-events:none}
+.c360-ind-roof-reality-media img[src]:not([src=""])+.c360-ind-roof-media-fallback{display:none}
+.c360-ind-roof-reality-copy{padding:96px max(24px,calc((100vw - 1680px)/2 + 24px)) 96px 72px}
+.c360-ind-roof-pains{display:grid;grid-template-columns:1fr 1fr;gap:0 36px;margin-top:44px}
+/* Each pain spans three parent rows (label, title, text) via subgrid. */
+.c360-ind-roof-pain{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:8px;padding:24px 0 32px;border-top:2px solid var(--roof-navy)}
+@supports not (grid-template-rows:subgrid){.c360-ind-roof-pain h3{min-height:2.7em}}
+.c360-ind-roof-pain-label{font-size:13px;font-weight:700;color:var(--roof-green)}
+.c360-ind-roof-pain h3{font-size:20px;font-weight:700;line-height:1.35;color:var(--roof-text);align-self:start}
+.c360-ind-roof-pain p{font-size:16px;color:var(--roof-muted);line-height:1.65}
+
+/* ══════════ PLAN (sticky intro + outcome rows) ══════════ */
+.c360-ind-roof-plan{display:grid;grid-template-columns:0.8fr 1.2fr;gap:88px;align-items:start}
+.c360-ind-roof-plan-intro{position:sticky;top:110px}
+.c360-ind-roof-plan-intro .c360-ind-roof-lead{margin-bottom:24px}
+.c360-ind-roof-plan-note{font-size:15px;color:var(--roof-muted);line-height:1.65;margin-bottom:28px;max-width:560px}
+.c360-ind-roof-plan-note a{font-weight:600}
+.c360-ind-roof-group+.c360-ind-roof-group{margin-top:48px}
+.c360-ind-roof-group-head{padding-bottom:14px;border-bottom:2px solid var(--roof-text);margin-bottom:6px}
+.c360-ind-roof-group-head h3{font-size:24px;font-weight:800;letter-spacing:-0.01em;color:var(--roof-text);margin-bottom:4px}
+.c360-ind-roof-group-head p{font-size:15.5px;color:var(--roof-muted)}
+.c360-ind-roof-row{display:grid;grid-template-columns:1fr auto;gap:12px 40px;align-items:center;padding:26px 0 26px 22px;border-bottom:1px solid var(--roof-line);position:relative}
+.c360-ind-roof-row::before{content:"";position:absolute;left:0;top:26px;bottom:26px;width:4px;border-radius:4px;background:#C9D2E3}
+.c360-ind-roof-group.is-core .c360-ind-roof-row::before{background:var(--roof-green)}
+.c360-ind-roof-row h4{font-size:20px;font-weight:700;line-height:1.3;color:var(--roof-text);margin-bottom:6px}
+.c360-ind-roof-row p{font-size:16px;color:var(--roof-muted);line-height:1.6;max-width:640px}
+.c360-ind-roof-row .c360-ind-roof-pills{justify-content:flex-end}
+.c360-ind-roof-also{margin-top:36px;padding:22px 24px;border-radius:12px;background:var(--roof-mist);font-size:15.5px;color:var(--roof-muted);line-height:1.65}
+.c360-ind-roof-also a{font-weight:600}
+
+/* ══════════ JOURNEY (timeline rail + cards) ══════════ */
+.c360-ind-roof-journey{background:var(--roof-mist)}
+.c360-ind-roof-rail{position:relative;max-width:1400px;margin:0 auto;padding-left:220px}
+.c360-ind-roof-rail::before{content:"";position:absolute;left:180px;top:8px;bottom:8px;width:3px;background:linear-gradient(180deg,var(--roof-navy),#9DB3DC)}
+.c360-ind-roof-stop{position:relative;margin-bottom:32px}
+.c360-ind-roof-stop:last-child{margin-bottom:0}
+.c360-ind-roof-stop-when{position:absolute;left:-220px;top:30px;width:160px;text-align:right;font-size:15px;font-weight:700;line-height:1.35;color:var(--roof-text)}
+.c360-ind-roof-stop-when span{display:block;font-size:13px;font-weight:500;color:var(--roof-muted)}
+.c360-ind-roof-stop::before{content:"";position:absolute;left:-49px;top:34px;width:18px;height:18px;border-radius:50%;background:#fff;border:4px solid var(--roof-green)}
+.c360-ind-roof-stop-card{display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;background:#fff;border:1px solid var(--roof-line);border-radius:20px;padding:40px;box-shadow:0 14px 40px rgba(15,31,94,0.06)}
+.c360-ind-roof-stop-card h3{font-size:clamp(24px,2.6vw,32px);font-weight:800;line-height:1.2;letter-spacing:-0.015em;color:var(--roof-text);margin-bottom:12px}
+.c360-ind-roof-stop-copy p{font-size:17px;color:var(--roof-muted);line-height:1.7}
+.c360-ind-roof-stop-copy p+p{margin-top:12px}
+.c360-ind-roof-stop-copy .c360-ind-roof-pills{margin-top:22px}
+.c360-ind-roof-example{display:block;font-size:11.5px;color:var(--roof-muted);text-align:center;margin-top:10px}
+.c360-ind-roof-mock{width:100%;max-width:440px;margin:0 auto}
+
+/* Mock: Local Services Ad */
+.c360-ind-roof-serp{background:#fff;border:1px solid var(--roof-line);border-radius:14px;padding:18px;box-shadow:0 12px 32px rgba(15,31,94,0.08);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-roof-serp-bar{display:flex;align-items:center;gap:10px;border:1px solid #DFE1E5;border-radius:100px;padding:9px 16px;font-size:14px;color:#202124;margin-bottom:14px}
+.c360-ind-roof-serp-bar i{color:#9AA0A6}
+.c360-ind-roof-serp-tag{font-size:12px;font-weight:700;color:#202124;margin-bottom:8px}
+.c360-ind-roof-serp-ad{border:1px solid #E8EAED;border-radius:12px;padding:13px 15px}
+.c360-ind-roof-serp-name{font-size:15px;font-weight:700;color:#1A0DAB;margin-bottom:4px}
+.c360-ind-roof-serp-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:13px;color:#4D5156}
+.c360-ind-roof-serp-rating{color:#202124;font-weight:700}
+.c360-ind-roof-serp-stars{color:#FBBC04;letter-spacing:1px}
+.c360-ind-roof-serp-verified{display:inline-flex;align-items:center;gap:5px;color:#137333;font-weight:700}
+.c360-ind-roof-serp-actions{display:flex;gap:8px;margin-top:12px}
+.c360-ind-roof-serp-actions span{flex:1;text-align:center;border:1px solid #DADCE0;border-radius:100px;padding:7px 0;font-size:13px;font-weight:700;color:#1A73E8}
+.c360-ind-roof-serp-actions span:first-child{background:#1A73E8;color:#fff;border-color:#1A73E8}
+
+/* Mock: Google Business Profile with review */
+.c360-ind-roof-gbp{background:#fff;border:1px solid var(--roof-line);border-radius:14px;overflow:hidden;box-shadow:0 12px 32px rgba(15,31,94,0.08);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-roof-gbp-photos{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:1fr 1fr;gap:3px;height:170px}
+.c360-ind-roof-gbp-photos span{display:flex;align-items:flex-end;padding:8px 10px;font-size:11px;font-weight:700;color:#fff}
+.c360-ind-roof-gbp-photos span:first-child{grid-row:span 2;background:repeating-linear-gradient(170deg,#4A5875 0 10px,#3D4A66 10px 20px)}
+.c360-ind-roof-gbp-photos span:nth-child(2){background:repeating-linear-gradient(170deg,#7A6656 0 9px,#6A5848 9px 18px)}
+.c360-ind-roof-gbp-photos span:nth-child(3){background:repeating-linear-gradient(170deg,#3F5170 0 9px,#33435F 9px 18px)}
+.c360-ind-roof-gbp-body{padding:14px 16px 16px}
+.c360-ind-roof-gbp-name{font-size:17px;color:#202124;margin-bottom:3px}
+.c360-ind-roof-gbp-meta{font-size:13px;color:#4D5156;display:flex;flex-wrap:wrap;gap:4px 8px;align-items:center}
+.c360-ind-roof-gbp-review{margin-top:12px;padding-top:12px;border-top:1px solid #E8EAED;font-size:13.5px;color:#3C4043;line-height:1.5}
+.c360-ind-roof-gbp-review b{display:block;font-size:13px;color:#202124;margin-bottom:2px}
+
+/* Mock: Geo-Fencing area map */
+.c360-ind-roof-geo{background:#fff;border:1px solid var(--roof-line);border-radius:14px;overflow:hidden;box-shadow:0 12px 32px rgba(15,31,94,0.08)}
+.c360-ind-roof-geo-map{position:relative;height:210px;background-color:#E8EEF3;background-image:linear-gradient(90deg,rgba(255,255,255,0.95) 3px,transparent 3px),linear-gradient(0deg,rgba(255,255,255,0.95) 3px,transparent 3px);background-size:48px 48px}
+.c360-ind-roof-geo-zone{position:absolute;left:18%;top:16%;width:58%;height:66%;border:2.5px dashed var(--roof-green);background:rgba(18,120,37,0.12);border-radius:38% 52% 44% 48%}
+.c360-ind-roof-geo-zone span{position:absolute;left:12px;top:10px;font-size:12px;font-weight:700;color:var(--roof-green);background:#fff;border-radius:100px;padding:3px 10px}
+.c360-ind-roof-geo-home{position:absolute;width:26px;height:26px;border-radius:50%;background:var(--roof-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;box-shadow:0 0 0 4px rgba(18,32,120,0.15)}
+.c360-ind-roof-geo-foot{display:grid;grid-template-columns:1fr 1fr;border-top:1px solid var(--roof-line)}
+.c360-ind-roof-geo-foot div{display:flex;align-items:center;gap:10px;padding:13px 16px;font-size:13.5px;color:var(--roof-text);font-weight:600}
+.c360-ind-roof-geo-foot div+div{border-left:1px solid var(--roof-line)}
+.c360-ind-roof-geo-foot i{color:var(--roof-green)}
+
+/* Mock: Google PPC ad */
+.c360-ind-roof-ppc{background:#fff;border:1px solid var(--roof-line);border-radius:14px;padding:20px;box-shadow:0 12px 32px rgba(15,31,94,0.08);font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-roof-ppc-site{display:flex;align-items:center;gap:10px;margin:14px 0 6px}
+.c360-ind-roof-ppc-fav{width:28px;height:28px;border-radius:50%;background:var(--roof-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:12px}
+.c360-ind-roof-ppc-site strong{display:block;font-size:14px;color:#202124;font-weight:400}
+.c360-ind-roof-ppc-site span{font-size:12px;color:#4D5156}
+.c360-ind-roof-ppc-title{font-size:19px;color:#1A0DAB;line-height:1.3;margin-bottom:6px}
+.c360-ind-roof-ppc-desc{font-size:14px;color:#4D5156;line-height:1.55}
+.c360-ind-roof-ppc-links{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:10px;font-size:14px;color:#1A0DAB}
+
+/* ══════════ REVIEWS (navy, widget in a white panel) ══════════ */
+.c360-ind-roof-reviews{background:linear-gradient(180deg,var(--roof-navy) 0%,var(--roof-navy-dark) 100%);color:#fff}
+.c360-ind-roof-reviews .c360-ind-roof-h2{color:#fff}
+.c360-ind-roof-reviews .c360-ind-roof-lead{color:rgba(255,255,255,0.8)}
+.c360-ind-roof-reviews .c360-ind-roof-kicker{color:#7ddc80}
+.c360-ind-roof-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin:-24px auto 44px}
+.c360-ind-roof-badges li{display:inline-flex;align-items:center;gap:10px;padding:11px 20px;border-radius:100px;border:1.5px solid rgba(255,255,255,0.3);font-size:15px;font-weight:600;color:#fff}
+.c360-ind-roof-badges i{color:#7ddc80}
+.c360-ind-roof-review-panel{background:#fff;border-radius:20px;padding:28px;box-shadow:0 24px 60px rgba(0,0,0,0.25)}
+
+/* ══════════ CTA (green band) ══════════ */
+.c360-ind-roof-final{background:var(--roof-green);color:#fff;padding:80px 0}
+.c360-ind-roof-final-inner{display:flex;align-items:center;justify-content:space-between;gap:40px;flex-wrap:wrap}
+.c360-ind-roof-final h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:12px}
+.c360-ind-roof-final p{font-size:18px;color:rgba(255,255,255,0.88);max-width:680px;line-height:1.65}
+.c360-ind-roof-final .c360-ind-roof-ctas{flex-shrink:0}
+
+/* ══════════ FAQ (two-column card grid) ══════════ */
+.c360-ind-roof-faq-list{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start;max-width:1400px;margin:0 auto}
+.c360-ind-roof-faq-item{background:#fff;border:1px solid var(--roof-line);border-radius:14px;box-shadow:0 8px 24px rgba(15,31,94,0.05)}
+.c360-ind-roof-faq-item[open]{border-color:#B9C7E2}
+.c360-ind-roof-faq-q{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 24px;font-size:17px;font-weight:600;color:var(--roof-text);cursor:pointer;list-style:none}
+.c360-ind-roof-faq-q::-webkit-details-marker{display:none}
+.c360-ind-roof-faq-q::after{content:"+";font-size:24px;font-weight:400;color:var(--roof-green);line-height:1;flex-shrink:0;transition:transform .2s}
+.c360-ind-roof-faq-item[open] .c360-ind-roof-faq-q::after{transform:rotate(45deg)}
+.c360-ind-roof-faq-a{padding:0 24px 24px;font-size:16px;color:var(--roof-muted);line-height:1.7}
+.c360-ind-roof-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1100px){
+  .c360-ind-roof-plan{grid-template-columns:1fr;gap:44px}
+  .c360-ind-roof-plan-intro{position:static}
+  .c360-ind-roof-stop-card{grid-template-columns:1fr;gap:32px}
+}
+@media (max-width:900px){
+  .c360-ind-roof-section{padding:76px 0}
+  .c360-ind-roof-reality{grid-template-columns:1fr}
+  .c360-ind-roof-reality-media{min-height:0;aspect-ratio:4/3}
+  .c360-ind-roof-reality-copy{padding:56px 24px}
+  .c360-ind-roof-rail{padding-left:36px}
+  .c360-ind-roof-rail::before{left:8px}
+  .c360-ind-roof-stop::before{left:-36px}
+  .c360-ind-roof-stop-when{position:static;width:auto;text-align:left;margin-bottom:12px}
+  .c360-ind-roof-stop::before{top:4px}
+  .c360-ind-roof-faq-list{grid-template-columns:1fr}
+  .c360-ind-roof-row{grid-template-columns:1fr}
+  .c360-ind-roof-row .c360-ind-roof-pills{justify-content:flex-start}
+}
+@media (max-width:640px){
+  .c360-ind-roof-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-roof-hero-inner{padding:60px 18px 48px}
+  .c360-ind-roof-reality-copy{padding:48px 18px}
+  .c360-ind-roof-pains{grid-template-columns:1fr}
+  .c360-ind-roof-stop-card{padding:26px 20px}
+  .c360-ind-roof-review-panel{padding:16px}
+  .c360-ind-roof-btn{width:100%}
+  .c360-ind-roof-final .c360-ind-roof-ctas{width:100%}
+  .c360-ind-roof-partner{--badge-h:64px;--badge-clear:28px}
+  .c360-ind-roof-geo-foot{grid-template-columns:1fr}
+  .c360-ind-roof-geo-foot div+div{border-left:0;border-top:1px solid var(--roof-line)}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-roof *,.c360-ind-roof *::before,.c360-ind-roof *::after{transition:none !important;animation:none !important}
+  .c360-ind-roof-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-roof">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="c360-ind-roof-hero">
+  <!-- IMAGE PLACEHOLDER: roof-hero — roofer installing shingles on a pitched residential roof under a clearing sky, subject toward the center, 16:9 -->
+  <!-- Hero image loads eagerly (it's the largest thing on screen); every other image is lazy. -->
+  <img src="" data-c360-placeholder="roof-hero" class="c360-ind-roof-hero-img" alt="Roofer installing new shingles on a pitched roof of a family home" fetchpriority="high">
+
+  <div class="c360-ind-roof-hero-inner">
+    <nav class="c360-ind-roof-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/industries">Industries</a></li>
+        <li aria-current="page">Roofing</li>
+      </ol>
+    </nav>
+
+    <h1>Roofing marketing that puts you first in line after the storm</h1>
+    <p class="c360-ind-roof-hero-sub">A homeowner with water coming through the ceiling picks a roofer within minutes, and a homeowner planning a replacement takes weeks. We help your roofing company win both: the urgent call today and the full roof next month.</p>
+
+    <div class="c360-ind-roof-ctas">
+      <a href="/schedule-demo" class="c360-ind-roof-btn c360-ind-roof-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+      <a href="tel:+18665276205" class="c360-ind-roof-btn c360-ind-roof-btn-ghost"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+    </div>
+
+    <div class="c360-ind-roof-creds">
+      <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-roof-partner">
+        <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+      </a>
+      <ul class="c360-ind-roof-creds-list">
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner with a Google Product Expert</li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-roof-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Helping roofing companies nationwide since 2018</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE ROOFING REALITY ══════════ -->
+<section class="c360-ind-roof-reality">
+  <div class="c360-ind-roof-reality-media">
+    <!-- IMAGE PLACEHOLDER: roof-on-the-job — roof inspector showing photos on a tablet to a homeowner in their driveway, 4:3 (shown filling the left half) -->
+    <img src="" data-c360-placeholder="roof-on-the-job" alt="Roofing inspector showing roof damage photos on a tablet to a homeowner" loading="lazy">
+    <div class="c360-ind-roof-media-fallback" aria-hidden="true"><i class="fa-solid fa-house-chimney"></i></div>
+  </div>
+  <div class="c360-ind-roof-reality-copy">
+    <span class="c360-ind-roof-kicker"><i class="fa-solid fa-cloud-bolt" aria-hidden="true"></i> Weather and trust</span>
+    <h2 class="c360-ind-roof-h2">The roofing reality</h2>
+    <p class="c360-ind-roof-lead">One hailstorm can fill a month, and one bad experience with a door knocker makes every homeowner on the street cautious.</p>
+    <div class="c360-ind-roof-pains">
+      <div class="c360-ind-roof-pain">
+        <span class="c360-ind-roof-pain-label">Feast or famine</span>
+        <h3>Storms bring a flood of calls, then silence</h3>
+        <p>After hail or high winds, everyone needs an inspection at once. Weeks later the phone goes quiet, and the crew still needs work.</p>
+      </div>
+      <div class="c360-ind-roof-pain">
+        <span class="c360-ind-roof-pain-label">Competition</span>
+        <h3>Out-of-town crews knock first</h3>
+        <p>Storm chasers hit the neighborhood before you can. Homeowners get wary and look for a local roofer they can check out online.</p>
+      </div>
+      <div class="c360-ind-roof-pain">
+        <span class="c360-ind-roof-pain-label">Trust</span>
+        <h3>Nobody climbs on the roof without a background check</h3>
+        <p>Homeowners read reviews, look at photos of past jobs and check your license before they let anyone up a ladder.</p>
+      </div>
+      <div class="c360-ind-roof-pain">
+        <span class="c360-ind-roof-pain-label">Long decisions</span>
+        <h3>A new roof is rarely sold on the first visit</h3>
+        <p>Replacements are big decisions. Homeowners get quotes, talk to insurance and take their time, and they forget the roofer who stopped following up.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN ══════════
+     Outcome first. Draft per the worksheet; confirm with Jared. -->
+<section class="c360-ind-roof-section" id="roof-plan">
+  <div class="c360-ind-roof-wrap c360-ind-roof-plan">
+    <div class="c360-ind-roof-plan-intro">
+      <span class="c360-ind-roof-kicker">Your recommended plan</span>
+      <h2 class="c360-ind-roof-h2">A roofing marketing plan built around how homeowners hire</h2>
+      <p class="c360-ind-roof-lead">Urgently after a storm, carefully for a replacement. The plan covers both, starting with the two things every roofer needs on Google.</p>
+      <p class="c360-ind-roof-plan-note">Local Services Ads and Google Business Profile Management come together as our <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>. Every service's price is on its own page.</p>
+      <a href="/schedule-demo" class="c360-ind-roof-btn c360-ind-roof-btn-primary">Walk through this plan with us</a>
+    </div>
+
+    <div>
+      <div class="c360-ind-roof-group is-core">
+        <div class="c360-ind-roof-group-head"><h3>Start here</h3><p>Set up together, so they work together.</p></div>
+        <div class="c360-ind-roof-row">
+          <div>
+            <h4>Be the roofer homeowners see first</h4>
+            <p>Local Services Ads put your company at the very top of "roof repair near me" searches with the Google Verified badge, and you pay per lead, not per click.</p>
+          </div>
+          <div class="c360-ind-roof-pills"><a href="/local-service-ads">Local Service Ads</a></div>
+        </div>
+        <div class="c360-ind-roof-row">
+          <div>
+            <h4>Look like the safe choice, not another storm chaser</h4>
+            <p>A Google Business Profile with photos of finished roofs, real hours and a steady flow of fresh reviews from every customer, which also helps your Local Services Ads rank.</p>
+          </div>
+          <div class="c360-ind-roof-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+        </div>
+      </div>
+
+      <div class="c360-ind-roof-group">
+        <div class="c360-ind-roof-group-head"><h3>Add as you grow</h3><p>More replacements, fewer gaps between storms.</p></div>
+        <div class="c360-ind-roof-row">
+          <div>
+            <h4>Book more full replacements</h4>
+            <p>Search ads aimed at homeowners looking for a new roof or a replacement estimate, the highest-value jobs you do.</p>
+          </div>
+          <div class="c360-ind-roof-pills"><a href="/google-ppc">Google PPC</a></div>
+        </div>
+        <div class="c360-ind-roof-row">
+          <div>
+            <h4>Stay in front of the streets you're working</h4>
+            <p>Ads on phones and connected TVs in the neighborhoods you choose, like the area a storm just hit or the block where your crew is on a job.</p>
+          </div>
+          <div class="c360-ind-roof-pills"><a href="/geo-fencing">Geo-Fencing</a></div>
+        </div>
+        <div class="c360-ind-roof-row">
+          <div>
+            <h4>Stay top of mind while they decide</h4>
+            <p>Facebook and Instagram ads with your before-and-after projects keep your name in front of homeowners while they weigh quotes.</p>
+          </div>
+          <div class="c360-ind-roof-pills"><a href="/meta-ads">Meta Ads</a></div>
+        </div>
+      </div>
+
+      <p class="c360-ind-roof-also">Also available for roofing companies: the <a href="/ai-agents">AI Voice Agent</a> to answer every call during a storm-week rush, and <a href="/seo-services">SEO Services</a> to build steady traffic from Google and AI search. We'll help you decide what fits your goals.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (timeline rail) ══════════ -->
+<section class="c360-ind-roof-section c360-ind-roof-journey">
+  <div class="c360-ind-roof-wrap">
+    <div class="c360-ind-roof-head">
+      <span class="c360-ind-roof-kicker">One storm, start to finish</span>
+      <h2 class="c360-ind-roof-h2">From a leak in the ceiling to a signed contract</h2>
+      <p class="c360-ind-roof-lead">Where your company needs to show up, from the morning after the storm to the day the homeowner signs for a new roof.</p>
+    </div>
+
+    <div class="c360-ind-roof-rail">
+      <div class="c360-ind-roof-stop">
+        <p class="c360-ind-roof-stop-when">The morning after<span>Get found</span></p>
+        <div class="c360-ind-roof-stop-card">
+          <div class="c360-ind-roof-stop-copy">
+            <h3>Be the first roofer they see</h3>
+            <p>The first thing a homeowner does after spotting damage is search on their phone. Local Services Ads put your company above everything else, with your rating and a Google Verified badge that shows Google has checked your license, insurance and background.</p>
+            <div class="c360-ind-roof-pills"><a href="/local-service-ads">Local Service Ads</a></div>
+          </div>
+          <div class="c360-ind-roof-mock">
+            <div class="c360-ind-roof-serp" role="img" aria-label="Example Google search for roof leak repair near me, with a Local Services Ad for a roofing company showing a 4.8 rating and the Google Verified badge">
+              <div class="c360-ind-roof-serp-bar"><i class="fa-solid fa-magnifying-glass"></i> roof leak repair near me</div>
+              <div class="c360-ind-roof-serp-tag">Sponsored</div>
+              <div class="c360-ind-roof-serp-ad">
+                <div class="c360-ind-roof-serp-name">Your Company Roofing</div>
+                <div class="c360-ind-roof-serp-meta"><span class="c360-ind-roof-serp-rating">4.8</span><span class="c360-ind-roof-serp-stars">★★★★★</span><span>(213)</span><span class="c360-ind-roof-serp-verified"><i class="fa-solid fa-circle-check"></i> Google Verified</span></div>
+                <div class="c360-ind-roof-serp-meta" style="margin-top:4px"><span>Open now</span><span>Serves your area</span></div>
+                <div class="c360-ind-roof-serp-actions"><span>Call</span><span>Message</span></div>
+              </div>
+            </div>
+            <span class="c360-ind-roof-example">Example listing for illustration</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="c360-ind-roof-stop">
+        <p class="c360-ind-roof-stop-when">During inspections<span>Build trust</span></p>
+        <div class="c360-ind-roof-stop-card">
+          <div class="c360-ind-roof-stop-copy">
+            <h3>Earn trust before the ladder goes up</h3>
+            <p>Before they call, homeowners tap your profile. We keep it full of finished-roof photos, accurate hours and service areas, and fresh reviews from real customers.</p>
+            <p>Every customer is asked for a review, and every review gets a response.</p>
+            <div class="c360-ind-roof-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+          </div>
+          <div class="c360-ind-roof-mock">
+            <div class="c360-ind-roof-gbp" role="img" aria-label="Example Google Business Profile for a roofing company with project photos and a recent five-star review">
+              <div class="c360-ind-roof-gbp-photos" aria-hidden="true"><span>After: full replacement</span><span>Before</span><span>Crew on site</span></div>
+              <div class="c360-ind-roof-gbp-body">
+                <div class="c360-ind-roof-gbp-name">Your Company Roofing</div>
+                <div class="c360-ind-roof-gbp-meta"><b style="color:#202124">4.8</b><span class="c360-ind-roof-serp-stars">★★★★★</span><span>213 Google reviews · Roofing contractor</span></div>
+                <div class="c360-ind-roof-gbp-review"><b>Mike R. ★★★★★ · 2 days ago</b>They came out the morning after the hailstorm, tarped the leak the same day and explained everything before they started.</div>
+              </div>
+            </div>
+            <span class="c360-ind-roof-example">Example profile for illustration</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="c360-ind-roof-stop">
+        <p class="c360-ind-roof-stop-when">While they get quotes<span>Stay top of mind</span></p>
+        <div class="c360-ind-roof-stop-card">
+          <div class="c360-ind-roof-stop-copy">
+            <h3>Stay in front of every storm-hit street</h3>
+            <p>When you're working a neighborhood, the neighbors are your next customers. Geo-Fencing shows your ads on phones and connected TVs in the areas you pick, and Meta Ads keep your finished projects in front of homeowners who are still deciding.</p>
+            <div class="c360-ind-roof-pills"><a href="/geo-fencing">Geo-Fencing</a><a href="/meta-ads">Meta Ads</a></div>
+          </div>
+          <div class="c360-ind-roof-mock">
+            <div class="c360-ind-roof-geo" role="img" aria-label="Example map with a storm-affected neighborhood outlined as an ad area, showing ads reach phones and connected TVs there">
+              <div class="c360-ind-roof-geo-map" aria-hidden="true">
+                <div class="c360-ind-roof-geo-zone"><span>Storm area</span></div>
+                <span class="c360-ind-roof-geo-home" style="left:42%;top:48%"><i class="fa-solid fa-house"></i></span>
+                <span class="c360-ind-roof-geo-home" style="left:58%;top:30%;background:var(--roof-green)"><i class="fa-solid fa-hammer"></i></span>
+              </div>
+              <div class="c360-ind-roof-geo-foot" aria-hidden="true">
+                <div><i class="fa-solid fa-mobile-screen"></i> Phones in the area</div>
+                <div><i class="fa-solid fa-tv"></i> Connected TVs</div>
+              </div>
+            </div>
+            <span class="c360-ind-roof-example">Example ad area for illustration</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="c360-ind-roof-stop">
+        <p class="c360-ind-roof-stop-when">When it's time to replace<span>Win the big job</span></p>
+        <div class="c360-ind-roof-stop-card">
+          <div class="c360-ind-roof-stop-copy">
+            <h3>Win the replacement, not just the repair</h3>
+            <p>Homeowners planning a new roof search differently: "roof replacement cost," "new roof estimate," "metal roof installer." Google PPC puts your company in front of those searches with ads that lead to a request for an estimate.</p>
+            <p>Budgets are set with you on a strategy call, and ad spend is billed directly by Google.</p>
+            <div class="c360-ind-roof-pills"><a href="/google-ppc">Google PPC</a></div>
+          </div>
+          <div class="c360-ind-roof-mock">
+            <div class="c360-ind-roof-ppc" role="img" aria-label="Example Google search ad for a roofing company offering roof replacement estimates">
+              <div class="c360-ind-roof-serp-bar" style="margin-bottom:0"><i class="fa-solid fa-magnifying-glass"></i> roof replacement estimate</div>
+              <div class="c360-ind-roof-ppc-site">
+                <span class="c360-ind-roof-ppc-fav" aria-hidden="true"><i class="fa-solid fa-house-chimney"></i></span>
+                <div><strong>Your Company Roofing</strong><span>Sponsored · yourcompanyroofing.com</span></div>
+              </div>
+              <p class="c360-ind-roof-ppc-title">Roof Replacement Estimates | Local, Licensed &amp; Insured</p>
+              <p class="c360-ind-roof-ppc-desc">Shingle and metal roof replacements. Request a written estimate from a local crew rated 4.8 by 200+ homeowners.</p>
+              <div class="c360-ind-roof-ppc-links"><span>Request an estimate</span><span>Our projects</span><span>Financing</span></div>
+            </div>
+            <span class="c360-ind-roof-example">Example ad for illustration</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS ══════════
+     Same live Google reviews widget as /seo-services (location 1pBjHBEIsKGbwvAUTY9u). -->
+<section class="c360-ind-roof-section c360-ind-roof-reviews">
+  <div class="c360-ind-roof-wrap">
+    <div class="c360-ind-roof-head">
+      <span class="c360-ind-roof-kicker">Our own reviews</span>
+      <h2 class="c360-ind-roof-h2">Trusted by local business owners</h2>
+      <p class="c360-ind-roof-lead">Read what our clients say in their own words.</p>
+    </div>
+    <ul class="c360-ind-roof-badges">
+      <li><i class="fa-solid fa-star" aria-hidden="true"></i> 5.0 on Google · 147 reviews</li>
+      <li><i class="fa-solid fa-award" aria-hidden="true"></i> Certified Google Partner</li>
+      <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i> Since 2018 · Tucson-based</li>
+    </ul>
+    <div class="c360-ind-roof-review-panel">
+      <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+      <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+        src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+        frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (green band) ══════════ -->
+<section class="c360-ind-roof-final">
+  <div class="c360-ind-roof-wrap c360-ind-roof-final-inner">
+    <div>
+      <h2>Be the roofer they call first</h2>
+      <p>Book a free strategy call. We'll look at how homeowners in your area find roofers today and map out the plan for your next storm season.</p>
+    </div>
+    <div class="c360-ind-roof-ctas">
+      <a href="/schedule-demo" class="c360-ind-roof-btn c360-ind-roof-btn-white"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+      <a href="tel:+18665276205" class="c360-ind-roof-btn c360-ind-roof-btn-ghost"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (two-column card grid) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-roof-section" id="roof-faq" style="background:var(--roof-mist)">
+  <div class="c360-ind-roof-wrap">
+    <div class="c360-ind-roof-head">
+      <h2 class="c360-ind-roof-h2">Roofing marketing questions</h2>
+    </div>
+    <div class="c360-ind-roof-faq-list">
+
+      <details class="c360-ind-roof-faq-item">
+        <summary class="c360-ind-roof-faq-q">How do roofing companies get more leads from Google?</summary>
+        <div class="c360-ind-roof-faq-a"><p>Be at the top when homeowners search, look established when they check you out, and follow up while they decide. For most roofers that starts with Local Services Ads and a well-managed Google Business Profile with steady new reviews. Google PPC for replacement searches, Geo-Fencing in the neighborhoods you work, and Meta Ads with project photos come next.</p></div>
+      </details>
+
+      <details class="c360-ind-roof-faq-item">
+        <summary class="c360-ind-roof-faq-q">Are Local Services Ads worth it for roofers?</summary>
+        <div class="c360-ind-roof-faq-a"><p>For most residential roofing companies, yes. Roofing is one of the categories Google offers Local Services Ads for. You pay for leads rather than clicks, and your ad shows your star rating and Google Verified badge at the top of the search page. Lead volume depends on your reviews, budget, service area and how fast you respond, so we run it alongside Google Business Profile Management. We'll confirm eligibility for your area on the strategy call.</p></div>
+      </details>
+
+      <details class="c360-ind-roof-faq-item">
+        <summary class="c360-ind-roof-faq-q">What does Google Verified mean for a roofing company?</summary>
+        <div class="c360-ind-roof-faq-a"><p>It's the badge Google puts on Local Services Ads after checking your business. Depending on your state, that can include your contractor license, insurance and background checks. Google Verified took the place of the Google Guaranteed and Google Screened badges in October 2025, and we guide you through each step of verification.</p></div>
+      </details>
+
+      <details class="c360-ind-roof-faq-item">
+        <summary class="c360-ind-roof-faq-q">How should I market my roofing company after a storm?</summary>
+        <div class="c360-ind-roof-faq-a"><p>Make sure homeowners can find you, trust you and reach you right away. Keep your Local Services Ads budget ready for the surge, post storm updates and recent project photos on your Google Business Profile, and answer every call. In the weeks after, Geo-Fencing can show your ads in the neighborhoods the storm hit while homeowners compare roofers.</p></div>
+      </details>
+
+      <details class="c360-ind-roof-faq-item">
+        <summary class="c360-ind-roof-faq-q">How do I get more roof replacement jobs, not just repairs?</summary>
+        <div class="c360-ind-roof-faq-a"><p>Reach homeowners while they're researching a new roof, then stay in front of them while they decide. Google PPC targets searches like "roof replacement estimate," and Meta Ads show your before-and-after projects to homeowners in your service area. Reviews that mention full replacements also help homeowners trust you with the bigger job.</p></div>
+      </details>
+
+      <details class="c360-ind-roof-faq-item">
+        <summary class="c360-ind-roof-faq-q">Can an AI Voice Agent answer calls during a storm-week rush?</summary>
+        <div class="c360-ind-roof-faq-a"><p>Yes. When every crew is out and the phones won't stop, the AI Voice Agent answers 24/7, asks about the damage and the address, captures the homeowner's details, and books an inspection or routes urgent calls to you. AI usage is unlimited with no per-minute AI fees. Your phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-roof-faq-item">
+        <summary class="c360-ind-roof-faq-q">Can you guarantee a certain number of roofing leads?</summary>
+        <div class="c360-ind-roof-faq-a"><p>No. Nobody controls Google rankings or how many homeowners search in a given month. What we do offer: for Google Business Profile Management and advertising campaigns, including Local Services Ads and Geo-Fencing, if you're not satisfied at the end of the service period, we extend the campaign at no charge. This applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-roof-faq-item">
+        <summary class="c360-ind-roof-faq-q">What does roofing marketing cost, and how do contracts work?</summary>
+        <div class="c360-ind-roof-faq-a"><p>You'll find pricing on each service's page, including <a href="/local-service-ads">Local Service Ads</a>, <a href="/gbp-management">Google Business Profile Management</a> and <a href="/geo-fencing">Geo-Fencing</a>. Google PPC and Meta Ads are planned with you on a strategy call, and your ad spend is paid directly to Google or Meta. Recurring services can be cancelled with at least 10 days' written notice before the next billing date. All payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
