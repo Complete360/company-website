@@ -179,6 +179,24 @@ page("/industries/funeral-homes", "industries/funeral-homes.html", "Funeral Home
      service="Funeral Home Marketing", serviceType="Marketing for funeral homes", audience="Funeral homes")
 page("/industries/restaurants", "industries/restaurants.html", "Restaurant Marketing", "industry", parent=IND,
      service="Restaurant Marketing", serviceType="Marketing for restaurants", audience="Restaurants")
+page("/industries/insurance-agencies", "industries/insurance-agencies.html", "Insurance Agency Marketing", "industry", parent=IND,
+     service="Insurance Agency Marketing", serviceType="Marketing for property and casualty (P&C) insurance agencies", audience="P&C insurance agents and agencies")
+page("/industries/garage-door-repair", "industries/garage-door-repair.html", "Garage Door Repair Marketing", "industry", parent=IND,
+     service="Garage Door Repair Marketing", serviceType="Marketing for garage door repair and installation companies", audience="Garage door companies")
+page("/industries/locksmiths", "industries/locksmiths.html", "Locksmith Marketing", "industry", parent=IND,
+     service="Locksmith Marketing", serviceType="Marketing for locksmith businesses", audience="Locksmiths")
+page("/industries/water-damage-restoration", "industries/water-damage-restoration.html", "Water Damage Restoration Marketing", "industry", parent=IND,
+     service="Water Damage Restoration Marketing", serviceType="Marketing for water damage restoration companies", audience="Water damage restoration companies")
+page("/industries/appliance-repair", "industries/appliance-repair.html", "Appliance Repair Marketing", "industry", parent=IND,
+     service="Appliance Repair Marketing", serviceType="Marketing for appliance repair companies", audience="Appliance repair companies")
+page("/industries/tree-service", "industries/tree-service.html", "Tree Service Marketing", "industry", parent=IND,
+     service="Tree Service Marketing", serviceType="Marketing for tree service companies and arborists", audience="Tree service companies")
+page("/industries/junk-removal", "industries/junk-removal.html", "Junk Removal Marketing", "industry", parent=IND,
+     service="Junk Removal Marketing", serviceType="Marketing for junk removal and hauling companies", audience="Junk removal companies")
+page("/industries/movers", "industries/movers.html", "Moving Company Marketing", "industry", parent=IND,
+     service="Moving Company Marketing", serviceType="Marketing for moving companies", audience="Moving companies")
+page("/industries/handyman", "industries/handyman.html", "Handyman Marketing", "industry", parent=IND,
+     service="Handyman Marketing", serviceType="Marketing for handyman businesses", audience="Handyman businesses")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
