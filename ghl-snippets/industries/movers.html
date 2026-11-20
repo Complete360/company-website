@@ -1,0 +1,566 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Movers
+     c360-ind-move-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/movers
+          (page name "Moving Company Marketing"). Meta data: ghl-meta/industries/movers.md.
+          Schema: schema/pages/industries/movers.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-move-  (new, unique; vars --move-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from the last page), moving themed:
+       - Hero: navy text panel on the left, photo filling the right edge,
+         and a white "move booked" card bridging the two.
+       - Reality: "a month in moving" bar strip (illustration, not data)
+         above four pain cards tied to early month, mid-month, month-end
+         and every move.
+       - Plan: three shipping labels (1 start here, full width; 2 grow with
+         and 3 also available side by side) with From/To header and barcode.
+       - Journey: four tear-off calendar pages (6 weeks out to after the move).
+       - Reviews: round stat stickers overlapping the top of the widget card,
+         sky CTA panel with photo left, FAQ with truck markers.
+     Light-blue palette (#EEF5FD / #E6F1FB), navy, green, blue.
+
+     Policy notes (verified 2026-11-19): moving services is a Local Services
+     Ads category; availability can vary by area. No lead-site names used.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       move-hero        16:9, 2000px+ (fills the right side of the hero; keep the movers centered)
+       move-on-the-job  4:3, 1200px+  (CTA panel, left)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-19) — first build. Draft plan per worksheet v1.4 (Wave 5):
+       Google Platinum Package (co-lead with reviews) first; grow with
+       Google PPC, Meta Ads and Complete360 CRM (estimate follow-up). AI
+       Voice Agent, Local SEO Booster and Website as "also available".
+       To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-move{
+  --move-navy:#122078;--move-navy-dark:#0d1654;--move-navy-deeper:#0a1040;
+  --move-green:#127825;--move-green-hover:#0e5e1d;--move-green-light:#EAF3DE;
+  --move-sky:#EEF5FD;--move-sky-2:#E6F1FB;--move-line:#E2E8F2;--move-heat:#2F6FD0;
+  --move-text:#0F1F5E;--move-muted:#5F5E5A;--move-body:#3B4566;
+  --move-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--move-font);color:var(--move-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-move *,.c360-ind-move *::before,.c360-ind-move *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-move :where(h1,h2,h3,h4,p,ul,ol,li){margin:0;padding:0;font-family:var(--move-font)}
+.c360-ind-move :where(ul,ol){list-style:none}
+.c360-ind-move :where(a){color:var(--move-navy)}
+.c360-ind-move a:focus-visible,.c360-ind-move summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-move-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-move-section{padding:104px 0}
+.c360-ind-move-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--move-text);margin-bottom:16px}
+.c360-ind-move-lead{font-size:18px;color:var(--move-muted);max-width:760px;line-height:1.65}
+.c360-ind-move-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--move-green);margin-bottom:14px}
+.c360-ind-move-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-move-head .c360-ind-move-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-move-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--move-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-move-btn-primary{background:var(--move-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-move-btn-primary:hover{background:var(--move-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-move-btn-outline{background:transparent;color:var(--move-text);border:2px solid var(--move-text);padding:14px 24px}
+.c360-ind-move-btn-outline:hover{background:var(--move-text);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-move-btn-light{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.8);padding:14px 24px}
+.c360-ind-move-btn-light:hover{background:#fff;color:var(--move-navy);text-decoration:none;transform:translateY(-2px)}
+.c360-ind-move a.c360-ind-move-btn-primary{color:#fff}
+.c360-ind-move a.c360-ind-move-btn-outline{color:var(--move-text)}
+.c360-ind-move a.c360-ind-move-btn-outline:hover{color:#fff}
+.c360-ind-move a.c360-ind-move-btn-light{color:#fff}
+.c360-ind-move a.c360-ind-move-btn-light:hover{color:var(--move-navy)}
+.c360-ind-move-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-move-pills{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;align-items:flex-start}
+.c360-ind-move-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--move-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-move-pills a:hover{background:var(--move-navy);border-color:var(--move-navy);color:#fff;text-decoration:none}
+
+/* Image slots: styled fallback until the GHL image URL is pasted in. */
+.c360-ind-move-img{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#DCE7F5 0 16px,#E7EFF9 16px 32px)}
+.c360-ind-move-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-move-img img[src=""],.c360-ind-move-img img:not([src]){visibility:hidden}
+.c360-ind-move-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B9D8;font-size:58px;pointer-events:none}
+.c360-ind-move-img img[src]:not([src=""])+.c360-ind-move-fallback{display:none}
+
+/* ══════════ HERO (navy text panel left, photo right, card bridging) ══════════ */
+.c360-ind-move-hero{position:relative;display:grid;grid-template-columns:1fr minmax(0,720px) minmax(0,960px) 1fr;min-height:700px}
+.c360-ind-move-hero-panel{grid-column:1/3;grid-row:1;background:var(--move-navy)}
+.c360-ind-move-hero-text{grid-column:2;grid-row:1;position:relative;padding:56px 72px 112px 24px;color:#fff;display:flex;flex-direction:column;justify-content:center}
+.c360-ind-move-hero-photo{grid-column:3/5;grid-row:1}
+.c360-ind-move-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-move-crumbs li{color:#C7D0EE;display:flex;align-items:center;gap:8px}
+.c360-ind-move-crumbs li+li::before{content:"\203A";color:#8E9BD0}
+.c360-ind-move-crumbs a{color:#fff;text-decoration:none}
+.c360-ind-move-crumbs a:hover{text-decoration:underline}
+.c360-ind-move-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:#fff;margin-bottom:22px}
+.c360-ind-move-hero-sub{font-size:18px;line-height:1.65;color:#DCE2F7;margin-bottom:32px}
+.c360-ind-move-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-ind-move-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-move-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-move-partner,.c360-ind-move-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-move-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:220px}
+.c360-ind-move-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:#DCE2F7;line-height:1.4}
+.c360-ind-move-creds-list i{color:#7FD38F;margin-top:3px;font-size:12px}
+.c360-ind-move-stars{color:#F5B800;letter-spacing:1px}
+.c360-ind-move-bridge{grid-column:3;grid-row:1;align-self:end;justify-self:start;margin:0 0 48px -80px;position:relative;z-index:2;display:grid;grid-template-columns:auto 1fr;gap:4px 16px;align-items:center;background:#fff;border-radius:18px;padding:18px 22px;box-shadow:0 24px 50px rgba(5,10,40,0.3);width:min(420px,40vw)}
+.c360-ind-move-bridge i{grid-row:span 3;width:48px;height:48px;border-radius:14px;display:inline-flex;align-items:center;justify-content:center;background:var(--move-green-light);color:var(--move-green);font-size:20px}
+.c360-ind-move-bridge small{font-size:12px;font-weight:700;color:var(--move-green)}
+.c360-ind-move-bridge b{font-size:15.5px;line-height:1.3}
+.c360-ind-move-bridge span{font-size:13px;color:var(--move-muted)}
+
+/* ══════════ REALITY (the month in moving: heat strip + cards) ══════════ */
+.c360-ind-move-month{max-width:1560px;margin:0 auto}
+.c360-ind-move-heat{background:#fff;border:1px solid var(--move-line);border-radius:22px;padding:28px 28px 18px;margin:0 0 28px}
+.c360-ind-move-heat-top{display:flex;justify-content:space-between;align-items:baseline;gap:16px;margin-bottom:16px;font-size:14px;color:var(--move-muted)}
+.c360-ind-move-heat-top b{font-size:16px;color:var(--move-text)}
+.c360-ind-move-bars{display:grid;grid-template-columns:repeat(31,minmax(0,1fr));gap:5px;align-items:end;height:150px}
+.c360-ind-move-bars span{display:block;height:var(--h);border-radius:5px 5px 2px 2px;background:linear-gradient(180deg,var(--move-heat),#9DBDEB)}
+.c360-ind-move-bars span.is-peak{background:linear-gradient(180deg,var(--move-navy),var(--move-heat))}
+.c360-ind-move-days{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin-top:10px;font-size:13px;font-weight:600;color:var(--move-muted)}
+.c360-ind-move-days span:nth-child(2){text-align:center}
+.c360-ind-move-days span:nth-child(3){text-align:center}
+.c360-ind-move-days span:last-child{text-align:right}
+.c360-ind-move-pains{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto;gap:0 20px}
+.c360-ind-move-pain{display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:12px;background:#fff;border:1px solid var(--move-line);border-radius:20px;padding:26px 24px 28px;position:relative}
+.c360-ind-move-pain small{justify-self:start;font-size:12.5px;font-weight:700;color:var(--move-navy);background:var(--move-sky-2);border-radius:100px;padding:4px 12px}
+.c360-ind-move-pain h3{font-size:20px;font-weight:700;line-height:1.35}
+.c360-ind-move-pain p{font-size:15.5px;color:var(--move-muted);line-height:1.65}
+
+/* ══════════ PLAN (three shipping labels) ══════════ */
+.c360-ind-move-labels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px;max-width:1400px;margin:0 auto;align-items:stretch}
+.c360-ind-move-label.is-priority{grid-column:1/-1}
+.c360-ind-move-label.is-priority .c360-ind-move-label-item{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:8px 48px;align-items:start}
+.c360-ind-move-label.is-priority .c360-ind-move-label-item ul{grid-column:2;grid-row:1/4;margin:4px 0 0}
+.c360-ind-move-label{display:flex;flex-direction:column;background:#fff;border:2px solid var(--move-navy);border-radius:10px;box-shadow:0 18px 40px rgba(15,31,94,0.1)}
+.c360-ind-move-label-head{display:grid;grid-template-columns:1fr auto;align-items:stretch;border-bottom:2px solid var(--move-navy)}
+.c360-ind-move-label-head div{padding:14px 18px;font-size:12.5px;line-height:1.5;color:var(--move-muted)}
+.c360-ind-move-label-head div b{display:block;font-size:13.5px;color:var(--move-text)}
+.c360-ind-move-label-head strong{display:flex;align-items:center;justify-content:center;min-width:92px;font-size:34px;font-weight:800;background:var(--move-navy);color:#fff}
+.c360-ind-move-label.is-priority .c360-ind-move-label-head strong{background:var(--move-green)}
+.c360-ind-move-label-tier{padding:16px 20px;border-bottom:2px solid var(--move-navy);font-size:24px;font-weight:800;letter-spacing:-0.01em;display:flex;justify-content:space-between;align-items:center}
+.c360-ind-move-label-tier span{font-size:13px;font-weight:700;color:var(--move-green)}
+.c360-ind-move-label-body{flex:1;padding:6px 20px 8px}
+.c360-ind-move-label-item{padding:14px 0;border-bottom:1px dashed #B9C6DD}
+.c360-ind-move-label-item:last-child{border-bottom:0}
+.c360-ind-move-label-item b{display:block;font-size:17px;margin-bottom:4px}
+.c360-ind-move-label-item p{font-size:14.5px;color:var(--move-muted);line-height:1.6;margin-bottom:10px}
+.c360-ind-move-label-item ul{display:flex;flex-direction:column;gap:6px;margin:4px 0 12px}
+.c360-ind-move-label-item li{display:flex;gap:10px;font-size:14px;color:var(--move-body);line-height:1.5}
+.c360-ind-move-label-item li i{color:var(--move-green);margin-top:4px;font-size:12px}
+.c360-ind-move-barcode{height:46px;margin:0 20px 16px;background:repeating-linear-gradient(90deg,var(--move-text) 0 2px,transparent 2px 5px,var(--move-text) 5px 6px,transparent 6px 9px,var(--move-text) 9px 12px,transparent 12px 14px);opacity:.85}
+.c360-ind-move-plan-cta{display:flex;justify-content:center;margin-top:44px}
+
+/* ══════════ JOURNEY (tear-off calendar pages) ══════════ */
+.c360-ind-move-cal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto auto auto;gap:0 22px;max-width:1560px;margin:0 auto}
+.c360-ind-move-page{position:relative;display:grid;grid-template-rows:subgrid;grid-row:span 5;row-gap:14px;background:#fff;border:1px solid var(--move-line);border-radius:18px;padding:0 0 26px;box-shadow:0 14px 34px rgba(15,31,94,0.08);overflow:hidden}
+.c360-ind-move-page > *{margin:0 24px}
+.c360-ind-move-page-top{position:relative;margin:0;background:var(--move-navy);color:#fff;text-align:center;padding:26px 16px 16px}
+.c360-ind-move-page:nth-child(3) .c360-ind-move-page-top{background:var(--move-green)}
+.c360-ind-move-page-top::before,.c360-ind-move-page-top::after{content:"";position:absolute;top:10px;width:12px;height:12px;border-radius:50%;background:#fff;box-shadow:inset 0 2px 3px rgba(0,0,0,0.25)}
+.c360-ind-move-page-top::before{left:30%}
+.c360-ind-move-page-top::after{right:30%}
+.c360-ind-move-page-top b{display:block;font-size:22px;font-weight:800;line-height:1.2}
+.c360-ind-move-page-top span{font-size:13px;color:#DCE2F7}
+.c360-ind-move-page h3{font-size:20px;font-weight:700;line-height:1.3;margin-top:8px}
+.c360-ind-move-page > p{font-size:15px;color:var(--move-muted);line-height:1.6}
+.c360-ind-move-mock{background:var(--move-sky);border-radius:14px;padding:14px;display:flex;flex-direction:column;justify-content:center}
+.c360-ind-move-card{background:#fff;border:1px solid var(--move-line);border-radius:12px;padding:12px 14px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:#202124;box-shadow:0 8px 18px rgba(15,31,94,0.07)}
+.c360-ind-move-card small{display:block;font-size:11.5px;font-weight:700;color:#5F6368;margin-bottom:3px}
+.c360-ind-move-card b{display:block;font-size:14px;color:#1A0DAB}
+.c360-ind-move-card b.is-plain{color:#202124}
+.c360-ind-move-card span{display:block;font-size:12.5px;color:#5F6368;line-height:1.45}
+.c360-ind-move-ver{display:inline-flex !important;align-items:center;gap:5px;color:#137333 !important;font-weight:700}
+.c360-ind-move-st{color:#E8A400}
+.c360-ind-move-sms{font-size:13px;line-height:1.45;padding:10px 12px;border-radius:14px}
+.c360-ind-move-sms-out{background:var(--move-navy);color:#fff;border-bottom-right-radius:4px;margin-left:12%}
+.c360-ind-move-sms-in{background:#fff;border:1px solid var(--move-line);color:#202124;border-bottom-left-radius:4px;margin-top:8px;margin-right:12%}
+.c360-ind-move-note{font-size:12px;color:var(--move-muted);text-align:center;margin-top:18px}
+
+/* ══════════ REVIEWS (sticker stats overlapping the widget card) ══════════ */
+.c360-ind-move-revcard{position:relative;max-width:1560px;margin:0 auto;background:#fff;border:1px solid var(--move-line);border-radius:28px;padding:84px 24px 16px}
+.c360-ind-move-stickers{position:absolute;left:50%;top:0;transform:translate(-50%,-50%);display:flex;gap:20px}
+.c360-ind-move-stickers div{width:124px;height:124px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;background:var(--move-navy);color:#fff;border:6px solid #fff;box-shadow:0 14px 30px rgba(15,31,94,0.18)}
+.c360-ind-move-stickers div:nth-child(2){background:var(--move-green)}
+.c360-ind-move-stickers strong{font-size:30px;font-weight:800;line-height:1}
+.c360-ind-move-stickers span{font-size:11.5px;color:#DCE2F7;line-height:1.3;margin-top:4px;padding:0 10px}
+
+/* ══════════ CTA (sky panel, framed photo left, text right) ══════════ */
+.c360-ind-move-cta{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:center;max-width:1400px;margin:0 auto;background:var(--move-sky);border-radius:28px;padding:40px}
+.c360-ind-move-cta .c360-ind-move-img{aspect-ratio:4/3;border-radius:20px}
+.c360-ind-move-cta p{font-size:18px;color:var(--move-muted);line-height:1.65;margin-bottom:30px;max-width:620px}
+
+/* ══════════ FAQ (truck markers) ══════════ */
+.c360-ind-move-faq-list{max-width:1000px;margin:0 auto}
+.c360-ind-move-faq-item{border-bottom:1px solid var(--move-line)}
+.c360-ind-move-faq-item:first-child{border-top:1px solid var(--move-line)}
+.c360-ind-move-faq-q{display:grid;grid-template-columns:34px 1fr 24px;align-items:center;gap:12px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--move-text);cursor:pointer;list-style:none}
+.c360-ind-move-faq-q::-webkit-details-marker{display:none}
+.c360-ind-move-faq-q::before{content:"\f4df";font-family:"Font Awesome 6 Free";font-weight:900;font-size:14px;display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--move-sky-2);color:var(--move-navy);transition:background .2s,color .2s}
+.c360-ind-move-faq-item[open] .c360-ind-move-faq-q::before{background:var(--move-green-light);color:var(--move-green)}
+.c360-ind-move-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--move-navy);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-move-faq-item[open] .c360-ind-move-faq-q::after{transform:rotate(45deg)}
+.c360-ind-move-faq-a{padding:0 40px 24px 50px;font-size:16px;color:var(--move-muted);line-height:1.7}
+.c360-ind-move-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1200px){
+  .c360-ind-move-pains,.c360-ind-move-cal{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px}
+}
+@media (max-width:900px){
+  .c360-ind-move-section{padding:76px 0}
+  .c360-ind-move-hero{grid-template-columns:1fr;min-height:0;background:var(--move-sky);padding-bottom:8px}
+  .c360-ind-move-hero-panel{grid-column:1;grid-row:1}
+  .c360-ind-move-hero-text{grid-column:1;grid-row:1;padding:44px 24px 56px}
+  .c360-ind-move-hero-photo{grid-column:1;grid-row:2;aspect-ratio:4/3}
+  .c360-ind-move-bridge{grid-column:1;grid-row:3;justify-self:stretch;align-self:start;width:auto;margin:-48px 18px 0}
+  .c360-ind-move-bars{gap:3px;height:110px}
+  .c360-ind-move-labels{grid-template-columns:1fr}
+  .c360-ind-move-label.is-priority .c360-ind-move-label-item{display:block}
+  .c360-ind-move-cta{grid-template-columns:1fr;padding:24px}
+}
+@media (max-width:760px){
+  .c360-ind-move-pains,.c360-ind-move-cal{grid-template-columns:1fr}
+  .c360-ind-move-pain,.c360-ind-move-page{grid-row:auto;display:flex;flex-direction:column}
+  .c360-ind-move-stickers{gap:10px}
+  .c360-ind-move-stickers div{width:96px;height:96px;border-width:4px}
+  .c360-ind-move-stickers strong{font-size:24px}
+  .c360-ind-move-stickers span{font-size:10px}
+  .c360-ind-move-revcard{padding-top:64px}
+}
+@media (max-width:640px){
+  .c360-ind-move-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-move-hero-text{padding-left:18px;padding-right:18px}
+  .c360-ind-move-btn{width:100%}
+  .c360-ind-move-partner{--badge-h:64px;--badge-clear:32px}
+  .c360-ind-move-heat{padding:20px 14px 14px}
+  .c360-ind-move-faq-a{padding:0 4px 22px 50px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-move *,.c360-ind-move *::before,.c360-ind-move *::after{transition:none !important;animation:none !important}
+  .c360-ind-move-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-move">
+
+<!-- ══════════ HERO (navy text panel left, photo right, card bridging) ══════════ -->
+<section class="c360-ind-move-hero">
+  <div class="c360-ind-move-hero-panel" aria-hidden="true"></div>
+  <div class="c360-ind-move-hero-text">
+    <nav class="c360-ind-move-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/industries">Industries</a></li>
+        <li aria-current="page">Movers</li>
+      </ol>
+    </nav>
+    <h1>Moving company marketing that books more moves</h1>
+    <p class="c360-ind-move-hero-sub">People hire movers they trust with everything they own. We help your moving company show up first on Google, earn the reviews that put customers at ease, and turn more estimates into booked moves, all month long, not just at month-end.</p>
+    <div class="c360-ind-move-ctas">
+      <a href="/schedule-demo" class="c360-ind-move-btn c360-ind-move-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+      <a href="tel:+18665276205" class="c360-ind-move-btn c360-ind-move-btn-light"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+    </div>
+    <div class="c360-ind-move-creds">
+      <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-move-partner">
+        <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+      </a>
+      <ul class="c360-ind-move-creds-list">
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-move-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, serving nationwide since 2018</li>
+      </ul>
+    </div>
+  </div>
+  <div class="c360-ind-move-img c360-ind-move-hero-photo">
+    <!-- IMAGE PLACEHOLDER: move-hero — two movers in navy shirts carrying a wrapped dresser down a home's front steps toward a moving truck, sunny day, 16:9 (fills the right side of the hero; keep the movers centered) -->
+    <img src="" data-c360-placeholder="move-hero" alt="Two movers carrying a wrapped dresser from a home to their moving truck" fetchpriority="high">
+    <div class="c360-ind-move-fallback" aria-hidden="true"><i class="fa-solid fa-truck-moving"></i></div>
+  </div>
+  <div class="c360-ind-move-bridge" role="img" aria-label="Example booking: a two-bedroom apartment to house move booked for Saturday the 30th">
+    <i class="fa-solid fa-truck-moving"></i>
+    <small>Move booked · example</small>
+    <b>2-bedroom apartment to new house</b>
+    <span>Saturday the 30th, 8 AM · estimate accepted</span>
+  </div>
+</section>
+
+<!-- ══════════ THE MOVING REALITY (the month in moving) ══════════ -->
+<section class="c360-ind-move-section" style="background:var(--move-sky)">
+  <div class="c360-ind-move-wrap">
+    <div class="c360-ind-move-head">
+      <span class="c360-ind-move-kicker"><i class="fa-solid fa-calendar-days" aria-hidden="true"></i> A month in moving</span>
+      <h2 class="c360-ind-move-h2">The moving company reality</h2>
+      <p class="c360-ind-move-lead">Every mover knows the pattern: a crush at month-end and on weekends, then quiet days in between. Here's what that does to your business.</p>
+    </div>
+    <div class="c360-ind-move-month">
+      <figure class="c360-ind-move-heat">
+        <div class="c360-ind-move-heat-top"><b>How busy a typical month feels</b><span>Illustration, not data</span></div>
+        <div class="c360-ind-move-bars" role="img" aria-label="Bar chart illustration of a typical month: a busy first day, quiet weekdays, busier weekends, and the busiest days at the end of the month"><span class="is-peak" style="--h:78%"></span><span style="--h:22%"></span><span style="--h:23%"></span><span style="--h:24%"></span><span style="--h:25%"></span><span style="--h:52%"></span><span style="--h:53%"></span><span style="--h:28%"></span><span style="--h:29%"></span><span style="--h:30%"></span><span style="--h:31%"></span><span style="--h:31%"></span><span style="--h:58%"></span><span style="--h:59%"></span><span style="--h:34%"></span><span style="--h:35%"></span><span style="--h:36%"></span><span style="--h:37%"></span><span style="--h:38%"></span><span style="--h:65%"></span><span style="--h:66%"></span><span style="--h:40%"></span><span style="--h:41%"></span><span style="--h:42%"></span><span style="--h:50%"></span><span style="--h:58%"></span><span style="--h:92%"></span><span class="is-peak" style="--h:100%"></span><span class="is-peak" style="--h:82%"></span><span class="is-peak" style="--h:90%"></span><span class="is-peak" style="--h:98%"></span></div>
+        <div class="c360-ind-move-days" aria-hidden="true"><span>1st</span><span>10th</span><span>20th</span><span>31st</span></div>
+      </figure>
+      <div class="c360-ind-move-pains">
+        <article class="c360-ind-move-pain">
+          <small>Early in the month</small>
+          <h3>Trucks sit while the calendar is empty</h3>
+          <p>After the month-end rush, the first weeks go quiet. Crews still need hours, and trucks don't pay for themselves parked.</p>
+        </article>
+        <article class="c360-ind-move-pain">
+          <small>Mid-month</small>
+          <h3>Estimates go out, then go quiet</h3>
+          <p>Customers collect three or four quotes. Without a quick, friendly follow-up, your estimate sinks to the bottom of their inbox.</p>
+        </article>
+        <article class="c360-ind-move-pain">
+          <small>Month-end</small>
+          <h3>The phone rings while every crew is out</h3>
+          <p>The busiest days are when nobody's free to answer. Calls that go to voicemail become another company's move.</p>
+        </article>
+        <article class="c360-ind-move-pain">
+          <small>Every move</small>
+          <h3>Customers are nervous about who they hire</h3>
+          <p>They're handing over everything they own. Before they call, they read reviews closely and look for proof you're licensed and insured.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (shipping labels) ══════════
+     Draft plan, to confirm with Jared. -->
+<section class="c360-ind-move-section" id="move-plan">
+  <div class="c360-ind-move-wrap">
+    <div class="c360-ind-move-head">
+      <span class="c360-ind-move-kicker"><i class="fa-solid fa-tag" aria-hidden="true"></i> Your recommended plan</span>
+      <h2 class="c360-ind-move-h2">Labeled and ready to ship</h2>
+      <p class="c360-ind-move-lead">Like a good move, your marketing goes in order: what has to go first, what comes next, and what you can add when there's room.</p>
+    </div>
+    <div class="c360-ind-move-labels">
+      <article class="c360-ind-move-label is-priority">
+        <div class="c360-ind-move-label-head"><div><b>From: Complete360</b>To: Your moving company</div><strong>1</strong></div>
+        <h3 class="c360-ind-move-label-tier">Start here <span>Priority</span></h3>
+        <div class="c360-ind-move-label-body">
+          <div class="c360-ind-move-label-item">
+            <b>Google Platinum Package</b>
+            <p>Local Services Ads with the Google Verified badge at the top of Google, plus Google Business Profile Management. For movers, trust is the whole sale.</p>
+            <ul>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Google Verified badge after Google's license or registration, insurance and background checks</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Review requests after every move, and a reply to every review</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Map listing with real photos of your crews and trucks</li>
+            </ul>
+            <div class="c360-ind-move-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+          </div>
+        </div>
+        <div class="c360-ind-move-barcode" aria-hidden="true"></div>
+      </article>
+      <article class="c360-ind-move-label">
+        <div class="c360-ind-move-label-head"><div><b>From: Complete360</b>To: Your moving company</div><strong>2</strong></div>
+        <h3 class="c360-ind-move-label-tier">Grow with <span>Next</span></h3>
+        <div class="c360-ind-move-label-body">
+          <div class="c360-ind-move-label-item">
+            <b>Google PPC</b>
+            <p>Search ads for the moves you want more of: long-distance, commercial and office moves, or specialty items like pianos.</p>
+            <div class="c360-ind-move-pills"><a href="/google-ppc">Google PPC</a></div>
+          </div>
+          <div class="c360-ind-move-label-item">
+            <b>Meta Ads</b>
+            <p>Seasonal offers and moving tips shown to people in your service area, with extra push for the quieter weeks of the month.</p>
+            <div class="c360-ind-move-pills"><a href="/meta-ads">Meta Ads</a></div>
+          </div>
+          <div class="c360-ind-move-label-item">
+            <b>Complete360 CRM</b>
+            <p>Every estimate in one place, with friendly follow-up texts so quotes don't go quiet while customers compare.</p>
+            <div class="c360-ind-move-pills"><a href="/crm-home">Complete360 CRM</a></div>
+          </div>
+        </div>
+        <div class="c360-ind-move-barcode" aria-hidden="true"></div>
+      </article>
+      <article class="c360-ind-move-label">
+        <div class="c360-ind-move-label-head"><div><b>From: Complete360</b>To: Your moving company</div><strong>3</strong></div>
+        <h3 class="c360-ind-move-label-tier">Also available <span>Extras</span></h3>
+        <div class="c360-ind-move-label-body">
+          <div class="c360-ind-move-label-item">
+            <b>AI Voice Agent</b>
+            <p>Answers when every crew is out and books the estimate. No per-minute AI fees; the phone number and calling minutes are billed separately.</p>
+            <div class="c360-ind-move-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+          </div>
+          <div class="c360-ind-move-label-item">
+            <b>Local SEO Booster</b>
+            <p>Keeps your business name, address, phone and hours accurate across 70+ directories and maps.</p>
+            <div class="c360-ind-move-pills"><a href="/local-seo-booster">Local SEO Booster</a></div>
+          </div>
+          <div class="c360-ind-move-label-item">
+            <b>Website</b>
+            <p>A fast site with your services, service area, crew photos and an easy quote form.</p>
+            <div class="c360-ind-move-pills"><a href="/websites-home">Website</a></div>
+          </div>
+        </div>
+        <div class="c360-ind-move-barcode" aria-hidden="true"></div>
+      </article>
+    </div>
+    <div class="c360-ind-move-plan-cta">
+      <a href="/schedule-demo" class="c360-ind-move-btn c360-ind-move-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (tear-off calendar pages) ══════════ -->
+<section class="c360-ind-move-section" style="background:var(--move-sky)">
+  <div class="c360-ind-move-wrap">
+    <div class="c360-ind-move-head">
+      <span class="c360-ind-move-kicker"><i class="fa-solid fa-route" aria-hidden="true"></i> How it works</span>
+      <h2 class="c360-ind-move-h2">From "we're moving" to a five-star review</h2>
+      <p class="c360-ind-move-lead">Follow one customer's countdown to moving day, and the moments that decide who gets the job.</p>
+    </div>
+    <div class="c360-ind-move-cal">
+      <article class="c360-ind-move-page">
+        <div class="c360-ind-move-page-top"><b>6 weeks out</b><span>They start looking</span></div>
+        <h3>Get found first</h3>
+        <p>They search for movers nearby. Your Google Verified ad, rating and crew photos show up at the top of Google.</p>
+        <div class="c360-ind-move-mock" role="img" aria-label="Example sponsored Google result for a Google Verified moving company with a 4.8 star rating">
+          <div class="c360-ind-move-card"><small>Sponsored · movers near me</small><b>Northstar Moving Co.</b><span class="c360-ind-move-ver"><i class="fa-solid fa-circle-check"></i> Google Verified</span><span><span class="c360-ind-move-st">★★★★★</span> 4.8 (310) · Local and long distance</span></div>
+        </div>
+        <div class="c360-ind-move-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+      </article>
+      <article class="c360-ind-move-page">
+        <div class="c360-ind-move-page-top"><b>5 weeks out</b><span>They ask for quotes</span></div>
+        <h3>Answer and estimate fast</h3>
+        <p>The first mover to respond sets the bar. A fast callback, even when your crews are out, gets your estimate in first.</p>
+        <div class="c360-ind-move-mock" role="img" aria-label="Example new lead: a three-bedroom house, moving on the 30th, 12 miles, estimate booked for Tuesday">
+          <div class="c360-ind-move-card"><small>New lead · Local Services Ads</small><b class="is-plain">3-bedroom house, moving the 30th</b><span>12 miles · estimate booked for Tuesday, 4 PM</span></div>
+        </div>
+        <div class="c360-ind-move-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+      </article>
+      <article class="c360-ind-move-page">
+        <div class="c360-ind-move-page-top"><b>2 weeks out</b><span>They decide</span></div>
+        <h3>Follow up, don't fade out</h3>
+        <p>A friendly check-in keeps your estimate top of mind while they compare, and helps them lock in their date with you.</p>
+        <div class="c360-ind-move-mock" role="img" aria-label="Example follow-up text about the moving estimate, and the customer replying to book">
+          <div class="c360-ind-move-sms c360-ind-move-sms-out">Hi Priya, just checking in on your estimate for the 30th. Want us to hold that date for you?</div>
+          <div class="c360-ind-move-sms c360-ind-move-sms-in">Yes, let's book it!</div>
+        </div>
+        <div class="c360-ind-move-pills"><a href="/crm-home">Complete360 CRM</a></div>
+      </article>
+      <article class="c360-ind-move-page">
+        <div class="c360-ind-move-page-top"><b>After the move</b><span>They're settled in</span></div>
+        <h3>Turn a smooth move into a review</h3>
+        <p>A review request goes out once they're unpacked, and every review gets a reply. Those reviews are what the next nervous customer reads.</p>
+        <div class="c360-ind-move-mock" role="img" aria-label="Example text asking for a Google review after the move, and the customer replying that they posted one">
+          <div class="c360-ind-move-sms c360-ind-move-sms-out">Welcome to your new home, Priya! Would you leave the Northstar crew a quick Google review?</div>
+          <div class="c360-ind-move-sms c360-ind-move-sms-in">Done! Not a single scratch.</div>
+        </div>
+        <div class="c360-ind-move-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+      </article>
+    </div>
+    <p class="c360-ind-move-note">Examples for illustration</p>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (sticker stats on the widget card) ══════════ -->
+<section class="c360-ind-move-section">
+  <div class="c360-ind-move-wrap">
+    <div class="c360-ind-move-head" style="margin-bottom:104px">
+      <span class="c360-ind-move-kicker">Our own reviews</span>
+      <h2 class="c360-ind-move-h2">Trusted by local business owners</h2>
+      <p class="c360-ind-move-lead">Owners across the country, in their own words.</p>
+    </div>
+    <div class="c360-ind-move-revcard">
+      <div class="c360-ind-move-stickers">
+        <div><strong>5.0</strong><span>Google rating</span></div>
+        <div><strong>147</strong><span>five-star reviews</span></div>
+        <div><strong>2018</strong><span>in business since</span></div>
+      </div>
+      <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+      <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+        src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+        frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (sky panel, photo left, text right) ══════════ -->
+<section class="c360-ind-move-section" style="padding-top:0">
+  <div class="c360-ind-move-wrap">
+    <div class="c360-ind-move-cta">
+      <div class="c360-ind-move-img">
+        <!-- IMAGE PLACEHOLDER: move-on-the-job — mover handing keys back to a smiling family in front of their new home, boxes on the porch, 4:3 -->
+        <img src="" data-c360-placeholder="move-on-the-job" alt="Mover chatting with a smiling family in front of their new home after the move" loading="lazy">
+        <div class="c360-ind-move-fallback" aria-hidden="true"><i class="fa-solid fa-house-chimney"></i></div>
+      </div>
+      <div>
+        <h2 class="c360-ind-move-h2">Let's book your quiet weeks, not just month-end</h2>
+        <p>On a free strategy call we'll look at your service area, your reviews and how your estimates are followed up, and show you where your next moves will come from.</p>
+        <div class="c360-ind-move-ctas">
+          <a href="/schedule-demo" class="c360-ind-move-btn c360-ind-move-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-move-btn c360-ind-move-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (truck markers) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-move-section" id="move-faq" style="padding-top:0">
+  <div class="c360-ind-move-wrap">
+    <div class="c360-ind-move-head">
+      <h2 class="c360-ind-move-h2">Moving company marketing questions</h2>
+    </div>
+    <div class="c360-ind-move-faq-list">
+
+      <details class="c360-ind-move-faq-item">
+        <summary class="c360-ind-move-faq-q">How do moving companies get more booked moves?</summary>
+        <div class="c360-ind-move-faq-a"><p>Be the mover customers trust when they search, respond fast, and follow up on every estimate. For most moving companies that starts with the Google Platinum Package (Local Services Ads plus Google Business Profile Management). Google PPC, Meta Ads and the Complete360 CRM for estimate follow-up come next, with an AI Voice Agent available when you're ready.</p></div>
+      </details>
+
+      <details class="c360-ind-move-faq-item">
+        <summary class="c360-ind-move-faq-q">Can moving companies run Google Local Services Ads?</summary>
+        <div class="c360-ind-move-faq-a"><p>Yes. Moving services is a Local Services Ads category, though availability can vary by area. Google checks your business license or registration where required, your insurance and backgrounds before your ads earn the Google Verified badge. We walk you through each step.</p></div>
+      </details>
+
+      <details class="c360-ind-move-faq-item">
+        <summary class="c360-ind-move-faq-q">Are Local Services Ads leads shared like lead-site leads?</summary>
+        <div class="c360-ind-move-faq-a"><p>No. Customers call or message your business directly from your ad, and you pay for leads rather than clicks. The lead isn't sold to a list of other movers at the same time.</p></div>
+      </details>
+
+      <details class="c360-ind-move-faq-item">
+        <summary class="c360-ind-move-faq-q">How do I turn more estimates into booked moves?</summary>
+        <div class="c360-ind-move-faq-a"><p>Follow up quickly and consistently. Most customers compare several quotes, and the mover who checks in, answers questions and makes it easy to hold a date often wins. The Complete360 CRM keeps every estimate in one place with friendly follow-up texts, and strong reviews make the decision easier.</p></div>
+      </details>
+
+      <details class="c360-ind-move-faq-item">
+        <summary class="c360-ind-move-faq-q">How do I fill the slow weeks of the month?</summary>
+        <div class="c360-ind-move-faq-a"><p>Use marketing you can aim at the quiet days. Google PPC can focus on long-distance, commercial and specialty moves that book further out, and Meta Ads can promote offers for mid-month moves to people in your service area.</p></div>
+      </details>
+
+      <details class="c360-ind-move-faq-item">
+        <summary class="c360-ind-move-faq-q">What happens to calls when every crew is out?</summary>
+        <div class="c360-ind-move-faq-a"><p>The AI Voice Agent can answer them. It takes the caller's name, move date, where they're moving from and to and the size of the home, and books the estimate or passes the details to your team. There are no per-minute AI fees; the phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-move-faq-item">
+        <summary class="c360-ind-move-faq-q">Can you guarantee more moves?</summary>
+        <div class="c360-ind-move-faq-a"><p>No. No one can promise rankings or a set number of leads or moves. For Google Business Profile Management and advertising campaigns, including Local Services Ads, Google PPC and Meta Ads, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-move-faq-item">
+        <summary class="c360-ind-move-faq-q">How much does moving company marketing cost?</summary>
+        <div class="c360-ind-move-faq-a"><p>Each service's price is on its own page, including the <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>, the <a href="/crm-home">Complete360 CRM</a> and the <a href="/ai-agents">AI Voice Agent</a>. Google PPC and Meta Ads are planned with you on a strategy call. Ad spend is separate and billed directly by Google or Meta. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
