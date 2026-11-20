@@ -91,6 +91,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Junk Removal Marketing | `/industries/junk-removal` | `schema/pages/industries/junk-removal.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Moving Company Marketing | `/industries/movers` | `schema/pages/industries/movers.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Handyman Marketing | `/industries/handyman` | `schema/pages/industries/handyman.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Landscaping & Hardscaping Marketing | `/industries/landscaping` | `schema/pages/industries/landscaping.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Website Pricing | `/website-pricing` | `schema/pages/pricing/website-pricing.html` | WebPage, FAQPage | 7 | ✅ |
 | Complete360 CRM Pricing | `/pricing` | `schema/pages/pricing/saas-pricing.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Complete360 CRM | `/crm-home` | `schema/pages/crm-platform/crm-home.html` | WebPage, SoftwareApplication, FAQPage | 8 | ✅ |
