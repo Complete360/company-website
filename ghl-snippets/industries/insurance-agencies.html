@@ -1,0 +1,758 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: P&C Insurance Agencies
+     c360-ind-pc-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/insurance-agencies
+          (page name "Insurance Agency Marketing"). Meta data: ghl-meta/industries/insurance-agencies.md.
+          Schema: schema/pages/industries/insurance-agencies.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-pc-  (new, unique; vars --pc-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: slightly different from the other pages), insurance themed:
+       - Hero: solid navy with a faint security-print pattern; photo cropped
+         to a shield, with a code-built insurance ID card overlapping it.
+       - Reality: "what agents tell us" / "what fixes it" as a two-sided
+         conversation, rows aligned.
+       - Plan: a policy declarations page (Part A core, Part B state
+         endorsement, Part C optional endorsements, "Recommended" stamp)
+         with a California-or-Florida switch beside it that turns the Local
+         Services Ads row on or off.
+       - Journey: four stages around a "one policy term" renewal ring.
+       - ID-card stats, navy CTA panel with photo, FAQ with a heading
+         column, not-affiliated note.
+     Light-blue palette (#EEF5FD / #E6F1FB), navy, green. No sand.
+
+     Policy notes: Google offers Local Services Ads to insurance agencies in
+     California and Florida only (verified 2026-11-19). Meta requires insurance
+     ads to run in its financial products and services special ad category
+     (limited targeting), so the copy promises no demographic targeting.
+     Permission-based lead forms; the agent approves every ad; the AI Voice
+     Agent books appointments and never quotes or binds. Management/legal
+     review suggested before publishing (regulated industry).
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       pc-hero        16:9, 2000px+ (cropped to a shield; keep subjects centered)
+       pc-on-the-job  4:3, 1200px+  (left half of the CTA panel)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-19) — first build. Plan per the worksheet draft: Meta Ads
+       and Google Business Profile Management (incl. reviews; replaces the
+       separate Reputation Management line) first; Google Platinum Package
+       for CA/FL agents only; grow with Complete360 CRM and Geo-Fencing, plus
+       the AI Voice Agent (added). Website, Google PPC and Local SEO Booster
+       as "also available". To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-pc{
+  --pc-navy:#122078;--pc-navy-dark:#0d1654;--pc-navy-deeper:#0a1040;
+  --pc-green:#127825;--pc-green-hover:#0e5e1d;--pc-green-light:#EAF3DE;
+  --pc-sky:#EEF5FD;--pc-sky-2:#E6F1FB;--pc-line:#E2E8F2;--pc-rule:#C9D5EA;
+  --pc-text:#0F1F5E;--pc-muted:#5F5E5A;--pc-body:#3B4566;
+  --pc-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--pc-font);color:var(--pc-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-pc *,.c360-ind-pc *::before,.c360-ind-pc *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-pc :where(h1,h2,h3,h4,p,ul,ol,li,dl,dt,dd){margin:0;padding:0;font-family:var(--pc-font)}
+.c360-ind-pc :where(ul,ol){list-style:none}
+.c360-ind-pc :where(a){color:var(--pc-navy)}
+.c360-ind-pc :where(button){font-family:var(--pc-font)}
+.c360-ind-pc a:focus-visible,.c360-ind-pc summary:focus-visible,.c360-ind-pc button:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-pc-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-pc-section{padding:104px 0}
+.c360-ind-pc-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--pc-text);margin-bottom:16px}
+.c360-ind-pc-lead{font-size:18px;color:var(--pc-muted);max-width:760px;line-height:1.65}
+.c360-ind-pc-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--pc-green);margin-bottom:14px}
+.c360-ind-pc-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-pc-head .c360-ind-pc-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-pc-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--pc-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-pc-btn-primary{background:var(--pc-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-pc-btn-primary:hover{background:var(--pc-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-pc-btn-outline{background:transparent;color:var(--pc-text);border:2px solid var(--pc-text);padding:14px 24px}
+.c360-ind-pc-btn-outline:hover{background:var(--pc-text);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-pc-btn-light{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.75);padding:14px 24px}
+.c360-ind-pc-btn-light:hover{background:#fff;color:var(--pc-navy);text-decoration:none;transform:translateY(-2px)}
+.c360-ind-pc a.c360-ind-pc-btn-primary{color:#fff}
+.c360-ind-pc a.c360-ind-pc-btn-outline{color:var(--pc-text)}
+.c360-ind-pc a.c360-ind-pc-btn-outline:hover{color:#fff}
+.c360-ind-pc a.c360-ind-pc-btn-light{color:#fff}
+.c360-ind-pc a.c360-ind-pc-btn-light:hover{color:var(--pc-navy)}
+.c360-ind-pc-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-pc-pills{display:flex;flex-wrap:wrap;gap:10px}
+.c360-ind-pc-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--pc-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-pc-pills a:hover{background:var(--pc-navy);border-color:var(--pc-navy);color:#fff;text-decoration:none}
+
+/* Image slots: styled fallback until the GHL image URL is pasted in. */
+.c360-ind-pc-img{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#DCE7F5 0 16px,#E7EFF9 16px 32px)}
+.c360-ind-pc-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-pc-img img[src=""],.c360-ind-pc-img img:not([src]){visibility:hidden}
+.c360-ind-pc-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B9D8;font-size:58px;pointer-events:none}
+.c360-ind-pc-img img[src]:not([src=""])+.c360-ind-pc-fallback{display:none}
+
+/* ══════════ HERO (navy, security-paper pattern, shield photo) ══════════ */
+.c360-ind-pc-hero{position:relative;background:var(--pc-navy);color:#fff;overflow:hidden}
+/* Fine guilloche-style rings, like the security print on a policy document */
+.c360-ind-pc-hero::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:repeating-radial-gradient(circle at 88% 40%,rgba(255,255,255,0) 0 22px,rgba(255,255,255,0.06) 22px 23px),
+             repeating-radial-gradient(circle at 70% 110%,rgba(255,255,255,0) 0 30px,rgba(255,255,255,0.045) 30px 31px)}
+.c360-ind-pc-hero-grid{position:relative;display:grid;grid-template-columns:1.05fr .95fr;gap:72px;align-items:center;padding-top:64px;padding-bottom:104px}
+.c360-ind-pc-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-pc-crumbs li{color:#C7D0EE;display:flex;align-items:center;gap:8px}
+.c360-ind-pc-crumbs li+li::before{content:"\203A";color:#8E9BD0}
+.c360-ind-pc-crumbs a{color:#fff;text-decoration:none}
+.c360-ind-pc-crumbs a:hover{text-decoration:underline}
+.c360-ind-pc-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:#fff;margin-bottom:22px}
+.c360-ind-pc-hero-sub{font-size:18px;line-height:1.65;color:#DCE2F7;max-width:640px;margin-bottom:32px}
+.c360-ind-pc-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-ind-pc-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-pc-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-pc-partner,.c360-ind-pc-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-pc-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+.c360-ind-pc-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:#DCE2F7;line-height:1.4}
+.c360-ind-pc-creds-list i{color:#7FD38F;margin-top:3px;font-size:12px}
+.c360-ind-pc-stars{color:#F5B800;letter-spacing:1px}
+.c360-ind-pc-shield-wrap{position:relative;padding:0 0 70px 70px}
+.c360-ind-pc-shield{filter:drop-shadow(0 30px 50px rgba(5,10,40,0.45))}
+.c360-ind-pc-shield .c360-ind-pc-img{aspect-ratio:9/10;clip-path:url(#c360-ind-pc-shieldpath);-webkit-clip-path:url(#c360-ind-pc-shieldpath)}
+/* Code-built insurance ID card overlapping the shield */
+.c360-ind-pc-idcard{position:absolute;left:0;bottom:0;width:330px;background:#fff;color:var(--pc-text);border-radius:14px;padding:18px 20px 16px;box-shadow:0 22px 44px rgba(5,10,40,0.35);transform:rotate(-3deg)}
+.c360-ind-pc-idcard-top{display:flex;align-items:center;justify-content:space-between;gap:10px;padding-bottom:10px;margin-bottom:10px;border-bottom:2px solid var(--pc-green)}
+.c360-ind-pc-idcard-top b{font-size:15px;font-weight:800}
+.c360-ind-pc-idcard-top span{font-size:11.5px;font-weight:600;color:var(--pc-green);background:var(--pc-green-light);padding:3px 9px;border-radius:100px}
+.c360-ind-pc-idcard dl{display:grid;grid-template-columns:auto 1fr;gap:5px 14px;font-size:13px}
+.c360-ind-pc-idcard dt{color:var(--pc-muted)}
+.c360-ind-pc-idcard dd{font-weight:600}
+.c360-ind-pc-idcard p{font-size:11px;color:var(--pc-muted);margin-top:10px}
+
+/* ══════════ REALITY (agent says / the fix, as a conversation) ══════════ */
+.c360-ind-pc-convo{max-width:1320px;margin:0 auto;display:grid;grid-template-columns:1fr 64px 1fr;row-gap:22px}
+.c360-ind-pc-convo-labels{display:contents}
+.c360-ind-pc-convo-labels span{font-size:14px;font-weight:700;color:var(--pc-muted);padding:0 6px}
+.c360-ind-pc-convo-labels span:last-child{grid-column:3;color:var(--pc-green)}
+.c360-ind-pc-say{position:relative;background:#fff;border:1px solid var(--pc-line);border-radius:22px 22px 22px 6px;padding:28px 30px;box-shadow:0 12px 28px rgba(15,31,94,0.07)}
+.c360-ind-pc-say h3{font-size:20px;font-weight:700;line-height:1.4;color:var(--pc-text)}
+.c360-ind-pc-say p{font-size:15px;color:var(--pc-muted);margin-top:10px;line-height:1.6}
+.c360-ind-pc-arrow{display:flex;align-items:center;justify-content:center;color:var(--pc-green);font-size:22px}
+.c360-ind-pc-fix{background:var(--pc-green-light);border:1px solid #CFE3BF;border-radius:22px 22px 6px 22px;padding:28px 30px;display:flex;flex-direction:column;gap:14px}
+.c360-ind-pc-fix p{font-size:16px;color:#25352A;line-height:1.6}
+.c360-ind-pc-fix .c360-ind-pc-pills{margin-top:auto}
+
+/* ══════════ PLAN (declarations page + state switch) ══════════ */
+.c360-ind-pc-plan{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;align-items:start;max-width:1560px;margin:0 auto}
+.c360-ind-pc-plan-side{position:sticky;top:110px}
+.c360-ind-pc-state{margin:30px 0 18px;background:#fff;border:1px solid var(--pc-line);border-radius:16px;padding:22px 22px 20px}
+.c360-ind-pc-state h3{font-size:17px;font-weight:700;margin-bottom:6px}
+.c360-ind-pc-state > p{font-size:14.5px;color:var(--pc-muted);margin-bottom:14px}
+.c360-ind-pc-state-btns{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.c360-ind-pc-state-btns button{appearance:none;cursor:pointer;font-size:15px;font-weight:600;color:var(--pc-navy);background:var(--pc-sky);border:1.5px solid #9DB3DC;border-radius:10px;padding:13px 10px;line-height:1.3;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-pc-state-btns button:hover{border-color:var(--pc-navy)}
+.c360-ind-pc-state-btns button[aria-pressed="true"]{background:var(--pc-navy);border-color:var(--pc-navy);color:#fff}
+.c360-ind-pc-state-note{font-size:14px;color:var(--pc-body);margin-top:14px;min-height:44px}
+.c360-ind-pc-rules{background:#fff;border:1px solid var(--pc-line);border-radius:16px;padding:22px 22px 20px;margin-bottom:26px}
+.c360-ind-pc-rules h3{font-size:17px;font-weight:700;margin-bottom:12px}
+.c360-ind-pc-rules li{display:flex;gap:12px;align-items:flex-start;font-size:15px;color:var(--pc-body);line-height:1.5;padding:9px 0;border-top:1px dashed var(--pc-rule)}
+.c360-ind-pc-rules li:first-of-type{border-top:0;padding-top:0}
+.c360-ind-pc-rules i{flex:none;color:var(--pc-green);margin-top:4px}
+.c360-ind-pc-decl{position:relative;background:#fff;border:1px solid var(--pc-rule);border-radius:6px;box-shadow:0 2px 0 #fff,0 5px 0 -1px var(--pc-rule),0 30px 60px rgba(15,31,94,0.12);padding:44px 48px 40px}
+.c360-ind-pc-decl-head{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;padding-bottom:18px;border-bottom:3px double var(--pc-navy)}
+.c360-ind-pc-decl-head h3{font-size:26px;font-weight:800;line-height:1.2}
+.c360-ind-pc-decl-head p{font-size:13px;color:var(--pc-muted);text-align:right;line-height:1.5}
+.c360-ind-pc-decl-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;padding:16px 0;border-bottom:1px solid var(--pc-rule);font-size:14px}
+.c360-ind-pc-decl-meta dt{font-size:12.5px;color:var(--pc-muted)}
+.c360-ind-pc-decl-meta dd{font-weight:600}
+.c360-ind-pc-part{padding-top:26px}
+.c360-ind-pc-part h4{display:flex;align-items:baseline;gap:12px;font-size:15px;font-weight:700;color:var(--pc-green);margin-bottom:6px}
+.c360-ind-pc-part h4 span{font-weight:500;color:var(--pc-muted);font-size:13.5px}
+.c360-ind-pc-cov{display:grid;grid-template-columns:minmax(0,1fr) 150px;gap:8px 28px;align-items:start;padding:16px 0;border-bottom:1px dashed var(--pc-rule)}
+.c360-ind-pc-cov:last-child{border-bottom:0}
+.c360-ind-pc-cov a.c360-ind-pc-cov-name{font-size:18px;font-weight:700;color:var(--pc-text);text-decoration:none;border-bottom:1.5px solid #9DB3DC}
+.c360-ind-pc-cov a.c360-ind-pc-cov-name:hover{border-color:var(--pc-navy)}
+.c360-ind-pc-cov p{font-size:15px;color:var(--pc-muted);margin-top:6px;line-height:1.6}
+.c360-ind-pc-tag{justify-self:end;display:inline-flex;align-items:center;gap:7px;font-size:13px;font-weight:700;padding:6px 12px;border-radius:100px;white-space:nowrap}
+.c360-ind-pc-tag-in{color:var(--pc-green);background:var(--pc-green-light)}
+.c360-ind-pc-tag-add{color:var(--pc-navy);background:var(--pc-sky-2)}
+.c360-ind-pc-tag-st{color:#6B5A00;background:#FFF4CC}
+.c360-ind-pc-cov.is-on .c360-ind-pc-tag-st{color:var(--pc-green);background:var(--pc-green-light)}
+.c360-ind-pc-cov.is-off{opacity:.55}
+.c360-ind-pc-cov.is-off .c360-ind-pc-tag-st{color:var(--pc-muted);background:#F1F2F5}
+.c360-ind-pc-decl-also{display:flex;flex-wrap:wrap;align-items:center;gap:12px 16px;margin-top:22px;padding-top:20px;border-top:1px solid var(--pc-rule)}
+.c360-ind-pc-decl-also b{font-size:14px;color:var(--pc-muted);font-weight:600}
+.c360-ind-pc-decl-sign{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-top:28px;font-size:13px;color:var(--pc-muted)}
+.c360-ind-pc-decl-sign span{display:block;border-top:1px solid var(--pc-text);padding-top:6px;min-width:220px}
+.c360-ind-pc-stamp{position:absolute;top:-24px;right:40px;transform:rotate(6deg);font-size:17px;font-weight:800;letter-spacing:0.06em;color:var(--pc-green);border:3px solid var(--pc-green);border-radius:10px;padding:6px 14px;background:rgba(255,255,255,0.85);box-shadow:inset 0 0 0 2px #fff,inset 0 0 0 4px var(--pc-green)}
+
+/* ══════════ JOURNEY (12-month policy term ring) ══════════ */
+.c360-ind-pc-cycle{display:grid;grid-template-columns:minmax(0,1fr) minmax(260px,340px) minmax(0,1fr);grid-template-rows:repeat(8,auto);column-gap:40px;max-width:1560px;margin:0 auto}
+.c360-ind-pc-ring{grid-column:2;grid-row:1/9;align-self:center;position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center;text-align:center}
+.c360-ind-pc-ring svg{position:absolute;inset:0;width:100%;height:100%}
+.c360-ind-pc-ring-text{position:relative;max-width:190px}
+.c360-ind-pc-ring-text i{font-size:30px;color:var(--pc-green);margin-bottom:10px}
+.c360-ind-pc-ring-text b{display:block;font-size:22px;font-weight:800;line-height:1.25}
+.c360-ind-pc-ring-text span{display:block;font-size:14px;color:var(--pc-muted);margin-top:6px}
+.c360-ind-pc-stage{display:grid;grid-template-rows:subgrid;grid-row:span 4;row-gap:16px;background:#fff;border:1px solid var(--pc-line);border-radius:20px;padding:30px 30px 28px;box-shadow:0 14px 34px rgba(15,31,94,0.07)}
+.c360-ind-pc-stage:nth-child(2){grid-column:1;grid-row:1/5}
+.c360-ind-pc-stage:nth-child(3){grid-column:3;grid-row:1/5}
+.c360-ind-pc-stage:nth-child(4){grid-column:3;grid-row:5/9;margin-top:32px}
+.c360-ind-pc-stage:nth-child(5){grid-column:1;grid-row:5/9;margin-top:32px}
+.c360-ind-pc-stage-top{display:flex;align-items:center;gap:14px}
+.c360-ind-pc-stage-top span{flex:none;display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--pc-navy);color:#fff;font-size:16px;font-weight:700}
+.c360-ind-pc-stage-top h3{font-size:22px;font-weight:700;line-height:1.3}
+.c360-ind-pc-stage .c360-ind-pc-pills{align-content:flex-start;align-items:flex-start}
+.c360-ind-pc-stage > p{font-size:15.5px;color:var(--pc-muted);line-height:1.65}
+.c360-ind-pc-mock{background:var(--pc-sky);border-radius:14px;padding:18px;align-self:stretch;display:flex;flex-direction:column;justify-content:center}
+.c360-ind-pc-mock-card{background:#fff;border:1px solid var(--pc-line);border-radius:12px;padding:14px 16px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:13.5px;color:#202124;box-shadow:0 8px 20px rgba(15,31,94,0.07)}
+.c360-ind-pc-mock-card + .c360-ind-pc-mock-card{margin-top:10px}
+.c360-ind-pc-mock-q{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #DFE1E5;border-radius:100px;padding:8px 14px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:13.5px;color:#202124;margin-bottom:10px}
+.c360-ind-pc-mock-q i{color:#4285F4}
+.c360-ind-pc-mock-spons{font-size:11.5px;font-weight:700;color:#202124}
+.c360-ind-pc-mock-name{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:15px;color:#1A0DAB;margin:2px 0}
+.c360-ind-pc-mock-ver{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#137333;font-weight:700}
+.c360-ind-pc-mock-sub{font-size:12.5px;color:#5F6368}
+.c360-ind-pc-mock-st{color:#E8A400}
+.c360-ind-pc-mock-flag{display:inline-block;font-family:var(--pc-font);font-size:11px;font-weight:600;color:#6B5A00;background:#FFF4CC;border-radius:100px;padding:2px 8px;margin-left:6px}
+.c360-ind-pc-form h5{font-size:14.5px;font-weight:700;margin-bottom:8px}
+.c360-ind-pc-form-f{border:1px solid #DADCE0;border-radius:6px;padding:7px 10px;color:#5F6368;font-size:12.5px;margin-bottom:6px}
+.c360-ind-pc-form-ok{display:flex;gap:8px;align-items:flex-start;font-size:12px;color:#3C4043;margin:8px 0 10px;line-height:1.4}
+.c360-ind-pc-form-ok i{color:#1877F2;margin-top:2px}
+.c360-ind-pc-form-btn{background:#1877F2;color:#fff;font-weight:700;border-radius:6px;text-align:center;padding:8px;font-size:13px}
+.c360-ind-pc-call{display:flex;gap:12px;align-items:flex-start}
+.c360-ind-pc-call i{flex:none;width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px}
+.c360-ind-pc-call-miss i{background:#FDE7E7;color:#C5221F}
+.c360-ind-pc-call-ai i{background:var(--pc-green-light);color:var(--pc-green)}
+.c360-ind-pc-call b{display:block;font-size:13.5px}
+.c360-ind-pc-call span{font-size:12.5px;color:#5F6368}
+.c360-ind-pc-sms{max-width:92%;font-size:13px;line-height:1.45;padding:10px 13px;border-radius:16px}
+.c360-ind-pc-sms-out{background:var(--pc-navy);color:#fff;border-bottom-right-radius:4px;margin-left:auto}
+.c360-ind-pc-sms-in{background:#fff;border:1px solid var(--pc-line);color:#202124;border-bottom-left-radius:4px;margin-top:8px}
+.c360-ind-pc-sms-time{font-family:Arial,'Helvetica Neue',sans-serif;font-size:11px;color:#5F6368;text-align:center;margin-bottom:8px}
+.c360-ind-pc-note{font-size:12px;color:var(--pc-muted);text-align:center;margin-top:10px}
+
+/* ══════════ REVIEWS (ID-card stats) ══════════ */
+.c360-ind-pc-ids{display:grid;grid-template-columns:repeat(3,minmax(0,300px));justify-content:center;gap:24px;margin:0 auto 48px}
+.c360-ind-pc-ids li{position:relative;background:#fff;border:1px solid var(--pc-line);border-radius:14px;padding:18px 20px 18px 26px;overflow:hidden;box-shadow:0 12px 26px rgba(15,31,94,0.08)}
+.c360-ind-pc-ids li::before{content:"";position:absolute;left:0;top:0;bottom:0;width:8px;background:linear-gradient(180deg,var(--pc-navy) 0 60%,var(--pc-green) 60%)}
+.c360-ind-pc-ids small{display:block;font-size:12.5px;color:var(--pc-muted)}
+.c360-ind-pc-ids strong{display:block;font-size:34px;font-weight:800;line-height:1.15;color:var(--pc-text)}
+.c360-ind-pc-ids span{font-size:14px;color:var(--pc-body)}
+
+/* ══════════ CTA (navy panel + photo) ══════════ */
+.c360-ind-pc-cta{display:grid;grid-template-columns:1fr 1fr;max-width:1400px;margin:0 auto;background:var(--pc-navy);border-radius:28px;overflow:hidden;position:relative}
+.c360-ind-pc-cta .c360-ind-pc-img{min-height:420px;height:100%}
+.c360-ind-pc-cta-body{padding:64px 60px;color:#fff;display:flex;flex-direction:column;justify-content:center}
+.c360-ind-pc-cta-body h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:16px}
+.c360-ind-pc-cta-body p{font-size:18px;color:#DCE2F7;line-height:1.65;margin-bottom:30px;max-width:540px}
+
+/* ══════════ FAQ (heading column + list) ══════════ */
+.c360-ind-pc-faq{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:64px;max-width:1400px;margin:0 auto;align-items:start}
+.c360-ind-pc-faq-side{position:sticky;top:110px}
+.c360-ind-pc-faq-side .c360-ind-pc-lead{margin-bottom:24px}
+.c360-ind-pc-faq-item{border-bottom:1px solid var(--pc-line)}
+.c360-ind-pc-faq-item:first-child{border-top:1px solid var(--pc-line)}
+.c360-ind-pc-faq-q{display:grid;grid-template-columns:1fr 32px;align-items:center;gap:16px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--pc-text);cursor:pointer;list-style:none}
+.c360-ind-pc-faq-q::-webkit-details-marker{display:none}
+.c360-ind-pc-faq-q::after{content:"\002B";display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;background:var(--pc-sky-2);font-size:20px;font-weight:500;color:var(--pc-navy);line-height:1;transition:transform .2s,background .2s}
+.c360-ind-pc-faq-item[open] .c360-ind-pc-faq-q::after{transform:rotate(45deg);background:var(--pc-green-light);color:var(--pc-green)}
+.c360-ind-pc-faq-a{padding:0 52px 24px 4px;font-size:16px;color:var(--pc-muted);line-height:1.7}
+.c360-ind-pc-faq-a a{font-weight:600}
+.c360-ind-pc-disclaim{max-width:1000px;margin:48px auto 0;font-size:13.5px;color:var(--pc-muted);line-height:1.6;text-align:center}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1200px){
+  .c360-ind-pc-plan{grid-template-columns:1fr;gap:40px}
+  .c360-ind-pc-plan-side{position:static}
+  .c360-ind-pc-cycle{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto repeat(8,auto);column-gap:28px}
+  .c360-ind-pc-ring{grid-column:1/-1;grid-row:1;width:300px;justify-self:center;margin-bottom:36px}
+  .c360-ind-pc-stage:nth-child(2){grid-column:1;grid-row:2/6}
+  .c360-ind-pc-stage:nth-child(3){grid-column:2;grid-row:2/6}
+  .c360-ind-pc-stage:nth-child(4){grid-column:2;grid-row:6/10}
+  .c360-ind-pc-stage:nth-child(5){grid-column:1;grid-row:6/10}
+}
+@media (max-width:900px){
+  .c360-ind-pc-section{padding:76px 0}
+  .c360-ind-pc-hero-grid{grid-template-columns:1fr;gap:44px;padding-top:48px;padding-bottom:76px}
+  .c360-ind-pc-shield-wrap{max-width:520px;padding:0 0 60px 40px}
+  .c360-ind-pc-convo{grid-template-columns:1fr;row-gap:0}
+  .c360-ind-pc-convo-labels{display:none}
+  .c360-ind-pc-arrow{transform:rotate(90deg);padding:10px 0}
+  .c360-ind-pc-fix{margin-bottom:36px}
+  .c360-ind-pc-ids{grid-template-columns:1fr;max-width:340px}
+  .c360-ind-pc-cta{grid-template-columns:1fr}
+  .c360-ind-pc-cta .c360-ind-pc-img{min-height:0;aspect-ratio:4/3}
+  .c360-ind-pc-cta-body{padding:44px 28px}
+  .c360-ind-pc-faq{grid-template-columns:1fr;gap:28px}
+  .c360-ind-pc-faq-side{position:static}
+}
+@media (max-width:760px){
+  .c360-ind-pc-cycle{grid-template-columns:1fr;grid-template-rows:none}
+  .c360-ind-pc-ring{grid-column:1;width:260px}
+  .c360-ind-pc-stage:nth-child(n){grid-column:1;grid-row:auto;display:flex;flex-direction:column;margin-top:0;margin-bottom:24px}
+  .c360-ind-pc-decl{padding:32px 22px 28px}
+  .c360-ind-pc-decl-head{grid-template-columns:1fr}
+  .c360-ind-pc-decl-head p{text-align:left}
+  .c360-ind-pc-decl-meta{grid-template-columns:1fr}
+  .c360-ind-pc-cov{grid-template-columns:1fr}
+  .c360-ind-pc-tag{justify-self:start}
+  .c360-ind-pc-stamp{top:-18px;right:14px;font-size:14px}
+  .c360-ind-pc-decl-sign{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:640px){
+  .c360-ind-pc-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-pc-btn{width:100%}
+  .c360-ind-pc-partner{--badge-h:64px;--badge-clear:32px}
+  .c360-ind-pc-shield-wrap{padding:0 0 70px 0}
+  .c360-ind-pc-idcard{width:calc(100% - 20px);left:10px}
+  .c360-ind-pc-say,.c360-ind-pc-fix{padding:22px 20px}
+  .c360-ind-pc-state-btns{grid-template-columns:1fr}
+  .c360-ind-pc-faq-a{padding:0 4px 22px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-pc *,.c360-ind-pc *::before,.c360-ind-pc *::after{transition:none !important;animation:none !important}
+  .c360-ind-pc-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-pc">
+
+<!-- Shield shape for the hero photo (objectBoundingBox, so it scales with the frame) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <clipPath id="c360-ind-pc-shieldpath" clipPathUnits="objectBoundingBox">
+    <path d="M0.5,0 L0.97,0.1 Q1,0.11 1,0.15 L1,0.5 C1,0.76 0.8,0.92 0.5,1 C0.2,0.92 0,0.76 0,0.5 L0,0.15 Q0,0.11 0.03,0.1 Z"/>
+  </clipPath>
+</svg>
+
+<!-- ══════════ HERO (navy, shield photo + ID card) ══════════ -->
+<section class="c360-ind-pc-hero">
+  <div class="c360-ind-pc-wrap c360-ind-pc-hero-grid">
+    <div>
+      <nav class="c360-ind-pc-crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li aria-current="page">Insurance Agencies</li>
+        </ol>
+      </nav>
+      <h1>Insurance agency marketing that wins the quote and keeps the renewal</h1>
+      <p class="c360-ind-pc-hero-sub">Shoppers compare a few agencies and go with the one that feels trustworthy and gets back to them first. We help your P&amp;C agency be that one for auto, home and business coverage, then help you stay in touch so clients renew and send their friends.</p>
+      <div class="c360-ind-pc-ctas">
+        <a href="/schedule-demo" class="c360-ind-pc-btn c360-ind-pc-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-pc-btn c360-ind-pc-btn-light"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+      <div class="c360-ind-pc-creds">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-pc-partner">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+        <ul class="c360-ind-pc-creds-list">
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-pc-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, helping local agencies nationwide since 2018</li>
+        </ul>
+      </div>
+    </div>
+    <div class="c360-ind-pc-shield-wrap">
+      <div class="c360-ind-pc-shield">
+        <div class="c360-ind-pc-img">
+          <!-- IMAGE PLACEHOLDER: pc-hero — insurance agent at a desk reviewing a policy with a young family, warm office light, subjects centered (photo is cropped to a shield shape), 16:9 -->
+          <img src="" data-c360-placeholder="pc-hero" alt="Insurance agent reviewing home and auto coverage with a young family at her desk" fetchpriority="high">
+          <div class="c360-ind-pc-fallback" aria-hidden="true"><i class="fa-solid fa-shield-halved"></i></div>
+        </div>
+      </div>
+      <div class="c360-ind-pc-idcard" role="img" aria-label="Example agency growth card: quote requests from local shoppers, fresh Google reviews, and renewal check-ins">
+        <div class="c360-ind-pc-idcard-top"><b>Your Agency</b><span>Growth plan</span></div>
+        <dl>
+          <dt>New business</dt><dd>Local quote requests</dd>
+          <dt>Reputation</dt><dd>Fresh Google reviews</dd>
+          <dt>Retention</dt><dd>Renewal check-ins</dd>
+        </dl>
+        <p>Example for illustration</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE P&C REALITY (what agents say / the fix) ══════════ -->
+<section class="c360-ind-pc-section" style="background:var(--pc-sky)">
+  <div class="c360-ind-pc-wrap">
+    <div class="c360-ind-pc-head">
+      <span class="c360-ind-pc-kicker"><i class="fa-solid fa-comments" aria-hidden="true"></i> Heard at every agency</span>
+      <h2 class="c360-ind-pc-h2">The P&amp;C agency reality</h2>
+      <p class="c360-ind-pc-lead">Agents tell us the same four things. Here's what we do about each one.</p>
+    </div>
+    <div class="c360-ind-pc-convo">
+      <div class="c360-ind-pc-convo-labels" aria-hidden="true"><span>What agents tell us</span><span>What fixes it</span></div>
+
+      <div class="c360-ind-pc-say">
+        <h3>"Shoppers fill out three quote forms and buy from whoever calls back first."</h3>
+        <p>Speed decides the sale, and a voicemail at 6 PM can lose it.</p>
+      </div>
+      <div class="c360-ind-pc-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="c360-ind-pc-fix">
+        <p>Lead forms land straight in your CRM so you can call right away, and an AI Voice Agent answers the calls you miss and books a time with you.</p>
+        <div class="c360-ind-pc-pills"><a href="/ai-agents">AI Voice Agent</a><a href="/crm-home">Complete360 CRM</a></div>
+      </div>
+
+      <div class="c360-ind-pc-say">
+        <h3>"The national brands outspend me everywhere."</h3>
+        <p>You can't match their TV budget, and you don't need to.</p>
+      </div>
+      <div class="c360-ind-pc-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="c360-ind-pc-fix">
+        <p>Local beats loud. A complete Google Business Profile with steady new reviews helps you show up on the map when someone searches for an insurance agent nearby.</p>
+        <div class="c360-ind-pc-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+      </div>
+
+      <div class="c360-ind-pc-say">
+        <h3>"I only find out a client left when the renewal doesn't come back."</h3>
+        <p>A rate increase lands in their mailbox, and a competitor calls before you do.</p>
+      </div>
+      <div class="c360-ind-pc-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="c360-ind-pc-fix">
+        <p>Renewal reminders and coverage check-ins go out from your CRM ahead of the renewal date, so you're the first one to talk it through.</p>
+        <div class="c360-ind-pc-pills"><a href="/crm-home">Complete360 CRM</a></div>
+      </div>
+
+      <div class="c360-ind-pc-say">
+        <h3>"Referrals used to carry the agency. Now they're hit and miss."</h3>
+        <p>Even a warm referral looks you up before they call.</p>
+      </div>
+      <div class="c360-ind-pc-arrow" aria-hidden="true"><i class="fa-solid fa-arrow-right"></i></div>
+      <div class="c360-ind-pc-fix">
+        <p>Review requests after each new policy build the kind of profile a referred friend trusts, and Meta Ads keep your agency in front of the neighbors who haven't met you yet.</p>
+        <div class="c360-ind-pc-pills"><a href="/gbp-management">Google Business Profile Management</a><a href="/meta-ads">Meta Ads</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (declarations page) ══════════
+     Draft plan, to confirm with Jared. LSA row depends on the visitor's state
+     (Google allows Local Services Ads for insurance agencies in CA and FL only). -->
+<section class="c360-ind-pc-section" id="pc-plan" style="background:var(--pc-sky-2)">
+  <div class="c360-ind-pc-wrap">
+    <div class="c360-ind-pc-plan">
+      <div class="c360-ind-pc-plan-side">
+        <span class="c360-ind-pc-kicker"><i class="fa-solid fa-file-signature" aria-hidden="true"></i> Your recommended plan</span>
+        <h2 class="c360-ind-pc-h2">Coverage for a growing agency</h2>
+        <p class="c360-ind-pc-lead">Written the way you'd write a policy: the core coverage most P&amp;C agencies need first, one endorsement that depends on your state, and the add-ons that help you grow.</p>
+        <div class="c360-ind-pc-state" role="group" aria-labelledby="c360-ind-pc-state-q">
+          <h3 id="c360-ind-pc-state-q">Where is your agency licensed?</h3>
+          <p>Google only offers Local Services Ads to insurance agencies in two states.</p>
+          <div class="c360-ind-pc-state-btns">
+            <button type="button" data-pc-state="cafl" aria-pressed="false">California or Florida</button>
+            <button type="button" data-pc-state="other" aria-pressed="false">Another state</button>
+          </div>
+          <p class="c360-ind-pc-state-note" data-pc-note aria-live="polite">Pick one to see how the plan changes.</p>
+        </div>
+        <div class="c360-ind-pc-rules">
+          <h3>Built for a regulated business</h3>
+          <ul>
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> You approve every ad, page and form before it goes live.</li>
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Lead forms ask permission before you reach out.</li>
+            <li><i class="fa-solid fa-circle-check" aria-hidden="true"></i> Leads from your ads come to you, not to a shared list.</li>
+          </ul>
+        </div>
+        <div class="c360-ind-pc-ctas">
+          <a href="/schedule-demo" class="c360-ind-pc-btn c360-ind-pc-btn-primary">Walk through this plan with us</a>
+        </div>
+      </div>
+
+      <div class="c360-ind-pc-decl">
+        <div class="c360-ind-pc-stamp" aria-hidden="true">Recommended</div>
+        <div class="c360-ind-pc-decl-head">
+          <h3>Marketing declarations</h3>
+          <p>Form C360-PC<br>Draft plan for your review</p>
+        </div>
+        <dl class="c360-ind-pc-decl-meta">
+          <div><dt>Named insured</dt><dd>Your agency</dd></div>
+          <div><dt>Lines written</dt><dd>Auto, home and business</dd></div>
+          <div><dt>Policy period</dt><dd>Every renewal, on repeat</dd></div>
+        </dl>
+
+        <div class="c360-ind-pc-part">
+          <h4>Part A <span>Core coverage, start here</span></h4>
+          <div class="c360-ind-pc-cov">
+            <div>
+              <a class="c360-ind-pc-cov-name" href="/meta-ads">Meta Ads</a>
+              <p>Facebook and Instagram ads for auto, home and business quotes, with lead forms that ask permission before you reach out. Built under Meta's rules for insurance ads and approved by you before they run.</p>
+            </div>
+            <span class="c360-ind-pc-tag c360-ind-pc-tag-in"><i class="fa-solid fa-check" aria-hidden="true"></i> Included</span>
+          </div>
+          <div class="c360-ind-pc-cov">
+            <div>
+              <a class="c360-ind-pc-cov-name" href="/gbp-management">Google Business Profile Management</a>
+              <p>Your map listing, photos and weekly posts, plus review requests to your clients and replies to every review.</p>
+            </div>
+            <span class="c360-ind-pc-tag c360-ind-pc-tag-in"><i class="fa-solid fa-check" aria-hidden="true"></i> Included</span>
+          </div>
+        </div>
+
+        <div class="c360-ind-pc-part">
+          <h4>Part B <span>State endorsement</span></h4>
+          <div class="c360-ind-pc-cov" data-pc-lsa>
+            <div>
+              <a class="c360-ind-pc-cov-name" href="/local-service-ads#lsa-pricing">Google Platinum Package</a>
+              <p>Local Services Ads with the Google Verified badge at the top of Google, paired with Google Business Profile Management. Google offers these ads to insurance agencies in California and Florida only, after it checks each agent's license and background.</p>
+            </div>
+            <span class="c360-ind-pc-tag c360-ind-pc-tag-st" data-pc-lsa-tag><i class="fa-solid fa-location-dot" aria-hidden="true"></i> <span data-pc-lsa-status>CA &amp; FL agents</span></span>
+          </div>
+        </div>
+
+        <div class="c360-ind-pc-part">
+          <h4>Part C <span>Optional endorsements, grow with</span></h4>
+          <div class="c360-ind-pc-cov">
+            <div>
+              <a class="c360-ind-pc-cov-name" href="/crm-home">Complete360 CRM</a>
+              <p>Every lead and client in one place, with renewal reminders and coverage check-ins for people who've given you permission to contact them.</p>
+            </div>
+            <span class="c360-ind-pc-tag c360-ind-pc-tag-add"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add when ready</span>
+          </div>
+          <div class="c360-ind-pc-cov">
+            <div>
+              <a class="c360-ind-pc-cov-name" href="/geo-fencing">Geo-Fencing</a>
+              <p>Mobile and streaming TV ads for people near the places where insurance questions start, like car dealerships and new-home communities.</p>
+            </div>
+            <span class="c360-ind-pc-tag c360-ind-pc-tag-add"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add when ready</span>
+          </div>
+          <div class="c360-ind-pc-cov">
+            <div>
+              <a class="c360-ind-pc-cov-name" href="/ai-agents">AI Voice Agent</a>
+              <p>Answers after-hours and overflow calls, takes the caller's details and books a time with a licensed agent. It never quotes or binds coverage. No per-minute AI fees; the phone number and calling minutes are billed separately.</p>
+            </div>
+            <span class="c360-ind-pc-tag c360-ind-pc-tag-add"><i class="fa-solid fa-plus" aria-hidden="true"></i> Add when ready</span>
+          </div>
+        </div>
+
+        <div class="c360-ind-pc-decl-also">
+          <b>Also available</b>
+          <div class="c360-ind-pc-pills"><a href="/websites-home">Website</a><a href="/google-ppc">Google PPC</a><a href="/local-seo-booster">Local SEO Booster</a></div>
+        </div>
+        <div class="c360-ind-pc-decl-sign">
+          <span>Countersigned, Complete360</span>
+          <span>Final plan confirmed on your strategy call</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (the 12-month policy term) ══════════ -->
+<section class="c360-ind-pc-section">
+  <div class="c360-ind-pc-wrap">
+    <div class="c360-ind-pc-head">
+      <span class="c360-ind-pc-kicker"><i class="fa-solid fa-rotate" aria-hidden="true"></i> How it works</span>
+      <h2 class="c360-ind-pc-h2">From first search to the next renewal</h2>
+      <p class="c360-ind-pc-lead">Insurance doesn't end at the sale. Every policy comes back around, so the plan covers the whole term, not just the quote.</p>
+    </div>
+    <div class="c360-ind-pc-cycle">
+      <div class="c360-ind-pc-ring" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <circle cx="100" cy="100" r="92" fill="none" stroke="#E6F1FB" stroke-width="10"/>
+          <circle cx="100" cy="100" r="92" fill="none" stroke="#122078" stroke-width="3" stroke-dasharray="6 7"/>
+          <path d="M107 8 l-7 -5 v10 z" fill="#127825" transform="rotate(45 100 100)"/>
+          <path d="M107 8 l-7 -5 v10 z" fill="#127825" transform="rotate(135 100 100)"/>
+          <path d="M107 8 l-7 -5 v10 z" fill="#127825" transform="rotate(225 100 100)"/>
+          <path d="M107 8 l-7 -5 v10 z" fill="#127825" transform="rotate(315 100 100)"/>
+        </svg>
+        <div class="c360-ind-pc-ring-text">
+          <i class="fa-solid fa-shield-halved"></i>
+          <b>One policy term</b>
+          <span>and the renewal is the next sale</span>
+        </div>
+      </div>
+
+      <article class="c360-ind-pc-stage">
+        <div class="c360-ind-pc-stage-top"><span>1</span><h3>Get found by local shoppers</h3></div>
+        <p>When someone searches for an insurance agent nearby, your Google Business Profile shows the reviews, hours and photos that make them call. In California and Florida, Local Services Ads can put you above everything else.</p>
+        <div class="c360-ind-pc-mock" role="img" aria-label="Example Google search for insurance agency near me, showing a sponsored Google Verified result for agents in California and Florida, then a map listing with a 4.9 star rating">
+          <div class="c360-ind-pc-mock-q"><i class="fa-solid fa-magnifying-glass"></i> insurance agency near me</div>
+          <div class="c360-ind-pc-mock-card">
+            <div class="c360-ind-pc-mock-spons">Sponsored <span class="c360-ind-pc-mock-flag">CA &amp; FL</span></div>
+            <div class="c360-ind-pc-mock-name">Harbor Point Insurance <span class="c360-ind-pc-mock-ver"><i class="fa-solid fa-circle-check"></i> Google Verified</span></div>
+            <div class="c360-ind-pc-mock-sub"><span class="c360-ind-pc-mock-st">★★★★★</span> 4.9 (86) · Auto, home, business</div>
+          </div>
+          <div class="c360-ind-pc-mock-card">
+            <div class="c360-ind-pc-mock-name">Harbor Point Insurance</div>
+            <div class="c360-ind-pc-mock-sub"><span class="c360-ind-pc-mock-st">★★★★★</span> 4.9 (86) · Insurance agency · Open until 6 PM</div>
+          </div>
+        </div>
+        <div class="c360-ind-pc-pills"><a href="/gbp-management">Google Business Profile Management</a><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+      </article>
+
+      <article class="c360-ind-pc-stage">
+        <div class="c360-ind-pc-stage-top"><span>2</span><h3>Start the quote conversation</h3></div>
+        <p>Meta Ads reach people in your area when they're buying a car, moving or opening a business. A short form asks for permission to contact them, and the lead comes straight to you.</p>
+        <div class="c360-ind-pc-mock" role="img" aria-label="Example Facebook lead form offering a free home and auto coverage review, with a checkbox giving the agency permission to contact the person">
+          <div class="c360-ind-pc-mock-card c360-ind-pc-form">
+            <h5>Free home &amp; auto coverage review</h5>
+            <div class="c360-ind-pc-form-f">Full name</div>
+            <div class="c360-ind-pc-form-f">Phone number</div>
+            <div class="c360-ind-pc-form-ok"><i class="fa-solid fa-square-check"></i> I agree that Harbor Point Insurance may call or text me about my quote.</div>
+            <div class="c360-ind-pc-form-btn">Submit</div>
+          </div>
+        </div>
+        <div class="c360-ind-pc-pills"><a href="/meta-ads">Meta Ads</a><a href="/geo-fencing">Geo-Fencing</a></div>
+      </article>
+
+      <article class="c360-ind-pc-stage">
+        <div class="c360-ind-pc-stage-top"><span>3</span><h3>Never miss the call back</h3></div>
+        <p>When you're with a client or the office is closed, the AI Voice Agent answers, takes the caller's details and books a time with you. You do the quoting.</p>
+        <div class="c360-ind-pc-mock" role="img" aria-label="Example: a missed call at 6:42 PM answered by the AI Voice Agent, which booked a quote review with a licensed agent for Tuesday at 10 AM">
+          <div class="c360-ind-pc-mock-card c360-ind-pc-call c360-ind-pc-call-miss"><i class="fa-solid fa-phone-slash"></i><div><b>Call after hours, 6:42 PM</b><span>New caller asking about auto and home</span></div></div>
+          <div class="c360-ind-pc-mock-card c360-ind-pc-call c360-ind-pc-call-ai"><i class="fa-solid fa-headset"></i><div><b>AI Voice Agent answered</b><span>Booked a quote review with a licensed agent, Tue 10:00 AM</span></div></div>
+          <p class="c360-ind-pc-note">Example for illustration</p>
+        </div>
+        <div class="c360-ind-pc-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+      </article>
+
+      <article class="c360-ind-pc-stage">
+        <div class="c360-ind-pc-stage-top"><span>4</span><h3>Keep the renewal, earn the referral</h3></div>
+        <p>Your CRM reaches out before renewal, after a policy is written and when life changes, so clients hear from you first and leave a review when they're happy.</p>
+        <div class="c360-ind-pc-mock" role="img" aria-label="Example text message from the agency: your auto policy renews March 3, want a quick review call? The client replies yes, Thursday works">
+          <div class="c360-ind-pc-sms-time">Text message · 30 days before renewal</div>
+          <div class="c360-ind-pc-sms c360-ind-pc-sms-out">Hi Maria, it's Dana at Harbor Point. Your auto policy renews March 3. Want a quick call to review your coverage?</div>
+          <div class="c360-ind-pc-sms c360-ind-pc-sms-in">Yes please! Thursday afternoon works.</div>
+        </div>
+        <div class="c360-ind-pc-pills"><a href="/crm-home">Complete360 CRM</a><a href="/gbp-management">Google Business Profile Management</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (ID-card stats + widget) ══════════ -->
+<section class="c360-ind-pc-section" style="background:var(--pc-sky)">
+  <div class="c360-ind-pc-wrap">
+    <div class="c360-ind-pc-head">
+      <span class="c360-ind-pc-kicker">Our own reviews</span>
+      <h2 class="c360-ind-pc-h2">Local businesses vouch for us</h2>
+      <p class="c360-ind-pc-lead">Owners across the country, in their own words.</p>
+    </div>
+    <ul class="c360-ind-pc-ids">
+      <li><small>Google rating</small><strong>5.0</strong><span>across our reviews</span></li>
+      <li><small>Reviews</small><strong>147</strong><span>five-star reviews</span></li>
+      <li><small>In business since</small><strong>2018</strong><span>Tucson-based, nationwide</span></li>
+    </ul>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (navy panel + photo) ══════════ -->
+<section class="c360-ind-pc-section">
+  <div class="c360-ind-pc-wrap">
+    <div class="c360-ind-pc-cta">
+      <div class="c360-ind-pc-img">
+        <!-- IMAGE PLACEHOLDER: pc-on-the-job — friendly local insurance agency storefront or agent shaking hands with a small business owner, 4:3 -->
+        <img src="" data-c360-placeholder="pc-on-the-job" alt="Local insurance agent shaking hands with a small business owner outside the agency" loading="lazy">
+        <div class="c360-ind-pc-fallback" aria-hidden="true"><i class="fa-solid fa-handshake"></i></div>
+      </div>
+      <div class="c360-ind-pc-cta-body">
+        <h2>Let's write your agency's growth plan</h2>
+        <p>On a free strategy call we'll look at your market, your state and the lines you write, and show you where new quotes and kept renewals will come from.</p>
+        <div class="c360-ind-pc-ctas">
+          <a href="/schedule-demo" class="c360-ind-pc-btn c360-ind-pc-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-pc-btn c360-ind-pc-btn-light"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (heading column + list) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-pc-section" id="pc-faq" style="padding-top:0">
+  <div class="c360-ind-pc-wrap">
+    <div class="c360-ind-pc-faq">
+      <div class="c360-ind-pc-faq-side">
+        <h2 class="c360-ind-pc-h2">Insurance agency marketing questions</h2>
+        <p class="c360-ind-pc-lead">Straight answers for P&amp;C agents. Ask us anything else on a strategy call.</p>
+        <a href="/schedule-demo" class="c360-ind-pc-btn c360-ind-pc-btn-outline">Ask us on a call</a>
+      </div>
+      <div>
+
+      <details class="c360-ind-pc-faq-item">
+        <summary class="c360-ind-pc-faq-q">How do P&amp;C insurance agents get more leads?</summary>
+        <div class="c360-ind-pc-faq-a"><p>Be easy to find, look trustworthy when people check you out, and respond fast. For most agencies that starts with a Google Business Profile with steady new reviews and Meta Ads with permission-based lead forms. A CRM for renewals, Geo-Fencing and an AI Voice Agent for missed calls come next.</p></div>
+      </details>
+
+      <details class="c360-ind-pc-faq-item">
+        <summary class="c360-ind-pc-faq-q">Can my insurance agency run Google Local Services Ads?</summary>
+        <div class="c360-ind-pc-faq-a"><p>Only if you're licensed in California or Florida. Those are the only states where Google currently offers Local Services Ads to insurance agencies. Google checks each agent's state license and background before your ads earn the Google Verified badge. In every other state, we lead with Meta Ads and your Google Business Profile.</p></div>
+      </details>
+
+      <details class="c360-ind-pc-faq-item">
+        <summary class="c360-ind-pc-faq-q">Do Facebook and Instagram ads work for insurance agents?</summary>
+        <div class="c360-ind-pc-faq-a"><p>Yes, when they're set up the right way. Meta requires insurance ads to run in its financial products and services category, which limits targeting by age, gender and detailed location, so we build campaigns around a clear offer and the area you serve. Lead forms ask for permission to contact the person, and those leads come to you, not to a shared list.</p></div>
+      </details>
+
+      <details class="c360-ind-pc-faq-item">
+        <summary class="c360-ind-pc-faq-q">I'm a captive agent. Can you still help?</summary>
+        <div class="c360-ind-pc-faq-a"><p>Yes. Many carriers have rules for their agents' ads and websites, and some need to approve them first. Tell us your carrier's requirements and we'll work within them. You approve every ad, page and form before anything goes live.</p></div>
+      </details>
+
+      <details class="c360-ind-pc-faq-item">
+        <summary class="c360-ind-pc-faq-q">How do I keep clients from leaving at renewal?</summary>
+        <div class="c360-ind-pc-faq-a"><p>Reach out before the renewal notice does. The Complete360 CRM sends renewal reminders and coverage check-ins ahead of each renewal date to clients who've given you permission to contact them, so you can talk about a rate change before a competitor does.</p></div>
+      </details>
+
+      <details class="c360-ind-pc-faq-item">
+        <summary class="c360-ind-pc-faq-q">Will the AI Voice Agent quote rates to callers?</summary>
+        <div class="c360-ind-pc-faq-a"><p>No. It answers calls you miss, takes the caller's name, number and what they're looking for, and books a time with a licensed agent. It doesn't quote, compare or bind coverage. There are no per-minute AI fees; the phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-pc-faq-item">
+        <summary class="c360-ind-pc-faq-q">Can you guarantee more policies?</summary>
+        <div class="c360-ind-pc-faq-a"><p>No. No one can promise rankings or a set number of leads or policies. For Google Business Profile Management and advertising campaigns, including Meta Ads, Geo-Fencing and Local Services Ads, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-pc-faq-item">
+        <summary class="c360-ind-pc-faq-q">How much does insurance agency marketing cost?</summary>
+        <div class="c360-ind-pc-faq-a"><p>Each service's price is on its own page, including <a href="/gbp-management">Google Business Profile Management</a>, the <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>, <a href="/geo-fencing">Geo-Fencing</a>, the <a href="/crm-home">Complete360 CRM</a> and the <a href="/ai-agents">AI Voice Agent</a>. Meta Ads are planned with you on a strategy call. Ad spend is separate and billed directly by the ad platform. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+      </div>
+    </div>
+    <p class="c360-ind-pc-disclaim">Complete360 is a marketing agency for licensed insurance agents and agencies. We don't sell insurance and aren't affiliated with any insurance carrier or government agency.</p>
+  </div>
+</section>
+
+</div>
+
+<script>
+/* Plan state switch: Local Services Ads are only available to insurance
+   agencies in California and Florida. Without JavaScript the row simply
+   reads "CA & FL agents". */
+(function(){
+  var root=document.getElementById('pc-plan'); if(!root) return;
+  var btns=root.querySelectorAll('[data-pc-state]');
+  var row=root.querySelector('[data-pc-lsa]');
+  var status=root.querySelector('[data-pc-lsa-status]');
+  var note=root.querySelector('[data-pc-note]');
+  for(var i=0;i<btns.length;i++){
+    btns[i].addEventListener('click',function(){
+      var cafl=this.getAttribute('data-pc-state')==='cafl';
+      for(var j=0;j<btns.length;j++){btns[j].setAttribute('aria-pressed',btns[j]===this?'true':'false');}
+      row.classList.toggle('is-on',cafl);
+      row.classList.toggle('is-off',!cafl);
+      status.textContent=cafl?'Included':'Not in your state';
+      note.textContent=cafl
+        ?'Good news: Local Services Ads are open to your agency, so the Google Platinum Package joins your core plan.'
+        :'Local Services Ads aren\u2019t available to insurance agencies in your state yet, so Meta Ads and your Google Business Profile lead the plan.';
+    });
+  }
+})();
+</script>
