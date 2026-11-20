@@ -1,0 +1,623 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Garage Door Repair
+     c360-ind-gdr-v1.1.html
+     GHL: Paste into a Custom Code block on the new page at /industries/garage-door-repair
+          (page name "Garage Door Repair Marketing"). Meta data: ghl-meta/industries/garage-door-repair.md.
+          Schema: schema/pages/industries/garage-door-repair.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-gdr-  (new, unique; vars --gdr-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from the other pages), garage door themed:
+       - Hero: split headline (H1 left, subhead + buttons right), trust row,
+         then a wide panoramic photo with a code-built dispatch log on its top edge.
+       - Reality: dark "trouble lights" panel, opener-style blink codes.
+       - Plan: a labeled garage door diagram (springs, opener, tracks,
+         sensors, panels) with numbered pins that match a five-card legend.
+       - Journey: one stuck door on a timeline (7:48 AM to 3 weeks later).
+       - Navy rating band above the full-width reviews widget, sky CTA panel
+         with the photo on the right, boxed FAQ with door-panel markers.
+     Light-blue palette (#EEF5FD / #E6F1FB), navy, green, a little amber for alerts.
+
+     Policy notes (verified 2026-11-19): garage door services is a Local
+     Services Ads category, but US garage door ads require Google's Advanced
+     Verification and pre-badge ads aren't available for it.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       gdr-hero        16:9, 2000px+ (shown as a 21:8 band; keep the tech centered)
+       gdr-on-the-job  4:3, 1200px+  (CTA panel, right)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.1 (2026-11-19) — Jared: empty space under the reviews widget. The
+       navy rating card is now a full-width band (title left, three stats
+       right) above a full-width widget, so nothing is left empty.
+
+     v1.0 (2026-11-19) — first build. New industry (not in the worksheet
+       yet). Draft plan: Google Platinum Package and AI Voice Agent first;
+       grow with Google PPC (installs, openers, commercial), Local SEO
+       Booster and Meta Ads (before/after). Website, Google Social Posting
+       and Geo-Fencing as "also available". To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-gdr{
+  --gdr-navy:#122078;--gdr-navy-dark:#0d1654;--gdr-navy-deeper:#0a1040;
+  --gdr-green:#127825;--gdr-green-hover:#0e5e1d;--gdr-green-light:#EAF3DE;
+  --gdr-sky:#EEF5FD;--gdr-sky-2:#E6F1FB;--gdr-line:#E2E8F2;--gdr-steel:#9FB0CC;
+  --gdr-amber:#F2A900;--gdr-amber-light:#FFF4CC;
+  --gdr-text:#0F1F5E;--gdr-muted:#5F5E5A;--gdr-body:#3B4566;
+  --gdr-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--gdr-font);color:var(--gdr-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-gdr *,.c360-ind-gdr *::before,.c360-ind-gdr *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-gdr :where(h1,h2,h3,h4,p,ul,ol,li){margin:0;padding:0;font-family:var(--gdr-font)}
+.c360-ind-gdr :where(ul,ol){list-style:none}
+.c360-ind-gdr :where(a){color:var(--gdr-navy)}
+.c360-ind-gdr a:focus-visible,.c360-ind-gdr summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-gdr-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-gdr-section{padding:104px 0}
+.c360-ind-gdr-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--gdr-text);margin-bottom:16px}
+.c360-ind-gdr-lead{font-size:18px;color:var(--gdr-muted);max-width:760px;line-height:1.65}
+.c360-ind-gdr-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--gdr-green);margin-bottom:14px}
+.c360-ind-gdr-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-gdr-head .c360-ind-gdr-lead{margin:0 auto}
+/* Left-aligned section head with the description beside the title */
+.c360-ind-gdr-headrow{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:end;max-width:1560px;margin:0 auto 56px}
+.c360-ind-gdr-headrow .c360-ind-gdr-h2{margin-bottom:0}
+
+/* ---------- Buttons ---------- */
+.c360-ind-gdr-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--gdr-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-gdr-btn-primary{background:var(--gdr-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-gdr-btn-primary:hover{background:var(--gdr-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-gdr-btn-outline{background:transparent;color:var(--gdr-text);border:2px solid var(--gdr-text);padding:14px 24px}
+.c360-ind-gdr-btn-outline:hover{background:var(--gdr-text);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-gdr a.c360-ind-gdr-btn-primary{color:#fff}
+.c360-ind-gdr a.c360-ind-gdr-btn-outline{color:var(--gdr-text)}
+.c360-ind-gdr a.c360-ind-gdr-btn-outline:hover{color:#fff}
+.c360-ind-gdr-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-gdr-pills{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;align-items:flex-start}
+.c360-ind-gdr-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--gdr-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-gdr-pills a:hover{background:var(--gdr-navy);border-color:var(--gdr-navy);color:#fff;text-decoration:none}
+
+/* Image slots: styled fallback until the GHL image URL is pasted in. */
+.c360-ind-gdr-img{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#DCE7F5 0 16px,#E7EFF9 16px 32px)}
+.c360-ind-gdr-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-gdr-img img[src=""],.c360-ind-gdr-img img:not([src]){visibility:hidden}
+.c360-ind-gdr-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B9D8;font-size:58px;pointer-events:none}
+.c360-ind-gdr-img img[src]:not([src=""])+.c360-ind-gdr-fallback{display:none}
+
+/* ══════════ HERO (split headline over a panoramic photo) ══════════ */
+.c360-ind-gdr-hero{background:linear-gradient(180deg,var(--gdr-sky) 0 62%,#fff 62%)}
+.c360-ind-gdr-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;padding-top:40px;margin-bottom:28px}
+.c360-ind-gdr-crumbs li{color:var(--gdr-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-gdr-crumbs li+li::before{content:"\203A";color:#A6B0C4}
+.c360-ind-gdr-crumbs a{color:var(--gdr-text);text-decoration:none}
+.c360-ind-gdr-crumbs a:hover{text-decoration:underline}
+.c360-ind-gdr-hero-top{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:64px;align-items:end}
+.c360-ind-gdr-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--gdr-text)}
+.c360-ind-gdr-hero-sub{font-size:18px;line-height:1.65;color:var(--gdr-body);margin-bottom:28px}
+.c360-ind-gdr-creds{display:flex;align-items:center;flex-wrap:wrap;gap:0 40px;margin-top:8px}
+.c360-ind-gdr-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-gdr-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-gdr-partner,.c360-ind-gdr-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-gdr-creds-list{display:flex;flex-wrap:wrap;gap:10px 32px;flex:1}
+.c360-ind-gdr-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:var(--gdr-body);line-height:1.4}
+.c360-ind-gdr-creds-list i{color:var(--gdr-green);margin-top:3px;font-size:12px}
+.c360-ind-gdr-stars{color:#E8A400;letter-spacing:1px}
+.c360-ind-gdr-pano{position:relative;margin-top:8px;margin-bottom:104px}
+.c360-ind-gdr-pano .c360-ind-gdr-img{aspect-ratio:21/8;border-radius:28px;box-shadow:0 30px 60px rgba(15,31,94,0.16)}
+/* Code-built dispatch log riding on the photo's top edge */
+.c360-ind-gdr-log{position:absolute;right:48px;top:-44px;width:min(560px,60%);background:#fff;border-radius:16px;box-shadow:0 24px 50px rgba(15,31,94,0.22);padding:18px 22px 14px}
+.c360-ind-gdr-log ol{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.c360-ind-gdr-log li{position:relative;padding-top:16px;border-top:3px solid var(--gdr-line)}
+.c360-ind-gdr-log li.is-done{border-color:var(--gdr-green)}
+.c360-ind-gdr-log li.is-alert{border-color:var(--gdr-amber)}
+.c360-ind-gdr-log time{display:block;font-size:12.5px;font-weight:700;color:var(--gdr-muted)}
+.c360-ind-gdr-log b{display:block;font-size:14.5px;line-height:1.35}
+.c360-ind-gdr-log p{font-size:11.5px;color:var(--gdr-muted);text-align:right;margin-top:10px}
+
+/* ══════════ REALITY (opener trouble lights, dark panel) ══════════ */
+.c360-ind-gdr-dark{background:var(--gdr-navy-deeper);color:#fff}
+.c360-ind-gdr-dark .c360-ind-gdr-h2{color:#fff}
+.c360-ind-gdr-dark .c360-ind-gdr-lead{color:#C7D0EE}
+.c360-ind-gdr-dark .c360-ind-gdr-kicker{color:#7FD38F}
+.c360-ind-gdr-codes{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto;gap:0 24px;max-width:1560px;margin:0 auto}
+.c360-ind-gdr-code{display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:16px;background:#141C5C;border:1px solid #26307A;border-radius:18px;padding:28px 26px 30px}
+.c360-ind-gdr-leds{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:#C7D0EE}
+.c360-ind-gdr-leds span{width:12px;height:12px;border-radius:50%;background:var(--gdr-amber);box-shadow:0 0 0 3px rgba(242,169,0,0.18),0 0 14px rgba(242,169,0,0.7)}
+.c360-ind-gdr-leds em{font-style:normal;margin-left:6px}
+.c360-ind-gdr-code h3{font-size:20px;font-weight:700;line-height:1.35;color:#fff}
+.c360-ind-gdr-code p{font-size:15px;color:#C7D0EE;line-height:1.6}
+
+/* ══════════ PLAN (labeled garage door diagram + legend) ══════════ */
+.c360-ind-gdr-diagram{position:relative;max-width:1180px;margin:0 auto 48px;background:#fff;border:1px solid var(--gdr-line);border-radius:24px;padding:28px 28px 20px;box-shadow:0 20px 50px rgba(15,31,94,0.08)}
+.c360-ind-gdr-diagram svg{display:block;width:100%;height:auto}
+.c360-ind-gdr-diagram figcaption{font-size:13px;color:var(--gdr-muted);text-align:center;margin-top:8px}
+.c360-ind-gdr-legend{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));grid-template-rows:auto auto auto auto;gap:0 20px;max-width:1560px;margin:0 auto}
+.c360-ind-gdr-part{display:grid;grid-template-rows:subgrid;grid-row:span 4;row-gap:12px;background:#fff;border:1px solid var(--gdr-line);border-radius:18px;padding:24px 22px 24px;border-top:6px solid var(--gdr-steel)}
+.c360-ind-gdr-part.is-core{border-top-color:var(--gdr-green)}
+.c360-ind-gdr-part-top{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.c360-ind-gdr-pin{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--gdr-navy);color:#fff;font-size:15px;font-weight:700}
+.c360-ind-gdr-part.is-core .c360-ind-gdr-pin{background:var(--gdr-green)}
+.c360-ind-gdr-part-top small{font-size:12.5px;font-weight:700;color:var(--gdr-muted)}
+.c360-ind-gdr-part.is-core .c360-ind-gdr-part-top small{color:var(--gdr-green)}
+.c360-ind-gdr-part h3{font-size:19px;font-weight:700;line-height:1.3}
+.c360-ind-gdr-part h3 span{display:block;font-size:14px;font-weight:600;color:var(--gdr-muted);margin-bottom:2px}
+.c360-ind-gdr-part p{font-size:15px;color:var(--gdr-muted);line-height:1.6}
+.c360-ind-gdr-also{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:12px 16px;max-width:1560px;margin:32px auto 0}
+.c360-ind-gdr-also b{font-size:15px;color:var(--gdr-muted);font-weight:600}
+.c360-ind-gdr-plan-cta{display:flex;justify-content:center;margin-top:36px}
+
+/* ══════════ JOURNEY (one stuck door, start to finish) ══════════ */
+.c360-ind-gdr-day{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto auto auto;gap:0 24px;max-width:1560px;margin:0 auto}
+.c360-ind-gdr-day::before{content:"";position:absolute;left:0;right:0;top:19px;height:4px;border-radius:4px;background:linear-gradient(90deg,var(--gdr-amber) 0 22%,var(--gdr-green) 22% 100%)}
+.c360-ind-gdr-step{position:relative;display:grid;grid-template-rows:subgrid;grid-row:span 5;row-gap:14px}
+.c360-ind-gdr-time{display:inline-flex;align-items:center;gap:10px;justify-self:start;background:#fff;border:2px solid var(--gdr-navy);border-radius:100px;padding:7px 16px;font-size:14px;font-weight:700;color:var(--gdr-navy);position:relative;z-index:1}
+.c360-ind-gdr-step:first-child .c360-ind-gdr-time{border-color:var(--gdr-amber);color:#7A5600}
+.c360-ind-gdr-step h3{font-size:22px;font-weight:700;line-height:1.3;margin-top:14px}
+.c360-ind-gdr-step > p{font-size:15.5px;color:var(--gdr-muted);line-height:1.65}
+.c360-ind-gdr-mock{background:var(--gdr-sky);border-radius:16px;padding:18px;display:flex;flex-direction:column;justify-content:center}
+.c360-ind-gdr-card{background:#fff;border:1px solid var(--gdr-line);border-radius:12px;padding:14px 16px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:13.5px;color:#202124;box-shadow:0 8px 20px rgba(15,31,94,0.07)}
+.c360-ind-gdr-card + .c360-ind-gdr-card{margin-top:10px}
+.c360-ind-gdr-q{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid #DFE1E5;border-radius:100px;padding:8px 14px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:13.5px;color:#202124;margin-bottom:10px}
+.c360-ind-gdr-q i{color:#4285F4}
+.c360-ind-gdr-spons{font-size:11.5px;font-weight:700}
+.c360-ind-gdr-name{display:flex;align-items:center;justify-content:space-between;gap:8px;font-size:15px;color:#1A0DAB;margin:2px 0}
+.c360-ind-gdr-ver{display:inline-flex;align-items:center;gap:5px;font-size:12px;color:#137333;font-weight:700;white-space:nowrap}
+.c360-ind-gdr-sub{font-size:12.5px;color:#5F6368}
+.c360-ind-gdr-st{color:#E8A400}
+.c360-ind-gdr-call{display:flex;gap:12px;align-items:flex-start}
+.c360-ind-gdr-call i{flex:none;width:34px;height:34px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:14px;background:var(--gdr-green-light);color:var(--gdr-green)}
+.c360-ind-gdr-call b{display:block;font-size:13.5px}
+.c360-ind-gdr-call span{font-size:12.5px;color:#5F6368}
+.c360-ind-gdr-sms{max-width:94%;font-size:13px;line-height:1.45;padding:10px 13px;border-radius:16px}
+.c360-ind-gdr-sms-out{background:var(--gdr-navy);color:#fff;border-bottom-right-radius:4px;margin-left:auto}
+.c360-ind-gdr-sms-in{background:#fff;border:1px solid var(--gdr-line);color:#202124;border-bottom-left-radius:4px;margin-top:8px}
+.c360-ind-gdr-ad-img{height:96px;border-radius:8px;margin:8px 0;display:grid;grid-template-columns:1fr 1fr;gap:4px;overflow:hidden}
+.c360-ind-gdr-ad-img span{display:flex;align-items:flex-end;justify-content:flex-start;padding:6px 8px;font-size:11px;font-weight:700;color:#fff;background:repeating-linear-gradient(180deg,#8A93A6 0 18px,#7B8498 18px 20px)}
+.c360-ind-gdr-ad-img span + span{background:repeating-linear-gradient(180deg,#F4F6FA 0 18px,#DDE3EE 18px 20px);color:var(--gdr-navy)}
+.c360-ind-gdr-ad-btn{display:inline-block;background:#E4E6EB;border-radius:6px;padding:6px 12px;font-size:12.5px;font-weight:700;color:#050505}
+.c360-ind-gdr-note{font-size:12px;color:var(--gdr-muted);text-align:center;margin-top:10px}
+
+/* ══════════ REVIEWS (v1.1: navy rating band above a full-width widget) ══════════ */
+.c360-ind-gdr-rev{display:flex;flex-direction:column;gap:32px;max-width:1560px;margin:0 auto}
+.c360-ind-gdr-score{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:28px 56px;align-items:center;background:var(--gdr-navy);color:#fff;border-radius:24px;padding:48px 52px}
+.c360-ind-gdr-score .c360-ind-gdr-h2{color:#fff;margin-bottom:12px}
+.c360-ind-gdr-score-intro p{font-size:16px;color:#C7D0EE}
+.c360-ind-gdr-score dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.c360-ind-gdr-score dl div{display:flex;flex-direction:column-reverse;gap:4px;padding:6px 0 6px 24px;border-left:1px solid #2C3A92}
+.c360-ind-gdr-score dt{font-size:14.5px;color:#C7D0EE;line-height:1.35}
+.c360-ind-gdr-score dd{margin:0;font-size:40px;font-weight:800;line-height:1.1}
+
+/* ══════════ CTA (sky panel, text left, photo right) ══════════ */
+.c360-ind-gdr-cta{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;align-items:center;max-width:1400px;margin:0 auto;background:var(--gdr-sky);border:1px solid var(--gdr-line);border-radius:28px;padding:56px}
+.c360-ind-gdr-cta .c360-ind-gdr-h2{margin-bottom:14px}
+.c360-ind-gdr-cta p{font-size:18px;color:var(--gdr-muted);line-height:1.65;margin-bottom:30px;max-width:620px}
+.c360-ind-gdr-cta .c360-ind-gdr-img{aspect-ratio:4/3;border-radius:20px}
+
+/* ══════════ FAQ (boxed list) ══════════ */
+.c360-ind-gdr-faq-list{max-width:1100px;margin:0 auto;background:#fff;border:1px solid var(--gdr-line);border-radius:24px;padding:8px 36px;box-shadow:0 20px 50px rgba(15,31,94,0.07)}
+.c360-ind-gdr-faq-item + .c360-ind-gdr-faq-item{border-top:1px solid var(--gdr-line)}
+.c360-ind-gdr-faq-q{display:grid;grid-template-columns:28px 1fr 22px;align-items:center;gap:14px;padding:22px 0;font-size:17px;font-weight:600;color:var(--gdr-text);cursor:pointer;list-style:none}
+.c360-ind-gdr-faq-q::-webkit-details-marker{display:none}
+.c360-ind-gdr-faq-q::before{content:"";width:22px;height:16px;border-radius:3px;background:repeating-linear-gradient(180deg,var(--gdr-steel) 0 3px,transparent 3px 5px)}
+.c360-ind-gdr-faq-item[open] .c360-ind-gdr-faq-q::before{background:repeating-linear-gradient(180deg,var(--gdr-green) 0 3px,transparent 3px 5px);height:6px}
+.c360-ind-gdr-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--gdr-navy);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-gdr-faq-item[open] .c360-ind-gdr-faq-q::after{transform:rotate(45deg)}
+.c360-ind-gdr-faq-a{padding:0 36px 24px 42px;font-size:16px;color:var(--gdr-muted);line-height:1.7}
+.c360-ind-gdr-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1300px){
+  .c360-ind-gdr-legend{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:20px}
+  .c360-ind-gdr-part{row-gap:12px}
+  .c360-ind-gdr-part:last-child{grid-column:1/-1}
+}
+@media (max-width:1200px){
+  .c360-ind-gdr-codes{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:24px}
+  .c360-ind-gdr-day{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:48px}
+  .c360-ind-gdr-day::before{display:none}
+  .c360-ind-gdr-score{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .c360-ind-gdr-section{padding:76px 0}
+  .c360-ind-gdr-hero-top,.c360-ind-gdr-headrow{grid-template-columns:1fr;gap:24px}
+  .c360-ind-gdr-hero{background:var(--gdr-sky)}
+  .c360-ind-gdr-pano{margin-bottom:76px}
+  .c360-ind-gdr-pano .c360-ind-gdr-img{aspect-ratio:4/3}
+  .c360-ind-gdr-log{position:relative;right:auto;top:auto;width:auto;margin:-40px 16px 0}
+  .c360-ind-gdr-cta{grid-template-columns:1fr;padding:36px 24px}
+  .c360-ind-gdr-cta .c360-ind-gdr-img{order:-1}
+}
+@media (max-width:760px){
+  .c360-ind-gdr-codes,.c360-ind-gdr-legend,.c360-ind-gdr-day{grid-template-columns:1fr}
+  .c360-ind-gdr-code,.c360-ind-gdr-part,.c360-ind-gdr-step{grid-row:auto;display:flex;flex-direction:column}
+  .c360-ind-gdr-log ol{grid-template-columns:1fr;gap:10px}
+  .c360-ind-gdr-log li{padding-top:8px}
+  .c360-ind-gdr-diagram{padding:14px 10px 12px}
+  .c360-ind-gdr-faq-list{padding:4px 18px}
+  .c360-ind-gdr-faq-a{padding:0 4px 22px 42px}
+}
+@media (max-width:640px){
+  .c360-ind-gdr-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-gdr-btn{width:100%}
+  .c360-ind-gdr-partner{--badge-h:64px;--badge-clear:32px}
+  .c360-ind-gdr-score{padding:32px 24px}
+  .c360-ind-gdr-score dl div{padding-left:14px}
+  .c360-ind-gdr-score dd{font-size:30px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-gdr *,.c360-ind-gdr *::before,.c360-ind-gdr *::after{transition:none !important;animation:none !important}
+  .c360-ind-gdr-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-gdr">
+
+<!-- ══════════ HERO (split headline over a panoramic photo) ══════════ -->
+<section class="c360-ind-gdr-hero">
+  <div class="c360-ind-gdr-wrap">
+    <nav class="c360-ind-gdr-crumbs" aria-label="Breadcrumb">
+      <ol>
+        <li><a href="/">Home</a></li>
+        <li><a href="/industries">Industries</a></li>
+        <li aria-current="page">Garage Door Repair</li>
+      </ol>
+    </nav>
+    <div class="c360-ind-gdr-hero-top">
+      <h1>Garage door repair marketing that wins the stuck-door call</h1>
+      <div>
+        <p class="c360-ind-gdr-hero-sub">When a spring snaps at 7 AM, homeowners call the first company they trust. We help your garage door business be that call, answer it every time, and turn repair customers into your next new-door sale.</p>
+        <div class="c360-ind-gdr-ctas">
+          <a href="/schedule-demo" class="c360-ind-gdr-btn c360-ind-gdr-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-gdr-btn c360-ind-gdr-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+      </div>
+    </div>
+    <div class="c360-ind-gdr-creds">
+      <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-gdr-partner">
+        <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+      </a>
+      <ul class="c360-ind-gdr-creds-list">
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-gdr-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+        <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, helping local service companies nationwide since 2018</li>
+      </ul>
+    </div>
+    <div class="c360-ind-gdr-pano">
+      <div class="c360-ind-gdr-img">
+        <!-- IMAGE PLACEHOLDER: gdr-hero — technician in a navy work shirt adjusting the torsion spring above an open residential garage door, daylight from the driveway, 16:9 (shown as a wide band, keep the tech near the center) -->
+        <img src="" data-c360-placeholder="gdr-hero" alt="Garage door technician adjusting a torsion spring above an open residential garage door" fetchpriority="high">
+        <div class="c360-ind-gdr-fallback" aria-hidden="true"><i class="fa-solid fa-warehouse"></i></div>
+      </div>
+      <div class="c360-ind-gdr-log" role="img" aria-label="Example dispatch log: 7:48 AM door won't open, 7:49 AM call answered and tech booked, 8:30 AM spring replaced">
+        <ol>
+          <li class="is-alert"><time>7:48 AM</time><b>Door won't open</b></li>
+          <li class="is-done"><time>7:49 AM</time><b>Call answered, tech booked</b></li>
+          <li class="is-done"><time>8:30 AM</time><b>Spring replaced</b></li>
+        </ol>
+        <p>Example for illustration</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE GARAGE DOOR REALITY (opener trouble lights) ══════════ -->
+<section class="c360-ind-gdr-section c360-ind-gdr-dark">
+  <div class="c360-ind-gdr-wrap">
+    <div class="c360-ind-gdr-head">
+      <span class="c360-ind-gdr-kicker"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Trouble lights</span>
+      <h2 class="c360-ind-gdr-h2">The garage door reality</h2>
+      <p class="c360-ind-gdr-lead">Your opener blinks a code when something's wrong. Your marketing does too, if you know what to look for.</p>
+    </div>
+    <div class="c360-ind-gdr-codes">
+      <article class="c360-ind-gdr-code">
+        <div class="c360-ind-gdr-leds" aria-label="1 flash"><span></span><em>1 flash</em></div>
+        <h3>The 6:45 AM call goes to voicemail</h3>
+        <p>A homeowner with a car stuck inside calls the next company on the list, and that job is gone before your crew clocks in.</p>
+      </article>
+      <article class="c360-ind-gdr-code">
+        <div class="c360-ind-gdr-leds" aria-label="2 flashes"><span></span><span></span><em>2 flashes</em></div>
+        <h3>Out-of-town call centers bury your listing</h3>
+        <p>Garage door is one of the most crowded categories on Google, and real local companies get lost among listings that aren't local at all.</p>
+      </article>
+      <article class="c360-ind-gdr-code">
+        <div class="c360-ind-gdr-leds" aria-label="3 flashes"><span></span><span></span><span></span><em>3 flashes</em></div>
+        <h3>Every call is a spring, but the money is in new doors</h3>
+        <p>Repairs keep the trucks rolling. Replacements and openers grow the business, and those buyers take their time and shop around.</p>
+      </article>
+      <article class="c360-ind-gdr-code">
+        <div class="c360-ind-gdr-leds" aria-label="4 flashes"><span></span><span></span><span></span><span></span><em>4 flashes</em></div>
+        <h3>One rough review sits at the top of your profile</h3>
+        <p>Homeowners letting a stranger into their garage read reviews closely. A few quiet months without new ones shows.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (labeled door diagram + legend) ══════════
+     Draft plan, to confirm with Jared. Pins in the diagram match the legend. -->
+<section class="c360-ind-gdr-section" id="gdr-plan" style="background:var(--gdr-sky)">
+  <div class="c360-ind-gdr-wrap">
+    <div class="c360-ind-gdr-headrow">
+      <div>
+        <span class="c360-ind-gdr-kicker"><i class="fa-solid fa-screwdriver-wrench" aria-hidden="true"></i> Your recommended plan</span>
+        <h2 class="c360-ind-gdr-h2">Every part of the plan has a job</h2>
+      </div>
+      <p class="c360-ind-gdr-lead">Like a good door, your marketing works as a system. The springs and the opener come first. The rest helps you grow into bigger installs.</p>
+    </div>
+
+    <figure class="c360-ind-gdr-diagram">
+      <svg viewBox="0 0 900 470" role="img" aria-labelledby="c360-ind-gdr-dia-t">
+        <title id="c360-ind-gdr-dia-t">Diagram of a garage door seen from inside the garage, with five numbered parts: 1 the torsion springs, 2 the opener, 3 the tracks, 4 the safety sensors and 5 the door panels</title>
+        <!-- ceiling and floor -->
+        <line x1="40" y1="14" x2="860" y2="14" stroke="#C9D5EA" stroke-width="3"/>
+        <line x1="40" y1="452" x2="860" y2="452" stroke="#9FB0CC" stroke-width="4"/>
+        <!-- opener + rail -->
+        <rect x="402" y="34" width="96" height="46" rx="8" fill="#122078"/>
+        <circle cx="450" cy="57" r="6" fill="#7FD38F"/>
+        <line x1="450" y1="14" x2="450" y2="34" stroke="#9FB0CC" stroke-width="4"/>
+        <line x1="450" y1="80" x2="450" y2="150" stroke="#9FB0CC" stroke-width="8"/>
+        <!-- torsion bar, drums, springs -->
+        <line x1="222" y1="128" x2="678" y2="128" stroke="#5F6B85" stroke-width="5"/>
+        <circle cx="222" cy="128" r="13" fill="#fff" stroke="#5F6B85" stroke-width="4"/>
+        <circle cx="678" cy="128" r="13" fill="#fff" stroke="#5F6B85" stroke-width="4"/>
+        <polyline points="290,128 296,118 302,138 308,118 314,138 320,118 326,138 332,118 338,138 344,118 350,138 356,118 362,138 368,118 374,138 380,128" fill="none" stroke="#127825" stroke-width="4" stroke-linejoin="round"/>
+        <polyline points="520,128 526,118 532,138 538,118 544,138 550,118 556,138 562,118 568,138 574,118 580,138 586,118 592,138 598,118 604,138 610,128" fill="none" stroke="#127825" stroke-width="4" stroke-linejoin="round"/>
+        <!-- tracks -->
+        <rect x="206" y="150" width="12" height="302" rx="3" fill="#9FB0CC"/>
+        <rect x="682" y="150" width="12" height="302" rx="3" fill="#9FB0CC"/>
+        <path d="M212 150 Q212 108 170 100 L60 100" fill="none" stroke="#9FB0CC" stroke-width="12" stroke-linecap="round"/>
+        <path d="M688 150 Q688 108 730 100 L840 100" fill="none" stroke="#9FB0CC" stroke-width="12" stroke-linecap="round"/>
+        <!-- door panels -->
+        <rect x="224" y="152" width="452" height="298" rx="4" fill="#F4F7FC" stroke="#122078" stroke-width="3"/>
+        <line x1="224" y1="226" x2="676" y2="226" stroke="#122078" stroke-width="2"/>
+        <line x1="224" y1="300" x2="676" y2="300" stroke="#122078" stroke-width="2"/>
+        <line x1="224" y1="374" x2="676" y2="374" stroke="#122078" stroke-width="2"/>
+        <g fill="#BFD3EE">
+          <rect x="248" y="170" width="88" height="38" rx="4"/><rect x="356" y="170" width="88" height="38" rx="4"/>
+          <rect x="464" y="170" width="88" height="38" rx="4"/><rect x="572" y="170" width="88" height="38" rx="4"/>
+        </g>
+        <g fill="none" stroke="#C9D5EA" stroke-width="2">
+          <rect x="248" y="242" width="88" height="42" rx="3"/><rect x="356" y="242" width="88" height="42" rx="3"/><rect x="464" y="242" width="88" height="42" rx="3"/><rect x="572" y="242" width="88" height="42" rx="3"/>
+          <rect x="248" y="316" width="88" height="42" rx="3"/><rect x="356" y="316" width="88" height="42" rx="3"/><rect x="464" y="316" width="88" height="42" rx="3"/><rect x="572" y="316" width="88" height="42" rx="3"/>
+        </g>
+        <!-- safety sensors + beam -->
+        <rect x="190" y="420" width="18" height="14" rx="3" fill="#122078"/>
+        <rect x="692" y="420" width="18" height="14" rx="3" fill="#122078"/>
+        <line x1="208" y1="427" x2="692" y2="427" stroke="#F2A900" stroke-width="2" stroke-dasharray="7 6"/>
+        <!-- pins: core = green, grow with = navy -->
+        <g font-family="Poppins, Arial, sans-serif" font-size="17" font-weight="700" text-anchor="middle">
+          <line x1="335" y1="128" x2="335" y2="70" stroke="#127825" stroke-width="2"/>
+          <circle cx="335" cy="56" r="18" fill="#127825"/><text x="335" y="62" fill="#fff">1</text>
+          <line x1="498" y1="57" x2="560" y2="57" stroke="#127825" stroke-width="2"/>
+          <circle cx="576" cy="57" r="18" fill="#127825"/><text x="576" y="63" fill="#fff">2</text>
+          <line x1="694" y1="290" x2="760" y2="290" stroke="#122078" stroke-width="2"/>
+          <circle cx="776" cy="290" r="18" fill="#122078"/><text x="776" y="296" fill="#fff">3</text>
+          <line x1="190" y1="427" x2="132" y2="427" stroke="#122078" stroke-width="2"/>
+          <circle cx="116" cy="427" r="18" fill="#122078"/><text x="116" y="433" fill="#fff">4</text>
+          <circle cx="450" cy="263" r="18" fill="#122078"/><text x="450" y="269" fill="#fff">5</text>
+        </g>
+      </svg>
+      <figcaption>Numbers on the door match the plan below. Green parts come first.</figcaption>
+    </figure>
+
+    <div class="c360-ind-gdr-legend">
+      <article class="c360-ind-gdr-part is-core">
+        <div class="c360-ind-gdr-part-top"><span class="c360-ind-gdr-pin">1</span><small>Start here</small></div>
+        <h3><span>The springs: they do the heavy lifting</span>Google Platinum Package</h3>
+        <p>Local Services Ads with the Google Verified badge at the top of Google, plus Google Business Profile Management for your map listing, photos and reviews.</p>
+        <div class="c360-ind-gdr-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+      </article>
+      <article class="c360-ind-gdr-part is-core">
+        <div class="c360-ind-gdr-part-top"><span class="c360-ind-gdr-pin">2</span><small>Start here</small></div>
+        <h3><span>The opener: it answers every time</span>AI Voice Agent</h3>
+        <p>Picks up when your techs are on jobs or it's after hours, gets the homeowner's details and books the visit. No per-minute AI fees; the phone number and calling minutes are billed separately.</p>
+        <div class="c360-ind-gdr-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+      </article>
+      <article class="c360-ind-gdr-part">
+        <div class="c360-ind-gdr-part-top"><span class="c360-ind-gdr-pin">3</span><small>Grow with</small></div>
+        <h3><span>The tracks: they keep big jobs moving</span>Google PPC</h3>
+        <p>Search ads for the higher-ticket work, like new door installs, openers and commercial doors, so you're there while buyers compare.</p>
+        <div class="c360-ind-gdr-pills"><a href="/google-ppc">Google PPC</a></div>
+      </article>
+      <article class="c360-ind-gdr-part">
+        <div class="c360-ind-gdr-part-top"><span class="c360-ind-gdr-pin">4</span><small>Grow with</small></div>
+        <h3><span>The sensors: they catch what's out of line</span>Local SEO Booster</h3>
+        <p>Keeps your business name, address, phone and hours consistent across 70+ directories and maps, so Google sees a real, local company.</p>
+        <div class="c360-ind-gdr-pills"><a href="/local-seo-booster">Local SEO Booster</a></div>
+      </article>
+      <article class="c360-ind-gdr-part">
+        <div class="c360-ind-gdr-part-top"><span class="c360-ind-gdr-pin">5</span><small>Grow with</small></div>
+        <h3><span>The panels: the part everyone sees</span>Meta Ads</h3>
+        <p>Before-and-after photos of new doors shown to homeowners in the neighborhoods you serve, for the curb-appeal upgrade they've been putting off.</p>
+        <div class="c360-ind-gdr-pills"><a href="/meta-ads">Meta Ads</a></div>
+      </article>
+    </div>
+    <div class="c360-ind-gdr-also">
+      <b>Also available</b>
+      <div class="c360-ind-gdr-pills"><a href="/websites-home">Website</a><a href="/google-social-posting">Google Social Posting</a><a href="/geo-fencing">Geo-Fencing</a></div>
+    </div>
+    <div class="c360-ind-gdr-plan-cta">
+      <a href="/schedule-demo" class="c360-ind-gdr-btn c360-ind-gdr-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (one stuck door, start to finish) ══════════ -->
+<section class="c360-ind-gdr-section">
+  <div class="c360-ind-gdr-wrap">
+    <div class="c360-ind-gdr-headrow">
+      <div>
+        <span class="c360-ind-gdr-kicker"><i class="fa-solid fa-clock" aria-hidden="true"></i> How it works</span>
+        <h2 class="c360-ind-gdr-h2">One stuck door, start to finish</h2>
+      </div>
+      <p class="c360-ind-gdr-lead">Follow a single homeowner from a snapped spring to a five-star review, and then to a brand-new door.</p>
+    </div>
+    <div class="c360-ind-gdr-day">
+      <article class="c360-ind-gdr-step">
+        <span class="c360-ind-gdr-time"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> 7:48 AM</span>
+        <h3>The door won't open</h3>
+        <p>A snapped spring traps the car inside. They search, see your Google Verified badge and steady reviews at the top of Google, and tap to call.</p>
+        <div class="c360-ind-gdr-mock" role="img" aria-label="Example Google search for garage door repair near me showing a sponsored Google Verified garage door company with a 4.9 star rating, open 24 hours">
+          <div class="c360-ind-gdr-q"><i class="fa-solid fa-magnifying-glass"></i> garage door repair near me</div>
+          <div class="c360-ind-gdr-card">
+            <div class="c360-ind-gdr-spons">Sponsored</div>
+            <div class="c360-ind-gdr-name">Summit Garage Door Co. <span class="c360-ind-gdr-ver"><i class="fa-solid fa-circle-check"></i> Google Verified</span></div>
+            <div class="c360-ind-gdr-sub"><span class="c360-ind-gdr-st">★★★★★</span> 4.9 (212) · Open 24 hours</div>
+          </div>
+        </div>
+        <div class="c360-ind-gdr-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+      </article>
+      <article class="c360-ind-gdr-step">
+        <span class="c360-ind-gdr-time"><i class="fa-solid fa-phone" aria-hidden="true"></i> 7:49 AM</span>
+        <h3>The call gets answered</h3>
+        <p>Your techs are already on jobs. The AI Voice Agent picks up, gets the address and what's wrong, and books the first open arrival window.</p>
+        <div class="c360-ind-gdr-mock" role="img" aria-label="Example: an incoming call at 7:49 AM answered by the AI Voice Agent, which booked an 8:30 to 9:00 AM arrival">
+          <div class="c360-ind-gdr-card c360-ind-gdr-call"><i class="fa-solid fa-headset"></i><div><b>AI Voice Agent answered</b><span>Broken spring, car stuck inside</span></div></div>
+          <div class="c360-ind-gdr-card c360-ind-gdr-call"><i class="fa-solid fa-calendar-check"></i><div><b>Booked: today, 8:30 to 9:00 AM</b><span>Sent to your team with the details</span></div></div>
+          <p class="c360-ind-gdr-note">Example for illustration</p>
+        </div>
+        <div class="c360-ind-gdr-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+      </article>
+      <article class="c360-ind-gdr-step">
+        <span class="c360-ind-gdr-time"><i class="fa-solid fa-star" aria-hidden="true"></i> 10:15 AM</span>
+        <h3>The job's done, the review's asked</h3>
+        <p>Right after the visit, a friendly text asks for a Google review while the homeowner is still relieved. New reviews keep your profile ahead.</p>
+        <div class="c360-ind-gdr-mock" role="img" aria-label="Example text asking the homeowner for a Google review after the repair, and the homeowner replying that the review is done and the tech was great">
+          <div class="c360-ind-gdr-sms c360-ind-gdr-sms-out">Thanks for choosing Summit, Linda! Your door's running smooth again. Would you leave us a quick Google review?</div>
+          <div class="c360-ind-gdr-sms c360-ind-gdr-sms-in">Done! Mike was fast and super friendly.</div>
+        </div>
+        <div class="c360-ind-gdr-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+      </article>
+      <article class="c360-ind-gdr-step">
+        <span class="c360-ind-gdr-time"><i class="fa-solid fa-house" aria-hidden="true"></i> 3 weeks later</span>
+        <h3>They're ready for a new door</h3>
+        <p>That old door still looks tired. Before-and-after ads and search ads for new installs keep your company in mind when they're ready to upgrade.</p>
+        <div class="c360-ind-gdr-mock" role="img" aria-label="Example Facebook ad from a garage door company showing an old door beside a new door, with a Get estimate button">
+          <div class="c360-ind-gdr-card">
+            <div class="c360-ind-gdr-spons">Summit Garage Door Co. · Sponsored</div>
+            <div class="c360-ind-gdr-sub" style="margin-top:4px">Thinking about a new door? See what one afternoon can do.</div>
+            <div class="c360-ind-gdr-ad-img"><span>Before</span><span>After</span></div>
+            <span class="c360-ind-gdr-ad-btn">Get estimate</span>
+          </div>
+        </div>
+        <div class="c360-ind-gdr-pills"><a href="/meta-ads">Meta Ads</a><a href="/google-ppc">Google PPC</a></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (rating card beside the widget) ══════════ -->
+<section class="c360-ind-gdr-section" style="background:var(--gdr-sky)">
+  <div class="c360-ind-gdr-wrap">
+    <div class="c360-ind-gdr-rev">
+      <div class="c360-ind-gdr-score">
+        <div class="c360-ind-gdr-score-intro">
+          <span class="c360-ind-gdr-kicker" style="color:#7FD38F">Our own reviews</span>
+          <h2 class="c360-ind-gdr-h2">Five stars, from owners like you</h2>
+          <p>Local service business owners across the country, in their own words.</p>
+        </div>
+        <dl>
+          <div><dt>Google rating</dt><dd>5.0</dd></div>
+          <div><dt>Five-star reviews</dt><dd>147</dd></div>
+          <div><dt>In business since</dt><dd>2018</dd></div>
+        </dl>
+      </div>
+      <div>
+        <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+        <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+          src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+          frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (sky panel, photo right) ══════════ -->
+<section class="c360-ind-gdr-section">
+  <div class="c360-ind-gdr-wrap">
+    <div class="c360-ind-gdr-cta">
+      <div>
+        <h2 class="c360-ind-gdr-h2">Let's tune up your garage door marketing</h2>
+        <p>On a free strategy call we'll look at your service area, your reviews and Google's verification steps, and show you where your next calls and new-door jobs will come from.</p>
+        <div class="c360-ind-gdr-ctas">
+          <a href="/schedule-demo" class="c360-ind-gdr-btn c360-ind-gdr-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-gdr-btn c360-ind-gdr-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+      </div>
+      <div class="c360-ind-gdr-img">
+        <!-- IMAGE PLACEHOLDER: gdr-on-the-job — technician showing a smiling homeowner a newly installed garage door and wall keypad, 4:3 -->
+        <img src="" data-c360-placeholder="gdr-on-the-job" alt="Garage door technician showing a homeowner her newly installed garage door" loading="lazy">
+        <div class="c360-ind-gdr-fallback" aria-hidden="true"><i class="fa-solid fa-toolbox"></i></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (boxed list) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-gdr-section" id="gdr-faq" style="padding-top:0">
+  <div class="c360-ind-gdr-wrap">
+    <div class="c360-ind-gdr-head">
+      <h2 class="c360-ind-gdr-h2">Garage door marketing questions</h2>
+    </div>
+    <div class="c360-ind-gdr-faq-list">
+
+      <details class="c360-ind-gdr-faq-item">
+        <summary class="c360-ind-gdr-faq-q">How do garage door companies get more calls?</summary>
+        <div class="c360-ind-gdr-faq-a"><p>Show up at the top of Google when a door breaks, answer every call, and keep fresh reviews coming. For most companies that starts with the Google Platinum Package (Local Services Ads plus Google Business Profile Management) and an AI Voice Agent. Google PPC, the Local SEO Booster and Meta Ads come next.</p></div>
+      </details>
+
+      <details class="c360-ind-gdr-faq-item">
+        <summary class="c360-ind-gdr-faq-q">Can garage door companies run Google Local Services Ads?</summary>
+        <div class="c360-ind-gdr-faq-a"><p>Yes, but Google holds garage door services to a higher bar. Your business has to pass Google's Advanced Verification before ads can run, and Google doesn't offer early pre-badge ads for this category. Expect license (where your state requires one), insurance and background checks. We walk you through each step so your ads can go live with the Google Verified badge.</p></div>
+      </details>
+
+      <details class="c360-ind-gdr-faq-item">
+        <summary class="c360-ind-gdr-faq-q">Why is it so hard to show up on Google Maps for garage door repair?</summary>
+        <div class="c360-ind-gdr-faq-a"><p>It's one of the most crowded categories on Google. A verified profile, consistent business details across the web, steady new reviews and regular updates give Google reasons to trust that you're a real, local company. That's what Google Business Profile Management and the Local SEO Booster are for.</p></div>
+      </details>
+
+      <details class="c360-ind-gdr-faq-item">
+        <summary class="c360-ind-gdr-faq-q">What happens to calls when my techs are on jobs?</summary>
+        <div class="c360-ind-gdr-faq-a"><p>The AI Voice Agent answers them, day or night. It takes the homeowner's name, address and what's wrong, and books the visit or passes the details to your team. There are no per-minute AI fees; the phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-gdr-faq-item">
+        <summary class="c360-ind-gdr-faq-q">How do I sell more new doors and openers, not just repairs?</summary>
+        <div class="c360-ind-gdr-faq-a"><p>Reach people while they're comparing. Google PPC puts you in front of searches for new door installation, openers and commercial doors, and Meta Ads show before-and-after photos to homeowners in the neighborhoods you serve.</p></div>
+      </details>
+
+      <details class="c360-ind-gdr-faq-item">
+        <summary class="c360-ind-gdr-faq-q">Are Local Services Ads leads shared with other companies?</summary>
+        <div class="c360-ind-gdr-faq-a"><p>No. Homeowners call or message your business directly from your ad, and you pay for leads rather than clicks. That's why answering every call quickly matters so much.</p></div>
+      </details>
+
+      <details class="c360-ind-gdr-faq-item">
+        <summary class="c360-ind-gdr-faq-q">Can you guarantee more jobs?</summary>
+        <div class="c360-ind-gdr-faq-a"><p>No. No one can promise rankings or a set number of leads or jobs. For Google Business Profile Management and advertising campaigns, including Local Services Ads, Google PPC and Meta Ads, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-gdr-faq-item">
+        <summary class="c360-ind-gdr-faq-q">How much does garage door marketing cost?</summary>
+        <div class="c360-ind-gdr-faq-a"><p>Each service's price is on its own page, including the <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>, the <a href="/ai-agents">AI Voice Agent</a> and the <a href="/local-seo-booster">Local SEO Booster</a>. Google PPC and Meta Ads are planned with you on a strategy call. Ad spend is separate and billed directly by Google or Meta. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
