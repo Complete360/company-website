@@ -1,0 +1,573 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Landscaping & Hardscaping
+     c360-ind-land-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/landscaping
+          (page name "Landscaping & Hardscaping Marketing"). Meta data:
+          ghl-meta/industries/landscaping.md.
+          Schema: schema/pages/industries/landscaping.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-land-  (new, unique; vars --land-*)
+
+     Same page and type dimensions as the other industry pages (1680px max
+     width, 64px H1, 56px section titles, 18px section descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own
+     layout (Jared: different from the last page), design-build themed:
+       - Hero: bento grid (text tile, big photo with a consult chip, small
+         photo, code-built paver tile listing the project types).
+       - Reality: four plant-tag shaped cards.
+       - Plan: a material swatch board (pavers = start here, stacked stone =
+         grow with, gravel = also available), with a note pointing
+         maintenance companies to /industries/lawn-care.
+       - Journey: four stepping stones on a dotted path.
+       - Reviews: leaf badges + widget. CTA: navy paver-pattern band
+         (no photo needed). FAQ with stone markers.
+     Light-blue palette (#EEF5FD / #E6F1FB), navy, green, leaf green.
+     Positioned for design-build and hardscape work so it doesn't compete
+     with the Lawn Care page.
+
+     Policy notes (verified 2026-11-19): landscaping is a Local Services Ads
+     category.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       land-hero        16:9, 2000px+ (big bento tile; keep the crew in the middle)
+       land-on-the-job  4:3, 1200px+  (small bento tile: finished backyard at dusk)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-20) — first build. Wave 6. Draft plan: Google Platinum
+       Package first; grow with Meta Ads, Google PPC and Website (project
+       gallery). Complete360 CRM, Geo-Fencing, AI Voice Agent and Local SEO
+       Booster as "also available". To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-land{
+  --land-navy:#122078;--land-navy-dark:#0d1654;--land-navy-deeper:#0a1040;
+  --land-green:#127825;--land-green-hover:#0e5e1d;--land-green-light:#EAF3DE;--land-leaf:#4E9A5B;
+  --land-sky:#EEF5FD;--land-sky-2:#E6F1FB;--land-line:#E2E8F2;
+  --land-text:#0F1F5E;--land-muted:#5F5E5A;--land-body:#3B4566;
+  --land-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--land-font);color:var(--land-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-land *,.c360-ind-land *::before,.c360-ind-land *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-land :where(h1,h2,h3,h4,p,ul,ol,li,figure){margin:0;padding:0;font-family:var(--land-font)}
+.c360-ind-land :where(ul,ol){list-style:none}
+.c360-ind-land :where(a){color:var(--land-navy)}
+.c360-ind-land a:focus-visible,.c360-ind-land summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-ind-land-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-land-section{padding:104px 0}
+.c360-ind-land-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--land-text);margin-bottom:16px}
+.c360-ind-land-lead{font-size:18px;color:var(--land-muted);max-width:760px;line-height:1.65}
+.c360-ind-land-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--land-green);margin-bottom:14px}
+.c360-ind-land-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-land-head .c360-ind-land-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-land-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--land-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-land-btn-primary{background:var(--land-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-land-btn-primary:hover{background:var(--land-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-land-btn-outline{background:transparent;color:var(--land-text);border:2px solid var(--land-text);padding:14px 24px}
+.c360-ind-land-btn-outline:hover{background:var(--land-text);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-land-btn-light{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.8);padding:14px 24px}
+.c360-ind-land-btn-light:hover{background:#fff;color:var(--land-navy);text-decoration:none;transform:translateY(-2px)}
+.c360-ind-land a.c360-ind-land-btn-primary{color:#fff}
+.c360-ind-land a.c360-ind-land-btn-outline{color:var(--land-text)}
+.c360-ind-land a.c360-ind-land-btn-outline:hover{color:#fff}
+.c360-ind-land a.c360-ind-land-btn-light{color:#fff}
+.c360-ind-land a.c360-ind-land-btn-light:hover{color:var(--land-navy)}
+.c360-ind-land-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-land-pills{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;align-items:flex-start}
+.c360-ind-land-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--land-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-land-pills a:hover{background:var(--land-navy);border-color:var(--land-navy);color:#fff;text-decoration:none}
+
+/* Image slots: styled fallback until the GHL image URL is pasted in. */
+.c360-ind-land-img{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#DCE7F5 0 16px,#E7EFF9 16px 32px)}
+.c360-ind-land-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-land-img img[src=""],.c360-ind-land-img img:not([src]){visibility:hidden}
+.c360-ind-land-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B9D8;font-size:58px;pointer-events:none}
+.c360-ind-land-img img[src]:not([src=""])+.c360-ind-land-fallback{display:none}
+
+/* Material textures (code-built, no images) */
+.c360-ind-land-pavers{background-color:#E6F1FB;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='32'%3E%3Cpath d='M0 1H64M0 17H64M1 1V17M33 17V32' stroke='%239DB3DC' stroke-width='2' fill='none'/%3E%3C/svg%3E")}
+.c360-ind-land-stone{background-color:#E9EEF6;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='60'%3E%3Cg fill='none' stroke='%23A9B8D2' stroke-width='2'%3E%3Crect x='2' y='2' width='46' height='16' rx='3'/%3E%3Crect x='52' y='2' width='66' height='16' rx='3'/%3E%3Crect x='2' y='22' width='30' height='16' rx='3'/%3E%3Crect x='36' y='22' width='52' height='16' rx='3'/%3E%3Crect x='92' y='22' width='26' height='16' rx='3'/%3E%3Crect x='2' y='42' width='56' height='16' rx='3'/%3E%3Crect x='62' y='42' width='56' height='16' rx='3'/%3E%3C/g%3E%3C/svg%3E")}
+.c360-ind-land-gravel{background-color:#EEF2F8;background-image:radial-gradient(circle at 20% 30%,#C3CFE2 0 3px,transparent 3.5px),radial-gradient(circle at 70% 60%,#B4C3DA 0 4px,transparent 4.5px),radial-gradient(circle at 45% 80%,#CAD5E6 0 2.5px,transparent 3px),radial-gradient(circle at 85% 20%,#BCC9DD 0 3px,transparent 3.5px);background-size:26px 26px,34px 34px,22px 22px,30px 30px}
+
+/* ══════════ HERO (bento grid: text, two photos, paver tile) ══════════ */
+.c360-ind-land-hero{background:#fff;padding:40px 0 104px}
+.c360-ind-land-bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:minmax(360px,auto) minmax(260px,auto);gap:20px}
+.c360-ind-land-tile{border-radius:28px;overflow:hidden;position:relative}
+.c360-ind-land-tile-text{grid-column:1/3;grid-row:1/3;background:var(--land-sky);padding:48px 48px 40px;display:flex;flex-direction:column;justify-content:center}
+.c360-ind-land-tile-big{grid-column:3/5;grid-row:1}
+.c360-ind-land-tile-small{grid-column:3/4;grid-row:2}
+.c360-ind-land-tile-paver{grid-column:4/5;grid-row:2;display:flex;flex-direction:column;justify-content:flex-end;padding:24px}
+.c360-ind-land-tile-paver ul{display:flex;flex-direction:column;gap:8px}
+.c360-ind-land-tile-paver li{display:flex;align-items:center;gap:10px;background:#fff;border-radius:12px;padding:10px 14px;font-size:15px;font-weight:600;box-shadow:0 6px 14px rgba(15,31,94,0.08)}
+.c360-ind-land-tile-paver li i{color:var(--land-green);width:18px;text-align:center}
+.c360-ind-land-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:24px}
+.c360-ind-land-crumbs li{color:var(--land-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-land-crumbs li+li::before{content:"\203A";color:#A6B0C4}
+.c360-ind-land-crumbs a{color:var(--land-text);text-decoration:none}
+.c360-ind-land-crumbs a:hover{text-decoration:underline}
+.c360-ind-land-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--land-text);margin-bottom:22px}
+.c360-ind-land-hero-sub{font-size:18px;line-height:1.65;color:var(--land-body);margin-bottom:30px}
+.c360-ind-land-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-ind-land-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-land-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-land-partner,.c360-ind-land-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-land-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:220px}
+.c360-ind-land-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:var(--land-body);line-height:1.4}
+.c360-ind-land-creds-list i{color:var(--land-green);margin-top:3px;font-size:12px}
+.c360-ind-land-stars{color:#E8A400;letter-spacing:1px}
+.c360-ind-land-consult{position:absolute;left:20px;bottom:20px;display:grid;grid-template-columns:auto 1fr;gap:2px 12px;align-items:center;background:#fff;border-radius:16px;padding:12px 16px;box-shadow:0 14px 30px rgba(15,31,94,0.2);max-width:calc(100% - 40px)}
+.c360-ind-land-consult i{grid-row:span 2;width:40px;height:40px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center;background:var(--land-green-light);color:var(--land-green);font-size:17px}
+.c360-ind-land-consult b{font-size:14px;line-height:1.3}
+.c360-ind-land-consult span{font-size:12.5px;color:var(--land-muted)}
+
+/* ══════════ REALITY (plant-tag cards) ══════════ */
+.c360-ind-land-tags{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto;gap:0 28px;max-width:1560px;margin:0 auto}
+.c360-ind-land-tag{position:relative;display:grid;grid-template-rows:subgrid;grid-row:span 3;row-gap:12px;background:#fff;padding:58px 28px 72px;clip-path:polygon(0 0,100% 0,100% 86%,50% 100%,0 86%);border-radius:18px 18px 0 0;filter:drop-shadow(0 12px 18px rgba(15,31,94,0.08))}
+.c360-ind-land-tag::before{content:"";position:absolute;top:18px;left:50%;width:18px;height:18px;transform:translateX(-50%);border-radius:50%;background:var(--land-sky);box-shadow:inset 0 0 0 3px #C9D6EA}
+.c360-ind-land-tag:nth-child(odd){background:#F3F9EE}
+.c360-ind-land-tag-wrap{filter:drop-shadow(0 14px 22px rgba(15,31,94,0.1))}
+.c360-ind-land-tag i{font-size:24px;color:var(--land-green);text-align:center}
+.c360-ind-land-tag h3{font-size:20px;font-weight:700;line-height:1.35;text-align:center}
+.c360-ind-land-tag p{font-size:15.5px;color:var(--land-muted);line-height:1.65;text-align:center}
+
+/* ══════════ PLAN (material swatch board) ══════════ */
+.c360-ind-land-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;max-width:1560px;margin:0 auto;align-items:stretch}
+.c360-ind-land-col{display:flex;flex-direction:column;background:#fff;border:1px solid #D5DFEE;border-radius:24px;overflow:hidden;box-shadow:0 16px 40px rgba(15,31,94,0.07)}
+.c360-ind-land-swatch{height:120px;display:flex;align-items:flex-end;padding:18px 22px;border-bottom:1px solid var(--land-line)}
+.c360-ind-land-swatch div{background:#fff;border-radius:12px;padding:10px 16px;box-shadow:0 6px 14px rgba(15,31,94,0.1)}
+.c360-ind-land-swatch b{display:block;font-size:20px;font-weight:800;line-height:1.2}
+.c360-ind-land-swatch span{font-size:13px;font-weight:600;color:var(--land-muted)}
+.c360-ind-land-col.is-core .c360-ind-land-swatch div{border-left:5px solid var(--land-green)}
+.c360-ind-land-col-body{flex:1;display:flex;flex-direction:column;padding:6px 26px 26px}
+.c360-ind-land-item{padding:20px 0;border-bottom:1px solid var(--land-line);display:flex;flex-direction:column;gap:8px}
+.c360-ind-land-item:last-child{border-bottom:0;flex:1}
+.c360-ind-land-item h3{font-size:19px;font-weight:700;line-height:1.3}
+.c360-ind-land-item p{font-size:15px;color:var(--land-muted);line-height:1.6}
+.c360-ind-land-item ul{display:flex;flex-direction:column;gap:10px;margin:6px 0 4px}
+.c360-ind-land-item li{display:flex;gap:10px;font-size:14.5px;color:var(--land-body);line-height:1.5}
+.c360-ind-land-item li i{color:var(--land-green);margin-top:4px;font-size:12px}
+.c360-ind-land-item .c360-ind-land-pills{margin-top:auto;padding-top:6px}
+.c360-ind-land-item.is-compact{padding:16px 0}
+.c360-ind-land-item p.c360-ind-land-why{background:var(--land-green-light);border-radius:12px;padding:14px 16px;color:#25352A;margin-top:6px}
+.c360-ind-land-plan-note{max-width:900px;margin:32px auto 0;text-align:center;font-size:15.5px;color:var(--land-muted)}
+.c360-ind-land-plan-cta{display:flex;justify-content:center;margin-top:28px}
+
+/* ══════════ JOURNEY (stepping stones) ══════════ */
+.c360-ind-land-path{position:relative;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-template-rows:auto auto auto auto auto auto;gap:0 24px;max-width:1560px;margin:0 auto}
+.c360-ind-land-path::before{content:"";position:absolute;left:12%;right:12%;top:42px;border-top:4px dotted #B4C6E0}
+.c360-ind-land-step{display:grid;grid-template-rows:subgrid;grid-row:span 6;row-gap:14px;text-align:left}
+.c360-ind-land-stone-n{position:relative;justify-self:center;width:96px;height:84px;display:flex;align-items:center;justify-content:center;border-radius:52% 48% 55% 45% / 55% 50% 50% 45%;background:linear-gradient(160deg,#DCE5F2,#B8C7DD);color:var(--land-navy);font-size:26px;font-weight:800;box-shadow:inset 0 -6px 0 rgba(15,31,94,0.12),0 8px 18px rgba(15,31,94,0.12);margin-bottom:10px}
+.c360-ind-land-step:nth-child(2) .c360-ind-land-stone-n{border-radius:46% 54% 48% 52% / 50% 46% 54% 50%}
+.c360-ind-land-step:nth-child(3) .c360-ind-land-stone-n{border-radius:55% 45% 50% 50% / 45% 55% 45% 55%}
+.c360-ind-land-step:nth-child(4) .c360-ind-land-stone-n{background:linear-gradient(160deg,#D9EDD0,#9FCB98);color:var(--land-green)}
+.c360-ind-land-step small{font-size:13px;font-weight:700;color:var(--land-green)}
+.c360-ind-land-step h3{font-size:22px;font-weight:700;line-height:1.3}
+.c360-ind-land-step > p{font-size:15.5px;color:var(--land-muted);line-height:1.65}
+.c360-ind-land-mock{background:var(--land-sky);border-radius:16px;padding:16px;display:flex;flex-direction:column;justify-content:center}
+.c360-ind-land-card{background:#fff;border:1px solid var(--land-line);border-radius:12px;padding:12px 14px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:#202124;box-shadow:0 8px 18px rgba(15,31,94,0.07)}
+.c360-ind-land-card + .c360-ind-land-card{margin-top:10px}
+.c360-ind-land-card small{display:block;font-size:11.5px;font-weight:700;color:#5F6368;margin-bottom:3px}
+.c360-ind-land-card b{display:block;font-size:14px;color:#1A0DAB}
+.c360-ind-land-card b.is-plain{color:#202124}
+.c360-ind-land-card span{display:block;font-size:12.5px;color:#5F6368;line-height:1.45}
+.c360-ind-land-ver{display:inline-flex !important;align-items:center;gap:5px;color:#137333 !important;font-weight:700}
+.c360-ind-land-st{color:#E8A400}
+.c360-ind-land-sms{font-size:13px;line-height:1.45;padding:10px 12px;border-radius:14px}
+.c360-ind-land-sms-out{background:var(--land-navy);color:#fff;border-bottom-right-radius:4px;margin-left:10%}
+.c360-ind-land-sms-in{background:#fff;border:1px solid var(--land-line);color:#202124;border-bottom-left-radius:4px;margin-top:8px;margin-right:10%}
+.c360-ind-land-note{font-size:12px;color:var(--land-muted);text-align:center;margin-top:20px}
+
+/* ══════════ REVIEWS (leaf badges + widget) ══════════ */
+.c360-ind-land-badges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;max-width:1000px;margin:0 auto 48px}
+.c360-ind-land-badges div{display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--land-line);border-radius:999px;padding:12px 24px 12px 12px}
+.c360-ind-land-badges i{flex:none;width:56px;height:56px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;background:var(--land-green-light);color:var(--land-green);font-size:22px}
+.c360-ind-land-badges strong{display:block;font-size:28px;font-weight:800;line-height:1.1}
+.c360-ind-land-badges span{font-size:14px;color:var(--land-muted)}
+
+/* ══════════ CTA (navy paver band, centered) ══════════ */
+.c360-ind-land-cta{background-color:var(--land-navy);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='64' height='32'%3E%3Cpath d='M0 1H64M0 17H64M1 1V17M33 17V32' stroke='%23ffffff' stroke-opacity='0.07' stroke-width='2' fill='none'/%3E%3C/svg%3E");color:#fff;text-align:center;padding:112px 0}
+.c360-ind-land-cta .c360-ind-land-h2{color:#fff;max-width:960px;margin:0 auto 16px}
+.c360-ind-land-cta p{font-size:18px;color:#DCE2F7;line-height:1.65;max-width:720px;margin:0 auto 32px}
+.c360-ind-land-cta .c360-ind-land-ctas{justify-content:center}
+.c360-ind-land-cta-chips{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:36px}
+.c360-ind-land-cta-chips span{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:600;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.25);border-radius:100px;padding:8px 16px;color:#fff}
+.c360-ind-land-cta-chips i{color:#7FD38F}
+
+/* ══════════ FAQ (stone markers) ══════════ */
+.c360-ind-land-faq-list{max-width:1000px;margin:0 auto}
+.c360-ind-land-faq-item{border-bottom:1px solid var(--land-line)}
+.c360-ind-land-faq-item:first-child{border-top:1px solid var(--land-line)}
+.c360-ind-land-faq-q{display:grid;grid-template-columns:26px 1fr 24px;align-items:center;gap:14px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--land-text);cursor:pointer;list-style:none}
+.c360-ind-land-faq-q::-webkit-details-marker{display:none}
+.c360-ind-land-faq-q::before{content:"";width:24px;height:20px;border-radius:52% 48% 55% 45% / 55% 50% 50% 45%;background:linear-gradient(160deg,#DCE5F2,#B8C7DD);transition:background .2s}
+.c360-ind-land-faq-item[open] .c360-ind-land-faq-q::before{background:linear-gradient(160deg,#D9EDD0,#9FCB98)}
+.c360-ind-land-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--land-navy);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-land-faq-item[open] .c360-ind-land-faq-q::after{transform:rotate(45deg)}
+.c360-ind-land-faq-a{padding:0 40px 24px 44px;font-size:16px;color:var(--land-muted);line-height:1.7}
+.c360-ind-land-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1200px){
+  .c360-ind-land-bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto}
+  .c360-ind-land-tile-text{grid-column:1/-1;grid-row:auto}
+  .c360-ind-land-tile-big{grid-column:1/-1;grid-row:auto;aspect-ratio:16/9}
+  .c360-ind-land-tile-small{grid-column:1;grid-row:auto;min-height:240px}
+  .c360-ind-land-tile-paver{grid-column:2;grid-row:auto}
+  .c360-ind-land-tags,.c360-ind-land-path{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:32px}
+  .c360-ind-land-path::before{display:none}
+  .c360-ind-land-board{grid-template-columns:1fr 1fr}
+  .c360-ind-land-col:last-child{grid-column:1/-1}
+}
+@media (max-width:900px){
+  .c360-ind-land-section{padding:76px 0}
+  .c360-ind-land-hero{padding:28px 0 76px}
+  .c360-ind-land-tile-text{padding:32px 24px}
+  .c360-ind-land-board{grid-template-columns:1fr}
+  .c360-ind-land-badges{grid-template-columns:1fr;max-width:420px}
+  .c360-ind-land-cta{padding:84px 0}
+}
+@media (max-width:760px){
+  .c360-ind-land-tags,.c360-ind-land-path{grid-template-columns:1fr}
+  .c360-ind-land-tag,.c360-ind-land-step{grid-row:auto;display:flex;flex-direction:column}
+  .c360-ind-land-tag{gap:12px}
+  .c360-ind-land-step{gap:14px}
+  .c360-ind-land-stone-n{align-self:center}
+}
+@media (max-width:640px){
+  .c360-ind-land-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-land-btn{width:100%}
+  .c360-ind-land-partner{--badge-h:64px;--badge-clear:32px}
+  .c360-ind-land-tile-small,.c360-ind-land-tile-paver{grid-column:1/-1}
+  .c360-ind-land-faq-a{padding:0 4px 22px 44px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-land *,.c360-ind-land *::before,.c360-ind-land *::after{transition:none !important;animation:none !important}
+  .c360-ind-land-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-land">
+
+<!-- ══════════ HERO (bento grid: text, two photos, paver tile) ══════════ -->
+<section class="c360-ind-land-hero">
+  <div class="c360-ind-land-wrap">
+    <div class="c360-ind-land-bento">
+      <div class="c360-ind-land-tile c360-ind-land-tile-text">
+        <nav class="c360-ind-land-crumbs" aria-label="Breadcrumb">
+          <ol>
+            <li><a href="/">Home</a></li>
+            <li><a href="/industries">Industries</a></li>
+            <li aria-current="page">Landscaping &amp; Hardscaping</li>
+          </ol>
+        </nav>
+        <h1>Landscaping and hardscaping marketing that wins bigger projects</h1>
+        <p class="c360-ind-land-hero-sub">Patios, retaining walls, outdoor kitchens and full yard makeovers are big decisions. We help your design-build company show up when homeowners start planning, look like the obvious pro, and turn more consultations into signed projects.</p>
+        <div class="c360-ind-land-ctas">
+          <a href="/schedule-demo" class="c360-ind-land-btn c360-ind-land-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-land-btn c360-ind-land-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+        <div class="c360-ind-land-creds">
+          <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-land-partner">
+            <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+          </a>
+          <ul class="c360-ind-land-creds-list">
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-land-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+            <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, serving nationwide since 2018</li>
+          </ul>
+        </div>
+      </div>
+      <div class="c360-ind-land-tile c360-ind-land-img c360-ind-land-tile-big">
+        <!-- IMAGE PLACEHOLDER: land-hero — landscape crew in navy shirts laying pavers for a backyard patio, retaining wall behind, sunny day, 16:9 (big bento tile; keep the crew in the middle) -->
+        <img src="" data-c360-placeholder="land-hero" alt="Landscape crew laying pavers for a new backyard patio" fetchpriority="high">
+        <div class="c360-ind-land-fallback" aria-hidden="true"><i class="fa-solid fa-trowel-bricks"></i></div>
+        <div class="c360-ind-land-consult" role="img" aria-label="Example: a design consultation booked for a backyard patio and fire pit on Thursday at 4 PM">
+          <i class="fa-solid fa-calendar-check"></i>
+          <b>Consult booked: patio and fire pit</b>
+          <span>Thursday, 4 PM · example</span>
+        </div>
+      </div>
+      <div class="c360-ind-land-tile c360-ind-land-img c360-ind-land-tile-small">
+        <!-- IMAGE PLACEHOLDER: land-on-the-job — finished backyard at dusk: paver patio, fire pit, low lighting and fresh planting, no people needed, 4:3 (small bento tile) -->
+        <img src="" data-c360-placeholder="land-on-the-job" alt="Finished backyard with a paver patio, fire pit and landscape lighting at dusk" loading="lazy">
+        <div class="c360-ind-land-fallback" aria-hidden="true"><i class="fa-solid fa-fire"></i></div>
+      </div>
+      <div class="c360-ind-land-tile c360-ind-land-tile-paver c360-ind-land-pavers">
+        <ul>
+          <li><i class="fa-solid fa-border-all" aria-hidden="true"></i> Patios and walkways</li>
+          <li><i class="fa-solid fa-layer-group" aria-hidden="true"></i> Retaining walls</li>
+          <li><i class="fa-solid fa-fire-burner" aria-hidden="true"></i> Outdoor living</li>
+          <li><i class="fa-solid fa-seedling" aria-hidden="true"></i> Planting and design</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE LANDSCAPING REALITY (plant tags) ══════════ -->
+<section class="c360-ind-land-section" style="background:var(--land-sky-2)">
+  <div class="c360-ind-land-wrap">
+    <div class="c360-ind-land-head">
+      <span class="c360-ind-land-kicker"><i class="fa-solid fa-seedling" aria-hidden="true"></i> What's growing on</span>
+      <h2 class="c360-ind-land-h2">The landscaping and hardscaping reality</h2>
+      <p class="c360-ind-land-lead">Design-build work pays well, but it's a different sale than weekly mowing. Here's what makes it hard to keep the pipeline full.</p>
+    </div>
+    <div class="c360-ind-land-tags">
+      <article class="c360-ind-land-tag">
+        <i class="fa-solid fa-filter" aria-hidden="true"></i>
+        <h3>The wrong leads crowd out the right ones</h3>
+        <p>Your phone fills with "can you mow my lawn" when you're set up for patios, walls and full installs.</p>
+      </article>
+      <article class="c360-ind-land-tag">
+        <i class="fa-solid fa-hourglass-half" aria-hidden="true"></i>
+        <h3>Big decisions take time</h3>
+        <p>Homeowners plan for weeks, collect three designs and talk it over. The company that stays in touch usually signs.</p>
+      </article>
+      <article class="c360-ind-land-tag">
+        <i class="fa-solid fa-images" aria-hidden="true"></i>
+        <h3>Your best work lives on your phone</h3>
+        <p>People buy outdoor projects with their eyes. If your finished patios aren't online, they can't picture yours.</p>
+      </article>
+      <article class="c360-ind-land-tag">
+        <i class="fa-solid fa-calendar-days" aria-hidden="true"></i>
+        <h3>Everyone wants it done by summer</h3>
+        <p>Spring fills up overnight, then fall and winter go quiet. The best months to book designs are the ones nobody's calling.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (material swatch board) ══════════
+     Draft plan, to confirm with Jared. -->
+<section class="c360-ind-land-section" id="land-plan">
+  <div class="c360-ind-land-wrap">
+    <div class="c360-ind-land-head">
+      <span class="c360-ind-land-kicker"><i class="fa-solid fa-swatchbook" aria-hidden="true"></i> Your recommended plan</span>
+      <h2 class="c360-ind-land-h2">Pick your materials</h2>
+      <p class="c360-ind-land-lead">Every great project starts with a solid base. Your marketing works the same way: the foundation first, then the features homeowners notice.</p>
+    </div>
+    <div class="c360-ind-land-board">
+      <div class="c360-ind-land-col is-core">
+        <div class="c360-ind-land-swatch c360-ind-land-pavers"><div><b>Start here</b><span>The base course</span></div></div>
+        <div class="c360-ind-land-col-body">
+          <div class="c360-ind-land-item">
+            <h3>Google Platinum Package</h3>
+            <p>Local Services Ads with the Google Verified badge at the top of Google, plus Google Business Profile Management. You choose the job types you want, so the ads lean toward projects, not mowing.</p>
+            <ul>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Google Verified after Google's license (where required), insurance and background checks</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Finished-project photos on your Google profile</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Review requests after every install, and a reply to every review</li>
+              <li><i class="fa-solid fa-check" aria-hidden="true"></i> Services listed clearly: patios, walls, outdoor living, planting</li>
+            </ul>
+            <p class="c360-ind-land-why"><b>Why it's first:</b> before anyone books a design visit, they check your reviews and photos. This is where they look.</p>
+            <div class="c360-ind-land-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="c360-ind-land-col">
+        <div class="c360-ind-land-swatch c360-ind-land-stone"><div><b>Grow with</b><span>The features they notice</span></div></div>
+        <div class="c360-ind-land-col-body">
+          <div class="c360-ind-land-item">
+            <h3>Meta Ads</h3>
+            <p>Your finished projects, in photos and short videos, shown to homeowners in the neighborhoods you want to work in.</p>
+            <div class="c360-ind-land-pills"><a href="/meta-ads">Meta Ads</a></div>
+          </div>
+          <div class="c360-ind-land-item">
+            <h3>Google PPC</h3>
+            <p>Search ads for patio installers, retaining walls, outdoor kitchens and landscape design.</p>
+            <div class="c360-ind-land-pills"><a href="/google-ppc">Google PPC</a></div>
+          </div>
+          <div class="c360-ind-land-item">
+            <h3>Website</h3>
+            <p>A project gallery that sells your work, with an easy design consultation request.</p>
+            <div class="c360-ind-land-pills"><a href="/websites-home">Website</a></div>
+          </div>
+        </div>
+      </div>
+      <div class="c360-ind-land-col">
+        <div class="c360-ind-land-swatch c360-ind-land-gravel"><div><b>Also available</b><span>The finishing touches</span></div></div>
+        <div class="c360-ind-land-col-body">
+          <div class="c360-ind-land-item is-compact">
+            <h3>Complete360 CRM</h3>
+            <p>Follow up on every proposal so designs don't go quiet while homeowners decide.</p>
+            <div class="c360-ind-land-pills"><a href="/crm-home">Complete360 CRM</a></div>
+          </div>
+          <div class="c360-ind-land-item is-compact">
+            <h3>Geo-Fencing</h3>
+            <p>Mobile and streaming TV ads in new-home communities with bare yards.</p>
+            <div class="c360-ind-land-pills"><a href="/geo-fencing">Geo-Fencing</a></div>
+          </div>
+          <div class="c360-ind-land-item is-compact">
+            <h3>AI Voice Agent and Local SEO Booster</h3>
+            <p>Calls answered while you're on site, and accurate listings across 70+ directories. No per-minute AI fees; the phone number and calling minutes are billed separately.</p>
+            <div class="c360-ind-land-pills"><a href="/ai-agents">AI Voice Agent</a><a href="/local-seo-booster">Local SEO Booster</a></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="c360-ind-land-plan-note">Mostly mowing and maintenance? See our <a href="/industries/lawn-care">lawn care marketing</a> page instead.</p>
+    <div class="c360-ind-land-plan-cta">
+      <a href="/schedule-demo" class="c360-ind-land-btn c360-ind-land-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (stepping stones) ══════════ -->
+<section class="c360-ind-land-section">
+  <div class="c360-ind-land-wrap">
+    <div class="c360-ind-land-head">
+      <span class="c360-ind-land-kicker"><i class="fa-solid fa-route" aria-hidden="true"></i> How it works</span>
+      <h2 class="c360-ind-land-h2">From "we should redo the backyard" to a signed project</h2>
+      <p class="c360-ind-land-lead">Four steps, each one placed so the homeowner keeps walking toward you.</p>
+    </div>
+    <div class="c360-ind-land-path">
+      <article class="c360-ind-land-step">
+        <div class="c360-ind-land-stone-n" aria-hidden="true">1</div>
+        <small>Planning</small>
+        <h3>Get found while they're dreaming</h3>
+        <p>They search for patio installers nearby. Your Google Verified ad, rating and project photos show up first.</p>
+        <div class="c360-ind-land-mock" role="img" aria-label="Example sponsored Google result for a Google Verified landscaping company with a 4.9 star rating">
+          <div class="c360-ind-land-card"><small>Sponsored · patio installers near me</small><b>Stoneridge Landscapes</b><span class="c360-ind-land-ver"><i class="fa-solid fa-circle-check"></i> Google Verified</span><span><span class="c360-ind-land-st">★★★★★</span> 4.9 (96) · Patios, walls, design</span></div>
+        </div>
+        <div class="c360-ind-land-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+      </article>
+      <article class="c360-ind-land-step">
+        <div class="c360-ind-land-stone-n" aria-hidden="true">2</div>
+        <small>Consultation</small>
+        <h3>Book the design visit</h3>
+        <p>A quick reply, even while you're on a job site, turns their request into a consultation on your calendar.</p>
+        <div class="c360-ind-land-mock" role="img" aria-label="Example: a request for a backyard patio and fire pit turned into a design consultation booked for Thursday at 4 PM">
+          <div class="c360-ind-land-card"><small>New request</small><b class="is-plain">"Looking for a patio and fire pit this spring."</b></div>
+          <div class="c360-ind-land-card"><small>AI Voice Agent · called back</small><b class="is-plain">Design consult booked: Thursday, 4 PM</b></div>
+        </div>
+        <div class="c360-ind-land-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+      </article>
+      <article class="c360-ind-land-step">
+        <div class="c360-ind-land-stone-n" aria-hidden="true">3</div>
+        <small>Proposal</small>
+        <h3>Stay close while they decide</h3>
+        <p>Friendly follow-ups answer questions and keep your design at the top of the pile while they compare.</p>
+        <div class="c360-ind-land-mock" role="img" aria-label="Example follow-up text about the patio proposal, and the homeowner replying that they're ready to sign">
+          <div class="c360-ind-land-sms c360-ind-land-sms-out">Hi Mark, any questions on the patio design? Happy to walk through it again.</div>
+          <div class="c360-ind-land-sms c360-ind-land-sms-in">We love it. Let's get it on the schedule!</div>
+        </div>
+        <div class="c360-ind-land-pills"><a href="/crm-home">Complete360 CRM</a></div>
+      </article>
+      <article class="c360-ind-land-step">
+        <div class="c360-ind-land-stone-n" aria-hidden="true">4</div>
+        <small>Showcase</small>
+        <h3>Turn the finished yard into the next lead</h3>
+        <p>A review request after the install, plus ads featuring the finished project to their neighbors.</p>
+        <div class="c360-ind-land-mock" role="img" aria-label="Example Facebook ad featuring a finished backyard patio and fire pit, offering a free design consultation">
+          <div class="c360-ind-land-card"><small>Stoneridge Landscapes · Sponsored</small><b class="is-plain">Just finished: a backyard built for evenings outside</b><span>Planning yours? Book a design consultation.</span></div>
+        </div>
+        <div class="c360-ind-land-pills"><a href="/meta-ads">Meta Ads</a><a href="/gbp-management">Google Business Profile Management</a></div>
+      </article>
+    </div>
+    <p class="c360-ind-land-note">Examples for illustration</p>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (leaf badges + widget) ══════════ -->
+<section class="c360-ind-land-section" style="background:var(--land-sky)">
+  <div class="c360-ind-land-wrap">
+    <div class="c360-ind-land-head">
+      <span class="c360-ind-land-kicker">Our own reviews</span>
+      <h2 class="c360-ind-land-h2">Rooted in five-star service</h2>
+      <p class="c360-ind-land-lead">Local business owners across the country, in their own words.</p>
+    </div>
+    <div class="c360-ind-land-badges">
+      <div><i class="fa-solid fa-star" aria-hidden="true"></i><p><strong>5.0</strong><span>Google rating</span></p></div>
+      <div><i class="fa-solid fa-leaf" aria-hidden="true"></i><p><strong>147</strong><span>five-star reviews</span></p></div>
+      <div><i class="fa-solid fa-seedling" aria-hidden="true"></i><p><strong>2018</strong><span>in business since</span></p></div>
+    </div>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (navy paver band) ══════════ -->
+<section class="c360-ind-land-cta">
+  <div class="c360-ind-land-wrap">
+    <h2 class="c360-ind-land-h2">Let's fill next season's install calendar</h2>
+    <p>On a free strategy call we'll look at your service area, the projects you want more of and how your proposals are followed up, and show you where your next signed projects will come from.</p>
+    <div class="c360-ind-land-ctas">
+      <a href="/schedule-demo" class="c360-ind-land-btn c360-ind-land-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+      <a href="tel:+18665276205" class="c360-ind-land-btn c360-ind-land-btn-light"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+    </div>
+    <div class="c360-ind-land-cta-chips">
+      <span><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner</span>
+      <span><i class="fa-solid fa-check" aria-hidden="true"></i> 147 five-star reviews</span>
+      <span><i class="fa-solid fa-check" aria-hidden="true"></i> In business since 2018</span>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (stone markers) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-land-section" id="land-faq">
+  <div class="c360-ind-land-wrap">
+    <div class="c360-ind-land-head">
+      <h2 class="c360-ind-land-h2">Landscaping marketing questions</h2>
+    </div>
+    <div class="c360-ind-land-faq-list">
+
+      <details class="c360-ind-land-faq-item">
+        <summary class="c360-ind-land-faq-q">How do landscaping and hardscaping companies get more projects?</summary>
+        <div class="c360-ind-land-faq-a"><p>Show up when homeowners start planning, show off your finished work, and follow up while they decide. For most design-build companies that starts with the Google Platinum Package (Local Services Ads plus Google Business Profile Management). Meta Ads, Google PPC and a project-gallery website come next.</p></div>
+      </details>
+
+      <details class="c360-ind-land-faq-item">
+        <summary class="c360-ind-land-faq-q">Can landscaping companies run Google Local Services Ads?</summary>
+        <div class="c360-ind-land-faq-a"><p>Yes. Landscaping is an eligible Local Services Ads category. Google checks your business license where your state requires one, your insurance and backgrounds before your ads earn the Google Verified badge. We walk you through each step.</p></div>
+      </details>
+
+      <details class="c360-ind-land-faq-item">
+        <summary class="c360-ind-land-faq-q">How do I get more hardscape projects instead of mowing calls?</summary>
+        <div class="c360-ind-land-faq-a"><p>Aim every channel at the work you want. In Local Services Ads you choose the job types you offer, Google PPC can target searches like patio installers and retaining walls, and your profile, website and ads should lead with finished projects. If maintenance is most of your business, our <a href="/industries/lawn-care">lawn care marketing</a> page is a better fit.</p></div>
+      </details>
+
+      <details class="c360-ind-land-faq-item">
+        <summary class="c360-ind-land-faq-q">Do Facebook and Instagram ads work for landscapers?</summary>
+        <div class="c360-ind-land-faq-a"><p>Yes. Outdoor projects are some of the most visual work there is, and finished patios and yards shown to homeowners nearby get people planning. Meta Ads are planned with you on a strategy call, and ad spend is billed directly by Meta.</p></div>
+      </details>
+
+      <details class="c360-ind-land-faq-item">
+        <summary class="c360-ind-land-faq-q">How do I win more of the designs I propose?</summary>
+        <div class="c360-ind-land-faq-a"><p>Stay in touch while they decide. The Complete360 CRM keeps every proposal in one place with friendly follow-ups, and strong reviews and project photos make your company the easy choice when they compare.</p></div>
+      </details>
+
+      <details class="c360-ind-land-faq-item">
+        <summary class="c360-ind-land-faq-q">How do I keep busy in fall and winter?</summary>
+        <div class="c360-ind-land-faq-a"><p>Book next spring now. Ads that invite homeowners to plan early, and a steady stream of design consultations through the quiet months, put installs on your calendar before the spring rush starts.</p></div>
+      </details>
+
+      <details class="c360-ind-land-faq-item">
+        <summary class="c360-ind-land-faq-q">Can you guarantee more projects?</summary>
+        <div class="c360-ind-land-faq-a"><p>No. No one can promise rankings or a set number of leads or projects. For Google Business Profile Management and advertising campaigns, including Local Services Ads, Meta Ads, Google PPC and Geo-Fencing, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-land-faq-item">
+        <summary class="c360-ind-land-faq-q">How much does landscaping marketing cost?</summary>
+        <div class="c360-ind-land-faq-a"><p>Each service's price is on its own page, including the <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>, <a href="/website-pricing">websites</a> and the <a href="/crm-home">Complete360 CRM</a>. Meta Ads and Google PPC are planned with you on a strategy call. Ad spend is separate and billed directly by Meta or Google. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
