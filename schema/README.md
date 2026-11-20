@@ -68,7 +68,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Make a Payment | `/payments` | `schema/pages/services/payments.html` | WebPage, FAQPage | 5 | ✅ |
 | Plumbing Marketing | `/industries/plumbing` | `schema/pages/industries/plumbing.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | HVAC Marketing | `/industries/hvac` | `schema/pages/industries/hvac.html` | WebPage, Service, FAQPage | 7 | ✅ |
-| Roofing Marketing | `/industries/roofing` | `schema/pages/industries/roofing.html` | WebPage, Service, FAQPage | 7 | ✅ |
+| Roofing Marketing | `/industries/roofing` | `schema/pages/industries/roofing.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | General Contractor Marketing | `/industries/general-contractors` | `schema/pages/industries/general-contractors.html` | WebPage, Service, FAQPage | 7 | ✅ |
 | Painting Contractor Marketing | `/industries/painting` | `schema/pages/industries/painting.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Lawn Care Marketing | `/industries/lawn-care` | `schema/pages/industries/lawn-care.html` | WebPage, Service, FAQPage | 8 | ✅ |
