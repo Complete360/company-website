@@ -95,7 +95,7 @@ def offer(name, price, period=None):
     return o
 
 # ── Every page on the site ───────────────────────────────────────────────
-# kind: home | service | crm | crm-home | pricing | checkout | contact | faq
+# kind: home | service | industry | crm | crm-home | pricing | checkout | contact | faq
 #       | legal | company | collection | partner | page | skip
 # desc: only needed where the page has no code yet (or to override).
 P = []
@@ -143,6 +143,60 @@ page("/ai-agents", "services/ai-employee.html", "AI Agents", "service",
              offer("AI Agent setup (one time)", 2000)])
 page("/payments", "services/payments.html", "Make a Payment", "page",
      desc="Pay your Complete360 invoice securely online.")
+
+# Industries — nested under the /industries hub (INDUSTRY-PAGES-WORKSHEET v1.3).
+# parent adds the middle breadcrumb step: Home › Industries › page.
+IND = ("Industries", "/industries")
+page("/industries/plumbing", "industries/plumbing.html", "Plumbing Marketing", "industry", parent=IND,
+     service="Plumbing Marketing", serviceType="Marketing for plumbing companies", audience="Plumbing companies")
+page("/industries/hvac", "industries/hvac.html", "HVAC Marketing", "industry", parent=IND,
+     service="HVAC Marketing", serviceType="Marketing for HVAC contractors", audience="HVAC contractors")
+page("/industries/roofing", "industries/roofing.html", "Roofing Marketing", "industry", parent=IND,
+     service="Roofing Marketing", serviceType="Marketing for roofing contractors", audience="Roofing contractors")
+page("/industries/general-contractors", "industries/general-contractors.html", "General Contractor Marketing", "industry", parent=IND,
+     service="General Contractor Marketing", serviceType="Marketing for general contractors and remodelers", audience="General contractors")
+page("/industries/painting", "industries/painting.html", "Painting Contractor Marketing", "industry", parent=IND,
+     service="Painting Contractor Marketing", serviceType="Marketing for painting contractors", audience="Painting contractors")
+page("/industries/lawn-care", "industries/lawn-care.html", "Lawn Care Marketing", "industry", parent=IND,
+     service="Lawn Care Marketing", serviceType="Marketing for lawn care companies", audience="Lawn care companies")
+page("/industries/cleaning-services", "industries/cleaning-services.html", "Cleaning Business Marketing", "industry", parent=IND,
+     service="Cleaning Business Marketing", serviceType="Marketing for residential cleaning companies", audience="Cleaning companies")
+page("/industries/pool-service", "industries/pool-service.html", "Pool Service Marketing", "industry", parent=IND,
+     service="Pool Service Marketing", serviceType="Marketing for pool service companies", audience="Pool service companies")
+page("/industries/pest-control", "industries/pest-control.html", "Pest Control Marketing", "industry", parent=IND,
+     service="Pest Control Marketing", serviceType="Marketing for pest control companies", audience="Pest control companies")
+page("/industries/real-estate", "industries/real-estate.html", "Real Estate Marketing", "industry", parent=IND,
+     service="Real Estate Marketing", serviceType="Marketing for real estate agents and brokerages", audience="Real estate agents")
+page("/industries/medicare-agents", "industries/medicare-agents.html", "Medicare Agent Marketing", "industry", parent=IND,
+     service="Medicare Agent Marketing", serviceType="Marketing for licensed Medicare insurance agents", audience="Licensed Medicare agents")
+page("/industries/health-insurance", "industries/health-insurance.html", "Health Insurance Agent Marketing", "industry", parent=IND,
+     service="Health Insurance Agent Marketing", serviceType="Marketing for licensed health insurance agents", audience="Health insurance agents")
+page("/industries/mortgage", "industries/mortgage.html", "Mortgage Marketing", "industry", parent=IND,
+     service="Mortgage Marketing", serviceType="Marketing for mortgage loan officers and brokers", audience="Mortgage loan officers")
+page("/industries/auto-shops", "industries/auto-shops.html", "Auto Repair Shop Marketing", "industry", parent=IND,
+     service="Auto Repair Shop Marketing", serviceType="Marketing for auto repair shops", audience="Auto repair shops")
+page("/industries/funeral-homes", "industries/funeral-homes.html", "Funeral Home Marketing", "industry", parent=IND,
+     service="Funeral Home Marketing", serviceType="Marketing for funeral homes", audience="Funeral homes")
+page("/industries/restaurants", "industries/restaurants.html", "Restaurant Marketing", "industry", parent=IND,
+     service="Restaurant Marketing", serviceType="Marketing for restaurants", audience="Restaurants")
+page("/industries/insurance-agencies", "industries/insurance-agencies.html", "Insurance Agency Marketing", "industry", parent=IND,
+     service="Insurance Agency Marketing", serviceType="Marketing for property and casualty (P&C) insurance agencies", audience="P&C insurance agents and agencies")
+page("/industries/garage-door-repair", "industries/garage-door-repair.html", "Garage Door Repair Marketing", "industry", parent=IND,
+     service="Garage Door Repair Marketing", serviceType="Marketing for garage door repair and installation companies", audience="Garage door companies")
+page("/industries/locksmiths", "industries/locksmiths.html", "Locksmith Marketing", "industry", parent=IND,
+     service="Locksmith Marketing", serviceType="Marketing for locksmith businesses", audience="Locksmiths")
+page("/industries/water-damage-restoration", "industries/water-damage-restoration.html", "Water Damage Restoration Marketing", "industry", parent=IND,
+     service="Water Damage Restoration Marketing", serviceType="Marketing for water damage restoration companies", audience="Water damage restoration companies")
+page("/industries/appliance-repair", "industries/appliance-repair.html", "Appliance Repair Marketing", "industry", parent=IND,
+     service="Appliance Repair Marketing", serviceType="Marketing for appliance repair companies", audience="Appliance repair companies")
+page("/industries/tree-service", "industries/tree-service.html", "Tree Service Marketing", "industry", parent=IND,
+     service="Tree Service Marketing", serviceType="Marketing for tree service companies and arborists", audience="Tree service companies")
+page("/industries/junk-removal", "industries/junk-removal.html", "Junk Removal Marketing", "industry", parent=IND,
+     service="Junk Removal Marketing", serviceType="Marketing for junk removal and hauling companies", audience="Junk removal companies")
+page("/industries/movers", "industries/movers.html", "Moving Company Marketing", "industry", parent=IND,
+     service="Moving Company Marketing", serviceType="Marketing for moving companies", audience="Moving companies")
+page("/industries/handyman", "industries/handyman.html", "Handyman Marketing", "industry", parent=IND,
+     service="Handyman Marketing", serviceType="Marketing for handyman businesses", audience="Handyman businesses")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
@@ -301,16 +355,22 @@ def build(pg):
                       "publisher": ORG_REF, "inLanguage": "en-US"})
         webpage["about"] = ORG_REF
     else:
+        crumbs = [("Home", SITE + "/")]
+        if pg.get("parent"):
+            crumbs.append((pg["parent"][0], SITE + pg["parent"][1]))
+        crumbs.append((pg["name"], url))
         webpage["breadcrumb"] = {"@type": "BreadcrumbList", "itemListElement": [
-            {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
-            {"@type": "ListItem", "position": 2, "name": pg["name"], "item": url}]}
+            {"@type": "ListItem", "position": i, "name": n, "item": u}
+            for i, (n, u) in enumerate(crumbs, 1)]}
 
-    if pg["kind"] == "service":
+    if pg["kind"] in ("service", "industry"):
         svc = {"@type": "Service", "@id": url + "#service", "name": pg["service"],
                "serviceType": pg["serviceType"], "description": desc, "url": url,
                "provider": ORG_REF, "areaServed": {"@type": "Country", "name": "United States"}}
         if pg.get("offers"):
             svc["offers"] = pg["offers"]
+        if pg.get("audience"):
+            svc["audience"] = {"@type": "BusinessAudience", "audienceType": pg["audience"]}
         webpage["mainEntity"] = {"@id": url + "#service"}
         graph.append(svc)
     if pg["kind"] == "crm-home":

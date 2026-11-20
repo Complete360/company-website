@@ -1,0 +1,627 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: HVAC
+     c360-ind-hvac-v1.3.html
+     GHL: Paste into a Custom Code block on the new page at /industries/hvac
+          (page name "HVAC Marketing"). Meta data: ghl-meta/industries/hvac.md.
+          Schema: schema/pages/industries/hvac.html (batch paste later).
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-hvac-  (new, unique; vars --hvac-*)
+
+     Built to INDUSTRY-PAGES-WORKSHEET v1.3 (page #2). Shared industry
+     system: full-bleed photo hero, outcome-column plan, product
+     visuals built in code. Later industry pages copy this structure with
+     their own prefix, photos and copy.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       hvac-hero        16:9, 2000px+  (hero background)
+       hvac-on-the-job  4:3, 1200px+   ("The HVAC reality" section)
+     Until a src is set, each slot shows a finished-looking navy/grey box.
+
+     Google Partner badge: same official gstatic badge, link and sizing
+     rules as /local-service-ads v1.6 (88px badge, 44px clear space, no
+     wrapper card, no Google-G icon in the credentials list). No SEO
+     notice here: this page doesn't advertise SEO (the footer carries it).
+
+     v1.3 (2026-11-12) — Jared's review
+     - Page width 1160px -> 1680px. Section titles up to 56px (hero H1 64px
+       so it stays the main heading); section descriptions 18px.
+     - "The HVAC reality": titles and descriptions line up across each row
+       (CSS subgrid; fallback = 2-line title height).
+     - Reputation is part of Google Business Profile Management, so it's no
+       longer offered separately: plan card 2 is now GBP Management, and the
+       journey link and FAQ answers point to /gbp-management. Card 1 is
+       Local Service Ads only.
+     - Plan tiers rewritten as a heading + one line ("Start here" /
+       "Add as you grow").
+     - "Not first" line replaced with a positive "Also available" line for
+       Geo-Fencing and SEO Services.
+     - Service links (plan chips + journey links) are now outlined pills.
+     - Reviews section added (live Google reviews widget) before the CTA.
+
+     v1.2 (2026-11-12) — closing CTA moved above the FAQ (Jared). The page
+       now ends on the FAQ. Copy unchanged, so the schema doesn't change.
+       Trust strip switched from navy to light so it doesn't run straight
+       into the navy CTA band.
+
+     v1.1 (2026-11-12) — plan layout + width (Jared's feedback)
+     - The long work-order form in the middle of the page is gone. The plan
+       is now three "start with" outcome columns across the full width,
+       two dashed "grow with" columns below, and "not first" + the
+       Platinum note as one centered line each. Same plan, same links.
+     - Section headings (plan, journey, FAQ) and the FAQ list are centered
+       to match the live service pages, so nothing sits off to the left
+       on wide screens.
+
+     v1.0 (2026-11-12) — first build
+     - Plan positioned by outcome (approved by Jared): each work-order
+       line names the result, then the services that deliver it. The
+       Google Platinum Package is a footnote linking to
+       /local-service-ads#lsa-pricing, described as LSA + Google Business
+       Profile management only (PROJECT.md definition).
+     - Section rhythm: hero (navy) → reality (white) → plan (mist) →
+       journey (white).
+     - No prices on the page. Google PPC / Meta never priced; other
+       services link to their pages.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-hvac{
+  --hvac-navy:#122078;--hvac-navy-dark:#0d1654;--hvac-navy-deeper:#0a1040;
+  --hvac-green:#127825;--hvac-green-hover:#0e5e1d;--hvac-green-light:#EAF3DE;
+  --hvac-mist:#F4F7FC;--hvac-line:#E7EBF3;--hvac-blue-light:#E6F1FB;
+  --hvac-text:#0F1F5E;--hvac-muted:#5F5E5A;
+  --hvac-heat:#B4471A;--hvac-cool:#1F5FBF;--hvac-shoulder:#DCE2EC;
+  --hvac-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--hvac-font);color:var(--hvac-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-hvac *,.c360-ind-hvac *::before,.c360-ind-hvac *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-hvac :where(h1,h2,h3,p,ul,ol,li){margin:0;padding:0;font-family:var(--hvac-font)}
+.c360-ind-hvac :where(ul,ol){list-style:none}
+.c360-ind-hvac :where(a){color:var(--hvac-navy)}
+.c360-ind-hvac a:focus-visible,.c360-ind-hvac summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:4px}
+.c360-ind-hvac-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-hvac-section{padding:96px 0}
+.c360-ind-hvac-mist{background:var(--hvac-mist)}
+.c360-ind-hvac-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--hvac-text);margin-bottom:16px}
+.c360-ind-hvac-lead{font-size:18px;color:var(--hvac-muted);max-width:760px;line-height:1.65}
+
+/* ---------- Buttons ---------- */
+.c360-ind-hvac-btn{display:inline-flex;align-items:center;gap:10px;font-family:var(--hvac-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,transform .15s}
+.c360-ind-hvac-btn-primary{background:var(--hvac-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.38)}
+.c360-ind-hvac-btn-primary:hover{background:var(--hvac-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-hvac-btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.55);padding:14px 24px}
+.c360-ind-hvac-btn-ghost:hover{border-color:#fff;color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-hvac a.c360-ind-hvac-btn-primary,.c360-ind-hvac a.c360-ind-hvac-btn-ghost{color:#fff}
+
+/* ══════════ HERO ══════════ */
+.c360-ind-hvac-hero{position:relative;background:linear-gradient(135deg,var(--hvac-navy-deeper),var(--hvac-navy) 70%);color:#fff;overflow:hidden}
+.c360-ind-hvac-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center}
+.c360-ind-hvac-hero-img[src=""],.c360-ind-hvac-hero-img:not([src]){visibility:hidden}
+.c360-ind-hvac-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,16,64,0.95) 0%,rgba(13,22,84,0.86) 42%,rgba(18,32,120,0.35) 100%)}
+.c360-ind-hvac-hero-inner{position:relative;z-index:2;padding:72px 24px 64px;max-width:1680px;margin:0 auto}
+.c360-ind-hvac-hero-copy{max-width:760px}
+.c360-ind-hvac-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-hvac-crumbs li{color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:8px}
+.c360-ind-hvac-crumbs li+li::before{content:"\203A";color:rgba(255,255,255,0.45)}
+.c360-ind-hvac-crumbs a{color:rgba(255,255,255,0.85);text-decoration:none}
+.c360-ind-hvac-crumbs a:hover{color:#fff;text-decoration:underline}
+.c360-ind-hvac-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.08;letter-spacing:-0.025em;color:#fff;margin-bottom:22px}
+.c360-ind-hvac-hero-sub{font-size:18px;line-height:1.65;color:rgba(255,255,255,0.84);max-width:640px;margin-bottom:32px}
+.c360-ind-hvac-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Credentials cluster — mirrors /local-service-ads v1.6. Badge 88px,
+   clear space 44px; change BOTH vars together or neither. */
+.c360-ind-hvac-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:14px}
+.c360-ind-hvac-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-hvac-partner img{display:block;height:var(--badge-h);width:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,0.32));border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-hvac-partner,.c360-ind-hvac-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-hvac-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+.c360-ind-hvac-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.75);line-height:1.4}
+.c360-ind-hvac-creds-list i{color:#2ecc52;margin-top:3px;font-size:12px}
+.c360-ind-hvac-stars{color:#FBBC04;letter-spacing:1px}
+
+/* ══════════ THE HVAC REALITY ══════════ */
+.c360-ind-hvac-reality{display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:center}
+.c360-ind-hvac-pains{display:grid;grid-template-columns:1fr 1fr;gap:32px 36px;margin-top:40px}
+/* Each pain spans two rows of the parent grid (title, description) and
+   shares them through subgrid, so titles and descriptions line up across
+   each row even when one title wraps and the other doesn't. */
+.c360-ind-hvac-pain{border-top:3px solid var(--hvac-navy);padding-top:18px;display:grid;grid-row:span 2;grid-template-rows:subgrid;row-gap:10px}
+@supports not (grid-template-rows:subgrid){.c360-ind-hvac-pain h3{min-height:2.7em}}
+.c360-ind-hvac-pain h3{font-size:18px;font-weight:700;line-height:1.35;color:var(--hvac-text);align-self:start}
+.c360-ind-hvac-pain p{font-size:16px;color:var(--hvac-muted);line-height:1.65}
+.c360-ind-hvac-photo{position:relative;aspect-ratio:4/3;border-radius:16px;overflow:hidden;background:repeating-linear-gradient(135deg,#E3E8F1 0 14px,#EBEFF6 14px 28px)}
+.c360-ind-hvac-photo img{display:block;width:100%;height:100%;object-fit:cover}
+.c360-ind-hvac-photo img[src=""],.c360-ind-hvac-photo img:not([src]){visibility:hidden}
+.c360-ind-hvac-photo-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B0C4;font-size:44px;pointer-events:none}
+.c360-ind-hvac-photo img[src]:not([src=""])+.c360-ind-hvac-photo-fallback{display:none}
+
+/* ══════════ RECOMMENDED PLAN (v1.1: outcome columns, full width) ══════════
+   Replaces the v1.0 work-order form. Three core outcomes side by side
+   (solid, checked), two grow-with outcomes below (dashed, unchecked),
+   "also available" as one line. The checkbox is the only work-order nod left. */
+.c360-ind-hvac-head{text-align:center;max-width:900px;margin:0 auto 52px}
+.c360-ind-hvac-head .c360-ind-hvac-lead{margin:0 auto}
+.c360-ind-hvac-tier{text-align:center;margin-bottom:24px}
+.c360-ind-hvac-tier h3{font-size:24px;font-weight:800;letter-spacing:-0.01em;color:var(--hvac-text);margin-bottom:6px}
+.c360-ind-hvac-tier p{font-size:16px;color:var(--hvac-muted)}
+.c360-ind-hvac-plan-row{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.c360-ind-hvac-plan-row.is-grow{grid-template-columns:repeat(2,1fr);max-width:1000px;margin:0 auto}
+.c360-ind-hvac-outcome{background:#fff;border:1px solid var(--hvac-line);border-top:4px solid var(--hvac-navy);border-radius:12px;padding:28px 26px;display:flex;flex-direction:column;box-shadow:0 14px 40px rgba(15,31,94,0.07)}
+.c360-ind-hvac-plan-row.is-grow .c360-ind-hvac-outcome{background:transparent;border:2px dashed #C3CCDD;box-shadow:none;padding:24px 24px}
+.c360-ind-hvac-box{width:26px;height:26px;border:2px solid var(--hvac-navy);border-radius:5px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:13px;margin-bottom:18px;flex-shrink:0}
+.c360-ind-hvac-box.is-on{background:var(--hvac-navy)}
+.c360-ind-hvac-outcome h4{font-family:var(--hvac-font);font-size:19px;font-weight:700;line-height:1.3;color:var(--hvac-text);margin:0 0 10px}
+.c360-ind-hvac-outcome p{font-size:15px;color:var(--hvac-muted);line-height:1.6;margin-bottom:18px}
+.c360-ind-hvac-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}
+/* Service links: outlined pills so they read as clickable (v1.3).
+   Same style for the plan chips and the journey links. */
+.c360-ind-hvac-chips a,.c360-ind-hvac-step-links a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--hvac-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-hvac-chips a:hover,.c360-ind-hvac-step-links a:hover{background:var(--hvac-navy);border-color:var(--hvac-navy);color:#fff;text-decoration:none}
+.c360-ind-hvac-plan-gap{height:56px}
+.c360-ind-hvac-plan-foot{text-align:center;max-width:720px;margin:48px auto 0}
+.c360-ind-hvac-plan-foot p{font-size:14.5px;color:var(--hvac-muted);line-height:1.65}
+.c360-ind-hvac-plan-foot p+p{margin-top:8px}
+.c360-ind-hvac-plan-foot a{font-weight:600}
+.c360-ind-hvac-plan-foot .c360-ind-hvac-btn{margin-top:28px}
+
+/* ══════════ JOURNEY ══════════ */
+.c360-ind-hvac-step{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:56px 0;border-top:1px solid var(--hvac-line)}
+.c360-ind-hvac-step:first-of-type{border-top:0}
+.c360-ind-hvac-step:nth-of-type(even) .c360-ind-hvac-step-visual{order:-1}
+.c360-ind-hvac-step-n{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:var(--hvac-navy);color:#fff;font-size:15px;font-weight:700;margin-bottom:16px}
+.c360-ind-hvac-step h3{font-size:clamp(22px,2.6vw,30px);font-weight:800;line-height:1.2;letter-spacing:-0.015em;color:var(--hvac-text);margin-bottom:14px}
+.c360-ind-hvac-step-copy p{font-size:17px;color:var(--hvac-muted);line-height:1.7;max-width:620px}
+.c360-ind-hvac-step-copy p+p{margin-top:12px}
+.c360-ind-hvac-step-links{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.c360-ind-hvac-example{font-size:12px;color:var(--hvac-muted);text-align:center;margin-top:10px}
+
+/* Mock search result */
+.c360-ind-hvac-serp{background:#fff;border:1px solid var(--hvac-line);border-radius:16px;padding:20px;box-shadow:0 18px 50px rgba(15,31,94,0.10);max-width:440px;margin:0 auto;font-family:Arial,'Helvetica Neue',sans-serif}
+.c360-ind-hvac-serp-bar{display:flex;align-items:center;gap:10px;border:1px solid #DFE1E5;border-radius:100px;padding:10px 16px;font-size:14px;color:#202124;margin-bottom:16px}
+.c360-ind-hvac-serp-bar i{color:#9AA0A6}
+.c360-ind-hvac-serp-tag{font-size:12px;font-weight:700;color:#202124;margin-bottom:8px}
+.c360-ind-hvac-serp-ad{border:1px solid #E8EAED;border-radius:12px;padding:14px 16px}
+.c360-ind-hvac-serp-ad+.c360-ind-hvac-serp-ad{margin-top:10px;opacity:0.55}
+.c360-ind-hvac-serp-name{font-size:15px;font-weight:700;color:#1A0DAB;margin-bottom:4px}
+.c360-ind-hvac-serp-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;font-size:13px;color:#4D5156}
+.c360-ind-hvac-serp-rating{color:#202124;font-weight:700}
+.c360-ind-hvac-serp-stars{color:#FBBC04;letter-spacing:1px}
+.c360-ind-hvac-serp-verified{display:inline-flex;align-items:center;gap:5px;color:#137333;font-weight:700}
+.c360-ind-hvac-serp-actions{display:flex;gap:8px;margin-top:12px}
+.c360-ind-hvac-serp-actions span{flex:1;text-align:center;border:1px solid #DADCE0;border-radius:100px;padding:7px 0;font-size:13px;font-weight:700;color:#1A73E8}
+.c360-ind-hvac-serp-actions span:first-child{background:#1A73E8;color:#fff;border-color:#1A73E8}
+
+/* Missed-call card */
+.c360-ind-hvac-call{background:var(--hvac-navy-deeper);color:#fff;border-radius:20px;padding:22px;max-width:420px;margin:0 auto;box-shadow:0 22px 60px rgba(10,16,64,0.30)}
+.c360-ind-hvac-call-head{display:flex;align-items:center;gap:12px;padding-bottom:14px;border-bottom:1px solid rgba(255,255,255,0.12);margin-bottom:14px}
+.c360-ind-hvac-call-icon{width:40px;height:40px;border-radius:50%;background:rgba(46,204,82,0.18);color:#2ecc52;display:flex;align-items:center;justify-content:center}
+.c360-ind-hvac-call-head strong{display:block;font-size:14px}
+.c360-ind-hvac-call-head span{font-size:12.5px;color:rgba(255,255,255,0.6)}
+.c360-ind-hvac-call-time{margin-left:auto;font-size:12.5px;color:rgba(255,255,255,0.6);font-variant-numeric:tabular-nums}
+.c360-ind-hvac-call-lines li{font-size:13.5px;line-height:1.5;padding:7px 12px;border-radius:12px;margin-bottom:8px;max-width:88%}
+.c360-ind-hvac-call-lines .is-ai{background:rgba(255,255,255,0.08)}
+.c360-ind-hvac-call-lines .is-caller{background:rgba(46,204,82,0.16);margin-left:auto}
+.c360-ind-hvac-call-lines b{display:block;font-size:11px;font-weight:600;color:rgba(255,255,255,0.55);margin-bottom:2px}
+.c360-ind-hvac-call-result{display:flex;gap:10px;align-items:flex-start;margin-top:6px;padding:12px;border-radius:12px;background:#fff;color:var(--hvac-text);font-size:13.5px;line-height:1.45}
+.c360-ind-hvac-call-result i{color:var(--hvac-green);margin-top:3px}
+
+/* Review-request text */
+.c360-ind-hvac-sms{background:#fff;border:1px solid var(--hvac-line);border-radius:28px;padding:22px 18px;max-width:360px;margin:0 auto;box-shadow:0 18px 50px rgba(15,31,94,0.10)}
+.c360-ind-hvac-sms-from{text-align:center;font-size:12.5px;color:var(--hvac-muted);margin-bottom:14px}
+.c360-ind-hvac-sms-from strong{display:block;font-size:14px;color:var(--hvac-text)}
+.c360-ind-hvac-sms-in,.c360-ind-hvac-sms-out{font-size:14px;line-height:1.5;padding:10px 14px;border-radius:18px;margin-bottom:10px;max-width:85%}
+.c360-ind-hvac-sms-in{background:#EEF0F4;color:#1C1C1E;border-bottom-left-radius:6px}
+.c360-ind-hvac-sms-in u{color:#1A73E8;text-decoration:none}
+.c360-ind-hvac-sms-out{background:#127825;color:#fff;margin-left:auto;border-bottom-right-radius:6px}
+
+/* Season strip */
+.c360-ind-hvac-season{background:#fff;border:1px solid var(--hvac-line);border-radius:16px;padding:22px;box-shadow:0 18px 50px rgba(15,31,94,0.08)}
+.c360-ind-hvac-season-title{font-size:14px;font-weight:700;color:var(--hvac-text);margin-bottom:14px}
+.c360-ind-hvac-season-months{display:grid;grid-template-columns:repeat(12,1fr);gap:3px}
+.c360-ind-hvac-season-months span{display:block;text-align:center;font-size:11.5px;font-weight:700;padding:16px 0;border-radius:4px}
+.c360-ind-hvac-season .is-winter{background:var(--hvac-cool);color:#fff}
+.c360-ind-hvac-season .is-summer{background:var(--hvac-heat);color:#fff}
+.c360-ind-hvac-season .is-mid{background:var(--hvac-shoulder);color:var(--hvac-text)}
+.c360-ind-hvac-season-key{display:grid;gap:12px;margin-top:18px}
+.c360-ind-hvac-season-key li{display:grid;grid-template-columns:14px 1fr;gap:10px;font-size:13.5px;color:var(--hvac-muted);line-height:1.5}
+.c360-ind-hvac-season-key li::before{content:"";width:14px;height:14px;border-radius:3px;margin-top:3px}
+.c360-ind-hvac-season-key .k-peak::before{background:linear-gradient(90deg,var(--hvac-cool) 50%,var(--hvac-heat) 50%)}
+.c360-ind-hvac-season-key .k-mid::before{background:var(--hvac-shoulder)}
+.c360-ind-hvac-season-key strong{color:var(--hvac-text)}
+.c360-ind-hvac-season-foot{font-size:12px;color:var(--hvac-muted);margin-top:14px}
+
+/* ══════════ TRUST STRIP ══════════ */
+.c360-ind-hvac-trust{background:var(--hvac-mist);color:var(--hvac-text);padding:40px 0;border-top:1px solid var(--hvac-line)}
+.c360-ind-hvac-trust ul{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.c360-ind-hvac-trust li{display:flex;align-items:center;gap:14px}
+.c360-ind-hvac-trust i{font-size:22px;color:var(--hvac-green);width:28px;text-align:center}
+.c360-ind-hvac-trust strong{display:block;font-size:16px;font-weight:700;line-height:1.3}
+.c360-ind-hvac-trust span{font-size:13.5px;color:var(--hvac-muted)}
+
+/* ══════════ FAQ ══════════ */
+.c360-ind-hvac-faq-list{max-width:860px;margin:40px auto 0}
+.c360-ind-hvac-faq-item{border-top:1px solid var(--hvac-line)}
+.c360-ind-hvac-faq-item:last-child{border-bottom:1px solid var(--hvac-line)}
+.c360-ind-hvac-faq-q{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--hvac-text);cursor:pointer;list-style:none}
+.c360-ind-hvac-faq-q::-webkit-details-marker{display:none}
+.c360-ind-hvac-faq-q::after{content:"+";font-size:24px;font-weight:400;color:var(--hvac-green);line-height:1;flex-shrink:0;transition:transform .2s}
+.c360-ind-hvac-faq-item[open] .c360-ind-hvac-faq-q::after{transform:rotate(45deg)}
+.c360-ind-hvac-faq-a{padding:0 4px 24px;font-size:15.5px;color:var(--hvac-muted);line-height:1.7;max-width:720px}
+.c360-ind-hvac-faq-a a{font-weight:600}
+
+/* ══════════ CLOSING CTA ══════════ */
+.c360-ind-hvac-final{background:linear-gradient(135deg,var(--hvac-navy-deeper),var(--hvac-navy));color:#fff;padding:88px 0;text-align:center}
+.c360-ind-hvac-final h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:16px}
+.c360-ind-hvac-final p{font-size:18px;color:rgba(255,255,255,0.8);max-width:640px;margin:0 auto 32px}
+.c360-ind-hvac-final .c360-ind-hvac-ctas{justify-content:center}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:900px){
+  .c360-ind-hvac-section{padding:72px 0}
+  .c360-ind-hvac-reality,.c360-ind-hvac-step{grid-template-columns:1fr;gap:36px}
+  .c360-ind-hvac-step:nth-of-type(even) .c360-ind-hvac-step-visual{order:0}
+  .c360-ind-hvac-trust ul{grid-template-columns:1fr;gap:18px}
+  .c360-ind-hvac-plan-row,.c360-ind-hvac-plan-row.is-grow{grid-template-columns:1fr;max-width:560px;margin:0 auto}
+}
+@media (max-width:640px){
+  .c360-ind-hvac-wrap,.c360-ind-hvac-hero-inner{padding-left:18px;padding-right:18px}
+  .c360-ind-hvac-hero-inner{padding-top:48px}
+  .c360-ind-hvac-pains{grid-template-columns:1fr;gap:24px}
+  .c360-ind-hvac-btn{width:100%;justify-content:center}
+  .c360-ind-hvac-season-months span{font-size:10px;padding:12px 0}
+  .c360-ind-hvac-partner{--badge-h:64px;--badge-clear:32px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-hvac *,.c360-ind-hvac *::before,.c360-ind-hvac *::after{transition:none !important;animation:none !important}
+  .c360-ind-hvac-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-hvac">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="c360-ind-hvac-hero">
+  <!-- IMAGE PLACEHOLDER: hvac-hero — HVAC tech servicing an outdoor AC condenser beside a home, space on the left for the headline, 16:9 -->
+  <!-- Hero image loads eagerly (it's the largest thing on screen); every other image is lazy. -->
+  <img src="" data-c360-placeholder="hvac-hero" class="c360-ind-hvac-hero-img" alt="HVAC technician servicing an outdoor air conditioning unit at a customer's home" fetchpriority="high">
+
+  <div class="c360-ind-hvac-hero-inner">
+    <div class="c360-ind-hvac-hero-copy">
+      <nav class="c360-ind-hvac-crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li aria-current="page">HVAC</li>
+        </ol>
+      </nav>
+
+      <h1>HVAC marketing that keeps up when the weather turns</h1>
+      <p class="c360-ind-hvac-hero-sub">When the AC quits on the first hot night, homeowners call whoever shows up first, looks trustworthy and actually picks up. We help your HVAC company be that call in peak season, then keep the schedule moving through spring and fall.</p>
+
+      <div class="c360-ind-hvac-ctas">
+        <a href="/schedule-demo" class="c360-ind-hvac-btn c360-ind-hvac-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-hvac-btn c360-ind-hvac-btn-ghost"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+
+      <div class="c360-ind-hvac-creds">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-hvac-partner">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+        <ul class="c360-ind-hvac-creds-list">
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-hvac-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, serving HVAC companies nationwide since 2018</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE HVAC REALITY ══════════ -->
+<section class="c360-ind-hvac-section">
+  <div class="c360-ind-hvac-wrap c360-ind-hvac-reality">
+    <div>
+      <h2 class="c360-ind-hvac-h2">The HVAC reality</h2>
+      <p class="c360-ind-hvac-lead">HVAC demand follows the thermometer, not your marketing calendar. The companies that grow plan for both extremes.</p>
+      <div class="c360-ind-hvac-pains">
+        <div class="c360-ind-hvac-pain">
+          <h3>Every phone rings on the same afternoon</h3>
+          <p>The first heat wave or cold snap brings a month of calls in a week. Your techs are booked, the office is buried, and the overflow goes to whoever answers next.</p>
+        </div>
+        <div class="c360-ind-hvac-pain">
+          <h3>Homeowners call three names and book the first to pick up</h3>
+          <p>A family with no AC isn't comparing websites. They tap the top results, check the stars, and hire the company that answers.</p>
+        </div>
+        <div class="c360-ind-hvac-pain">
+          <h3>Spring and fall go quiet</h3>
+          <p>Between seasons the emergency calls dry up, but payroll and truck payments don't. Tune-ups and maintenance plans are what keep crews busy.</p>
+        </div>
+        <div class="c360-ind-hvac-pain">
+          <h3>Shared leads mean racing four other shops</h3>
+          <p>Bought leads often go to several contractors at once. You end up competing on speed and price for a job that was never really yours.</p>
+        </div>
+      </div>
+    </div>
+    <div class="c360-ind-hvac-photo">
+      <!-- IMAGE PLACEHOLDER: hvac-on-the-job — HVAC tech checking a wall thermostat while talking with a homeowner, 4:3 -->
+      <img src="" data-c360-placeholder="hvac-on-the-job" alt="HVAC technician checking a thermostat with a homeowner in their living room" loading="lazy">
+      <div class="c360-ind-hvac-photo-fallback" aria-hidden="true"><i class="fa-solid fa-temperature-half"></i></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (v1.1) ══════════
+     Outcome first: each column names the result, the chips are the
+     services that deliver it. Plan approved by Jared 2026-11-12. -->
+<section class="c360-ind-hvac-section c360-ind-hvac-mist" id="hvac-plan">
+  <div class="c360-ind-hvac-wrap">
+    <div class="c360-ind-hvac-head">
+      <h2 class="c360-ind-hvac-h2">Your recommended HVAC marketing plan</h2>
+      <p class="c360-ind-hvac-lead">Not everything we sell. Just the things that move the needle for a residential HVAC company, in the order we'd do them.</p>
+    </div>
+
+    <div class="c360-ind-hvac-tier">
+      <h3>Start here</h3>
+      <p>Three services that work together, set up at the same time.</p>
+    </div>
+    <div class="c360-ind-hvac-plan-row">
+      <div class="c360-ind-hvac-outcome">
+        <span class="c360-ind-hvac-box is-on" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+        <h4>Show up first when the AC quits</h4>
+        <p>Local Services Ads put you at the very top of "AC repair near me" searches with your Google Verified badge, and you pay per lead, not per click.</p>
+        <div class="c360-ind-hvac-chips"><a href="/local-service-ads">Local Service Ads</a></div>
+      </div>
+      <div class="c360-ind-hvac-outcome">
+        <span class="c360-ind-hvac-box is-on" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+        <h4>Win the side-by-side comparison</h4>
+        <p>Homeowners pick from the map results by stars and recent reviews. We keep your Google Business Profile sharp and ask every customer for a review, which also helps your Local Services Ads rank.</p>
+        <div class="c360-ind-hvac-chips"><a href="/gbp-management">Google Business Profile Management</a></div>
+      </div>
+      <div class="c360-ind-hvac-outcome">
+        <span class="c360-ind-hvac-box is-on" aria-hidden="true"><i class="fa-solid fa-check"></i></span>
+        <h4>Never lose a no-heat or no-cool call</h4>
+        <p>After hours and on the busiest days of the season, the AI Voice Agent answers, asks what's wrong, and books the job or routes the emergency to your on-call tech.</p>
+        <div class="c360-ind-hvac-chips"><a href="/ai-agents">AI Voice Agent</a></div>
+      </div>
+    </div>
+
+    <div class="c360-ind-hvac-plan-gap" aria-hidden="true"></div>
+
+    <div class="c360-ind-hvac-tier">
+      <h3>Add as you grow</h3>
+      <p>Best once your phones are steady and new reviews are coming in.</p>
+    </div>
+    <div class="c360-ind-hvac-plan-row is-grow">
+      <div class="c360-ind-hvac-outcome">
+        <span class="c360-ind-hvac-box" aria-hidden="true"></span>
+        <h4>Book more replacements and installs</h4>
+        <p>Search ads for high-ticket planned work, like new systems and heat pumps, timed to when homeowners in your area start shopping.</p>
+        <div class="c360-ind-hvac-chips"><a href="/google-ppc">Google PPC</a></div>
+      </div>
+      <div class="c360-ind-hvac-outcome">
+        <span class="c360-ind-hvac-box" aria-hidden="true"></span>
+        <h4>Fill the slow seasons</h4>
+        <p>Facebook and Instagram ads for tune-ups and maintenance plans, so your crews have scheduled work between peaks.</p>
+        <div class="c360-ind-hvac-chips"><a href="/meta-ads">Meta Ads</a></div>
+      </div>
+    </div>
+
+    <div class="c360-ind-hvac-plan-foot">
+      <p>Also available for HVAC companies: <a href="/geo-fencing">Geo-Fencing</a> to stay top of mind in the neighborhoods you serve, and <a href="/seo-services">SEO Services</a> to build steady traffic from Google and AI search. We'll help you decide what fits your goals.</p>
+      <p>Local Services Ads and Google Business Profile Management come together as our <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>. Every service's price is on its own page.</p>
+      <a href="/schedule-demo" class="c360-ind-hvac-btn c360-ind-hvac-btn-primary">Walk through this plan with us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY ══════════ -->
+<section class="c360-ind-hvac-section">
+  <div class="c360-ind-hvac-wrap">
+    <div class="c360-ind-hvac-head">
+      <h2 class="c360-ind-hvac-h2">From "AC not cooling" to a booked job</h2>
+      <p class="c360-ind-hvac-lead">What the plan looks like from the homeowner's side, step by step.</p>
+    </div>
+
+    <div class="c360-ind-hvac-step">
+      <div class="c360-ind-hvac-step-copy">
+        <span class="c360-ind-hvac-step-n" aria-hidden="true">1</span>
+        <h3>Get found when the system fails</h3>
+        <p>Most HVAC jobs start with a phone and a search. Local Services Ads put your company at the very top, with your rating, your hours and the Google Verified badge that tells homeowners Google has checked your license, insurance and background.</p>
+        <p>Right underneath, your Google Business Profile carries the map results with fresh photos, posts and accurate service areas.</p>
+        <div class="c360-ind-hvac-step-links">
+          <a href="/local-service-ads">How Local Service Ads work</a>
+          <a href="/gbp-management">Google Business Profile Management</a>
+        </div>
+      </div>
+      <div class="c360-ind-hvac-step-visual">
+        <div class="c360-ind-hvac-serp" role="img" aria-label="Example Google search for AC repair near me, with a Local Services Ad for an HVAC company showing a 4.9 rating and the Google Verified badge">
+          <div class="c360-ind-hvac-serp-bar"><i class="fa-solid fa-magnifying-glass"></i> ac repair near me</div>
+          <div class="c360-ind-hvac-serp-tag">Sponsored</div>
+          <div class="c360-ind-hvac-serp-ad">
+            <div class="c360-ind-hvac-serp-name">Your Company Heating &amp; Air</div>
+            <div class="c360-ind-hvac-serp-meta">
+              <span class="c360-ind-hvac-serp-rating">4.9</span><span class="c360-ind-hvac-serp-stars">★★★★★</span><span>(186)</span>
+              <span class="c360-ind-hvac-serp-verified"><i class="fa-solid fa-circle-check"></i> Google Verified</span>
+            </div>
+            <div class="c360-ind-hvac-serp-meta" style="margin-top:4px"><span>Open 24 hours</span><span>Serves your area</span></div>
+            <div class="c360-ind-hvac-serp-actions"><span>Call</span><span>Message</span></div>
+          </div>
+          <div class="c360-ind-hvac-serp-ad" aria-hidden="true">
+            <div class="c360-ind-hvac-serp-name">Another HVAC Company</div>
+            <div class="c360-ind-hvac-serp-meta"><span class="c360-ind-hvac-serp-rating">4.3</span><span class="c360-ind-hvac-serp-stars">★★★★</span><span>(41)</span></div>
+          </div>
+        </div>
+        <p class="c360-ind-hvac-example">Example listing for illustration</p>
+      </div>
+    </div>
+
+    <div class="c360-ind-hvac-step">
+      <div class="c360-ind-hvac-step-copy">
+        <span class="c360-ind-hvac-step-n" aria-hidden="true">2</span>
+        <h3>Win the call, even at 9:47 on a Saturday night</h3>
+        <p>An unanswered HVAC call rarely leaves a voicemail. The homeowner just calls the next company. The AI Voice Agent picks up every call, asks the questions your dispatcher would, and books the appointment or sends the emergency straight to whoever's on call.</p>
+        <p>AI usage is unlimited, with no per-minute AI fees. Your phone number and calling minutes are billed separately.</p>
+        <div class="c360-ind-hvac-step-links">
+          <a href="/ai-agents">Meet the AI Voice Agent</a>
+        </div>
+      </div>
+      <div class="c360-ind-hvac-step-visual">
+        <div class="c360-ind-hvac-call" role="img" aria-label="Example after-hours call answered by the AI Voice Agent: a homeowner whose upstairs AC isn't cooling is booked for the next morning">
+          <div class="c360-ind-hvac-call-head">
+            <span class="c360-ind-hvac-call-icon"><i class="fa-solid fa-phone-volume"></i></span>
+            <div><strong>Incoming call</strong><span>Answered by AI Voice Agent</span></div>
+            <span class="c360-ind-hvac-call-time">Sat 9:47 PM</span>
+          </div>
+          <ul class="c360-ind-hvac-call-lines">
+            <li class="is-ai"><b>AI</b>Thanks for calling. What's going on with your system?</li>
+            <li class="is-caller"><b>Caller</b>The upstairs AC is running but blowing warm air.</li>
+            <li class="is-ai"><b>AI</b>Got it. I have a technician available tomorrow between 8 and 10 AM. Does that work?</li>
+            <li class="is-caller"><b>Caller</b>Yes, please book it.</li>
+          </ul>
+          <div class="c360-ind-hvac-call-result"><i class="fa-solid fa-calendar-check"></i><span><strong>Booked:</strong> Sun 8–10 AM, AC not cooling (upstairs). Details sent to your team.</span></div>
+        </div>
+        <p class="c360-ind-hvac-example">Example conversation for illustration</p>
+      </div>
+    </div>
+
+    <div class="c360-ind-hvac-step">
+      <div class="c360-ind-hvac-step-copy">
+        <span class="c360-ind-hvac-step-n" aria-hidden="true">3</span>
+        <h3>Build trust one finished job at a time</h3>
+        <p>The best moment to ask for a review is when the house is cool again. Every customer gets a short text with a direct link, so reviews keep coming in steadily instead of in random bursts.</p>
+        <p>We ask every customer, never filter who gets asked, and respond to the reviews that come in, good or bad.</p>
+        <div class="c360-ind-hvac-step-links">
+          <a href="/gbp-management">Google Business Profile Management</a>
+        </div>
+      </div>
+      <div class="c360-ind-hvac-step-visual">
+        <div class="c360-ind-hvac-sms" role="img" aria-label="Example review request text sent to a homeowner after an AC repair, and the homeowner replying that they left a review">
+          <div class="c360-ind-hvac-sms-from"><strong>Your Company Heating &amp; Air</strong>Text message, today 4:12 PM</div>
+          <p class="c360-ind-hvac-sms-in">Hi Dana, thanks for having Marco out today. Would you take 30 seconds to share how it went? <u>review link</u></p>
+          <p class="c360-ind-hvac-sms-out">Done! Marco was great, and the house is finally cool.</p>
+        </div>
+        <p class="c360-ind-hvac-example">Example message for illustration</p>
+      </div>
+    </div>
+
+    <div class="c360-ind-hvac-step">
+      <div class="c360-ind-hvac-step-copy">
+        <span class="c360-ind-hvac-step-n" aria-hidden="true">4</span>
+        <h3>Scale with ads that follow the seasons</h3>
+        <p>Peak seasons are about being found and answering. The months in between are about selling what homeowners plan ahead for. Google PPC reaches people researching a new system or heat pump, and Meta Ads promote tune-ups and maintenance plans before the weather turns.</p>
+        <p>Ad budgets are set with you on a strategy call, and ad spend is billed directly by Google or Meta.</p>
+        <div class="c360-ind-hvac-step-links">
+          <a href="/google-ppc">Google PPC</a>
+          <a href="/meta-ads">Meta Ads</a>
+        </div>
+      </div>
+      <div class="c360-ind-hvac-step-visual">
+        <div class="c360-ind-hvac-season">
+          <p class="c360-ind-hvac-season-title">A typical HVAC year</p>
+          <div class="c360-ind-hvac-season-months" aria-hidden="true">
+            <span class="is-winter">J</span><span class="is-winter">F</span><span class="is-mid">M</span><span class="is-mid">A</span><span class="is-summer">M</span><span class="is-summer">J</span><span class="is-summer">J</span><span class="is-summer">A</span><span class="is-summer">S</span><span class="is-mid">O</span><span class="is-mid">N</span><span class="is-winter">D</span>
+          </div>
+          <ul class="c360-ind-hvac-season-key">
+            <li class="k-peak"><span><strong>Heating and cooling peaks:</strong> be found and answer every call with Local Services Ads, your Google Business Profile and the AI Voice Agent.</span></li>
+            <li class="k-mid"><span><strong>Spring and fall:</strong> sell tune-ups and maintenance plans with Meta Ads, and catch replacement shoppers with Google PPC.</span></li>
+          </ul>
+          <p class="c360-ind-hvac-season-foot">Peaks shift with your climate. We plan around yours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ TRUST STRIP ══════════ -->
+<section class="c360-ind-hvac-trust" aria-label="Why Complete360">
+  <div class="c360-ind-hvac-wrap">
+    <ul>
+      <li><i class="fa-solid fa-star" aria-hidden="true"></i><div><strong>5.0 on Google</strong><span>147 five-star reviews</span></div></li>
+      <li><i class="fa-solid fa-award" aria-hidden="true"></i><div><strong>Certified Google Partner</strong><span>With a Google Product Expert on the team</span></div></li>
+      <li><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><strong>In business since 2018</strong><span>Tucson-based, serving nationwide</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS ══════════
+     Same live Google reviews widget as /seo-services (location 1pBjHBEIsKGbwvAUTY9u). -->
+<section class="c360-ind-hvac-section c360-ind-hvac-reviews">
+  <div class="c360-ind-hvac-wrap">
+    <div class="c360-ind-hvac-head">
+      <h2 class="c360-ind-hvac-h2">What our clients say</h2>
+      <p class="c360-ind-hvac-lead">147 five-star Google reviews from local business owners across the country.</p>
+    </div>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA ══════════ -->
+<section class="c360-ind-hvac-final">
+  <div class="c360-ind-hvac-wrap">
+    <h2>Be the first call when the weather turns</h2>
+    <p>Book a free strategy call. We'll look at how homeowners find you today and walk through the plan for your area.</p>
+    <div class="c360-ind-hvac-ctas">
+      <a href="/schedule-demo" class="c360-ind-hvac-btn c360-ind-hvac-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+      <a href="tel:+18665276205" class="c360-ind-hvac-btn c360-ind-hvac-btn-ghost"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-hvac-section" id="hvac-faq">
+  <div class="c360-ind-hvac-wrap">
+    <div class="c360-ind-hvac-head" style="margin-bottom:0">
+      <h2 class="c360-ind-hvac-h2">HVAC marketing questions</h2>
+    </div>
+    <div class="c360-ind-hvac-faq-list">
+
+      <details class="c360-ind-hvac-faq-item">
+        <summary class="c360-ind-hvac-faq-q">How do HVAC companies get more calls from Google?</summary>
+        <div class="c360-ind-hvac-faq-a"><p>Show up where homeowners look when their system fails, look trustworthy when they compare, and answer every call. In practice that means Local Services Ads at the top of the search, a well-kept Google Business Profile in the map results, a steady flow of fresh reviews, and someone (or an AI Voice Agent) picking up nights and weekends. Google PPC and Meta Ads come next, once those basics are working.</p></div>
+      </details>
+
+      <details class="c360-ind-hvac-faq-item">
+        <summary class="c360-ind-hvac-faq-q">Are Local Services Ads worth it for HVAC companies?</summary>
+        <div class="c360-ind-hvac-faq-a"><p>For most residential HVAC companies, yes. HVAC is one of the categories Google offers Local Services Ads for, you pay per lead instead of per click, and the ad shows your rating and Google Verified badge above the regular search ads. How many leads you get depends on your reviews, your service area, your budget and how quickly you answer, which is why we pair it with Google Business Profile Management, including review requests. We confirm eligibility for your area on the strategy call.</p></div>
+      </details>
+
+      <details class="c360-ind-hvac-faq-item">
+        <summary class="c360-ind-hvac-faq-q">What does Google Verified mean for an HVAC company?</summary>
+        <div class="c360-ind-hvac-faq-a"><p>Google Verified is the badge Google shows on Local Services Ads once it has checked your business, such as your license, insurance and background checks, depending on your state. It replaced the older Google Guaranteed and Google Screened badges in October 2025. We walk you through the verification steps during setup.</p></div>
+      </details>
+
+      <details class="c360-ind-hvac-faq-item">
+        <summary class="c360-ind-hvac-faq-q">How do I get more HVAC calls in spring and fall?</summary>
+        <div class="c360-ind-hvac-faq-a"><p>Sell what homeowners plan ahead for: tune-ups, maintenance plans and replacement estimates. Meta Ads put those offers in front of homeowners in your service area before the season turns, and Google PPC reaches people researching a new system. Maintenance plan members also give your crews scheduled work when emergency calls slow down.</p></div>
+      </details>
+
+      <details class="c360-ind-hvac-faq-item">
+        <summary class="c360-ind-hvac-faq-q">Can an AI Voice Agent answer after-hours HVAC calls?</summary>
+        <div class="c360-ind-hvac-faq-a"><p>Yes. The AI Voice Agent answers 24/7, asks about the problem, captures the caller's details, and books the appointment or routes urgent calls to you. AI usage is unlimited with no per-minute AI fees. Your phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-hvac-faq-item">
+        <summary class="c360-ind-hvac-faq-q">Do you guarantee leads or rankings?</summary>
+        <div class="c360-ind-hvac-faq-a"><p>No. No one can promise Google rankings or a set number of leads, and we won't. For Google Business Profile Management and advertising campaigns, including Local Services Ads, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-hvac-faq-item">
+        <summary class="c360-ind-hvac-faq-q">How much does HVAC marketing cost, and is there a contract?</summary>
+        <div class="c360-ind-hvac-faq-a"><p>Each service's price is on its own page: <a href="/local-service-ads">Local Service Ads</a>, <a href="/gbp-management">Google Business Profile Management</a> and the <a href="/ai-agents">AI Voice Agent</a>. Google PPC and Meta Ads are planned with you on a strategy call, and ad spend is billed directly by Google or Meta. To cancel a recurring service, give at least 10 days' written notice before your next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
