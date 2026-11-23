@@ -8,8 +8,9 @@ Google and AI tools what the page is: the company, the service, its FAQs, and so
 Schema goes in GHL's own schema editor, not Tracking Code and not the page snippet.
 1. **Sites → Websites → Complete360 site → Edit** the page.
 2. Left panel: **SEO & AI search optimization → Schema Markup** → open the editor → **JSON view**.
-3. Select all and delete (this also clears old or auto-generated schema), then paste the JSON
-   from the page's file: everything between the `<script>` tags, from the first `{` to the last `}`.
+3. Select all and delete (this also clears old or auto-generated schema), then paste the schema
+   from the page's file: everything from `<script type="application/ld+json">` through `</script>`,
+   **tags included** (skip the comment above them). GHL's validator rejects bare JSON without the tags.
 4. **Validate & Save**, then **Save and Publish** the page.
 5. Check the live URL at https://validator.schema.org (Google's Rich Results Test only lists
    the business item).
@@ -91,6 +92,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Junk Removal Marketing | `/industries/junk-removal` | `schema/pages/industries/junk-removal.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Moving Company Marketing | `/industries/movers` | `schema/pages/industries/movers.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Handyman Marketing | `/industries/handyman` | `schema/pages/industries/handyman.html` | WebPage, Service, FAQPage | 8 | ✅ |
+| Landscaping & Hardscaping Marketing | `/industries/landscaping` | `schema/pages/industries/landscaping.html` | WebPage, Service, FAQPage | 8 | ✅ |
 | Website Pricing | `/website-pricing` | `schema/pages/pricing/website-pricing.html` | WebPage, FAQPage | 7 | ✅ |
 | Complete360 CRM Pricing | `/pricing` | `schema/pages/pricing/saas-pricing.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Complete360 CRM | `/crm-home` | `schema/pages/crm-platform/crm-home.html` | WebPage, SoftwareApplication, FAQPage | 8 | ✅ |
