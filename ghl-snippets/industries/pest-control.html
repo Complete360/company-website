@@ -31,6 +31,7 @@
 
      v1.1 (2026-11-23): photos added. pest-hero and pest-on-the-job now point
        to the GHL Media images (generated in ChatGPT); placeholders filled.
+       CTA photo crop anchored at the top so the tech's head isn't cut off.
 
      v1.0 (2026-11-12) — first build. Plan per the worksheet draft:
        Google Platinum Package (Local Service Ads + Google Business Profile
@@ -214,7 +215,7 @@
 /* ══════════ CTA (diagonal photo) ══════════ */
 .c360-ind-pest-cta{position:relative;display:grid;grid-template-columns:0.9fr 1.1fr;background:var(--pest-green);color:#fff;min-height:440px;overflow:hidden}
 .c360-ind-pest-cta-media{position:relative;clip-path:polygon(0 0,100% 0,82% 100%,0 100%);background:repeating-linear-gradient(135deg,#0F6A20 0 18px,#14772A 18px 36px)}
-.c360-ind-pest-cta-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-pest-cta-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
 .c360-ind-pest-cta-media img[src=""],.c360-ind-pest-cta-media img:not([src]){visibility:hidden}
 .c360-ind-pest-cta-copy{padding:72px max(24px,calc((100vw - 1680px)/2 + 24px)) 72px 40px;display:flex;flex-direction:column;justify-content:center}
 .c360-ind-pest-cta h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:16px}
