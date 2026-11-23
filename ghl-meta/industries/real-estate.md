@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `re-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `re-hero` image in GHL Media.
 ```
-(paste the re-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b04c27bd45fc20d775b7998/keys-to-your-new-home.jpg
 ```
 
 ## Canonical URL
