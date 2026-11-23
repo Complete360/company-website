@@ -39,7 +39,7 @@ Complete360
 ## Social share image
 The `plumb-hero` image in GHL Media.
 ```
-https://files.leadconnectorhq.com/file/6b04a014d50d9db796abc934/aaikd7cu7mphk-5w-wsymq-aaikd7cui58fgcyszlmndw.jpg
+https://files.leadconnectorhq.com/file/6b04a017d40dd20617d14810/aaikd6wmoihfcxdqhkip3q-aaikd6wmfwtazk4ohauj1a.jpg
 ```
 
 ## Canonical URL
