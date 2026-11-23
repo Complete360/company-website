@@ -33,7 +33,9 @@
 
      v1.1 (2026-11-23): photos added. pool-hero (square, for the porthole) and
        pool-on-the-job (landscape, CTA background) now point to the GHL Media
-       images (generated in ChatGPT); placeholders filled.
+       images (generated in ChatGPT); placeholders filled. CTA band made
+       taller, photo starts under the wave and is anchored higher (30%) so
+       the technician's head isn't cut off.
 
      v1.0 (2026-11-12) — first build. Plan per the worksheet draft:
        Google Platinum Package co-lead (Local Service Ads + Google Business
@@ -219,13 +221,13 @@
 
 /* ══════════ CTA (photo with wave top) ══════════ */
 .c360-ind-pool-final{position:relative;color:#fff;text-align:center;overflow:hidden;background:var(--pool-navy)}
-.c360-ind-pool-final-media{position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,#2A7FC0,var(--pool-navy) 70%)}
-.c360-ind-pool-final-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-pool-final-media{position:absolute;top:40px;right:0;bottom:0;left:0;background:radial-gradient(circle at 30% 40%,#2A7FC0,var(--pool-navy) 70%)}
+.c360-ind-pool-final-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
 .c360-ind-pool-final-media img[src=""],.c360-ind-pool-final-media img:not([src]){visibility:hidden}
 .c360-ind-pool-final::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,64,0.72) 0%,rgba(10,16,64,0.88) 100%)}
 .c360-ind-pool-final-wave{position:relative;z-index:2;line-height:0}
 .c360-ind-pool-final-wave svg{display:block;width:100%;height:80px}
-.c360-ind-pool-final-inner{position:relative;z-index:2;padding:56px 24px 104px;max-width:900px;margin:0 auto}
+.c360-ind-pool-final-inner{position:relative;z-index:2;padding:96px 24px 136px;max-width:900px;margin:0 auto}
 .c360-ind-pool-final h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:16px}
 .c360-ind-pool-final p{font-size:18px;color:rgba(255,255,255,0.85);max-width:660px;margin:0 auto 32px;line-height:1.65}
 .c360-ind-pool-final .c360-ind-pool-ctas{justify-content:center}
