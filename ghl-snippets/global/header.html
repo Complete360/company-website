@@ -13,9 +13,11 @@
      v2.3 (2026-11-22): SITE-WIDE PAGE WIDTH. One rule at the top of the
        first <style> block sets every industry page's container to the
        1440px standard Jared chose, with 64px side margins (40px under
-       1100px, 24px under 640px). It targets the shared naming pattern
-       c360-ind-*-wrap / c360-indhub-wrap, so it covers all 25 industry
-       pages and the hub without re-pasting them. The industry snippets
+       1100px, 24px under 640px). It lists each page's container class
+       (c360-ind-*-wrap, c360-indhub-wrap) explicitly, covering the 25
+       industry pages and the hub without re-pasting them. HVAC, Lawn Care,
+       Water Damage and Landscaping also carry the standard in their own
+       code, because they have sections outside that container. The industry snippets
        still say 1680px/24px in the repo until the sweep updates them;
        until then this rule is what the live site shows. Service pages
        (~1160px) are not touched.
