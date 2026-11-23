@@ -118,6 +118,8 @@ Source: Terms of Service and Return & Refund Policy v2.1 (`ghl-snippets/legal/`)
 
 ---
 
+- **Page width standard:** every page is 1440px max with 64px side margins (40px under 1100px, 24px on phones). Most pages get this from the global header's width rule; build new pages at 1440/64 from the start. Checkouts: separate pass (GHL order-form section width).
+
 ## 5. The website repo — `github.com/Complete360/company-website`
 
 The site runs on GoHighLevel. This repo is a **version-controlled library of custom code

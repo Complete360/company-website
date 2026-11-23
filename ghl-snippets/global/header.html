@@ -1,5 +1,13 @@
 <!-- ============================================================
-     COMPLETE360 MEGA MENU — v2.4  (v2.0 perf pass + content updates)
+     COMPLETE360 MEGA MENU — v2.5  (v2.0 perf pass + content updates)
+     v2.5 (2026-11-23): 1440px WIDTH SITE-WIDE (Jared). The width rule now
+       lists every page's main container (industry, service, home, pricing,
+       company, legal, CRM), not just industry pages. Header bar and mega menu
+       move from 1320/32 to 1440/64 so the logo lines up with page content.
+       Legal paragraphs keep a 78ch reading width. Checkouts not included yet
+       (separate pass with the GHL order-form section). Farmers Insurance,
+       Dispensary and Geo-Fencing use a generic .container class, so they
+       carry the standard in their own code instead.
      v2.4 (2026-11-23): SITE-WIDE MOTION. Two things every page gets from the
        header so no page has to be re-pasted: (1) smooth in-page scrolling
        for anchor links (html{scroll-behavior:smooth}); (2) any <details>
@@ -196,9 +204,18 @@ details.c360-anim > summary + *{overflow:hidden}
    catch inner elements like c360-ind-auto-menu-wrap). Add a new page's
    -wrap class here when it ships at 1680, or build it at 1440/64 instead.
    Remove once every industry snippet has been re-pasted at 1440/64. */
-body :is(.c360-ind-appl-wrap,.c360-ind-auto-wrap,.c360-ind-clean-wrap,.c360-ind-fun-wrap,.c360-ind-gc-wrap,.c360-ind-gdr-wrap,.c360-ind-handy-wrap,.c360-ind-health-wrap,.c360-ind-hvac-wrap,.c360-ind-junk-wrap,.c360-ind-lawn-wrap,.c360-ind-lock-wrap,.c360-ind-medi-wrap,.c360-ind-mort-wrap,.c360-ind-move-wrap,.c360-ind-paint-wrap,.c360-ind-pc-wrap,.c360-ind-pest-wrap,.c360-ind-plumb-wrap,.c360-ind-pool-wrap,.c360-ind-re-wrap,.c360-ind-rest-wrap,.c360-ind-roof-wrap,.c360-ind-tree-wrap,.c360-ind-water-wrap,.c360-indhub-wrap){max-width:1440px;padding-left:64px;padding-right:64px}
-@media (max-width:1100px){body :is(.c360-ind-appl-wrap,.c360-ind-auto-wrap,.c360-ind-clean-wrap,.c360-ind-fun-wrap,.c360-ind-gc-wrap,.c360-ind-gdr-wrap,.c360-ind-handy-wrap,.c360-ind-health-wrap,.c360-ind-hvac-wrap,.c360-ind-junk-wrap,.c360-ind-lawn-wrap,.c360-ind-lock-wrap,.c360-ind-medi-wrap,.c360-ind-mort-wrap,.c360-ind-move-wrap,.c360-ind-paint-wrap,.c360-ind-pc-wrap,.c360-ind-pest-wrap,.c360-ind-plumb-wrap,.c360-ind-pool-wrap,.c360-ind-re-wrap,.c360-ind-rest-wrap,.c360-ind-roof-wrap,.c360-ind-tree-wrap,.c360-ind-water-wrap,.c360-indhub-wrap){padding-left:40px;padding-right:40px}}
-@media (max-width:640px){body :is(.c360-ind-appl-wrap,.c360-ind-auto-wrap,.c360-ind-clean-wrap,.c360-ind-fun-wrap,.c360-ind-gc-wrap,.c360-ind-gdr-wrap,.c360-ind-handy-wrap,.c360-ind-health-wrap,.c360-ind-hvac-wrap,.c360-ind-junk-wrap,.c360-ind-lawn-wrap,.c360-ind-lock-wrap,.c360-ind-medi-wrap,.c360-ind-mort-wrap,.c360-ind-move-wrap,.c360-ind-paint-wrap,.c360-ind-pc-wrap,.c360-ind-pest-wrap,.c360-ind-plumb-wrap,.c360-ind-pool-wrap,.c360-ind-re-wrap,.c360-ind-rest-wrap,.c360-ind-roof-wrap,.c360-ind-tree-wrap,.c360-ind-water-wrap,.c360-indhub-wrap){padding-left:24px;padding-right:24px}}
+body :is(.c360-ind-appl-wrap,.c360-ind-auto-wrap,.c360-ind-clean-wrap,.c360-ind-fun-wrap,.c360-ind-gc-wrap,.c360-ind-gdr-wrap,.c360-ind-handy-wrap,.c360-ind-health-wrap,.c360-ind-hvac-wrap,.c360-ind-junk-wrap,.c360-ind-lawn-wrap,.c360-ind-lock-wrap,.c360-ind-medi-wrap,.c360-ind-mort-wrap,.c360-ind-move-wrap,.c360-ind-paint-wrap,.c360-ind-pc-wrap,.c360-ind-pest-wrap,.c360-ind-plumb-wrap,.c360-ind-pool-wrap,.c360-ind-re-wrap,.c360-ind-rest-wrap,.c360-ind-roof-wrap,.c360-ind-tree-wrap,.c360-ind-water-wrap,.c360-indhub-wrap,.c360-hp-container,.c360-cu-container,.c360-faq-container-wide,.c360t-inner,.c360vl-inner,.c360vl-bar-inner,.c360crm-wrap,.c360-tos-container,.c360-pp-container,.c360-rp-container,.c360p-wrap,.c360ai-inner,.c360-gbp-container,.c360ga-inner,.c360ga-hero-inner,.c360-gsp-container,.c360-ls-wrap,.c360-lsb-container,.c360-lsa-wrap,.c360ma-inner,.c360ma-hero-inner,.c360-msp-container,.c360-pay-container,.pc-container,.pc-hero-inner,.c360-rep-container,.c360-seo-container,.c360w-wrap,.c360-gallery){max-width:1440px;padding-left:64px;padding-right:64px;box-sizing:border-box}
+@media (max-width:1100px){body :is(.c360-ind-appl-wrap,.c360-ind-auto-wrap,.c360-ind-clean-wrap,.c360-ind-fun-wrap,.c360-ind-gc-wrap,.c360-ind-gdr-wrap,.c360-ind-handy-wrap,.c360-ind-health-wrap,.c360-ind-hvac-wrap,.c360-ind-junk-wrap,.c360-ind-lawn-wrap,.c360-ind-lock-wrap,.c360-ind-medi-wrap,.c360-ind-mort-wrap,.c360-ind-move-wrap,.c360-ind-paint-wrap,.c360-ind-pc-wrap,.c360-ind-pest-wrap,.c360-ind-plumb-wrap,.c360-ind-pool-wrap,.c360-ind-re-wrap,.c360-ind-rest-wrap,.c360-ind-roof-wrap,.c360-ind-tree-wrap,.c360-ind-water-wrap,.c360-indhub-wrap,.c360-hp-container,.c360-cu-container,.c360-faq-container-wide,.c360t-inner,.c360vl-inner,.c360vl-bar-inner,.c360crm-wrap,.c360-tos-container,.c360-pp-container,.c360-rp-container,.c360p-wrap,.c360ai-inner,.c360-gbp-container,.c360ga-inner,.c360ga-hero-inner,.c360-gsp-container,.c360-ls-wrap,.c360-lsb-container,.c360-lsa-wrap,.c360ma-inner,.c360ma-hero-inner,.c360-msp-container,.c360-pay-container,.pc-container,.pc-hero-inner,.c360-rep-container,.c360-seo-container,.c360w-wrap,.c360-gallery,.c360-faq-container){padding-left:40px;padding-right:40px}}
+@media (max-width:640px){body :is(.c360-ind-appl-wrap,.c360-ind-auto-wrap,.c360-ind-clean-wrap,.c360-ind-fun-wrap,.c360-ind-gc-wrap,.c360-ind-gdr-wrap,.c360-ind-handy-wrap,.c360-ind-health-wrap,.c360-ind-hvac-wrap,.c360-ind-junk-wrap,.c360-ind-lawn-wrap,.c360-ind-lock-wrap,.c360-ind-medi-wrap,.c360-ind-mort-wrap,.c360-ind-move-wrap,.c360-ind-paint-wrap,.c360-ind-pc-wrap,.c360-ind-pest-wrap,.c360-ind-plumb-wrap,.c360-ind-pool-wrap,.c360-ind-re-wrap,.c360-ind-rest-wrap,.c360-ind-roof-wrap,.c360-ind-tree-wrap,.c360-ind-water-wrap,.c360-indhub-wrap,.c360-hp-container,.c360-cu-container,.c360-faq-container-wide,.c360t-inner,.c360vl-inner,.c360vl-bar-inner,.c360crm-wrap,.c360-tos-container,.c360-pp-container,.c360-rp-container,.c360p-wrap,.c360ai-inner,.c360-gbp-container,.c360ga-inner,.c360ga-hero-inner,.c360-gsp-container,.c360-ls-wrap,.c360-lsb-container,.c360-lsa-wrap,.c360ma-inner,.c360ma-hero-inner,.c360-msp-container,.c360-pay-container,.pc-container,.pc-hero-inner,.c360-rep-container,.c360-seo-container,.c360w-wrap,.c360-gallery,.c360-faq-container){padding-left:24px;padding-right:24px}}
+/* Google PPC + Meta Ads: their sections already add 24px (20px on phones) around the container */
+@media (max-width:1100px){body :is(.c360ga-inner,.c360ga-hero-inner,.c360ma-inner,.c360ma-hero-inner){padding-left:16px;padding-right:16px}}
+@media (max-width:640px){body :is(.c360ga-inner,.c360ga-hero-inner,.c360ma-inner,.c360ma-hero-inner){padding-left:4px;padding-right:4px}}
+/* Legal pages: page is 1440 wide, but keep paragraphs at a readable line length */
+body :is(.c360-tos-content,.c360-pp-content,.c360-rp-content) :is(p,li){max-width:78ch}
+/* Header + mega menu share the same 1440/64 edges as the page content */
+body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
+@media (max-width:1100px){body .c360-nav-wrapper,body .c360-mega-inner{padding-left:40px;padding-right:40px}}
+@media (max-width:640px){body .c360-nav-wrapper{padding-left:24px;padding-right:24px}}
 /* ---------- Brand tokens ---------- */
 .c360-header, .c360-mega-menu, .c360-modal,
 .c360-mobile-header, .c360-mobile-panel, .c360-mobile-backdrop {
@@ -248,9 +265,9 @@ body :is(.c360-ind-appl-wrap,.c360-ind-auto-wrap,.c360-ind-clean-wrap,.c360-ind-
 }
 
 .c360-nav-wrapper {
-  max-width: 1320px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 18px 32px;
+  padding: 18px 64px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -374,9 +391,9 @@ body :is(.c360-ind-appl-wrap,.c360-ind-auto-wrap,.c360-ind-clean-wrap,.c360-ind-
 }
 
 .c360-mega-inner {
-  max-width: 1320px;
+  max-width: 1440px;
   margin: 0 auto;
-  padding: 28px 32px 32px;
+  padding: 28px 64px 32px;
   display: grid;
   grid-template-columns: 260px 1fr;
   gap: 36px;

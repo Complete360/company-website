@@ -1,5 +1,8 @@
 <!-- ============================================================
-     COMPLETE360 FOOTER — v1.7.3
+     COMPLETE360 FOOTER — v1.8
+     v1.8 (2026-11-23): 1440px width site-wide (Jared). Footer columns, divider
+       and bottom bar move from 1320/32 to 1440/64 (40px under 1100px, 24px on
+       phones), lining up with the header and page content.
      v1.7.3 (2026-11-11): Platform Overview icon fixed. It used fa-grid-2,
        which is a Font Awesome PRO icon, so with the free kit it rendered as
        a blank space. Now fa-table-columns, the same icon the header uses for
@@ -116,9 +119,10 @@
       
       /* ---------- Main columns area ---------- */
       .c360f-main {
-        max-width: 1320px;
+        max-width: 1440px;
+        box-sizing: border-box;
         margin: 0 auto;
-        padding: 64px 32px 48px;
+        padding: 64px 64px 48px;
         display: grid;
         grid-template-columns: 280px 1fr 1fr 1fr 220px;
         gap: 48px;
@@ -438,18 +442,20 @@
       
       /* ---------- Divider ---------- */
       .c360f-divider {
-        max-width: 1320px;
+        max-width: 1440px;
+        box-sizing: border-box;
         margin: 0 auto;
-        padding: 0 32px;
+        padding: 0 64px;
         border: none;
         border-top: 1px solid var(--c360f-border);
       }
       
       /* ---------- Bottom bar ---------- */
       .c360f-bottom {
-        max-width: 1320px;
+        max-width: 1440px;
+        box-sizing: border-box;
         margin: 0 auto;
-        padding: 22px 32px;
+        padding: 22px 64px;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -487,7 +493,9 @@
         .c360f-main {
           grid-template-columns: 1fr 1fr 1fr;
           gap: 40px;
+          padding-left: 40px; padding-right: 40px;
         }
+        .c360f-divider, .c360f-bottom { padding-left: 40px; padding-right: 40px; }
         .c360f-contact { grid-column: span 3; display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .c360f-app-label, .c360f-app-buttons { grid-column: span 1; }
       }
@@ -495,15 +503,15 @@
       @media (max-width: 768px) {
         .c360f-main {
           grid-template-columns: 1fr 1fr;
-          padding: 48px 20px 36px;
+          padding: 48px 24px 36px;
           gap: 32px;
         }
         .c360f-brand { grid-column: span 2; }
         .c360f-contact { grid-column: span 2; display: block; }
         .c360f-app-buttons { flex-direction: row; }
-        .c360f-divider { padding: 0 20px; }
+        .c360f-divider { padding: 0 24px; }
         .c360f-bottom {
-          padding: 18px 20px;
+          padding: 18px 24px;
           flex-direction: column;
           align-items: flex-start;
           gap: 12px;

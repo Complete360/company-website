@@ -39,8 +39,8 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `global/header.html` | Header (on every page) | ✅ Code in repo | **v2.4: 🔁 paste into GHL** — site-wide motion (smooth anchor scrolling + eased FAQ open/close on every page) and a site-wide 1440px/64px width rule for all industry pages (v2.3). No per-page re-paste needed. v2.2.1: imported live v2.1, then added SEO Services; mobile "All AI Agents" icon fixed (Pro-only icon) (Solutions + Pricing, desktop + mobile), AI prices $399/$599, "no per-minute AI fees". Paste into GHL global header. Open: Paid Lead Gen rail "From $499/mo" |
-| `global/footer.html` | Footer (on every page) | ✅ Code in repo | v1.7.3: pills glued to the label; Platform Overview icon fixed (was a Pro-only icon) (v1.7 live Nov 11). Paste into GHL global footer |
+| `global/header.html` | Header (on every page) | ✅ Code in repo | **v2.5: 🔁 paste into GHL** — 1440px width site-wide (all non-checkout pages + header bar/mega menu). **v2.4: 🔁 paste into GHL** — site-wide motion (smooth anchor scrolling + eased FAQ open/close on every page) and a site-wide 1440px/64px width rule for all industry pages (v2.3). No per-page re-paste needed. v2.2.1: imported live v2.1, then added SEO Services; mobile "All AI Agents" icon fixed (Pro-only icon) (Solutions + Pricing, desktop + mobile), AI prices $399/$599, "no per-minute AI fees". Paste into GHL global header. Open: Paid Lead Gen rail "From $499/mo" |
+| `global/footer.html` | Footer (on every page) | ✅ Code in repo | **v1.8: 🔁 paste into GHL** — 1440px/64px, lines up with header and content. v1.7.3: pills glued to the label; Platform Overview icon fixed (was a Pro-only icon) (v1.7 live Nov 11). Paste into GHL global footer |
 | `global/404.html` | 404 | ⬜ Placeholder |  |
 
 ### Home
@@ -57,7 +57,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `services/gbp-management.html` | Google Business Management | ✅ Code in repo | v1.3.3 live in GHL (Nov 10) — schema still to paste |
 | `services/gbp-setup.html` | Google Business Profile Setup | ✅ Code in repo | Up to date |
 | `services/local-seo-booster.html` | SEO Booster | ✅ Code in repo | v2.7 live in GHL (Nov 10) — schema still to paste |
-| `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo | v1.1 live in GHL (Nov 10) — schema still to paste |
+| `services/geo-fencing.html` | Geo Fencing | ✅ Code in repo | **🔁 paste into GHL** — 1440px width standard (2026-11-23). v1.1 live in GHL (Nov 10) — schema still to paste |
 | `services/google-ads.html` | Google Ads | ✅ Code in repo | v2.6 live in GHL (Nov 10) — schema still to paste |
 | `services/meta-ads.html` | Meta Ads | ✅ Code in repo | v2.3 live in GHL (Nov 10) — schema still to paste |
 | `services/google-social-posting.html` | Google Social Posting | ✅ Code in repo | v1.2 live in GHL (Nov 10) — schema still to paste |
@@ -67,7 +67,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `services/websites-home.html` | Website Home | ✅ Code in repo | Up to date |
 | `services/ai-employee.html` | AI Employee Website | ✅ Code in repo | v1.14 live in GHL (Nov 10) — schema still to paste |
 | `services/local-display-network.html` | Local Display Network | ✅ Code in repo | Up to date |
-| `services/dispensary.html` | Dispensary | ✅ Code in repo | Up to date |
+| `services/dispensary.html` | Dispensary | ✅ Code in repo | **🔁 paste into GHL** — 1440px width standard (2026-11-23). Up to date |
 | `services/seo-services.html` | SEO Services (new page — create in GHL) | ✅ Code in repo | v1.4 live in GHL; not in nav yet; checkout page created, snippets to build |
 | `services/payments.html` | Payments | ✅ Code in repo | v1.1 live in GHL (Nov 10) — schema still to paste |
 
@@ -178,4 +178,4 @@ All checkout pages are set to **noindex** in GHL and get no schema (decided Nov 
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `partners/farmers-insurance.html` | Farmers Insurance | ✅ Code in repo |  |
+| `partners/farmers-insurance.html` | Farmers Insurance | ✅ Code in repo | **🔁 paste into GHL** — 1440px width standard (2026-11-23).  |
