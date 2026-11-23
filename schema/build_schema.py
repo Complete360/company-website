@@ -381,11 +381,22 @@ def build(pg):
         webpage["mainEntity"] = {"@id": url + "#service"}
         graph.append(svc)
     if pg.get("items") == "industries":
-        inds = [x for x in P if x["kind"] == "industry"]
+        # Read the list from the hub's own /industries/ links, so a page the hub doesn't
+        # link yet (e.g. one held for review) never appears in the schema.
+        inds = []
+        if html:
+            soup = BeautifulSoup(html, "html.parser")
+            for a in soup.select('a[href^="/industries/"]'):
+                nm = a.select_one('[class$="-row-name"]')
+                name = re.sub(r"\s+", " ", (nm or a).get_text(" ", strip=True))
+                if a["href"] not in [h for _, h in inds]:
+                    inds.append((name, a["href"]))
+        if not inds:
+            inds = [(x["name"], x["path"]) for x in P if x["kind"] == "industry"]
         lst = {"@type": "ItemList", "@id": url + "#industries", "name": "Industries we market for",
                "numberOfItems": len(inds), "itemListOrder": "https://schema.org/ItemListUnordered",
-               "itemListElement": [{"@type": "ListItem", "position": i, "name": x["name"], "url": SITE + x["path"]}
-                                   for i, x in enumerate(inds, 1)]}
+               "itemListElement": [{"@type": "ListItem", "position": i, "name": n, "url": SITE + h}
+                                   for i, (n, h) in enumerate(inds, 1)]}
         webpage["mainEntity"] = {"@id": url + "#industries"}
         webpage["about"] = ORG_REF
         if pg.get("audience"):

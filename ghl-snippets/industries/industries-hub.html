@@ -1,0 +1,546 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industries hub
+     c360-indhub-v1.9.html
+     GHL: Paste into a Custom Code block on the new page at /industries
+          (page name "Industries"). Meta data: ghl-meta/industries/industries-hub.md.
+          Schema: schema/pages/industries/industries-hub.html (batch paste later).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-indhub-  (new, unique; vars --hub-*)
+
+     Container 1440px (Jared's pick, 2026-11-21; the other industry pages
+     are still 1680px and will move to 1440 in a sweep) with 64px side
+     padding on desktop, 40px on tablets, 24px on phones. Text blocks cap at 760px. 60px H1, 48px section titles,
+     18px section descriptions, Poppins, reviews widget, CTA before the
+     FAQ. Sections:
+       - Hero: full-bleed photo with a navy overlay, H1 left, CTAs,
+         Google Partner badge + trust list.
+       - How we pick your plan: one "how fast do your customers decide"
+         scale (fast to slow) above three plan cards.
+       - Directory: four group tabs in a row (Contractors & Trades, Home
+         Services, Professional & Financial, Specialty Businesses). The
+         selected group's industries show as a grid of cards under the
+         tabs. On a switch the cards fan out from the first card's spot
+         into their places (JS measures positions, CSS animates) and the
+         grid height eases. Keyboard: real tab buttons, arrow keys move
+         between tabs. Reduced motion: instant swap. Without JS all four
+         groups show stacked with their headings.
+       - Reviews: stat line + reviews widget.
+       - Closing CTA, then FAQ (pulled into schema word for word).
+
+     Directory links
+       - Every industry page in the repo links to /industries/[slug],
+         except Medicare Agents (page held for management/legal review):
+         it links to /schedule-demo for now. Swap it when cleared:
+         search this file for "SWAP WHEN LIVE".
+       - Electrical has no page yet: "Talk to us" link to /schedule-demo.
+       - Dispensaries -> /dispensary (live). Farmers Insurance agents ->
+         /farmers-insurance (cost-share partner program).
+       - When a new industry page goes live, add a row to its group and
+         re-run schema/build_schema.py (the hub's ItemList is read from
+         the /industries/ links in this file).
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       indhub-hero   16:9, 2000px+ (full-bleed behind a navy overlay; keep
+                     the people on the right half, the headline sits left)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.9 (2026-11-22) — no hard-coded review numbers anywhere on the page
+       (Jared: the count and rating keep changing; the widget is the
+       source of truth). Stat row removed from the reviews section; hero
+       trust line now points at the live reviews instead of quoting a
+       figure. "Since 2018" stays.
+     v1.8 (2026-11-22) — tabs across the top + cards fanning out from the
+       first card (Jared's description of the effect he wanted).
+     v1.7 (2026-11-22) — rotator replaced with expanding group panels
+       (Jared: click a group and it expands into its industries).
+     v1.6 (2026-11-21) — directory rebuilt as a rotator (Jared's ask).
+     v1.5 (2026-11-21) — container 1680 -> 1440px (Jared's call).
+     v1.4 (2026-11-21) — Jared wants room to breathe, not the default narrow
+       width: container back to 1680px, side padding 24 -> 64px (40px
+       tablet, 24px phone); plan cards and directory panels get 32px
+       gaps so the extra width goes into whitespace, not stretched text.
+     v1.3 (2026-11-21) — Jared: page felt too wide and the directory busy.
+       Content width 1680 -> 1200 with wider side padding; H1/H2 sizes
+       trimmed to match; the fast-to-slow scale is now three labeled
+       segments sitting on the plan cards; directory groups are 2 x 2
+       panels with icon circles and a chevron; tighter section spacing.
+     v1.2 (2026-11-20) — added the Phoenix office: trust line now "Offices in
+       Tucson and Phoenix" and the Arizona FAQ answer names both.
+     v1.1 (2026-11-20) — cleanup after Jared's review ("a bunch of clutter"):
+       directory rebuilt as four simple columns (dropped the per-row
+       descriptions, plan tags, chevrons, search box and filters, and
+       the script that ran them); section heads centered with green
+       kickers like the other industry pages; plan cards lose the
+       brackets and filter buttons; "Don't see your industry?" is one
+       centered line.
+     v1.0 (2026-11-20) — first build, per worksheet Section 10 (hub contents).
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-indhub{
+  --hub-navy:#122078;--hub-navy-dark:#0d1654;--hub-navy-deeper:#0a1040;
+  --hub-green:#127825;--hub-green-hover:#0e5e1d;--hub-green-light:#EAF3DE;
+  --hub-blue:#3F63C7;--hub-sand:#8A7B5C;--hub-sand-bg:#F1EFE8;
+  --hub-bg:#F4F7FC;--hub-line:#E2E8F2;--hub-rule:#CBD6E8;
+  --hub-text:#0F1F5E;--hub-muted:#5F5E5A;--hub-body:#3B4566;
+  --hub-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--hub-font);color:var(--hub-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-indhub *,.c360-indhub *::before,.c360-indhub *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-indhub :where(h1,h2,h3,h4,p,ul,ol,li,figure){margin:0;padding:0;font-family:var(--hub-font)}
+.c360-indhub :where(ul,ol){list-style:none}
+.c360-indhub :where(a){color:var(--hub-navy)}
+.c360-indhub a:focus-visible,.c360-indhub button:focus-visible,.c360-indhub input:focus-visible,.c360-indhub summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+.c360-indhub-wrap{max-width:1440px;margin:0 auto;padding:0 64px}
+.c360-indhub-section{padding:88px 0}
+.c360-indhub-h2{font-size:clamp(30px,4vw,48px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--hub-text);margin-bottom:16px}
+.c360-indhub-lead{font-size:18px;color:var(--hub-muted);max-width:680px;line-height:1.65}
+.c360-indhub-head{text-align:center;max-width:760px;margin:0 auto 48px}
+.c360-indhub-head .c360-indhub-lead{margin:0 auto}
+.c360-indhub-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--hub-green);margin-bottom:14px}
+
+/* ---------- Buttons ---------- */
+.c360-indhub-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--hub-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;cursor:pointer;border:0;transition:background .2s,color .2s,transform .15s}
+.c360-indhub-btn-primary{background:var(--hub-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-indhub-btn-primary:hover{background:var(--hub-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-indhub-btn-ghost{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.85);padding:14px 24px}
+.c360-indhub-btn-ghost:hover{background:#fff;color:var(--hub-navy);text-decoration:none;transform:translateY(-2px)}
+.c360-indhub a.c360-indhub-btn-primary{color:#fff}
+.c360-indhub a.c360-indhub-btn-ghost{color:#fff}
+.c360-indhub a.c360-indhub-btn-ghost:hover{color:var(--hub-navy)}
+.c360-indhub-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* ══════════ HERO (full-bleed photo, navy overlay) ══════════ */
+.c360-indhub-hero{position:relative;color:#fff;overflow:hidden;background:var(--hub-navy-deeper)}
+.c360-indhub-hero-photo{position:absolute;inset:0;background:
+  radial-gradient(circle at 78% 40%,rgba(63,99,199,0.45),transparent 55%),
+  linear-gradient(135deg,var(--hub-navy-dark),var(--hub-navy-deeper))}
+.c360-indhub-hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% center}
+.c360-indhub-hero-photo img[src=""],.c360-indhub-hero-photo img:not([src]){visibility:hidden}
+.c360-indhub-hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:linear-gradient(90deg,rgba(10,16,64,0.94) 0%,rgba(13,22,84,0.86) 42%,rgba(18,32,120,0.35) 75%,rgba(18,32,120,0.15) 100%)}
+.c360-indhub-hero-inner{position:relative;z-index:1;padding-top:48px;padding-bottom:88px}
+.c360-indhub-hero-copy{max-width:640px}
+.c360-indhub-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:32px}
+.c360-indhub-crumbs li{color:rgba(255,255,255,0.75);display:flex;align-items:center;gap:8px}
+.c360-indhub-crumbs li+li::before{content:"\203A";color:rgba(255,255,255,0.5)}
+.c360-indhub-crumbs a{color:#fff;text-decoration:none}
+.c360-indhub-crumbs a:hover{text-decoration:underline}
+.c360-indhub-hero h1{font-size:clamp(36px,5vw,60px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:#fff;margin-bottom:22px}
+.c360-indhub-hero-sub{font-size:18px;line-height:1.65;color:rgba(255,255,255,0.88);max-width:600px;margin-bottom:32px}
+.c360-indhub-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-indhub-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-indhub-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-indhub-partner,.c360-indhub-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-indhub-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:240px}
+.c360-indhub-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.9);line-height:1.4}
+.c360-indhub-creds-list i{color:#7FD38F;margin-top:3px;font-size:12px}
+.c360-indhub-stars{color:#F5B301;letter-spacing:1px}
+.c360-indhub-creds-list a{color:#fff;font-weight:600}
+
+/* ══════════ HOW WE PICK YOUR PLAN (decision-speed scale) ══════════ */
+.c360-indhub-pick{background:var(--hub-bg)}
+.c360-indhub-axis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;margin-bottom:12px}
+.c360-indhub-axis-seg{--route:var(--hub-green);display:flex;flex-direction:column;gap:10px;font-size:13px;font-weight:700;color:var(--route);letter-spacing:.02em;text-transform:uppercase}
+.c360-indhub-axis-seg:nth-child(2){--route:var(--hub-blue)}
+.c360-indhub-axis-seg:nth-child(3){--route:var(--hub-navy)}
+.c360-indhub-axis-seg::before{content:"";display:block;height:6px;border-radius:6px;background:var(--route)}
+.c360-indhub-axis-ends{display:flex;justify-content:space-between;font-size:13px;color:var(--hub-muted);margin-bottom:10px}
+.c360-indhub-routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px}
+.c360-indhub-route{--route:var(--hub-green)}
+.c360-indhub-route[data-route="planned"]{--route:var(--hub-blue)}
+.c360-indhub-route[data-route="office"]{--route:var(--hub-navy)}
+.c360-indhub-route-body{background:#fff;border-radius:16px;border:1px solid var(--hub-line);padding:32px 32px;height:100%;display:flex;flex-direction:column;gap:14px}
+.c360-indhub-route h3{font-size:22px;font-weight:800;line-height:1.2;letter-spacing:-0.01em;color:var(--hub-text)}
+.c360-indhub-route p{font-size:15px;line-height:1.65;color:var(--hub-body)}
+.c360-indhub-route-lead{border-top:1px solid var(--hub-line);padding-top:16px}
+.c360-indhub-route-lead strong{display:block;font-size:15px;font-weight:700;color:var(--hub-text);margin-bottom:4px}
+.c360-indhub-route-lead p{font-size:14.5px}
+.c360-indhub-route-lead a{font-weight:600}
+.c360-indhub-route-eg{font-size:13.5px;color:var(--hub-muted);line-height:1.6}
+.c360-indhub-pick-note{margin:36px auto 0;font-size:15px;color:var(--hub-body);max-width:720px;text-align:center}
+.c360-indhub-pick-note a{font-weight:600}
+
+/* ══════════ DIRECTORY — GROUP TABS + FAN-OUT CARDS ══════════ */
+.c360-indhub-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:32px}
+.c360-indhub-tab{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:var(--hub-font);font-size:15px;font-weight:700;color:var(--hub-navy);background:#fff;border:1.5px solid #B7C6E6;border-radius:100px;padding:12px 20px;transition:background .2s,color .2s,border-color .2s,transform .15s}
+.c360-indhub-tab i{font-size:14px}
+.c360-indhub-tab small{font-size:12px;font-weight:600;color:var(--hub-muted);background:var(--hub-bg);border-radius:100px;padding:3px 8px}
+.c360-indhub-tab:hover{border-color:var(--hub-navy);transform:translateY(-1px)}
+.c360-indhub-tab[aria-selected="true"]{background:var(--hub-navy);border-color:var(--hub-navy);color:#fff}
+.c360-indhub-tab[aria-selected="true"] small{background:rgba(255,255,255,0.18);color:#fff}
+.c360-indhub-tab:focus-visible{outline:3px solid #2ecc52;outline-offset:3px}
+.c360-indhub-stage{position:relative;overflow:hidden;transition:height .5s cubic-bezier(.22,.8,.3,1)}
+.c360-indhub-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:4px}
+.c360-indhub-grid[hidden]{display:none}
+.c360-indhub-grid-title{display:none}
+.c360-indhub-row{display:flex;flex-direction:column;gap:10px;height:100%;padding:22px 20px 18px;background:#fff;border:1px solid var(--hub-line);border-radius:16px;text-decoration:none;color:var(--hub-text);transition:transform .2s,box-shadow .2s,border-color .2s;will-change:transform}
+.c360-indhub-row.is-fan{transition:transform .55s cubic-bezier(.22,.8,.3,1),opacity .4s ease;transition-delay:var(--d,0ms)}
+.c360-indhub-row:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,31,94,0.10);border-color:#B7C6E6;text-decoration:none;color:var(--hub-text)}
+.c360-indhub-row > i:first-child{width:42px;height:42px;border-radius:12px;background:var(--hub-bg);color:var(--hub-navy);display:flex;align-items:center;justify-content:center;font-size:17px;flex:none}
+.c360-indhub-row-name{display:block;font-size:17px;font-weight:800;line-height:1.2;letter-spacing:-0.01em}
+.c360-indhub-row-desc{display:block;font-size:13.5px;line-height:1.5;color:var(--hub-muted)}
+.c360-indhub-row-foot{margin-top:auto;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--hub-navy);padding-top:6px}
+.c360-indhub-row-foot i{font-size:10px;transition:transform .15s}
+.c360-indhub-row:hover .c360-indhub-row-foot i{transform:translateX(3px)}
+.c360-indhub-missing{margin:36px auto 0;text-align:center;font-size:16px;color:var(--hub-body);max-width:640px}
+.c360-indhub-missing a{font-weight:700}
+/* no-JS: every group visible, stacked, with its heading */
+.c360-indhub-dir.no-js .c360-indhub-tabs{display:none}
+.c360-indhub-dir.no-js .c360-indhub-grid[hidden]{display:grid}
+.c360-indhub-dir.no-js .c360-indhub-grid-title{display:block;font-size:20px;font-weight:800;color:var(--hub-text);margin:32px 0 14px}
+
+/* ══════════ REVIEWS ══════════ */
+.c360-indhub-reviews{background:var(--hub-bg)}
+
+/* ══════════ CLOSING CTA ══════════ */
+.c360-indhub-cta{background:var(--hub-navy);color:#fff;border-radius:24px;padding:64px 64px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:48px;align-items:center;position:relative;overflow:hidden}
+.c360-indhub-cta::before{content:"";position:absolute;left:0;right:0;top:0;height:8px;background:linear-gradient(90deg,var(--hub-green) 0 33.33%,var(--hub-blue) 33.33% 66.66%,#6E85D6 66.66% 100%)}
+.c360-indhub-cta .c360-indhub-h2{color:#fff}
+.c360-indhub-cta p{font-size:18px;line-height:1.65;color:rgba(255,255,255,0.88);max-width:640px}
+.c360-indhub-cta-actions{display:flex;flex-direction:column;gap:14px;align-items:flex-start}
+.c360-indhub-cta-hours{font-size:14px;color:rgba(255,255,255,0.75)}
+
+/* ══════════ FAQ ══════════ */
+.c360-indhub-faq-list{max-width:860px;margin:0 auto;border-top:3px solid var(--hub-text)}
+.c360-indhub-faq-item{border-bottom:1px solid var(--hub-line)}
+.c360-indhub-faq-q{list-style:none;cursor:pointer;display:grid;grid-template-columns:minmax(0,1fr) 28px;gap:20px;align-items:center;padding:22px 4px;font-size:18px;font-weight:700;line-height:1.4;color:var(--hub-text)}
+.c360-indhub-faq-q::-webkit-details-marker{display:none}
+.c360-indhub-faq-q::after{content:"+";font-size:26px;font-weight:500;color:var(--hub-navy);text-align:center;transition:transform .2s}
+.c360-indhub-faq-item[open] .c360-indhub-faq-q::after{transform:rotate(45deg)}
+.c360-indhub-faq-a{padding:0 48px 26px 4px}
+.c360-indhub-faq-a p{font-size:16px;line-height:1.7;color:var(--hub-body);max-width:900px}
+.c360-indhub-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1100px){
+  .c360-indhub-wrap{padding:0 40px}
+}
+@media (max-width:1100px){
+  .c360-indhub-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:760px){
+  .c360-indhub-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .c360-indhub-tab{font-size:14px;padding:10px 16px}
+}
+@media (max-width:480px){
+  .c360-indhub-grid{grid-template-columns:1fr}
+}
+@media (max-width:960px){
+  .c360-indhub-routes{grid-template-columns:1fr;gap:20px;max-width:640px;margin:0 auto}
+  .c360-indhub-axis,.c360-indhub-axis-ends{display:none}
+  .c360-indhub-route-body{border-top:5px solid var(--route)}
+  .c360-indhub-route-body::before{content:attr(data-when);font-size:12px;font-weight:700;letter-spacing:.02em;text-transform:uppercase;color:var(--route)}
+  .c360-indhub-cta{grid-template-columns:1fr;padding:48px 36px}
+}
+@media (max-width:760px){
+  .c360-indhub-section{padding:72px 0}
+  .c360-indhub-hero-inner{padding-bottom:72px}
+  .c360-indhub-hero::after{background:linear-gradient(180deg,rgba(10,16,64,0.92) 0%,rgba(13,22,84,0.88) 100%)}
+  .c360-indhub-faq-q{font-size:17px}
+  .c360-indhub-faq-a{padding-right:4px}
+}
+@media (max-width:640px){
+  .c360-indhub-wrap{padding-left:24px;padding-right:24px}
+  .c360-indhub-tab small{display:none}
+  .c360-indhub-btn{width:100%}
+  .c360-indhub-partner{--badge-h:64px;--badge-clear:32px}
+  .c360-indhub-route-body{padding:26px 22px}
+  .c360-indhub-cta{padding:40px 24px;border-radius:18px}
+  .c360-indhub-cta-actions{align-items:stretch}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-indhub *,.c360-indhub *::before,.c360-indhub *::after{transition:none !important;animation:none !important}
+  .c360-indhub-row.is-fan{transition:none}
+  .c360-indhub-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-indhub">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="c360-indhub-hero">
+  <div class="c360-indhub-hero-photo">
+    <!-- IMAGE PLACEHOLDER: indhub-hero — collage-style photo of local business owners from different trades (a plumber, a landscaper, an insurance agent at a desk, a restaurant owner), natural light, people on the RIGHT half, open space on the left for the headline, 16:9 -->
+    <img src="" data-c360-placeholder="indhub-hero" alt="Local business owners from different trades, from a plumber to an insurance agent" fetchpriority="high">
+  </div>
+  <div class="c360-indhub-wrap c360-indhub-hero-inner">
+    <div class="c360-indhub-hero-copy">
+      <nav class="c360-indhub-crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li aria-current="page">Industries</li>
+        </ol>
+      </nav>
+      <h1>Marketing for local businesses, built around your industry</h1>
+      <p class="c360-indhub-hero-sub">A plumber with a burst-pipe call and a loan officer with a buyer six weeks out don't need the same marketing. Find your industry to see the plan we'd start with: the few services that bring that kind of business more calls and customers, not everything we sell.</p>
+      <div class="c360-indhub-ctas">
+        <a href="/schedule-demo" class="c360-indhub-btn c360-indhub-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-indhub-btn c360-indhub-btn-ghost"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+      <div class="c360-indhub-creds">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-indhub-partner">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+        <ul class="c360-indhub-creds-list">
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-indhub-stars" aria-hidden="true">★★★★★</span> Reviewed by local business owners on Google. <a href="#indhub-reviews">See the reviews</a></span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Offices in Tucson and Phoenix, serving nationwide since 2018</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HOW WE PICK YOUR PLAN (decision-speed scale) ══════════ -->
+<section class="c360-indhub-section c360-indhub-pick" id="indhub-plan">
+  <div class="c360-indhub-wrap">
+    <div class="c360-indhub-head">
+      <span class="c360-indhub-kicker">One question first</span>
+      <h2 class="c360-indhub-h2">How we pick your plan</h2>
+      <p class="c360-indhub-lead">It starts with one question: how fast do your customers decide? Someone with water on the floor calls within minutes. Someone choosing a mortgage takes weeks. The answer decides which service leads your plan.</p>
+    </div>
+
+    <div class="c360-indhub-axis-ends" aria-hidden="true"><span>Decides in minutes</span><span>Decides over months</span></div>
+    <div class="c360-indhub-axis" aria-hidden="true">
+      <span class="c360-indhub-axis-seg">Within the hour</span>
+      <span class="c360-indhub-axis-seg">Days or weeks</span>
+      <span class="c360-indhub-axis-seg">Weeks or months</span>
+    </div>
+
+    <ol class="c360-indhub-routes">
+      <li class="c360-indhub-route" data-route="now">
+        <div class="c360-indhub-route-body" data-when="Within the hour">
+          <h3>Something broke, and they need someone now</h3>
+          <p>They search, call the first business that looks trustworthy, and hang up if nobody answers. Showing up first and picking up every call wins the job.</p>
+          <div class="c360-indhub-route-lead">
+            <strong>We lead with Local Services Ads</strong>
+            <p>Inside the <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a> with Google Business Profile Management, plus the <a href="/ai-agents">AI Voice Agent</a> so missed calls still get booked.</p>
+          </div>
+          <p class="c360-indhub-route-eg">Plumbing, HVAC, roofing, locksmiths, garage doors, water damage, appliance repair, junk removal, pest control, auto shops</p>
+        </div>
+      </li>
+      <li class="c360-indhub-route" data-route="planned">
+        <div class="c360-indhub-route-body" data-when="Days or weeks">
+          <h3>They compare you, then book, then come back</h3>
+          <p>They read reviews, look at your photos and get a couple of quotes. Win the first job and the best ones become weekly, seasonal or repeat customers.</p>
+          <div class="c360-indhub-route-lead">
+            <strong>We lead with your Google profile and reviews</strong>
+            <p><a href="/gbp-management">Google Business Profile Management</a>, reviews included, with <a href="/local-service-ads">Local Services Ads</a> alongside and <a href="/google-ppc">Google PPC</a> for the bigger projects.</p>
+          </div>
+          <p class="c360-indhub-route-eg">General contractors, painting, lawn care, pool service, cleaning, tree service, movers, handyman</p>
+        </div>
+      </li>
+      <li class="c360-indhub-route" data-route="office">
+        <div class="c360-indhub-route-body" data-when="Weeks or months">
+          <h3>They're choosing a person to trust with something big</h3>
+          <p>A home, a loan, a policy. They see you more than once before they reach out, and the follow-up decides who gets the business.</p>
+          <div class="c360-indhub-route-lead">
+            <strong>We lead with Meta Ads</strong>
+            <p><a href="/meta-ads">Meta Ads</a> on Facebook and Instagram, with <a href="/gbp-management">Google Business Profile Management</a> and the <a href="/crm-home">Complete360 CRM</a> keeping every lead followed up.</p>
+          </div>
+          <p class="c360-indhub-route-eg">Insurance agencies, real estate, mortgage, health insurance, Medicare agents</p>
+        </div>
+      </li>
+    </ol>
+
+    <p class="c360-indhub-pick-note">Restaurants, funeral homes and dispensaries each get a plan of their own. And we always check that your category and state qualify for <a href="/local-service-ads">Local Services Ads</a> before we recommend them.</p>
+  </div>
+</section>
+
+<!-- ══════════ DIRECTORY (same four groups as the Industries menu) ══════════ -->
+<section class="c360-indhub-section" id="indhub-directory">
+  <div class="c360-indhub-wrap">
+    <div class="c360-indhub-head">
+      <span class="c360-indhub-kicker">Industries we serve</span>
+      <h2 class="c360-indhub-h2">Find your industry</h2>
+      <p class="c360-indhub-lead">Pick your group, then your industry, to see the plan we'd start with, what we'd add as you grow, and what we wouldn't spend your money on first.</p>
+    </div>
+
+    <div class="c360-indhub-dir no-js">
+      <div class="c360-indhub-tabs" role="tablist" aria-label="Industry groups">
+        <button type="button" class="c360-indhub-tab" role="tab" id="indhub-tab-0" aria-controls="indhub-grid-0" aria-selected="true" tabindex="0"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i>Contractors &amp; Trades<small>10</small></button>
+        <button type="button" class="c360-indhub-tab" role="tab" id="indhub-tab-1" aria-controls="indhub-grid-1" aria-selected="false" tabindex="-1"><i class="fa-solid fa-house" aria-hidden="true"></i>Home Services<small>8</small></button>
+        <button type="button" class="c360-indhub-tab" role="tab" id="indhub-tab-2" aria-controls="indhub-grid-2" aria-selected="false" tabindex="-1"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>Professional &amp; Financial<small>6</small></button>
+        <button type="button" class="c360-indhub-tab" role="tab" id="indhub-tab-3" aria-controls="indhub-grid-3" aria-selected="false" tabindex="-1"><i class="fa-solid fa-store" aria-hidden="true"></i>Specialty Businesses<small>4</small></button>
+      </div>
+      <div class="c360-indhub-stage">
+        <h3 class="c360-indhub-grid-title">Contractors &amp; Trades</h3>
+        <ul class="c360-indhub-grid" role="tabpanel" id="indhub-grid-0" aria-labelledby="indhub-tab-0">
+          <li><a class="c360-indhub-row" href="/industries/plumbing"><i class="fa-solid fa-wrench" aria-hidden="true"></i><span class="c360-indhub-row-name">Plumbing</span><span class="c360-indhub-row-desc">Emergency calls, water heaters, drains and repipes</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/hvac"><i class="fa-solid fa-fan" aria-hidden="true"></i><span class="c360-indhub-row-name">HVAC</span><span class="c360-indhub-row-desc">No-AC calls in July, furnaces in January, maintenance all year</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/schedule-demo"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span class="c360-indhub-row-name">Electrical</span><span class="c360-indhub-row-desc">Service calls, panels and EV chargers</span><span class="c360-indhub-row-foot">Talk to us <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/roofing"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i><span class="c360-indhub-row-name">Roofing</span><span class="c360-indhub-row-desc">Leak repairs, replacements and the calls after a storm</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/general-contractors"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i><span class="c360-indhub-row-name">General Contractors</span><span class="c360-indhub-row-desc">Remodels, additions and the projects you want more of</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/painting"><i class="fa-solid fa-paint-roller" aria-hidden="true"></i><span class="c360-indhub-row-name">Painting</span><span class="c360-indhub-row-desc">Interior and exterior jobs that start with a quote</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/garage-door-repair"><i class="fa-solid fa-warehouse" aria-hidden="true"></i><span class="c360-indhub-row-name">Garage Door Repair</span><span class="c360-indhub-row-desc">Broken springs, stuck openers and new doors</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/locksmiths"><i class="fa-solid fa-key" aria-hidden="true"></i><span class="c360-indhub-row-name">Locksmiths</span><span class="c360-indhub-row-desc">Lockouts, rekeys and lock changes</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/water-damage-restoration"><i class="fa-solid fa-house-flood-water" aria-hidden="true"></i><span class="c360-indhub-row-name">Water Damage Restoration</span><span class="c360-indhub-row-desc">Burst pipes, flooded basements and dry-outs</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/handyman"><i class="fa-solid fa-hammer" aria-hidden="true"></i><span class="c360-indhub-row-name">Handyman</span><span class="c360-indhub-row-desc">Small fixes that turn into bigger jobs</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+        <h3 class="c360-indhub-grid-title">Home Services</h3>
+        <ul class="c360-indhub-grid" role="tabpanel" id="indhub-grid-1" aria-labelledby="indhub-tab-1" hidden>
+          <li><a class="c360-indhub-row" href="/industries/lawn-care"><i class="fa-solid fa-seedling" aria-hidden="true"></i><span class="c360-indhub-row-name">Lawn Care</span><span class="c360-indhub-row-desc">Full weekly routes, treatments and seasonal cleanups</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/pool-service"><i class="fa-solid fa-water-ladder" aria-hidden="true"></i><span class="c360-indhub-row-name">Pool Service</span><span class="c360-indhub-row-desc">Weekly cleaning routes, equipment and repairs</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/cleaning-services"><i class="fa-solid fa-broom" aria-hidden="true"></i><span class="c360-indhub-row-name">Cleaning Services</span><span class="c360-indhub-row-desc">Recurring home cleaning, deep cleans and move-outs</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/pest-control"><i class="fa-solid fa-bug" aria-hidden="true"></i><span class="c360-indhub-row-name">Pest Control</span><span class="c360-indhub-row-desc">One urgent treatment that becomes a quarterly plan</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/tree-service"><i class="fa-solid fa-tree" aria-hidden="true"></i><span class="c360-indhub-row-name">Tree Service</span><span class="c360-indhub-row-desc">Trimming, removals and storm cleanup</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/junk-removal"><i class="fa-solid fa-dumpster" aria-hidden="true"></i><span class="c360-indhub-row-name">Junk Removal</span><span class="c360-indhub-row-desc">Cleanouts, haul-aways and full trucks</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/movers"><i class="fa-solid fa-truck-moving" aria-hidden="true"></i><span class="c360-indhub-row-name">Movers</span><span class="c360-indhub-row-desc">Local moves, long distance and packing</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/appliance-repair"><i class="fa-solid fa-plug" aria-hidden="true"></i><span class="c360-indhub-row-name">Appliance Repair</span><span class="c360-indhub-row-desc">Washers, fridges and ovens that can't wait a week</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+        <h3 class="c360-indhub-grid-title">Professional &amp; Financial</h3>
+        <ul class="c360-indhub-grid" role="tabpanel" id="indhub-grid-2" aria-labelledby="indhub-tab-2" hidden>
+          <li><a class="c360-indhub-row" href="/industries/insurance-agencies"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span class="c360-indhub-row-name">Insurance Agencies</span><span class="c360-indhub-row-desc">Property and casualty: auto, home and business quotes</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/real-estate"><i class="fa-solid fa-house" aria-hidden="true"></i><span class="c360-indhub-row-name">Real Estate</span><span class="c360-indhub-row-desc">Buyers, sellers and listings for agents and teams</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/mortgage"><i class="fa-solid fa-file-signature" aria-hidden="true"></i><span class="c360-indhub-row-name">Mortgage</span><span class="c360-indhub-row-desc">A steady pipeline for loan officers and brokers</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/health-insurance"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i><span class="c360-indhub-row-name">Health Insurance</span><span class="c360-indhub-row-desc">Individual and family plans, in and out of enrollment season</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <!-- SWAP WHEN LIVE: Medicare Agents page is held for management/legal review (CMS rules).
+               When cleared and published, change href to /industries/medicare-agents and the foot text to "See the plan". -->
+          <li><a class="c360-indhub-row" href="/schedule-demo"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i><span class="c360-indhub-row-name">Medicare Agents</span><span class="c360-indhub-row-desc">Year-round clients, not just enrollment season</span><span class="c360-indhub-row-foot">Talk to us <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/farmers-insurance"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span class="c360-indhub-row-name">Farmers Insurance Agents</span><span class="c360-indhub-row-desc">Our marketing program for Farmers agents</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+        <h3 class="c360-indhub-grid-title">Specialty Businesses</h3>
+        <ul class="c360-indhub-grid" role="tabpanel" id="indhub-grid-3" aria-labelledby="indhub-tab-3" hidden>
+          <li><a class="c360-indhub-row" href="/industries/auto-shops"><i class="fa-solid fa-car" aria-hidden="true"></i><span class="c360-indhub-row-name">Auto Shops</span><span class="c360-indhub-row-desc">Repairs and maintenance that keep every bay full</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/restaurants"><i class="fa-solid fa-utensils" aria-hidden="true"></i><span class="c360-indhub-row-name">Restaurants</span><span class="c360-indhub-row-desc">Full tables on more than Friday nights</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/funeral-homes"><i class="fa-solid fa-dove" aria-hidden="true"></i><span class="c360-indhub-row-name">Funeral Homes</span><span class="c360-indhub-row-desc">Found by families when it matters, and for pre-planning</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/dispensary"><i class="fa-solid fa-cannabis" aria-hidden="true"></i><span class="c360-indhub-row-name">Dispensaries</span><span class="c360-indhub-row-desc">Compliant geo-fencing ads for licensed dispensaries</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="c360-indhub-missing">Don't see your industry? We work with plenty of local businesses that don't have a page here yet. <a href="/schedule-demo">Talk to us about yours</a>.</p>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS ══════════ -->
+<section class="c360-indhub-section c360-indhub-reviews" id="indhub-reviews">
+  <div class="c360-indhub-wrap">
+    <div class="c360-indhub-head">
+      <span class="c360-indhub-kicker">Our own reviews</span>
+      <h2 class="c360-indhub-h2">Trusted by local businesses in every lane</h2>
+      <p class="c360-indhub-lead">Contractors, agents and shop owners across the country, in their own words. Live from our Google profile, since 2018.</p>
+    </div>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA ══════════ -->
+<section class="c360-indhub-section">
+  <div class="c360-indhub-wrap">
+    <div class="c360-indhub-cta">
+      <div>
+        <h2 class="c360-indhub-h2">Not sure which plan fits? Ask us.</h2>
+        <p>On a free strategy call we'll look at how your customers find you today, where the calls are slipping away, and which two or three services would make the biggest difference first.</p>
+      </div>
+      <div class="c360-indhub-cta-actions">
+        <a href="/schedule-demo" class="c360-indhub-btn c360-indhub-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-indhub-btn c360-indhub-btn-ghost"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        <span class="c360-indhub-cta-hours">Mon to Thu 7 AM to 4 PM, Fri 7 AM to 1 PM, Arizona time</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-indhub-section" id="indhub-faq" style="padding-top:0">
+  <div class="c360-indhub-wrap">
+    <div class="c360-indhub-head">
+      <h2 class="c360-indhub-h2">Questions about marketing for your industry</h2>
+    </div>
+    <div class="c360-indhub-faq-list">
+
+      <details class="c360-indhub-faq-item">
+        <summary class="c360-indhub-faq-q">What kind of marketing works best for a local business?</summary>
+        <div class="c360-indhub-faq-a"><p>It depends on how fast your customers decide. When they need someone right away, like a plumber or a locksmith, Local Services Ads and answering every call matter most. When they compare before booking, your Google Business Profile and reviews lead. When they take weeks to choose, like with a mortgage or an insurance policy, Meta Ads and steady follow-up do the most work.</p></div>
+      </details>
+
+      <details class="c360-indhub-faq-item">
+        <summary class="c360-indhub-faq-q">Can my business run Google Local Services Ads?</summary>
+        <div class="c360-indhub-faq-a"><p>Many home service and trade businesses can, but it depends on your category and your state. Property and casualty insurance agents, for example, generally only qualify in California and Florida. Before your ads run, Google checks your license where required, your insurance and backgrounds so you earn the Google Verified badge. We confirm your eligibility before we recommend Local Services Ads.</p></div>
+      </details>
+
+      <details class="c360-indhub-faq-item">
+        <summary class="c360-indhub-faq-q">Do you work with industries that aren't listed here?</summary>
+        <div class="c360-indhub-faq-a"><p>Yes. These pages cover the industries we work with most, but we help many other local businesses too. <a href="/schedule-demo">Book a free strategy call</a> or call (866) 527-6205, and we'll recommend a plan based on how your customers find you.</p></div>
+      </details>
+
+      <details class="c360-indhub-faq-item">
+        <summary class="c360-indhub-faq-q">Do you only work with businesses in Arizona?</summary>
+        <div class="c360-indhub-faq-a"><p>No. Complete360 has offices in Tucson and Phoenix, Arizona, and has served local businesses nationwide since 2018.</p></div>
+      </details>
+
+      <details class="c360-indhub-faq-item">
+        <summary class="c360-indhub-faq-q">How much does marketing for my industry cost?</summary>
+        <div class="c360-indhub-faq-a"><p>It depends on the services in your plan. Each service's price is on its own page, including the <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>, <a href="/gbp-management">Google Business Profile Management</a> and the <a href="/ai-agents">AI Voice Agent</a>. Google PPC and Meta Ads are planned with you on a strategy call, and ad spend is separate and billed directly by Google or Meta. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+      <details class="c360-indhub-faq-item">
+        <summary class="c360-indhub-faq-q">Can you guarantee more leads or a top ranking?</summary>
+        <div class="c360-indhub-faq-a"><p>No. No one can promise rankings or a set number of leads. For Google Business Profile Management and advertising campaigns, including Local Services Ads, Google PPC, Meta Ads and Geo-Fencing, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
+
+<script>
+/* Group tabs + fan-out: on a switch, the new group's cards start stacked on
+   the first card's spot and spread out to their places; the stage height
+   eases between groups. Without JS every group shows stacked. */
+(function(){
+  var dir=document.querySelector('.c360-indhub-dir'); if(!dir) return;
+  dir.classList.remove('no-js');
+  var tabs=dir.querySelectorAll('.c360-indhub-tab'), grids=dir.querySelectorAll('.c360-indhub-grid'), stage=dir.querySelector('.c360-indhub-stage');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var busy=false;
+  function show(idx){
+    if(busy) return; busy=true;
+    var from=stage.offsetHeight;
+    tabs.forEach(function(t,i){ t.setAttribute('aria-selected',i===idx?'true':'false'); t.tabIndex=i===idx?0:-1; });
+    grids.forEach(function(g,i){ g.hidden=(i!==idx); });
+    var grid=grids[idx], cards=grid.querySelectorAll('.c360-indhub-row');
+    if(reduce||!cards.length){ busy=false; return; }
+    // measure, then move every card onto the first card's spot
+    var first=cards[0].getBoundingClientRect();
+    cards.forEach(function(c,i){
+      var r=c.getBoundingClientRect();
+      c.classList.remove('is-fan'); c.style.transition='none';
+      c.style.transform='translate('+(first.left-r.left)+'px,'+(first.top-r.top)+'px) scale(.92)';
+      c.style.opacity=i?'0':'1';
+      c.style.setProperty('--d',(i*35)+'ms');
+    });
+    var to=stage.scrollHeight;
+    stage.style.height=from+'px';
+    void stage.offsetHeight; // reflow, then animate
+    stage.style.height=to+'px';
+    cards.forEach(function(c){ c.style.transition=''; c.classList.add('is-fan'); c.style.transform=''; c.style.opacity=''; });
+    var done=0;
+    var end=function(){ if(++done>=cards.length){ cards.forEach(function(c){c.classList.remove('is-fan');}); stage.style.height=''; busy=false; } };
+    cards.forEach(function(c){ c.addEventListener('transitionend',function h(e){ if(e.propertyName==='transform'){ c.removeEventListener('transitionend',h); end(); } }); });
+    setTimeout(function(){ if(busy){ cards.forEach(function(c){c.classList.remove('is-fan');}); stage.style.height=''; busy=false; } },1200);
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){ if(t.getAttribute('aria-selected')!=='true') show(i); });
+    t.addEventListener('keydown',function(e){
+      var n=null; if(e.key==='ArrowRight') n=(i+1)%tabs.length; if(e.key==='ArrowLeft') n=(i-1+tabs.length)%tabs.length;
+      if(n!==null){ e.preventDefault(); tabs[n].focus(); show(n); }
+    });
+  });
+})();
+</script>
