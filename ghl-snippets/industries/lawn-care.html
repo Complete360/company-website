@@ -6,7 +6,9 @@
        Plan tile crop shifted left (object-position 15%) so the edging crew
        member isn't cut off at the tile's left edge.
        Hero photo replaced with a version where the two crew members work
-       close together, so both fit inside the arch.
+       close together, so both fit inside the arch. Arch made bigger and
+       wider (1:1, max 680px, hero columns 1fr/1fr) with a flatter top curve
+       so it no longer clips the mower's head.
 
      v1.1 (2026-11-23): width standard: content capped at 1440px with 64px side
        margins (40px under 1100px, 24px under 640px), matching header v2.4's rule.
@@ -94,7 +96,7 @@
 /* ══════════ HERO (green, arch photo) ══════════ */
 .c360-ind-lawn-hero{background:linear-gradient(150deg,var(--lawn-green) 0%,var(--lawn-green-deep) 70%);color:#fff;overflow:hidden;position:relative}
 .c360-ind-lawn-hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,0.035) 0 70px,transparent 70px 140px);pointer-events:none}
-.c360-ind-lawn-hero-grid{position:relative;display:grid;grid-template-columns:1.15fr 0.85fr;gap:72px;align-items:center;padding-top:72px;padding-bottom:72px}
+.c360-ind-lawn-hero-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:72px}
 .c360-ind-lawn-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
 .c360-ind-lawn-crumbs li{color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px}
 .c360-ind-lawn-crumbs li+li::before{content:"\203A";color:rgba(255,255,255,0.5)}
@@ -110,7 +112,7 @@
 .c360-ind-lawn-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.85);line-height:1.4}
 .c360-ind-lawn-creds-list i{color:#B8E6A0;margin-top:3px;font-size:12px}
 .c360-ind-lawn-stars{color:#FBBC04;letter-spacing:1px}
-.c360-ind-lawn-arch{position:relative;aspect-ratio:4/5;max-height:600px;width:100%;border-radius:999px 999px 28px 28px;overflow:hidden;background:repeating-linear-gradient(90deg,#2E8A3E 0 40px,#3A9A4A 40px 80px);box-shadow:0 30px 70px rgba(0,0,0,0.3);border:6px solid rgba(255,255,255,0.18)}
+.c360-ind-lawn-arch{position:relative;aspect-ratio:1/1;max-height:680px;width:100%;border-radius:50% 50% 28px 28px / 32% 32% 28px 28px;overflow:hidden;background:repeating-linear-gradient(90deg,#2E8A3E 0 40px,#3A9A4A 40px 80px);box-shadow:0 30px 70px rgba(0,0,0,0.3);border:6px solid rgba(255,255,255,0.18)}
 .c360-ind-lawn-arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .c360-ind-lawn-arch img[src=""],.c360-ind-lawn-arch img:not([src]){visibility:hidden}
 .c360-ind-lawn-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.45);font-size:56px;pointer-events:none}
@@ -240,7 +242,7 @@
 @media (max-width:900px){
   .c360-ind-lawn-section{padding:76px 0}
   .c360-ind-lawn-hero-grid{grid-template-columns:1fr;gap:44px;padding-top:52px;padding-bottom:56px}
-  .c360-ind-lawn-arch{max-width:420px;margin:0 auto}
+  .c360-ind-lawn-arch{max-width:520px;margin:0 auto}
   .c360-ind-lawn-stripe-inner{grid-template-columns:56px 1fr;gap:8px 20px}
   .c360-ind-lawn-stripe-inner p{grid-column:2}
   .c360-ind-lawn-stripe-n{font-size:32px;text-align:left}
