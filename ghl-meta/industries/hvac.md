@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `hvac-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `hvac-hero` image in GHL Media.
 ```
-(paste the hvac-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b04944a306ac23751b6563e/aaij33i3lw0wgxih1tab8q-aaij33i3ktp-luegrznnuq.jpg
 ```
 
 ## Canonical URL
