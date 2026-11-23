@@ -29,7 +29,7 @@
 
      Images (filled v2.1, GHL Media):
        roof-hero        16:9  (hero background, centered text on top)
-       roof-on-the-job  4:3   (reality section, left half)
+       roof-on-the-job  4:3   (reality section, right half)
 
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
@@ -39,7 +39,8 @@
        Hero reworked so the headline no longer covers the roofer: full-width
        photo shifted left (roofer at ~38%), text left-aligned on the right
        side over an overlay that is clear on the left and darkens to the right; stacks (photo on top)
-       below 1100px.
+       below 1100px. Reality section flipped: photo on the right half, text
+       on the left (photo still on top on phones).
 
      v2.0 (2026-11-12) — new layout (Jared: make roofing look different
        from HVAC and Plumbing, same font and page dimensions). Copy and
@@ -120,12 +121,12 @@
 
 /* ══════════ REALITY (half-bleed photo + 2x2 panel) ══════════ */
 .c360-ind-roof-reality{display:grid;grid-template-columns:1fr 1fr;background:var(--roof-mist)}
-.c360-ind-roof-reality-media{position:relative;min-height:560px;background:repeating-linear-gradient(135deg,#E3E8F1 0 16px,#EBEFF6 16px 32px)}
+.c360-ind-roof-reality-media{position:relative;order:2;min-height:560px;background:repeating-linear-gradient(135deg,#E3E8F1 0 16px,#EBEFF6 16px 32px)}
 .c360-ind-roof-reality-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .c360-ind-roof-reality-media img[src=""],.c360-ind-roof-reality-media img:not([src]){visibility:hidden}
 .c360-ind-roof-media-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B0C4;font-size:52px;pointer-events:none}
 .c360-ind-roof-reality-media img[src]:not([src=""])+.c360-ind-roof-media-fallback{display:none}
-.c360-ind-roof-reality-copy{padding:96px max(24px,calc((100vw - 1680px)/2 + 24px)) 96px 72px}
+.c360-ind-roof-reality-copy{order:1;padding:96px 72px 96px max(24px,calc((100vw - 1680px)/2 + 24px))}
 .c360-ind-roof-pains{display:grid;grid-template-columns:1fr 1fr;gap:0 36px;margin-top:44px}
 /* Each pain spans three parent rows (label, title, text) via subgrid. */
 .c360-ind-roof-pain{display:grid;grid-row:span 3;grid-template-rows:subgrid;row-gap:8px;padding:24px 0 32px;border-top:2px solid var(--roof-navy)}
@@ -262,7 +263,7 @@
 @media (max-width:900px){
   .c360-ind-roof-section{padding:76px 0}
   .c360-ind-roof-reality{grid-template-columns:1fr}
-  .c360-ind-roof-reality-media{min-height:0;aspect-ratio:4/3}
+  .c360-ind-roof-reality-media{min-height:0;aspect-ratio:4/3;order:0}
   .c360-ind-roof-reality-copy{padding:56px 24px}
   .c360-ind-roof-rail{padding-left:36px}
   .c360-ind-roof-rail::before{left:8px}
@@ -333,7 +334,7 @@
 <!-- ══════════ THE ROOFING REALITY ══════════ -->
 <section class="c360-ind-roof-reality">
   <div class="c360-ind-roof-reality-media">
-    <!-- IMAGE: roof-on-the-job — roof inspector showing photos on a tablet to a homeowner in their driveway, 4:3 (shown filling the left half) -->
+    <!-- IMAGE: roof-on-the-job — roof inspector showing photos on a tablet to a homeowner in their driveway, 4:3 (shown filling the right half) -->
     <img src="https://files.leadconnectorhq.com/file/6b04a452306ac23751b89e16/aaikiichbzb-w1cu6bwb3g-aaikiichaxt15uokawfiaw.jpg" data-c360-placeholder="roof-on-the-job" alt="Roofing inspector showing roof damage photos on a tablet to a homeowner" loading="lazy">
     <div class="c360-ind-roof-media-fallback" aria-hidden="true"><i class="fa-solid fa-house-chimney"></i></div>
   </div>
