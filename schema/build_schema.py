@@ -76,6 +76,30 @@ ORGANIZATION = {
 }
 ORG_REF = {"@id": ORG_ID}
 
+# Second office (Phoenix), as listed on its Google Business Profile. A location of
+# the same company: its own item, linked to the company, shown on the home and
+# contact pages. TODO: add openingHoursSpecification once its hours are confirmed.
+PHX_ID = SITE + "/#phoenix-office"
+PHOENIX = {
+    "@type": "ProfessionalService",
+    "@id": PHX_ID,
+    "name": "Complete360 Phoenix",
+    "url": SITE + "/",
+    "image": ORGANIZATION["logo"],
+    "telephone": "+1-800-863-2541",
+    "priceRange": "$$",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "11024 N 28th Dr #260",
+        "addressLocality": "Phoenix",
+        "addressRegion": "AZ",
+        "postalCode": "85029",
+        "addressCountry": "US",
+    },
+    "parentOrganization": ORG_REF,
+}
+ORGANIZATION["department"] = [{"@id": PHX_ID}]
+
 CRM_APP = {
     "@type": "SoftwareApplication",
     "@id": CRM_ID,
@@ -414,6 +438,8 @@ def build(pg):
     elif faqs:
         graph.append(faq_node(faqs, url))
 
+    if pg["kind"] in ("home", "contact"):
+        graph.append(PHOENIX)
     graph.insert(1 if pg["kind"] != "home" else 2, webpage)
     data = {"@context": "https://schema.org", "@graph": graph}
     types = [page_type] + [n["@type"] if isinstance(n["@type"], str) else "Organization"

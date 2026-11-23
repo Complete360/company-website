@@ -49,7 +49,7 @@ Don't paste them until the page is fixed and this script is re-run.
 
 | Page | URL | Schema file | Types | FAQs | Status |
 |---|---|---|---|---|---|
-| Complete360: Digital Marketing for Local Businesses | `/` | `schema/pages/home.html` | WebPage, WebSite, FAQPage | 6 | ✅ |
+| Complete360: Digital Marketing for Local Businesses | `/` | `schema/pages/home.html` | WebPage, WebSite, FAQPage, ProfessionalService | 6 | ✅ |
 | Local Service Ads | `/local-service-ads` | `schema/pages/services/local-service-ads.html` | WebPage, Service, FAQPage | 7 | ✅ |
 | Google Business Profile Management | `/gbp-management` | `schema/pages/services/gbp-management.html` | WebPage, Service, FAQPage | 6 | ✅ |
 | Google Business Profile Setup & Optimization | `/google-business-profile` | `schema/pages/services/gbp-setup.html` | WebPage, Service, FAQPage | 7 | ✅ |
@@ -104,7 +104,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Online Booking Calendar | `/calendar-feature` | `schema/pages/crm-platform/calendar.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Website Chat Widget | `/chat-widget-feature-page` | `schema/pages/crm-platform/chat-widget.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Frequently Asked Questions | `/faq` | `schema/pages/company/faq.html` | FAQPage | 41 | ✅ |
-| Contact Complete360 | `/contact-us` | `schema/pages/company/contact-us.html` | ContactPage, FAQPage | 5 | ✅ |
+| Contact Complete360 | `/contact-us` | `schema/pages/company/contact-us.html` | ContactPage, FAQPage, ProfessionalService | 5 | ✅ |
 | Schedule a Free Strategy Call | `/schedule-demo` | `schema/pages/company/schedule-demo.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Request a Demo | `/request-a-demo` | `schema/pages/company/request-demo.html` | WebPage | — | ⬜ (basic schema until code is added) |
 | Training | `/training` | `schema/pages/company/training.html` | — | — | No schema (noindex instead) |
