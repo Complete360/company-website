@@ -1,6 +1,8 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Landscaping & Hardscaping
-     c360-ind-land-v1.0.html
+     c360-ind-land-v1.1.html
+     v1.1 (2026-11-23): width standard: content capped at 1440px with 64px side
+       margins (40px under 1100px, 24px under 640px), matching header v2.4's rule.
      GHL: Paste into a Custom Code block on the new page at /industries/landscaping
           (page name "Landscaping & Hardscaping Marketing"). Meta data:
           ghl-meta/industries/landscaping.md.
@@ -60,7 +62,8 @@
 .c360-ind-land :where(ul,ol){list-style:none}
 .c360-ind-land :where(a){color:var(--land-navy)}
 .c360-ind-land a:focus-visible,.c360-ind-land summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
-.c360-ind-land-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-land-wrap{max-width:1440px;margin:0 auto;padding:0 64px}
+@media (max-width:1100px){.c360-ind-land-wrap{padding:0 40px}}
 .c360-ind-land-section{padding:104px 0}
 .c360-ind-land-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--land-text);margin-bottom:16px}
 .c360-ind-land-lead{font-size:18px;color:var(--land-muted);max-width:760px;line-height:1.65}
@@ -245,7 +248,7 @@
   .c360-ind-land-stone-n{align-self:center}
 }
 @media (max-width:640px){
-  .c360-ind-land-wrap{padding-left:18px;padding-right:18px}
+  .c360-ind-land-wrap{padding-left:24px;padding-right:24px}
   .c360-ind-land-btn{width:100%}
   .c360-ind-land-partner{--badge-h:64px;--badge-clear:32px}
   .c360-ind-land-tile-small,.c360-ind-land-tile-paver{grid-column:1/-1}
