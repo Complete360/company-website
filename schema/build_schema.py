@@ -78,7 +78,7 @@ ORG_REF = {"@id": ORG_ID}
 
 # Second office (Phoenix), as listed on its Google Business Profile. A location of
 # the same company: its own item, linked to the company, shown on the home and
-# contact pages. TODO: add openingHoursSpecification once its hours are confirmed.
+# contact pages. Same hours as Tucson (Jared, 2026-11-23).
 PHX_ID = SITE + "/#phoenix-office"
 PHOENIX = {
     "@type": "ProfessionalService",
@@ -96,6 +96,7 @@ PHOENIX = {
         "postalCode": "85029",
         "addressCountry": "US",
     },
+    "openingHoursSpecification": ORGANIZATION["openingHoursSpecification"],
     "parentOrganization": ORG_REF,
 }
 ORGANIZATION["department"] = [{"@id": PHX_ID}]

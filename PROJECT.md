@@ -16,7 +16,7 @@
 |---|---|
 | **Name** | Complete360 (formerly Community Marketing Partnership; acquired and renamed) |
 | **What we do** | Digital marketing agency helping local service businesses get more calls and customers: Google, paid ads, websites, and an all-in-one CRM platform |
-| **Locations** | Tucson (main): 3444 N Country Club Rd, Ste 105, Tucson, AZ 85716 · Phoenix: 11024 N 28th Dr #260, Phoenix, AZ 85029 (Google listing phone (800) 863-2541; hours to confirm) · Arizona LLC · serves clients nationwide |
+| **Locations** | Tucson (main): 3444 N Country Club Rd, Ste 105, Tucson, AZ 85716 · Phoenix: 11024 N 28th Dr #260, Phoenix, AZ 85029 (Google listing phone (800) 863-2541; same hours as Tucson) · Arizona LLC · serves clients nationwide |
 | **In business since** | 2018 |
 | **Hours** | Mon–Thu 7am–4pm, Fri 7am–1pm MST (Arizona, no daylight saving). Closed weekends. |
 | **Website** | complete360.org (built on GoHighLevel) · CRM login: app.complete360.org · Geo Ads portal: portal.cmpusa.org |
