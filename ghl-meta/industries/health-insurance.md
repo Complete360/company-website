@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `health-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `health-hero` image in GHL Media.
 ```
-(paste the health-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b04c59dd50d9db796b0a156/family-planning-consultation-at-home.jpg
 ```
 
 ## Canonical URL
