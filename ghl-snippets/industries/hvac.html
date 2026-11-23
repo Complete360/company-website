@@ -1,6 +1,8 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: HVAC
-     c360-ind-hvac-v1.3.html
+     c360-ind-hvac-v1.4.html
+     v1.4 (2026-11-23): width standard: content capped at 1440px with 64px side
+       margins (40px under 1100px, 24px under 640px), matching header v2.4's rule.
      GHL: Paste into a Custom Code block on the new page at /industries/hvac
           (page name "HVAC Marketing"). Meta data: ghl-meta/industries/hvac.md.
           Schema: schema/pages/industries/hvac.html (batch paste later).
@@ -83,7 +85,8 @@
 .c360-ind-hvac :where(ul,ol){list-style:none}
 .c360-ind-hvac :where(a){color:var(--hvac-navy)}
 .c360-ind-hvac a:focus-visible,.c360-ind-hvac summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:4px}
-.c360-ind-hvac-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-hvac-wrap{max-width:1440px;margin:0 auto;padding:0 64px}
+@media (max-width:1100px){.c360-ind-hvac-wrap{padding:0 40px}}
 .c360-ind-hvac-section{padding:96px 0}
 .c360-ind-hvac-mist{background:var(--hvac-mist)}
 .c360-ind-hvac-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--hvac-text);margin-bottom:16px}
@@ -102,7 +105,8 @@
 .c360-ind-hvac-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:right center}
 .c360-ind-hvac-hero-img[src=""],.c360-ind-hvac-hero-img:not([src]){visibility:hidden}
 .c360-ind-hvac-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,16,64,0.95) 0%,rgba(13,22,84,0.86) 42%,rgba(18,32,120,0.35) 100%)}
-.c360-ind-hvac-hero-inner{position:relative;z-index:2;padding:72px 24px 64px;max-width:1680px;margin:0 auto}
+.c360-ind-hvac-hero-inner{position:relative;z-index:2;padding:72px 64px 64px;max-width:1440px;margin:0 auto}
+@media (max-width:1100px){.c360-ind-hvac-hero-inner{padding-left:40px;padding-right:40px}}
 .c360-ind-hvac-hero-copy{max-width:760px}
 .c360-ind-hvac-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
 .c360-ind-hvac-crumbs li{color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:8px}
@@ -269,7 +273,7 @@
   .c360-ind-hvac-plan-row,.c360-ind-hvac-plan-row.is-grow{grid-template-columns:1fr;max-width:560px;margin:0 auto}
 }
 @media (max-width:640px){
-  .c360-ind-hvac-wrap,.c360-ind-hvac-hero-inner{padding-left:18px;padding-right:18px}
+  .c360-ind-hvac-wrap,.c360-ind-hvac-hero-inner{padding-left:24px;padding-right:24px}
   .c360-ind-hvac-hero-inner{padding-top:48px}
   .c360-ind-hvac-pains{grid-template-columns:1fr;gap:24px}
   .c360-ind-hvac-btn{width:100%;justify-content:center}

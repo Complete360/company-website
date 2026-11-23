@@ -1,6 +1,8 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Lawn Care
-     c360-ind-lawn-v1.0.html
+     c360-ind-lawn-v1.1.html
+     v1.1 (2026-11-23): width standard: content capped at 1440px with 64px side
+       margins (40px under 1100px, 24px under 640px), matching header v2.4's rule.
      GHL: Paste into a Custom Code block on the new page at /industries/lawn-care
           (page name "Lawn Care Marketing"). Meta data: ghl-meta/industries/lawn-care.md.
           Schema: schema/pages/industries/lawn-care.html (batch paste later).
@@ -54,7 +56,8 @@
 .c360-ind-lawn :where(ul,ol){list-style:none}
 .c360-ind-lawn :where(a){color:var(--lawn-navy)}
 .c360-ind-lawn a:focus-visible,.c360-ind-lawn summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
-.c360-ind-lawn-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-lawn-wrap{max-width:1440px;margin:0 auto;padding:0 64px}
+@media (max-width:1100px){.c360-ind-lawn-wrap,.c360-ind-lawn-stripe-inner{padding-left:40px;padding-right:40px}}
 .c360-ind-lawn-section{padding:104px 0}
 .c360-ind-lawn-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--lawn-text);margin-bottom:16px}
 .c360-ind-lawn-lead{font-size:18px;color:var(--lawn-muted);max-width:760px;line-height:1.65}
@@ -112,7 +115,8 @@
 .c360-ind-lawn-stripe-n{font-size:44px;font-weight:800;line-height:1;color:var(--lawn-green);text-align:right;font-variant-numeric:tabular-nums}
 .c360-ind-lawn-stripes h3{font-size:22px;font-weight:700;line-height:1.3;color:var(--lawn-text)}
 .c360-ind-lawn-stripes p{font-size:16.5px;color:var(--lawn-muted);line-height:1.65;max-width:720px}
-.c360-ind-lawn-stripe-inner{max-width:1680px;margin:0 auto;padding:0 24px;display:grid;grid-template-columns:120px 1fr 1.2fr;gap:40px;align-items:center}
+.c360-ind-lawn-stripe-inner{max-width:1440px;margin:0 auto;padding:0 64px;display:grid;grid-template-columns:120px 1fr 1.2fr;gap:40px;align-items:center}
+@media (max-width:1100px){.c360-ind-lawn-stripe-inner{padding-left:40px;padding-right:40px}}
 .c360-ind-lawn-stripes li{display:block;padding:34px 0}
 
 /* ══════════ PLAN (bento) ══════════ */
@@ -236,7 +240,7 @@
   .c360-ind-lawn-reviews-top{flex-direction:column;align-items:flex-start}
 }
 @media (max-width:640px){
-  .c360-ind-lawn-wrap,.c360-ind-lawn-stripe-inner{padding-left:18px;padding-right:18px}
+  .c360-ind-lawn-wrap,.c360-ind-lawn-stripe-inner{padding-left:24px;padding-right:24px}
   .c360-ind-lawn-bento{grid-template-columns:1fr;grid-template-areas:"c1" "c2" "photo" "g1" "g2" "also"}
   .c360-ind-lawn-tile-photo{min-height:0;aspect-ratio:4/3}
   .c360-ind-lawn-mapgrid{grid-template-columns:1fr;grid-template-areas:"map" "a" "b" "c" "d"}

@@ -1,6 +1,8 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Water Damage Restoration
-     c360-ind-water-v1.0.html
+     c360-ind-water-v1.1.html
+     v1.1 (2026-11-23): width standard: content capped at 1440px with 64px side
+       margins (40px under 1100px, 24px under 640px), matching header v2.4's rule.
      GHL: Paste into a Custom Code block on the new page at /industries/water-damage-restoration
           (page name "Water Damage Restoration Marketing"). Meta data:
           ghl-meta/industries/water-damage-restoration.md.
@@ -61,7 +63,8 @@
 .c360-ind-water :where(a){color:var(--water-navy)}
 .c360-ind-water :where(button){font-family:var(--water-font)}
 .c360-ind-water a:focus-visible,.c360-ind-water summary:focus-visible,.c360-ind-water button:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
-.c360-ind-water-wrap{max-width:1680px;margin:0 auto;padding:0 24px}
+.c360-ind-water-wrap{max-width:1440px;margin:0 auto;padding:0 64px}
+@media (max-width:1100px){.c360-ind-water-wrap{padding:0 40px}}
 .c360-ind-water-section{padding:104px 0}
 .c360-ind-water-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--water-text);margin-bottom:16px}
 .c360-ind-water-lead{font-size:18px;color:var(--water-muted);max-width:760px;line-height:1.65}
@@ -97,8 +100,9 @@
 .c360-ind-water-img img[src]:not([src=""])+.c360-ind-water-fallback{display:none}
 
 /* ══════════ HERO (photo bleeds off the right edge) ══════════ */
-.c360-ind-water-hero{display:grid;grid-template-columns:1fr minmax(0,840px) minmax(0,840px) 1fr;background:var(--water-sky);align-items:stretch}
-.c360-ind-water-hero-text{grid-column:2;padding:56px 64px 96px 24px;display:flex;flex-direction:column;justify-content:center}
+.c360-ind-water-hero{display:grid;grid-template-columns:1fr minmax(0,720px) minmax(0,720px) 1fr;background:var(--water-sky);align-items:stretch}
+.c360-ind-water-hero-text{grid-column:2;padding:56px 64px 96px 64px;display:flex;flex-direction:column;justify-content:center}
+@media (max-width:1100px){.c360-ind-water-hero-text{padding-left:40px}}
 .c360-ind-water-hero-photo{grid-column:3/5;min-height:680px;border-radius:40px 0 0 40px}
 .c360-ind-water-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
 .c360-ind-water-crumbs li{color:var(--water-muted);display:flex;align-items:center;gap:8px}
@@ -197,7 +201,7 @@
 .c360-ind-water-cta .c360-ind-water-h2{color:#fff;max-width:900px;margin:0 auto 16px}
 .c360-ind-water-cta p{font-size:18px;color:#DCE2F7;line-height:1.65;max-width:720px;margin:0 auto 32px}
 .c360-ind-water-cta .c360-ind-water-ctas{justify-content:center;margin-bottom:64px}
-.c360-ind-water-cta .c360-ind-water-img{aspect-ratio:21/7;max-width:1560px;margin:0 auto;border-radius:28px 28px 0 0;background:repeating-linear-gradient(135deg,#142068 0 16px,#18256F 16px 32px)}
+.c360-ind-water-cta .c360-ind-water-img{aspect-ratio:21/7;max-width:1312px;margin:0 auto;border-radius:28px 28px 0 0;background:repeating-linear-gradient(135deg,#142068 0 16px,#18256F 16px 32px)}
 .c360-ind-water-cta .c360-ind-water-fallback{color:#2A3580}
 
 /* ══════════ FAQ (two columns of cards) ══════════ */
@@ -236,8 +240,8 @@
   .c360-ind-water-cta .c360-ind-water-img{aspect-ratio:16/9}
 }
 @media (max-width:640px){
-  .c360-ind-water-wrap{padding-left:18px;padding-right:18px}
-  .c360-ind-water-hero-text{padding-left:18px;padding-right:18px}
+  .c360-ind-water-wrap{padding-left:24px;padding-right:24px}
+  .c360-ind-water-hero-text{padding-left:24px;padding-right:24px}
   .c360-ind-water-btn{width:100%}
   .c360-ind-water-partner{--badge-h:64px;--badge-clear:32px}
   .c360-ind-water-facts{grid-template-columns:1fr}
