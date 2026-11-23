@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `plumb-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `plumb-hero` image in GHL Media.
 ```
-(paste the plumb-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b04a014d50d9db796abc934/aaikd7cu7mphk-5w-wsymq-aaikd7cui58fgcyszlmndw.jpg
 ```
 
 ## Canonical URL
