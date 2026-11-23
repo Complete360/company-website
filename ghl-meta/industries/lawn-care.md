@@ -39,7 +39,7 @@ Complete360
 ## Social share image
 The `lawn-hero` image in GHL Media.
 ```
-https://files.leadconnectorhq.com/file/6b04b034045a18972af8117a/aaiktcab0joqry0f-umpva-aaiktcabxci5gm2z9xmp5g-1.jpg
+https://files.leadconnectorhq.com/file/6b04b1032c68ebcf46c017d8/aaikulvyff5euo03sso1og-aaikulvysr0fk-juzfmngg-1.jpg
 ```
 
 ## Canonical URL
