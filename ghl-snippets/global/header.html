@@ -1,5 +1,24 @@
 <!-- ============================================================
-     COMPLETE360 MEGA MENU — v2.2.1  (v2.0 perf pass + content updates)
+     COMPLETE360 MEGA MENU — v2.4  (v2.0 perf pass + content updates)
+     v2.4 (2026-11-23): SITE-WIDE MOTION. Two things every page gets from the
+       header so no page has to be re-pasted: (1) smooth in-page scrolling
+       for anchor links (html{scroll-behavior:smooth}); (2) any <details>
+       FAQ item eases open and closed instead of snapping. The FAQ script is
+       delegated on document, so it covers details added later and runs
+       even though the header loads before the page body. It only touches a
+       <details> whose <summary> is followed by exactly one element (the
+       answer), and sets window.c360Motion=true so page snippets with their
+       own version (the industries hub) stand down. Both honour
+       prefers-reduced-motion. Service pages' checkbox/JS FAQs are untouched.
+     v2.3 (2026-11-22): SITE-WIDE PAGE WIDTH. One rule at the top of the
+       first <style> block sets every industry page's container to the
+       1440px standard Jared chose, with 64px side margins (40px under
+       1100px, 24px under 640px). It targets the shared naming pattern
+       c360-ind-*-wrap / c360-indhub-wrap, so it covers all 25 industry
+       pages and the hub without re-pasting them. The industry snippets
+       still say 1680px/24px in the repo until the sweep updates them;
+       until then this rule is what the live site shows. Service pages
+       (~1160px) are not touched.
      v2.2.1 (2026-11-11): mobile "All AI Agents" icon fa-grid-2 (a Font
        Awesome PRO icon, blank with the free kit) -> fa-robot, matching the
        desktop AI Agents overview banner.
@@ -164,6 +183,20 @@
 </noscript>
 
 <style>
+/* ---- Site-wide motion (v2.4): smooth anchor scrolling ---- */
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+details.c360-anim > summary + *{overflow:hidden}
+/* ---- Site-wide page width (v2.3): industry pages + hub at 1440px ----
+   Overrides each page's own .c360-ind-*-wrap{max-width:1680px;padding:0 24px}.
+   "body :is(...)" outranks each page's single-class rule wherever it sits.
+   Lists the 26 container classes explicitly (a pattern selector would also
+   catch inner elements like c360-ind-auto-menu-wrap). Add a new page's
+   -wrap class here when it ships at 1680, or build it at 1440/64 instead.
+   Remove once every industry snippet has been re-pasted at 1440/64. */
+body :is(.c360-ind-appl-wrap,.c360-ind-auto-wrap,.c360-ind-clean-wrap,.c360-ind-fun-wrap,.c360-ind-gc-wrap,.c360-ind-gdr-wrap,.c360-ind-handy-wrap,.c360-ind-health-wrap,.c360-ind-hvac-wrap,.c360-ind-junk-wrap,.c360-ind-lawn-wrap,.c360-ind-lock-wrap,.c360-ind-medi-wrap,.c360-ind-mort-wrap,.c360-ind-move-wrap,.c360-ind-paint-wrap,.c360-ind-pc-wrap,.c360-ind-pest-wrap,.c360-ind-plumb-wrap,.c360-ind-pool-wrap,.c360-ind-re-wrap,.c360-ind-rest-wrap,.c360-ind-roof-wrap,.c360-ind-tree-wrap,.c360-ind-water-wrap,.c360-indhub-wrap){max-width:1440px;padding-left:64px;padding-right:64px}
+@media (max-width:1100px){body :is(.c360-ind-appl-wrap,.c360-ind-auto-wrap,.c360-ind-clean-wrap,.c360-ind-fun-wrap,.c360-ind-gc-wrap,.c360-ind-gdr-wrap,.c360-ind-handy-wrap,.c360-ind-health-wrap,.c360-ind-hvac-wrap,.c360-ind-junk-wrap,.c360-ind-lawn-wrap,.c360-ind-lock-wrap,.c360-ind-medi-wrap,.c360-ind-mort-wrap,.c360-ind-move-wrap,.c360-ind-paint-wrap,.c360-ind-pc-wrap,.c360-ind-pest-wrap,.c360-ind-plumb-wrap,.c360-ind-pool-wrap,.c360-ind-re-wrap,.c360-ind-rest-wrap,.c360-ind-roof-wrap,.c360-ind-tree-wrap,.c360-ind-water-wrap,.c360-indhub-wrap){padding-left:40px;padding-right:40px}}
+@media (max-width:640px){body :is(.c360-ind-appl-wrap,.c360-ind-auto-wrap,.c360-ind-clean-wrap,.c360-ind-fun-wrap,.c360-ind-gc-wrap,.c360-ind-gdr-wrap,.c360-ind-handy-wrap,.c360-ind-health-wrap,.c360-ind-hvac-wrap,.c360-ind-junk-wrap,.c360-ind-lawn-wrap,.c360-ind-lock-wrap,.c360-ind-medi-wrap,.c360-ind-mort-wrap,.c360-ind-move-wrap,.c360-ind-paint-wrap,.c360-ind-pc-wrap,.c360-ind-pest-wrap,.c360-ind-plumb-wrap,.c360-ind-pool-wrap,.c360-ind-re-wrap,.c360-ind-rest-wrap,.c360-ind-roof-wrap,.c360-ind-tree-wrap,.c360-ind-water-wrap,.c360-indhub-wrap){padding-left:24px;padding-right:24px}}
 /* ---------- Brand tokens ---------- */
 .c360-header, .c360-mega-menu, .c360-modal,
 .c360-mobile-header, .c360-mobile-panel, .c360-mobile-backdrop {
@@ -3310,3 +3343,33 @@
 <!-- ============================================================
      END COMPLETE360 HEADER SEARCH v2.1
      ============================================================ -->
+
+<script>
+/* Site-wide motion (header v2.4): ease <details> FAQ items open/closed.
+   Delegated on document so it works for every page section, whenever it
+   loads. Skips anything that isn't "summary + one answer element". */
+(function(){
+  window.c360Motion=true;
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if(reduce||!('animate' in Element.prototype)) return;
+  document.addEventListener('click',function(e){
+    var sum=e.target.closest('summary'); if(!sum) return;
+    var d=sum.parentElement; if(!d||d.tagName!=='DETAILS') return;
+    var body=sum.nextElementSibling; if(!body||body.nextElementSibling) return;
+    if(e.target.closest('a,button,input')) return;
+    e.preventDefault();
+    if(d._c360anim) d._c360anim.cancel();
+    d.classList.add('c360-anim');
+    var h;
+    if(d.open){
+      h=body.offsetHeight;
+      d._c360anim=body.animate([{height:h+'px',opacity:1},{height:'0px',opacity:0}],{duration:260,easing:'cubic-bezier(.4,0,.2,1)'});
+      d._c360anim.onfinish=function(){ d.open=false; d.classList.remove('c360-anim'); d._c360anim=null; };
+    }else{
+      d.open=true; h=body.offsetHeight;
+      d._c360anim=body.animate([{height:'0px',opacity:0},{height:h+'px',opacity:1}],{duration:320,easing:'cubic-bezier(.22,.8,.3,1)'});
+      d._c360anim.onfinish=function(){ d.classList.remove('c360-anim'); d._c360anim=null; };
+    }
+  });
+})();
+</script>
