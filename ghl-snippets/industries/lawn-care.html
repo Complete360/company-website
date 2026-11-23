@@ -3,6 +3,8 @@
      c360-ind-lawn-v1.2.html
      v1.2 (2026-11-23): photos added. lawn-hero and lawn-on-the-job now point
        to the GHL Media images (generated in Canva); placeholders filled.
+       Plan tile crop shifted left (object-position 15%) so the edging crew
+       member isn't cut off at the tile's left edge.
 
      v1.1 (2026-11-23): width standard: content capped at 1440px with 64px side
        margins (40px under 1100px, 24px under 640px), matching header v2.4's rule.
@@ -145,7 +147,7 @@
 .c360-ind-lawn-tile.is-also p{color:var(--lawn-muted);font-size:15.5px}
 .c360-ind-lawn-tile.is-also a{font-weight:600}
 .c360-ind-lawn-tile-photo{grid-area:photo;position:relative;border-radius:22px;overflow:hidden;min-height:420px;background:repeating-linear-gradient(90deg,#CFE3BD 0 36px,#DDECCF 36px 72px)}
-.c360-ind-lawn-tile-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-lawn-tile-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:15% center}
 .c360-ind-lawn-tile-photo img[src=""],.c360-ind-lawn-tile-photo img:not([src]){visibility:hidden}
 .c360-ind-lawn-tile-photo .c360-ind-lawn-fallback{color:#9DBF86}
 .c360-ind-lawn-plan-foot{text-align:center;max-width:820px;margin:44px auto 0}
