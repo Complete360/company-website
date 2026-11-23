@@ -36,6 +36,9 @@
 
      v2.1 (2026-11-23): photos added. roof-hero and roof-on-the-job now point
        to the GHL Media images (generated in Canva); placeholders filled.
+       Hero reworked so the headline no longer covers the roofer: photo on
+       the left half, text left-aligned on the navy right half; stacks
+       (photo on top) below 1100px.
 
      v2.0 (2026-11-12) — new layout (Jared: make roofing look different
        from HVAC and Plumbing, same font and page dimensions). Copy and
@@ -88,26 +91,26 @@
 .c360-ind-roof-pills a:hover{background:var(--roof-navy);border-color:var(--roof-navy);color:#fff;text-decoration:none}
 
 /* ══════════ HERO (centered over full-bleed photo) ══════════ */
-.c360-ind-roof-hero{position:relative;background:linear-gradient(180deg,#1b2a72 0%,var(--roof-navy-deeper) 100%);color:#fff;overflow:hidden;text-align:center}
-.c360-ind-roof-hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.c360-ind-roof-hero{position:relative;background:linear-gradient(180deg,#1b2a72 0%,var(--roof-navy-deeper) 100%);color:#fff;overflow:hidden;text-align:left;min-height:640px;display:flex;align-items:center}
+.c360-ind-roof-hero-img{position:absolute;top:0;bottom:0;left:0;width:50%;height:100%;object-fit:cover;object-position:center 30%}
 .c360-ind-roof-hero-img[src=""],.c360-ind-roof-hero-img:not([src]){visibility:hidden}
-.c360-ind-roof-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,64,0.55) 0%,rgba(10,16,64,0.78) 45%,rgba(10,16,64,0.95) 100%)}
-.c360-ind-roof-hero-inner{position:relative;z-index:2;max-width:1100px;margin:0 auto;padding:96px 24px 72px}
-.c360-ind-roof-crumbs ol{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;font-size:13px;margin-bottom:28px}
+/* v2.1: photo on the left half, text on the navy right half (clean edge, no overlay) */
+.c360-ind-roof-hero-inner{position:relative;z-index:2;width:50%;margin-left:50%;padding:88px 64px 72px 56px;max-width:820px}
+.c360-ind-roof-crumbs ol{display:flex;flex-wrap:wrap;justify-content:flex-start;gap:8px;font-size:13px;margin-bottom:28px}
 .c360-ind-roof-crumbs li{color:rgba(255,255,255,0.65);display:flex;align-items:center;gap:8px}
 .c360-ind-roof-crumbs li+li::before{content:"\203A";color:rgba(255,255,255,0.45)}
 .c360-ind-roof-crumbs a{color:rgba(255,255,255,0.85);text-decoration:none}
 .c360-ind-roof-crumbs a:hover{color:#fff;text-decoration:underline}
-.c360-ind-roof-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:#fff;margin:0 auto 22px;max-width:980px}
-.c360-ind-roof-hero-sub{font-size:18px;line-height:1.65;color:rgba(255,255,255,0.86);max-width:720px;margin:0 auto 34px}
-.c360-ind-roof-hero .c360-ind-roof-ctas{justify-content:center}
+.c360-ind-roof-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:#fff;margin:0 0 22px;max-width:980px}
+.c360-ind-roof-hero-sub{font-size:18px;line-height:1.65;color:rgba(255,255,255,0.86);max-width:720px;margin:0 0 34px}
+.c360-ind-roof-hero .c360-ind-roof-ctas{justify-content:flex-start}
 /* Credentials in one centered row. Badge 88px with 44px clear space
    (same rule as /local-service-ads v1.6). */
-.c360-ind-roof-creds{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;margin-top:22px;column-gap:0}
-.c360-ind-roof-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear)}
+.c360-ind-roof-creds{display:flex;align-items:center;justify-content:flex-start;flex-wrap:wrap;margin-top:22px;column-gap:0}
+.c360-ind-roof-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
 .c360-ind-roof-partner img{display:block;height:var(--badge-h);width:auto;filter:drop-shadow(0 10px 24px rgba(0,0,0,0.32));border:0;outline:none;box-shadow:none;max-width:none}
 .c360-ind-roof-partner,.c360-ind-roof-partner:active{border:0;text-decoration:none;box-shadow:none}
-.c360-ind-roof-creds-list{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 28px}
+.c360-ind-roof-creds-list{display:flex;flex-direction:column;gap:8px}
 .c360-ind-roof-creds-list li{display:flex;align-items:center;gap:8px;font-size:14px;font-weight:500;color:rgba(255,255,255,0.82)}
 .c360-ind-roof-creds-list i{color:#2ecc52;font-size:12px}
 .c360-ind-roof-stars{color:#FBBC04;letter-spacing:1px}
@@ -241,6 +244,11 @@
 .c360-ind-roof-faq-a{padding:0 24px 24px;font-size:16px;color:var(--roof-muted);line-height:1.7}
 .c360-ind-roof-faq-a a{font-weight:600}
 
+@media (max-width:1100px){
+  .c360-ind-roof-hero{display:block;min-height:0}
+  .c360-ind-roof-hero-img{position:relative;display:block;width:100%;height:auto;aspect-ratio:16/9}
+  .c360-ind-roof-hero-inner{width:auto;margin-left:0;max-width:none;padding:56px 32px 64px}
+}
 /* ══════════ RESPONSIVE ══════════ */
 @media (max-width:1100px){
   .c360-ind-roof-plan{grid-template-columns:1fr;gap:44px}
@@ -263,7 +271,7 @@
 }
 @media (max-width:640px){
   .c360-ind-roof-wrap{padding-left:18px;padding-right:18px}
-  .c360-ind-roof-hero-inner{padding:60px 18px 48px}
+  .c360-ind-roof-hero-inner{padding:44px 18px 48px}
   .c360-ind-roof-reality-copy{padding:48px 18px}
   .c360-ind-roof-pains{grid-template-columns:1fr}
   .c360-ind-roof-stop-card{padding:26px 20px}
