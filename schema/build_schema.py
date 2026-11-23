@@ -147,6 +147,11 @@ page("/payments", "services/payments.html", "Make a Payment", "page",
 # Industries — nested under the /industries hub (INDUSTRY-PAGES-WORKSHEET v1.3).
 # parent adds the middle breadcrumb step: Home › Industries › page.
 IND = ("Industries", "/industries")
+page("/industries", "industries/industries-hub.html", "Industries", "collection",
+     items="industries", audience="Local service and professional businesses",
+     fallback_desc="Marketing plans built for your industry: Complete360 recommends the services that bring "
+                   "local service and professional businesses more calls and booked jobs, from Local Services "
+                   "Ads and Google Business Profile to Meta Ads, Google PPC and AI call answering.")
 page("/industries/plumbing", "industries/plumbing.html", "Plumbing Marketing", "industry", parent=IND,
      service="Plumbing Marketing", serviceType="Marketing for plumbing companies", audience="Plumbing companies")
 page("/industries/hvac", "industries/hvac.html", "HVAC Marketing", "industry", parent=IND,
@@ -339,7 +344,7 @@ def faq_node(pairs, url):
 def build(pg):
     url = SITE + ("/" if pg["path"] == "/" else pg["path"])
     html = read_snippet(pg["file"])
-    desc = pg["desc"] or (hero_description(html) if html else None) or pg["name"]
+    desc = pg["desc"] or (hero_description(html) if html else None) or pg.get("fallback_desc") or pg["name"]
     faqs = extract_faqs(html) if html else []
 
     if pg["kind"] == "skip":
@@ -375,6 +380,17 @@ def build(pg):
             svc["audience"] = {"@type": "BusinessAudience", "audienceType": pg["audience"]}
         webpage["mainEntity"] = {"@id": url + "#service"}
         graph.append(svc)
+    if pg.get("items") == "industries":
+        inds = [x for x in P if x["kind"] == "industry"]
+        lst = {"@type": "ItemList", "@id": url + "#industries", "name": "Industries we market for",
+               "numberOfItems": len(inds), "itemListOrder": "https://schema.org/ItemListUnordered",
+               "itemListElement": [{"@type": "ListItem", "position": i, "name": x["name"], "url": SITE + x["path"]}
+                                   for i, x in enumerate(inds, 1)]}
+        webpage["mainEntity"] = {"@id": url + "#industries"}
+        webpage["about"] = ORG_REF
+        if pg.get("audience"):
+            webpage["audience"] = {"@type": "BusinessAudience", "audienceType": pg["audience"]}
+        graph.append(lst)
     if pg["kind"] == "crm-home":
         graph.append(CRM_APP)
         webpage["mainEntity"] = {"@id": CRM_ID}
