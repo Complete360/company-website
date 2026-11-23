@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `pool-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `pool-hero` image in GHL Media (square; the landscape `pool-on-the-job` image is an option if square previews look cramped).
 ```
-(paste the pool-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b04b987e83b600a234843f0/backyard-poolside-skimming-pro.jpg
 ```
 
 ## Canonical URL
