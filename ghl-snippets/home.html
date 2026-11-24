@@ -8,7 +8,9 @@
        no people, under a navy overlay. Image slot hp-hero-bg is empty until
        the photo is made; the navy gradient shows until then. Final CTA photo
        unchanged. Background filled: Tucson at twilight beneath the
-       Catalinas (GHL Media).
+       Catalinas (GHL Media). Overlay lightened (Jared: hard to see): dark
+       behind the headline, opening up to ~42% on the right; proof card gets
+       a navy tint; phones keep a darker overlay.
 
      v2.4 (2026-11-24) — photos added (generated in ChatGPT, in GHL Media):
        hero: team member at a call-center desk on the right, with the Google
@@ -985,11 +987,17 @@
 /* v2.5: full-width hero background photo under a navy overlay */
 .c360-hp-hero::before, .c360-hp-hero::after { z-index: 1; }
 .c360-hp-hero-bg { position: absolute; inset: 0; z-index: 0; }
-.c360-hp-hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.c360-hp-hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+/* proof card gets a navy tint so it stays readable over the lighter photo */
+.c360-hp-hero .c360-hp-proof-card { background: rgba(13,22,84,0.62); }
+@media (max-width: 980px) { .c360-hp-hero-bg::after { background: linear-gradient(180deg, rgba(9,16,60,0.86) 0%, rgba(13,22,84,0.80) 100%); } }
 .c360-hp-hero-bg img[src=""], .c360-hp-hero-bg img:not([src]) { visibility: hidden; }
 .c360-hp-hero-bg::after {
   content: ''; position: absolute; inset: 0;
-  background: linear-gradient(135deg, rgba(9,16,60,0.93) 0%, rgba(18,32,120,0.84) 55%, rgba(12,25,96,0.90) 100%);
+  /* v2.5b: lighter, so the photo shows: dark behind the headline (left), opening up on the right and top */
+  background:
+    linear-gradient(90deg, rgba(9,16,60,0.88) 0%, rgba(13,22,84,0.72) 45%, rgba(18,32,120,0.42) 100%),
+    linear-gradient(180deg, rgba(9,16,60,0) 0%, rgba(9,16,60,0.35) 100%);
 }
 /* final CTA photo (v2.4) */
 .c360-hp-final-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
