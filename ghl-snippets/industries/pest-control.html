@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Pest Control
-     c360-ind-pest-v1.0.html
+     c360-ind-pest-v1.1.html
      GHL: Paste into a Custom Code block on the new page at /industries/pest-control
           (page name "Pest Control Marketing"). Meta data: ghl-meta/industries/pest-control.md.
           Schema: schema/pages/industries/pest-control.html (batch paste later).
@@ -22,12 +22,16 @@
        - Reviews with a three-cell scorecard, diagonal photo CTA, FAQ in
          two labeled groups.
 
-     Images still to fill: search this file for IMAGE PLACEHOLDER
-       pest-hero        16:9, 2000px+ (right side of the hero, diagonal edge)
-       pest-on-the-job  4:3, 1200px+  (closing CTA, left side)
+     Images (filled v1.1, GHL Media):
+       pest-hero        3:2 (right side of the hero, diagonal edge)
+       pest-on-the-job  3:2 (closing CTA, left side)
 
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.1 (2026-11-23): photos added. pest-hero and pest-on-the-job now point
+       to the GHL Media images (generated in ChatGPT); placeholders filled.
+       CTA photo crop anchored at the top so the tech's head isn't cut off.
 
      v1.0 (2026-11-12) — first build. Plan per the worksheet draft:
        Google Platinum Package (Local Service Ads + Google Business Profile
@@ -211,7 +215,7 @@
 /* ══════════ CTA (diagonal photo) ══════════ */
 .c360-ind-pest-cta{position:relative;display:grid;grid-template-columns:0.9fr 1.1fr;background:var(--pest-green);color:#fff;min-height:440px;overflow:hidden}
 .c360-ind-pest-cta-media{position:relative;clip-path:polygon(0 0,100% 0,82% 100%,0 100%);background:repeating-linear-gradient(135deg,#0F6A20 0 18px,#14772A 18px 36px)}
-.c360-ind-pest-cta-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-pest-cta-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
 .c360-ind-pest-cta-media img[src=""],.c360-ind-pest-cta-media img:not([src]){visibility:hidden}
 .c360-ind-pest-cta-copy{padding:72px max(24px,calc((100vw - 1680px)/2 + 24px)) 72px 40px;display:flex;flex-direction:column;justify-content:center}
 .c360-ind-pest-cta h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:16px}
@@ -282,8 +286,8 @@
 <section class="c360-ind-pest-hero">
   <span class="c360-ind-pest-hero-stripe" aria-hidden="true"></span>
   <div class="c360-ind-pest-hero-media">
-    <!-- IMAGE PLACEHOLDER: pest-hero — pest control tech treating the perimeter of a home's foundation with a sprayer, 16:9 (shown on the right behind a diagonal edge) -->
-    <img src="" data-c360-placeholder="pest-hero" alt="Pest control technician treating the perimeter of a home's foundation" fetchpriority="high">
+    <!-- IMAGE: pest-hero — pest control tech treating the perimeter of a home's foundation with a sprayer, 16:9 (shown on the right behind a diagonal edge) -->
+    <img src="https://files.leadconnectorhq.com/file/6b04c080d50d9db796b01387/suburban-foundation-treatment-in-action.jpg" data-c360-placeholder="pest-hero" alt="Pest control technician treating the perimeter of a home's foundation" fetchpriority="high">
     <div class="c360-ind-pest-fallback" aria-hidden="true"><i class="fa-solid fa-bug-slash"></i></div>
   </div>
   <div class="c360-ind-pest-wrap c360-ind-pest-hero-inner">
@@ -529,8 +533,8 @@
 <!-- ══════════ CLOSING CTA (diagonal photo) ══════════ -->
 <section class="c360-ind-pest-cta">
   <div class="c360-ind-pest-cta-media">
-    <!-- IMAGE PLACEHOLDER: pest-on-the-job — pest control tech talking with a homeowner at the front door, friendly, 4:3 (left side, diagonal edge) -->
-    <img src="" data-c360-placeholder="pest-on-the-job" alt="Pest control technician talking with a homeowner at their front door" loading="lazy">
+    <!-- IMAGE: pest-on-the-job — pest control tech talking with a homeowner at the front door, friendly, 4:3 (left side, diagonal edge) -->
+    <img src="https://files.leadconnectorhq.com/file/6b04c0c8045a18972afa1535/friendly-porch-conversation.jpg" data-c360-placeholder="pest-on-the-job" alt="Pest control technician talking with a homeowner at their front door" loading="lazy">
     <div class="c360-ind-pest-fallback" aria-hidden="true"><i class="fa-solid fa-house-circle-check"></i></div>
   </div>
   <div class="c360-ind-pest-cta-copy">

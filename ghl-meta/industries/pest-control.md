@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `pest-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `pest-hero` image in GHL Media.
 ```
-(paste the pest-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b04c080d50d9db796b01387/suburban-foundation-treatment-in-action.jpg
 ```
 
 ## Canonical URL
