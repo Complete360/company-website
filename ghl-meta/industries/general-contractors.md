@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `gc-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `gc-hero` image in GHL Media.
 ```
-(paste the gc-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b04abf7ca280c4de3cdf204/aaikprqj6furx-wrafy1gq-aaikprqjldjj5erzspa6nw-1.jpg
 ```
 
 ## Canonical URL
