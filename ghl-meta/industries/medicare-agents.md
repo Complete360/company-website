@@ -39,10 +39,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `medi-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `medi-hero` image in GHL Media (square; the landscape `medi-on-the-job` image is an option if square previews look cramped).
 ```
-(paste the medi-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b04c3ff655b1c78139a75bd/friendly-kitchen-table-consultation.jpg
 ```
 
 ## Canonical URL
