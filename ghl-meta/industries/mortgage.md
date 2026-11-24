@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `mort-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `mort-hero` image in GHL Media (square).
 ```
-(paste the mort-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b059938474b6068324e8fc0/collaborative-office-document-review.jpg
 ```
 
 ## Canonical URL
