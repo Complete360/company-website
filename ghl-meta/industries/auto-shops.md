@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `auto-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `auto-hero` image in GHL Media.
 ```
-(paste the auto-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b059c00474b6068324f065d/mechanic-inspecting-a-lifted-vehicle.jpg
 ```
 
 ## Canonical URL
