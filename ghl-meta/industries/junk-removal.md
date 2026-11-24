@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `junk-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `junk-hero` image in GHL Media.
 ```
-(paste the junk-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b05b828d50d9db796cc9b0b/movers-carry-worn-couch-outdoors.jpg
 ```
 
 ## Canonical URL
