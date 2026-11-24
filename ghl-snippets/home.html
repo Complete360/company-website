@@ -1,7 +1,13 @@
 <!-- ══════════════════════════════════════════════════════════════
-     Complete360 — Homepage  |  c360-homepage-v2.4.html
+     Complete360 — Homepage  |  c360-homepage-v2.5.html
      GHL: Paste into Custom Code block on homepage page only.
      Poppins + Font Awesome 6.5.1 loaded via global header.
+
+     v2.5 (2026-11-24) — Jared: hero goes back to the proof card on the right
+       (call-center photo removed) and gets a full-width background photo,
+       no people, under a navy overlay. Image slot hp-hero-bg is empty until
+       the photo is made; the navy gradient shows until then. Final CTA photo
+       unchanged.
 
      v2.4 (2026-11-24) — photos added (generated in ChatGPT, in GHL Media):
        hero: team member at a call-center desk on the right, with the Google
@@ -36,7 +42,7 @@
 
 <style>
 /* ══════════════════════════════════════════════════════
-   Complete360 Homepage v2.4  |  Prefix: c360-hp-
+   Complete360 Homepage v2.5  |  Prefix: c360-hp-
    ══════════════════════════════════════════════════════ */
 
 :root {
@@ -975,25 +981,22 @@
 .c360-hp-geo-stat-b { top: 14%; right: 5%; }
 
 
-/* v2.4: hero photo + proof card overlap; final CTA photo */
-.c360-hp-hero-visual { position: relative; }
-.c360-hp-hero-photo {
-  position: relative; aspect-ratio: 4/3; border-radius: 20px; overflow: hidden;
-  background: rgba(255,255,255,0.06); box-shadow: 0 30px 70px rgba(0,0,0,0.35);
+/* v2.5: full-width hero background photo under a navy overlay */
+.c360-hp-hero::before, .c360-hp-hero::after { z-index: 1; }
+.c360-hp-hero-bg { position: absolute; inset: 0; z-index: 0; }
+.c360-hp-hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; }
+.c360-hp-hero-bg img[src=""], .c360-hp-hero-bg img:not([src]) { visibility: hidden; }
+.c360-hp-hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(9,16,60,0.93) 0%, rgba(18,32,120,0.84) 55%, rgba(12,25,96,0.90) 100%);
 }
-.c360-hp-hero-photo img, .c360-hp-final-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
-.c360-hp-hero-visual .c360-hp-proof-card {
-  position: relative; width: 82%; margin: -110px 0 0 -40px;
-  background: rgba(13,22,84,0.94); padding: 26px 26px;
-  box-shadow: 0 24px 50px rgba(0,0,0,0.35);
-}
-.c360-hp-hero-visual .c360-hp-proof-score { font-size: 46px; }
+/* final CTA photo (v2.4) */
+.c360-hp-final-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
 .c360-hp-final-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; }
 .c360-hp-final-photo { position: relative; aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.35); }
 .c360-hp-final-grid .c360-hp-final-inner { max-width: none; margin: 0; text-align: left; }
 .c360-hp-final-grid .c360-hp-final-actions, .c360-hp-final-grid .c360-hp-final-trust-row { justify-content: flex-start; }
 @media (max-width: 980px) {
-  .c360-hp-hero-visual { max-width: 560px; }
   .c360-hp-final-grid { grid-template-columns: 1fr; gap: 40px; }
   .c360-hp-final-photo { max-width: 560px; width: 100%; margin: 0 auto; }
   .c360-hp-final-grid .c360-hp-final-inner { text-align: center; }
@@ -1045,6 +1048,10 @@
      SECTION 1 — HERO
      ══════════════════════════════════════════════════════ -->
 <section class="c360-hp-section c360-hp-hero">
+  <div class="c360-hp-hero-bg" aria-hidden="true">
+    <!-- IMAGE PLACEHOLDER: hp-hero-bg — full-width hero background, no people (see v2.5 note); shown under a navy overlay. Paste the GHL Media URL into src. -->
+    <img src="" data-c360-placeholder="hp-hero-bg" alt="" fetchpriority="high">
+  </div>
   <div class="c360-hp-container">
     <div class="c360-hp-hero-inner">
 
@@ -1086,12 +1093,8 @@
         </div>
       </div>
 
-      <!-- RIGHT — photo with the Google Proof Card overlapping its bottom-left (v2.4) -->
-      <div class="c360-hp-hero-visual">
-        <div class="c360-hp-hero-photo">
-          <!-- IMAGE: hp-hero — Complete360 team member at a call-center desk, smiling, business suit -->
-          <img src="https://files.leadconnectorhq.com/file/6b0600ca8b5100b36ae25761/friendly-customer-service-professional-at-work.jpg" alt="Smiling Complete360 team member in a business suit helping a client from her call-center desk" fetchpriority="high">
-        </div>
+      <!-- RIGHT — Google Proof Card (#2) -->
+      <div>
         <div class="c360-hp-proof-card">
           <div class="c360-hp-proof-eyebrow">What our clients say</div>
           <div class="c360-hp-proof-rating-row">
