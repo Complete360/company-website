@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `elec-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `elec-hero` image in GHL Media.
 ```
-(paste the elec-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b05f093b38c8e559416237b/electrician-testing-a-breaker-panel.jpg
 ```
 
 ## Canonical URL
