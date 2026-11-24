@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `rest-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `rest-hero` image in GHL Media.
 ```
-(paste the rest-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b059f0a465ec0caaaf628f6/chef-plating-a-vibrant-gourmet-entree.jpg
 ```
 
 ## Canonical URL
