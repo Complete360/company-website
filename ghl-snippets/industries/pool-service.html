@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Pool Service
-     c360-ind-pool-v1.0.html
+     c360-ind-pool-v1.1.html
      GHL: Paste into a Custom Code block on the new page at /industries/pool-service
           (page name "Pool Service Marketing"). Meta data: ghl-meta/industries/pool-service.md.
           Schema: schema/pages/industries/pool-service.html (batch paste later).
@@ -24,12 +24,20 @@
        - Reviews with round stat badges; full-bleed photo CTA with a wave
          top; FAQ items with a left accent that turns blue when open.
 
-     Images still to fill: search this file for IMAGE PLACEHOLDER
-       pool-hero        16:9, 2000px+ (round porthole, crop centered)
-       pool-on-the-job  4:3, 1200px+  (closing CTA background, under a navy overlay)
+     Images (filled v1.1, GHL Media):
+       pool-hero        1:1 (round porthole, crop centered)
+       pool-on-the-job  3:2 (closing CTA background, under a navy overlay)
 
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.1 (2026-11-23): photos added. pool-hero (square, for the porthole) and
+       pool-on-the-job (landscape, CTA background) now point to the GHL Media
+       images (generated in ChatGPT); placeholders filled. CTA photo now
+       fills the right 55% of the band (fading into the navy on its left), so
+       the technician's head and the test kit in her hands both show. Photo
+       starts below the wave (64px) and anchors at the top, so the vial in her
+       raised hand shows. Top edge fades into the navy too (no visible line).
 
      v1.0 (2026-11-12) — first build. Plan per the worksheet draft:
        Google Platinum Package co-lead (Local Service Ads + Google Business
@@ -215,13 +223,15 @@
 
 /* ══════════ CTA (photo with wave top) ══════════ */
 .c360-ind-pool-final{position:relative;color:#fff;text-align:center;overflow:hidden;background:var(--pool-navy)}
-.c360-ind-pool-final-media{position:absolute;inset:0;background:radial-gradient(circle at 30% 40%,#2A7FC0,var(--pool-navy) 70%)}
-.c360-ind-pool-final-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* photo fills the right 55% (so its full height fits) and fades into the navy on its left and top edges */
+.c360-ind-pool-final-media{position:absolute;top:64px;right:0;bottom:0;left:45%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 30%),linear-gradient(180deg,transparent 0%,#000 18%);-webkit-mask-composite:source-in;mask-image:linear-gradient(90deg,transparent 0%,#000 30%),linear-gradient(180deg,transparent 0%,#000 18%);mask-composite:intersect;background:radial-gradient(circle at 30% 40%,#2A7FC0,var(--pool-navy) 70%)}
+.c360-ind-pool-final-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top}
 .c360-ind-pool-final-media img[src=""],.c360-ind-pool-final-media img:not([src]){visibility:hidden}
-.c360-ind-pool-final::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,16,64,0.72) 0%,rgba(10,16,64,0.88) 100%)}
+.c360-ind-pool-final::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,16,64,0.9) 0%,rgba(10,16,64,0.84) 55%,rgba(10,16,64,0.5) 100%)}
+@media (max-width:900px){.c360-ind-pool-final::after{background:linear-gradient(180deg,rgba(10,16,64,0.78) 0%,rgba(10,16,64,0.9) 100%)}}
 .c360-ind-pool-final-wave{position:relative;z-index:2;line-height:0}
 .c360-ind-pool-final-wave svg{display:block;width:100%;height:80px}
-.c360-ind-pool-final-inner{position:relative;z-index:2;padding:56px 24px 104px;max-width:900px;margin:0 auto}
+.c360-ind-pool-final-inner{position:relative;z-index:2;padding:88px 24px 128px;max-width:900px;margin:0 auto}
 .c360-ind-pool-final h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:#fff;margin-bottom:16px}
 .c360-ind-pool-final p{font-size:18px;color:rgba(255,255,255,0.85);max-width:660px;margin:0 auto 32px;line-height:1.65}
 .c360-ind-pool-final .c360-ind-pool-ctas{justify-content:center}
@@ -237,6 +247,9 @@
 .c360-ind-pool-faq-a{padding:0 30px 24px 26px;font-size:16px;color:var(--pool-muted);line-height:1.7}
 .c360-ind-pool-faq-a a{font-weight:600}
 
+@media (max-width:900px){
+  .c360-ind-pool-final-media{top:0;left:0;-webkit-mask-image:none;mask-image:none}
+}
 /* ══════════ RESPONSIVE ══════════ */
 @media (max-width:1200px){
   .c360-ind-pool-levels{grid-template-columns:repeat(2,1fr)}
@@ -300,8 +313,8 @@
     </div>
     <div class="c360-ind-pool-port">
       <div class="c360-ind-pool-port-img">
-        <!-- IMAGE PLACEHOLDER: pool-hero — pool tech skimming a sparkling backyard pool, subject centered, 16:9 (shown in a round frame) -->
-        <img src="" data-c360-placeholder="pool-hero" alt="Pool service technician skimming a clean backyard swimming pool" fetchpriority="high">
+        <!-- IMAGE: pool-hero — pool tech skimming a sparkling backyard pool, subject centered, 16:9 (shown in a round frame) -->
+        <img src="https://files.leadconnectorhq.com/file/6b04b987e83b600a234843f0/backyard-poolside-skimming-pro.jpg" data-c360-placeholder="pool-hero" alt="Pool service technician skimming a clean backyard swimming pool" fetchpriority="high">
         <div class="c360-ind-pool-fallback" aria-hidden="true"><i class="fa-solid fa-water-ladder"></i></div>
       </div>
     </div>
@@ -537,8 +550,8 @@
 <!-- ══════════ CLOSING CTA (photo + wave top) ══════════ -->
 <section class="c360-ind-pool-final">
   <div class="c360-ind-pool-final-media">
-    <!-- IMAGE PLACEHOLDER: pool-on-the-job — pool tech testing water with a test kit at the pool's edge, 4:3 (shown full width under a navy overlay) -->
-    <img src="" data-c360-placeholder="pool-on-the-job" alt="Pool technician testing water chemistry at the edge of a backyard pool" loading="lazy">
+    <!-- IMAGE: pool-on-the-job — pool tech testing water with a test kit at the pool's edge, 4:3 (shown full width under a navy overlay) -->
+    <img src="https://files.leadconnectorhq.com/file/6b04b9b9ca280c4de3cfc208/poolside-water-testing-at-golden-hour.png" data-c360-placeholder="pool-on-the-job" alt="Pool technician testing water chemistry at the edge of a backyard pool" loading="lazy">
     <div class="c360-ind-pool-fallback" aria-hidden="true"></div>
   </div>
   <div class="c360-ind-pool-final-wave" aria-hidden="true">
