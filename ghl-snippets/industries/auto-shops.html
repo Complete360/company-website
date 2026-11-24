@@ -31,7 +31,9 @@
 
      v1.1 (2026-11-24): photos added. auto-hero (open bay) and auto-on-the-job
        (service counter) now point to the GHL Media images (generated in
-       ChatGPT); placeholders filled.
+       ChatGPT); placeholders filled. Menu section columns 1.4/0.6 ->
+       1.15/0.85 so the counter photo is wider and shows both people's faces;
+       crop nudged right (60%).
 
      v1.0 (2026-11-12) — first build. Plan per the worksheet draft:
        Google Platinum Package (Local Service Ads + Google Business Profile
@@ -126,7 +128,7 @@
 .c360-ind-auto-light p{font-size:16px;color:rgba(255,255,255,0.72);line-height:1.65}
 
 /* ══════════ PLAN (menu board) ══════════ */
-.c360-ind-auto-menu-wrap{display:grid;grid-template-columns:1.4fr 0.6fr;gap:28px;max-width:1500px;margin:0 auto;align-items:stretch}
+.c360-ind-auto-menu-wrap{display:grid;grid-template-columns:1.15fr 0.85fr;gap:28px;max-width:1500px;margin:0 auto;align-items:stretch}
 .c360-ind-auto-board{background:#151A3B;color:#fff;border-radius:22px;padding:44px 48px 40px;border:10px solid #2A2F55;box-shadow:inset 0 0 0 1px rgba(255,255,255,0.06),0 24px 60px rgba(10,16,64,0.25)}
 .c360-ind-auto-board-title{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-bottom:18px;margin-bottom:10px;border-bottom:2px solid rgba(255,255,255,0.15)}
 .c360-ind-auto-board-title h3{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:0.02em;color:#fff}
@@ -147,7 +149,7 @@
 .c360-ind-auto-board-foot a{color:#9EC5FF;font-weight:600}
 .c360-ind-auto-menu-side{display:flex;flex-direction:column;gap:20px}
 .c360-ind-auto-menu-photo{position:relative;flex:1;min-height:300px;border-radius:22px;overflow:hidden;background:repeating-linear-gradient(135deg,#D9DFEA 0 16px,#E3E8F1 16px 32px)}
-.c360-ind-auto-menu-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-auto-menu-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% center}
 .c360-ind-auto-menu-photo img[src=""],.c360-ind-auto-menu-photo img:not([src]){visibility:hidden}
 .c360-ind-auto-menu-note{background:var(--auto-mist);border:1px solid var(--auto-line);border-radius:22px;padding:26px}
 .c360-ind-auto-menu-note h4{font-size:18px;font-weight:800;color:var(--auto-text);margin-bottom:6px}
