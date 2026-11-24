@@ -14,7 +14,8 @@
      Poppins, pill links, reviews widget, CTA before the FAQ). Its own
      layout (Jared: different from the other pages), garage door themed:
        - Hero: split headline (H1 left, subhead + buttons right), trust row,
-         then a wide panoramic photo with a code-built dispatch log on its top edge.
+         then a wide panoramic photo with a code-built dispatch log on its
+         bottom-right corner.
        - Reality: dark "trouble lights" panel, opener-style blink codes.
        - Plan: a labeled garage door diagram (springs, opener, tracks,
          sensors, panels) with numbered pins that match a five-card legend.
@@ -28,7 +29,7 @@
      Verification and pre-badge ads aren't available for it.
 
      Images (filled v1.2, GHL Media):
-       gdr-hero        3:2 (shown as a 2:1 band; log card over the top-right)
+       gdr-hero        3:2 (shown as a 2:1 band; log card over the bottom-right)
        gdr-on-the-job  3:2 (CTA panel, right)
 
      Google Partner badge: same official badge and link as
@@ -38,7 +39,8 @@
        gdr-on-the-job (keypad walkthrough) now point to the GHL Media images
        (generated in ChatGPT); placeholders filled; CTA alt text matches.
        Hero band 21:8 -> 2:1 and cropped from near the top so the tech's head
-       isn't cut off.
+       isn't cut off. Dispatch log moved from the photo's top edge to its
+       bottom-right corner so it no longer covers the tech.
 
      v1.1 (2026-11-19) — Jared: empty space under the reviews widget. The
        navy rating card is now a full-width band (title left, three stats
@@ -125,7 +127,7 @@
 .c360-ind-gdr-pano .c360-ind-gdr-img img{object-position:center 8%}
 .c360-ind-gdr-pano .c360-ind-gdr-img{aspect-ratio:2/1;border-radius:28px;box-shadow:0 30px 60px rgba(15,31,94,0.16)}
 /* Code-built dispatch log riding on the photo's top edge */
-.c360-ind-gdr-log{position:absolute;right:48px;top:-44px;width:min(560px,60%);background:#fff;border-radius:16px;box-shadow:0 24px 50px rgba(15,31,94,0.22);padding:18px 22px 14px}
+.c360-ind-gdr-log{position:absolute;right:48px;bottom:-44px;width:min(560px,60%);background:#fff;border-radius:16px;box-shadow:0 24px 50px rgba(15,31,94,0.22);padding:18px 22px 14px}
 .c360-ind-gdr-log ol{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .c360-ind-gdr-log li{position:relative;padding-top:16px;border-top:3px solid var(--gdr-line)}
 .c360-ind-gdr-log li.is-done{border-color:var(--gdr-green)}
