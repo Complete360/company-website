@@ -48,6 +48,9 @@
 
      v2.2 (2026-11-24) — hero photo replaced with Jared's re-arranged
        version of the group portrait (social share image updated too).
+       Photo now fills only the right 70% of the hero (fading in from the
+       navy on its left edge) so the whole group sits clear of the headline;
+       crop anchored near the top. Phones unchanged.
      v2.1 (2026-11-24) — combines the two v2.0 edits made the same day: Liz's
        hero photo (group of six local business owners from different trades,
        generated in ChatGPT) and Jared's Electrical link + Landscaping card.
@@ -128,7 +131,8 @@
 .c360-indhub-hero-photo{position:absolute;inset:0;background:
   radial-gradient(circle at 78% 40%,rgba(63,99,199,0.45),transparent 55%),
   linear-gradient(135deg,var(--hub-navy-dark),var(--hub-navy-deeper))}
-.c360-indhub-hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% center}
+/* photo sits in the right 70% (fading in from navy on its left edge) so the group stays clear of the headline */
+.c360-indhub-hero-photo img{position:absolute;top:0;bottom:0;left:30%;width:70%;height:100%;object-fit:cover;object-position:center 15%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 18%);mask-image:linear-gradient(90deg,transparent 0%,#000 18%)}
 .c360-indhub-hero-photo img[src=""],.c360-indhub-hero-photo img:not([src]){visibility:hidden}
 .c360-indhub-hero::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg,rgba(10,16,64,0.94) 0%,rgba(13,22,84,0.86) 42%,rgba(18,32,120,0.35) 75%,rgba(18,32,120,0.15) 100%)}
@@ -250,6 +254,7 @@
   .c360-indhub-section{padding:72px 0}
   .c360-indhub-hero-inner{padding-bottom:72px}
   .c360-indhub-hero::after{background:linear-gradient(180deg,rgba(10,16,64,0.92) 0%,rgba(13,22,84,0.88) 100%)}
+  .c360-indhub-hero-photo img{left:0;width:100%;-webkit-mask-image:none;mask-image:none}
   .c360-indhub-faq-q{font-size:17px}
   .c360-indhub-faq-a{padding-right:4px}
 }
