@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `tree-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `tree-on-the-job` image in GHL Media (landscape; the portrait hero would be cropped hard in link previews).
 ```
-(paste the tree-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b05b763d40dd20617f1f09d/friendly-tree-crew-in-a-sunny-yard.jpg
 ```
 
 ## Canonical URL
