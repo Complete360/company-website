@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `paint-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `paint-hero` image in GHL Media.
 ```
-(paste the paint-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b04adf5045a18972af7c479/aaikrsevbkjt-bvjcr-5cw-aaikrsevjlbfcgqt0f2jia-1-1.jpg
 ```
 
 ## Canonical URL
