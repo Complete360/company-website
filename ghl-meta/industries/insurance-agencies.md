@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `pc-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `pc-hero` image in GHL Media (square).
 ```
-(paste the pc-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b05a08c474b6068324f97e6/warm-family-consultation-meeting.jpg
 ```
 
 ## Canonical URL
