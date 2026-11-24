@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `handy-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `handy-hero` image in GHL Media.
 ```
-(paste the handy-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b05e90a2c68ebcf46e628ee/handyman-checking-a-floating-shelf.jpg
 ```
 
 ## Canonical URL
