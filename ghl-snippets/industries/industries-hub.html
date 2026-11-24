@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industries hub
-     c360-indhub-v1.9.html
+     c360-indhub-v2.0.html
      GHL: Paste into a Custom Code block on the new page at /industries
           (page name "Industries"). Meta data: ghl-meta/industries/industries-hub.md.
           Schema: schema/pages/industries/industries-hub.html (batch paste later).
@@ -34,20 +34,24 @@
          except Medicare Agents (page held for management/legal review):
          it links to /schedule-demo for now. Swap it when cleared:
          search this file for "SWAP WHEN LIVE".
-       - Electrical has no page yet: "Talk to us" link to /schedule-demo.
+       - Electrical links to /industries/electrical (page built in PR #61;
+         publish the hub after that page is live, or the card 404s).
        - Dispensaries -> /dispensary (live). Farmers Insurance agents ->
          /farmers-insurance (cost-share partner program).
        - When a new industry page goes live, add a row to its group and
          re-run schema/build_schema.py (the hub's ItemList is read from
          the /industries/ links in this file).
 
-     Images still to fill: search this file for IMAGE PLACEHOLDER
+     Images (filled v2.0, GHL Media):
        indhub-hero   16:9, 2000px+ (full-bleed behind a navy overlay; keep
                      the people on the right half, the headline sits left)
 
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
 
+     v2.0 (2026-11-24) — hero photo added (group of six local business owners
+       from different trades, generated in ChatGPT); Electrical card now
+       links to /industries/electrical with "See the plan".
      v1.9 (2026-11-22) — no hard-coded review numbers anywhere on the page
        (Jared: the count and rating keep changing; the widget is the
        source of truth). Stat row removed from the reviews section; hero
@@ -268,8 +272,8 @@
 <!-- ══════════ HERO ══════════ -->
 <section class="c360-indhub-hero">
   <div class="c360-indhub-hero-photo">
-    <!-- IMAGE PLACEHOLDER: indhub-hero — collage-style photo of local business owners from different trades (a plumber, a landscaper, an insurance agent at a desk, a restaurant owner), natural light, people on the RIGHT half, open space on the left for the headline, 16:9 -->
-    <img src="" data-c360-placeholder="indhub-hero" alt="Local business owners from different trades, from a plumber to an insurance agent" fetchpriority="high">
+    <!-- IMAGE: indhub-hero — collage-style photo of local business owners from different trades (a plumber, a landscaper, an insurance agent at a desk, a restaurant owner), natural light, people on the RIGHT half, open space on the left for the headline, 16:9 -->
+    <img src="https://files.leadconnectorhq.com/file/6b05f411465ec0caaa029b34/diverse-downtown-trades-team-portrait.jpg" data-c360-placeholder="indhub-hero" alt="Six local business owners from different trades, from a plumber and an electrician to an insurance agent and a chef, standing together on a main street" fetchpriority="high">
   </div>
   <div class="c360-indhub-wrap c360-indhub-hero-inner">
     <div class="c360-indhub-hero-copy">
@@ -376,7 +380,7 @@
         <ul class="c360-indhub-grid" role="tabpanel" id="indhub-grid-0" aria-labelledby="indhub-tab-0">
           <li><a class="c360-indhub-row" href="/industries/plumbing"><i class="fa-solid fa-wrench" aria-hidden="true"></i><span class="c360-indhub-row-name">Plumbing</span><span class="c360-indhub-row-desc">Emergency calls, water heaters, drains and repipes</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/hvac"><i class="fa-solid fa-fan" aria-hidden="true"></i><span class="c360-indhub-row-name">HVAC</span><span class="c360-indhub-row-desc">No-AC calls in July, furnaces in January, maintenance all year</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
-          <li><a class="c360-indhub-row" href="/schedule-demo"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span class="c360-indhub-row-name">Electrical</span><span class="c360-indhub-row-desc">Service calls, panels and EV chargers</span><span class="c360-indhub-row-foot">Talk to us <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/electrical"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span class="c360-indhub-row-name">Electrical</span><span class="c360-indhub-row-desc">Service calls, panels and EV chargers</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/roofing"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i><span class="c360-indhub-row-name">Roofing</span><span class="c360-indhub-row-desc">Leak repairs, replacements and the calls after a storm</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/general-contractors"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i><span class="c360-indhub-row-name">General Contractors</span><span class="c360-indhub-row-desc">Remodels, additions and the projects you want more of</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/painting"><i class="fa-solid fa-paint-roller" aria-hidden="true"></i><span class="c360-indhub-row-name">Painting</span><span class="c360-indhub-row-desc">Interior and exterior jobs that start with a quote</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
