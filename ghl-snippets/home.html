@@ -1,7 +1,15 @@
 <!-- ══════════════════════════════════════════════════════════════
-     Complete360 — Homepage  |  c360-homepage-v2.2.html
+     Complete360 — Homepage  |  c360-homepage-v2.3.html
      GHL: Paste into Custom Code block on homepage page only.
      Poppins + Font Awesome 6.5.1 loaded via global header.
+
+     v2.3 (2026-11-24) — Industries section rebuilt with the same group tabs +
+       fan-out cards as the /industries hub: all 29 industries in four groups
+       (Contractors & Trades, Home Services, Professional & Financial,
+       Specialty Businesses), each card linking to its page; "See all
+       industries" link to /industries. Old 16 inactive tiles removed.
+       Heading no longer says "Arizona" (we serve nationwide). FAQ answer
+       on industries updated with a link to /industries.
 
      v2.2 (2026-11-10) — review count 147 and rating 5.0 (was 144 / 4.9),
        incl. the proof-card count and the reviews heading ("147 reasons Arizona
@@ -22,7 +30,7 @@
 
 <style>
 /* ══════════════════════════════════════════════════════
-   Complete360 Homepage v2.2  |  Prefix: c360-hp-
+   Complete360 Homepage v2.3  |  Prefix: c360-hp-
    ══════════════════════════════════════════════════════ */
 
 :root {
@@ -676,35 +684,42 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   INDUSTRIES  (#1 — hover green restored)
+   INDUSTRIES — group tabs + fan-out cards (same as the /industries hub)
    ══════════════════════════════════════════════════════ */
-.c360-hp-industries { padding: 96px 0; background: #fff; }
-.c360-hp-industries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.c360-hp-industry-tile {
-  background: var(--hp-light-grey); border: 1.5px solid #e5e3dc;
-  border-radius: var(--hp-radius); padding: 24px 20px;
-  display: flex; align-items: center; gap: 13px;
-  text-decoration: none;
-  /* pointer-events left ON so hover works; onclick="return false" blocks nav */
-  transition: background 0.2s, border-color 0.2s, transform 0.2s;
-}
-.c360-hp-industry-tile:hover {
-  background: var(--hp-green-light);   /* ← green on hover, restored */
-  border-color: rgba(18,120,37,0.25);
-  transform: translateY(-2px); text-decoration: none;
-}
-.c360-hp-industry-tile.c360-hp-ind-inactive { cursor: default; }
-.c360-hp-industry-ico {
-  width: 42px; height: 42px; background: var(--hp-navy);
-  border-radius: 10px; display: flex; align-items: center;
-  justify-content: center; color: #fff; font-size: 16px;
-  flex-shrink: 0; transition: background 0.2s;
-}
-.c360-hp-industry-tile:hover .c360-hp-industry-ico { background: var(--hp-green); }
-.c360-hp-industry-name {
-  font-family: 'Poppins','Helvetica Neue',sans-serif;
-  font-size: 13.5px; font-weight: 600; color: var(--hp-text); line-height: 1.3;
-}
+.c360-hp-industries { padding: 96px 0; background: #fff; font-family:'Poppins','Helvetica Neue',Arial,sans-serif; }
+.c360-hp-industries :where(ul,li){margin:0;padding:0;list-style:none}
+.c360-hp-ind-all{text-align:center;margin-top:36px;font-size:16px;color:var(--hp-text-muted)}
+.c360-hp-ind-all a{font-weight:700;color:var(--hp-navy)}
+.c360-hp-ind-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:32px}
+.c360-hp-ind-tab{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:'Poppins','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:700;color:var(--hp-navy);background:#fff;border:1.5px solid #B7C6E6;border-radius:100px;padding:12px 20px;transition:background .2s,color .2s,border-color .2s,transform .15s}
+.c360-hp-ind-tab i{font-size:14px}
+.c360-hp-ind-tab small{font-size:12px;font-weight:600;color:var(--hp-text-muted);background:#F4F7FC;border-radius:100px;padding:3px 8px}
+.c360-hp-ind-tab:hover{border-color:var(--hp-navy);transform:translateY(-1px)}
+.c360-hp-ind-tab[aria-selected="true"]{background:var(--hp-navy);border-color:var(--hp-navy);color:#fff}
+.c360-hp-ind-tab[aria-selected="true"] small{background:rgba(255,255,255,0.18);color:#fff}
+.c360-hp-ind-tab:focus-visible{outline:3px solid #2ecc52;outline-offset:3px}
+.c360-hp-ind-stage{position:relative;overflow:hidden;transition:height .5s cubic-bezier(.22,.8,.3,1)}
+.c360-hp-ind-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:4px}
+.c360-hp-ind-grid[hidden]{display:none}
+.c360-hp-ind-grid-title{display:none}
+.c360-hp-ind-row{display:flex;flex-direction:column;gap:10px;height:100%;padding:22px 20px 18px;background:#fff;border:1px solid #E2E8F2;border-radius:16px;text-decoration:none;color:var(--hp-text);transition:transform .2s,box-shadow .2s,border-color .2s;will-change:transform}
+.c360-hp-ind-row.is-fan{transition:transform .55s cubic-bezier(.22,.8,.3,1),opacity .4s ease;transition-delay:var(--d,0ms)}
+.c360-hp-ind-row:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,31,94,0.10);border-color:#B7C6E6;text-decoration:none;color:var(--hp-text)}
+.c360-hp-ind-row > i:first-child{width:42px;height:42px;border-radius:12px;background:#F4F7FC;color:var(--hp-navy);display:flex;align-items:center;justify-content:center;font-size:17px;flex:none}
+.c360-hp-ind-row-name{display:block;font-size:17px;font-weight:800;line-height:1.2;letter-spacing:-0.01em}
+.c360-hp-ind-row-desc{display:block;font-size:13.5px;line-height:1.5;color:var(--hp-text-muted)}
+.c360-hp-ind-row-foot{margin-top:auto;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--hp-navy);padding-top:6px}
+.c360-hp-ind-row-foot i{font-size:10px;transition:transform .15s}
+.c360-hp-ind-row:hover .c360-hp-ind-row-foot i{transform:translateX(3px)}
+/* no-JS: every group visible, stacked, with its heading */
+.c360-hp-ind-dir.no-js .c360-hp-ind-tabs{display:none}
+.c360-hp-ind-dir.no-js .c360-hp-ind-grid[hidden]{display:grid}
+.c360-hp-ind-dir.no-js .c360-hp-ind-grid-title{display:block;font-size:20px;font-weight:800;color:var(--hp-text);margin:32px 0 14px}
+@media (max-width:1100px){.c360-hp-ind-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.c360-hp-ind-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.c360-hp-ind-tab{font-size:14px;padding:10px 16px}}
+@media (max-width:640px){.c360-hp-ind-tab small{display:none}}
+@media (max-width:480px){.c360-hp-ind-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.c360-hp-ind-row,.c360-hp-ind-row.is-fan,.c360-hp-ind-stage,.c360-hp-ind-tab{transition:none !important}}
 
 /* ══════════════════════════════════════════════════════
    REVIEWS
@@ -960,7 +975,6 @@
   .c360-hp-hero-inner   { grid-template-columns: 1fr; gap: 48px; }
   .c360-hp-proof-card   { display: none; }
   .c360-hp-phases       { grid-template-columns: 1fr; gap: 14px; }
-  .c360-hp-industries-grid { grid-template-columns: repeat(3, 1fr); }
   .c360-hp-svc-row      { grid-template-columns: 1fr; gap: 40px; }
   /* Visual always above copy on mobile — applies to both normal and --rev blocks */
   .c360-hp-svc-visual   { order: 1 !important; min-height: 320px; }
@@ -977,7 +991,6 @@
   .c360-hp-geo-rings   { width: 280px; height: 280px; }
   .c360-hp-geo-ring-3, .c360-hp-geo-ring-4 { display: none; }
   .c360-hp-geo-device-b { display: none; }
-  .c360-hp-industries-grid { grid-template-columns: repeat(2, 1fr); }
   .c360-hp-trust-pill { border-right: none; border-bottom: 1px solid #e5e3dc; width: 50%; }
   .c360-hp-trust-pill:nth-child(odd) { border-right: 1px solid #e5e3dc; }
   .c360-hp-trust-pill:last-child { border-bottom: none; }
@@ -988,7 +1001,6 @@
   .c360-hp-hero h1 { font-size: 34px; }
   .c360-hp-hero-actions { flex-direction: column; align-items: flex-start; }
   .c360-hp-btn-primary, .c360-hp-btn-outline-white { width: 100%; justify-content: center; }
-  .c360-hp-industries-grid { grid-template-columns: 1fr 1fr; }
   .c360-hp-trust-pill { width: 100%; border-right: none; }
   .c360-hp-trust-pill:nth-child(odd) { border-right: none; }
   .c360-hp-final-actions { flex-direction: column; }
@@ -1481,84 +1493,117 @@
 
 <!-- ══════════════════════════════════════════════════════
      SECTION 5 — INDUSTRIES
-     TO ACTIVATE A TILE: remove class "c360-hp-ind-inactive"
-     and update href to the page URL. Hover will auto-activate.
+     Same group tabs + fan-out cards as the /industries hub (v2.2 markup,
+     with Medicare Agents linking to its page). When an industry page is
+     added or a link changes, update the hub and this section together.
      ══════════════════════════════════════════════════════ -->
-<section class="c360-hp-section c360-hp-industries">
+<section class="c360-hp-section c360-hp-industries" id="hp-industries">
   <div class="c360-hp-container">
     <div class="c360-hp-section-header">
       <span class="c360-hp-overline">Industries We Serve</span>
-      <h2>Built for Arizona's local service businesses</h2>
-      <p>We specialize in trades, home services, and professional services — businesses that run on calls, appointments, and reputation.</p>
+      <h2>Marketing built around your industry</h2>
+      <p>Trades, home services, agents and specialty businesses. Pick your group, then your industry, to see the plan we'd start with.</p>
     </div>
-    <div class="c360-hp-industries-grid">
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/hvac">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-wind"></i></div>
-        <span class="c360-hp-industry-name">HVAC</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/plumbing">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-faucet-drip"></i></div>
-        <span class="c360-hp-industry-name">Plumbing</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/roofing">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-house-chimney"></i></div>
-        <span class="c360-hp-industry-name">Roofing</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/electrical">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-bolt"></i></div>
-        <span class="c360-hp-industry-name">Electrical</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/painting">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-paintbrush"></i></div>
-        <span class="c360-hp-industry-name">Painting</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/general-contractor">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-hammer"></i></div>
-        <span class="c360-hp-industry-name">General Contractor</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/lawn-care">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-leaf"></i></div>
-        <span class="c360-hp-industry-name">Lawn Care</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/pool-service">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-water"></i></div>
-        <span class="c360-hp-industry-name">Pool Service</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/cleaning-services">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-spray-can-sparkles"></i></div>
-        <span class="c360-hp-industry-name">Cleaning Services</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/pest-control">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-bug"></i></div>
-        <span class="c360-hp-industry-name">Pest Control</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/real-estate">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-house"></i></div>
-        <span class="c360-hp-industry-name">Real Estate</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/insurance-agents">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-umbrella"></i></div>
-        <span class="c360-hp-industry-name">Insurance Agents</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/auto-shops">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-car-side"></i></div>
-        <span class="c360-hp-industry-name">Auto Shops</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/medicare-agents">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-hand-holding-heart"></i></div>
-        <span class="c360-hp-industry-name">Medicare Agents</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/mortgage">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-percent"></i></div>
-        <span class="c360-hp-industry-name">Mortgage</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="#">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-ellipsis"></i></div>
-        <span class="c360-hp-industry-name">And More&hellip;</span>
-      </a>
+    <div class="c360-hp-ind-dir no-js">
+      <div class="c360-hp-ind-tabs" role="tablist" aria-label="Industry groups">
+        <button type="button" class="c360-hp-ind-tab" role="tab" id="hpind-tab-0" aria-controls="hpind-grid-0" aria-selected="true" tabindex="0"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i>Contractors &amp; Trades<small>10</small></button>
+        <button type="button" class="c360-hp-ind-tab" role="tab" id="hpind-tab-1" aria-controls="hpind-grid-1" aria-selected="false" tabindex="-1"><i class="fa-solid fa-house" aria-hidden="true"></i>Home Services<small>9</small></button>
+        <button type="button" class="c360-hp-ind-tab" role="tab" id="hpind-tab-2" aria-controls="hpind-grid-2" aria-selected="false" tabindex="-1"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>Professional &amp; Financial<small>6</small></button>
+        <button type="button" class="c360-hp-ind-tab" role="tab" id="hpind-tab-3" aria-controls="hpind-grid-3" aria-selected="false" tabindex="-1"><i class="fa-solid fa-store" aria-hidden="true"></i>Specialty Businesses<small>4</small></button>
+      </div>
+      <div class="c360-hp-ind-stage">
+        <h3 class="c360-hp-ind-grid-title">Contractors &amp; Trades</h3>
+        <ul class="c360-hp-ind-grid" role="tabpanel" id="hpind-grid-0" aria-labelledby="hpind-tab-0">
+          <li><a class="c360-hp-ind-row" href="/industries/plumbing"><i class="fa-solid fa-wrench" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Plumbing</span><span class="c360-hp-ind-row-desc">Emergency calls, water heaters, drains and repipes</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/hvac"><i class="fa-solid fa-fan" aria-hidden="true"></i><span class="c360-hp-ind-row-name">HVAC</span><span class="c360-hp-ind-row-desc">No-AC calls in July, furnaces in January, maintenance all year</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/electrical"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Electrical</span><span class="c360-hp-ind-row-desc">Service calls, panels and EV chargers</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/roofing"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Roofing</span><span class="c360-hp-ind-row-desc">Leak repairs, replacements and the calls after a storm</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/general-contractors"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i><span class="c360-hp-ind-row-name">General Contractors</span><span class="c360-hp-ind-row-desc">Remodels, additions and the projects you want more of</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/painting"><i class="fa-solid fa-paint-roller" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Painting</span><span class="c360-hp-ind-row-desc">Interior and exterior jobs that start with a quote</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/garage-door-repair"><i class="fa-solid fa-warehouse" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Garage Door Repair</span><span class="c360-hp-ind-row-desc">Broken springs, stuck openers and new doors</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/locksmiths"><i class="fa-solid fa-key" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Locksmiths</span><span class="c360-hp-ind-row-desc">Lockouts, rekeys and lock changes</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/water-damage-restoration"><i class="fa-solid fa-house-flood-water" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Water Damage Restoration</span><span class="c360-hp-ind-row-desc">Burst pipes, flooded basements and dry-outs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/handyman"><i class="fa-solid fa-hammer" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Handyman</span><span class="c360-hp-ind-row-desc">Small fixes that turn into bigger jobs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+        <h3 class="c360-hp-ind-grid-title">Home Services</h3>
+        <ul class="c360-hp-ind-grid" role="tabpanel" id="hpind-grid-1" aria-labelledby="hpind-tab-1" hidden>
+          <li><a class="c360-hp-ind-row" href="/industries/lawn-care"><i class="fa-solid fa-seedling" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Lawn Care</span><span class="c360-hp-ind-row-desc">Full weekly routes, treatments and seasonal cleanups</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/pool-service"><i class="fa-solid fa-water-ladder" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Pool Service</span><span class="c360-hp-ind-row-desc">Weekly cleaning routes, equipment and repairs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/cleaning-services"><i class="fa-solid fa-broom" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Cleaning Services</span><span class="c360-hp-ind-row-desc">Recurring home cleaning, deep cleans and move-outs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/pest-control"><i class="fa-solid fa-bug" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Pest Control</span><span class="c360-hp-ind-row-desc">One urgent treatment that becomes a quarterly plan</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/landscaping"><i class="fa-solid fa-trowel-bricks" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Landscaping &amp; Hardscaping</span><span class="c360-hp-ind-row-desc">Patios, walls and design-build projects</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/tree-service"><i class="fa-solid fa-tree" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Tree Service</span><span class="c360-hp-ind-row-desc">Trimming, removals and storm cleanup</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/junk-removal"><i class="fa-solid fa-dumpster" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Junk Removal</span><span class="c360-hp-ind-row-desc">Cleanouts, haul-aways and full trucks</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/movers"><i class="fa-solid fa-truck-moving" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Movers</span><span class="c360-hp-ind-row-desc">Local moves, long distance and packing</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/appliance-repair"><i class="fa-solid fa-plug" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Appliance Repair</span><span class="c360-hp-ind-row-desc">Washers, fridges and ovens that can't wait a week</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+        <h3 class="c360-hp-ind-grid-title">Professional &amp; Financial</h3>
+        <ul class="c360-hp-ind-grid" role="tabpanel" id="hpind-grid-2" aria-labelledby="hpind-tab-2" hidden>
+          <li><a class="c360-hp-ind-row" href="/industries/insurance-agencies"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Insurance Agencies</span><span class="c360-hp-ind-row-desc">Property and casualty: auto, home and business quotes</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/real-estate"><i class="fa-solid fa-house" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Real Estate</span><span class="c360-hp-ind-row-desc">Buyers, sellers and listings for agents and teams</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/mortgage"><i class="fa-solid fa-file-signature" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Mortgage</span><span class="c360-hp-ind-row-desc">A steady pipeline for loan officers and brokers</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/health-insurance"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Health Insurance</span><span class="c360-hp-ind-row-desc">Individual and family plans, in and out of enrollment season</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/medicare-agents"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Medicare Agents</span><span class="c360-hp-ind-row-desc">Year-round clients, not just enrollment season</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/farmers-insurance"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Farmers Insurance Agents</span><span class="c360-hp-ind-row-desc">Our marketing program for Farmers agents</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+        <h3 class="c360-hp-ind-grid-title">Specialty Businesses</h3>
+        <ul class="c360-hp-ind-grid" role="tabpanel" id="hpind-grid-3" aria-labelledby="hpind-tab-3" hidden>
+          <li><a class="c360-hp-ind-row" href="/industries/auto-shops"><i class="fa-solid fa-car" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Auto Shops</span><span class="c360-hp-ind-row-desc">Repairs and maintenance that keep every bay full</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/restaurants"><i class="fa-solid fa-utensils" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Restaurants</span><span class="c360-hp-ind-row-desc">Full tables on more than Friday nights</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/funeral-homes"><i class="fa-solid fa-dove" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Funeral Homes</span><span class="c360-hp-ind-row-desc">Found by families when it matters, and for pre-planning</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/dispensary"><i class="fa-solid fa-cannabis" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Dispensaries</span><span class="c360-hp-ind-row-desc">Compliant geo-fencing ads for licensed dispensaries</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+      </div>
     </div>
+    <p class="c360-hp-ind-all">Don't see yours? <a href="/industries">See all industries</a> or <a href="/schedule-demo">talk to us about your business</a>.</p>
   </div>
 </section>
+
+<script>
+/* Group tabs + fan-out: on a switch, the new group's cards start stacked on
+   the first card's spot and spread out to their places; the stage height
+   eases between groups. Without JS every group shows stacked. */
+(function(){
+  var dir=document.querySelector('.c360-hp-ind-dir'); if(!dir) return;
+  dir.classList.remove('no-js');
+  var tabs=dir.querySelectorAll('.c360-hp-ind-tab'), grids=dir.querySelectorAll('.c360-hp-ind-grid'), stage=dir.querySelector('.c360-hp-ind-stage');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var busy=false;
+  function show(idx){
+    if(busy) return; busy=true;
+    var from=stage.offsetHeight;
+    tabs.forEach(function(t,i){ t.setAttribute('aria-selected',i===idx?'true':'false'); t.tabIndex=i===idx?0:-1; });
+    grids.forEach(function(g,i){ g.hidden=(i!==idx); });
+    var grid=grids[idx], cards=grid.querySelectorAll('.c360-hp-ind-row');
+    if(reduce||!cards.length){ busy=false; return; }
+    // measure, then move every card onto the first card's spot
+    var first=cards[0].getBoundingClientRect();
+    cards.forEach(function(c,i){
+      var r=c.getBoundingClientRect();
+      c.classList.remove('is-fan'); c.style.transition='none';
+      c.style.transform='translate('+(first.left-r.left)+'px,'+(first.top-r.top)+'px) scale(.92)';
+      c.style.opacity=i?'0':'1';
+      c.style.setProperty('--d',(i*35)+'ms');
+    });
+    var to=stage.scrollHeight;
+    stage.style.height=from+'px';
+    void stage.offsetHeight; // reflow, then animate
+    stage.style.height=to+'px';
+    cards.forEach(function(c){ c.style.transition=''; c.classList.add('is-fan'); c.style.transform=''; c.style.opacity=''; });
+    var done=0;
+    var end=function(){ if(++done>=cards.length){ cards.forEach(function(c){c.classList.remove('is-fan');}); stage.style.height=''; busy=false; } };
+    cards.forEach(function(c){ c.addEventListener('transitionend',function h(e){ if(e.propertyName==='transform'){ c.removeEventListener('transitionend',h); end(); } }); });
+    setTimeout(function(){ if(busy){ cards.forEach(function(c){c.classList.remove('is-fan');}); stage.style.height=''; busy=false; } },1200);
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){ if(t.getAttribute('aria-selected')!=='true') show(i); });
+    t.addEventListener('keydown',function(e){
+      var n=null; if(e.key==='ArrowRight') n=(i+1)%tabs.length; if(e.key==='ArrowLeft') n=(i-1+tabs.length)%tabs.length;
+      if(n!==null){ e.preventDefault(); tabs[n].focus(); show(n); }
+    });
+  });
+})();
+</script>
 
 
 <!-- ══════════════════════════════════════════════════════
@@ -1754,7 +1799,7 @@
           <span class="c360-hp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
         </label>
         <div class="c360-hp-faq-a">
-          <p>We specialize in local service businesses — HVAC, plumbing, roofing, electrical, painting, lawn care, cleaning, pool service, pest control, and more. We also serve real estate professionals, insurance agents (including a Farmers Insurance cost-share program), mortgage brokers, and auto shops. If your business runs on phone calls and local reputation, we're built for you.</p>
+          <p>We specialize in local businesses that run on calls, appointments and reputation: contractors and trades like plumbing, HVAC, electrical and roofing; home services like lawn care, cleaning and pest control; insurance agents (including a Farmers Insurance cost-share program), real estate, mortgage and health insurance; and specialty businesses like auto shops, restaurants and funeral homes. <a href="/industries">See every industry we serve</a> and the plan we'd start with for each.</p>
         </div>
       </div>
 

@@ -47,7 +47,7 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `home.html` | Main Home Page | ✅ Code in repo | v2.2: 147 reviews / 5.0 rating — paste into GHL if live page still shows 144 / 4.9 |
+| `home.html` | Main Home Page | ✅ Code in repo | **v2.3: 🔁 paste into GHL** — Industries section now uses the hub's group tabs + fan-out cards (all 29 industries, each linking to its page; Medicare links to /industries/medicare-agents, so publish that page first). v2.2: 147 reviews / 5.0 rating |
 
 ### Services
 
