@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `roof-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `roof-hero` image in GHL Media.
 ```
-(paste the roof-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b04a457d40dd20617d1db6a/aaikihsjzca06ciye0itba-aaikihsjmkjllhegbstilq.jpg
 ```
 
 ## Canonical URL
