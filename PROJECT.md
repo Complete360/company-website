@@ -133,7 +133,7 @@ ghl-snippets/
   global/        header.html, footer.html (on every page), 404.html
   home.html
   services/      one file per service page
-  industries/    industry pages at /industries/[industry] (plumbing, hvac, roofing, general-contractors, painting, lawn-care, cleaning-services, pool-service, pest-control, real-estate, medicare-agents (legal review pending), health-insurance, mortgage, auto-shops, funeral-homes, restaurants, insurance-agencies, garage-door-repair, locksmiths, water-damage-restoration, appliance-repair, tree-service, junk-removal, movers, handyman, landscaping, electrical done; see the worksheet)
+  industries/    industry pages at /industries/[industry] (plumbing, hvac, roofing, general-contractors, painting, lawn-care, cleaning-services, pool-service, pest-control, real-estate, medicare-agents, health-insurance, mortgage, auto-shops, funeral-homes, restaurants, insurance-agencies, garage-door-repair, locksmiths, water-damage-restoration, appliance-repair, tree-service, junk-removal, movers, handyman, landscaping, electrical done; see the worksheet)
   pricing/       pricing pages (more coming)
   checkout/      checkout pages: each becomes a folder of numbered snippets
                  (1-pricing, 2-order-summary, 3-reviews, 4-faq) placed around
