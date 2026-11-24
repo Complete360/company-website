@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `move-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `move-hero` image in GHL Media.
 ```
-(paste the move-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b05bba28b5100b36ad80a3e/suburban-movers-carry-wrapped-furniture.jpg
 ```
 
 ## Canonical URL
