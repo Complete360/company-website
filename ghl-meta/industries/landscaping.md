@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `land-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `land-hero` image in GHL Media.
 ```
-(paste the land-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b05ea39adc6dbbbbda5c21c/teamwork-on-a-backyard-paver-patio.jpg
 ```
 
 ## Canonical URL
