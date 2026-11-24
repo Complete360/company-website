@@ -1,5 +1,11 @@
 <!-- ============================================================
-     COMPLETE360 MEGA MENU — v2.6  (v2.0 perf pass + content updates)
+     COMPLETE360 MEGA MENU — v2.7  (v2.0 perf pass + content updates)
+     v2.7 (2026-11-24): (1) Electrical now links to /industries/electrical
+       (desktop card + mobile row; page published in the repo as v1.1).
+       (2) Keyboard access for the four top-bar menu openers (Solutions,
+       Industries, Pricing, Resources): each is focusable, announced as a
+       button with aria-expanded, opens with Enter or Space, and Escape
+       closes the menu and returns focus. Mouse and touch behave as before.
      v2.6 (2026-11-24): INDUSTRIES MENU LIVE. Every industry card is now a
        link to /industries/[slug] (desktop + mobile); "Soon" badges, dashed
        cards and "Industry pages launching soon" tags removed. Groups and
@@ -320,6 +326,7 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
 }
 .c360-nav-item:hover,
 .c360-nav-item.c360-active { color: var(--c360-green); }
+.c360-nav-item[data-menu]:focus-visible { outline: 3px solid #2ecc52; outline-offset: 4px; border-radius: 6px; }
 
 /* v1.9.1 — Home. It keeps the .c360-nav-item class so it inherits the exact
    same box (incl. the 8px vertical padding) and lines up with its siblings.
@@ -1278,10 +1285,10 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
 
     <ul class="c360-nav-items">
       <li class="c360-nav-item"><a href="/" class="c360-nav-link">Home</a></li>
-      <li class="c360-nav-item" data-menu="solutions">Solutions</li>
-      <li class="c360-nav-item" data-menu="industries">Industries</li>
-      <li class="c360-nav-item" data-menu="pricing">Pricing</li>
-      <li class="c360-nav-item" data-menu="resources">Resources</li>
+      <li class="c360-nav-item" data-menu="solutions" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="c360-mega-solutions">Solutions</li>
+      <li class="c360-nav-item" data-menu="industries" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="c360-mega-industries">Industries</li>
+      <li class="c360-nav-item" data-menu="pricing" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="c360-mega-pricing">Pricing</li>
+      <li class="c360-nav-item" data-menu="resources" role="button" tabindex="0" aria-haspopup="true" aria-expanded="false" aria-controls="c360-mega-resources">Resources</li>
     </ul>
 
     <div class="c360-cta-group">
@@ -1291,7 +1298,7 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
   </div>
 
   <!-- ============ SOLUTIONS MEGA MENU ============ -->
-  <div class="c360-mega-menu" data-panel="solutions">
+  <div class="c360-mega-menu" data-panel="solutions" id="c360-mega-solutions">
     <div class="c360-mega-inner">
       <div class="c360-mega-left">
         <div class="c360-mega-eyebrow">Explore by category</div>
@@ -1634,7 +1641,7 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
   </div>
 
   <!-- ============ INDUSTRIES MEGA MENU ============ -->
-  <div class="c360-mega-menu" data-panel="industries">
+  <div class="c360-mega-menu" data-panel="industries" id="c360-mega-industries">
     <div class="c360-mega-inner">
       <div class="c360-mega-left">
         <div class="c360-mega-eyebrow">Who we serve</div>
@@ -1684,8 +1691,7 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
           <div class="c360-cards-grid c360-cards-grid-3">
             <a href="/industries/plumbing" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-wrench"></i></div><div class="c360-card-text"><p class="c360-card-title">Plumbing</p><p class="c360-card-desc">Emergency calls, drains, water heaters</p></div></a>
             <a href="/industries/hvac" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-fan"></i></div><div class="c360-card-text"><p class="c360-card-title">HVAC</p><p class="c360-card-desc">Heating & cooling contractors</p></div></a>
-            <!-- SWAP WHEN LIVE: no Electrical page yet. When /industries/electrical is published, change href to it. -->
-            <a href="/schedule-demo" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-bolt"></i></div><div class="c360-card-text"><p class="c360-card-title">Electrical</p><p class="c360-card-desc">Talk to us about your shop</p></div></a>
+            <a href="/industries/electrical" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-bolt"></i></div><div class="c360-card-text"><p class="c360-card-title">Electrical</p><p class="c360-card-desc">Service calls, panels, EV chargers</p></div></a>
             <a href="/industries/roofing" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-house-chimney"></i></div><div class="c360-card-text"><p class="c360-card-title">Roofing</p><p class="c360-card-desc">Repair, replace, storm calls</p></div></a>
             <a href="/industries/general-contractors" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-helmet-safety"></i></div><div class="c360-card-text"><p class="c360-card-title">General Contractors</p><p class="c360-card-desc">Remodels & additions</p></div></a>
             <a href="/industries/painting" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-paint-roller"></i></div><div class="c360-card-text"><p class="c360-card-title">Painting</p><p class="c360-card-desc">Interior & exterior pros</p></div></a>
@@ -1803,7 +1809,7 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
   </div>
 
   <!-- ============ PRICING MEGA MENU ============ -->
-  <div class="c360-mega-menu" data-panel="pricing">
+  <div class="c360-mega-menu" data-panel="pricing" id="c360-mega-pricing">
     <div class="c360-mega-inner">
       <div class="c360-mega-left">
         <div class="c360-mega-eyebrow">View pricing by category</div>
@@ -2046,7 +2052,7 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
   </div>
 
   <!-- ============ RESOURCES MEGA MENU ============ -->
-  <div class="c360-mega-menu" data-panel="resources">
+  <div class="c360-mega-menu" data-panel="resources" id="c360-mega-resources">
     <div class="c360-mega-inner">
       <div class="c360-mega-left">
         <div class="c360-mega-eyebrow">Learn & connect</div>
@@ -2357,8 +2363,7 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
           <ul class="c360-mobile-cat-items">
             <li><a href="/industries/plumbing"><i class="fa-solid fa-wrench"></i>Plumbing</a></li>
             <li><a href="/industries/hvac"><i class="fa-solid fa-fan"></i>HVAC</a></li>
-            <!-- SWAP WHEN LIVE: no Electrical page yet. When /industries/electrical is published, change href to it. -->
-            <li><a href="/schedule-demo"><i class="fa-solid fa-bolt"></i>Electrical</a></li>
+            <li><a href="/industries/electrical"><i class="fa-solid fa-bolt"></i>Electrical</a></li>
             <li><a href="/industries/roofing"><i class="fa-solid fa-house-chimney"></i>Roofing</a></li>
             <li><a href="/industries/general-contractors"><i class="fa-solid fa-helmet-safety"></i>General Contractors</a></li>
             <li><a href="/industries/painting"><i class="fa-solid fa-paint-roller"></i>Painting</a></li>
@@ -2615,7 +2620,7 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
 
     function closeAllMenus() {
       megaMenus.forEach(function(m) { m.classList.remove('c360-open'); });
-      navItems.forEach(function(n) { n.classList.remove('c360-active'); });
+      navItems.forEach(function(n) { n.classList.remove('c360-active'); n.setAttribute('aria-expanded', 'false'); });
     }
 
     function openMenu(menuName) {
@@ -2624,7 +2629,7 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
       var panel = header.querySelector('.c360-mega-menu[data-panel="' + menuName + '"]');
       var navItem = header.querySelector('.c360-nav-item[data-menu="' + menuName + '"]');
       if (panel) panel.classList.add('c360-open');
-      if (navItem) navItem.classList.add('c360-active');
+      if (navItem) { navItem.classList.add('c360-active'); navItem.setAttribute('aria-expanded', 'true'); }
     }
 
     function scheduleClose() { closeTimer = setTimeout(closeAllMenus, 180); }
@@ -2637,6 +2642,11 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
         var panel = header.querySelector('.c360-mega-menu[data-panel="' + menuName + '"]');
         if (panel && panel.classList.contains('c360-open')) closeAllMenus();
         else openMenu(menuName);
+      });
+      // v2.7: keyboard. Enter/Space toggles like a click; Escape closes.
+      item.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); item.click(); }
+        else if (e.key === 'Escape') { closeAllMenus(); item.focus(); }
       });
     });
 
@@ -2659,6 +2669,14 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
 
     document.addEventListener('click', function(e) {
       if (!header.contains(e.target)) closeAllMenus();
+    });
+    // v2.7: Escape inside an open panel closes it and returns focus to its opener.
+    megaMenus.forEach(function(menu) {
+      menu.addEventListener('keydown', function(e) {
+        if (e.key !== 'Escape') return;
+        var opener = header.querySelector('.c360-nav-item[data-menu="' + menu.getAttribute('data-panel') + '"]');
+        closeAllMenus(); if (opener) opener.focus();
+      });
     });
   }
 

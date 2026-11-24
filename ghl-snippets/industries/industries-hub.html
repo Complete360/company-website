@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industries hub
-     c360-indhub-v1.9.html
+     c360-indhub-v2.0.html
      GHL: Paste into a Custom Code block on the new page at /industries
           (page name "Industries"). Meta data: ghl-meta/industries/industries-hub.md.
           Schema: schema/pages/industries/industries-hub.html (batch paste later).
@@ -9,8 +9,7 @@
      Header + footer are GLOBAL sections — do NOT include them here.
      Prefix: c360-indhub-  (new, unique; vars --hub-*)
 
-     Container 1440px (Jared's pick, 2026-11-21; the other industry pages
-     are still 1680px and will move to 1440 in a sweep) with 64px side
+     Container 1440px (the site-wide standard since 2026-11-23) with 64px side
      padding on desktop, 40px on tablets, 24px on phones. Text blocks cap at 760px. 60px H1, 48px section titles,
      18px section descriptions, Poppins, reviews widget, CTA before the
      FAQ. Sections:
@@ -34,7 +33,6 @@
          except Medicare Agents (page held for management/legal review):
          it links to /schedule-demo for now. Swap it when cleared:
          search this file for "SWAP WHEN LIVE".
-       - Electrical has no page yet: "Talk to us" link to /schedule-demo.
        - Dispensaries -> /dispensary (live). Farmers Insurance agents ->
          /farmers-insurance (cost-share partner program).
        - When a new industry page goes live, add a row to its group and
@@ -48,6 +46,9 @@
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
 
+     v2.0 (2026-11-24) — Electrical links to its page (/industries/electrical,
+       "See the plan"); Landscaping & Hardscaping added to Home Services
+       (9 cards, tab count updated), matching header v2.7.
      v1.9 (2026-11-22) — no hard-coded review numbers anywhere on the page
        (Jared: the count and rating keep changing; the widget is the
        source of truth). Stat row removed from the reviews section; hero
@@ -335,7 +336,7 @@
             <strong>We lead with your Google profile and reviews</strong>
             <p><a href="/gbp-management">Google Business Profile Management</a>, reviews included, with <a href="/local-service-ads">Local Services Ads</a> alongside and <a href="/google-ppc">Google PPC</a> for the bigger projects.</p>
           </div>
-          <p class="c360-indhub-route-eg">General contractors, painting, lawn care, pool service, cleaning, tree service, movers, handyman</p>
+          <p class="c360-indhub-route-eg">General contractors, painting, landscaping, lawn care, pool service, cleaning, tree service, movers, handyman</p>
         </div>
       </li>
       <li class="c360-indhub-route" data-route="office">
@@ -367,7 +368,7 @@
     <div class="c360-indhub-dir no-js">
       <div class="c360-indhub-tabs" role="tablist" aria-label="Industry groups">
         <button type="button" class="c360-indhub-tab" role="tab" id="indhub-tab-0" aria-controls="indhub-grid-0" aria-selected="true" tabindex="0"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i>Contractors &amp; Trades<small>10</small></button>
-        <button type="button" class="c360-indhub-tab" role="tab" id="indhub-tab-1" aria-controls="indhub-grid-1" aria-selected="false" tabindex="-1"><i class="fa-solid fa-house" aria-hidden="true"></i>Home Services<small>8</small></button>
+        <button type="button" class="c360-indhub-tab" role="tab" id="indhub-tab-1" aria-controls="indhub-grid-1" aria-selected="false" tabindex="-1"><i class="fa-solid fa-house" aria-hidden="true"></i>Home Services<small>9</small></button>
         <button type="button" class="c360-indhub-tab" role="tab" id="indhub-tab-2" aria-controls="indhub-grid-2" aria-selected="false" tabindex="-1"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>Professional &amp; Financial<small>6</small></button>
         <button type="button" class="c360-indhub-tab" role="tab" id="indhub-tab-3" aria-controls="indhub-grid-3" aria-selected="false" tabindex="-1"><i class="fa-solid fa-store" aria-hidden="true"></i>Specialty Businesses<small>4</small></button>
       </div>
@@ -376,7 +377,7 @@
         <ul class="c360-indhub-grid" role="tabpanel" id="indhub-grid-0" aria-labelledby="indhub-tab-0">
           <li><a class="c360-indhub-row" href="/industries/plumbing"><i class="fa-solid fa-wrench" aria-hidden="true"></i><span class="c360-indhub-row-name">Plumbing</span><span class="c360-indhub-row-desc">Emergency calls, water heaters, drains and repipes</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/hvac"><i class="fa-solid fa-fan" aria-hidden="true"></i><span class="c360-indhub-row-name">HVAC</span><span class="c360-indhub-row-desc">No-AC calls in July, furnaces in January, maintenance all year</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
-          <li><a class="c360-indhub-row" href="/schedule-demo"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span class="c360-indhub-row-name">Electrical</span><span class="c360-indhub-row-desc">Service calls, panels and EV chargers</span><span class="c360-indhub-row-foot">Talk to us <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/electrical"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span class="c360-indhub-row-name">Electrical</span><span class="c360-indhub-row-desc">Service calls, panels and EV chargers</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/roofing"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i><span class="c360-indhub-row-name">Roofing</span><span class="c360-indhub-row-desc">Leak repairs, replacements and the calls after a storm</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/general-contractors"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i><span class="c360-indhub-row-name">General Contractors</span><span class="c360-indhub-row-desc">Remodels, additions and the projects you want more of</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/painting"><i class="fa-solid fa-paint-roller" aria-hidden="true"></i><span class="c360-indhub-row-name">Painting</span><span class="c360-indhub-row-desc">Interior and exterior jobs that start with a quote</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
@@ -391,6 +392,7 @@
           <li><a class="c360-indhub-row" href="/industries/pool-service"><i class="fa-solid fa-water-ladder" aria-hidden="true"></i><span class="c360-indhub-row-name">Pool Service</span><span class="c360-indhub-row-desc">Weekly cleaning routes, equipment and repairs</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/cleaning-services"><i class="fa-solid fa-broom" aria-hidden="true"></i><span class="c360-indhub-row-name">Cleaning Services</span><span class="c360-indhub-row-desc">Recurring home cleaning, deep cleans and move-outs</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/pest-control"><i class="fa-solid fa-bug" aria-hidden="true"></i><span class="c360-indhub-row-name">Pest Control</span><span class="c360-indhub-row-desc">One urgent treatment that becomes a quarterly plan</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-indhub-row" href="/industries/landscaping"><i class="fa-solid fa-trowel-bricks" aria-hidden="true"></i><span class="c360-indhub-row-name">Landscaping &amp; Hardscaping</span><span class="c360-indhub-row-desc">Patios, walls and design-build projects</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/tree-service"><i class="fa-solid fa-tree" aria-hidden="true"></i><span class="c360-indhub-row-name">Tree Service</span><span class="c360-indhub-row-desc">Trimming, removals and storm cleanup</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/junk-removal"><i class="fa-solid fa-dumpster" aria-hidden="true"></i><span class="c360-indhub-row-name">Junk Removal</span><span class="c360-indhub-row-desc">Cleanouts, haul-aways and full trucks</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-indhub-row" href="/industries/movers"><i class="fa-solid fa-truck-moving" aria-hidden="true"></i><span class="c360-indhub-row-name">Movers</span><span class="c360-indhub-row-desc">Local moves, long distance and packing</span><span class="c360-indhub-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
