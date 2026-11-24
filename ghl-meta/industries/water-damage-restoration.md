@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `water-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `water-hero` image in GHL Media (square).
 ```
-(paste the water-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b05a920b38c8e55940b244a/water-damage-restoration-professional-at-work.jpg
 ```
 
 ## Canonical URL
