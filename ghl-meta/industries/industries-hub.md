@@ -39,7 +39,7 @@ Complete360
 ## Social share image
 The `indhub-hero` image in GHL Media.
 ```
-https://files.leadconnectorhq.com/file/6b05f411465ec0caaa029b34/diverse-downtown-trades-team-portrait.jpg
+https://files.leadconnectorhq.com/file/6b05f7f7465ec0caaa032c29/diverse-workforce-team-on-sunny-street-1.jpg
 ```
 
 ## Canonical URL

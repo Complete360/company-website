@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industries hub
-     c360-indhub-v2.1.html
+     c360-indhub-v2.2.html
      GHL: Paste into a Custom Code block on the new page at /industries
           (page name "Industries"). Meta data: ghl-meta/industries/industries-hub.md.
           Schema: schema/pages/industries/industries-hub.html (batch paste later).
@@ -46,6 +46,11 @@
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
 
+     v2.2 (2026-11-24) — hero photo replaced with Jared's re-arranged
+       version of the group portrait (social share image updated too).
+       Photo now fills only the right 70% of the hero (fading in from the
+       navy on its left edge) so the whole group sits clear of the headline;
+       crop anchored near the top. Phones unchanged.
      v2.1 (2026-11-24) — combines the two v2.0 edits made the same day: Liz's
        hero photo (group of six local business owners from different trades,
        generated in ChatGPT) and Jared's Electrical link + Landscaping card.
@@ -126,7 +131,8 @@
 .c360-indhub-hero-photo{position:absolute;inset:0;background:
   radial-gradient(circle at 78% 40%,rgba(63,99,199,0.45),transparent 55%),
   linear-gradient(135deg,var(--hub-navy-dark),var(--hub-navy-deeper))}
-.c360-indhub-hero-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% center}
+/* photo sits in the right 70% (fading in from navy on its left edge) so the group stays clear of the headline */
+.c360-indhub-hero-photo img{position:absolute;top:0;bottom:0;left:30%;width:70%;height:100%;object-fit:cover;object-position:center 15%;-webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 18%);mask-image:linear-gradient(90deg,transparent 0%,#000 18%)}
 .c360-indhub-hero-photo img[src=""],.c360-indhub-hero-photo img:not([src]){visibility:hidden}
 .c360-indhub-hero::after{content:"";position:absolute;inset:0;pointer-events:none;
   background:linear-gradient(90deg,rgba(10,16,64,0.94) 0%,rgba(13,22,84,0.86) 42%,rgba(18,32,120,0.35) 75%,rgba(18,32,120,0.15) 100%)}
@@ -248,6 +254,7 @@
   .c360-indhub-section{padding:72px 0}
   .c360-indhub-hero-inner{padding-bottom:72px}
   .c360-indhub-hero::after{background:linear-gradient(180deg,rgba(10,16,64,0.92) 0%,rgba(13,22,84,0.88) 100%)}
+  .c360-indhub-hero-photo img{left:0;width:100%;-webkit-mask-image:none;mask-image:none}
   .c360-indhub-faq-q{font-size:17px}
   .c360-indhub-faq-a{padding-right:4px}
 }
@@ -273,7 +280,7 @@
 <section class="c360-indhub-hero">
   <div class="c360-indhub-hero-photo">
     <!-- IMAGE: indhub-hero — collage-style photo of local business owners from different trades (a plumber, a landscaper, an insurance agent at a desk, a restaurant owner), natural light, people on the RIGHT half, open space on the left for the headline, 16:9 -->
-    <img src="https://files.leadconnectorhq.com/file/6b05f411465ec0caaa029b34/diverse-downtown-trades-team-portrait.jpg" data-c360-placeholder="indhub-hero" alt="Six local business owners from different trades, from a plumber and an electrician to an insurance agent and a chef, standing together on a main street" fetchpriority="high">
+    <img src="https://files.leadconnectorhq.com/file/6b05f7f7465ec0caaa032c29/diverse-workforce-team-on-sunny-street-1.jpg" data-c360-placeholder="indhub-hero" alt="Six local business owners from different trades, from a plumber and an electrician to an insurance agent and a chef, standing together on a main street" fetchpriority="high">
   </div>
   <div class="c360-indhub-wrap c360-indhub-hero-inner">
     <div class="c360-indhub-hero-copy">
