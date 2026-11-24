@@ -1,7 +1,13 @@
 <!-- ══════════════════════════════════════════════════════════════
-     Complete360 — Homepage  |  c360-homepage-v2.5.html
+     Complete360 — Homepage  |  c360-homepage-v2.6.html
      GHL: Paste into Custom Code block on homepage page only.
      Poppins + Font Awesome 6.5.1 loaded via global header.
+
+     v2.6 (2026-11-24) — Services section given depth (Jared: too plain):
+       layered background (soft color glows + faded dot grid), each service
+       in a white elevated card, outlined 01-04 numbers, offset color plates
+       behind the mockups, icon chips on the feature lists. Copy fix:
+       "Google Guaranteed" -> "Google Verified" (retired Oct 2025).
 
      v2.5 (2026-11-24) — Jared: hero goes back to the proof card on the right
        (call-center photo removed) and gets a full-width background photo,
@@ -45,7 +51,7 @@
 
 <style>
 /* ══════════════════════════════════════════════════════
-   Complete360 Homepage v2.5  |  Prefix: c360-hp-
+   Complete360 Homepage v2.6  |  Prefix: c360-hp-
    ══════════════════════════════════════════════════════ */
 
 :root {
@@ -1012,6 +1018,72 @@
   .c360-hp-final-grid .c360-hp-final-actions, .c360-hp-final-grid .c360-hp-final-trust-row { justify-content: center; }
 }
 
+
+/* ══════════════════════════════════════════════════════
+   v2.6 SERVICES DEPTH — layered background, white service cards,
+   numbered rows, offset color plates behind the mockups
+   ══════════════════════════════════════════════════════ */
+.c360-hp-services-alt {
+  position: relative; overflow: hidden; counter-reset: hpsvc;
+  background: linear-gradient(180deg, #F4F7FC 0%, #EAF0FA 55%, #F4F7FC 100%);
+}
+.c360-hp-services-alt::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(18,32,120,0.08) 1.2px, transparent 1.5px);
+  background-size: 26px 26px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 30%, transparent 70%, #000 100%);
+          mask-image: linear-gradient(180deg, #000 0%, transparent 30%, transparent 70%, #000 100%);
+}
+.c360-hp-services-alt::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(600px 420px at 8% 22%, rgba(18,120,37,0.10), transparent 70%),
+    radial-gradient(700px 500px at 95% 48%, rgba(63,99,199,0.12), transparent 70%),
+    radial-gradient(600px 420px at 10% 82%, rgba(18,32,120,0.08), transparent 70%);
+}
+.c360-hp-services-alt > .c360-hp-container { position: relative; z-index: 1; }
+.c360-hp-services-alt .c360-hp-svc-block,
+.c360-hp-services-alt .c360-hp-svc-block:first-child,
+.c360-hp-services-alt .c360-hp-svc-block:last-child {
+  counter-increment: hpsvc;
+  background: #fff; border: 1px solid #E2E8F2; border-radius: 28px;
+  padding: 52px 56px; margin-bottom: 32px;
+  box-shadow: 0 30px 60px -32px rgba(15,31,94,0.30), 0 10px 24px rgba(15,31,94,0.05);
+}
+.c360-hp-services-alt .c360-hp-svc-block:last-child { margin-bottom: 0; }
+.c360-hp-svc-copy::before {
+  content: counter(hpsvc, decimal-leading-zero);
+  display: block; font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 56px; font-weight: 800; line-height: 1; letter-spacing: -0.03em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(18,32,120,0.22);
+  margin-bottom: 14px;
+}
+/* offset color plate behind each mockup */
+.c360-hp-services-alt .c360-hp-svc-visual {
+  box-shadow: 18px 18px 0 0 rgba(18,120,37,0.14), 0 34px 60px -24px rgba(9,16,60,0.55);
+}
+.c360-hp-services-alt .c360-hp-svc-block--rev .c360-hp-svc-visual {
+  box-shadow: -18px 18px 0 0 rgba(63,99,199,0.16), 0 34px 60px -24px rgba(9,16,60,0.55);
+}
+.c360-hp-services-alt .c360-hp-svc-features li i {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%; margin-top: 0;
+  background: var(--hp-green-light); font-size: 11px;
+}
+@media (max-width: 980px) {
+  .c360-hp-services-alt .c360-hp-svc-block,
+  .c360-hp-services-alt .c360-hp-svc-block:first-child,
+  .c360-hp-services-alt .c360-hp-svc-block:last-child { padding: 36px 32px; }
+}
+@media (max-width: 768px) {
+  .c360-hp-services-alt .c360-hp-svc-block,
+  .c360-hp-services-alt .c360-hp-svc-block:first-child,
+  .c360-hp-services-alt .c360-hp-svc-block:last-child { padding: 26px 20px; border-radius: 22px; margin-bottom: 20px; }
+  .c360-hp-svc-copy::before { font-size: 42px; margin-bottom: 10px; }
+  .c360-hp-services-alt .c360-hp-svc-visual,
+  .c360-hp-services-alt .c360-hp-svc-block--rev .c360-hp-svc-visual { box-shadow: 0 24px 44px -24px rgba(9,16,60,0.5); }
+}
+
 /* ══════════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════════ */
@@ -1286,9 +1358,9 @@
         <div class="c360-hp-svc-copy">
           <span class="c360-hp-overline">Paid Lead Generation</span>
           <h3>Stop waiting — get in front of buyers today</h3>
-          <p>Our paid advertising programs get your phone ringing with real, intent-driven customers. From Google Guaranteed badges to geo-fencing on the streets your customers drive, we target precisely and manage every dollar.</p>
+          <p>Our paid advertising programs get your phone ringing with real, intent-driven customers. From Google Verified badges to geo-fencing on the streets your customers drive, we target precisely and manage every dollar.</p>
           <ul class="c360-hp-svc-features">
-            <li><i class="fa-solid fa-circle-check"></i> Local Service Ads — earn the Google Guaranteed badge</li>
+            <li><i class="fa-solid fa-circle-check"></i> Local Service Ads — earn the Google Verified badge</li>
             <li><i class="fa-solid fa-circle-check"></i> Geo-Fencing Ads — mobile &amp; connected TV targeting</li>
             <li><i class="fa-solid fa-circle-check"></i> Cost-share programs available for insurance agents</li>
           </ul>
