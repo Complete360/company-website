@@ -1,0 +1,587 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Industry page: Electrical
+     c360-ind-elec-v1.0.html
+     GHL: Paste into a Custom Code block on the new page at /industries/electrical
+          (page name "Electrician Marketing"). Meta data: ghl-meta/industries/electrical.md.
+          Schema: schema/pages/industries/electrical.html (paste with the <script> tags).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360-ind-elec-  (new, unique; vars --elec-*)
+
+     Width standard: content capped at 1440px with 64px side margins (40px under
+     1100px, 24px under 640px), matching header v2.4. Same type sizes as the
+     other industry pages (64px H1, 56px section titles, 18px descriptions,
+     Poppins, pill links, reviews widget, CTA before the FAQ). Its own layout,
+     electrical themed:
+       - Hero: faint circuit-trace background; text left; photo right with a
+         breaker strip (three switches "on") overlapping its left edge.
+       - Reality: a breaker panel with four tripped breakers (pain points),
+         two columns either side of a bus bar.
+       - Plan: a panel schedule (8 numbered circuits: start here, grow with,
+         also available) with a legend.
+       - Journey: a conduit run with four junction-box stops (text + mock).
+       - Reviews: multimeter LCD readouts. CTA: navy panel, photo with a
+         light-switch plate on its corner. FAQ with lightning-bolt markers.
+     Light-blue palette, navy, green, amber for "tripped".
+
+     Policy notes: electricians are a core Local Services Ads category.
+
+     Images still to fill: search this file for IMAGE PLACEHOLDER
+       elec-hero        16:9, 2000px+ (shown 4:3; breaker strip over the LEFT edge)
+       elec-on-the-job  4:3, 1200px+  (CTA, left; switch plate over the bottom-right)
+
+     Google Partner badge: same official badge and link as
+     /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.0 (2026-11-24) — first build (worksheet #5). Draft plan: Google
+       Platinum Package and AI Voice Agent first; grow with Google PPC (panel
+       upgrades, EV chargers, generators) and Local SEO Booster. Complete360
+       CRM, Meta Ads, Website and Google Social Posting as "also available".
+       To be confirmed by Jared.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360-ind-elec{
+  --elec-navy:#122078;--elec-navy-dark:#0d1654;--elec-navy-deeper:#0a1040;
+  --elec-green:#127825;--elec-green-hover:#0e5e1d;--elec-green-light:#EAF3DE;--elec-led:#2ecc52;
+  --elec-amber:#F2A900;--elec-amber-light:#FFF4CC;
+  --elec-sky:#EEF5FD;--elec-sky-2:#E6F1FB;--elec-line:#E2E8F2;--elec-panel:#E9EDF3;--elec-steel:#B9C3D3;
+  --elec-text:#0F1F5E;--elec-muted:#5F5E5A;--elec-body:#3B4566;
+  --elec-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--elec-font);color:var(--elec-text);line-height:1.6;
+  -webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360-ind-elec *,.c360-ind-elec *::before,.c360-ind-elec *::after{box-sizing:border-box}
+/* Resets use :where() so they beat GHL theme defaults but never outrank
+   the component classes below. */
+.c360-ind-elec :where(h1,h2,h3,h4,p,ul,ol,li,figure){margin:0;padding:0;font-family:var(--elec-font)}
+.c360-ind-elec :where(ul,ol){list-style:none}
+.c360-ind-elec :where(a){color:var(--elec-navy)}
+.c360-ind-elec a:focus-visible,.c360-ind-elec summary:focus-visible{outline:3px solid #2ecc52;outline-offset:3px;border-radius:6px}
+/* Width standard: 1440px content, 64px side margins (40px under 1100px, 24px under 640px) */
+.c360-ind-elec-wrap{max-width:1440px;margin:0 auto;padding:0 64px}
+@media (max-width:1100px){.c360-ind-elec-wrap{padding:0 40px}}
+.c360-ind-elec-section{padding:104px 0}
+.c360-ind-elec-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;color:var(--elec-text);margin-bottom:16px}
+.c360-ind-elec-lead{font-size:18px;color:var(--elec-muted);max-width:760px;line-height:1.65}
+.c360-ind-elec-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--elec-green);margin-bottom:14px}
+.c360-ind-elec-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360-ind-elec-head .c360-ind-elec-lead{margin:0 auto}
+
+/* ---------- Buttons ---------- */
+.c360-ind-elec-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--elec-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360-ind-elec-btn-primary{background:var(--elec-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360-ind-elec-btn-primary:hover{background:var(--elec-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360-ind-elec-btn-outline{background:transparent;color:var(--elec-text);border:2px solid var(--elec-text);padding:14px 24px}
+.c360-ind-elec-btn-outline:hover{background:var(--elec-text);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360-ind-elec-btn-light{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.8);padding:14px 24px}
+.c360-ind-elec-btn-light:hover{background:#fff;color:var(--elec-navy);text-decoration:none;transform:translateY(-2px)}
+.c360-ind-elec a.c360-ind-elec-btn-primary{color:#fff}
+.c360-ind-elec a.c360-ind-elec-btn-outline{color:var(--elec-text)}
+.c360-ind-elec a.c360-ind-elec-btn-outline:hover{color:#fff}
+.c360-ind-elec a.c360-ind-elec-btn-light{color:#fff}
+.c360-ind-elec a.c360-ind-elec-btn-light:hover{color:var(--elec-navy)}
+.c360-ind-elec-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* Service links: outlined pills (same as the other industry pages). */
+.c360-ind-elec-pills{display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start;align-items:flex-start}
+.c360-ind-elec-pills a{display:inline-flex;align-items:center;font-size:14px;font-weight:600;line-height:1.2;color:var(--elec-navy);background:#fff;border:1.5px solid #9DB3DC;padding:9px 18px;border-radius:100px;text-decoration:none;transition:background .15s,color .15s,border-color .15s}
+.c360-ind-elec-pills a:hover{background:var(--elec-navy);border-color:var(--elec-navy);color:#fff;text-decoration:none}
+
+/* Image slots: styled fallback until the GHL image URL is pasted in. */
+.c360-ind-elec-img{position:relative;overflow:hidden;background:repeating-linear-gradient(135deg,#DCE7F5 0 16px,#E7EFF9 16px 32px)}
+.c360-ind-elec-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-elec-img img[src=""],.c360-ind-elec-img img:not([src]){visibility:hidden}
+.c360-ind-elec-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#A6B9D8;font-size:58px;pointer-events:none}
+.c360-ind-elec-img img[src]:not([src=""])+.c360-ind-elec-fallback{display:none}
+
+/* Breaker switch (used in the hero strip, reality panel and plan schedule) */
+.c360-ind-elec-switch{position:relative;flex:none;width:22px;height:40px;border-radius:5px;background:#2A3145;box-shadow:inset 0 0 0 2px #1A1F2E}
+.c360-ind-elec-switch::after{content:"";position:absolute;left:3px;right:3px;height:16px;border-radius:3px;top:4px;background:var(--elec-led);box-shadow:0 0 10px rgba(46,204,82,0.6)}
+.c360-ind-elec-switch.is-off::after{top:auto;bottom:4px;background:var(--elec-amber);box-shadow:0 0 10px rgba(242,169,0,0.55)}
+
+/* ══════════ HERO (circuit-trace background, photo with a breaker strip) ══════════ */
+.c360-ind-elec-hero{position:relative;background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='none' stroke='%23EEF3FA' stroke-width='2'%3E%3Cpath d='M0 40H60V100H120V160M40 0V20H100V60H160M0 130H30V160'/%3E%3C/g%3E%3Cg fill='%23E4ECF7'%3E%3Ccircle cx='60' cy='40' r='4'/%3E%3Ccircle cx='120' cy='100' r='4'/%3E%3Ccircle cx='100' cy='60' r='4'/%3E%3Ccircle cx='30' cy='130' r='4'/%3E%3C/g%3E%3C/svg%3E");border-bottom:1px solid var(--elec-line)}
+.c360-ind-elec-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center;padding-top:56px;padding-bottom:104px}
+.c360-ind-elec-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360-ind-elec-crumbs li{color:var(--elec-muted);display:flex;align-items:center;gap:8px}
+.c360-ind-elec-crumbs li+li::before{content:"\203A";color:#A6B0C4}
+.c360-ind-elec-crumbs a{color:var(--elec-text);text-decoration:none}
+.c360-ind-elec-crumbs a:hover{text-decoration:underline}
+.c360-ind-elec-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--elec-text);margin-bottom:22px}
+.c360-ind-elec-hero-sub{font-size:18px;line-height:1.65;color:var(--elec-body);max-width:640px;margin-bottom:32px}
+.c360-ind-elec-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360-ind-elec-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360-ind-elec-partner img{display:block;height:var(--badge-h);width:auto;border:0;outline:none;box-shadow:none;max-width:none}
+.c360-ind-elec-partner,.c360-ind-elec-partner:active{border:0;text-decoration:none;box-shadow:none}
+.c360-ind-elec-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:220px}
+.c360-ind-elec-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:var(--elec-body);line-height:1.4}
+.c360-ind-elec-creds-list i{color:var(--elec-green);margin-top:3px;font-size:12px}
+.c360-ind-elec-stars{color:#E8A400;letter-spacing:1px}
+.c360-ind-elec-hero-visual{position:relative;padding-left:96px}
+.c360-ind-elec-hero-visual .c360-ind-elec-img{aspect-ratio:4/3;border-radius:28px;box-shadow:0 30px 60px rgba(15,31,94,0.16)}
+.c360-ind-elec-strip{position:absolute;left:0;top:50%;transform:translateY(-50%);width:200px;background:var(--elec-panel);border:1px solid var(--elec-steel);border-radius:16px;padding:16px 14px;box-shadow:0 22px 44px rgba(15,31,94,0.2)}
+.c360-ind-elec-strip-top{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;font-weight:700;color:var(--elec-muted);margin-bottom:10px;padding:0 2px}
+.c360-ind-elec-strip-top span{display:inline-flex;align-items:center;gap:6px;color:var(--elec-green)}
+.c360-ind-elec-strip-top span::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--elec-led);box-shadow:0 0 8px var(--elec-led)}
+.c360-ind-elec-strip li{display:flex;align-items:center;gap:12px;background:#fff;border-radius:10px;padding:8px 10px;font-size:13px;font-weight:600;line-height:1.3}
+.c360-ind-elec-strip li + li{margin-top:8px}
+.c360-ind-elec-strip li em{display:block;font-style:normal;font-size:11px;font-weight:700;color:var(--elec-green)}
+
+/* ══════════ REALITY (tripped breakers in a panel) ══════════ */
+.c360-ind-elec-panelbox{max-width:1180px;margin:0 auto;background:linear-gradient(180deg,#EEF1F6,#E2E7EF);border:1px solid var(--elec-steel);border-radius:24px;padding:28px;box-shadow:inset 0 2px 0 #fff,0 24px 60px rgba(15,31,94,0.1)}
+.c360-ind-elec-panelbox-top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:0 6px 18px;border-bottom:2px dashed var(--elec-steel);margin-bottom:20px;font-size:13.5px;font-weight:700;color:var(--elec-muted)}
+.c360-ind-elec-panelbox-top b{color:var(--elec-text);font-size:15px}
+.c360-ind-elec-panelbox-top span{display:inline-flex;align-items:center;gap:8px;color:#7A5600}
+.c360-ind-elec-panelbox-top span::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--elec-amber);box-shadow:0 0 10px var(--elec-amber)}
+.c360-ind-elec-breakers{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:auto auto auto auto;gap:0 24px;position:relative}
+.c360-ind-elec-breakers::before{content:"";position:absolute;left:50%;top:0;bottom:0;width:6px;transform:translateX(-50%);border-radius:3px;background:linear-gradient(180deg,#C9D1DE,#AAB5C7)}
+.c360-ind-elec-breaker{display:grid;grid-template-columns:auto 1fr;grid-template-rows:subgrid;grid-row:span 2;gap:6px 18px;background:#fff;border:1px solid var(--elec-line);border-radius:16px;padding:22px 24px;margin-bottom:20px}
+.c360-ind-elec-breaker .c360-ind-elec-switch{grid-row:span 2;align-self:start;margin-top:4px}
+.c360-ind-elec-breaker small{display:block;font-size:12px;font-weight:700;color:#7A5600;margin-bottom:4px}
+.c360-ind-elec-breaker h3{font-size:20px;font-weight:700;line-height:1.35}
+.c360-ind-elec-breaker p{font-size:15.5px;color:var(--elec-muted);line-height:1.65}
+
+/* ══════════ PLAN (panel schedule) ══════════ */
+.c360-ind-elec-schedule{max-width:1312px;margin:0 auto;background:#fff;border:2px solid var(--elec-navy);border-radius:14px;overflow:hidden;box-shadow:0 24px 60px rgba(15,31,94,0.12)}
+.c360-ind-elec-sched-head{display:grid;grid-template-columns:1fr auto;gap:20px;align-items:end;background:var(--elec-navy);color:#fff;padding:22px 32px}
+.c360-ind-elec-sched-head h3{font-size:26px;font-weight:800;line-height:1.2}
+.c360-ind-elec-sched-head p{font-size:13.5px;color:#C7D0EE;text-align:right;line-height:1.5}
+.c360-ind-elec-sched-legend{display:flex;flex-wrap:wrap;gap:10px 24px;padding:14px 32px;background:var(--elec-sky);border-bottom:1px solid var(--elec-line);font-size:13.5px;font-weight:600;color:var(--elec-body)}
+.c360-ind-elec-sched-legend span{display:inline-flex;align-items:center;gap:8px}
+.c360-ind-elec-sched-legend i{width:12px;height:12px;border-radius:3px;display:inline-block}
+.c360-ind-elec-circuits{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));grid-template-rows:repeat(4,auto)}
+.c360-ind-elec-circuit{display:grid;grid-template-columns:44px 22px minmax(0,1fr);gap:4px 16px;align-items:start;padding:22px 28px;border-bottom:1px solid var(--elec-line)}
+.c360-ind-elec-circuit:nth-child(odd){border-right:1px solid var(--elec-line)}
+.c360-ind-elec-circuit:nth-last-child(-n+2){border-bottom:0}
+.c360-ind-elec-circuit > b{grid-row:span 3;display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:10px;background:var(--elec-sky-2);color:var(--elec-navy);font-size:16px;font-weight:800}
+.c360-ind-elec-circuit .c360-ind-elec-switch{grid-row:span 3;margin-top:0}
+.c360-ind-elec-circuit.is-grow .c360-ind-elec-switch::after{background:#5B8DEF;box-shadow:0 0 10px rgba(91,141,239,0.55)}
+.c360-ind-elec-circuit.is-also .c360-ind-elec-switch::after{background:#C9D1DE;box-shadow:none}
+.c360-ind-elec-circuit h4{display:flex;flex-wrap:wrap;align-items:center;gap:8px 12px;font-size:18px;font-weight:700;line-height:1.3}
+.c360-ind-elec-circuit h4 a{color:var(--elec-text);text-decoration:none;border-bottom:1.5px solid #9DB3DC}
+.c360-ind-elec-circuit h4 a:hover{border-color:var(--elec-navy)}
+.c360-ind-elec-tag{font-size:12px;font-weight:700;padding:3px 10px;border-radius:100px;white-space:nowrap}
+.c360-ind-elec-tag.is-core{background:var(--elec-green-light);color:var(--elec-green)}
+.c360-ind-elec-tag.is-grow{background:#E4ECFD;color:#2B55B8}
+.c360-ind-elec-tag.is-also{background:#F1F3F7;color:var(--elec-muted)}
+.c360-ind-elec-circuit p{font-size:15px;color:var(--elec-muted);line-height:1.6}
+.c360-ind-elec-sched-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px;padding:18px 32px;border-top:2px solid var(--elec-navy);font-size:13.5px;color:var(--elec-muted)}
+
+/* ══════════ JOURNEY (conduit run with junction boxes) ══════════ */
+.c360-ind-elec-run{position:relative;max-width:1312px;margin:0 auto;padding-left:88px}
+.c360-ind-elec-run::before{content:"";position:absolute;left:30px;top:20px;bottom:20px;width:10px;border-radius:5px;background:linear-gradient(90deg,#C3CCDA,#E3E8F0 50%,#C3CCDA)}
+.c360-ind-elec-stop{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:40px;align-items:center;background:#fff;border:1px solid var(--elec-line);border-radius:22px;padding:28px;box-shadow:0 14px 34px rgba(15,31,94,0.07)}
+.c360-ind-elec-stop + .c360-ind-elec-stop{margin-top:28px}
+.c360-ind-elec-stop::before{content:attr(data-n);position:absolute;left:-76px;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:10px;background:var(--elec-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:800;box-shadow:0 0 0 5px #fff,0 0 0 7px var(--elec-steel)}
+.c360-ind-elec-stop small{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:var(--elec-green);margin-bottom:8px}
+.c360-ind-elec-stop h3{font-size:24px;font-weight:700;line-height:1.3;margin-bottom:10px}
+.c360-ind-elec-stop p{font-size:16px;color:var(--elec-muted);line-height:1.65;margin-bottom:16px}
+.c360-ind-elec-mock{background:var(--elec-sky);border-radius:16px;padding:20px;display:flex;flex-direction:column;justify-content:center;min-height:180px}
+.c360-ind-elec-card{background:#fff;border:1px solid var(--elec-line);border-radius:12px;padding:12px 14px;font-family:Arial,'Helvetica Neue',sans-serif;font-size:13px;color:#202124;box-shadow:0 8px 18px rgba(15,31,94,0.07);max-width:460px;width:100%;margin:0 auto}
+.c360-ind-elec-card + .c360-ind-elec-card{margin-top:10px}
+.c360-ind-elec-card small{display:block;font-size:11.5px;font-weight:700;color:#5F6368;margin-bottom:3px}
+.c360-ind-elec-card b{display:block;font-size:14px;color:#1A0DAB}
+.c360-ind-elec-card b.is-plain{color:#202124}
+.c360-ind-elec-card span{display:block;font-size:12.5px;color:#5F6368;line-height:1.45}
+.c360-ind-elec-ver{display:inline-flex !important;align-items:center;gap:5px;color:#137333 !important;font-weight:700}
+.c360-ind-elec-st{color:#E8A400}
+.c360-ind-elec-sms{font-size:13px;line-height:1.45;padding:10px 12px;border-radius:14px;max-width:420px}
+.c360-ind-elec-sms-out{background:var(--elec-navy);color:#fff;border-bottom-right-radius:4px;margin-left:auto}
+.c360-ind-elec-sms-in{background:#fff;border:1px solid var(--elec-line);color:#202124;border-bottom-left-radius:4px;margin-top:8px}
+.c360-ind-elec-note{font-size:12px;color:var(--elec-muted);text-align:center;margin-top:20px}
+
+/* ══════════ REVIEWS (multimeter readouts) ══════════ */
+.c360-ind-elec-meters{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;max-width:1000px;margin:0 auto 48px}
+.c360-ind-elec-meter{background:#2A3145;border-radius:22px;padding:16px 16px 18px;box-shadow:0 16px 36px rgba(15,31,94,0.18)}
+.c360-ind-elec-meter-lcd{background:linear-gradient(180deg,#C8D8B4,#B5C79E);border-radius:12px;padding:12px 18px;text-align:right;box-shadow:inset 0 2px 6px rgba(0,0,0,0.25)}
+.c360-ind-elec-meter-lcd strong{display:block;font-size:44px;font-weight:800;line-height:1.05;color:#1E2A12;letter-spacing:0.02em;font-variant-numeric:tabular-nums}
+.c360-ind-elec-meter-lcd span{font-size:12px;font-weight:700;color:#3C4A2A}
+.c360-ind-elec-meter p{display:flex;align-items:center;justify-content:space-between;color:#C7D0EE;font-size:13.5px;font-weight:600;margin-top:12px;padding:0 4px}
+.c360-ind-elec-meter p i{width:30px;height:30px;border-radius:50%;background:#3A4360;box-shadow:inset 0 0 0 3px #4C5677;display:inline-block}
+
+/* ══════════ CTA (navy panel, photo with a switch plate) ══════════ */
+.c360-ind-elec-cta{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:56px;align-items:center;max-width:1312px;margin:0 auto;background:var(--elec-navy);border-radius:32px;padding:44px;color:#fff}
+.c360-ind-elec-cta-visual{position:relative}
+.c360-ind-elec-cta-visual .c360-ind-elec-img{aspect-ratio:4/3;border-radius:20px}
+.c360-ind-elec-plate{position:absolute;right:-22px;bottom:-22px;width:92px;height:132px;background:#F7F8FA;border-radius:14px;box-shadow:0 14px 30px rgba(0,0,0,0.35);display:flex;align-items:center;justify-content:center}
+.c360-ind-elec-plate::before,.c360-ind-elec-plate::after{content:"";position:absolute;left:50%;width:8px;height:8px;border-radius:50%;background:#C9D1DE;transform:translateX(-50%)}
+.c360-ind-elec-plate::before{top:12px}
+.c360-ind-elec-plate::after{bottom:12px}
+.c360-ind-elec-plate span{width:30px;height:62px;border-radius:8px;background:linear-gradient(180deg,#fff,#E6E9EF);box-shadow:inset 0 -18px 0 var(--elec-green),0 2px 4px rgba(0,0,0,0.2)}
+.c360-ind-elec-cta .c360-ind-elec-h2{color:#fff}
+.c360-ind-elec-cta p{font-size:18px;color:#DCE2F7;line-height:1.65;margin-bottom:30px;max-width:620px}
+
+/* ══════════ FAQ (bolt markers) ══════════ */
+.c360-ind-elec-faq-list{max-width:1000px;margin:0 auto}
+.c360-ind-elec-faq-item{border-bottom:1px solid var(--elec-line)}
+.c360-ind-elec-faq-item:first-child{border-top:1px solid var(--elec-line)}
+.c360-ind-elec-faq-q{display:grid;grid-template-columns:32px 1fr 24px;align-items:center;gap:12px;padding:22px 4px;font-size:17px;font-weight:600;color:var(--elec-text);cursor:pointer;list-style:none}
+.c360-ind-elec-faq-q::-webkit-details-marker{display:none}
+.c360-ind-elec-faq-q::before{content:"\f0e7";font-family:"Font Awesome 6 Free";font-weight:900;font-size:14px;display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:var(--elec-amber-light);color:#B07800;transition:background .2s,color .2s}
+.c360-ind-elec-faq-item[open] .c360-ind-elec-faq-q::before{background:var(--elec-green-light);color:var(--elec-green)}
+.c360-ind-elec-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--elec-navy);line-height:1;text-align:right;transition:transform .2s}
+.c360-ind-elec-faq-item[open] .c360-ind-elec-faq-q::after{transform:rotate(45deg)}
+.c360-ind-elec-faq-a{padding:0 40px 24px 48px;font-size:16px;color:var(--elec-muted);line-height:1.7}
+.c360-ind-elec-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1100px){
+  .c360-ind-elec-hero-grid{grid-template-columns:1fr;gap:48px;padding-top:44px;padding-bottom:80px}
+  .c360-ind-elec-hero-visual{max-width:680px}
+  .c360-ind-elec-stop{grid-template-columns:1fr;gap:22px}
+  .c360-ind-elec-cta{grid-template-columns:1fr;gap:44px}
+  .c360-ind-elec-cta-visual{max-width:560px}
+}
+@media (max-width:900px){
+  .c360-ind-elec-section{padding:76px 0}
+  .c360-ind-elec-breakers{grid-template-columns:1fr}
+  .c360-ind-elec-breakers::before{display:none}
+  .c360-ind-elec-breaker{grid-row:auto;grid-template-rows:auto auto}
+  .c360-ind-elec-circuits{grid-template-columns:1fr}
+  .c360-ind-elec-circuit:nth-child(odd){border-right:0}
+  .c360-ind-elec-circuit:nth-last-child(2){border-bottom:1px solid var(--elec-line)}
+  .c360-ind-elec-meters{grid-template-columns:1fr;max-width:360px}
+  .c360-ind-elec-sched-head{grid-template-columns:1fr}
+  .c360-ind-elec-sched-head p{text-align:left}
+}
+@media (max-width:640px){
+  .c360-ind-elec-wrap{padding-left:24px;padding-right:24px}
+  .c360-ind-elec-btn{width:100%}
+  .c360-ind-elec-partner{--badge-h:64px;--badge-clear:32px}
+  .c360-ind-elec-hero-visual{padding-left:0;padding-bottom:0}
+  .c360-ind-elec-strip{position:relative;top:auto;transform:none;width:auto;margin:-36px 12px 0}
+  .c360-ind-elec-panelbox{padding:16px}
+  .c360-ind-elec-breaker{padding:18px}
+  .c360-ind-elec-circuit{padding:18px 18px;grid-template-columns:36px 22px minmax(0,1fr);gap:4px 12px}
+  .c360-ind-elec-circuit > b{width:34px;height:34px;font-size:14px}
+  .c360-ind-elec-sched-head,.c360-ind-elec-sched-legend,.c360-ind-elec-sched-foot{padding-left:18px;padding-right:18px}
+  .c360-ind-elec-run{padding-left:0}
+  .c360-ind-elec-run::before,.c360-ind-elec-stop::before{display:none}
+  .c360-ind-elec-stop{padding:20px}
+  .c360-ind-elec-cta{padding:28px 22px}
+  .c360-ind-elec-plate{right:-8px;bottom:-14px;width:70px;height:100px}
+  .c360-ind-elec-plate span{width:24px;height:46px;box-shadow:inset 0 -14px 0 var(--elec-green),0 2px 4px rgba(0,0,0,0.2)}
+  .c360-ind-elec-faq-a{padding:0 4px 22px 48px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360-ind-elec *,.c360-ind-elec *::before,.c360-ind-elec *::after{transition:none !important;animation:none !important}
+  .c360-ind-elec-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360-ind-elec">
+
+<!-- ══════════ HERO (circuit traces, photo with a breaker strip) ══════════ -->
+<section class="c360-ind-elec-hero">
+  <div class="c360-ind-elec-wrap c360-ind-elec-hero-grid">
+    <div>
+      <nav class="c360-ind-elec-crumbs" aria-label="Breadcrumb">
+        <ol>
+          <li><a href="/">Home</a></li>
+          <li><a href="/industries">Industries</a></li>
+          <li aria-current="page">Electrical</li>
+        </ol>
+      </nav>
+      <h1>Electrician marketing for the outage call and the panel upgrade</h1>
+      <p class="c360-ind-elec-hero-sub">When the power goes out or a breaker won't reset, homeowners call the first licensed electrician they trust. We help your electrical company show up first on Google, answer every call, and win the bigger jobs too: panel upgrades, EV chargers and generators.</p>
+      <div class="c360-ind-elec-ctas">
+        <a href="/schedule-demo" class="c360-ind-elec-btn c360-ind-elec-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360-ind-elec-btn c360-ind-elec-btn-outline"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+      <div class="c360-ind-elec-creds">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360-ind-elec-partner">
+          <img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner">
+        </a>
+        <ul class="c360-ind-elec-creds-list">
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Certified Google Partner, with a Google Product Expert on the team</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> <span><span class="c360-ind-elec-stars" aria-hidden="true">★★★★★</span> 147 five-star reviews, 5.0 on Google</span></li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, serving nationwide since 2018</li>
+        </ul>
+      </div>
+    </div>
+    <div class="c360-ind-elec-hero-visual">
+      <div class="c360-ind-elec-img">
+        <!-- IMAGE PLACEHOLDER: elec-hero — licensed electrician in a matching navy company work shirt working at an open residential electrical panel with a voltage tester, garage or utility room, 16:9 (shown 4:3; a breaker strip overlaps the LEFT edge, keep the electrician center-right) -->
+        <img src="" data-c360-placeholder="elec-hero" alt="Licensed electrician testing breakers at an open home electrical panel" fetchpriority="high">
+        <div class="c360-ind-elec-fallback" aria-hidden="true"><i class="fa-solid fa-bolt"></i></div>
+      </div>
+      <div class="c360-ind-elec-strip" role="img" aria-label="Breaker strip showing three switches on: calls answered, Google Verified and reviews">
+        <div class="c360-ind-elec-strip-top">Your marketing <span>On</span></div>
+        <ul>
+          <li><span class="c360-ind-elec-switch" aria-hidden="true"></span><div>Calls answered<em>24/7</em></div></li>
+          <li><span class="c360-ind-elec-switch" aria-hidden="true"></span><div>Google Verified<em>Top of search</em></div></li>
+          <li><span class="c360-ind-elec-switch" aria-hidden="true"></span><div>Fresh reviews<em>Every job</em></div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ THE ELECTRICAL REALITY (tripped breakers) ══════════ -->
+<section class="c360-ind-elec-section" style="background:var(--elec-sky)">
+  <div class="c360-ind-elec-wrap">
+    <div class="c360-ind-elec-head">
+      <span class="c360-ind-elec-kicker"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i> Check the panel</span>
+      <h2 class="c360-ind-elec-h2">The electrical contractor reality</h2>
+      <p class="c360-ind-elec-lead">Most electrical companies have a few breakers tripped in their marketing. Here's what usually needs resetting.</p>
+    </div>
+    <div class="c360-ind-elec-panelbox">
+      <div class="c360-ind-elec-panelbox-top"><b>Marketing panel</b><span>4 breakers tripped</span></div>
+      <div class="c360-ind-elec-breakers">
+        <article class="c360-ind-elec-breaker">
+          <span class="c360-ind-elec-switch is-off" aria-hidden="true"></span>
+          <div><small>Tripped: after hours</small><h3>The outage call comes at 9 PM</h3></div>
+          <p>Half the house is dark and the breaker won't reset. The homeowner calls down the list until a real person answers.</p>
+        </article>
+        <article class="c360-ind-elec-breaker">
+          <span class="c360-ind-elec-switch is-off" aria-hidden="true"></span>
+          <div><small>Tripped: trust</small><h3>Homeowners worry about who's touching their wiring</h3></div>
+          <p>Electrical work feels risky. Before they call, people look for proof you're licensed, insured and well reviewed.</p>
+        </article>
+        <article class="c360-ind-elec-breaker">
+          <span class="c360-ind-elec-switch is-off" aria-hidden="true"></span>
+          <div><small>Tripped: job mix</small><h3>Small service calls crowd out the big jobs</h3></div>
+          <p>Panel upgrades, EV chargers, generators and rewiring grow the business, but those buyers search and compare differently.</p>
+        </article>
+        <article class="c360-ind-elec-breaker">
+          <span class="c360-ind-elec-switch is-off" aria-hidden="true"></span>
+          <div><small>Tripped: follow-up</small><h3>Estimates go out and go quiet</h3></div>
+          <p>Bigger jobs get two or three bids. Without a friendly follow-up, your estimate gets forgotten in someone's inbox.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ RECOMMENDED PLAN (panel schedule) ══════════
+     Draft plan, to confirm with Jared (worksheet #5: Platinum + AI Voice Agent;
+     grow with Google PPC for panels and EV chargers). -->
+<section class="c360-ind-elec-section" id="elec-plan">
+  <div class="c360-ind-elec-wrap">
+    <div class="c360-ind-elec-head">
+      <span class="c360-ind-elec-kicker"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i> Your recommended plan</span>
+      <h2 class="c360-ind-elec-h2">Your marketing, wired like a panel schedule</h2>
+      <p class="c360-ind-elec-lead">Every circuit labeled. The first two carry the load; the rest you add as the business grows.</p>
+    </div>
+    <div class="c360-ind-elec-schedule">
+      <div class="c360-ind-elec-sched-head">
+        <h3>Panel schedule</h3>
+        <p>Your electrical company<br>Draft plan for your review</p>
+      </div>
+      <div class="c360-ind-elec-sched-legend">
+        <span><i style="background:var(--elec-led)"></i> Start here</span>
+        <span><i style="background:#5B8DEF"></i> Grow with</span>
+        <span><i style="background:#C9D1DE"></i> Also available</span>
+      </div>
+      <div class="c360-ind-elec-circuits">
+        <div class="c360-ind-elec-circuit is-core">
+          <b>1</b><span class="c360-ind-elec-switch" aria-hidden="true"></span>
+          <h4><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a><span class="c360-ind-elec-tag is-core">Start here</span></h4>
+          <p>Local Services Ads with the Google Verified badge at the top of Google, plus Google Business Profile Management for your map listing, photos, review requests and replies.</p>
+        </div>
+        <div class="c360-ind-elec-circuit is-core">
+          <b>2</b><span class="c360-ind-elec-switch" aria-hidden="true"></span>
+          <h4><a href="/ai-agents">AI Voice Agent</a><span class="c360-ind-elec-tag is-core">Start here</span></h4>
+          <p>Answers emergency calls day or night, gets the address and the problem, and sends urgent calls to your on-call electrician. No per-minute AI fees; the phone number and calling minutes are billed separately.</p>
+        </div>
+        <div class="c360-ind-elec-circuit is-grow">
+          <b>3</b><span class="c360-ind-elec-switch" aria-hidden="true"></span>
+          <h4><a href="/google-ppc">Google PPC</a><span class="c360-ind-elec-tag is-grow">Grow with</span></h4>
+          <p>Search ads for the bigger jobs: panel upgrades, EV charger installs, whole-home generators and rewiring.</p>
+        </div>
+        <div class="c360-ind-elec-circuit is-grow">
+          <b>4</b><span class="c360-ind-elec-switch" aria-hidden="true"></span>
+          <h4><a href="/local-seo-booster">Local SEO Booster</a><span class="c360-ind-elec-tag is-grow">Grow with</span></h4>
+          <p>Keeps your business name, address, phone and hours accurate across 70+ directories and maps.</p>
+        </div>
+        <div class="c360-ind-elec-circuit is-also">
+          <b>5</b><span class="c360-ind-elec-switch" aria-hidden="true"></span>
+          <h4><a href="/crm-home">Complete360 CRM</a><span class="c360-ind-elec-tag is-also">Also available</span></h4>
+          <p>Every estimate in one place, with friendly follow-ups so bigger bids don't go quiet.</p>
+        </div>
+        <div class="c360-ind-elec-circuit is-also">
+          <b>6</b><span class="c360-ind-elec-switch" aria-hidden="true"></span>
+          <h4><a href="/meta-ads">Meta Ads</a><span class="c360-ind-elec-tag is-also">Also available</span></h4>
+          <p>EV charger and generator offers shown to homeowners in the neighborhoods you serve.</p>
+        </div>
+        <div class="c360-ind-elec-circuit is-also">
+          <b>7</b><span class="c360-ind-elec-switch" aria-hidden="true"></span>
+          <h4><a href="/websites-home">Website</a><span class="c360-ind-elec-tag is-also">Also available</span></h4>
+          <p>Your services, service area and license details, with an easy way to book or call.</p>
+        </div>
+        <div class="c360-ind-elec-circuit is-also">
+          <b>8</b><span class="c360-ind-elec-switch" aria-hidden="true"></span>
+          <h4><a href="/google-social-posting">Google Social Posting</a><span class="c360-ind-elec-tag is-also">Also available</span></h4>
+          <p>Weekly posts of recent jobs on your Google Business Profile, so it always looks active.</p>
+        </div>
+      </div>
+      <div class="c360-ind-elec-sched-foot">
+        <span>Your final plan is set with you on a strategy call. Each service's price is on its own page.</span>
+        <a href="/schedule-demo" class="c360-ind-elec-btn c360-ind-elec-btn-primary">Walk through this plan with us</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ JOURNEY (conduit run) ══════════ -->
+<section class="c360-ind-elec-section" style="background:var(--elec-sky)">
+  <div class="c360-ind-elec-wrap">
+    <div class="c360-ind-elec-head">
+      <span class="c360-ind-elec-kicker"><i class="fa-solid fa-route" aria-hidden="true"></i> How it works</span>
+      <h2 class="c360-ind-elec-h2">From lights out to the next big job</h2>
+      <p class="c360-ind-elec-lead">Four connections along the run, from the first search to the panel upgrade that follows.</p>
+    </div>
+    <div class="c360-ind-elec-run">
+      <article class="c360-ind-elec-stop" data-n="1">
+        <div>
+          <small>Get found</small>
+          <h3>The lights go out</h3>
+          <p>The homeowner searches for an electrician nearby. Your Google Verified ad, rating and reviews show up first, with proof you're licensed and insured.</p>
+          <div class="c360-ind-elec-pills"><a href="/local-service-ads#lsa-pricing">Google Platinum Package</a></div>
+        </div>
+        <div class="c360-ind-elec-mock" role="img" aria-label="Example sponsored Google result for a Google Verified electrician with a 4.9 star rating, open 24 hours">
+          <div class="c360-ind-elec-card"><small>Sponsored · electrician near me</small><b>Brightline Electric</b><span class="c360-ind-elec-ver"><i class="fa-solid fa-circle-check"></i> Google Verified</span><span><span class="c360-ind-elec-st">★★★★★</span> 4.9 (204) · Open 24 hours</span></div>
+        </div>
+      </article>
+      <article class="c360-ind-elec-stop" data-n="2">
+        <div>
+          <small>Win the call</small>
+          <h3>A real answer, even at 9 PM</h3>
+          <p>Your crew is off the clock. The AI Voice Agent answers, gets the address and what's happening, and sends urgent calls straight to your on-call electrician.</p>
+          <div class="c360-ind-elec-pills"><a href="/ai-agents">AI Voice Agent</a></div>
+        </div>
+        <div class="c360-ind-elec-mock" role="img" aria-label="Example: a 9:12 PM call answered by the AI Voice Agent about a breaker that won't reset, sent to the on-call electrician">
+          <div class="c360-ind-elec-card"><small>AI Voice Agent · 9:12 PM</small><b class="is-plain">Half the house has no power, breaker won't reset</b></div>
+          <div class="c360-ind-elec-card"><small>Sent to your on-call electrician</small><b class="is-plain">Address, callback number and photos requested</b></div>
+        </div>
+      </article>
+      <article class="c360-ind-elec-stop" data-n="3">
+        <div>
+          <small>Build trust</small>
+          <h3>Power's back, the review is in</h3>
+          <p>A friendly text asks for a Google review right after the job, and every review gets a reply. That's what the next nervous homeowner reads.</p>
+          <div class="c360-ind-elec-pills"><a href="/gbp-management">Google Business Profile Management</a></div>
+        </div>
+        <div class="c360-ind-elec-mock" role="img" aria-label="Example text asking for a Google review after the repair, and the homeowner replying that they left one">
+          <div class="c360-ind-elec-sms c360-ind-elec-sms-out">Glad the lights are back on, Dana! Would you leave Brightline a quick Google review?</div>
+          <div class="c360-ind-elec-sms c360-ind-elec-sms-in">Done! Fast, careful and explained everything.</div>
+        </div>
+      </article>
+      <article class="c360-ind-elec-stop" data-n="4">
+        <div>
+          <small>Grow</small>
+          <h3>Win the panel upgrade and the EV charger</h3>
+          <p>Search ads reach homeowners planning bigger projects, and follow-ups keep your estimate in front of them while they compare.</p>
+          <div class="c360-ind-elec-pills"><a href="/google-ppc">Google PPC</a><a href="/crm-home">Complete360 CRM</a></div>
+        </div>
+        <div class="c360-ind-elec-mock" role="img" aria-label="Example search ad for home EV charger installation from the electrical company">
+          <div class="c360-ind-elec-card"><small>Sponsored · brightlineelectric.com</small><b>Home EV Charger Installation</b><span>Licensed electricians. Panel checks and same-week installs.</span></div>
+          <div class="c360-ind-elec-card"><small>Follow-up text · 3 days later</small><b class="is-plain">"Any questions on the panel upgrade estimate?"</b></div>
+        </div>
+      </article>
+    </div>
+    <p class="c360-ind-elec-note">Examples for illustration</p>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS (multimeter readouts) ══════════ -->
+<section class="c360-ind-elec-section">
+  <div class="c360-ind-elec-wrap">
+    <div class="c360-ind-elec-head">
+      <span class="c360-ind-elec-kicker">Our own reviews</span>
+      <h2 class="c360-ind-elec-h2">Readings from our clients</h2>
+      <p class="c360-ind-elec-lead">Local business owners across the country, in their own words.</p>
+    </div>
+    <div class="c360-ind-elec-meters">
+      <div class="c360-ind-elec-meter"><div class="c360-ind-elec-meter-lcd"><strong>5.0</strong><span>STARS</span></div><p>Google rating <i aria-hidden="true"></i></p></div>
+      <div class="c360-ind-elec-meter"><div class="c360-ind-elec-meter-lcd"><strong>147</strong><span>REVIEWS</span></div><p>Five-star reviews <i aria-hidden="true"></i></p></div>
+      <div class="c360-ind-elec-meter"><div class="c360-ind-elec-meter-lcd"><strong>2018</strong><span>SINCE</span></div><p>In business since <i aria-hidden="true"></i></p></div>
+    </div>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews"
+      src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+      frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CLOSING CTA (navy panel, photo with a switch plate) ══════════ -->
+<section class="c360-ind-elec-section" style="padding-top:0">
+  <div class="c360-ind-elec-wrap">
+    <div class="c360-ind-elec-cta">
+      <div class="c360-ind-elec-cta-visual">
+        <div class="c360-ind-elec-img">
+          <!-- IMAGE PLACEHOLDER: elec-on-the-job — electrician installing a home EV charger on a garage wall while the homeowner looks on, 4:3 (a light switch plate overlaps the bottom-right corner) -->
+          <img src="" data-c360-placeholder="elec-on-the-job" alt="Electrician installing a home EV charger in a garage while the homeowner looks on" loading="lazy">
+          <div class="c360-ind-elec-fallback" aria-hidden="true"><i class="fa-solid fa-charging-station"></i></div>
+        </div>
+        <div class="c360-ind-elec-plate" aria-hidden="true"><span></span></div>
+      </div>
+      <div>
+        <h2 class="c360-ind-elec-h2">Let's flip the switch on your marketing</h2>
+        <p>On a free strategy call we'll look at your service area, your reviews and how your after-hours calls get answered, and show you where your next service calls and bigger jobs will come from.</p>
+        <div class="c360-ind-elec-ctas">
+          <a href="/schedule-demo" class="c360-ind-elec-btn c360-ind-elec-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+          <a href="tel:+18665276205" class="c360-ind-elec-btn c360-ind-elec-btn-light"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ (bolt markers) ══════════
+     schema/build_schema.py pulls these word for word (faq-item / faq-q / faq-a).
+     Answers must match PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360-ind-elec-section" id="elec-faq" style="padding-top:0">
+  <div class="c360-ind-elec-wrap">
+    <div class="c360-ind-elec-head">
+      <h2 class="c360-ind-elec-h2">Electrician marketing questions</h2>
+    </div>
+    <div class="c360-ind-elec-faq-list">
+
+      <details class="c360-ind-elec-faq-item">
+        <summary class="c360-ind-elec-faq-q">How do electricians get more calls?</summary>
+        <div class="c360-ind-elec-faq-a"><p>Show up first with proof you're licensed and trusted, and answer every call, day or night. For most electrical companies that starts with the Google Platinum Package (Local Services Ads plus Google Business Profile Management) and an AI Voice Agent. Google PPC for panel upgrades and EV chargers, and the Local SEO Booster, come next.</p></div>
+      </details>
+
+      <details class="c360-ind-elec-faq-item">
+        <summary class="c360-ind-elec-faq-q">Can electricians run Google Local Services Ads?</summary>
+        <div class="c360-ind-elec-faq-a"><p>Yes. Electricians are one of Google's core Local Services Ads categories. Google checks your electrical license where your state requires one, your insurance and backgrounds before your ads earn the Google Verified badge. We walk you through each step.</p></div>
+      </details>
+
+      <details class="c360-ind-elec-faq-item">
+        <summary class="c360-ind-elec-faq-q">What happens to emergency calls after hours?</summary>
+        <div class="c360-ind-elec-faq-a"><p>The AI Voice Agent answers them. It takes the caller's name, address and what's happening, and sends urgent calls to your on-call electrician or books the visit for the morning. There are no per-minute AI fees; the phone number and calling minutes are billed separately.</p></div>
+      </details>
+
+      <details class="c360-ind-elec-faq-item">
+        <summary class="c360-ind-elec-faq-q">How do I get more panel upgrades and EV charger installs?</summary>
+        <div class="c360-ind-elec-faq-a"><p>Reach people while they're planning. Google PPC puts you in front of searches for panel upgrades, EV charger installation and generators, and a CRM keeps your estimate in front of them with friendly follow-ups while they compare bids.</p></div>
+      </details>
+
+      <details class="c360-ind-elec-faq-item">
+        <summary class="c360-ind-elec-faq-q">How do I show homeowners we're licensed and safe?</summary>
+        <div class="c360-ind-elec-faq-a"><p>Make the proof easy to find. The Google Verified badge, steady reviews that mention careful, tidy work, real photos of your team and trucks, and your license details on your profile and website all reassure people before they call.</p></div>
+      </details>
+
+      <details class="c360-ind-elec-faq-item">
+        <summary class="c360-ind-elec-faq-q">Are Local Services Ads leads shared with other electricians?</summary>
+        <div class="c360-ind-elec-faq-a"><p>No. Homeowners call or message your business directly from your ad, and you pay for leads rather than clicks. That's why answering every call quickly matters so much.</p></div>
+      </details>
+
+      <details class="c360-ind-elec-faq-item">
+        <summary class="c360-ind-elec-faq-q">Can you guarantee more jobs?</summary>
+        <div class="c360-ind-elec-faq-a"><p>No. No one can promise rankings or a set number of leads or jobs. For Google Business Profile Management and advertising campaigns, including Local Services Ads, Google PPC and Meta Ads, if you're not satisfied at the end of the service period, we extend the campaign at no charge. That applies when onboarding was completed and approvals came in on time, you raise the concern at the end of the initial period, and your account is in good standing.</p></div>
+      </details>
+
+      <details class="c360-ind-elec-faq-item">
+        <summary class="c360-ind-elec-faq-q">How much does electrician marketing cost?</summary>
+        <div class="c360-ind-elec-faq-a"><p>Each service's price is on its own page, including the <a href="/local-service-ads#lsa-pricing">Google Platinum Package</a>, the <a href="/ai-agents">AI Voice Agent</a> and the <a href="/local-seo-booster">Local SEO Booster</a>. Google PPC and Meta Ads are planned with you on a strategy call. Ad spend is separate and billed directly by Google or Meta. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</div>
