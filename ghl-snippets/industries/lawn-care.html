@@ -1,6 +1,15 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Lawn Care
-     c360-ind-lawn-v1.1.html
+     c360-ind-lawn-v1.2.html
+     v1.2 (2026-11-23): photos added. lawn-hero and lawn-on-the-job now point
+       to the GHL Media images (generated in Canva); placeholders filled.
+       Plan tile crop shifted left (object-position 15%) so the edging crew
+       member isn't cut off at the tile's left edge.
+       Hero photo replaced with a version where the two crew members work
+       close together, so both fit inside the arch. Arch made bigger and
+       wider (1:1, max 680px, hero columns 1fr/1fr) with a flatter top curve
+       so it no longer clips the mower's head.
+
      v1.1 (2026-11-23): width standard: content capped at 1440px with 64px side
        margins (40px under 1100px, 24px under 640px), matching header v2.4's rule.
      GHL: Paste into a Custom Code block on the new page at /industries/lawn-care
@@ -25,9 +34,9 @@
          four callouts around it (two with small Google visuals).
        - Reviews on light green, striped navy CTA, numbered FAQ.
 
-     Images still to fill: search this file for IMAGE PLACEHOLDER
-       lawn-hero        16:9, 2000px+ (shown in a tall arch frame, crop centered)
-       lawn-on-the-job  4:3, 1200px+  (tall tile in the plan grid)
+     Images (filled v1.2, GHL Media):
+       lawn-hero        16:9 (shown in a tall arch frame, crop centered)
+       lawn-on-the-job  3:4  (tall tile in the plan grid)
 
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
@@ -87,7 +96,7 @@
 /* ══════════ HERO (green, arch photo) ══════════ */
 .c360-ind-lawn-hero{background:linear-gradient(150deg,var(--lawn-green) 0%,var(--lawn-green-deep) 70%);color:#fff;overflow:hidden;position:relative}
 .c360-ind-lawn-hero::before{content:"";position:absolute;inset:0;background:repeating-linear-gradient(90deg,rgba(255,255,255,0.035) 0 70px,transparent 70px 140px);pointer-events:none}
-.c360-ind-lawn-hero-grid{position:relative;display:grid;grid-template-columns:1.15fr 0.85fr;gap:72px;align-items:center;padding-top:72px;padding-bottom:72px}
+.c360-ind-lawn-hero-grid{position:relative;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;padding-top:72px;padding-bottom:72px}
 .c360-ind-lawn-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
 .c360-ind-lawn-crumbs li{color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px}
 .c360-ind-lawn-crumbs li+li::before{content:"\203A";color:rgba(255,255,255,0.5)}
@@ -103,7 +112,7 @@
 .c360-ind-lawn-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.85);line-height:1.4}
 .c360-ind-lawn-creds-list i{color:#B8E6A0;margin-top:3px;font-size:12px}
 .c360-ind-lawn-stars{color:#FBBC04;letter-spacing:1px}
-.c360-ind-lawn-arch{position:relative;aspect-ratio:4/5;max-height:600px;width:100%;border-radius:999px 999px 28px 28px;overflow:hidden;background:repeating-linear-gradient(90deg,#2E8A3E 0 40px,#3A9A4A 40px 80px);box-shadow:0 30px 70px rgba(0,0,0,0.3);border:6px solid rgba(255,255,255,0.18)}
+.c360-ind-lawn-arch{position:relative;aspect-ratio:1/1;max-height:680px;width:100%;border-radius:50% 50% 28px 28px / 32% 32% 28px 28px;overflow:hidden;background:repeating-linear-gradient(90deg,#2E8A3E 0 40px,#3A9A4A 40px 80px);box-shadow:0 30px 70px rgba(0,0,0,0.3);border:6px solid rgba(255,255,255,0.18)}
 .c360-ind-lawn-arch img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .c360-ind-lawn-arch img[src=""],.c360-ind-lawn-arch img:not([src]){visibility:hidden}
 .c360-ind-lawn-fallback{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,0.45);font-size:56px;pointer-events:none}
@@ -142,7 +151,7 @@
 .c360-ind-lawn-tile.is-also p{color:var(--lawn-muted);font-size:15.5px}
 .c360-ind-lawn-tile.is-also a{font-weight:600}
 .c360-ind-lawn-tile-photo{grid-area:photo;position:relative;border-radius:22px;overflow:hidden;min-height:420px;background:repeating-linear-gradient(90deg,#CFE3BD 0 36px,#DDECCF 36px 72px)}
-.c360-ind-lawn-tile-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c360-ind-lawn-tile-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:15% center}
 .c360-ind-lawn-tile-photo img[src=""],.c360-ind-lawn-tile-photo img:not([src]){visibility:hidden}
 .c360-ind-lawn-tile-photo .c360-ind-lawn-fallback{color:#9DBF86}
 .c360-ind-lawn-plan-foot{text-align:center;max-width:820px;margin:44px auto 0}
@@ -233,7 +242,7 @@
 @media (max-width:900px){
   .c360-ind-lawn-section{padding:76px 0}
   .c360-ind-lawn-hero-grid{grid-template-columns:1fr;gap:44px;padding-top:52px;padding-bottom:56px}
-  .c360-ind-lawn-arch{max-width:420px;margin:0 auto}
+  .c360-ind-lawn-arch{max-width:520px;margin:0 auto}
   .c360-ind-lawn-stripe-inner{grid-template-columns:56px 1fr;gap:8px 20px}
   .c360-ind-lawn-stripe-inner p{grid-column:2}
   .c360-ind-lawn-stripe-n{font-size:32px;text-align:left}
@@ -288,8 +297,8 @@
       </div>
     </div>
     <div class="c360-ind-lawn-arch">
-      <!-- IMAGE PLACEHOLDER: lawn-hero — lawn care crew mowing a striped front lawn, subject centered, 16:9 (shown in a tall arch frame) -->
-      <img src="" data-c360-placeholder="lawn-hero" alt="Lawn care crew mowing a homeowner's front lawn" fetchpriority="high">
+      <!-- IMAGE: lawn-hero — lawn care crew mowing a striped front lawn, subject centered, 16:9 (shown in a tall arch frame) -->
+      <img src="https://files.leadconnectorhq.com/file/6b04b1032c68ebcf46c017d8/aaikulvyff5euo03sso1og-aaikulvysr0fk-juzfmngg-1.jpg" data-c360-placeholder="lawn-hero" alt="Uniformed lawn care crew mowing stripes into a front lawn while a teammate trims the curb" fetchpriority="high">
       <div class="c360-ind-lawn-fallback" aria-hidden="true"><i class="fa-solid fa-seedling"></i></div>
     </div>
   </div>
@@ -352,8 +361,8 @@
         <div class="c360-ind-lawn-pills is-dark"><a href="/gbp-management">Google Business Profile Management</a></div>
       </div>
       <div class="c360-ind-lawn-tile-photo">
-        <!-- IMAGE PLACEHOLDER: lawn-on-the-job — crew member edging a walkway beside a freshly mowed lawn, 4:3 (shown as a tall tile) -->
-        <img src="" data-c360-placeholder="lawn-on-the-job" alt="Lawn care crew member edging a walkway next to a freshly mowed lawn" loading="lazy">
+        <!-- IMAGE: lawn-on-the-job — crew member edging a walkway beside a freshly mowed lawn, 4:3 (shown as a tall tile) -->
+        <img src="https://files.leadconnectorhq.com/file/6b04b0368b5100b36ab8f7dd/aaiktc-wtmuk6grcbvnrpw-aaiktc-wkh-puy3fbpgy4q-1.jpg" data-c360-placeholder="lawn-on-the-job" alt="Lawn care crew member edging a walkway next to a freshly mowed lawn" loading="lazy">
         <div class="c360-ind-lawn-fallback" aria-hidden="true"><i class="fa-solid fa-leaf"></i></div>
       </div>
       <div class="c360-ind-lawn-tile is-g1">

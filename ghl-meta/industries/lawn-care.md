@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `lawn-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `lawn-hero` image in GHL Media.
 ```
-(paste the lawn-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b04b1032c68ebcf46c017d8/aaikulvyff5euo03sso1og-aaikulvysr0fk-juzfmngg-1.jpg
 ```
 
 ## Canonical URL
