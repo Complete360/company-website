@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `appl-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `appl-hero` image in GHL Media.
 ```
-(paste the appl-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b05ab69474b606832511135/professional-dishwasher-repair-inspection.jpg
 ```
 
 ## Canonical URL
