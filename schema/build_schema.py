@@ -229,6 +229,8 @@ page("/industries/handyman", "industries/handyman.html", "Handyman Marketing", "
      service="Handyman Marketing", serviceType="Marketing for handyman businesses", audience="Handyman businesses")
 page("/industries/landscaping", "industries/landscaping.html", "Landscaping & Hardscaping Marketing", "industry", parent=IND,
      service="Landscaping & Hardscaping Marketing", serviceType="Marketing for landscaping, hardscaping and design-build companies", audience="Landscaping and hardscaping companies")
+page("/industries/electrical", "industries/electrical.html", "Electrician Marketing", "industry", parent=IND,
+     service="Electrician Marketing", serviceType="Marketing for electricians and electrical contractors", audience="Electricians and electrical contractors")
 
 # Pricing
 page("/website-pricing", "pricing/website-pricing.html", "Website Pricing", "pricing")
