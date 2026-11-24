@@ -1,5 +1,19 @@
 <!-- ============================================================
-     COMPLETE360 MEGA MENU — v2.5  (v2.0 perf pass + content updates)
+     COMPLETE360 MEGA MENU — v2.6  (v2.0 perf pass + content updates)
+     v2.6 (2026-11-24): INDUSTRIES MENU LIVE. Every industry card is now a
+       link to /industries/[slug] (desktop + mobile); "Soon" badges, dashed
+       cards and "Industry pages launching soon" tags removed. Groups and
+       order match the industries hub. Added: Garage Door Repair, Locksmiths,
+       Water Damage Restoration, Handyman (Contractors); Landscaping &
+       Hardscaping, Tree Service, Junk Removal, Movers, Appliance Repair (Home
+       Services); Insurance Agencies (P&C) (Professional). "General
+       Contractor" -> "General Contractors", icons match the hub. Electrical
+       (no page yet) and Medicare Agents (held for legal review) link to
+       /schedule-demo — search "SWAP WHEN LIVE". Each pane gets an "All
+       industries →" link to /industries; mobile gets an "All Industries"
+       row. Contractors CTA "Don't wait for your industry page" -> links to
+       /industries. Industry panes use a 3-column card grid (2 under 1180px).
+       Category hints updated. Search palette picks the new links up on its own.
      v2.5 (2026-11-23): 1440px WIDTH SITE-WIDE (Jared). The width rule now
        lists every page's main container (industry, service, home, pricing,
        company, legal, CRM), not just industry pages. Header bar and mega menu
@@ -484,6 +498,20 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
   grid-template-columns: 1fr 1fr;
   gap: 10px 20px;
 }
+/* v2.6: industry panes hold up to 10 cards, so three columns keep the
+   panel short. Falls back to two on narrower desktops. */
+.c360-cards-grid.c360-cards-grid-3 { grid-template-columns: repeat(3, 1fr); }
+@media (max-width: 1180px) {
+  .c360-cards-grid.c360-cards-grid-3 { grid-template-columns: 1fr 1fr; }
+}
+.c360-right-link {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--c360-green);
+  text-decoration: none;
+}
+.c360-right-link:hover { text-decoration: underline; }
+.c360-right-link:focus-visible { outline: 2px solid var(--c360-green); outline-offset: 2px; border-radius: 4px; }
 
 .c360-card {
   display: flex;
@@ -1613,28 +1641,28 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
         <button class="c360-category c360-cat-active" data-cat="ind-contractors">
           <div>
             <div class="c360-category-label">Contractors & Trades</div>
-            <div class="c360-category-hint">HVAC, plumbing, roofing +3</div>
+            <div class="c360-category-hint">Plumbing, HVAC, roofing +7</div>
           </div>
           <span class="c360-category-chevron">›</span>
         </button>
         <button class="c360-category" data-cat="ind-home">
           <div>
             <div class="c360-category-label">Home Services</div>
-            <div class="c360-category-hint">Lawn, pool, cleaning +1</div>
+            <div class="c360-category-hint">Lawn, landscaping, pool +6</div>
           </div>
           <span class="c360-category-chevron">›</span>
         </button>
         <button class="c360-category" data-cat="ind-prof">
           <div>
             <div class="c360-category-label">Professional & Financial</div>
-            <div class="c360-category-hint">Real estate, insurance +2</div>
+            <div class="c360-category-hint">Insurance, real estate +3</div>
           </div>
           <span class="c360-category-chevron">›</span>
         </button>
         <button class="c360-category" data-cat="ind-specialty">
           <div>
             <div class="c360-category-label">Specialty Businesses</div>
-            <div class="c360-category-hint">Auto, dispensaries +2</div>
+            <div class="c360-category-hint">Auto, restaurants +2</div>
           </div>
           <span class="c360-category-chevron">›</span>
         </button>
@@ -1651,35 +1679,45 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
         <div class="c360-pane" data-pane="ind-contractors">
           <div class="c360-right-header">
             <div class="c360-right-title">Contractors & Trades</div>
-            <div class="c360-soon-tag">Industry pages launching soon</div>
+            <a href="/industries" class="c360-right-link">All industries →</a>
           </div>
-          <div class="c360-cards-grid">
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-fan"></i></div><div class="c360-card-text"><p class="c360-card-title">HVAC <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Heating & cooling contractors</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-wrench"></i></div><div class="c360-card-text"><p class="c360-card-title">Plumbing <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Residential & commercial</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-house"></i></div><div class="c360-card-text"><p class="c360-card-title">Roofing <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Repair, replace, inspect</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-paint-roller"></i></div><div class="c360-card-text"><p class="c360-card-title">Painting <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Interior & exterior pros</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-helmet-safety"></i></div><div class="c360-card-text"><p class="c360-card-title">General Contractor <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Remodel & new builds</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-bolt"></i></div><div class="c360-card-text"><p class="c360-card-title">Electrical <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Licensed electricians</p></div></div>
+          <div class="c360-cards-grid c360-cards-grid-3">
+            <a href="/industries/plumbing" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-wrench"></i></div><div class="c360-card-text"><p class="c360-card-title">Plumbing</p><p class="c360-card-desc">Emergency calls, drains, water heaters</p></div></a>
+            <a href="/industries/hvac" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-fan"></i></div><div class="c360-card-text"><p class="c360-card-title">HVAC</p><p class="c360-card-desc">Heating & cooling contractors</p></div></a>
+            <!-- SWAP WHEN LIVE: no Electrical page yet. When /industries/electrical is published, change href to it. -->
+            <a href="/schedule-demo" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-bolt"></i></div><div class="c360-card-text"><p class="c360-card-title">Electrical</p><p class="c360-card-desc">Talk to us about your shop</p></div></a>
+            <a href="/industries/roofing" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-house-chimney"></i></div><div class="c360-card-text"><p class="c360-card-title">Roofing</p><p class="c360-card-desc">Repair, replace, storm calls</p></div></a>
+            <a href="/industries/general-contractors" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-helmet-safety"></i></div><div class="c360-card-text"><p class="c360-card-title">General Contractors</p><p class="c360-card-desc">Remodels & additions</p></div></a>
+            <a href="/industries/painting" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-paint-roller"></i></div><div class="c360-card-text"><p class="c360-card-title">Painting</p><p class="c360-card-desc">Interior & exterior pros</p></div></a>
+            <a href="/industries/garage-door-repair" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-warehouse"></i></div><div class="c360-card-text"><p class="c360-card-title">Garage Door Repair</p><p class="c360-card-desc">Springs, openers, new doors</p></div></a>
+            <a href="/industries/locksmiths" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-key"></i></div><div class="c360-card-text"><p class="c360-card-title">Locksmiths</p><p class="c360-card-desc">Lockouts, rekeys, lock changes</p></div></a>
+            <a href="/industries/water-damage-restoration" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-house-flood-water"></i></div><div class="c360-card-text"><p class="c360-card-title">Water Damage Restoration</p><p class="c360-card-desc">Burst pipes & dry-outs</p></div></a>
+            <a href="/industries/handyman" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-hammer"></i></div><div class="c360-card-text"><p class="c360-card-title">Handyman</p><p class="c360-card-desc">Small fixes, bigger jobs</p></div></a>
           </div>
-          <a href="/contact-us" class="c360-mega-cta">
+          <a href="/industries" class="c360-mega-cta">
             <div class="c360-mega-cta-text">
-              <p class="c360-mega-cta-title">Don't wait for your industry page</p>
-              <p class="c360-mega-cta-subtitle">We already work with contractors — get started today</p>
+              <p class="c360-mega-cta-title">Not sure which plan fits your trade?</p>
+              <p class="c360-mega-cta-subtitle">See how we pick the right services for every industry</p>
             </div>
-            <span class="c360-mega-cta-btn">Get Started →</span>
+            <span class="c360-mega-cta-btn">All Industries →</span>
           </a>
         </div>
 
         <div class="c360-pane" data-pane="ind-home" hidden>
           <div class="c360-right-header">
             <div class="c360-right-title">Home Services</div>
-            <div class="c360-soon-tag">Industry pages launching soon</div>
+            <a href="/industries" class="c360-right-link">All industries →</a>
           </div>
-          <div class="c360-cards-grid">
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-leaf"></i></div><div class="c360-card-text"><p class="c360-card-title">Lawn Care <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Mowing, landscaping, treatment</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-water"></i></div><div class="c360-card-text"><p class="c360-card-title">Pool Service <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Maintenance & repair</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-broom"></i></div><div class="c360-card-text"><p class="c360-card-title">Cleaning Services <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Residential & commercial</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-bug"></i></div><div class="c360-card-text"><p class="c360-card-title">Pest Control <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Extermination & prevention</p></div></div>
+          <div class="c360-cards-grid c360-cards-grid-3">
+            <a href="/industries/lawn-care" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-seedling"></i></div><div class="c360-card-text"><p class="c360-card-title">Lawn Care</p><p class="c360-card-desc">Weekly routes & treatments</p></div></a>
+            <a href="/industries/landscaping" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-trowel-bricks"></i></div><div class="c360-card-text"><p class="c360-card-title">Landscaping & Hardscaping</p><p class="c360-card-desc">Design-build, patios, pavers</p></div></a>
+            <a href="/industries/pool-service" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-water-ladder"></i></div><div class="c360-card-text"><p class="c360-card-title">Pool Service</p><p class="c360-card-desc">Cleaning routes & repairs</p></div></a>
+            <a href="/industries/cleaning-services" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-broom"></i></div><div class="c360-card-text"><p class="c360-card-title">Cleaning Services</p><p class="c360-card-desc">Recurring & deep cleans</p></div></a>
+            <a href="/industries/pest-control" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-bug"></i></div><div class="c360-card-text"><p class="c360-card-title">Pest Control</p><p class="c360-card-desc">Treatments & quarterly plans</p></div></a>
+            <a href="/industries/tree-service" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-tree"></i></div><div class="c360-card-text"><p class="c360-card-title">Tree Service</p><p class="c360-card-desc">Trimming, removals, storm cleanup</p></div></a>
+            <a href="/industries/junk-removal" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-dumpster"></i></div><div class="c360-card-text"><p class="c360-card-title">Junk Removal</p><p class="c360-card-desc">Cleanouts & haul-aways</p></div></a>
+            <a href="/industries/movers" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-truck-moving"></i></div><div class="c360-card-text"><p class="c360-card-title">Movers</p><p class="c360-card-desc">Local & long-distance moves</p></div></a>
+            <a href="/industries/appliance-repair" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-plug"></i></div><div class="c360-card-text"><p class="c360-card-title">Appliance Repair</p><p class="c360-card-desc">Washers, fridges, ovens</p></div></a>
           </div>
           <a href="/contact-us" class="c360-mega-cta">
             <div class="c360-mega-cta-text">
@@ -1693,13 +1731,15 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
         <div class="c360-pane" data-pane="ind-prof" hidden>
           <div class="c360-right-header">
             <div class="c360-right-title">Professional & Financial</div>
-            <div class="c360-soon-tag">Industry pages launching soon</div>
+            <a href="/industries" class="c360-right-link">All industries →</a>
           </div>
-          <div class="c360-cards-grid">
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-building"></i></div><div class="c360-card-text"><p class="c360-card-title">Real Estate <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Agents, brokers, teams</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-shield-halved"></i></div><div class="c360-card-text"><p class="c360-card-title">Health Insurance <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Agents & brokerages</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-stethoscope"></i></div><div class="c360-card-text"><p class="c360-card-title">Medicare Agents <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">AEP & year-round enrollment</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-dollar-sign"></i></div><div class="c360-card-text"><p class="c360-card-title">Mortgage <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Loan officers & brokers</p></div></div>
+          <div class="c360-cards-grid c360-cards-grid-3">
+            <a href="/industries/insurance-agencies" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-shield-halved"></i></div><div class="c360-card-text"><p class="c360-card-title">Insurance Agencies</p><p class="c360-card-desc">Auto, home & business (P&C)</p></div></a>
+            <a href="/industries/real-estate" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-house"></i></div><div class="c360-card-text"><p class="c360-card-title">Real Estate</p><p class="c360-card-desc">Agents, brokers, teams</p></div></a>
+            <a href="/industries/mortgage" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-file-signature"></i></div><div class="c360-card-text"><p class="c360-card-title">Mortgage</p><p class="c360-card-desc">Loan officers & brokers</p></div></a>
+            <a href="/industries/health-insurance" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-heart-pulse"></i></div><div class="c360-card-text"><p class="c360-card-title">Health Insurance</p><p class="c360-card-desc">Agents & brokerages</p></div></a>
+            <!-- SWAP WHEN LIVE: Medicare Agents page held for management/legal review (CMS rules). When published, change href to /industries/medicare-agents. -->
+            <a href="/schedule-demo" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-stethoscope"></i></div><div class="c360-card-text"><p class="c360-card-title">Medicare Agents</p><p class="c360-card-desc">Talk to us about your agency</p></div></a>
           </div>
           <a href="/contact-us" class="c360-mega-cta">
             <div class="c360-mega-cta-text">
@@ -1713,13 +1753,13 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
         <div class="c360-pane" data-pane="ind-specialty" hidden>
           <div class="c360-right-header">
             <div class="c360-right-title">Specialty Businesses</div>
-            <div class="c360-soon-tag">Industry pages launching soon</div>
+            <a href="/industries" class="c360-right-link">All industries →</a>
           </div>
-          <div class="c360-cards-grid">
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-car"></i></div><div class="c360-card-text"><p class="c360-card-title">Auto Shops <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Mechanics, detail, body shops</p></div></div>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-dove"></i></div><div class="c360-card-text"><p class="c360-card-title">Funeral Homes <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Dignified local presence</p></div></div>
-            <a href="/dispensary" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-cannabis"></i></div><div class="c360-card-text"><p class="c360-card-title">Dispensaries <span class="c360-badge c360-badge-new">New</span></p><p class="c360-card-desc">Compliant cannabis marketing</p></div></a>
-            <div class="c360-card c360-coming-soon"><div class="c360-card-icon c360-icon-grey"><i class="fa-solid fa-utensils"></i></div><div class="c360-card-text"><p class="c360-card-title">Restaurants <span class="c360-badge c360-badge-soon">Soon</span></p><p class="c360-card-desc">Local dining & franchises</p></div></div>
+          <div class="c360-cards-grid c360-cards-grid-3">
+            <a href="/industries/auto-shops" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-car"></i></div><div class="c360-card-text"><p class="c360-card-title">Auto Shops</p><p class="c360-card-desc">Mechanics, detail, body shops</p></div></a>
+            <a href="/industries/restaurants" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-utensils"></i></div><div class="c360-card-text"><p class="c360-card-title">Restaurants</p><p class="c360-card-desc">Local dining & franchises</p></div></a>
+            <a href="/industries/funeral-homes" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-dove"></i></div><div class="c360-card-text"><p class="c360-card-title">Funeral Homes</p><p class="c360-card-desc">Dignified local presence</p></div></a>
+            <a href="/dispensary" class="c360-card"><div class="c360-card-icon c360-icon-green"><i class="fa-solid fa-cannabis"></i></div><div class="c360-card-text"><p class="c360-card-title">Dispensaries</p><p class="c360-card-desc">Compliant cannabis marketing</p></div></a>
           </div>
           <a href="/contact-us" class="c360-mega-cta">
             <div class="c360-mega-cta-text">
@@ -2303,18 +2343,29 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
       </button>
       <div class="c360-mobile-group-content">
 
+        <div class="c360-mobile-cat c360-mobile-expanded">
+          <ul class="c360-mobile-cat-items">
+            <li><a href="/industries"><i class="fa-solid fa-table-cells-large"></i>All Industries</a></li>
+          </ul>
+        </div>
+
         <div class="c360-mobile-cat">
           <button class="c360-mobile-cat-trigger" type="button">
             Contractors & Trades
             <i class="fa-solid fa-chevron-right"></i>
           </button>
           <ul class="c360-mobile-cat-items">
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-fan"></i>HVAC <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-wrench"></i>Plumbing <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-house"></i>Roofing <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-paint-roller"></i>Painting <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-helmet-safety"></i>General Contractor <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-bolt"></i>Electrical <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><a href="/industries/plumbing"><i class="fa-solid fa-wrench"></i>Plumbing</a></li>
+            <li><a href="/industries/hvac"><i class="fa-solid fa-fan"></i>HVAC</a></li>
+            <!-- SWAP WHEN LIVE: no Electrical page yet. When /industries/electrical is published, change href to it. -->
+            <li><a href="/schedule-demo"><i class="fa-solid fa-bolt"></i>Electrical</a></li>
+            <li><a href="/industries/roofing"><i class="fa-solid fa-house-chimney"></i>Roofing</a></li>
+            <li><a href="/industries/general-contractors"><i class="fa-solid fa-helmet-safety"></i>General Contractors</a></li>
+            <li><a href="/industries/painting"><i class="fa-solid fa-paint-roller"></i>Painting</a></li>
+            <li><a href="/industries/garage-door-repair"><i class="fa-solid fa-warehouse"></i>Garage Door Repair</a></li>
+            <li><a href="/industries/locksmiths"><i class="fa-solid fa-key"></i>Locksmiths</a></li>
+            <li><a href="/industries/water-damage-restoration"><i class="fa-solid fa-house-flood-water"></i>Water Damage Restoration</a></li>
+            <li><a href="/industries/handyman"><i class="fa-solid fa-hammer"></i>Handyman</a></li>
           </ul>
         </div>
 
@@ -2324,10 +2375,15 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
             <i class="fa-solid fa-chevron-right"></i>
           </button>
           <ul class="c360-mobile-cat-items">
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-leaf"></i>Lawn Care <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-water"></i>Pool Service <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-broom"></i>Cleaning Services <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-bug"></i>Pest Control <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><a href="/industries/lawn-care"><i class="fa-solid fa-seedling"></i>Lawn Care</a></li>
+            <li><a href="/industries/landscaping"><i class="fa-solid fa-trowel-bricks"></i>Landscaping & Hardscaping</a></li>
+            <li><a href="/industries/pool-service"><i class="fa-solid fa-water-ladder"></i>Pool Service</a></li>
+            <li><a href="/industries/cleaning-services"><i class="fa-solid fa-broom"></i>Cleaning Services</a></li>
+            <li><a href="/industries/pest-control"><i class="fa-solid fa-bug"></i>Pest Control</a></li>
+            <li><a href="/industries/tree-service"><i class="fa-solid fa-tree"></i>Tree Service</a></li>
+            <li><a href="/industries/junk-removal"><i class="fa-solid fa-dumpster"></i>Junk Removal</a></li>
+            <li><a href="/industries/movers"><i class="fa-solid fa-truck-moving"></i>Movers</a></li>
+            <li><a href="/industries/appliance-repair"><i class="fa-solid fa-plug"></i>Appliance Repair</a></li>
           </ul>
         </div>
 
@@ -2337,10 +2393,12 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
             <i class="fa-solid fa-chevron-right"></i>
           </button>
           <ul class="c360-mobile-cat-items">
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-building"></i>Real Estate <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-shield-halved"></i>Health Insurance <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-stethoscope"></i>Medicare Agents <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-dollar-sign"></i>Mortgage <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><a href="/industries/insurance-agencies"><i class="fa-solid fa-shield-halved"></i>Insurance Agencies</a></li>
+            <li><a href="/industries/real-estate"><i class="fa-solid fa-house"></i>Real Estate</a></li>
+            <li><a href="/industries/mortgage"><i class="fa-solid fa-file-signature"></i>Mortgage</a></li>
+            <li><a href="/industries/health-insurance"><i class="fa-solid fa-heart-pulse"></i>Health Insurance</a></li>
+            <!-- SWAP WHEN LIVE: Medicare Agents page held for management/legal review (CMS rules). When published, change href to /industries/medicare-agents. -->
+            <li><a href="/schedule-demo"><i class="fa-solid fa-stethoscope"></i>Medicare Agents</a></li>
           </ul>
         </div>
 
@@ -2350,10 +2408,10 @@ body .c360-nav-wrapper,body .c360-mega-inner{box-sizing:border-box}
             <i class="fa-solid fa-chevron-right"></i>
           </button>
           <ul class="c360-mobile-cat-items">
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-car"></i>Auto Shops <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-dove"></i>Funeral Homes <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
+            <li><a href="/industries/auto-shops"><i class="fa-solid fa-car"></i>Auto Shops</a></li>
+            <li><a href="/industries/restaurants"><i class="fa-solid fa-utensils"></i>Restaurants</a></li>
+            <li><a href="/industries/funeral-homes"><i class="fa-solid fa-dove"></i>Funeral Homes</a></li>
             <li><a href="/dispensary"><i class="fa-solid fa-cannabis"></i>Dispensaries</a></li>
-            <li><span class="c360-mobile-disabled"><i class="fa-solid fa-utensils"></i>Restaurants <span class="c360-badge c360-badge-soon" style="margin-left:auto;">Soon</span></span></li>
           </ul>
         </div>
 
