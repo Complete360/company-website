@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `indhub-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `indhub-hero` image in GHL Media.
 ```
-(paste the indhub-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b05f411465ec0caaa029b34/diverse-downtown-trades-team-portrait.jpg
 ```
 
 ## Canonical URL
