@@ -36,7 +36,8 @@
 
      v1.1 (2026-11-24): photos added. elec-hero (testing a breaker panel) and
        elec-on-the-job (EV charger install) now point to the GHL Media images
-       (generated in ChatGPT); placeholders filled.
+       (generated in ChatGPT); placeholders filled. Hero photo made bigger:
+       columns 1/1 -> 0.9/1.1, strip overlap 96 -> 72px, frame 4:3 -> 5:4.
 
      v1.0 (2026-11-24) — first build (worksheet #5). Draft plan: Google
        Platinum Package and AI Voice Agent first; grow with Google PPC (panel
@@ -107,7 +108,7 @@
 
 /* ══════════ HERO (circuit-trace background, photo with a breaker strip) ══════════ */
 .c360-ind-elec-hero{position:relative;background-color:#fff;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='none' stroke='%23EEF3FA' stroke-width='2'%3E%3Cpath d='M0 40H60V100H120V160M40 0V20H100V60H160M0 130H30V160'/%3E%3C/g%3E%3Cg fill='%23E4ECF7'%3E%3Ccircle cx='60' cy='40' r='4'/%3E%3Ccircle cx='120' cy='100' r='4'/%3E%3Ccircle cx='100' cy='60' r='4'/%3E%3Ccircle cx='30' cy='130' r='4'/%3E%3C/g%3E%3C/svg%3E");border-bottom:1px solid var(--elec-line)}
-.c360-ind-elec-hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:72px;align-items:center;padding-top:56px;padding-bottom:104px}
+.c360-ind-elec-hero-grid{display:grid;grid-template-columns:minmax(0,0.9fr) minmax(0,1.1fr);gap:48px;align-items:center;padding-top:56px;padding-bottom:104px}
 .c360-ind-elec-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
 .c360-ind-elec-crumbs li{color:var(--elec-muted);display:flex;align-items:center;gap:8px}
 .c360-ind-elec-crumbs li+li::before{content:"\203A";color:#A6B0C4}
@@ -123,8 +124,8 @@
 .c360-ind-elec-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:var(--elec-body);line-height:1.4}
 .c360-ind-elec-creds-list i{color:var(--elec-green);margin-top:3px;font-size:12px}
 .c360-ind-elec-stars{color:#E8A400;letter-spacing:1px}
-.c360-ind-elec-hero-visual{position:relative;padding-left:96px}
-.c360-ind-elec-hero-visual .c360-ind-elec-img{aspect-ratio:4/3;border-radius:28px;box-shadow:0 30px 60px rgba(15,31,94,0.16)}
+.c360-ind-elec-hero-visual{position:relative;padding-left:72px}
+.c360-ind-elec-hero-visual .c360-ind-elec-img{aspect-ratio:5/4;border-radius:28px;box-shadow:0 30px 60px rgba(15,31,94,0.16)}
 .c360-ind-elec-strip{position:absolute;left:0;top:50%;transform:translateY(-50%);width:200px;background:var(--elec-panel);border:1px solid var(--elec-steel);border-radius:16px;padding:16px 14px;box-shadow:0 22px 44px rgba(15,31,94,0.2)}
 .c360-ind-elec-strip-top{display:flex;align-items:center;justify-content:space-between;font-size:11.5px;font-weight:700;color:var(--elec-muted);margin-bottom:10px;padding:0 2px}
 .c360-ind-elec-strip-top span{display:inline-flex;align-items:center;gap:6px;color:var(--elec-green)}
