@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `lock-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `lock-hero` image in GHL Media (square).
 ```
-(paste the lock-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b05a7e8d50d9db796ca445f/locksmith-repair-at-dusk.jpg
 ```
 
 ## Canonical URL
