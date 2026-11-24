@@ -47,7 +47,7 @@ anything still to do on a page (🔁 = needs rebuild).
 
 | File | GHL page | Status | Notes |
 |---|---|---|---|
-| `home.html` | Main Home Page | ✅ Code in repo | **v2.6: 🔁 paste into GHL** — services section given depth (layered background, white cards, numbers, color plates); "Google Guaranteed" -> "Google Verified". v2.5: hero back to the proof card, with a full-width background photo slot (hp-hero-bg: Tucson at twilight, no people). v2.4: hero photo (team member at a call-center desk, proof card overlapping) and final CTA photo (contractor booking a job) added. v2.3: Industries section now uses the hub's group tabs + fan-out cards (all 29 industries, each linking to its page; Medicare links to /industries/medicare-agents, so publish that page first). v2.2: 147 reviews / 5.0 rating |
+| `home.html` | Main Home Page | ✅ Code in repo | **v2.7: 🔁 paste into GHL** — street map behind the geo-fencing rings. v2.6: services section given depth (layered background, white cards, numbers, color plates); "Google Guaranteed" -> "Google Verified". v2.5: hero back to the proof card, with a full-width background photo slot (hp-hero-bg: Tucson at twilight, no people). v2.4: hero photo (team member at a call-center desk, proof card overlapping) and final CTA photo (contractor booking a job) added. v2.3: Industries section now uses the hub's group tabs + fan-out cards (all 29 industries, each linking to its page; Medicare links to /industries/medicare-agents, so publish that page first). v2.2: 147 reviews / 5.0 rating |
 
 ### Services
 
