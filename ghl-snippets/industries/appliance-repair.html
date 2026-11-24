@@ -38,7 +38,10 @@
 
      v1.1 (2026-11-24): photos added. appl-hero (dishwasher inspection) and
        appl-on-the-job (washer walkthrough, square) now point to the GHL Media
-       images (generated in ChatGPT); placeholders filled.
+       images (generated in ChatGPT); placeholders filled. Headline card made
+       smaller (max 1160px wide, tighter padding) and overlaps the photo much
+       less (180px -> 72px; phones 80 -> 40); photo band a little taller, so
+       the dishwasher repair stays visible.
 
      v1.0 (2026-11-19) — first build. Draft plan per worksheet v1.4 (Wave 5):
        Google Platinum Package and AI Voice Agent first; grow with Google
@@ -101,9 +104,9 @@
 .c360-ind-appl-crumbs li+li::before{content:"\203A";color:#A6B0C4}
 .c360-ind-appl-crumbs a{color:var(--appl-text);text-decoration:none}
 .c360-ind-appl-crumbs a:hover{text-decoration:underline}
-.c360-ind-appl-band{height:clamp(300px,34vw,520px);border-radius:28px}
-.c360-ind-appl-card{position:relative;margin:-180px auto 0;width:calc(100% - 96px);background:#fff;border-radius:28px;box-shadow:0 30px 70px rgba(15,31,94,0.16);overflow:hidden}
-.c360-ind-appl-card-main{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;padding:56px 56px 40px}
+.c360-ind-appl-band{height:clamp(340px,38vw,600px);border-radius:28px}
+.c360-ind-appl-card{position:relative;margin:-72px auto 0;width:calc(100% - 96px);max-width:1160px;background:#fff;border-radius:28px;box-shadow:0 30px 70px rgba(15,31,94,0.16);overflow:hidden}
+.c360-ind-appl-card-main{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:48px;padding:44px 48px 32px}
 .c360-ind-appl-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:var(--appl-text);margin-bottom:32px}
 .c360-ind-appl-hero-sub{font-size:18px;line-height:1.65;color:var(--appl-body);margin-bottom:28px}
 .c360-ind-appl-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:8px}
@@ -232,7 +235,7 @@
 @media (max-width:900px){
   .c360-ind-appl-section{padding:76px 0}
   .c360-ind-appl-hero{padding-bottom:76px}
-  .c360-ind-appl-card{width:calc(100% - 24px);margin-top:-80px}
+  .c360-ind-appl-card{width:calc(100% - 24px);margin-top:-40px}
   .c360-ind-appl-card-main{padding:36px 26px 28px}
   .c360-ind-appl-panel{grid-template-columns:1fr}
   .c360-ind-appl-panel li + li{border-left:0;border-top:1px solid var(--appl-steel)}
