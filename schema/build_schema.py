@@ -147,6 +147,8 @@ page("/google-ppc", "services/google-ads.html", "Google Ads (PPC) Management", "
      service="Google Ads (PPC) Management", serviceType="Pay-per-click advertising management")
 page("/meta-ads", "services/meta-ads.html", "Meta Ads Management", "service",
      service="Meta Ads Management", serviceType="Facebook and Instagram advertising management")
+page("/chatgpt-ads", "services/chatgpt-ads.html", "ChatGPT Ads Management", "service",
+     service="ChatGPT Ads Management", serviceType="ChatGPT advertising management")
 page("/google-social-posting", "services/google-social-posting.html", "Google Social Posting", "service",
      service="Google Social Posting", serviceType="Google Business Profile posting")
 page("/meta-social-posting", "services/meta-social-posting.html", "Meta Social Posting", "service",

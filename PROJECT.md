@@ -61,6 +61,7 @@ the current page.
 | Geo-Fencing (Mobile + CTV) | /geo-fencing | `services/geo-fencing.html` | Recurring / impression packages |
 | Google PPC (Google Ads) | /google-ppc | `services/google-ads.html` | Recurring management; ad spend billed by Google |
 | Meta Ads | /meta-ads | `services/meta-ads.html` | Recurring management; ad spend billed by Meta |
+| ChatGPT Ads | /chatgpt-ads (**new — not live or in nav yet**) | `services/chatgpt-ads.html` | Recurring management (**prices TBD**); ad spend billed by OpenAI |
 | Google Social Posting | /google-social-posting | `services/google-social-posting.html` | Recurring |
 | Meta Social Posting | /meta-social-posting | `services/meta-social-posting.html` | Recurring |
 | Reputation Management | /reputation-management | `services/reputation-management.html` | Recurring |
@@ -173,7 +174,7 @@ PROJECT.md       this file
   "X of Y files have code" count.
 - Legal files use CRLF line endings — preserve them.
 
-### Status (2026-11-24): 75 of 92 page files have code
+### Status (2026-11-24): 76 of 93 page files have code
 - **Done:** global header/footer, home, all 16 service pages, website pricing, CRM home,
   legal (3), FAQ, contact, training, video library, link tree, Farmers Insurance.
 - **Live in GHL (Nov 10):** Terms v2.1, Return Policy v2.1, FAQ v2.4 and every policy-aligned service page (see README). Schema still to paste on most pages.
@@ -219,6 +220,8 @@ PROJECT.md       this file
 ---
 
 ## 7. Known issues and open decisions
+
+- **ChatGPT Ads (new service):** page built (v1.0 draft), prices TBD, no checkout. Decide whether it's covered by the satisfaction guarantee (ToS lists GBP Mgmt + advertising campaigns: PPC, Meta, Geo-Fencing, LDN, LSA); the page makes no guarantee until the ToS says so. Agents (Dakota, Riley, Live Chat) don't know this product yet.
 
 - **Checkout open items (decide at the end of the checkout imports; details in each README row):**
   Google Social 6/12-month prices ($774/$1,308 checkout vs $715/$1,252 page) ·
