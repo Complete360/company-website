@@ -37,10 +37,9 @@ Complete360
 ```
 
 ## Social share image
-**Not ready yet.** After the `fun-hero` image is uploaded to GHL Media, paste its URL here
-and into this field.
+The `fun-hero` image in GHL Media (portrait, so link previews crop it to the middle).
 ```
-(paste the fun-hero GHL Media URL)
+https://files.leadconnectorhq.com/file/6b059e24adc6dbbbbd9a4ea1/serene-garden-window-sitting-room.jpg
 ```
 
 ## Canonical URL
