@@ -1,6 +1,6 @@
 <!-- ══════════════════════════════════════════════════════════════
      Complete360 — Industry page: Garage Door Repair
-     c360-ind-gdr-v1.1.html
+     c360-ind-gdr-v1.2.html
      GHL: Paste into a Custom Code block on the new page at /industries/garage-door-repair
           (page name "Garage Door Repair Marketing"). Meta data: ghl-meta/industries/garage-door-repair.md.
           Schema: schema/pages/industries/garage-door-repair.html (batch paste later).
@@ -14,7 +14,8 @@
      Poppins, pill links, reviews widget, CTA before the FAQ). Its own
      layout (Jared: different from the other pages), garage door themed:
        - Hero: split headline (H1 left, subhead + buttons right), trust row,
-         then a wide panoramic photo with a code-built dispatch log on its top edge.
+         then a wide panoramic photo with a code-built dispatch log on its
+         bottom-right corner.
        - Reality: dark "trouble lights" panel, opener-style blink codes.
        - Plan: a labeled garage door diagram (springs, opener, tracks,
          sensors, panels) with numbered pins that match a five-card legend.
@@ -27,12 +28,19 @@
      Services Ads category, but US garage door ads require Google's Advanced
      Verification and pre-badge ads aren't available for it.
 
-     Images still to fill: search this file for IMAGE PLACEHOLDER
-       gdr-hero        16:9, 2000px+ (shown as a 21:8 band; keep the tech centered)
-       gdr-on-the-job  4:3, 1200px+  (CTA panel, right)
+     Images (filled v1.2, GHL Media):
+       gdr-hero        3:2 (shown as a 2:1 band; log card over the bottom-right)
+       gdr-on-the-job  3:2 (CTA panel, right)
 
      Google Partner badge: same official badge and link as
      /local-service-ads v1.6 (88px, 44px clear space, no wrapper card).
+
+     v1.2 (2026-11-24): photos added. gdr-hero (spring adjustment) and
+       gdr-on-the-job (keypad walkthrough) now point to the GHL Media images
+       (generated in ChatGPT); placeholders filled; CTA alt text matches.
+       Hero band 21:8 -> 2:1 and cropped from near the top so the tech's head
+       isn't cut off. Dispatch log moved from the photo's top edge to its
+       bottom-right corner so it no longer covers the tech.
 
      v1.1 (2026-11-19) — Jared: empty space under the reviews widget. The
        navy rating card is now a full-width band (title left, three stats
@@ -116,9 +124,10 @@
 .c360-ind-gdr-creds-list i{color:var(--gdr-green);margin-top:3px;font-size:12px}
 .c360-ind-gdr-stars{color:#E8A400;letter-spacing:1px}
 .c360-ind-gdr-pano{position:relative;margin-top:8px;margin-bottom:104px}
-.c360-ind-gdr-pano .c360-ind-gdr-img{aspect-ratio:21/8;border-radius:28px;box-shadow:0 30px 60px rgba(15,31,94,0.16)}
+.c360-ind-gdr-pano .c360-ind-gdr-img img{object-position:center 8%}
+.c360-ind-gdr-pano .c360-ind-gdr-img{aspect-ratio:2/1;border-radius:28px;box-shadow:0 30px 60px rgba(15,31,94,0.16)}
 /* Code-built dispatch log riding on the photo's top edge */
-.c360-ind-gdr-log{position:absolute;right:48px;top:-44px;width:min(560px,60%);background:#fff;border-radius:16px;box-shadow:0 24px 50px rgba(15,31,94,0.22);padding:18px 22px 14px}
+.c360-ind-gdr-log{position:absolute;right:48px;bottom:-44px;width:min(560px,60%);background:#fff;border-radius:16px;box-shadow:0 24px 50px rgba(15,31,94,0.22);padding:18px 22px 14px}
 .c360-ind-gdr-log ol{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .c360-ind-gdr-log li{position:relative;padding-top:16px;border-top:3px solid var(--gdr-line)}
 .c360-ind-gdr-log li.is-done{border-color:var(--gdr-green)}
@@ -236,7 +245,7 @@
   .c360-ind-gdr-hero{background:var(--gdr-sky)}
   .c360-ind-gdr-pano{margin-bottom:76px}
   .c360-ind-gdr-pano .c360-ind-gdr-img{aspect-ratio:4/3}
-  .c360-ind-gdr-log{position:relative;right:auto;top:auto;width:auto;margin:-40px 16px 0}
+  .c360-ind-gdr-log{position:relative;right:auto;top:auto;bottom:auto;width:auto;margin:-40px 16px 0}
   .c360-ind-gdr-cta{grid-template-columns:1fr;padding:36px 24px}
   .c360-ind-gdr-cta .c360-ind-gdr-img{order:-1}
 }
@@ -297,8 +306,8 @@
     </div>
     <div class="c360-ind-gdr-pano">
       <div class="c360-ind-gdr-img">
-        <!-- IMAGE PLACEHOLDER: gdr-hero — technician in a navy work shirt adjusting the torsion spring above an open residential garage door, daylight from the driveway, 16:9 (shown as a wide band, keep the tech near the center) -->
-        <img src="" data-c360-placeholder="gdr-hero" alt="Garage door technician adjusting a torsion spring above an open residential garage door" fetchpriority="high">
+        <!-- IMAGE: gdr-hero — technician in a navy work shirt adjusting the torsion spring above an open residential garage door, daylight from the driveway, 16:9 (shown as a wide band, keep the tech near the center) -->
+        <img src="https://files.leadconnectorhq.com/file/6b05a3cf306ac23751d5d026/garage-door-spring-adjustment.jpg" data-c360-placeholder="gdr-hero" alt="Garage door technician adjusting a torsion spring above an open residential garage door" fetchpriority="high">
         <div class="c360-ind-gdr-fallback" aria-hidden="true"><i class="fa-solid fa-warehouse"></i></div>
       </div>
       <div class="c360-ind-gdr-log" role="img" aria-label="Example dispatch log: 7:48 AM door won't open, 7:49 AM call answered and tech booked, 8:30 AM spring replaced">
@@ -558,8 +567,8 @@
         </div>
       </div>
       <div class="c360-ind-gdr-img">
-        <!-- IMAGE PLACEHOLDER: gdr-on-the-job — technician showing a smiling homeowner a newly installed garage door and wall keypad, 4:3 -->
-        <img src="" data-c360-placeholder="gdr-on-the-job" alt="Garage door technician showing a homeowner her newly installed garage door" loading="lazy">
+        <!-- IMAGE: gdr-on-the-job — technician showing a smiling homeowner a newly installed garage door and wall keypad, 4:3 -->
+        <img src="https://files.leadconnectorhq.com/file/6b05a400306ac23751d5d703/friendly-garage-keypad-installation.jpg" data-c360-placeholder="gdr-on-the-job" alt="Garage door technician showing a homeowner how to use the keypad for her new garage door" loading="lazy">
         <div class="c360-ind-gdr-fallback" aria-hidden="true"><i class="fa-solid fa-toolbox"></i></div>
       </div>
     </div>
