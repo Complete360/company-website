@@ -1,5 +1,19 @@
 <!-- ============================================================
-     COMPLETE360 FOOTER — v1.8
+     COMPLETE360 FOOTER — v1.9
+     v1.9 (2026-11-25): ACCESSIBILITY (PageSpeed / axe, home page report).
+       1. Text contrast: small grey-on-navy text used white at 40% (3.35:1,
+          fails AA). New token --c360f-white-muted (white 65%, 6.6:1 on navy)
+          now used for every text that used --c360f-white-40: SEO note, hours,
+          "Manage on the go", app-button small text, copyright, legal links.
+          The "Google Reviews" label on the reviews card and the Soon pills
+          also raised. --c360f-white-40
+          is kept for borders/decoration only.
+       2. Heading order: the three column titles were <h4> straight after the
+          page's <h2>s ("heading levels skipped"). Now <h2> with the same
+          look. The rule is scoped as .c360f-footer .c360f-col-title so the
+          site's own h2 styles can't restyle it; font-family and line-height
+          pinned.
+       No content, links or layout changed.
      v1.8 (2026-11-23): 1440px width site-wide (Jared). Footer columns, divider
        and bottom bar move from 1320/32 to 1440/64 (40px under 1100px, 24px on
        phones), lining up with the header and page content.
@@ -105,6 +119,7 @@
         --c360f-white: #ffffff;
         --c360f-white-70: rgba(255,255,255,0.7);
         --c360f-white-40: rgba(255,255,255,0.4);
+        --c360f-white-muted: rgba(255,255,255,0.65);  /* v1.9: AA text on navy */
         --c360f-white-10: rgba(255,255,255,0.08);
         --c360f-border: rgba(255,255,255,0.1);
         font-family: 'Poppins', 'Helvetica Neue', sans-serif;
@@ -254,7 +269,7 @@
       .c360f-seo-note {
         font-size: 10px;
         line-height: 1.4;
-        color: var(--c360f-white-40);
+        color: var(--c360f-white-muted);
         /* No negative margin here. v1.3 pulled this up by -28px, which dragged
            it inside the badge's required clear space (>= 1/2 badge height).
            The badge's own margin-bottom provides the gap — leave it alone. */
@@ -303,11 +318,13 @@
       }
       
       /* ---------- Link columns (2-4) ---------- */
-      .c360f-col-title {
+      .c360f-footer .c360f-col-title {
+        font-family: inherit;
         font-size: 12px;
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.8px;
+        line-height: 1.4;
         color: var(--c360f-white);
         margin: 0 0 18px;
       }
@@ -334,7 +351,7 @@
       .c360f-links a:hover { color: var(--c360f-white); }
       .c360f-links a i {
         font-size: 11px;
-        color: var(--c360f-white-40);
+        color: var(--c360f-white-muted);
         width: 14px;
         text-align: center;
         transition: color 0.15s ease;
@@ -346,7 +363,7 @@
         padding: 1px 6px;
         border-radius: 6px;
         background: rgba(136, 135, 128, 0.3);
-        color: rgba(255,255,255,0.5);
+        color: var(--c360f-white-muted);
         font-weight: 500;
         text-transform: uppercase;
         letter-spacing: 0.2px;
@@ -371,7 +388,7 @@
       
       .c360f-phone-label {
         font-size: 11px;
-        color: var(--c360f-white-40);
+        color: var(--c360f-white-muted);
         margin: 0 0 20px;
       }
       
@@ -392,7 +409,7 @@
         font-weight: 600;
         text-transform: uppercase;
         letter-spacing: 0.6px;
-        color: var(--c360f-white-40);
+        color: var(--c360f-white-muted);
         margin: 0 0 10px;
       }
       
@@ -428,7 +445,7 @@
       }
       .c360f-app-btn-small {
         font-size: 9px;
-        color: var(--c360f-white-40);
+        color: var(--c360f-white-muted);
         text-transform: uppercase;
         letter-spacing: 0.4px;
         font-weight: 500;
@@ -465,10 +482,10 @@
       
       .c360f-copyright {
         font-size: 12px;
-        color: var(--c360f-white-40);
+        color: var(--c360f-white-muted);
       }
       .c360f-copyright a {
-        color: var(--c360f-white-40);
+        color: var(--c360f-white-muted);
         text-decoration: none;
       }
       .c360f-copyright a:hover { color: var(--c360f-white-70); }
@@ -482,7 +499,7 @@
       }
       .c360f-legal a {
         font-size: 12px;
-        color: var(--c360f-white-40);
+        color: var(--c360f-white-muted);
         text-decoration: none;
         transition: color 0.15s ease;
       }
@@ -553,7 +570,7 @@
             <a href="https://maps.app.goo.gl/3zNANtaqrr1FJC1z6" target="_blank" rel="noopener" class="c360f-reviews">
               <div>
                 <div class="c360f-reviews-stars">★★★★★</div>
-                <div style="font-size:10px; color:rgba(255,255,255,0.5); margin-top:1px;">Google Reviews</div>
+                <div style="font-size:10px; color:rgba(255,255,255,0.75); margin-top:1px;">Google Reviews</div>
               </div>
               <div class="c360f-reviews-text">
                 <strong>147 Reviews</strong>
@@ -598,7 +615,7 @@
           <!-- v1.1: ProCard added after Website Pricing -->
           <!-- v1.4: "Soon" removed from Google PPC & Meta Ads (pages are live) -->
           <div>
-            <h4 class="c360f-col-title">Marketing Services</h4>
+            <h2 class="c360f-col-title">Marketing Services</h2>
             <ul class="c360f-links">
               <li><a href="/gbp-management"><i class="fa-solid fa-location-dot"></i>Google Business Profile Management</a></li>
               <li><a href="https://complete360.org/google-business-profile" target="_blank" rel="noopener"><i class="fa-solid fa-rocket"></i>Google Business Profile Setup</a></li>
@@ -619,7 +636,7 @@
           <!-- ===== COLUMN 3 — CRM Platform ===== -->
           <!-- v1.1: CRM Home link added at top -->
           <div>
-            <h4 class="c360f-col-title">CRM Platform</h4>
+            <h2 class="c360f-col-title">CRM Platform</h2>
             <ul class="c360f-links">
               <li><a href="/crm-home"><i class="fa-solid fa-table-columns"></i>Platform Overview</a></li>
               <li><a href="{{ custom_values.sub_domain_url }}/capture"><i class="fa-solid fa-filter"></i>Capture</a></li>
@@ -636,7 +653,7 @@
       
           <!-- ===== COLUMN 4 — Company ===== -->
           <div>
-            <h4 class="c360f-col-title">Company</h4>
+            <h2 class="c360f-col-title">Company</h2>
             <ul class="c360f-links">
               <li><a href="/contact-us"><i class="fa-solid fa-envelope"></i>Contact Us</a></li>
               <li><a href="/schedule-demo"><i class="fa-solid fa-calendar"></i>Schedule a Demo</a></li>
