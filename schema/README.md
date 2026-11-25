@@ -58,6 +58,7 @@ Don't paste them until the page is fixed and this script is re-run.
 | Geo-Fencing Advertising | `/geo-fencing` | `schema/pages/services/geo-fencing.html` | WebPage, Service, FAQPage | 7 | ✅ |
 | Google Ads (PPC) Management | `/google-ppc` | `schema/pages/services/google-ads.html` | WebPage, Service, FAQPage | 7 | ✅ |
 | Meta Ads Management | `/meta-ads` | `schema/pages/services/meta-ads.html` | WebPage, Service, FAQPage | 7 | ✅ |
+| ChatGPT Ads Management | `/chatgpt-ads` | `schema/pages/services/chatgpt-ads.html` | WebPage, Service, FAQPage | 7 | ✅ |
 | Google Social Posting | `/google-social-posting` | `schema/pages/services/google-social-posting.html` | WebPage, Service, FAQPage | 6 | ✅ |
 | Meta Social Posting | `/meta-social-posting` | `schema/pages/services/meta-social-posting.html` | WebPage, Service, FAQPage | 6 | ✅ |
 | Reputation Management | `/reputation-management` | `schema/pages/services/reputation-management.html` | WebPage, Service, FAQPage | 10 | ✅ |

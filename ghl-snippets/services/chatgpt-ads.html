@@ -1,0 +1,462 @@
+<!-- ══════════════════════════════════════════════════════════════
+     Complete360 — Service page: ChatGPT Ads Management
+     c360gpt-v1.1.html
+     GHL: Paste into a Custom Code block on the new page at /chatgpt-ads
+          (page name "ChatGPT Ads Management"). Meta data:
+          ghl-meta/services/chatgpt-ads.md. Schema:
+          schema/pages/services/chatgpt-ads.html (paste with the <script> tags).
+          Place the block in a FULL-WIDTH section with zero padding.
+     Poppins + Font Awesome 6.5.1 loaded via global header.
+     Header + footer are GLOBAL sections — do NOT include them here.
+     Prefix: c360gpt-  (new, unique; vars --gpt-*)
+
+     Width standard: 1440px content, 64px side margins (40px under 1100px,
+     24px under 640px), matching header v2.4+.
+
+     NEW SERVICE (Jared, 2026-11-24): ChatGPT Ads management. PRICES ARE NOT
+     SET YET. The pricing section says pricing is set on a strategy call and
+     is marked CONTENT PLACEHOLDER so the plan cards can drop in later. No
+     checkout yet: every button goes to /schedule-demo or the phone line.
+
+     Facts used (OpenAI announcements and industry coverage, checked
+     2026-11-24; re-check before launch, the product is changing fast):
+       - Ads show as labeled "Sponsored" units below ChatGPT's answer and are
+         matched to the topic of the conversation.
+       - Ads don't change ChatGPT's answers; conversations stay private from
+         advertisers.
+       - Shown on the Free and Go plans and to logged-out users (all-ages ads
+         only), never to accounts identified as under 18; Plus, Pro,
+         Business, Enterprise and Education users don't see ads.
+       - Bought through OpenAI's Ads Manager; CPC and CPM bidding; ad spend
+         is paid to OpenAI.
+     Not claimed on purpose: local/radius targeting, results or lead volume,
+     the satisfaction guarantee (ChatGPT Ads isn't in the ToS guarantee list
+     yet; see the FAQ note), any partner or certification status with OpenAI.
+     OpenAI's name and product names are used as plain text only; no logos.
+
+     Sections: hero with a code-built chat + sponsored ad mock · "a new place
+     customers ask" · how ChatGPT ads work (4 facts) · what we handle (6) ·
+     4-step process · who it fits · pricing placeholder · reviews widget ·
+     CTA · FAQ.
+
+     v1.1 (2026-11-25) — "Who sees them" and its FAQ corrected to OpenAI's help
+       center: Free and Go plans plus logged-out users (all-ages ads only), never
+       accounts identified as under 18 (was "logged-in adults").
+     v1.0 (2026-11-24) — first build, draft for Jared's review.
+     ══════════════════════════════════════════════════════════════ -->
+
+<style>
+.c360gpt{
+  --gpt-navy:#122078;--gpt-navy-dark:#0d1654;--gpt-navy-deeper:#0a1040;
+  --gpt-green:#127825;--gpt-green-hover:#0e5e1d;--gpt-green-light:#EAF3DE;--gpt-led:#2ecc52;
+  --gpt-sky:#EEF5FD;--gpt-sky-2:#E6F1FB;--gpt-line:#E2E8F2;
+  --gpt-text:#0F1F5E;--gpt-muted:#5F5E5A;--gpt-body:#3B4566;
+  --gpt-font:'Poppins','Helvetica Neue',Arial,sans-serif;
+  font-family:var(--gpt-font);color:var(--gpt-text);line-height:1.6;-webkit-font-smoothing:antialiased;width:100%;overflow-x:hidden;
+}
+.c360gpt *,.c360gpt *::before,.c360gpt *::after{box-sizing:border-box}
+.c360gpt :where(h1,h2,h3,h4,p,ul,ol,li){margin:0;padding:0;font-family:var(--gpt-font)}
+.c360gpt :where(ul,ol){list-style:none}
+.c360gpt :where(a){color:var(--gpt-navy)}
+.c360gpt a:focus-visible,.c360gpt summary:focus-visible{outline:3px solid var(--gpt-led);outline-offset:3px;border-radius:6px}
+.c360gpt-wrap{max-width:1440px;margin:0 auto;padding:0 64px}
+@media (max-width:1100px){.c360gpt-wrap{padding:0 40px}}
+.c360gpt-section{padding:104px 0}
+.c360gpt-h2{font-size:clamp(32px,4.4vw,56px);font-weight:800;line-height:1.1;letter-spacing:-0.02em;margin-bottom:16px}
+.c360gpt-lead{font-size:18px;color:var(--gpt-muted);line-height:1.65;max-width:760px}
+.c360gpt-kicker{display:inline-flex;align-items:center;gap:8px;font-size:14px;font-weight:700;color:var(--gpt-green);margin-bottom:14px}
+.c360gpt-head{text-align:center;max-width:900px;margin:0 auto 56px}
+.c360gpt-head .c360gpt-lead{margin:0 auto}
+.c360gpt-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;font-family:var(--gpt-font);font-size:16px;font-weight:700;padding:16px 28px;border-radius:8px;text-decoration:none;line-height:1;white-space:nowrap;transition:background .2s,color .2s,transform .15s}
+.c360gpt-btn-primary{background:var(--gpt-green);color:#fff;box-shadow:0 4px 20px rgba(18,120,37,0.30)}
+.c360gpt-btn-primary:hover{background:var(--gpt-green-hover);color:#fff;transform:translateY(-2px);text-decoration:none}
+.c360gpt-btn-light{background:transparent;color:#fff;border:2px solid rgba(255,255,255,0.85);padding:14px 24px}
+.c360gpt-btn-light:hover{background:#fff;color:var(--gpt-navy);text-decoration:none;transform:translateY(-2px)}
+.c360gpt-btn-outline{background:transparent;color:var(--gpt-text);border:2px solid var(--gpt-text);padding:14px 24px}
+.c360gpt-btn-outline:hover{background:var(--gpt-text);color:#fff;text-decoration:none;transform:translateY(-2px)}
+.c360gpt a.c360gpt-btn-primary,.c360gpt a.c360gpt-btn-light{color:#fff}
+.c360gpt a.c360gpt-btn-light:hover{color:var(--gpt-navy)}
+.c360gpt a.c360gpt-btn-outline{color:var(--gpt-text)}
+.c360gpt a.c360gpt-btn-outline:hover{color:#fff}
+.c360gpt-ctas{display:flex;flex-wrap:wrap;gap:14px}
+
+/* ══════════ HERO ══════════ */
+.c360gpt-hero{position:relative;overflow:hidden;color:#fff;background:linear-gradient(135deg,#09103c 0%,#122078 58%,#0c1960 100%)}
+.c360gpt-hero::before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(700px 500px at 80% 40%,rgba(46,204,82,0.16),transparent 70%),radial-gradient(600px 400px at 10% 90%,rgba(63,99,199,0.25),transparent 70%)}
+.c360gpt-hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center;padding-top:56px;padding-bottom:104px}
+.c360gpt-crumbs ol{display:flex;flex-wrap:wrap;gap:8px;font-size:13px;margin-bottom:28px}
+.c360gpt-crumbs li{color:rgba(255,255,255,0.7);display:flex;align-items:center;gap:8px}
+.c360gpt-crumbs li+li::before{content:"\203A";color:rgba(255,255,255,0.45)}
+.c360gpt-crumbs a{color:#fff;text-decoration:none}
+.c360gpt-badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:#7ddc80;background:rgba(18,120,37,0.22);border:1px solid rgba(46,204,82,0.35);border-radius:100px;padding:6px 14px;margin-bottom:20px}
+.c360gpt-hero h1{font-size:clamp(38px,5.6vw,64px);font-weight:800;line-height:1.06;letter-spacing:-0.025em;color:#fff;margin-bottom:22px}
+.c360gpt-hero h1 span{color:var(--gpt-led)}
+.c360gpt-hero-sub{font-size:18px;line-height:1.65;color:rgba(255,255,255,0.85);max-width:620px;margin-bottom:32px}
+.c360gpt-creds{display:flex;align-items:center;flex-wrap:wrap;margin-top:12px}
+.c360gpt-partner{--badge-h:88px;--badge-clear:44px;display:inline-block;line-height:0;margin:var(--badge-clear);margin-left:0}
+.c360gpt-partner img{display:block;height:var(--badge-h);width:auto;border:0;max-width:none}
+.c360gpt-creds-list{display:flex;flex-direction:column;gap:8px;flex:1;min-width:220px}
+.c360gpt-creds-list li{display:flex;align-items:flex-start;gap:10px;font-size:13.5px;font-weight:500;color:rgba(255,255,255,0.88);line-height:1.4}
+.c360gpt-creds-list i{color:#7ddc80;margin-top:3px;font-size:12px}
+/* chat mock */
+.c360gpt-chat{background:#fff;color:#202124;border-radius:24px;box-shadow:0 40px 80px rgba(0,0,0,0.4);overflow:hidden;max-width:560px;margin-left:auto}
+.c360gpt-chat-top{display:flex;align-items:center;gap:8px;padding:14px 18px;border-bottom:1px solid #EEF0F4;font-size:13px;font-weight:700;color:#3B4566}
+.c360gpt-chat-top i{color:#10A37F}
+.c360gpt-chat-body{padding:20px 20px 22px;display:flex;flex-direction:column;gap:14px;font-family:Arial,'Helvetica Neue',sans-serif}
+.c360gpt-msg-user{align-self:flex-end;max-width:82%;background:#F1F3F7;border-radius:18px 18px 4px 18px;padding:12px 16px;font-size:14px;line-height:1.5}
+.c360gpt-msg-ai{font-size:14px;line-height:1.6;color:#2B2F38}
+.c360gpt-msg-ai ul{margin:8px 0 0 18px;list-style:disc}
+.c360gpt-msg-ai li{margin-bottom:4px}
+.c360gpt-ad{border:1px solid #E3E6EC;border-radius:14px;padding:14px 16px;display:grid;grid-template-columns:44px 1fr;gap:4px 12px;align-items:center;background:#FAFBFD}
+.c360gpt-ad-logo{grid-row:span 3;width:44px;height:44px;border-radius:10px;background:var(--gpt-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-size:18px}
+.c360gpt-ad small{font-size:11px;font-weight:700;color:#6B7280;letter-spacing:.04em;text-transform:uppercase}
+.c360gpt-ad b{font-size:15px;color:#111827}
+.c360gpt-ad span{font-size:13px;color:#4B5563;line-height:1.45}
+.c360gpt-ad em{grid-column:2;justify-self:start;margin-top:6px;font-style:normal;font-size:12.5px;font-weight:700;color:#fff;background:var(--gpt-green);border-radius:100px;padding:6px 14px}
+.c360gpt-chat-note{font-size:12px;color:rgba(255,255,255,0.6);text-align:right;margin-top:12px;max-width:560px;margin-left:auto}
+
+/* ══════════ WHY (split) ══════════ */
+.c360gpt-why{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:64px;align-items:center}
+.c360gpt-why p{font-size:17px;color:var(--gpt-body);line-height:1.7;margin-bottom:16px}
+.c360gpt-quotes{display:flex;flex-direction:column;gap:14px}
+.c360gpt-q{background:#fff;border:1px solid var(--gpt-line);border-radius:18px;padding:18px 20px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 14px 30px rgba(15,31,94,0.06)}
+.c360gpt-q:nth-child(2){margin-left:48px}
+.c360gpt-q:nth-child(3){margin-left:24px}
+.c360gpt-q i{width:36px;height:36px;border-radius:50%;background:var(--gpt-sky-2);color:var(--gpt-navy);display:flex;align-items:center;justify-content:center;flex:none;font-size:14px}
+.c360gpt-q p{margin:0;font-size:15.5px;color:var(--gpt-text);font-weight:600;line-height:1.5}
+
+/* ══════════ HOW IT WORKS (facts) ══════════ */
+.c360gpt-facts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px}
+.c360gpt-fact{background:#fff;border:1px solid var(--gpt-line);border-radius:20px;padding:28px 24px;position:relative;overflow:hidden}
+.c360gpt-fact::before{content:"";position:absolute;left:0;top:0;right:0;height:5px;background:linear-gradient(90deg,var(--gpt-green),#3F63C7)}
+.c360gpt-fact i{font-size:22px;color:var(--gpt-navy);margin-bottom:16px;display:block}
+.c360gpt-fact h3{font-size:19px;font-weight:700;line-height:1.3;margin-bottom:8px}
+.c360gpt-fact p{font-size:15px;color:var(--gpt-muted);line-height:1.6}
+.c360gpt-src{font-size:12.5px;color:var(--gpt-muted);text-align:center;margin-top:24px}
+
+/* ══════════ WHAT WE HANDLE ══════════ */
+.c360gpt-handle{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.c360gpt-item{display:flex;gap:16px;align-items:flex-start;background:#fff;border:1px solid var(--gpt-line);border-radius:18px;padding:24px}
+.c360gpt-item > i{width:46px;height:46px;border-radius:12px;background:var(--gpt-green-light);color:var(--gpt-green);display:flex;align-items:center;justify-content:center;font-size:18px;flex:none}
+.c360gpt-item h3{font-size:18px;font-weight:700;line-height:1.3;margin-bottom:6px}
+.c360gpt-item p{font-size:15px;color:var(--gpt-muted);line-height:1.6}
+
+/* ══════════ PROCESS ══════════ */
+.c360gpt-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;counter-reset:gptstep;position:relative}
+.c360gpt-steps::before{content:"";position:absolute;left:12%;right:12%;top:28px;height:3px;background:linear-gradient(90deg,var(--gpt-green),#3F63C7);border-radius:3px}
+.c360gpt-step{counter-increment:gptstep;text-align:center;padding:0 18px;position:relative}
+.c360gpt-step::before{content:counter(gptstep);display:flex;align-items:center;justify-content:center;width:58px;height:58px;margin:0 auto 18px;border-radius:50%;background:var(--gpt-navy);color:#fff;font-size:22px;font-weight:800;box-shadow:0 0 0 8px var(--gpt-sky)}
+.c360gpt-step h3{font-size:19px;font-weight:700;margin-bottom:8px}
+.c360gpt-step p{font-size:15px;color:var(--gpt-muted);line-height:1.6}
+
+/* ══════════ FIT ══════════ */
+.c360gpt-fit{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:24px;max-width:1160px;margin:0 auto}
+.c360gpt-fit-col{border-radius:22px;padding:32px}
+.c360gpt-fit-col.is-yes{background:var(--gpt-green-light)}
+.c360gpt-fit-col.is-later{background:#F1F3F7}
+.c360gpt-fit-col h3{font-size:22px;font-weight:800;margin-bottom:16px;display:flex;align-items:center;gap:10px}
+.c360gpt-fit-col li{display:flex;gap:10px;align-items:flex-start;font-size:15.5px;color:var(--gpt-body);line-height:1.55;margin-bottom:10px}
+.c360gpt-fit-col li i{margin-top:4px;font-size:13px}
+.c360gpt-fit-col.is-yes li i{color:var(--gpt-green)}
+.c360gpt-fit-col.is-later li i{color:#8A94A8}
+.c360gpt-fit-col a{font-weight:600}
+
+/* ══════════ PRICING (placeholder) ══════════ */
+.c360gpt-price{max-width:980px;margin:0 auto;background:#fff;border:2px solid var(--gpt-navy);border-radius:26px;padding:44px;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:40px;align-items:center;box-shadow:0 24px 60px rgba(15,31,94,0.12)}
+.c360gpt-price h3{font-size:28px;font-weight:800;line-height:1.2;margin-bottom:12px}
+.c360gpt-price p{font-size:16px;color:var(--gpt-body);line-height:1.65;margin-bottom:12px}
+.c360gpt-price ul li{display:flex;gap:10px;font-size:15px;color:var(--gpt-body);margin-bottom:8px}
+.c360gpt-price ul li i{color:var(--gpt-green);margin-top:4px;font-size:13px}
+.c360gpt-price-side{background:var(--gpt-sky);border-radius:18px;padding:28px;text-align:center}
+.c360gpt-price-side strong{display:block;font-size:20px;font-weight:800;margin-bottom:8px}
+.c360gpt-price-side span{display:block;font-size:14px;color:var(--gpt-muted);margin-bottom:20px}
+
+/* ══════════ CTA ══════════ */
+.c360gpt-cta{background:var(--gpt-navy);border-radius:32px;padding:64px;color:#fff;text-align:center;position:relative;overflow:hidden}
+.c360gpt-cta::before{content:"";position:absolute;inset:0;background:radial-gradient(600px 300px at 50% 0%,rgba(46,204,82,0.2),transparent 70%);pointer-events:none}
+.c360gpt-cta > *{position:relative}
+.c360gpt-cta .c360gpt-h2{color:#fff}
+.c360gpt-cta p{font-size:18px;color:#DCE2F7;max-width:680px;margin:0 auto 30px;line-height:1.65}
+.c360gpt-cta .c360gpt-ctas{justify-content:center}
+
+/* ══════════ FAQ ══════════ */
+.c360gpt-faq-list{max-width:1000px;margin:0 auto}
+.c360gpt-faq-item{border-bottom:1px solid var(--gpt-line)}
+.c360gpt-faq-item:first-child{border-top:1px solid var(--gpt-line)}
+.c360gpt-faq-q{display:grid;grid-template-columns:1fr 24px;gap:16px;align-items:center;padding:22px 4px;font-size:17px;font-weight:600;cursor:pointer;list-style:none}
+.c360gpt-faq-q::-webkit-details-marker{display:none}
+.c360gpt-faq-q::after{content:"\002B";font-size:24px;font-weight:400;color:var(--gpt-navy);text-align:right;transition:transform .2s}
+.c360gpt-faq-item[open] .c360gpt-faq-q::after{transform:rotate(45deg)}
+.c360gpt-faq-a{padding:0 40px 24px 4px;font-size:16px;color:var(--gpt-muted);line-height:1.7}
+.c360gpt-faq-a a{font-weight:600}
+
+/* ══════════ RESPONSIVE ══════════ */
+@media (max-width:1100px){
+  .c360gpt-hero-grid,.c360gpt-why{grid-template-columns:1fr;gap:48px}
+  .c360gpt-chat,.c360gpt-chat-note{margin-left:0}
+  .c360gpt-facts{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c360gpt-handle{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .c360gpt-price{grid-template-columns:1fr}
+}
+@media (max-width:900px){
+  .c360gpt-section{padding:76px 0}
+  .c360gpt-steps{grid-template-columns:1fr 1fr;gap:36px 0}
+  .c360gpt-steps::before{display:none}
+  .c360gpt-fit{grid-template-columns:1fr}
+}
+@media (max-width:640px){
+  .c360gpt-wrap{padding-left:24px;padding-right:24px}
+  .c360gpt-btn{width:100%}
+  .c360gpt-partner{--badge-h:64px;--badge-clear:32px}
+  .c360gpt-facts,.c360gpt-handle,.c360gpt-steps{grid-template-columns:1fr}
+  .c360gpt-q:nth-child(2),.c360gpt-q:nth-child(3){margin-left:0}
+  .c360gpt-price{padding:26px 20px}
+  .c360gpt-cta{padding:44px 22px;border-radius:22px}
+  .c360gpt-faq-a{padding-right:4px}
+}
+@media (prefers-reduced-motion:reduce){
+  .c360gpt *,.c360gpt *::before,.c360gpt *::after{transition:none !important;animation:none !important}
+  .c360gpt-btn:hover{transform:none}
+}
+</style>
+
+<div class="c360gpt">
+
+<!-- ══════════ HERO ══════════ -->
+<section class="c360gpt-hero">
+  <div class="c360gpt-wrap c360gpt-hero-grid">
+    <div>
+      <nav class="c360gpt-crumbs" aria-label="Breadcrumb"><ol><li><a href="/">Home</a></li><li aria-current="page">ChatGPT Ads</li></ol></nav>
+      <span class="c360gpt-badge"><i class="fa-solid fa-comments" aria-hidden="true"></i> New ad channel</span>
+      <h1>ChatGPT Ads for local businesses, <span>set up and managed for you</span></h1>
+      <p class="c360gpt-hero-sub">People now ask ChatGPT who to call, what to buy and where to go. ChatGPT Ads put a clearly labeled ad for your business right under the answer, matched to what they're asking about. We build, launch and manage the campaigns so you can be there early.</p>
+      <div class="c360gpt-ctas">
+        <a href="/schedule-demo" class="c360gpt-btn c360gpt-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360gpt-btn c360gpt-btn-light"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+      <div class="c360gpt-creds">
+        <a href="https://www.google.com/partners/agency?id=9636024453" target="_blank" rel="noopener" class="c360gpt-partner"><img src="https://www.gstatic.com/partners/badge/images/2026/PartnerBadgeClickable.svg" alt="Google Partner"></a>
+        <ul class="c360gpt-creds-list">
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Paid ads managed by a Certified Google Partner team</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Reviewed by local business owners on Google</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Tucson-based, serving nationwide since 2018</li>
+        </ul>
+      </div>
+    </div>
+    <div>
+      <div class="c360gpt-chat" role="img" aria-label="Example ChatGPT conversation: someone asks for a reliable AC repair company, and a labeled sponsored ad for a local HVAC company appears below the answer">
+        <div class="c360gpt-chat-top"><i class="fa-solid fa-message" aria-hidden="true"></i> ChatGPT</div>
+        <div class="c360gpt-chat-body">
+          <div class="c360gpt-msg-user">My AC stopped blowing cold air. What should I check before I call someone?</div>
+          <div class="c360gpt-msg-ai">A few quick things to check first:
+            <ul><li>Make sure the thermostat is set to cool</li><li>Check the air filter and the breaker</li><li>Look for ice on the outdoor unit</li></ul>
+          </div>
+          <div class="c360gpt-ad">
+            <span class="c360gpt-ad-logo"><i class="fa-solid fa-snowflake" aria-hidden="true"></i></span>
+            <small>Sponsored</small>
+            <b>Desert Air Heating &amp; Cooling</b>
+            <span>Same-day AC repair. Licensed techs, upfront pricing.</span>
+            <em>Book a visit</em>
+          </div>
+        </div>
+      </div>
+      <p class="c360gpt-chat-note">Example for illustration. Ads appear below the answer and don't change it.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ A NEW PLACE CUSTOMERS ASK ══════════ -->
+<section class="c360gpt-section">
+  <div class="c360gpt-wrap c360gpt-why">
+    <div>
+      <span class="c360gpt-kicker"><i class="fa-solid fa-lightbulb" aria-hidden="true"></i> Why it matters</span>
+      <h2 class="c360gpt-h2">Your customers are asking ChatGPT</h2>
+      <p>Before they search Google or scroll Facebook, a lot of people now just ask. Which roofer should I call? Is this water heater worth fixing? What does a kitchen remodel cost?</p>
+      <p>ChatGPT Ads let your business show up in those moments, next to the answer, while the person is actively thinking about the problem you solve. It's a new channel, so there's room to get in before your competitors do.</p>
+    </div>
+    <div class="c360gpt-quotes" aria-label="Examples of questions people ask ChatGPT">
+      <div class="c360gpt-q"><i class="fa-solid fa-comment" aria-hidden="true"></i><p>"Why is my water heater making a popping sound?"</p></div>
+      <div class="c360gpt-q"><i class="fa-solid fa-comment" aria-hidden="true"></i><p>"How much should a new roof cost for a 2,000 sq ft house?"</p></div>
+      <div class="c360gpt-q"><i class="fa-solid fa-comment" aria-hidden="true"></i><p>"What should I look for in a pest control company?"</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ HOW CHATGPT ADS WORK ══════════ -->
+<section class="c360gpt-section" style="background:var(--gpt-sky)">
+  <div class="c360gpt-wrap">
+    <div class="c360gpt-head">
+      <span class="c360gpt-kicker"><i class="fa-solid fa-circle-info" aria-hidden="true"></i> The basics</span>
+      <h2 class="c360gpt-h2">How ChatGPT ads work</h2>
+      <p class="c360gpt-lead">Four things to know before you spend a dollar.</p>
+    </div>
+    <div class="c360gpt-facts">
+      <article class="c360gpt-fact"><i class="fa-solid fa-tag" aria-hidden="true"></i><h3>Clearly labeled, below the answer</h3><p>Ads show as "Sponsored" units under ChatGPT's response, never mixed into the answer itself.</p></article>
+      <article class="c360gpt-fact"><i class="fa-solid fa-bullseye" aria-hidden="true"></i><h3>Matched to the conversation</h3><p>Ads are picked by the topic someone is asking about, so your ad shows up when the conversation is about what you do.</p></article>
+      <article class="c360gpt-fact"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><h3>Answers stay independent</h3><p>Ads don't change what ChatGPT says, and conversations stay private from advertisers.</p></article>
+      <article class="c360gpt-fact"><i class="fa-solid fa-users" aria-hidden="true"></i><h3>Who sees them</h3><p>People on ChatGPT's Free and Go plans, plus people using ChatGPT without logging in. Paid plans like Plus and Pro don't show ads, and accounts identified as under 18 never do.</p></article>
+    </div>
+    <p class="c360gpt-src">Based on OpenAI's published ad policies. ChatGPT Ads is new and still changing; we keep up so you don't have to.</p>
+  </div>
+</section>
+
+<!-- ══════════ WHAT WE HANDLE ══════════ -->
+<section class="c360gpt-section">
+  <div class="c360gpt-wrap">
+    <div class="c360gpt-head">
+      <span class="c360gpt-kicker"><i class="fa-solid fa-list-check" aria-hidden="true"></i> Done for you</span>
+      <h2 class="c360gpt-h2">What we handle</h2>
+      <p class="c360gpt-lead">You run your business. We run the ads, from the first setup to the monthly report.</p>
+    </div>
+    <div class="c360gpt-handle">
+      <div class="c360gpt-item"><i class="fa-solid fa-gear" aria-hidden="true"></i><div><h3>Account setup</h3><p>We set up your ChatGPT Ads account, billing and tracking the right way from day one.</p></div></div>
+      <div class="c360gpt-item"><i class="fa-solid fa-comments" aria-hidden="true"></i><div><h3>Conversation targeting</h3><p>We map the questions your customers ask so your ads show up in the conversations that matter.</p></div></div>
+      <div class="c360gpt-item"><i class="fa-solid fa-pen-nib" aria-hidden="true"></i><div><h3>Ad copy and creative</h3><p>Clear, helpful ads written for how people read in a chat, not recycled search ads.</p></div></div>
+      <div class="c360gpt-item"><i class="fa-solid fa-sliders" aria-hidden="true"></i><div><h3>Budget and bidding</h3><p>We set budgets and bids, and adjust as results come in, so your spend goes where it works.</p></div></div>
+      <div class="c360gpt-item"><i class="fa-solid fa-route" aria-hidden="true"></i><div><h3>Landing pages and follow-up</h3><p>Every click lands somewhere that converts, and new leads flow into your Complete360 CRM.</p></div></div>
+      <div class="c360gpt-item"><i class="fa-solid fa-chart-line" aria-hidden="true"></i><div><h3>Monthly reporting</h3><p>Plain-English reports on what ran, what it cost and what came in, with a call to review.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PROCESS ══════════ -->
+<section class="c360gpt-section" style="background:var(--gpt-sky);padding-top:96px">
+  <div class="c360gpt-wrap">
+    <div class="c360gpt-head">
+      <span class="c360gpt-kicker"><i class="fa-solid fa-route" aria-hidden="true"></i> How it works</span>
+      <h2 class="c360gpt-h2">From strategy call to live ads in 4 steps</h2>
+    </div>
+    <div class="c360gpt-steps">
+      <div class="c360gpt-step"><h3>Strategy call</h3><p>We learn your services, area and goals, and check whether ChatGPT Ads fit your business.</p></div>
+      <div class="c360gpt-step"><h3>Build</h3><p>Account, tracking, ad copy and landing pages, ready for your review and approval.</p></div>
+      <div class="c360gpt-step"><h3>Launch</h3><p>Ads go live with a starting budget you're comfortable with.</p></div>
+      <div class="c360gpt-step"><h3>Improve</h3><p>We watch results, test new ads and adjust each month.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FIT ══════════ -->
+<section class="c360gpt-section">
+  <div class="c360gpt-wrap">
+    <div class="c360gpt-head">
+      <span class="c360gpt-kicker"><i class="fa-solid fa-compass" aria-hidden="true"></i> Is it right for you?</span>
+      <h2 class="c360gpt-h2">Who ChatGPT Ads fit best</h2>
+      <p class="c360gpt-lead">We'll tell you honestly. For some businesses another channel should come first.</p>
+    </div>
+    <div class="c360gpt-fit">
+      <div class="c360gpt-fit-col is-yes">
+        <h3><i class="fa-solid fa-circle-check" aria-hidden="true" style="color:var(--gpt-green)"></i> A strong fit</h3>
+        <ul>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Customers research or ask questions before they buy</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Higher-value jobs, like remodels, roofs, HVAC systems or insurance policies</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> You already show up well on Google and want a new channel</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> You want to be early on a platform your competitors haven't found yet</li>
+        </ul>
+      </div>
+      <div class="c360gpt-fit-col is-later">
+        <h3><i class="fa-solid fa-clock" aria-hidden="true" style="color:#8A94A8"></i> Start somewhere else first</h3>
+        <ul>
+          <li><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> Emergency calls that need a fast phone call: start with <a href="/local-service-ads">Local Services Ads</a></li>
+          <li><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> A thin Google profile with few reviews: start with <a href="/gbp-management">Google Business Profile Management</a></li>
+          <li><i class="fa-solid fa-arrow-right" aria-hidden="true"></i> No website that turns visitors into calls yet: start with a <a href="/websites-home">website</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ PRICING (placeholder) ══════════ -->
+<!-- CONTENT PLACEHOLDER: pricing — prices not set yet (Jared, 2026-11-24). When they are,
+     replace this card with plan cards (match /google-ppc) and add a checkout link. -->
+<section class="c360gpt-section" id="pricing" style="background:var(--gpt-sky)">
+  <div class="c360gpt-wrap">
+    <div class="c360gpt-head">
+      <span class="c360gpt-kicker"><i class="fa-solid fa-tag" aria-hidden="true"></i> Pricing</span>
+      <h2 class="c360gpt-h2">Simple management, your ad budget separate</h2>
+    </div>
+    <div class="c360gpt-price">
+      <div>
+        <h3>Pricing is set with you on a strategy call</h3>
+        <p>ChatGPT Ads is new, so we size the plan to your business, your area and what you want to spend.</p>
+        <ul>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> A flat monthly management fee to Complete360</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> Your ad budget paid directly to OpenAI, separate from our fee</li>
+          <li><i class="fa-solid fa-check" aria-hidden="true"></i> You choose the starting budget</li>
+        </ul>
+      </div>
+      <div class="c360gpt-price-side">
+        <strong>Talk to us about ChatGPT Ads</strong>
+        <span>Free strategy call, no pressure</span>
+        <a href="/schedule-demo" class="c360gpt-btn c360gpt-btn-primary">Book a free strategy call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ REVIEWS ══════════ -->
+<section class="c360gpt-section">
+  <div class="c360gpt-wrap">
+    <div class="c360gpt-head">
+      <span class="c360gpt-kicker">Our own reviews</span>
+      <h2 class="c360gpt-h2">Trusted by local businesses</h2>
+      <p class="c360gpt-lead">Business owners across the country, in their own words.</p>
+    </div>
+    <script type="text/javascript" defer src="https://reputationhub.site/reputation/assets/review-widget.js"></script>
+    <iframe class="lc_reviews_widget" loading="lazy" title="Complete360 Google reviews" src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u" frameborder="0" scrolling="no" style="min-width:100%;width:100%;min-height:420px;display:block;"></iframe>
+  </div>
+</section>
+
+<!-- ══════════ CTA ══════════ -->
+<section class="c360gpt-section" style="padding-top:0">
+  <div class="c360gpt-wrap">
+    <div class="c360gpt-cta">
+      <h2 class="c360gpt-h2">Be there when customers ask</h2>
+      <p>On a free strategy call we'll look at how your customers find you today and whether ChatGPT Ads should be part of your plan.</p>
+      <div class="c360gpt-ctas">
+        <a href="/schedule-demo" class="c360gpt-btn c360gpt-btn-primary"><i class="fa-solid fa-calendar-check" aria-hidden="true"></i> Book a free strategy call</a>
+        <a href="tel:+18665276205" class="c360gpt-btn c360gpt-btn-light"><i class="fa-solid fa-phone" aria-hidden="true"></i> (866) 527-6205</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FAQ ══════════
+     schema/build_schema.py pulls these word for word. Answers must match
+     PROJECT.md policies. Re-run the builder after edits. -->
+<section class="c360gpt-section" id="gpt-faq" style="padding-top:0">
+  <div class="c360gpt-wrap">
+    <div class="c360gpt-head"><h2 class="c360gpt-h2">ChatGPT Ads questions</h2></div>
+    <div class="c360gpt-faq-list">
+      <details class="c360gpt-faq-item">
+        <summary class="c360gpt-faq-q">What are ChatGPT Ads?</summary>
+        <div class="c360gpt-faq-a"><p>They're ads from OpenAI that appear inside ChatGPT, below the answer, labeled as sponsored. They're matched to the topic of the conversation, so a business can show up when someone is asking about the kind of problem it solves.</p></div>
+      </details>
+      <details class="c360gpt-faq-item">
+        <summary class="c360gpt-faq-q">Do ChatGPT Ads change what ChatGPT recommends?</summary>
+        <div class="c360gpt-faq-a"><p>No. OpenAI says ads don't influence ChatGPT's answers, and advertisers can't see people's conversations. Your ad shows up beside the answer, not inside it.</p></div>
+      </details>
+      <details class="c360gpt-faq-item">
+        <summary class="c360gpt-faq-q">Who sees ChatGPT Ads?</summary>
+        <div class="c360gpt-faq-a"><p>People using ChatGPT's Free and Go plans, and people using ChatGPT without logging in (who only see ads suitable for all ages). People on paid plans like Plus, Pro, Business, Enterprise and Edu don't see ads, and ChatGPT doesn't show ads to accounts identified as under 18.</p></div>
+      </details>
+      <details class="c360gpt-faq-item">
+        <summary class="c360gpt-faq-q">Are ChatGPT Ads right for my business?</summary>
+        <div class="c360gpt-faq-a"><p>They tend to fit businesses whose customers research before they buy, especially for higher-value jobs. If most of your work comes from urgent calls, Local Services Ads and answering every call usually come first. We'll give you an honest recommendation on a strategy call.</p></div>
+      </details>
+      <details class="c360gpt-faq-item">
+        <summary class="c360gpt-faq-q">How much do ChatGPT Ads cost?</summary>
+        <div class="c360gpt-faq-a"><p>There are two parts. Our management fee is set with you on a strategy call. Your ad budget is separate and paid directly to OpenAI, and you choose how much to start with. To cancel a recurring service, give at least 10 days' written notice before the next billing date. Payments are non-refundable from the time of purchase.</p></div>
+      </details>
+      <details class="c360gpt-faq-item">
+        <summary class="c360gpt-faq-q">Can you guarantee leads from ChatGPT Ads?</summary>
+        <div class="c360gpt-faq-a"><p>No. ChatGPT Ads is a new channel, and no one can promise a set number of leads or results. What we do promise is careful setup, honest reporting and steady improvements to your campaigns each month.</p></div>
+      </details>
+      <details class="c360gpt-faq-item">
+        <summary class="c360gpt-faq-q">Can I run ChatGPT Ads with my other marketing?</summary>
+        <div class="c360gpt-faq-a"><p>Yes, and we recommend it. ChatGPT Ads work best alongside a strong <a href="/gbp-management">Google Business Profile</a>, <a href="/google-ppc">Google PPC</a> and <a href="/local-service-ads">Local Services Ads</a>, so customers find you wherever they look.</p></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+</div>

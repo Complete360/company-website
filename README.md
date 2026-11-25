@@ -29,7 +29,7 @@ All custom code blocks live in `ghl-snippets/`:
 - `partners/` — partner landing pages
 
 ## Page checklist
-75 of 92 pages have code. Multi-snippet pages (checkouts) are a folder of
+76 of 93 pages have code. Multi-snippet pages (checkouts) are a folder of
 numbered snippets, pasted around GHL's native order form in order. Files marked ⬜ contain only a
 `PLACEHOLDER` comment — replace it with the page's custom code from GHL
 and change the status here to ✅. Use Notes for
@@ -69,6 +69,7 @@ anything still to do on a page (🔁 = needs rebuild).
 | `services/local-display-network.html` | Local Display Network | ✅ Code in repo | Up to date |
 | `services/dispensary.html` | Dispensary | ✅ Code in repo | **🔁 paste into GHL** — 1440px width standard (2026-11-23). Up to date |
 | `services/seo-services.html` | SEO Services (new page — create in GHL) | ✅ Code in repo | v1.4 live in GHL; not in nav yet; checkout page created, snippets to build |
+| `services/chatgpt-ads.html` | ChatGPT Ads Management (new page at /chatgpt-ads — create in GHL) | ✅ Code in repo | **v1.0 draft for Jared's review.** Prices not set: pricing section is a placeholder (strategy-call CTA); no checkout yet. Not in header/footer yet. Meta: `ghl-meta/services/chatgpt-ads.md`; schema generated. |
 | `services/payments.html` | Payments | ✅ Code in repo | v1.1 live in GHL (Nov 10) — schema still to paste |
 
 ### Industries
