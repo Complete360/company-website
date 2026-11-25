@@ -1,7 +1,23 @@
 <!-- ══════════════════════════════════════════════════════════════
-     Complete360 — Homepage  |  c360-homepage-v2.7.html
+     Complete360 — Homepage  |  c360-homepage-v2.8.html
      GHL: Paste into Custom Code block on homepage page only.
      Poppins + Font Awesome 6.5.1 loaded via global header.
+
+     v2.8 (2026-11-25) — PageSpeed fixes only (mobile report 2026-11-25).
+       No visual change except the "Get Started Online" button now works.
+       1. Reviews widget (script + iframe) loads only when the visitor
+          scrolls near it; space reserved; <noscript> fallback. Iframe gets
+          a title (Accessibility: frame-title).
+       2. Industries: role="tabpanel" moved from each <ul> to a wrapper
+          <div> (Accessibility: "list items not in a list" + ARIA role not
+          allowed). Tabs, fan-out and no-JS view behave as before.
+       3. "Get Started Online" was href="javascript:void(0)" (SEO: link not
+          crawlable) and only set aria-hidden, so the header modal never
+          showed. Now a <button class="c360-popup-trigger"> that the global
+          header opens (same as the header's Get Started). Old home modal
+          script removed.
+       4. Hero and final CTA images get width/height (Performance: image
+          elements without explicit size) and decoding="async".
 
      v2.7 (2026-11-24) — Geo-fencing visual sits on a code-built street map
        (Jared): blocks, streets, a wash and parks in navy tones, green device
@@ -57,7 +73,7 @@
 
 <style>
 /* ══════════════════════════════════════════════════════
-   Complete360 Homepage v2.7  |  Prefix: c360-hp-
+   Complete360 Homepage v2.8  |  Prefix: c360-hp-
    ══════════════════════════════════════════════════════ */
 
 :root {
@@ -107,6 +123,8 @@
   border: 1.5px solid rgba(255,255,255,0.3);
   transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
+button.c360-hp-btn-outline-white { cursor: pointer; }
+.c360-hp-btn-outline-white:focus-visible { outline: 3px solid #2ecc52; outline-offset: 3px; }
 .c360-hp-btn-outline-white:hover {
   border-color: rgba(255,255,255,0.75); color: #fff;
   background: rgba(255,255,255,0.08); text-decoration: none;
@@ -727,7 +745,7 @@
 .c360-hp-ind-tab:focus-visible{outline:3px solid #2ecc52;outline-offset:3px}
 .c360-hp-ind-stage{position:relative;overflow:hidden;transition:height .5s cubic-bezier(.22,.8,.3,1)}
 .c360-hp-ind-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:4px}
-.c360-hp-ind-grid[hidden]{display:none}
+.c360-hp-ind-grid[hidden],.c360-hp-ind-panel[hidden]{display:none}
 .c360-hp-ind-grid-title{display:none}
 .c360-hp-ind-row{display:flex;flex-direction:column;gap:10px;height:100%;padding:22px 20px 18px;background:#fff;border:1px solid #E2E8F2;border-radius:16px;text-decoration:none;color:var(--hp-text);transition:transform .2s,box-shadow .2s,border-color .2s;will-change:transform}
 .c360-hp-ind-row.is-fan{transition:transform .55s cubic-bezier(.22,.8,.3,1),opacity .4s ease;transition-delay:var(--d,0ms)}
@@ -741,6 +759,7 @@
 /* no-JS: every group visible, stacked, with its heading */
 .c360-hp-ind-dir.no-js .c360-hp-ind-tabs{display:none}
 .c360-hp-ind-dir.no-js .c360-hp-ind-grid[hidden]{display:grid}
+.c360-hp-ind-dir.no-js .c360-hp-ind-panel[hidden]{display:block}
 .c360-hp-ind-dir.no-js .c360-hp-ind-grid-title{display:block;font-size:20px;font-weight:800;color:var(--hp-text);margin:32px 0 14px}
 @media (max-width:1100px){.c360-hp-ind-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media (max-width:760px){.c360-hp-ind-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.c360-hp-ind-tab{font-size:14px;padding:10px 16px}}
@@ -752,6 +771,7 @@
    REVIEWS
    ══════════════════════════════════════════════════════ */
 .c360-hp-reviews { padding: 96px 0; background: var(--hp-light-grey); }
+.c360-hp-reviews-slot { min-height: 560px; }
 
 /* ══════════════════════════════════════════════════════
    FAQ SECTION (#5)
@@ -1150,7 +1170,7 @@
 <section class="c360-hp-section c360-hp-hero">
   <div class="c360-hp-hero-bg" aria-hidden="true">
     <!-- IMAGE: hp-hero-bg — Tucson at twilight beneath the Catalina Mountains (no people), under a navy overlay -->
-    <img src="https://files.leadconnectorhq.com/file/6b0604148b5100b36ae2c3d6/tucson-twilight-beneath-the-catalinas.jpg" data-c360-placeholder="hp-hero-bg" alt="" fetchpriority="high">
+    <img src="https://files.leadconnectorhq.com/file/6b0604148b5100b36ae2c3d6/tucson-twilight-beneath-the-catalinas.jpg" data-c360-placeholder="hp-hero-bg" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
   </div>
   <div class="c360-hp-container">
     <div class="c360-hp-hero-inner">
@@ -1655,7 +1675,8 @@
       </div>
       <div class="c360-hp-ind-stage">
         <h3 class="c360-hp-ind-grid-title">Contractors &amp; Trades</h3>
-        <ul class="c360-hp-ind-grid" role="tabpanel" id="hpind-grid-0" aria-labelledby="hpind-tab-0">
+        <div class="c360-hp-ind-panel" role="tabpanel" id="hpind-grid-0" aria-labelledby="hpind-tab-0">
+        <ul class="c360-hp-ind-grid">
           <li><a class="c360-hp-ind-row" href="/industries/plumbing"><i class="fa-solid fa-wrench" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Plumbing</span><span class="c360-hp-ind-row-desc">Emergency calls, water heaters, drains and repipes</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/industries/hvac"><i class="fa-solid fa-fan" aria-hidden="true"></i><span class="c360-hp-ind-row-name">HVAC</span><span class="c360-hp-ind-row-desc">No-AC calls in July, furnaces in January, maintenance all year</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/industries/electrical"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Electrical</span><span class="c360-hp-ind-row-desc">Service calls, panels and EV chargers</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
@@ -1667,8 +1688,10 @@
           <li><a class="c360-hp-ind-row" href="/industries/water-damage-restoration"><i class="fa-solid fa-house-flood-water" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Water Damage Restoration</span><span class="c360-hp-ind-row-desc">Burst pipes, flooded basements and dry-outs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/industries/handyman"><i class="fa-solid fa-hammer" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Handyman</span><span class="c360-hp-ind-row-desc">Small fixes that turn into bigger jobs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
         </ul>
+        </div>
         <h3 class="c360-hp-ind-grid-title">Home Services</h3>
-        <ul class="c360-hp-ind-grid" role="tabpanel" id="hpind-grid-1" aria-labelledby="hpind-tab-1" hidden>
+        <div class="c360-hp-ind-panel" role="tabpanel" id="hpind-grid-1" aria-labelledby="hpind-tab-1" hidden>
+        <ul class="c360-hp-ind-grid">
           <li><a class="c360-hp-ind-row" href="/industries/lawn-care"><i class="fa-solid fa-seedling" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Lawn Care</span><span class="c360-hp-ind-row-desc">Full weekly routes, treatments and seasonal cleanups</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/industries/pool-service"><i class="fa-solid fa-water-ladder" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Pool Service</span><span class="c360-hp-ind-row-desc">Weekly cleaning routes, equipment and repairs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/industries/cleaning-services"><i class="fa-solid fa-broom" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Cleaning Services</span><span class="c360-hp-ind-row-desc">Recurring home cleaning, deep cleans and move-outs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
@@ -1679,8 +1702,10 @@
           <li><a class="c360-hp-ind-row" href="/industries/movers"><i class="fa-solid fa-truck-moving" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Movers</span><span class="c360-hp-ind-row-desc">Local moves, long distance and packing</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/industries/appliance-repair"><i class="fa-solid fa-plug" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Appliance Repair</span><span class="c360-hp-ind-row-desc">Washers, fridges and ovens that can't wait a week</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
         </ul>
+        </div>
         <h3 class="c360-hp-ind-grid-title">Professional &amp; Financial</h3>
-        <ul class="c360-hp-ind-grid" role="tabpanel" id="hpind-grid-2" aria-labelledby="hpind-tab-2" hidden>
+        <div class="c360-hp-ind-panel" role="tabpanel" id="hpind-grid-2" aria-labelledby="hpind-tab-2" hidden>
+        <ul class="c360-hp-ind-grid">
           <li><a class="c360-hp-ind-row" href="/industries/insurance-agencies"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Insurance Agencies</span><span class="c360-hp-ind-row-desc">Property and casualty: auto, home and business quotes</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/industries/real-estate"><i class="fa-solid fa-house" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Real Estate</span><span class="c360-hp-ind-row-desc">Buyers, sellers and listings for agents and teams</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/industries/mortgage"><i class="fa-solid fa-file-signature" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Mortgage</span><span class="c360-hp-ind-row-desc">A steady pipeline for loan officers and brokers</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
@@ -1688,13 +1713,16 @@
           <li><a class="c360-hp-ind-row" href="/industries/medicare-agents"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Medicare Agents</span><span class="c360-hp-ind-row-desc">Year-round clients, not just enrollment season</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/farmers-insurance"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Farmers Insurance Agents</span><span class="c360-hp-ind-row-desc">Our marketing program for Farmers agents</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
         </ul>
+        </div>
         <h3 class="c360-hp-ind-grid-title">Specialty Businesses</h3>
-        <ul class="c360-hp-ind-grid" role="tabpanel" id="hpind-grid-3" aria-labelledby="hpind-tab-3" hidden>
+        <div class="c360-hp-ind-panel" role="tabpanel" id="hpind-grid-3" aria-labelledby="hpind-tab-3" hidden>
+        <ul class="c360-hp-ind-grid">
           <li><a class="c360-hp-ind-row" href="/industries/auto-shops"><i class="fa-solid fa-car" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Auto Shops</span><span class="c360-hp-ind-row-desc">Repairs and maintenance that keep every bay full</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/industries/restaurants"><i class="fa-solid fa-utensils" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Restaurants</span><span class="c360-hp-ind-row-desc">Full tables on more than Friday nights</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/industries/funeral-homes"><i class="fa-solid fa-dove" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Funeral Homes</span><span class="c360-hp-ind-row-desc">Found by families when it matters, and for pre-planning</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
           <li><a class="c360-hp-ind-row" href="/dispensary"><i class="fa-solid fa-cannabis" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Dispensaries</span><span class="c360-hp-ind-row-desc">Compliant geo-fencing ads for licensed dispensaries</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
         </ul>
+        </div>
       </div>
     </div>
     <p class="c360-hp-ind-all">Don't see yours? <a href="/industries">See all industries</a> or <a href="/schedule-demo">talk to us about your business</a>.</p>
@@ -1708,7 +1736,7 @@
 (function(){
   var dir=document.querySelector('.c360-hp-ind-dir'); if(!dir) return;
   dir.classList.remove('no-js');
-  var tabs=dir.querySelectorAll('.c360-hp-ind-tab'), grids=dir.querySelectorAll('.c360-hp-ind-grid'), stage=dir.querySelector('.c360-hp-ind-stage');
+  var tabs=dir.querySelectorAll('.c360-hp-ind-tab'), grids=dir.querySelectorAll('.c360-hp-ind-panel'), stage=dir.querySelector('.c360-hp-ind-stage');
   var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var busy=false;
   function show(idx){
@@ -1819,13 +1847,17 @@
       <h2>147 reasons Arizona businesses trust Complete360</h2>
       <p>Real results from real local businesses across Arizona and the US.</p>
     </div>
-    <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
-    <iframe
-      class='lc_reviews_widget'
-      src='https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u'
-      frameborder='0' scrolling='no'
-      style='min-width:100%;width:100%;display:block;'>
-    </iframe>
+    <!-- v2.8: the widget loads when the visitor scrolls near this section
+         (see "Reviews widget" in SCRIPTS). min-height reserves the space. -->
+    <div id="c360HpReviewsSlot" class="c360-hp-reviews-slot"
+         data-src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+         data-script="https://reputationhub.site/reputation/assets/review-widget.js">
+      <noscript>
+        <iframe class="lc_reviews_widget" title="Complete360 Google reviews"
+          src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+          frameborder="0" scrolling="no" style="min-width:100%;width:100%;display:block;"></iframe>
+      </noscript>
+    </div>
   </div>
 </section>
 
@@ -1838,7 +1870,7 @@
    <div class="c360-hp-final-grid">
     <div class="c360-hp-final-photo">
       <!-- IMAGE: hp-final — happy contractor booking a job by phone in front of his truck -->
-      <img src="https://files.leadconnectorhq.com/file/6b0600a5a0d0ed9decf0a597/cheerful-contractor-with-clipboard-and-truck.jpg" alt="Smiling contractor with a clipboard booking a new job by phone in front of his work truck" loading="lazy">
+      <img src="https://files.leadconnectorhq.com/file/6b0600a5a0d0ed9decf0a597/cheerful-contractor-with-clipboard-and-truck.jpg" alt="Smiling contractor with a clipboard booking a new job by phone in front of his work truck" width="1536" height="1024" loading="lazy" decoding="async">
     </div>
     <div class="c360-hp-final-inner">
       <span class="c360-hp-overline" style="color:#2ecc52;">Ready to Grow?</span>
@@ -1852,10 +1884,10 @@
           <i class="fa-solid fa-phone"></i>
           Call (866) 527-6205
         </a>
-        <!-- Modal trigger (#4) — wired to c360Modal via JS below -->
-        <a href="javascript:void(0)" class="c360-hp-btn-outline-white c360-hp-modal-trigger">
+        <!-- v2.8: opened by the global header's .c360-popup-trigger handler -->
+        <button type="button" class="c360-hp-btn-outline-white c360-popup-trigger">
           Get Started Online <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        </button>
       </div>
       <div class="c360-hp-final-trust-row">
         <span><i class="fa-brands fa-google"></i> Google Partner</span>
@@ -1979,19 +2011,35 @@
   }, 2800);
 })();
 
-/* ── Modal trigger (#4) ──
-   Opens the c360Modal defined in your global header.
-   Toggles aria-hidden and locks body scroll to match
-   your existing header modal JS pattern.               */
+/* ── Reviews widget (v2.8) ──
+   Injects the iframe + resize script only when the section is within
+   ~800px of the viewport, so it costs nothing on first load.         */
 (function() {
-  var modal = document.getElementById('c360Modal');
-  if (!modal) return;
-  document.addEventListener('click', function(e) {
-    if (e.target.closest('.c360-hp-modal-trigger')) {
-      e.preventDefault();
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-  });
+  var slot = document.getElementById('c360HpReviewsSlot');
+  if (!slot) return;
+  var loaded = false;
+  function load() {
+    if (loaded) return; loaded = true;
+    var f = document.createElement('iframe');
+    f.className = 'lc_reviews_widget';
+    f.title = 'Complete360 Google reviews';
+    f.src = slot.getAttribute('data-src');
+    f.setAttribute('frameborder', '0');
+    f.setAttribute('scrolling', 'no');
+    f.style.cssText = 'min-width:100%;width:100%;display:block;';
+    slot.appendChild(f);
+    var s = document.createElement('script');
+    s.src = slot.getAttribute('data-script');
+    s.async = true;
+    document.body.appendChild(s);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { io.disconnect(); load(); }
+    }, { rootMargin: '800px 0px' });
+    io.observe(slot);
+  } else {
+    load();
+  }
 })();
 </script>
