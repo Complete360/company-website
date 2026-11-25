@@ -1,7 +1,60 @@
 <!-- ══════════════════════════════════════════════════════════════
-     Complete360 — Homepage  |  c360-homepage-v2.2.html
+     Complete360 — Homepage  |  c360-homepage-v2.8.html
      GHL: Paste into Custom Code block on homepage page only.
      Poppins + Font Awesome 6.5.1 loaded via global header.
+
+     v2.8 (2026-11-25) — PageSpeed fixes only (mobile report 2026-11-25).
+       No visual change except the "Get Started Online" button now works.
+       1. Reviews widget (script + iframe) loads only when the visitor
+          scrolls near it; space reserved; <noscript> fallback. Iframe gets
+          a title (Accessibility: frame-title).
+       2. Industries: role="tabpanel" moved from each <ul> to a wrapper
+          <div> (Accessibility: "list items not in a list" + ARIA role not
+          allowed). Tabs, fan-out and no-JS view behave as before.
+       3. "Get Started Online" was href="javascript:void(0)" (SEO: link not
+          crawlable) and only set aria-hidden, so the header modal never
+          showed. Now a <button class="c360-popup-trigger"> that the global
+          header opens (same as the header's Get Started). Old home modal
+          script removed.
+       4. Hero and final CTA images get width/height (Performance: image
+          elements without explicit size) and decoding="async".
+       5. Both photos switched to WebP (GHL Media): hero 238 KB -> 138 KB,
+          final CTA 131 KB -> 80 KB. Same images, same dimensions.
+
+     v2.7 (2026-11-24) — Geo-fencing visual sits on a code-built street map
+       (Jared): blocks, streets, a wash and parks in navy tones, green device
+       dots inside the zone and gray ones outside, outer ring dashed like a
+       fence; framed as a rounded map panel. Heading no longer breaks after
+       "they".
+
+     v2.6 (2026-11-24) — Services section given depth (Jared: too plain):
+       layered background (soft color glows + faded dot grid), each service
+       in a white elevated card, outlined 01-04 numbers, offset color plates
+       behind the mockups, icon chips on the feature lists. Copy fix:
+       "Google Guaranteed" -> "Google Verified" (retired Oct 2025).
+
+     v2.5 (2026-11-24) — Jared: hero goes back to the proof card on the right
+       (call-center photo removed) and gets a full-width background photo,
+       no people, under a navy overlay. Image slot hp-hero-bg is empty until
+       the photo is made; the navy gradient shows until then. Final CTA photo
+       unchanged. Background filled: Tucson at twilight beneath the
+       Catalinas (GHL Media). Overlay lightened (Jared: hard to see): dark
+       behind the headline, opening up to ~42% on the right; proof card gets
+       a navy tint; phones keep a darker overlay.
+
+     v2.4 (2026-11-24) — photos added (generated in ChatGPT, in GHL Media):
+       hero: team member at a call-center desk on the right, with the Google
+       proof card overlapping its bottom-left (solid navy so it reads over the
+       photo); final CTA: contractor booking a job, photo left of the text.
+       On phones the proof card stays hidden as before and the photos stack.
+
+     v2.3 (2026-11-24) — Industries section rebuilt with the same group tabs +
+       fan-out cards as the /industries hub: all 29 industries in four groups
+       (Contractors & Trades, Home Services, Professional & Financial,
+       Specialty Businesses), each card linking to its page; "See all
+       industries" link to /industries. Old 16 inactive tiles removed.
+       Heading no longer says "Arizona" (we serve nationwide). FAQ answer
+       on industries updated with a link to /industries.
 
      v2.2 (2026-11-10) — review count 147 and rating 5.0 (was 144 / 4.9),
        incl. the proof-card count and the reviews heading ("147 reasons Arizona
@@ -22,7 +75,7 @@
 
 <style>
 /* ══════════════════════════════════════════════════════
-   Complete360 Homepage v2.2  |  Prefix: c360-hp-
+   Complete360 Homepage v2.8  |  Prefix: c360-hp-
    ══════════════════════════════════════════════════════ */
 
 :root {
@@ -72,6 +125,8 @@
   border: 1.5px solid rgba(255,255,255,0.3);
   transition: border-color 0.2s, color 0.2s, background 0.2s;
 }
+button.c360-hp-btn-outline-white { cursor: pointer; }
+.c360-hp-btn-outline-white:focus-visible { outline: 3px solid #2ecc52; outline-offset: 3px; }
 .c360-hp-btn-outline-white:hover {
   border-color: rgba(255,255,255,0.75); color: #fff;
   background: rgba(255,255,255,0.08); text-decoration: none;
@@ -676,40 +731,49 @@
 }
 
 /* ══════════════════════════════════════════════════════
-   INDUSTRIES  (#1 — hover green restored)
+   INDUSTRIES — group tabs + fan-out cards (same as the /industries hub)
    ══════════════════════════════════════════════════════ */
-.c360-hp-industries { padding: 96px 0; background: #fff; }
-.c360-hp-industries-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
-.c360-hp-industry-tile {
-  background: var(--hp-light-grey); border: 1.5px solid #e5e3dc;
-  border-radius: var(--hp-radius); padding: 24px 20px;
-  display: flex; align-items: center; gap: 13px;
-  text-decoration: none;
-  /* pointer-events left ON so hover works; onclick="return false" blocks nav */
-  transition: background 0.2s, border-color 0.2s, transform 0.2s;
-}
-.c360-hp-industry-tile:hover {
-  background: var(--hp-green-light);   /* ← green on hover, restored */
-  border-color: rgba(18,120,37,0.25);
-  transform: translateY(-2px); text-decoration: none;
-}
-.c360-hp-industry-tile.c360-hp-ind-inactive { cursor: default; }
-.c360-hp-industry-ico {
-  width: 42px; height: 42px; background: var(--hp-navy);
-  border-radius: 10px; display: flex; align-items: center;
-  justify-content: center; color: #fff; font-size: 16px;
-  flex-shrink: 0; transition: background 0.2s;
-}
-.c360-hp-industry-tile:hover .c360-hp-industry-ico { background: var(--hp-green); }
-.c360-hp-industry-name {
-  font-family: 'Poppins','Helvetica Neue',sans-serif;
-  font-size: 13.5px; font-weight: 600; color: var(--hp-text); line-height: 1.3;
-}
+.c360-hp-industries { padding: 96px 0; background: #fff; font-family:'Poppins','Helvetica Neue',Arial,sans-serif; }
+.c360-hp-industries :where(ul,li){margin:0;padding:0;list-style:none}
+.c360-hp-ind-all{text-align:center;margin-top:36px;font-size:16px;color:var(--hp-text-muted)}
+.c360-hp-ind-all a{font-weight:700;color:var(--hp-navy)}
+.c360-hp-ind-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:32px}
+.c360-hp-ind-tab{all:unset;box-sizing:border-box;cursor:pointer;display:inline-flex;align-items:center;gap:10px;font-family:'Poppins','Helvetica Neue',Arial,sans-serif;font-size:15px;font-weight:700;color:var(--hp-navy);background:#fff;border:1.5px solid #B7C6E6;border-radius:100px;padding:12px 20px;transition:background .2s,color .2s,border-color .2s,transform .15s}
+.c360-hp-ind-tab i{font-size:14px}
+.c360-hp-ind-tab small{font-size:12px;font-weight:600;color:var(--hp-text-muted);background:#F4F7FC;border-radius:100px;padding:3px 8px}
+.c360-hp-ind-tab:hover{border-color:var(--hp-navy);transform:translateY(-1px)}
+.c360-hp-ind-tab[aria-selected="true"]{background:var(--hp-navy);border-color:var(--hp-navy);color:#fff}
+.c360-hp-ind-tab[aria-selected="true"] small{background:rgba(255,255,255,0.18);color:#fff}
+.c360-hp-ind-tab:focus-visible{outline:3px solid #2ecc52;outline-offset:3px}
+.c360-hp-ind-stage{position:relative;overflow:hidden;transition:height .5s cubic-bezier(.22,.8,.3,1)}
+.c360-hp-ind-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px;list-style:none;margin:0;padding:4px}
+.c360-hp-ind-grid[hidden],.c360-hp-ind-panel[hidden]{display:none}
+.c360-hp-ind-grid-title{display:none}
+.c360-hp-ind-row{display:flex;flex-direction:column;gap:10px;height:100%;padding:22px 20px 18px;background:#fff;border:1px solid #E2E8F2;border-radius:16px;text-decoration:none;color:var(--hp-text);transition:transform .2s,box-shadow .2s,border-color .2s;will-change:transform}
+.c360-hp-ind-row.is-fan{transition:transform .55s cubic-bezier(.22,.8,.3,1),opacity .4s ease;transition-delay:var(--d,0ms)}
+.c360-hp-ind-row:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(15,31,94,0.10);border-color:#B7C6E6;text-decoration:none;color:var(--hp-text)}
+.c360-hp-ind-row > i:first-child{width:42px;height:42px;border-radius:12px;background:#F4F7FC;color:var(--hp-navy);display:flex;align-items:center;justify-content:center;font-size:17px;flex:none}
+.c360-hp-ind-row-name{display:block;font-size:17px;font-weight:800;line-height:1.2;letter-spacing:-0.01em}
+.c360-hp-ind-row-desc{display:block;font-size:13.5px;line-height:1.5;color:var(--hp-text-muted)}
+.c360-hp-ind-row-foot{margin-top:auto;display:flex;align-items:center;gap:6px;font-size:13px;font-weight:700;color:var(--hp-navy);padding-top:6px}
+.c360-hp-ind-row-foot i{font-size:10px;transition:transform .15s}
+.c360-hp-ind-row:hover .c360-hp-ind-row-foot i{transform:translateX(3px)}
+/* no-JS: every group visible, stacked, with its heading */
+.c360-hp-ind-dir.no-js .c360-hp-ind-tabs{display:none}
+.c360-hp-ind-dir.no-js .c360-hp-ind-grid[hidden]{display:grid}
+.c360-hp-ind-dir.no-js .c360-hp-ind-panel[hidden]{display:block}
+.c360-hp-ind-dir.no-js .c360-hp-ind-grid-title{display:block;font-size:20px;font-weight:800;color:var(--hp-text);margin:32px 0 14px}
+@media (max-width:1100px){.c360-hp-ind-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:760px){.c360-hp-ind-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.c360-hp-ind-tab{font-size:14px;padding:10px 16px}}
+@media (max-width:640px){.c360-hp-ind-tab small{display:none}}
+@media (max-width:480px){.c360-hp-ind-grid{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){.c360-hp-ind-row,.c360-hp-ind-row.is-fan,.c360-hp-ind-stage,.c360-hp-ind-tab{transition:none !important}}
 
 /* ══════════════════════════════════════════════════════
    REVIEWS
    ══════════════════════════════════════════════════════ */
 .c360-hp-reviews { padding: 96px 0; background: var(--hp-light-grey); }
+.c360-hp-reviews-slot { min-height: 560px; }
 
 /* ══════════════════════════════════════════════════════
    FAQ SECTION (#5)
@@ -953,6 +1017,114 @@
 .c360-hp-geo-stat-a { bottom: 18%; right: 6%; }
 .c360-hp-geo-stat-b { top: 14%; right: 5%; }
 
+
+/* v2.5: full-width hero background photo under a navy overlay */
+.c360-hp-hero::before, .c360-hp-hero::after { z-index: 1; }
+.c360-hp-hero-bg { position: absolute; inset: 0; z-index: 0; }
+.c360-hp-hero-bg img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%; }
+/* proof card gets a navy tint so it stays readable over the lighter photo */
+.c360-hp-hero .c360-hp-proof-card { background: rgba(13,22,84,0.62); }
+@media (max-width: 980px) { .c360-hp-hero-bg::after { background: linear-gradient(180deg, rgba(9,16,60,0.86) 0%, rgba(13,22,84,0.80) 100%); } }
+.c360-hp-hero-bg img[src=""], .c360-hp-hero-bg img:not([src]) { visibility: hidden; }
+.c360-hp-hero-bg::after {
+  content: ''; position: absolute; inset: 0;
+  /* v2.5b: lighter, so the photo shows: dark behind the headline (left), opening up on the right and top */
+  background:
+    linear-gradient(90deg, rgba(9,16,60,0.88) 0%, rgba(13,22,84,0.72) 45%, rgba(18,32,120,0.42) 100%),
+    linear-gradient(180deg, rgba(9,16,60,0) 0%, rgba(9,16,60,0.35) 100%);
+}
+/* final CTA photo (v2.4) */
+.c360-hp-final-photo img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 25%; }
+.c360-hp-final-grid { position: relative; z-index: 2; display: grid; grid-template-columns: 0.9fr 1.1fr; gap: 56px; align-items: center; }
+.c360-hp-final-photo { position: relative; aspect-ratio: 4/3; border-radius: 20px; overflow: hidden; box-shadow: 0 30px 70px rgba(0,0,0,0.35); }
+.c360-hp-final-grid .c360-hp-final-inner { max-width: none; margin: 0; text-align: left; }
+.c360-hp-final-grid .c360-hp-final-actions, .c360-hp-final-grid .c360-hp-final-trust-row { justify-content: flex-start; }
+@media (max-width: 980px) {
+  .c360-hp-final-grid { grid-template-columns: 1fr; gap: 40px; }
+  .c360-hp-final-photo { max-width: 560px; width: 100%; margin: 0 auto; }
+  .c360-hp-final-grid .c360-hp-final-inner { text-align: center; }
+  .c360-hp-final-grid .c360-hp-final-actions, .c360-hp-final-grid .c360-hp-final-trust-row { justify-content: center; }
+}
+
+
+/* ══════════════════════════════════════════════════════
+   v2.6 SERVICES DEPTH — layered background, white service cards,
+   numbered rows, offset color plates behind the mockups
+   ══════════════════════════════════════════════════════ */
+.c360-hp-services-alt {
+  position: relative; overflow: hidden; counter-reset: hpsvc;
+  background: linear-gradient(180deg, #F4F7FC 0%, #EAF0FA 55%, #F4F7FC 100%);
+}
+.c360-hp-services-alt::before {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background-image: radial-gradient(rgba(18,32,120,0.08) 1.2px, transparent 1.5px);
+  background-size: 26px 26px;
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, transparent 30%, transparent 70%, #000 100%);
+          mask-image: linear-gradient(180deg, #000 0%, transparent 30%, transparent 70%, #000 100%);
+}
+.c360-hp-services-alt::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(600px 420px at 8% 22%, rgba(18,120,37,0.10), transparent 70%),
+    radial-gradient(700px 500px at 95% 48%, rgba(63,99,199,0.12), transparent 70%),
+    radial-gradient(600px 420px at 10% 82%, rgba(18,32,120,0.08), transparent 70%);
+}
+.c360-hp-services-alt > .c360-hp-container { position: relative; z-index: 1; }
+.c360-hp-services-alt .c360-hp-svc-block,
+.c360-hp-services-alt .c360-hp-svc-block:first-child,
+.c360-hp-services-alt .c360-hp-svc-block:last-child {
+  counter-increment: hpsvc;
+  background: #fff; border: 1px solid #E2E8F2; border-radius: 28px;
+  padding: 52px 56px; margin-bottom: 32px;
+  box-shadow: 0 30px 60px -32px rgba(15,31,94,0.30), 0 10px 24px rgba(15,31,94,0.05);
+}
+.c360-hp-services-alt .c360-hp-svc-block:last-child { margin-bottom: 0; }
+.c360-hp-svc-copy::before {
+  content: counter(hpsvc, decimal-leading-zero);
+  display: block; font-family: 'Poppins','Helvetica Neue',sans-serif;
+  font-size: 56px; font-weight: 800; line-height: 1; letter-spacing: -0.03em;
+  color: transparent; -webkit-text-stroke: 1.5px rgba(18,32,120,0.22);
+  margin-bottom: 14px;
+}
+/* offset color plate behind each mockup */
+.c360-hp-services-alt .c360-hp-svc-visual {
+  box-shadow: 18px 18px 0 0 rgba(18,120,37,0.14), 0 34px 60px -24px rgba(9,16,60,0.55);
+}
+.c360-hp-services-alt .c360-hp-svc-block--rev .c360-hp-svc-visual {
+  box-shadow: -18px 18px 0 0 rgba(63,99,199,0.16), 0 34px 60px -24px rgba(9,16,60,0.55);
+}
+.c360-hp-services-alt .c360-hp-svc-features li i {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%; margin-top: 0;
+  background: var(--hp-green-light); font-size: 11px;
+}
+@media (max-width: 980px) {
+  .c360-hp-services-alt .c360-hp-svc-block,
+  .c360-hp-services-alt .c360-hp-svc-block:first-child,
+  .c360-hp-services-alt .c360-hp-svc-block:last-child { padding: 36px 32px; }
+}
+@media (max-width: 768px) {
+  .c360-hp-services-alt .c360-hp-svc-block,
+  .c360-hp-services-alt .c360-hp-svc-block:first-child,
+  .c360-hp-services-alt .c360-hp-svc-block:last-child { padding: 26px 20px; border-radius: 22px; margin-bottom: 20px; }
+  .c360-hp-svc-copy::before { font-size: 42px; margin-bottom: 10px; }
+  .c360-hp-services-alt .c360-hp-svc-visual,
+  .c360-hp-services-alt .c360-hp-svc-block--rev .c360-hp-svc-visual { box-shadow: 0 24px 44px -24px rgba(9,16,60,0.5); }
+}
+
+
+/* v2.7: street map behind the geo-fencing rings */
+.c360-hp-geo-visual { border-radius: 28px; overflow: hidden; min-height: 460px; border: 1px solid rgba(255,255,255,0.10); box-shadow: 0 34px 70px -30px rgba(0,0,0,0.6); }
+.c360-hp-geo-map { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0;
+  -webkit-mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 55%, rgba(0,0,0,0.35) 100%);
+          mask-image: radial-gradient(ellipse 75% 75% at 50% 50%, #000 55%, rgba(0,0,0,0.35) 100%); }
+.c360-hp-geo-visual .c360-hp-geo-rings { z-index: 1; }
+.c360-hp-geo-visual .c360-hp-geo-ring-1 { background: rgba(46,204,82,0.16); }
+.c360-hp-geo-visual .c360-hp-geo-ring-2 { background: rgba(46,204,82,0.10); }
+.c360-hp-geo-visual .c360-hp-geo-ring-3 { background: rgba(46,204,82,0.06); }
+.c360-hp-geo-visual .c360-hp-geo-ring-4 { border: 2px dashed rgba(46,204,82,0.55); }
+.c360-hp-geo-visual .c360-hp-geo-device, .c360-hp-geo-visual .c360-hp-geo-stat-bubble { background: rgba(13,22,84,0.85); }
+
 /* ══════════════════════════════════════════════════════
    RESPONSIVE
    ══════════════════════════════════════════════════════ */
@@ -960,7 +1132,6 @@
   .c360-hp-hero-inner   { grid-template-columns: 1fr; gap: 48px; }
   .c360-hp-proof-card   { display: none; }
   .c360-hp-phases       { grid-template-columns: 1fr; gap: 14px; }
-  .c360-hp-industries-grid { grid-template-columns: repeat(3, 1fr); }
   .c360-hp-svc-row      { grid-template-columns: 1fr; gap: 40px; }
   /* Visual always above copy on mobile — applies to both normal and --rev blocks */
   .c360-hp-svc-visual   { order: 1 !important; min-height: 320px; }
@@ -977,7 +1148,6 @@
   .c360-hp-geo-rings   { width: 280px; height: 280px; }
   .c360-hp-geo-ring-3, .c360-hp-geo-ring-4 { display: none; }
   .c360-hp-geo-device-b { display: none; }
-  .c360-hp-industries-grid { grid-template-columns: repeat(2, 1fr); }
   .c360-hp-trust-pill { border-right: none; border-bottom: 1px solid #e5e3dc; width: 50%; }
   .c360-hp-trust-pill:nth-child(odd) { border-right: 1px solid #e5e3dc; }
   .c360-hp-trust-pill:last-child { border-bottom: none; }
@@ -988,7 +1158,6 @@
   .c360-hp-hero h1 { font-size: 34px; }
   .c360-hp-hero-actions { flex-direction: column; align-items: flex-start; }
   .c360-hp-btn-primary, .c360-hp-btn-outline-white { width: 100%; justify-content: center; }
-  .c360-hp-industries-grid { grid-template-columns: 1fr 1fr; }
   .c360-hp-trust-pill { width: 100%; border-right: none; }
   .c360-hp-trust-pill:nth-child(odd) { border-right: none; }
   .c360-hp-final-actions { flex-direction: column; }
@@ -1001,6 +1170,10 @@
      SECTION 1 — HERO
      ══════════════════════════════════════════════════════ -->
 <section class="c360-hp-section c360-hp-hero">
+  <div class="c360-hp-hero-bg" aria-hidden="true">
+    <!-- IMAGE: hp-hero-bg — Tucson at twilight beneath the Catalina Mountains (no people), under a navy overlay -->
+    <img src="https://files.leadconnectorhq.com/file/6b07160998d80ae21c82d2dd/00-new-tucson-catalinas-twilight-check.webp" data-c360-placeholder="hp-hero-bg" alt="" width="1672" height="941" fetchpriority="high" decoding="async">
+  </div>
   <div class="c360-hp-container">
     <div class="c360-hp-hero-inner">
 
@@ -1226,9 +1399,9 @@
         <div class="c360-hp-svc-copy">
           <span class="c360-hp-overline">Paid Lead Generation</span>
           <h3>Stop waiting — get in front of buyers today</h3>
-          <p>Our paid advertising programs get your phone ringing with real, intent-driven customers. From Google Guaranteed badges to geo-fencing on the streets your customers drive, we target precisely and manage every dollar.</p>
+          <p>Our paid advertising programs get your phone ringing with real, intent-driven customers. From Google Verified badges to geo-fencing on the streets your customers drive, we target precisely and manage every dollar.</p>
           <ul class="c360-hp-svc-features">
-            <li><i class="fa-solid fa-circle-check"></i> Local Service Ads — earn the Google Guaranteed badge</li>
+            <li><i class="fa-solid fa-circle-check"></i> Local Service Ads — earn the Google Verified badge</li>
             <li><i class="fa-solid fa-circle-check"></i> Geo-Fencing Ads — mobile &amp; connected TV targeting</li>
             <li><i class="fa-solid fa-circle-check"></i> Cost-share programs available for insurance agents</li>
           </ul>
@@ -1394,7 +1567,7 @@
       <!-- LEFT COPY -->
       <div class="c360-hp-geo-copy">
         <span class="c360-hp-overline" style="color:#2ecc52;">Hyper-Local Advertising</span>
-        <h2 class="c360-hp-geo-h2">Reach customers where they<br>live, work, and <span class="c360-hp-geo-accent">drive.</span></h2>
+        <h2 class="c360-hp-geo-h2">Reach customers where they live, work, and <span class="c360-hp-geo-accent">drive.</span></h2>
         <p class="c360-hp-geo-desc">Geo-Fencing Ads let you draw a virtual boundary around any location — a neighborhood, a competitor's parking lot, a zip code — and serve ads to anyone who enters that zone on their phone or connected TV. No wasted spend. No guessing.</p>
 
         <div class="c360-hp-geo-points">
@@ -1437,6 +1610,9 @@
 
       <!-- RIGHT — CSS targeting visualization -->
       <div class="c360-hp-geo-visual">
+        <!-- Code-built street map behind the rings (v2.7): blocks, streets, a wash, parks,
+             green dots = devices inside the zone, gray = outside -->
+        <svg class="c360-hp-geo-map" viewBox="0 0 600 460" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false"><rect width="600" height="460" fill="#0b1442"/><rect x="6" y="6" width="46" height="36" rx="3" fill="#121c55"/><rect x="6" y="54" width="46" height="44" rx="3" fill="#121c55"/><rect x="6" y="110" width="46" height="40" rx="3" fill="#121c55"/><rect x="6" y="162" width="46" height="42" rx="3" fill="#121c55"/><rect x="6" y="216" width="46" height="40" rx="3" fill="#121c55"/><rect x="6" y="268" width="46" height="44" rx="3" fill="#121c55"/><rect x="6" y="324" width="46" height="40" rx="3" fill="#121c55"/><rect x="6" y="376" width="46" height="38" rx="3" fill="#121c55"/><rect x="6" y="426" width="46" height="28" rx="3" fill="#121c55"/><rect x="64" y="6" width="52" height="36" rx="3" fill="#121c55"/><rect x="64" y="54" width="52" height="44" rx="3" fill="#121c55"/><rect x="64" y="110" width="52" height="40" rx="3" fill="#121c55"/><rect x="64" y="162" width="52" height="42" rx="3" fill="#121c55"/><rect x="64" y="216" width="52" height="40" rx="3" fill="#121c55"/><rect x="64" y="268" width="52" height="44" rx="3" fill="#121c55"/><rect x="64" y="324" width="52" height="40" rx="3" fill="#121c55"/><rect x="64" y="376" width="52" height="38" rx="3" fill="#121c55"/><rect x="64" y="426" width="52" height="28" rx="3" fill="#121c55"/><rect x="128" y="6" width="46" height="36" rx="3" fill="#121c55"/><rect x="128" y="54" width="46" height="44" rx="3" fill="#121c55"/><rect x="128" y="110" width="46" height="40" rx="3" fill="#121c55"/><rect x="128" y="162" width="46" height="42" rx="3" fill="#121c55"/><rect x="128" y="216" width="46" height="40" rx="3" fill="#121c55"/><rect x="128" y="268" width="46" height="44" rx="3" fill="#121c55"/><rect x="128" y="324" width="46" height="40" rx="3" fill="#121c55"/><rect x="128" y="376" width="46" height="38" rx="3" fill="#121c55"/><rect x="128" y="426" width="46" height="28" rx="3" fill="#121c55"/><rect x="186" y="6" width="44" height="36" rx="3" fill="#121c55"/><rect x="186" y="54" width="44" height="44" rx="3" fill="#121c55"/><rect x="186" y="110" width="44" height="40" rx="3" fill="#121c55"/><rect x="186" y="162" width="44" height="42" rx="3" fill="#121c55"/><rect x="186" y="216" width="44" height="40" rx="3" fill="#121c55"/><rect x="186" y="268" width="44" height="44" rx="3" fill="#121c55"/><rect x="186" y="324" width="44" height="40" rx="3" fill="#121c55"/><rect x="186" y="376" width="44" height="38" rx="3" fill="#121c55"/><rect x="186" y="426" width="44" height="28" rx="3" fill="#121c55"/><rect x="242" y="6" width="52" height="36" rx="3" fill="#121c55"/><rect x="242" y="54" width="52" height="44" rx="3" fill="#121c55"/><rect x="242" y="110" width="52" height="40" rx="3" fill="#121c55"/><rect x="242" y="162" width="52" height="42" rx="3" fill="#121c55"/><rect x="242" y="216" width="52" height="40" rx="3" fill="#121c55"/><rect x="242" y="268" width="52" height="44" rx="3" fill="#121c55"/><rect x="242" y="324" width="52" height="40" rx="3" fill="#121c55"/><rect x="242" y="376" width="52" height="38" rx="3" fill="#121c55"/><rect x="242" y="426" width="52" height="28" rx="3" fill="#121c55"/><rect x="306" y="6" width="40" height="36" rx="3" fill="#121c55"/><rect x="306" y="54" width="40" height="44" rx="3" fill="#121c55"/><rect x="306" y="110" width="40" height="40" rx="3" fill="#121c55"/><rect x="306" y="162" width="40" height="42" rx="3" fill="#121c55"/><rect x="306" y="216" width="40" height="40" rx="3" fill="#121c55"/><rect x="306" y="268" width="40" height="44" rx="3" fill="#121c55"/><rect x="306" y="324" width="40" height="40" rx="3" fill="#121c55"/><rect x="306" y="376" width="40" height="38" rx="3" fill="#121c55"/><rect x="306" y="426" width="40" height="28" rx="3" fill="#121c55"/><rect x="358" y="6" width="50" height="36" rx="3" fill="#121c55"/><rect x="358" y="54" width="50" height="44" rx="3" fill="#121c55"/><rect x="358" y="110" width="50" height="40" rx="3" fill="#121c55"/><rect x="358" y="162" width="50" height="42" rx="3" fill="#121c55"/><rect x="358" y="216" width="50" height="40" rx="3" fill="#121c55"/><rect x="358" y="268" width="50" height="44" rx="3" fill="#121c55"/><rect x="358" y="324" width="50" height="40" rx="3" fill="#121c55"/><rect x="358" y="376" width="50" height="38" rx="3" fill="#121c55"/><rect x="358" y="426" width="50" height="28" rx="3" fill="#121c55"/><rect x="420" y="6" width="44" height="36" rx="3" fill="#121c55"/><rect x="420" y="54" width="44" height="44" rx="3" fill="#121c55"/><rect x="420" y="110" width="44" height="40" rx="3" fill="#121c55"/><rect x="420" y="162" width="44" height="42" rx="3" fill="#121c55"/><rect x="420" y="216" width="44" height="40" rx="3" fill="#121c55"/><rect x="420" y="268" width="44" height="44" rx="3" fill="#121c55"/><rect x="420" y="324" width="44" height="40" rx="3" fill="#121c55"/><rect x="420" y="376" width="44" height="38" rx="3" fill="#121c55"/><rect x="420" y="426" width="44" height="28" rx="3" fill="#121c55"/><rect x="476" y="6" width="54" height="36" rx="3" fill="#121c55"/><rect x="476" y="54" width="54" height="44" rx="3" fill="#121c55"/><rect x="476" y="110" width="54" height="40" rx="3" fill="#121c55"/><rect x="476" y="162" width="54" height="42" rx="3" fill="#121c55"/><rect x="476" y="216" width="54" height="40" rx="3" fill="#121c55"/><rect x="476" y="268" width="54" height="44" rx="3" fill="#121c55"/><rect x="476" y="324" width="54" height="40" rx="3" fill="#121c55"/><rect x="476" y="376" width="54" height="38" rx="3" fill="#121c55"/><rect x="476" y="426" width="54" height="28" rx="3" fill="#121c55"/><rect x="542" y="6" width="52" height="36" rx="3" fill="#121c55"/><rect x="542" y="54" width="52" height="44" rx="3" fill="#121c55"/><rect x="542" y="110" width="52" height="40" rx="3" fill="#121c55"/><rect x="542" y="162" width="52" height="42" rx="3" fill="#121c55"/><rect x="542" y="216" width="52" height="40" rx="3" fill="#121c55"/><rect x="542" y="268" width="52" height="44" rx="3" fill="#121c55"/><rect x="542" y="324" width="52" height="40" rx="3" fill="#121c55"/><rect x="542" y="376" width="52" height="38" rx="3" fill="#121c55"/><rect x="542" y="426" width="52" height="28" rx="3" fill="#121c55"/><rect x="358" y="62" width="104" height="90" rx="6" fill="#123d33"/><rect x="64" y="324" width="110" height="88" rx="6" fill="#123d33"/><path d="M58 0V460 M122 0V460 M180 0V460 M236 0V460 M300 0V460 M352 0V460 M414 0V460 M470 0V460 M536 0V460 M0 48H600 M0 104H600 M0 156H600 M0 210H600 M0 262H600 M0 318H600 M0 370H600 M0 420H600" stroke="#2a3a86" stroke-width="5" fill="none" opacity=".7"/><path d="M0 210H600 M300 0V460" stroke="#3a4ea8" stroke-width="10" fill="none" opacity=".75"/><path d="M-20 430 L620 30" stroke="#3a4ea8" stroke-width="9" fill="none" opacity=".6"/><path d="M-10 120 C 80 150, 140 90, 220 130 S 360 190, 420 150 S 540 90, 610 130" stroke="#1d4f9e" stroke-width="16" fill="none" opacity=".55" stroke-linecap="round"/><circle cx="290" cy="250" r="3" fill="#2ecc52" opacity=".75"/><circle cx="294" cy="221" r="3" fill="#2ecc52" opacity=".75"/><circle cx="247" cy="218" r="3" fill="#2ecc52" opacity=".75"/><circle cx="371" cy="257" r="3" fill="#2ecc52" opacity=".75"/><circle cx="363" cy="245" r="3" fill="#2ecc52" opacity=".75"/><circle cx="312" cy="236" r="3" fill="#2ecc52" opacity=".75"/><circle cx="190" cy="287" r="3" fill="#2ecc52" opacity=".75"/><circle cx="324" cy="253" r="3" fill="#2ecc52" opacity=".75"/><circle cx="201" cy="128" r="3" fill="#2ecc52" opacity=".75"/><circle cx="247" cy="202" r="3" fill="#2ecc52" opacity=".75"/><circle cx="307" cy="229" r="3" fill="#2ecc52" opacity=".75"/><circle cx="327" cy="196" r="3" fill="#2ecc52" opacity=".75"/><circle cx="311" cy="244" r="3" fill="#2ecc52" opacity=".75"/><circle cx="256" cy="344" r="3" fill="#2ecc52" opacity=".75"/><circle cx="337" cy="309" r="3" fill="#2ecc52" opacity=".75"/><circle cx="264" cy="187" r="3" fill="#2ecc52" opacity=".75"/><circle cx="291" cy="227" r="3" fill="#2ecc52" opacity=".75"/><circle cx="329" cy="241" r="3" fill="#2ecc52" opacity=".75"/><circle cx="273" cy="172" r="3" fill="#2ecc52" opacity=".75"/><circle cx="266" cy="311" r="3" fill="#2ecc52" opacity=".75"/><circle cx="257" cy="243" r="3" fill="#2ecc52" opacity=".75"/><circle cx="329" cy="129" r="3" fill="#2ecc52" opacity=".75"/><circle cx="303" cy="316" r="3" fill="#2ecc52" opacity=".75"/><circle cx="170" cy="209" r="3" fill="#2ecc52" opacity=".75"/><circle cx="294" cy="187" r="3" fill="#2ecc52" opacity=".75"/><circle cx="318" cy="228" r="3" fill="#2ecc52" opacity=".75"/><circle cx="91" cy="225" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="24" cy="307" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="525" cy="144" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="504" cy="435" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="36" cy="323" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="388" cy="457" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="493" cy="131" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="14" cy="212" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="101" cy="54" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="35" cy="353" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="78" cy="114" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="48" cy="207" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="492" cy="397" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="215" cy="407" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="575" cy="69" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="106" cy="107" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="2" cy="193" r="2.5" fill="#8fa0d6" opacity=".35"/><circle cx="572" cy="318" r="2.5" fill="#8fa0d6" opacity=".35"/></svg>
         <!-- Concentric rings -->
         <div class="c360-hp-geo-rings">
           <div class="c360-hp-geo-ring c360-hp-geo-ring-1"></div>
@@ -1481,84 +1657,125 @@
 
 <!-- ══════════════════════════════════════════════════════
      SECTION 5 — INDUSTRIES
-     TO ACTIVATE A TILE: remove class "c360-hp-ind-inactive"
-     and update href to the page URL. Hover will auto-activate.
+     Same group tabs + fan-out cards as the /industries hub (v2.2 markup,
+     with Medicare Agents linking to its page). When an industry page is
+     added or a link changes, update the hub and this section together.
      ══════════════════════════════════════════════════════ -->
-<section class="c360-hp-section c360-hp-industries">
+<section class="c360-hp-section c360-hp-industries" id="hp-industries">
   <div class="c360-hp-container">
     <div class="c360-hp-section-header">
       <span class="c360-hp-overline">Industries We Serve</span>
-      <h2>Built for Arizona's local service businesses</h2>
-      <p>We specialize in trades, home services, and professional services — businesses that run on calls, appointments, and reputation.</p>
+      <h2>Marketing built around your industry</h2>
+      <p>Trades, home services, agents and specialty businesses. Pick your group, then your industry, to see the plan we'd start with.</p>
     </div>
-    <div class="c360-hp-industries-grid">
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/hvac">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-wind"></i></div>
-        <span class="c360-hp-industry-name">HVAC</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/plumbing">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-faucet-drip"></i></div>
-        <span class="c360-hp-industry-name">Plumbing</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/roofing">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-house-chimney"></i></div>
-        <span class="c360-hp-industry-name">Roofing</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/electrical">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-bolt"></i></div>
-        <span class="c360-hp-industry-name">Electrical</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/painting">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-paintbrush"></i></div>
-        <span class="c360-hp-industry-name">Painting</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/general-contractor">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-hammer"></i></div>
-        <span class="c360-hp-industry-name">General Contractor</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/lawn-care">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-leaf"></i></div>
-        <span class="c360-hp-industry-name">Lawn Care</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/pool-service">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-water"></i></div>
-        <span class="c360-hp-industry-name">Pool Service</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/cleaning-services">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-spray-can-sparkles"></i></div>
-        <span class="c360-hp-industry-name">Cleaning Services</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/pest-control">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-bug"></i></div>
-        <span class="c360-hp-industry-name">Pest Control</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/real-estate">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-house"></i></div>
-        <span class="c360-hp-industry-name">Real Estate</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/insurance-agents">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-umbrella"></i></div>
-        <span class="c360-hp-industry-name">Insurance Agents</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/auto-shops">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-car-side"></i></div>
-        <span class="c360-hp-industry-name">Auto Shops</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/medicare-agents">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-hand-holding-heart"></i></div>
-        <span class="c360-hp-industry-name">Medicare Agents</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="/mortgage">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-percent"></i></div>
-        <span class="c360-hp-industry-name">Mortgage</span>
-      </a>
-      <a href="#" class="c360-hp-industry-tile c360-hp-ind-inactive" onclick="return false;" data-url="#">
-        <div class="c360-hp-industry-ico"><i class="fa-solid fa-ellipsis"></i></div>
-        <span class="c360-hp-industry-name">And More&hellip;</span>
-      </a>
+    <div class="c360-hp-ind-dir no-js">
+      <div class="c360-hp-ind-tabs" role="tablist" aria-label="Industry groups">
+        <button type="button" class="c360-hp-ind-tab" role="tab" id="hpind-tab-0" aria-controls="hpind-grid-0" aria-selected="true" tabindex="0"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i>Contractors &amp; Trades<small>10</small></button>
+        <button type="button" class="c360-hp-ind-tab" role="tab" id="hpind-tab-1" aria-controls="hpind-grid-1" aria-selected="false" tabindex="-1"><i class="fa-solid fa-house" aria-hidden="true"></i>Home Services<small>9</small></button>
+        <button type="button" class="c360-hp-ind-tab" role="tab" id="hpind-tab-2" aria-controls="hpind-grid-2" aria-selected="false" tabindex="-1"><i class="fa-solid fa-briefcase" aria-hidden="true"></i>Professional &amp; Financial<small>6</small></button>
+        <button type="button" class="c360-hp-ind-tab" role="tab" id="hpind-tab-3" aria-controls="hpind-grid-3" aria-selected="false" tabindex="-1"><i class="fa-solid fa-store" aria-hidden="true"></i>Specialty Businesses<small>4</small></button>
+      </div>
+      <div class="c360-hp-ind-stage">
+        <h3 class="c360-hp-ind-grid-title">Contractors &amp; Trades</h3>
+        <div class="c360-hp-ind-panel" role="tabpanel" id="hpind-grid-0" aria-labelledby="hpind-tab-0">
+        <ul class="c360-hp-ind-grid">
+          <li><a class="c360-hp-ind-row" href="/industries/plumbing"><i class="fa-solid fa-wrench" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Plumbing</span><span class="c360-hp-ind-row-desc">Emergency calls, water heaters, drains and repipes</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/hvac"><i class="fa-solid fa-fan" aria-hidden="true"></i><span class="c360-hp-ind-row-name">HVAC</span><span class="c360-hp-ind-row-desc">No-AC calls in July, furnaces in January, maintenance all year</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/electrical"><i class="fa-solid fa-bolt" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Electrical</span><span class="c360-hp-ind-row-desc">Service calls, panels and EV chargers</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/roofing"><i class="fa-solid fa-house-chimney" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Roofing</span><span class="c360-hp-ind-row-desc">Leak repairs, replacements and the calls after a storm</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/general-contractors"><i class="fa-solid fa-helmet-safety" aria-hidden="true"></i><span class="c360-hp-ind-row-name">General Contractors</span><span class="c360-hp-ind-row-desc">Remodels, additions and the projects you want more of</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/painting"><i class="fa-solid fa-paint-roller" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Painting</span><span class="c360-hp-ind-row-desc">Interior and exterior jobs that start with a quote</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/garage-door-repair"><i class="fa-solid fa-warehouse" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Garage Door Repair</span><span class="c360-hp-ind-row-desc">Broken springs, stuck openers and new doors</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/locksmiths"><i class="fa-solid fa-key" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Locksmiths</span><span class="c360-hp-ind-row-desc">Lockouts, rekeys and lock changes</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/water-damage-restoration"><i class="fa-solid fa-house-flood-water" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Water Damage Restoration</span><span class="c360-hp-ind-row-desc">Burst pipes, flooded basements and dry-outs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/handyman"><i class="fa-solid fa-hammer" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Handyman</span><span class="c360-hp-ind-row-desc">Small fixes that turn into bigger jobs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+        </div>
+        <h3 class="c360-hp-ind-grid-title">Home Services</h3>
+        <div class="c360-hp-ind-panel" role="tabpanel" id="hpind-grid-1" aria-labelledby="hpind-tab-1" hidden>
+        <ul class="c360-hp-ind-grid">
+          <li><a class="c360-hp-ind-row" href="/industries/lawn-care"><i class="fa-solid fa-seedling" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Lawn Care</span><span class="c360-hp-ind-row-desc">Full weekly routes, treatments and seasonal cleanups</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/pool-service"><i class="fa-solid fa-water-ladder" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Pool Service</span><span class="c360-hp-ind-row-desc">Weekly cleaning routes, equipment and repairs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/cleaning-services"><i class="fa-solid fa-broom" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Cleaning Services</span><span class="c360-hp-ind-row-desc">Recurring home cleaning, deep cleans and move-outs</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/pest-control"><i class="fa-solid fa-bug" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Pest Control</span><span class="c360-hp-ind-row-desc">One urgent treatment that becomes a quarterly plan</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/landscaping"><i class="fa-solid fa-trowel-bricks" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Landscaping &amp; Hardscaping</span><span class="c360-hp-ind-row-desc">Patios, walls and design-build projects</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/tree-service"><i class="fa-solid fa-tree" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Tree Service</span><span class="c360-hp-ind-row-desc">Trimming, removals and storm cleanup</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/junk-removal"><i class="fa-solid fa-dumpster" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Junk Removal</span><span class="c360-hp-ind-row-desc">Cleanouts, haul-aways and full trucks</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/movers"><i class="fa-solid fa-truck-moving" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Movers</span><span class="c360-hp-ind-row-desc">Local moves, long distance and packing</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/appliance-repair"><i class="fa-solid fa-plug" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Appliance Repair</span><span class="c360-hp-ind-row-desc">Washers, fridges and ovens that can't wait a week</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+        </div>
+        <h3 class="c360-hp-ind-grid-title">Professional &amp; Financial</h3>
+        <div class="c360-hp-ind-panel" role="tabpanel" id="hpind-grid-2" aria-labelledby="hpind-tab-2" hidden>
+        <ul class="c360-hp-ind-grid">
+          <li><a class="c360-hp-ind-row" href="/industries/insurance-agencies"><i class="fa-solid fa-shield-halved" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Insurance Agencies</span><span class="c360-hp-ind-row-desc">Property and casualty: auto, home and business quotes</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/real-estate"><i class="fa-solid fa-house" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Real Estate</span><span class="c360-hp-ind-row-desc">Buyers, sellers and listings for agents and teams</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/mortgage"><i class="fa-solid fa-file-signature" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Mortgage</span><span class="c360-hp-ind-row-desc">A steady pipeline for loan officers and brokers</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/health-insurance"><i class="fa-solid fa-heart-pulse" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Health Insurance</span><span class="c360-hp-ind-row-desc">Individual and family plans, in and out of enrollment season</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/medicare-agents"><i class="fa-solid fa-stethoscope" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Medicare Agents</span><span class="c360-hp-ind-row-desc">Year-round clients, not just enrollment season</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/farmers-insurance"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Farmers Insurance Agents</span><span class="c360-hp-ind-row-desc">Our marketing program for Farmers agents</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+        </div>
+        <h3 class="c360-hp-ind-grid-title">Specialty Businesses</h3>
+        <div class="c360-hp-ind-panel" role="tabpanel" id="hpind-grid-3" aria-labelledby="hpind-tab-3" hidden>
+        <ul class="c360-hp-ind-grid">
+          <li><a class="c360-hp-ind-row" href="/industries/auto-shops"><i class="fa-solid fa-car" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Auto Shops</span><span class="c360-hp-ind-row-desc">Repairs and maintenance that keep every bay full</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/restaurants"><i class="fa-solid fa-utensils" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Restaurants</span><span class="c360-hp-ind-row-desc">Full tables on more than Friday nights</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/industries/funeral-homes"><i class="fa-solid fa-dove" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Funeral Homes</span><span class="c360-hp-ind-row-desc">Found by families when it matters, and for pre-planning</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+          <li><a class="c360-hp-ind-row" href="/dispensary"><i class="fa-solid fa-cannabis" aria-hidden="true"></i><span class="c360-hp-ind-row-name">Dispensaries</span><span class="c360-hp-ind-row-desc">Compliant geo-fencing ads for licensed dispensaries</span><span class="c360-hp-ind-row-foot">See the plan <i class="fa-solid fa-chevron-right" aria-hidden="true"></i></span></a></li>
+        </ul>
+        </div>
+      </div>
     </div>
+    <p class="c360-hp-ind-all">Don't see yours? <a href="/industries">See all industries</a> or <a href="/schedule-demo">talk to us about your business</a>.</p>
   </div>
 </section>
+
+<script>
+/* Group tabs + fan-out: on a switch, the new group's cards start stacked on
+   the first card's spot and spread out to their places; the stage height
+   eases between groups. Without JS every group shows stacked. */
+(function(){
+  var dir=document.querySelector('.c360-hp-ind-dir'); if(!dir) return;
+  dir.classList.remove('no-js');
+  var tabs=dir.querySelectorAll('.c360-hp-ind-tab'), grids=dir.querySelectorAll('.c360-hp-ind-panel'), stage=dir.querySelector('.c360-hp-ind-stage');
+  var reduce=window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var busy=false;
+  function show(idx){
+    if(busy) return; busy=true;
+    var from=stage.offsetHeight;
+    tabs.forEach(function(t,i){ t.setAttribute('aria-selected',i===idx?'true':'false'); t.tabIndex=i===idx?0:-1; });
+    grids.forEach(function(g,i){ g.hidden=(i!==idx); });
+    var grid=grids[idx], cards=grid.querySelectorAll('.c360-hp-ind-row');
+    if(reduce||!cards.length){ busy=false; return; }
+    // measure, then move every card onto the first card's spot
+    var first=cards[0].getBoundingClientRect();
+    cards.forEach(function(c,i){
+      var r=c.getBoundingClientRect();
+      c.classList.remove('is-fan'); c.style.transition='none';
+      c.style.transform='translate('+(first.left-r.left)+'px,'+(first.top-r.top)+'px) scale(.92)';
+      c.style.opacity=i?'0':'1';
+      c.style.setProperty('--d',(i*35)+'ms');
+    });
+    var to=stage.scrollHeight;
+    stage.style.height=from+'px';
+    void stage.offsetHeight; // reflow, then animate
+    stage.style.height=to+'px';
+    cards.forEach(function(c){ c.style.transition=''; c.classList.add('is-fan'); c.style.transform=''; c.style.opacity=''; });
+    var done=0;
+    var end=function(){ if(++done>=cards.length){ cards.forEach(function(c){c.classList.remove('is-fan');}); stage.style.height=''; busy=false; } };
+    cards.forEach(function(c){ c.addEventListener('transitionend',function h(e){ if(e.propertyName==='transform'){ c.removeEventListener('transitionend',h); end(); } }); });
+    setTimeout(function(){ if(busy){ cards.forEach(function(c){c.classList.remove('is-fan');}); stage.style.height=''; busy=false; } },1200);
+  }
+  tabs.forEach(function(t,i){
+    t.addEventListener('click',function(){ if(t.getAttribute('aria-selected')!=='true') show(i); });
+    t.addEventListener('keydown',function(e){
+      var n=null; if(e.key==='ArrowRight') n=(i+1)%tabs.length; if(e.key==='ArrowLeft') n=(i-1+tabs.length)%tabs.length;
+      if(n!==null){ e.preventDefault(); tabs[n].focus(); show(n); }
+    });
+  });
+})();
+</script>
 
 
 <!-- ══════════════════════════════════════════════════════
@@ -1632,13 +1849,17 @@
       <h2>147 reasons Arizona businesses trust Complete360</h2>
       <p>Real results from real local businesses across Arizona and the US.</p>
     </div>
-    <script type='text/javascript' src='https://reputationhub.site/reputation/assets/review-widget.js'></script>
-    <iframe
-      class='lc_reviews_widget'
-      src='https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u'
-      frameborder='0' scrolling='no'
-      style='min-width:100%;width:100%;display:block;'>
-    </iframe>
+    <!-- v2.8: the widget loads when the visitor scrolls near this section
+         (see "Reviews widget" in SCRIPTS). min-height reserves the space. -->
+    <div id="c360HpReviewsSlot" class="c360-hp-reviews-slot"
+         data-src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+         data-script="https://reputationhub.site/reputation/assets/review-widget.js">
+      <noscript>
+        <iframe class="lc_reviews_widget" title="Complete360 Google reviews"
+          src="https://reputationhub.site/reputation/widgets/review_widget/1pBjHBEIsKGbwvAUTY9u"
+          frameborder="0" scrolling="no" style="min-width:100%;width:100%;display:block;"></iframe>
+      </noscript>
+    </div>
   </div>
 </section>
 
@@ -1648,6 +1869,11 @@
      ══════════════════════════════════════════════════════ -->
 <section class="c360-hp-section c360-hp-final-cta">
   <div class="c360-hp-container">
+   <div class="c360-hp-final-grid">
+    <div class="c360-hp-final-photo">
+      <!-- IMAGE: hp-final — happy contractor booking a job by phone in front of his truck -->
+      <img src="https://files.leadconnectorhq.com/file/6b0715c27f4b143c88b2ec61/00-new-general-contractors-check.webp" alt="Smiling contractor with a clipboard booking a new job by phone in front of his work truck" width="1536" height="1024" loading="lazy" decoding="async">
+    </div>
     <div class="c360-hp-final-inner">
       <span class="c360-hp-overline" style="color:#2ecc52;">Ready to Grow?</span>
       <h2>Let's put your business<br>in front of <span class="c360-hp-green-word">more customers.</span></h2>
@@ -1660,10 +1886,10 @@
           <i class="fa-solid fa-phone"></i>
           Call (866) 527-6205
         </a>
-        <!-- Modal trigger (#4) — wired to c360Modal via JS below -->
-        <a href="javascript:void(0)" class="c360-hp-btn-outline-white c360-hp-modal-trigger">
+        <!-- v2.8: opened by the global header's .c360-popup-trigger handler -->
+        <button type="button" class="c360-hp-btn-outline-white c360-popup-trigger">
           Get Started Online <i class="fa-solid fa-arrow-right"></i>
-        </a>
+        </button>
       </div>
       <div class="c360-hp-final-trust-row">
         <span><i class="fa-brands fa-google"></i> Google Partner</span>
@@ -1675,6 +1901,7 @@
         Proudly serving Tucson, Phoenix, Scottsdale, Mesa, Chandler, Gilbert, Tempe &amp; businesses across Arizona and the United States.
       </p>
     </div>
+   </div>
   </div>
 </section>
 
@@ -1754,7 +1981,7 @@
           <span class="c360-hp-faq-icon"><i class="fa-solid fa-chevron-down"></i></span>
         </label>
         <div class="c360-hp-faq-a">
-          <p>We specialize in local service businesses — HVAC, plumbing, roofing, electrical, painting, lawn care, cleaning, pool service, pest control, and more. We also serve real estate professionals, insurance agents (including a Farmers Insurance cost-share program), mortgage brokers, and auto shops. If your business runs on phone calls and local reputation, we're built for you.</p>
+          <p>We specialize in local businesses that run on calls, appointments and reputation: contractors and trades like plumbing, HVAC, electrical and roofing; home services like lawn care, cleaning and pest control; insurance agents (including a Farmers Insurance cost-share program), real estate, mortgage and health insurance; and specialty businesses like auto shops, restaurants and funeral homes. <a href="/industries">See every industry we serve</a> and the plan we'd start with for each.</p>
         </div>
       </div>
 
@@ -1786,19 +2013,35 @@
   }, 2800);
 })();
 
-/* ── Modal trigger (#4) ──
-   Opens the c360Modal defined in your global header.
-   Toggles aria-hidden and locks body scroll to match
-   your existing header modal JS pattern.               */
+/* ── Reviews widget (v2.8) ──
+   Injects the iframe + resize script only when the section is within
+   ~800px of the viewport, so it costs nothing on first load.         */
 (function() {
-  var modal = document.getElementById('c360Modal');
-  if (!modal) return;
-  document.addEventListener('click', function(e) {
-    if (e.target.closest('.c360-hp-modal-trigger')) {
-      e.preventDefault();
-      modal.setAttribute('aria-hidden', 'false');
-      document.body.style.overflow = 'hidden';
-    }
-  });
+  var slot = document.getElementById('c360HpReviewsSlot');
+  if (!slot) return;
+  var loaded = false;
+  function load() {
+    if (loaded) return; loaded = true;
+    var f = document.createElement('iframe');
+    f.className = 'lc_reviews_widget';
+    f.title = 'Complete360 Google reviews';
+    f.src = slot.getAttribute('data-src');
+    f.setAttribute('frameborder', '0');
+    f.setAttribute('scrolling', 'no');
+    f.style.cssText = 'min-width:100%;width:100%;display:block;';
+    slot.appendChild(f);
+    var s = document.createElement('script');
+    s.src = slot.getAttribute('data-script');
+    s.async = true;
+    document.body.appendChild(s);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function(entries) {
+      if (entries[0].isIntersecting) { io.disconnect(); load(); }
+    }, { rootMargin: '800px 0px' });
+    io.observe(slot);
+  } else {
+    load();
+  }
 })();
 </script>
